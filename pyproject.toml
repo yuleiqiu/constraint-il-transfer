@@ -1,0 +1,17 @@
+[project]
+name = "constraint-il-transfer"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "robomimic",
+    "robosuite",
+    "torch==2.5.1+cu121",
+    "torchvision==0.20.1+cu121",
+]
+
+[tool.uv.sources]
+robosuite = { path = "third_party/robosuite", editable = true }
+robomimic = { path = "third_party/robomimic", editable = true }
+
+[[tool.uv.index]]
+url = "https://download.pytorch.org/whl/cu121"

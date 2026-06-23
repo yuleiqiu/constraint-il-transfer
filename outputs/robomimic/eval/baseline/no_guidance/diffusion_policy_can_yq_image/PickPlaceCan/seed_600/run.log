@@ -1,0 +1,281 @@
+$ MUJOCO_GL=egl uv run python /home/yulei/codes/constraint-il-transfer/third_party/robomimic/robomimic/scripts/run_trained_agent.py --agent /home/yulei/codes/constraint-il-transfer/outputs/robomimic/checkpoints/diffusion_policy_can_yq_image/best.pth --env PickPlaceCan --seed 600 --n_rollouts 50 --horizon 400 --video_path /home/yulei/codes/constraint-il-transfer/outputs/robomimic/eval/baseline/no_guidance/diffusion_policy_can_yq_image/PickPlaceCan/seed_600/rollout.mp4 --stats_path /home/yulei/codes/constraint-il-transfer/outputs/robomimic/eval/baseline/no_guidance/diffusion_policy_can_yq_image/PickPlaceCan/seed_600/stats.json --camera_names agentview robot0_eye_in_hand
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/yulei/codes/constraint-il-transfer/third_party/robosuite/robosuite/scripts/setup_macros.py (macros.py:55)
+[robosuite WARNING] Could not import robosuite_models. Some robots may not be available. If you want to use these robots, please install robosuite_models from source (https://github.com/ARISE-Initiative/robosuite_models) or through pip install. (__init__.py:35)
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly, otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:45)
+ROBOMIMIC WARNING(
+    No private macro file found!
+    It is recommended to use a private macro file
+    To setup, run: python /home/yulei/codes/constraint-il-transfer/third_party/robomimic/robomimic/scripts/setup_macros.py
+)
+Wrote rollout command to /home/yulei/codes/constraint-il-transfer/outputs/robomimic/eval/baseline/no_guidance/diffusion_policy_can_yq_image/PickPlaceCan/seed_600/command.txt
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: low_dim with keys: ['robot0_eef_quat', 'robot0_eef_pos', 'robot0_gripper_qpos']
+using obs modality: rgb with keys: ['robot0_eye_in_hand_image', 'agentview_image']
+using obs modality: depth with keys: []
+using obs modality: scan with keys: []
+number of parameters: 6.914689e+07
+Created environment with name PickPlaceCan
+Action size is 7
+Rollout 1/50 start
+ObservationKeyToModalityDict: object not found, adding object to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_pos not found, adding robot0_joint_pos to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_pos_cos not found, adding robot0_joint_pos_cos to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_pos_sin not found, adding robot0_joint_pos_sin to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_vel not found, adding robot0_joint_vel to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_eef_quat_site not found, adding robot0_eef_quat_site to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_gripper_qvel not found, adding robot0_gripper_qvel to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: lang_emb not found, adding lang_emb to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: timesteps not found, adding timesteps to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: actions not found, adding actions to mapping with assumed low_dim modality!
+Rollout 1/50 step 100/400
+Rollout 1/50 step 200/400
+Rollout 1/50 step 300/400
+Rollout 1/50 done: horizon=379, success=1, return=1.0000
+Rollout 2/50 start
+Rollout 2/50 step 100/400
+Rollout 2/50 step 200/400
+Rollout 2/50 step 300/400
+Rollout 2/50 done: horizon=318, success=1, return=1.0000
+Rollout 3/50 start
+Rollout 3/50 step 100/400
+Rollout 3/50 step 200/400
+Rollout 3/50 done: horizon=264, success=1, return=1.0000
+Rollout 4/50 start
+Rollout 4/50 step 100/400
+Rollout 4/50 step 200/400
+Rollout 4/50 done: horizon=264, success=1, return=1.0000
+Rollout 5/50 start
+Rollout 5/50 step 100/400
+Rollout 5/50 step 200/400
+Rollout 5/50 done: horizon=230, success=1, return=1.0000
+Rollout 6/50 start
+Rollout 6/50 step 100/400
+Rollout 6/50 step 200/400
+Rollout 6/50 done: horizon=219, success=1, return=1.0000
+Rollout 7/50 start
+Rollout 7/50 step 100/400
+Rollout 7/50 step 200/400
+Rollout 7/50 step 300/400
+Rollout 7/50 done: horizon=325, success=1, return=1.0000
+Rollout 8/50 start
+Rollout 8/50 step 100/400
+Rollout 8/50 step 200/400
+Rollout 8/50 done: horizon=259, success=1, return=1.0000
+Rollout 9/50 start
+Rollout 9/50 step 100/400
+Rollout 9/50 step 200/400
+Rollout 9/50 done: horizon=228, success=1, return=1.0000
+Rollout 10/50 start
+Rollout 10/50 step 100/400
+Rollout 10/50 step 200/400
+Rollout 10/50 step 300/400
+Rollout 10/50 done: horizon=332, success=1, return=1.0000
+Rollout 11/50 start
+Rollout 11/50 step 100/400
+Rollout 11/50 step 200/400
+Rollout 11/50 done: horizon=274, success=1, return=1.0000
+Rollout 12/50 start
+Rollout 12/50 step 100/400
+Rollout 12/50 step 200/400
+Rollout 12/50 step 300/400
+Rollout 12/50 done: horizon=304, success=1, return=1.0000
+Rollout 13/50 start
+Rollout 13/50 step 100/400
+Rollout 13/50 step 200/400
+Rollout 13/50 step 300/400
+Rollout 13/50 done: horizon=317, success=1, return=1.0000
+Rollout 14/50 start
+Rollout 14/50 step 100/400
+Rollout 14/50 step 200/400
+Rollout 14/50 step 300/400
+Rollout 14/50 done: horizon=309, success=1, return=1.0000
+Rollout 15/50 start
+Rollout 15/50 step 100/400
+Rollout 15/50 step 200/400
+Rollout 15/50 done: horizon=277, success=1, return=1.0000
+Rollout 16/50 start
+Rollout 16/50 step 100/400
+Rollout 16/50 step 200/400
+Rollout 16/50 done: horizon=251, success=1, return=1.0000
+Rollout 17/50 start
+Rollout 17/50 step 100/400
+Rollout 17/50 step 200/400
+Rollout 17/50 step 300/400
+Rollout 17/50 done: horizon=352, success=1, return=1.0000
+Rollout 18/50 start
+Rollout 18/50 step 100/400
+Rollout 18/50 step 200/400
+Rollout 18/50 done: horizon=226, success=1, return=1.0000
+Rollout 19/50 start
+Rollout 19/50 step 100/400
+Rollout 19/50 step 200/400
+Rollout 19/50 step 300/400
+Rollout 19/50 done: horizon=334, success=1, return=1.0000
+Rollout 20/50 start
+Rollout 20/50 step 100/400
+Rollout 20/50 step 200/400
+Rollout 20/50 done: horizon=272, success=1, return=1.0000
+Rollout 21/50 start
+Rollout 21/50 step 100/400
+Rollout 21/50 step 200/400
+Rollout 21/50 step 300/400
+Rollout 21/50 done: horizon=355, success=1, return=1.0000
+Rollout 22/50 start
+Rollout 22/50 step 100/400
+Rollout 22/50 step 200/400
+Rollout 22/50 done: horizon=240, success=1, return=1.0000
+Rollout 23/50 start
+Rollout 23/50 step 100/400
+Rollout 23/50 step 200/400
+Rollout 23/50 step 300/400
+Rollout 23/50 done: horizon=302, success=1, return=1.0000
+Rollout 24/50 start
+Rollout 24/50 step 100/400
+Rollout 24/50 step 200/400
+Rollout 24/50 done: horizon=220, success=1, return=1.0000
+Rollout 25/50 start
+Rollout 25/50 step 100/400
+Rollout 25/50 step 200/400
+Rollout 25/50 step 300/400
+Rollout 25/50 done: horizon=349, success=1, return=1.0000
+Rollout 26/50 start
+Rollout 26/50 step 100/400
+Rollout 26/50 step 200/400
+Rollout 26/50 done: horizon=254, success=1, return=1.0000
+Rollout 27/50 start
+Rollout 27/50 step 100/400
+Rollout 27/50 step 200/400
+Rollout 27/50 done: horizon=296, success=1, return=1.0000
+Rollout 28/50 start
+Rollout 28/50 step 100/400
+Rollout 28/50 step 200/400
+Rollout 28/50 done: horizon=261, success=1, return=1.0000
+Rollout 29/50 start
+Rollout 29/50 step 100/400
+Rollout 29/50 step 200/400
+Rollout 29/50 done: horizon=290, success=1, return=1.0000
+Rollout 30/50 start
+Rollout 30/50 step 100/400
+Rollout 30/50 step 200/400
+Rollout 30/50 step 300/400
+Rollout 30/50 step 400/400
+Rollout 30/50 done: horizon=400, success=0, return=0.0000
+Rollout 31/50 start
+Rollout 31/50 step 100/400
+Rollout 31/50 step 200/400
+Rollout 31/50 done: horizon=280, success=1, return=1.0000
+Rollout 32/50 start
+Rollout 32/50 step 100/400
+Rollout 32/50 step 200/400
+Rollout 32/50 step 300/400
+Rollout 32/50 step 400/400
+Rollout 32/50 done: horizon=400, success=0, return=0.0000
+Rollout 33/50 start
+Rollout 33/50 step 100/400
+Rollout 33/50 step 200/400
+Rollout 33/50 done: horizon=265, success=1, return=1.0000
+Rollout 34/50 start
+Rollout 34/50 step 100/400
+Rollout 34/50 step 200/400
+Rollout 34/50 step 300/400
+Rollout 34/50 done: horizon=345, success=1, return=1.0000
+Rollout 35/50 start
+Rollout 35/50 step 100/400
+Rollout 35/50 step 200/400
+Rollout 35/50 step 300/400
+Rollout 35/50 done: horizon=311, success=1, return=1.0000
+Rollout 36/50 start
+Rollout 36/50 step 100/400
+Rollout 36/50 step 200/400
+Rollout 36/50 step 300/400
+Rollout 36/50 done: horizon=322, success=1, return=1.0000
+Rollout 37/50 start
+Rollout 37/50 step 100/400
+Rollout 37/50 step 200/400
+Rollout 37/50 done: horizon=259, success=1, return=1.0000
+Rollout 38/50 start
+Rollout 38/50 step 100/400
+Rollout 38/50 step 200/400
+Rollout 38/50 step 300/400
+Rollout 38/50 done: horizon=350, success=1, return=1.0000
+Rollout 39/50 start
+Rollout 39/50 step 100/400
+Rollout 39/50 step 200/400
+Rollout 39/50 step 300/400
+Rollout 39/50 done: horizon=339, success=1, return=1.0000
+Rollout 40/50 start
+Rollout 40/50 step 100/400
+Rollout 40/50 step 200/400
+Rollout 40/50 step 300/400
+Rollout 40/50 done: horizon=325, success=1, return=1.0000
+Rollout 41/50 start
+Rollout 41/50 step 100/400
+Rollout 41/50 step 200/400
+Rollout 41/50 done: horizon=218, success=1, return=1.0000
+Rollout 42/50 start
+Rollout 42/50 step 100/400
+Rollout 42/50 step 200/400
+Rollout 42/50 done: horizon=210, success=1, return=1.0000
+Rollout 43/50 start
+Rollout 43/50 step 100/400
+Rollout 43/50 step 200/400
+Rollout 43/50 step 300/400
+Rollout 43/50 done: horizon=326, success=1, return=1.0000
+Rollout 44/50 start
+Rollout 44/50 step 100/400
+Rollout 44/50 step 200/400
+Rollout 44/50 step 300/400
+Rollout 44/50 done: horizon=317, success=1, return=1.0000
+Rollout 45/50 start
+Rollout 45/50 step 100/400
+Rollout 45/50 step 200/400
+Rollout 45/50 step 300/400
+Rollout 45/50 done: horizon=340, success=1, return=1.0000
+Rollout 46/50 start
+Rollout 46/50 step 100/400
+Rollout 46/50 step 200/400
+Rollout 46/50 step 300/400
+Rollout 46/50 done: horizon=352, success=1, return=1.0000
+Rollout 47/50 start
+Rollout 47/50 step 100/400
+Rollout 47/50 step 200/400
+Rollout 47/50 step 300/400
+Rollout 47/50 done: horizon=326, success=1, return=1.0000
+Rollout 48/50 start
+Rollout 48/50 step 100/400
+Rollout 48/50 step 200/400
+Rollout 48/50 step 300/400
+Rollout 48/50 done: horizon=339, success=1, return=1.0000
+Rollout 49/50 start
+Rollout 49/50 step 100/400
+Rollout 49/50 step 200/400
+Rollout 49/50 done: horizon=278, success=1, return=1.0000
+Rollout 50/50 start
+Rollout 50/50 step 100/400
+Rollout 50/50 step 200/400
+Rollout 50/50 done: horizon=255, success=1, return=1.0000
+Average Rollout Stats
+{
+    "Return": 0.96,
+    "Horizon": 297.16,
+    "Success_Rate": 0.96,
+    "Non_Target_Collision_Count": 0.0,
+    "Non_Target_Collision_Step_Count": 0.0,
+    "Non_Target_Collision_Rate": 0.0,
+    "Non_Target_Collision_Any": 0.0,
+    "Num_Success": 48.0,
+    "Num_Non_Target_Collision_Rollouts": 0.0,
+    "Obstacle_Guidance_Cost": null,
+    "Obstacle_Guidance_Min_Distance": null,
+    "Obstacle_Guidance_Trigger_Count": null,
+    "Obstacle_Guidance_Trigger_Rate": null,
+    "Obstacle_Guidance_Positive_Cost_Count": null,
+    "Obstacle_Guidance_Positive_Cost_Rate": null,
+    "Pointcloud_Total_Point_Count": null,
+    "Pointcloud_Point_Count": null
+}
+Wrote rollout stats to /home/yulei/codes/constraint-il-transfer/outputs/robomimic/eval/baseline/no_guidance/diffusion_policy_can_yq_image/PickPlaceCan/seed_600/stats.json

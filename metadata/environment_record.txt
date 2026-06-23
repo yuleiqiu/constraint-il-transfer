@@ -1,0 +1,56 @@
+Created at: Fri Jun 19 14:47:00 CST 2026
+Updated at: Fri Jun 19 14:50:00 CST 2026
+
+Top-level directory:
+/home/yulei/codes/constraint-il-transfer
+
+uv:
+uv 0.10.9
+
+Python:
+Python 3.10.12
+
+robomimic branch:
+exp/pc-obstacle-guidance
+
+robomimic commit:
+12603a7
+
+robomimic remotes:
+origin  git@github.com:yuleiqiu/robomimic.git (fetch)
+origin  git@github.com:yuleiqiu/robomimic.git (push)
+upstream        https://github.com/ARISE-Initiative/robomimic.git (fetch)
+upstream        https://github.com/ARISE-Initiative/robomimic.git (push)
+
+robosuite branch:
+multi-obj-env
+
+robosuite commit:
+1332535f
+
+robosuite remotes:
+origin  git@github.com:yuleiqiu/robosuite.git (fetch)
+origin  git@github.com:yuleiqiu/robosuite.git (push)
+upstream        https://github.com/ARISE-Initiative/robosuite.git (fetch)
+upstream        https://github.com/ARISE-Initiative/robosuite.git (push)
+
+torch:
+2.12.1+cu130
+
+torch cuda build:
+13.0
+
+cuda available:
+True
+
+mujoco:
+3.9.0
+
+Python package check:
+python executable: /home/yulei/codes/constraint-il-transfer/.venv/bin/python
+robomimic file: /home/yulei/codes/constraint-il-transfer/third_party/robomimic/robomimic/__init__.py
+robosuite file: /home/yulei/codes/constraint-il-transfer/third_party/robosuite/robosuite/__init__.py
+torch: 2.12.1+cu130
+torch cuda build: 13.0
+cuda available: True
+mujoco: 3.9.0

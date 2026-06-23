@@ -1,0 +1,921 @@
+$ MUJOCO_GL=egl uv run python /home/yulei/codes/constraint-il-transfer/third_party/robomimic/robomimic/scripts/run_obstacle_guided_agent.py --agent /home/yulei/codes/constraint-il-transfer/outputs/robomimic/checkpoints/diffusion_policy_can_yq_masked_image/best.pth --env PickPlaceCan --seed 602 --n_rollouts 50 --horizon 400 --video_path /home/yulei/codes/constraint-il-transfer/outputs/robomimic/eval/obstacle_guided/pc1_safe_0p02/diffusion_policy_can_yq_masked_image/PickPlaceCan/seed_602/rollout.mp4 --stats_path /home/yulei/codes/constraint-il-transfer/outputs/robomimic/eval/obstacle_guided/pc1_safe_0p02/diffusion_policy_can_yq_masked_image/PickPlaceCan/seed_602/stats.json --camera_names agentview robot0_eye_in_hand --video_target_mask_grid --guidance_geometry_source pointcloud --pc_safe_distance 0.02
+ROBOMIMIC WARNING(
+    No private macro file found!
+    It is recommended to use a private macro file
+    To setup, run: python /home/yulei/codes/constraint-il-transfer/third_party/robomimic/robomimic/scripts/setup_macros.py
+)
+Wrote rollout command to /home/yulei/codes/constraint-il-transfer/outputs/robomimic/eval/obstacle_guided/pc1_safe_0p02/diffusion_policy_can_yq_masked_image/PickPlaceCan/seed_602/command.txt
+============= Loaded Config =============
+{
+    "algo_name": "diffusion_policy",
+    "experiment": {
+        "name": "diffusion_policy_can_yq_masked_image",
+        "validate": true,
+        "logging": {
+            "terminal_output_to_txt": true,
+            "log_tb": true,
+            "log_wandb": true,
+            "wandb_proj_name": "diffusion_policy_can_image"
+        },
+        "save": {
+            "enabled": true,
+            "every_n_seconds": null,
+            "every_n_epochs": 20,
+            "epochs": [],
+            "on_best_validation": false,
+            "on_best_rollout_return": false,
+            "on_best_rollout_success_rate": true
+        },
+        "epoch_every_n_steps": 500,
+        "validation_epoch_every_n_steps": 50,
+        "env": null,
+        "additional_envs": null,
+        "render": false,
+        "render_video": true,
+        "keep_all_videos": false,
+        "video_skip": 5,
+        "rollout": {
+            "enabled": true,
+            "n": 50,
+            "horizon": 400,
+            "rate": 20,
+            "warmstart": 0,
+            "terminate_on_success": true
+        },
+        "env_meta_update_dict": {
+            "env_kwargs": {
+                "target_mask_image": {
+                    "enabled": true,
+                    "target_object": "Can",
+                    "obs_keys": [
+                        "agentview_image",
+                        "robot0_eye_in_hand_image"
+                    ],
+                    "target_value": 255,
+                    "background_value": 0
+                }
+            }
+        },
+        "ckpt_path": null
+    },
+    "train": {
+        "data": [
+            {
+                "path": "datasets/can/yq/image_v15_can_mask.hdf5"
+            }
+        ],
+        "output_dir": "runs/trained_models",
+        "normalize_weights_by_ds_size": false,
+        "num_data_workers": 0,
+        "hdf5_cache_mode": "low_dim",
+        "hdf5_use_swmr": true,
+        "hdf5_load_next_obs": false,
+        "hdf5_normalize_obs": false,
+        "hdf5_filter_key": "train",
+        "hdf5_validation_filter_key": "valid",
+        "seq_length": 16,
+        "pad_seq_length": true,
+        "frame_stack": 2,
+        "pad_frame_stack": true,
+        "dataset_keys": [
+            "actions",
+            "rewards",
+            "dones"
+        ],
+        "action_keys": [
+            "actions"
+        ],
+        "action_config": {
+            "actions": {
+                "normalization": null
+            }
+        },
+        "goal_mode": null,
+        "cuda": true,
+        "batch_size": 64,
+        "num_epochs": 600,
+        "seed": 500,
+        "max_grad_norm": null
+    },
+    "algo": {
+        "optim_params": {
+            "policy": {
+                "optimizer_type": "adamw",
+                "learning_rate": {
+                    "initial": 0.0001,
+                    "decay_factor": 0.1,
+                    "step_every_batch": true,
+                    "scheduler_type": "cosine",
+                    "num_cycles": 0.5,
+                    "warmup_steps": 500,
+                    "epoch_schedule": []
+                },
+                "regularization": {
+                    "L2": 1e-06
+                },
+                "num_train_batches": 500,
+                "num_epochs": 600
+            }
+        },
+        "horizon": {
+            "observation_horizon": 2,
+            "action_horizon": 8,
+            "prediction_horizon": 16
+        },
+        "unet": {
+            "enabled": true,
+            "diffusion_step_embed_dim": 256,
+            "down_dims": [
+                256,
+                512,
+                1024
+            ],
+            "kernel_size": 5,
+            "n_groups": 8
+        },
+        "ema": {
+            "enabled": true,
+            "power": 0.75
+        },
+        "ddpm": {
+            "enabled": true,
+            "num_train_timesteps": 100,
+            "num_inference_timesteps": 100,
+            "beta_schedule": "squaredcos_cap_v2",
+            "clip_sample": true,
+            "prediction_type": "epsilon"
+        },
+        "ddim": {
+            "enabled": false,
+            "num_train_timesteps": 100,
+            "num_inference_timesteps": 10,
+            "beta_schedule": "squaredcos_cap_v2",
+            "clip_sample": true,
+            "set_alpha_to_one": true,
+            "steps_offset": 0,
+            "prediction_type": "epsilon"
+        }
+    },
+    "observation": {
+        "modalities": {
+            "obs": {
+                "low_dim": [
+                    "robot0_eef_pos",
+                    "robot0_eef_quat",
+                    "robot0_gripper_qpos"
+                ],
+                "rgb": [
+                    "agentview_image",
+                    "robot0_eye_in_hand_image"
+                ],
+                "depth": [],
+                "scan": []
+            },
+            "goal": {
+                "low_dim": [],
+                "rgb": [],
+                "depth": [],
+                "scan": []
+            }
+        },
+        "encoder": {
+            "low_dim": {
+                "core_class": null,
+                "core_kwargs": {},
+                "obs_randomizer_class": null,
+                "obs_randomizer_kwargs": {}
+            },
+            "rgb": {
+                "core_class": "VisualCore",
+                "core_kwargs": {
+                    "feature_dimension": 64,
+                    "backbone_class": "ResNet18Conv",
+                    "backbone_kwargs": {
+                        "pretrained": false,
+                        "input_coord_conv": false
+                    },
+                    "pool_class": "SpatialSoftmax",
+                    "pool_kwargs": {
+                        "num_kp": 32,
+                        "learnable_temperature": false,
+                        "temperature": 1.0,
+                        "noise_std": 0.0
+                    }
+                },
+                "obs_randomizer_class": "CropRandomizer",
+                "obs_randomizer_kwargs": {
+                    "crop_height": 76,
+                    "crop_width": 76,
+                    "num_crops": 1,
+                    "pos_enc": false
+                }
+            },
+            "depth": {
+                "core_class": "VisualCore",
+                "core_kwargs": {},
+                "obs_randomizer_class": null,
+                "obs_randomizer_kwargs": {}
+            },
+            "scan": {
+                "core_class": "ScanCore",
+                "core_kwargs": {},
+                "obs_randomizer_class": null,
+                "obs_randomizer_kwargs": {}
+            }
+        }
+    },
+    "meta": {
+        "hp_base_config_file": null,
+        "hp_keys": [],
+        "hp_values": []
+    }
+}
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: low_dim with keys: ['robot0_eef_quat', 'robot0_eef_pos', 'robot0_gripper_qpos']
+using obs modality: rgb with keys: ['robot0_eye_in_hand_image', 'agentview_image']
+using obs modality: depth with keys: []
+using obs modality: scan with keys: []
+number of parameters: 6.914689e+07
+============= Loaded Policy =============
+DiffusionPolicyUNet (
+  ModuleDict(
+    (policy): ModuleDict(
+      (obs_encoder): ObservationGroupEncoder(
+          group=obs
+          ObservationEncoder(
+              Key(
+                  name=agentview_image
+                  shape=[3, 84, 84]
+                  modality=rgb
+                  randomizer=ModuleList(
+                    (0): CropRandomizer(input_shape=[3, 84, 84], crop_size=[76, 76], num_crops=1)
+                  )
+                  net=VisualCore(
+                    input_shape=[3, 76, 76]
+                    output_shape=[64]
+                    backbone_net=ResNet18Conv(input_channel=3, input_coord_conv=False)
+                    pool_net=SpatialSoftmax(num_kp=32, temperature=1.0, noise=0.0)
+                  )
+                  sharing_from=None
+              )
+              Key(
+                  name=robot0_eef_pos
+                  shape=[3]
+                  modality=low_dim
+                  randomizer=ModuleList(
+                    (0): None
+                  )
+                  net=None
+                  sharing_from=None
+              )
+              Key(
+                  name=robot0_eef_quat
+                  shape=[4]
+                  modality=low_dim
+                  randomizer=ModuleList(
+                    (0): None
+                  )
+                  net=None
+                  sharing_from=None
+              )
+              Key(
+                  name=robot0_eye_in_hand_image
+                  shape=[3, 84, 84]
+                  modality=rgb
+                  randomizer=ModuleList(
+                    (0): CropRandomizer(input_shape=[3, 84, 84], crop_size=[76, 76], num_crops=1)
+                  )
+                  net=VisualCore(
+                    input_shape=[3, 76, 76]
+                    output_shape=[64]
+                    backbone_net=ResNet18Conv(input_channel=3, input_coord_conv=False)
+                    pool_net=SpatialSoftmax(num_kp=32, temperature=1.0, noise=0.0)
+                  )
+                  sharing_from=None
+              )
+              Key(
+                  name=robot0_gripper_qpos
+                  shape=[2]
+                  modality=low_dim
+                  randomizer=ModuleList(
+                    (0): None
+                  )
+                  net=None
+                  sharing_from=None
+              )
+              output_shape=[137]
+          )
+      )
+      (noise_pred_net): ConditionalUnet1D(
+        (mid_modules): ModuleList(
+          (0-1): 2 x ConditionalResidualBlock1D(
+            (blocks): ModuleList(
+              (0-1): 2 x Conv1dBlock(
+                (block): Sequential(
+                  (0): Conv1d(1024, 1024, kernel_size=(5,), stride=(1,), padding=(2,))
+                  (1): GroupNorm(8, 1024, eps=1e-05, affine=True)
+                  (2): Mish()
+                )
+              )
+            )
+            (cond_encoder): Sequential(
+              (0): Mish()
+              (1): Linear(in_features=530, out_features=2048, bias=True)
+              (2): Unflatten(dim=-1, unflattened_size=(-1, 1))
+            )
+            (residual_conv): Identity()
+          )
+        )
+        (diffusion_step_encoder): Sequential(
+          (0): SinusoidalPosEmb()
+          (1): Linear(in_features=256, out_features=1024, bias=True)
+          (2): Mish()
+          (3): Linear(in_features=1024, out_features=256, bias=True)
+        )
+        (up_modules): ModuleList(
+          (0): ModuleList(
+            (0): ConditionalResidualBlock1D(
+              (blocks): ModuleList(
+                (0): Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(2048, 512, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 512, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+                (1): Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(512, 512, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 512, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+              )
+              (cond_encoder): Sequential(
+                (0): Mish()
+                (1): Linear(in_features=530, out_features=1024, bias=True)
+                (2): Unflatten(dim=-1, unflattened_size=(-1, 1))
+              )
+              (residual_conv): Conv1d(2048, 512, kernel_size=(1,), stride=(1,))
+            )
+            (1): ConditionalResidualBlock1D(
+              (blocks): ModuleList(
+                (0-1): 2 x Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(512, 512, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 512, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+              )
+              (cond_encoder): Sequential(
+                (0): Mish()
+                (1): Linear(in_features=530, out_features=1024, bias=True)
+                (2): Unflatten(dim=-1, unflattened_size=(-1, 1))
+              )
+              (residual_conv): Identity()
+            )
+            (2): Upsample1d(
+              (conv): ConvTranspose1d(512, 512, kernel_size=(4,), stride=(2,), padding=(1,))
+            )
+          )
+          (1): ModuleList(
+            (0): ConditionalResidualBlock1D(
+              (blocks): ModuleList(
+                (0): Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(1024, 256, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 256, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+                (1): Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(256, 256, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 256, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+              )
+              (cond_encoder): Sequential(
+                (0): Mish()
+                (1): Linear(in_features=530, out_features=512, bias=True)
+                (2): Unflatten(dim=-1, unflattened_size=(-1, 1))
+              )
+              (residual_conv): Conv1d(1024, 256, kernel_size=(1,), stride=(1,))
+            )
+            (1): ConditionalResidualBlock1D(
+              (blocks): ModuleList(
+                (0-1): 2 x Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(256, 256, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 256, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+              )
+              (cond_encoder): Sequential(
+                (0): Mish()
+                (1): Linear(in_features=530, out_features=512, bias=True)
+                (2): Unflatten(dim=-1, unflattened_size=(-1, 1))
+              )
+              (residual_conv): Identity()
+            )
+            (2): Upsample1d(
+              (conv): ConvTranspose1d(256, 256, kernel_size=(4,), stride=(2,), padding=(1,))
+            )
+          )
+        )
+        (down_modules): ModuleList(
+          (0): ModuleList(
+            (0): ConditionalResidualBlock1D(
+              (blocks): ModuleList(
+                (0): Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(7, 256, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 256, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+                (1): Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(256, 256, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 256, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+              )
+              (cond_encoder): Sequential(
+                (0): Mish()
+                (1): Linear(in_features=530, out_features=512, bias=True)
+                (2): Unflatten(dim=-1, unflattened_size=(-1, 1))
+              )
+              (residual_conv): Conv1d(7, 256, kernel_size=(1,), stride=(1,))
+            )
+            (1): ConditionalResidualBlock1D(
+              (blocks): ModuleList(
+                (0-1): 2 x Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(256, 256, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 256, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+              )
+              (cond_encoder): Sequential(
+                (0): Mish()
+                (1): Linear(in_features=530, out_features=512, bias=True)
+                (2): Unflatten(dim=-1, unflattened_size=(-1, 1))
+              )
+              (residual_conv): Identity()
+            )
+            (2): Downsample1d(
+              (conv): Conv1d(256, 256, kernel_size=(3,), stride=(2,), padding=(1,))
+            )
+          )
+          (1): ModuleList(
+            (0): ConditionalResidualBlock1D(
+              (blocks): ModuleList(
+                (0): Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(256, 512, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 512, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+                (1): Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(512, 512, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 512, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+              )
+              (cond_encoder): Sequential(
+                (0): Mish()
+                (1): Linear(in_features=530, out_features=1024, bias=True)
+                (2): Unflatten(dim=-1, unflattened_size=(-1, 1))
+              )
+              (residual_conv): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+            )
+            (1): ConditionalResidualBlock1D(
+              (blocks): ModuleList(
+                (0-1): 2 x Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(512, 512, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 512, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+              )
+              (cond_encoder): Sequential(
+                (0): Mish()
+                (1): Linear(in_features=530, out_features=1024, bias=True)
+                (2): Unflatten(dim=-1, unflattened_size=(-1, 1))
+              )
+              (residual_conv): Identity()
+            )
+            (2): Downsample1d(
+              (conv): Conv1d(512, 512, kernel_size=(3,), stride=(2,), padding=(1,))
+            )
+          )
+          (2): ModuleList(
+            (0): ConditionalResidualBlock1D(
+              (blocks): ModuleList(
+                (0): Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(512, 1024, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 1024, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+                (1): Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(1024, 1024, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 1024, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+              )
+              (cond_encoder): Sequential(
+                (0): Mish()
+                (1): Linear(in_features=530, out_features=2048, bias=True)
+                (2): Unflatten(dim=-1, unflattened_size=(-1, 1))
+              )
+              (residual_conv): Conv1d(512, 1024, kernel_size=(1,), stride=(1,))
+            )
+            (1): ConditionalResidualBlock1D(
+              (blocks): ModuleList(
+                (0-1): 2 x Conv1dBlock(
+                  (block): Sequential(
+                    (0): Conv1d(1024, 1024, kernel_size=(5,), stride=(1,), padding=(2,))
+                    (1): GroupNorm(8, 1024, eps=1e-05, affine=True)
+                    (2): Mish()
+                  )
+                )
+              )
+              (cond_encoder): Sequential(
+                (0): Mish()
+                (1): Linear(in_features=530, out_features=2048, bias=True)
+                (2): Unflatten(dim=-1, unflattened_size=(-1, 1))
+              )
+              (residual_conv): Identity()
+            )
+            (2): Identity()
+          )
+        )
+        (final_conv): Sequential(
+          (0): Conv1dBlock(
+            (block): Sequential(
+              (0): Conv1d(256, 256, kernel_size=(5,), stride=(1,), padding=(2,))
+              (1): GroupNorm(8, 256, eps=1e-05, affine=True)
+              (2): Mish()
+            )
+          )
+          (1): Conv1d(256, 7, kernel_size=(1,), stride=(1,))
+        )
+      )
+    )
+  )
+)[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/yulei/codes/constraint-il-transfer/third_party/robosuite/robosuite/scripts/setup_macros.py (macros.py:55)
+[robosuite WARNING] Could not import robosuite_models. Some robots may not be available. If you want to use these robots, please install robosuite_models from source (https://github.com/ARISE-Initiative/robosuite_models) or through pip install. (__init__.py:35)
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly, otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:45)
+
+Created environment with name PickPlaceCan
+Action size is 7
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+ObservationKeyToModalityDict: object not found, adding object to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_pos not found, adding robot0_joint_pos to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_pos_cos not found, adding robot0_joint_pos_cos to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_pos_sin not found, adding robot0_joint_pos_sin to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_vel not found, adding robot0_joint_vel to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_eef_quat_site not found, adding robot0_eef_quat_site to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_gripper_qvel not found, adding robot0_gripper_qvel to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_eye_in_hand_depth not found, adding robot0_eye_in_hand_depth to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: lang_emb not found, adding lang_emb to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: timesteps not found, adding timesteps to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: actions not found, adding actions to mapping with assumed low_dim modality!
+Rollout 1/50: success=1, return=1.000, horizon=227, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 2/50: success=1, return=1.000, horizon=273, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 3/50: success=1, return=1.000, horizon=341, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 4/50: success=1, return=1.000, horizon=286, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 5/50: success=1, return=1.000, horizon=282, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 6/50: success=1, return=1.000, horizon=281, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 7/50: success=1, return=1.000, horizon=308, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 8/50: success=1, return=1.000, horizon=267, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 9/50: success=1, return=1.000, horizon=223, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 10/50: success=1, return=1.000, horizon=234, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 11/50: success=1, return=1.000, horizon=327, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 12/50: success=1, return=1.000, horizon=238, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 13/50: success=1, return=1.000, horizon=266, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 14/50: success=1, return=1.000, horizon=193, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 15/50: success=1, return=1.000, horizon=380, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 16/50: success=1, return=1.000, horizon=352, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 17/50: success=1, return=1.000, horizon=238, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 18/50: success=1, return=1.000, horizon=368, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 19/50: success=1, return=1.000, horizon=330, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 20/50: success=1, return=1.000, horizon=291, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 21/50: success=1, return=1.000, horizon=236, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 22/50: success=1, return=1.000, horizon=329, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 23/50: success=1, return=1.000, horizon=210, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 24/50: success=1, return=1.000, horizon=290, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 25/50: success=1, return=1.000, horizon=361, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 26/50: success=1, return=1.000, horizon=250, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 27/50: success=1, return=1.000, horizon=334, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 28/50: success=1, return=1.000, horizon=286, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 29/50: success=1, return=1.000, horizon=344, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 30/50: success=1, return=1.000, horizon=266, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 31/50: success=1, return=1.000, horizon=347, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 32/50: success=0, return=0.000, horizon=400, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 33/50: success=1, return=1.000, horizon=250, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 34/50: success=1, return=1.000, horizon=250, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 35/50: success=1, return=1.000, horizon=281, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 36/50: success=1, return=1.000, horizon=307, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 37/50: success=1, return=1.000, horizon=331, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 38/50: success=1, return=1.000, horizon=336, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 39/50: success=1, return=1.000, horizon=250, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 40/50: success=1, return=1.000, horizon=226, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 41/50: success=1, return=1.000, horizon=234, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 42/50: success=1, return=1.000, horizon=395, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 43/50: success=1, return=1.000, horizon=298, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 44/50: success=1, return=1.000, horizon=290, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 45/50: success=1, return=1.000, horizon=341, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 46/50: success=1, return=1.000, horizon=305, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 47/50: success=1, return=1.000, horizon=239, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 48/50: success=1, return=1.000, horizon=253, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 49/50: success=1, return=1.000, horizon=220, guidance_cost=0
+Obstacle guidance source: pointcloud
+Obstacle guidance mode: xyz_cylinder
+Pointcloud camera: agentview
+Pointcloud stats: {'raw_point_count': 0, 'valid_point_count': 0, 'cropped_point_count': 0, 'voxel_point_count': 0, 'point_count': 0}
+Pointcloud obstacle objects: []
+Rollout 50/50: success=1, return=1.000, horizon=242, guidance_cost=0
+Average Rollout Stats
+{
+    "Return": 0.98,
+    "Horizon": 288.12,
+    "Success_Rate": 0.98,
+    "Obstacle_Guidance_Cost": 0.0,
+    "Obstacle_Guidance_Min_Distance": 0.0,
+    "Obstacle_Guidance_Trigger_Count": 0.0,
+    "Obstacle_Guidance_Trigger_Rate": 0.0,
+    "Obstacle_Guidance_Positive_Cost_Count": 0.0,
+    "Obstacle_Guidance_Positive_Cost_Rate": 0.0,
+    "Non_Target_Collision_Count": 0.0,
+    "Non_Target_Collision_Step_Count": 0.0,
+    "Non_Target_Collision_Rate": 0.0,
+    "Non_Target_Collision_Any": 0.0,
+    "Pointcloud_Total_Point_Count": 0.0,
+    "Pointcloud_Point_Count": 0.0,
+    "Num_Success": 49.0,
+    "Num_Non_Target_Collision_Rollouts": 0.0
+}
+Wrote rollout stats to /home/yulei/codes/constraint-il-transfer/outputs/robomimic/eval/obstacle_guided/pc1_safe_0p02/diffusion_policy_can_yq_masked_image/PickPlaceCan/seed_602/stats.json

@@ -1,0 +1,21 @@
+# Large binary outputs
+outputs/**/*.mp4
+outputs/**/*.pth
+
+# Third-party source repos (managed independently)
+third_party/
+
+# Tool caches
+.pytest_cache/
+.venv/
+__pycache__/
+*.pyc
+.codex/
+
+# Paper raw files (keep analysis.md only)
+papers/**/*.pdf
+papers/**/*.json
+papers/**/*.layout.*
+
+# Runtime artifacts
+MUJOCO_LOG.TXT

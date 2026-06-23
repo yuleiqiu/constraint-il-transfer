@@ -1,0 +1,1057 @@
+{
+    "average": {
+        "Return": 0.64,
+        "Horizon": 323.44,
+        "Success_Rate": 0.64,
+        "Non_Target_Collision_Count": 16.44,
+        "Non_Target_Collision_Step_Count": 16.44,
+        "Non_Target_Collision_Rate": 0.0411,
+        "Non_Target_Collision_Any": 0.24,
+        "Num_Success": 32.0,
+        "Num_Non_Target_Collision_Rollouts": 12.0,
+        "Obstacle_Guidance_Cost": null,
+        "Obstacle_Guidance_Min_Distance": null,
+        "Obstacle_Guidance_Trigger_Count": null,
+        "Obstacle_Guidance_Trigger_Rate": null,
+        "Obstacle_Guidance_Positive_Cost_Count": null,
+        "Obstacle_Guidance_Positive_Cost_Rate": null,
+        "Pointcloud_Total_Point_Count": null,
+        "Pointcloud_Point_Count": null
+    },
+    "totals": {
+        "Non_Target_Collision_Object_Counts": {
+            "Bread": 822
+        },
+        "Obstacle_Guidance_Trigger_Count": null,
+        "Obstacle_Guidance_Positive_Cost_Count": null
+    },
+    "per_rollout_average": {
+        "Non_Target_Collision_Object_Counts": {
+            "Bread": 16.44
+        }
+    },
+    "rollouts": [
+        {
+            "Return": 1.0,
+            "Horizon": 248,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 320,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 266,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 125.0,
+            "Non_Target_Collision_Step_Count": 125.0,
+            "Non_Target_Collision_Rate": 0.3125,
+            "Non_Target_Collision_Any": 1.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 125
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 131.0,
+            "Non_Target_Collision_Step_Count": 131.0,
+            "Non_Target_Collision_Rate": 0.3275,
+            "Non_Target_Collision_Any": 1.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 131
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 224,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 258,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 226,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 218,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 285,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 7.0,
+            "Non_Target_Collision_Step_Count": 7.0,
+            "Non_Target_Collision_Rate": 0.0175,
+            "Non_Target_Collision_Any": 1.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 7
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 236,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 258,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 8.0,
+            "Non_Target_Collision_Step_Count": 8.0,
+            "Non_Target_Collision_Rate": 0.02,
+            "Non_Target_Collision_Any": 1.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 8
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 275,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 9.0,
+            "Non_Target_Collision_Step_Count": 9.0,
+            "Non_Target_Collision_Rate": 0.0225,
+            "Non_Target_Collision_Any": 1.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 9
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 25.0,
+            "Non_Target_Collision_Step_Count": 25.0,
+            "Non_Target_Collision_Rate": 0.0625,
+            "Non_Target_Collision_Any": 1.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 25
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 13.0,
+            "Non_Target_Collision_Step_Count": 13.0,
+            "Non_Target_Collision_Rate": 0.0325,
+            "Non_Target_Collision_Any": 1.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 13
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 234,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 135.0,
+            "Non_Target_Collision_Step_Count": 135.0,
+            "Non_Target_Collision_Rate": 0.3375,
+            "Non_Target_Collision_Any": 1.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 135
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 294,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 117.0,
+            "Non_Target_Collision_Step_Count": 117.0,
+            "Non_Target_Collision_Rate": 0.2925,
+            "Non_Target_Collision_Any": 1.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 117
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 327,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 298,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 343,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 359,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 320,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 163.0,
+            "Non_Target_Collision_Step_Count": 163.0,
+            "Non_Target_Collision_Rate": 0.4075,
+            "Non_Target_Collision_Any": 1.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 163
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 304,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 6.0,
+            "Non_Target_Collision_Step_Count": 6.0,
+            "Non_Target_Collision_Rate": 0.015,
+            "Non_Target_Collision_Any": 1.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 6
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 377,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 234,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 83.0,
+            "Non_Target_Collision_Step_Count": 83.0,
+            "Non_Target_Collision_Rate": 0.2075,
+            "Non_Target_Collision_Any": 1.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 83
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 290,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 326,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 299,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 258,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 250,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 251,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 244,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 328,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 280,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 0.0,
+            "Horizon": 400,
+            "Success_Rate": 0.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 252,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        },
+        {
+            "Return": 1.0,
+            "Horizon": 290,
+            "Success_Rate": 1.0,
+            "Obstacle_Guidance_Cost": null,
+            "Obstacle_Guidance_Min_Distance": null,
+            "Obstacle_Guidance_Trigger_Count": null,
+            "Obstacle_Guidance_Trigger_Rate": null,
+            "Obstacle_Guidance_Positive_Cost_Count": null,
+            "Obstacle_Guidance_Positive_Cost_Rate": null,
+            "Non_Target_Collision_Count": 0.0,
+            "Non_Target_Collision_Step_Count": 0.0,
+            "Non_Target_Collision_Rate": 0.0,
+            "Non_Target_Collision_Any": 0.0,
+            "Non_Target_Collision_Object_Counts": {
+                "Bread": 0
+            },
+            "Pointcloud_Total_Point_Count": null,
+            "Pointcloud_Point_Count": null
+        }
+    ],
+    "args": {
+        "agent": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/checkpoints/diffusion_policy_can_yq_image/best.pth",
+        "n_rollouts": 50,
+        "horizon": 400,
+        "env": "PickPlaceBreadCan",
+        "render": false,
+        "video_path": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/eval/baseline/no_guidance/diffusion_policy_can_yq_image/PickPlaceBreadCan/seed_602/rollout.mp4",
+        "video_skip": 5,
+        "camera_names": [
+            "agentview",
+            "robot0_eye_in_hand"
+        ],
+        "video_target_mask_grid": false,
+        "stats_path": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/eval/baseline/no_guidance/diffusion_policy_can_yq_image/PickPlaceBreadCan/seed_602/stats.json",
+        "dataset_path": null,
+        "dataset_obs": false,
+        "seed": 602,
+        "target_object_name": "Can",
+        "obstacle_names": null,
+        "progress_interval": 100,
+        "verbose_load": false
+    }
+}
