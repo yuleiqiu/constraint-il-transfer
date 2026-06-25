@@ -14,14 +14,10 @@ Single-to-multi-object diffusion policy transfer. Decompose failure modes into t
 - **Root cause confirmed**: `action → trajectory` mapping (`cumsum(action * 0.05)`) has 3-4cm RMSE vs. OSC PD-controller actual dynamics, comparable to obstacle radius (3-5cm), making cost guidance unreliable
 - **Next step**: Route B — switch prediction target from `action[16,7]` to `EEF trajectory[16,3]` to eliminate mapping error
 
-## 3. Key Files
+## 3. Subproject AGENTS
 
-### Core code (third_party/)
-- `robomimic/algo/diffusion_policy.py` — diffusion policy + guidance integration + `_guided_scheduler_step()`
-- `robomimic/utils/obstacle_guidance_utils.py` — cost functions, `action_chunk_to_eef_xyz_traj()`, pointcloud backprojection
-- `robomimic/scripts/run_obstacle_guided_agent.py` — guided rollout entry point
-- `robomimic/scripts/run_trained_agent.py` — baseline rollout entry point
-- `robosuite/environments/manipulation/pick_place.py` — environment definitions (PickPlaceBreadCan and other distractor variants)
+- `third_party/robomimic/AGENTS.md` — robomimic architecture, config system, diffusion policy pipeline, guidance components, rollout scripts
+- `third_party/robosuite/` — (no separate AGENTS yet; distractor env variants in `robosuite/environments/manipulation/pick_place.py`)
 
 ### Diagnostic scripts (scripts/)
 - `diagnose_collisions.py` — collision failure diagnosis (EEF-obstacle distance tracking)
@@ -36,16 +32,16 @@ Single-to-multi-object diffusion policy transfer. Decompose failure modes into t
 ## 4. File Map
 
 ```
-AGENTS.md                  ← **You are reading this file**. Project global state + file index
+AGENTS.md                   ← **You are reading this file**. Project global state + file index
 docs/RESEARCH_LOG.md        ← Complete record of discussions, findings, decisions (reverse-chronological append)
 .opencode/agents/           ← Agent definitions
-  paper-reader.md           ← Paper analysis subagent (Kimi K2.6)
-  code-explorer.md          ← Code exploration subagent (DeepSeek V4 Pro)
+  paper-reader.md           ← Paper analysis subagent
+  code-explorer.md          ← Code exploration subagent
 papers/<name>/              ← Paper PDFs + agent-generated analysis.md
 scripts/                    ← Diagnostic + calibration tools
 outputs/                    ← Experiment outputs
-third_party/robomimic/      ← robomimic fork (exp/pc-obstacle-guidance branch)
-third_party/robosuite/      ← robosuite fork (multi-obj-env branch)
+third_party/robomimic/      ← robomimic fork (→ AGENTS.md)
+third_party/robosuite/      ← robosuite fork
 ```
 
 ## 5. Reading Order (for new agents entering)
@@ -53,7 +49,7 @@ third_party/robosuite/      ← robosuite fork (multi-obj-env branch)
 1. Read this file (AGENTS.md) first
 2. For discussion background → `docs/RESEARCH_LOG.md`
 3. For paper comparisons → `papers/<name>/analysis.md`
-4. For code details → invoke `code-explorer` agent
+4. For robomimic code details → `third_party/robomimic/AGENTS.md`, then invoke `code-explorer` agent
 
 ## 6. Environments
 
@@ -69,11 +65,12 @@ third_party/robosuite/      ← robosuite fork (multi-obj-env branch)
 
 ## 8. Terminology
 
-- **x0_hat**: estimated clean action/trajectory from current noise during diffusion denoising
-- **guidance_geometry_source**: `"pointcloud"` | `"oracle_center"`
-- **delta_pos_scale**: linear mapping coefficient from action to EEF delta (from controller config)
+- **Part A (Δvis)**: Visual ambiguity — "which object is the target?"
+- **Part B (Δgeo)**: Physical obstruction — "arm trajectory blocked by new objects"
 - **OSC**: Operational Space Controller (PD controller)
-- **cost guidance**: injecting obstacle penetration cost gradients during diffusion denoising to steer trajectories toward safety
+- **EEF**: End-Effector Frame (robot gripper position)
+- **Route B**: Switching prediction target from `action[16,7]` to `EEF trajectory[16,3]` to eliminate action→trajectory mapping error
+- For diffusion/guidance terminology → `third_party/robomimic/AGENTS.md`
 
 ## 9. Environment Setup
 
@@ -149,7 +146,6 @@ uv run python third_party/robomimic/robomimic/scripts/<script.py> ...
 
 ### Current source branches
 
-- `third_party/robomimic`: `exp/pc-obstacle-guidance`
 - `third_party/robosuite`: `multi-obj-env`
 
 ## Maintenance Rules

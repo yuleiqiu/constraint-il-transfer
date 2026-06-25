@@ -35,6 +35,7 @@ from robomimic.scripts.run_obstacle_guided_agent import (
     get_current_eef_pos_from_obs,
 )
 import robomimic.utils.obs_utils as ObsUtils
+from robomimic.algo.guided_diffusion_policy import wrap_as_guided
 
 
 def oracle_xyz_cylinder_cost(action_chunk, centers_xyz, radii, top_z,
@@ -88,6 +89,7 @@ def run_diagnostic_rollout(args):
     device = TorchUtils.get_torch_device(try_to_use_cuda=True)
     policy, ckpt_dict = FileUtils.policy_from_checkpoint(
         ckpt_path=args.agent, device=device, verbose=False)
+    wrap_as_guided(policy)  # add guidance interface
 
     needs_depth = (args.guidance_geometry_source == "pointcloud")
     if needs_depth:
@@ -108,68 +110,26 @@ def run_diagnostic_rollout(args):
     all_chunk_logs = []
     all_chunk_meta = []
 
-    original_get_traj = algo._get_action_trajectory
+    # Intercept _guided_scheduler_step per chunk to collect diagnostics
+    original_guided_step = algo._guided_scheduler_step
 
-    def diag_get_action_trajectory(self, obs_dict, goal_dict=None):
-        ctx = self.obstacle_guidance_context or {}
-        current_eef = ctx.get("current_eef_pos", np.zeros(3))
-        ds = ctx.get("delta_pos_scale", None)
-        do = ctx.get("delta_pos_offset", None)
-        guidance_horizon = ctx.get("guidance_horizon", 8)
-
-        result = original_get_traj(obs_dict, goal_dict)
-        logs = getattr(self, '_diag_per_chunk_log', None) or []
-        if logs:
-            enriched = []
-            diag_oracle = ctx.get("diagnostic_oracle", {})
-            oracle_centers = diag_oracle.get("centers", np.zeros((0, 3), dtype=np.float32))
-            oracle_radii = diag_oracle.get("radii", np.zeros((0,), dtype=np.float32))
-            oracle_top_z = diag_oracle.get("top_z", np.zeros((0,), dtype=np.float32))
-
-            action_scale = ctx.get("action_scale", None)
-            action_offset = ctx.get("action_offset", None)
-
-            for entry in logs:
-                x0_hat = entry["x0_hat"].to(device)
-                o_cost, o_stats = oracle_xyz_cylinder_cost(
-                    x0_hat[:, :args.guidance_horizon, :],
-                    oracle_centers, oracle_radii, oracle_top_z,
-                    action_scale=action_scale, action_offset=action_offset,
-                    delta_pos_scale=ds, delta_pos_offset=do,
-                    z_clearance=args.z_clearance,
-                )
-                entry["oracle_cost"] = float(o_cost.item())
-                entry["oracle_min_distance"] = float(
-                    o_stats["min_distance"]) if not np.isnan(o_stats["min_distance"]) else None
-                enriched.append(entry)
-
-            all_chunk_logs.append(enriched)
-
-            predicted_traj_xy = ObstacleGuidanceUtils.action_chunk_to_eef_xy_traj(
-                action_chunk=x0_hat,
-                current_eef_pos=current_eef,
-                horizon=guidance_horizon,
-                delta_pos_scale=ds,
-                delta_pos_offset=do,
-            ).detach().cpu()
-            predicted_traj_xyz = ObstacleGuidanceUtils.action_chunk_to_eef_xyz_traj(
-                action_chunk=x0_hat,
-                current_eef_pos=current_eef,
-                horizon=guidance_horizon,
-                delta_pos_scale=ds,
-                delta_pos_offset=do,
-            ).detach().cpu()
-
-            all_chunk_meta.append(dict(
-                current_eef_before=np.asarray(current_eef, dtype=np.float32).tolist(),
-                delta_pos_scale=ds[:3].tolist() if ds is not None else None,
-                delta_pos_offset=do[:3].tolist() if do is not None else None,
-                predicted_traj_xyz=[predicted_traj_xyz[0, t, :].tolist() for t in range(guidance_horizon)],
+    def diag_guided_step(self, nets, naction, timestep, obs_cond, step_index, num_steps, guidance_start_step=0):
+        result = original_guided_step(
+            nets=nets, naction=naction, timestep=timestep,
+            obs_cond=obs_cond, step_index=step_index,
+            num_steps=num_steps, guidance_start_step=guidance_start_step,
+        )
+        info = self.last_obstacle_guidance_info
+        if info and info.get("applied"):
+            all_chunk_logs.append(dict(
+                step_index=step_index,
+                cost=info.get("cost", 0.0),
+                grad_norm=info.get("grad_norm", None),
+                rho_t=info.get("rho_t", 0.0),
             ))
-
         return result
 
-    algo._get_action_trajectory = diag_get_action_trajectory.__get__(algo, type(algo))
+    algo._guided_scheduler_step = diag_guided_step.__get__(algo, type(algo))
 
     policy.start_episode()
     obs = env.reset()
@@ -207,53 +167,11 @@ def run_diagnostic_rollout(args):
         eef_history=eef_history,
         num_diffusion_calls=len(all_chunk_logs),
         chunks=[],
-        trajectory_comparison=[],
     )
 
     for ci, chunk_log in enumerate(all_chunk_logs):
-        chunk_entry = dict(call_index=ci, num_guided_steps=len(chunk_log), steps=[])
-        for entry in chunk_log:
-            step_entry = {}
-            for k, v in entry.items():
-                if k == "x0_hat":
-                    continue
-                if isinstance(v, np.ndarray):
-                    step_entry[k] = v.tolist()
-                elif isinstance(v, np.generic):
-                    step_entry[k] = v.item()
-                else:
-                    step_entry[k] = v
-            x0 = entry.get("x0_hat", None)
-            if x0 is not None:
-                step_entry["x0_hat_waypoints_xy"] = x0[0, :, :2].tolist()
-            chunk_entry["steps"].append(step_entry)
+        chunk_entry = dict(call_index=ci, num_guided_steps=1, steps=[chunk_log])
         result["chunks"].append(chunk_entry)
-
-        # Trajectory comparison for this chunk
-        if ci < len(all_chunk_meta):
-            meta = all_chunk_meta[ci]
-            pred_xyz = meta["predicted_traj_xyz"]
-            start = ci * 8
-            actual_xyz = eef_history[start:start + 8]
-            if len(actual_xyz) == len(pred_xyz):
-                pred_arr = np.array(pred_xyz)
-                actual_arr = np.array(actual_xyz)
-                diffs = pred_arr - actual_arr
-                rmse_total = float(np.sqrt((diffs ** 2).mean()))
-                rmse_xy = float(np.sqrt((diffs[:, :2] ** 2).mean()))
-                rmse_z = float(np.sqrt((diffs[:, 2] ** 2).mean()))
-                mm_errors = np.linalg.norm(diffs[:, :3], axis=1)
-                result["trajectory_comparison"].append(dict(
-                    call_index=ci,
-                    pred_xyz=pred_xyz,
-                    actual_xyz=[list(a) for a in actual_arr],
-                    rmse_total_m=rmse_total,
-                    rmse_xy_m=rmse_xy,
-                    rmse_z_m=rmse_z,
-                    max_error_m=float(mm_errors.max()),
-                    mean_error_m=float(mm_errors.mean()),
-                    delta_pos_scale_used=meta.get("delta_pos_scale"),
-                ))
 
     if args.output:
         os.makedirs(os.path.dirname(args.output) or '.', exist_ok=True)
@@ -261,12 +179,11 @@ def run_diagnostic_rollout(args):
             json.dump(result, f, indent=2, default=lambda x: x.item() if hasattr(x, 'item') else float(x))
         print("Wrote diagnostics to {}".format(args.output))
 
-    # Print trajectory comparison summary
-    print("\n=== Trajectory Comparison (predicted vs actual EEF) ===")
-    for tc in result.get("trajectory_comparison", []):
-        print("chunk {}: rmse_xy={:.4f}m  rmse_z={:.4f}m  max_error={:.4f}m  mean_error={:.4f}m  scale_used={}".format(
-            tc["call_index"], tc["rmse_xy_m"], tc["rmse_z_m"],
-            tc["max_error_m"], tc["mean_error_m"], tc.get("delta_pos_scale_used")))
+    # Print summary
+    print("\n=== Guidance Diagnostic Summary ===")
+    for ci, chunk_log in enumerate(all_chunk_logs):
+        print("chunk {}: cost={:.6f}  rho_t={:.4f}".format(
+            ci, chunk_log.get("cost", 0), chunk_log.get("rho_t", 0)))
 
     return result
 
