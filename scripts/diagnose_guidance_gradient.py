@@ -191,7 +191,7 @@ def run_diagnostic_rollout(args):
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--agent", type=str,
-        default="/home/yulei/codes/robomimic/robomimic/runs/trained_models/diffusion_policy_can_yq_masked_image/20260506153143/models/model_epoch_140_image_v15_can_mask_success_1.0.pth",
+        default="outputs/robomimic/checkpoints/diffusion_policy_can_yq_masked_image/best.pth",
         help="path to checkpoint")
     parser.add_argument("--env", type=str, default="PickPlaceBreadCerealMilkCan")
     parser.add_argument("--horizon", type=int, default=400)

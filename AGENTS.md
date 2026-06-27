@@ -56,9 +56,11 @@ constraint-il-transfer/             ← Project root (independent git repo)
 ## 5. Reading Order (for new agents entering)
 
 1. Read this file (AGENTS.md) first
-2. For discussion background → `docs/RESEARCH_LOG.md`
-3. For paper comparisons → `papers/<name>/analysis.md`
-4. For robomimic code details → `third_party/robomimic/AGENTS.md`, then invoke `code-explorer` agent
+2. For project state + recent discussions → `docs/RESEARCH_LOG.md`
+3. For local scripts and how to run them → `scripts/AGENTS.md`
+4. For the Route B experiment report → `docs/route_b_validation/report.md`
+5. For paper comparisons → `papers/<name>/analysis.md`
+6. For inner robomimic code → `third_party/robomimic/AGENTS.md`, then invoke `code-explorer` agent
 
 ## 6. Environments
 
@@ -70,7 +72,7 @@ constraint-il-transfer/             ← Project root (independent git repo)
 - All local scripts: `uv run python scripts/...`
 - Robomimic scripts: `uv run python third_party/robomimic/robomimic/scripts/<script.py> ...`
 - Temporary output: `/tmp/`
-- Data path: `robomimic/runs/trained_models/...`
+- Model checkpoints: `outputs/robomimic/checkpoints/<policy>/best.pth` (not the robomimic default `runs/trained_models/`)
 - Python 3.10, managed by uv
 
 ## 8. Terminology
