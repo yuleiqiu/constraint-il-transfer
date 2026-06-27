@@ -12,7 +12,11 @@ Single-to-multi-object diffusion policy transfer. Decompose failure modes into t
 - Masked-image policy (π_mask) trained on PickPlaceCan (oracle mask input)
 - Large-scale experiment (600 rollouts × 4 environments) completed: **inference-time guided obstacle avoidance does not improve success rate**
 - **Root cause confirmed**: `action → trajectory` mapping (`cumsum(action * 0.05)`) has 3-4cm RMSE vs. OSC PD-controller actual dynamics, comparable to obstacle radius (3-5cm), making cost guidance unreliable
-- **Next step**: Route B — switch prediction target from `action[16,7]` to `EEF trajectory[16,3]` to eliminate mapping error
+- **Route B validated and rejected (2026-06-26)**: Tried 4 EEF-based supervision signals (delta_eef_action, next_eef_pos absolute, IK cumulative). All fail open-loop replay with 37-74 cm end error. Detailed report: `docs/route_b_validation/report.md`. The 3-4cm RMSE is **not** an approximation error but the **physical tracking limit** of OSC's force-control PD law at 20 Hz — every EEF-based replay hits the same wall. All robosuite controllers (OSC, IK, JointPosition) are designed for delta commands, not absolute targets.
+- **Next step (open)**: re-evaluate strategy. Three options documented in the report:
+  1. Multi-task learning (action head for execution + EEF head for guidance) — smallest delta
+  2. Custom absolute-position controller — ~50 lines, requires fixing IK nullspace/step-size
+  3. Accept 3-4 cm RMSE and improve guidance differently (longer-horizon cost, residual model)
 
 ## 3. Subproject AGENTS
 
@@ -154,3 +158,49 @@ uv run python third_party/robomimic/robomimic/scripts/<script.py> ...
 - **When NOT to update**: exploratory runs, unconfirmed hypotheses
 - **What to update**: overwrite old state directly, delete stale info. Keep file < 1 page
 - **Note**: agents may read this file but must not write to it. Maintenance rights belong to humans
+
+## 10. Git Workflow
+
+This directory contains three **independent** git repos. The root repo
+only tracks files outside `third_party/`; the two forks are managed
+manually.
+
+| Repo | Path | Current branch | Commit style |
+|------|------|----------------|--------------|
+| root | `./` | `main` | `<scope>: <description>` |
+| robomimic | `third_party/robomimic/` | `exp/guided-dp` | `<scope>: <description>` |
+| robosuite | `third_party/robosuite/` | `multi-obj-env` | `feat: ...` (Conventional Commits) |
+
+### Rules
+
+- `third_party/` is `.gitignore`d at the root (`.gitignore:6`). The root
+  repo **must not** attempt to `git add` files under it.
+- Before any `git add` / `git commit`, run `git status` to confirm the
+  working directory is the right repo. Each fork has its own `.git/`
+  directory; `cd` into the target path first.
+- Never push from inside a sub-fork to its upstream without explicit
+  confirmation. Upstream sync is handled manually.
+- Never force-push (`-f`) on shared branches.
+- When a change in a sub-fork is required for the root project to run,
+  commit it in the sub-fork first, then re-run `uv sync` and verify.
+
+### Verification before committing
+
+```bash
+# From repo root
+git status
+git check-ignore -v third_party/robomimic third_party/robosuite
+
+# From third_party/robomimic
+(cd third_party/robomimic && git status)
+
+# From third_party/robosuite
+(cd third_party/robosuite && git status)
+```
+
+### Maintenance
+
+- The branch column reflects the current state. Update it when a fork
+  switches branches.
+- Commit-style column reflects the observed convention. Update only if
+  the convention changes.
