@@ -23,7 +23,7 @@ Single-to-multi-object diffusion policy transfer. Decompose failure modes into t
 - `third_party/robomimic/AGENTS.md` — robomimic architecture, config system, diffusion policy pipeline, guidance components, rollout scripts
 - `third_party/robosuite/` — (no separate AGENTS yet; distractor env variants in `robosuite/environments/manipulation/pick_place.py`)
 
-### Diagnostic scripts (scripts/)
+### Project scripts (scripts/)
 - `add_delta_eef_label.py` — annotate HDF5 demos with `delta_eef_action` key (achieved EEF delta ground truth)
 - `validate_delta_eef_dataset.py` — sanity-check `delta_eef_action` labels in HDF5 (shape, NaN/Inf, range)
 - `calibrate_action_scale.py` — measure action→EEF-delta mapping (50 env steps)
