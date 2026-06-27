@@ -1,1 +1,0 @@
-MUJOCO_GL=egl /home/yulei/codes/constraint-il-transfer/.venv/bin/python3 third_party/robomimic/robomimic/scripts/run_trained_agent.py --agent outputs/robomimic/checkpoints/diffusion_policy_can_yq_masked_image/best.pth --env PickPlaceBreadCan --seed 999 --n_rollouts 1 --horizon 2 --stats_path outputs/tmp/run_trained_agent_baseline_smoke/stats.json --progress_interval 0

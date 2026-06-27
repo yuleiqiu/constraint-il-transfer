@@ -1,0 +1,4 @@
+kp=100.0
+{"label": "kp=100.0,demo_1", "n_steps": 294, "err_target_mean_cm": 63.53572752024223, "err_target_max_cm": 108.5401909746774, "err_target_end_cm": 71.05942977543734, "err_orig_mean_cm": 63.29402877950944, "err_orig_max_cm": 108.5401909746774, "err_orig_end_cm": 71.09544634230274}
+{"label": "kp=100.0,demo_2", "n_steps": 424, "err_target_mean_cm": 55.07865782319198, "err_target_max_cm": 68.28752935415456, "err_target_end_cm": 68.28752935415456, "err_orig_mean_cm": 54.91760232943217, "err_orig_max_cm": 68.28752934944892, "err_orig_end_cm": 68.28752934944892}
+{"label": "kp=100.0,demo_3", "n_steps": 311, "err_target_mean_cm": 59.541687113335364, "err_target_max_cm": 78.3190730076903, "err_target_end_cm": 78.02968176685286, "err_orig_mean_cm": 59.29078781504966, "err_orig_max_cm": 78.3190730076903, "err_orig_end_cm": 78.3190730076903}
