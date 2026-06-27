@@ -24,7 +24,7 @@ Single-to-multi-object diffusion policy transfer. Decompose failure modes into t
 - `third_party/robosuite/` — (no separate AGENTS yet; distractor env variants in `robosuite/environments/manipulation/pick_place.py`)
 
 ### Project scripts (scripts/)
-- `scripts/AGENTS.md` — index of all 7 local scripts (categories, purposes, related outputs, conventions, removed Route B scripts)
+- `scripts/AGENTS.md` — index of all 7 local scripts (categories, conventions, eval-matrix grouping)
 
 ### Experiment outputs (outputs/)
 - `robomimic/eval/baseline/` — baseline (no guidance) rollout results
