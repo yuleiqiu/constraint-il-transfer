@@ -12,12 +12,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
-CHECKPOINT = ROOT / "outputs/robomimic/checkpoints/diffusion_policy_can_yq_masked_image/best.pth"
+ROOT = Path(__file__).resolve().parents[2]
+CHECKPOINT = ROOT / "outputs/robomimic/checkpoints/diffusion_policy_can_yq_image/best.pth"
 EVAL_SCRIPT = ROOT / "third_party/robomimic/robomimic/scripts/run_trained_agent.py"
 OUTPUT_ROOT = (
     ROOT
-    / "outputs/robomimic/eval/baseline/no_guidance/diffusion_policy_can_yq_masked_image"
+    / "outputs/robomimic/eval/baseline/no_guidance/diffusion_policy_can_yq_image"
 )
 
 ENVS = [
@@ -123,7 +123,6 @@ def make_command(env_name: str, seed: int, job_dir: Path) -> list[str]:
         str(job_dir / "stats.json"),
         "--camera_names",
         *CAMERAS,
-        "--video_target_mask_grid",
     ]
 
 
@@ -226,7 +225,6 @@ def main() -> int:
             "n_rollouts": 50,
             "horizon": 400,
             "camera_names": CAMERAS,
-            "video_target_mask_grid": True,
             "guidance": None,
             "pointcloud": None,
             "MUJOCO_GL": "egl",

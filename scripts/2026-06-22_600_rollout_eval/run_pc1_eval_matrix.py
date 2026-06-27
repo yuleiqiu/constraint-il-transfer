@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 CHECKPOINT = ROOT / "outputs/robomimic/checkpoints/diffusion_policy_can_yq_masked_image/best.pth"
 EVAL_SCRIPT = ROOT / "third_party/robomimic/robomimic/scripts/run_obstacle_guided_agent.py"
 OUTPUT_ROOT = (
