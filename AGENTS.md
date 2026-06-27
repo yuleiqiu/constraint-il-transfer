@@ -24,14 +24,22 @@ Single-to-multi-object diffusion policy transfer. Decompose failure modes into t
 - `third_party/robosuite/` — (no separate AGENTS yet; distractor env variants in `robosuite/environments/manipulation/pick_place.py`)
 
 ### Diagnostic scripts (scripts/)
-- `diagnose_collisions.py` — collision failure diagnosis (EEF-obstacle distance tracking)
-- `diagnose_guidance_gradient.py` — denoising step diagnosis (cost/grad_norm/oracle cost logging)
-- `calibrate_action_scale.py` — action↔EEF delta calibration
-- `benchmark_pointcloud.py` — pointcloud computation overhead benchmark
+- `add_delta_eef_label.py` — annotate HDF5 demos with `delta_eef_action` key (achieved EEF delta ground truth)
+- `validate_delta_eef_dataset.py` — sanity-check `delta_eef_action` labels in HDF5 (shape, NaN/Inf, range)
+- `calibrate_action_scale.py` — measure action→EEF-delta mapping (50 env steps)
+- `diagnose_collisions.py` — log EEF↔obstacle distance per step, distinguish Δgeo from non-target collisions
+- `diagnose_guidance_gradient.py` — log cost / grad_norm / oracle cost at each denoising step
+- `benchmark_pointcloud.py` — pointcloud compute overhead before/after static caching
+- `replay_delta_eef_to_video.py` — replay `delta_eef_action` through sim, save rollouts as MP4
+- `run_baseline_eval_matrix.py` — no-guidance eval matrix (masked-image policy), full grid
+- `run_baseline_eval_matrix_no_mask.py` — same matrix for un-masked (image-only) policy
+- `run_pc1_eval_matrix.py` — PC-1 obstacle-guided eval matrix (masked-image policy)
+- `run_pc1_eval_matrix_no_mask.py` — same matrix for un-masked policy
 
 ### Experiment outputs (outputs/)
 - `robomimic/eval/baseline/` — baseline (no guidance) rollout results
 - `robomimic/eval/obstacle_guided/` — guided rollout results
+- `route_b_validation/` — EEF-based prediction-target validation (Plans A/B-1/B-2/C) + per-controller verifications
 
 ## 4. File Map
 
