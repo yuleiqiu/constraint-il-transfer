@@ -62,7 +62,8 @@ third_party/robosuite/      ← robosuite fork
 
 ## 7. Runtime Conventions
 
-- All scripts: `uv run python scripts/...`
+- All local scripts: `uv run python scripts/...`
+- Robomimic scripts: `uv run python third_party/robomimic/robomimic/scripts/<script.py> ...`
 - Temporary output: `/tmp/`
 - Data path: `robomimic/runs/trained_models/...`
 - Python 3.10, managed by uv
@@ -142,19 +143,6 @@ env.close()
 PY
 ```
 
-### Run robomimic scripts
-
-```bash
-uv run python third_party/robomimic/robomimic/scripts/<script.py> ...
-```
-
-## Maintenance Rules
-
-- **When to update**: when state materially changes (new model trained, root cause confirmed, Route B completed)
-- **When NOT to update**: exploratory runs, unconfirmed hypotheses
-- **What to update**: overwrite old state directly, delete stale info. Keep file < 1 page
-- **Note**: agents may read this file but must not write to it. Maintenance rights belong to humans
-
 ## 10. Git Workflow
 
 This directory contains three **independent** git repos. The root repo
@@ -200,3 +188,10 @@ git check-ignore -v third_party/robomimic third_party/robosuite
   switches branches.
 - Commit-style column reflects the observed convention. Update only if
   the convention changes.
+
+## Maintenance Rules
+
+- **When to update**: when state materially changes (new model trained, root cause confirmed, Route B completed)
+- **When NOT to update**: exploratory runs, unconfirmed hypotheses
+- **What to update**: overwrite old state directly, delete stale info. Keep file < 1 page
+- **Note**: agents may read this file but must not write to it. Maintenance rights belong to humans
