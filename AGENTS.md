@@ -148,10 +148,6 @@ PY
 uv run python third_party/robomimic/robomimic/scripts/<script.py> ...
 ```
 
-### Current source branches
-
-- `third_party/robosuite`: `multi-obj-env`
-
 ## Maintenance Rules
 
 - **When to update**: when state materially changes (new model trained, root cause confirmed, Route B completed)
