@@ -24,17 +24,7 @@ Single-to-multi-object diffusion policy transfer. Decompose failure modes into t
 - `third_party/robosuite/` — (no separate AGENTS yet; distractor env variants in `robosuite/environments/manipulation/pick_place.py`)
 
 ### Project scripts (scripts/)
-- `add_delta_eef_label.py` — annotate HDF5 demos with `delta_eef_action` key (achieved EEF delta ground truth)
-- `validate_delta_eef_dataset.py` — sanity-check `delta_eef_action` labels in HDF5 (shape, NaN/Inf, range)
-- `calibrate_action_scale.py` — measure action→EEF-delta mapping (50 env steps)
-- `diagnose_collisions.py` — log EEF↔obstacle distance per step, distinguish Δgeo from non-target collisions
-- `diagnose_guidance_gradient.py` — log cost / grad_norm / oracle cost at each denoising step
-- `benchmark_pointcloud.py` — pointcloud compute overhead before/after static caching
-- `replay_delta_eef_to_video.py` — replay `delta_eef_action` through sim, save rollouts as MP4
-- `run_baseline_eval_matrix.py` — no-guidance eval matrix (masked-image policy), full grid
-- `run_baseline_eval_matrix_no_mask.py` — same matrix for un-masked (image-only) policy
-- `run_pc1_eval_matrix.py` — PC-1 obstacle-guided eval matrix (masked-image policy)
-- `run_pc1_eval_matrix_no_mask.py` — same matrix for un-masked policy
+- `scripts/AGENTS.md` — index of all 7 local scripts (categories, purposes, related outputs, conventions, removed Route B scripts)
 
 ### Experiment outputs (outputs/)
 - `robomimic/eval/baseline/` — baseline (no guidance) rollout results
