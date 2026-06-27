@@ -34,16 +34,23 @@ Single-to-multi-object diffusion policy transfer. Decompose failure modes into t
 ## 4. File Map
 
 ```
-AGENTS.md                   ← **You are reading this file**. Project global state + file index
-docs/RESEARCH_LOG.md        ← Complete record of discussions, findings, decisions (reverse-chronological append)
-.opencode/agents/           ← Agent definitions
-  paper-reader.md           ← Paper analysis subagent
-  code-explorer.md          ← Code exploration subagent
-papers/<name>/              ← Paper PDFs + agent-generated analysis.md
-scripts/                    ← Diagnostic + calibration tools
-outputs/                    ← Experiment outputs
-third_party/robomimic/      ← robomimic fork (→ AGENTS.md)
-third_party/robosuite/      ← robosuite fork
+constraint-il-transfer/             ← Project root (independent git repo)
+├── AGENTS.md                        ← This file. Project global state + file index
+├── configs/                         ← Per-experiment training/eval configs
+├── metadata/                        ← Environment metadata
+├── docs/                            ← Research artifacts
+│   ├── RESEARCH_LOG.md              ← Reverse-chronological log of discussions + decisions
+│   └── route_b_validation/          ← Route B report + figures (archived 2026-06-26)
+├── papers/<name>/                   ← Paper PDFs + agent-generated analysis.md
+├── scripts/                         ← Local Python scripts (→ AGENTS.md for index)
+├── outputs/                         ← Experiment outputs
+│   ├── robomimic/eval/              ← Baseline + obstacle_guided rollouts (600 rollouts)
+│   └── route_b_validation/          ← Per-controller verification summaries
+├── .opencode/agents/                ← Agent definitions (paper-reader, code-explorer)
+├── third_party/                     ← Editable source deps (managed independently, see §10)
+│   ├── robomimic/                   ← robomimic fork (→ AGENTS.md)
+│   └── robosuite/                   ← robosuite fork
+└── pyproject.toml + uv.lock + .python-version   ← Python 3.10 deps
 ```
 
 ## 5. Reading Order (for new agents entering)
