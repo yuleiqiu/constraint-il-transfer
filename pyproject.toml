@@ -7,6 +7,7 @@ dependencies = [
     "robosuite",
     "torch==2.5.1+cu121",
     "torchvision==0.20.1+cu121",
+    "wandb>=0.28.0",
 ]
 
 [tool.uv.sources]
