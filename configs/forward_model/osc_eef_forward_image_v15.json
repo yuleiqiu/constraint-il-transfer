@@ -1,0 +1,29 @@
+{
+  "dataset": "third_party/robomimic/datasets/can/yq/image_v15.hdf5",
+  "dp_config": "third_party/robomimic/robomimic/exps/baseline/diffusion_policy_can_masked_image.json",
+  "output_dir": "outputs/forward_model/osc_eef_forward_image_v15",
+  "horizon": "auto",
+  "state_keys": [
+    "obs/robot0_eef_pos",
+    "obs/robot0_eef_quat",
+    "obs/robot0_gripper_qpos"
+  ],
+  "action_key": "actions",
+  "target_key": "next_obs/robot0_eef_pos",
+  "model": {
+    "hidden_dim": 512,
+    "state_embed_dim": 128,
+    "action_embed_dim": 256,
+    "dropout": 0.0
+  },
+  "train": {
+    "batch_size": 1024,
+    "epochs": 200,
+    "lr": 0.001,
+    "weight_decay": 0.00001,
+    "terminal_weight": 2.0,
+    "patience": 30,
+    "seed": 0,
+    "num_workers": 0
+  }
+}
