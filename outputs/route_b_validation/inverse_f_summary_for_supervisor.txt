@@ -1,0 +1,124 @@
+I have tried several ways to obtain the inverse mapping:
+
+f^{-1}: (state, desired_delta_eef) -> osc_command
+
+The motivation is that the forward mapping is:
+
+actual_delta_eef = f(state, osc_command)
+
+where f includes the OSC controller, robot dynamics, MuJoCo integration, controller gains, saturation, and contact effects. The inverse is therefore not a simple scale conversion.
+
+Attempts and results:
+
+1. Use real delta_EEF directly as OSC command
+
+Assumption:
+
+osc_command ≈ actual_delta_eef / 0.05
+
+where 0.05 is the OSC position action scale.
+
+Replay result:
+
+Original OSC action replay: end error ≈ 0.43 cm
+Raw delta_EEF as OSC command: end error ≈ 39.30 cm
+
+Conclusion: failed. The recorded delta_EEF is the achieved displacement after OSC already under-tracks the commanded action. Feeding it back as a new OSC command causes the controller to under-track again, so the trajectory lags and diverges.
+
+2. Use OSC absolute mode to bypass the inverse
+
+Setup:
+
+Change OSC from delta mode to absolute mode.
+Use the dataset next EEF position as the control target:
+
+next_eef_pos -> OSC absolute target
+
+Replay result:
+
+End error ≈ 37.33 cm
+
+Conclusion: failed. OSC absolute mode does not track the moving EEF target accurately at 20 Hz. The force-control PD dynamics are too slow for the per-step target sequence, and the trajectory accumulates large lag.
+
+3. Use IK controller to bypass the inverse
+
+Setup:
+
+Replace OSC with an IK delta controller.
+Use the per-step EEF target displacement as the IK command:
+
+next_eef_pos - current_eef -> IK delta
+
+Replay result:
+
+End error ≈ 74.11 cm
+
+Conclusion: failed. The IK + joint-position controller is not a stable drop-in EEF tracking interface in this robosuite setup. It produces large joint targets, saturates, and the EEF trajectory diverges.
+
+4. Explicitly fit f^{-1} with closed-form adapters
+
+Setup:
+
+Use the dataset pairs:
+
+input:  delta_eef_action[:3]
+target: original OSC actions[:3]
+
+Tested adapters:
+
+scalar scale
+diagonal scale
+full linear map
+
+Fitted scale:
+
+scalar scale ≈ 3.734
+diagonal scale ≈ [3.824, 3.789, 3.513]
+
+This matches the observed OSC tracking ratio: actual EEF displacement is roughly 25-30% of the commanded OSC displacement.
+
+Offline validation looked reasonable:
+
+full linear mse_xyz ≈ 0.002516
+full linear mae_xyz ≈ 0.02922
+cosine_median ≈ 0.9924
+
+But open-loop replay was still not accurate enough:
+
+Original OSC action: end error ≈ 0.35 cm
+Full linear adapter: end error ≈ 4.86 cm
+Scalar / diagonal adapters: end error ≈ 8.84 cm
+
+Conclusion: the inverse is learnable approximately offline, but the error is too large for execution and accumulates over the trajectory.
+
+5. Explicitly fit f^{-1} with a state-conditioned neural adapter
+
+Setup:
+
+Train an MLP:
+
+input:  robot0_eef_pos, robot0_eef_quat, robot0_joint_pos, robot0_joint_vel, delta_eef_action[:3]
+output: original OSC actions[:3]
+
+Offline validation improved:
+
+valid mse_xyz ≈ 0.000785
+valid mae_xyz ≈ 0.01884
+cosine_median ≈ 0.9960
+
+But replay still failed:
+
+Full linear adapter: mean target error ≈ 2.43 cm, end error ≈ 4.86 cm
+State-conditioned MLP: mean target error ≈ 2.30 cm, end error ≈ 7.00 cm
+
+Conclusion: better offline inverse prediction does not translate into stable execution. Once the replayed trajectory drifts away from the dataset state distribution, the adapter receives off-distribution states and the error compounds.
+
+Overall conclusion:
+
+The inverse mapping from desired real EEF displacement to OSC command is not reliable enough in the current robosuite OSC interface. The problem is not just regression accuracy; it is closed-loop stability under the OSC controller dynamics. Even when f^{-1} is approximated with linear or neural adapters, the replay error remains centimeters larger than the original OSC replay baseline.
+
+Therefore, using
+
+delta_EEF policy -> inverse adapter -> OSC controller
+
+is not a viable Route B solution. If we need EEF-based supervision or EEF-trajectory guidance, we need an environment/controller interface that natively accepts EEF pose, EEF delta, or Cartesian trajectory commands, and that interface must first pass open-loop replay validation.

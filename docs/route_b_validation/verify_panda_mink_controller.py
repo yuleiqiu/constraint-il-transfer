@@ -239,11 +239,15 @@ def write_summary(output_dir, dataset, controller_config, split, demo_names, ori
             succ_final=summary["success_final_rate"],
         ),
         "",
-        "Pass criterion for Route B controller validation:",
+        "Controller-validation interpretation:",
         "",
         "```text",
-        "mean target error < 1 cm",
-        "end orig error < 1 cm",
+        "success_final high and end orig error < 1 cm indicate that expert EEF",
+        "targets can replay the task through this controller.",
+        "",
+        "mean target error is a lag diagnostic, not a strict pass / fail metric,",
+        "because the controller may lag per-step targets while still ending on the",
+        "demonstration trajectory and completing the task.",
         "```",
     ]
     (output_dir / "summary.md").write_text("\n".join(lines) + "\n")

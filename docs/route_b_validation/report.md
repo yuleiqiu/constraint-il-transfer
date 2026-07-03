@@ -6,7 +6,13 @@
 
 ## TL;DR
 
-**All EEF-based supervision signals fail open-loop replay.** Only the original OSC delta action replays faithfully. The failure is structural: every robosuite controller (OSC, IK, JointPosition) is designed for **delta commands** iterated over time, not **absolute targets** reached in one step. The 20 Hz control loop cannot achieve 3-9 mm per-step targets via absolute-position control, because the underlying control law is tuned for delta semantics.
+**All built-in robosuite EEF-based supervision signals tested here fail open-loop replay.** Only the original OSC delta action replays faithfully. The failure is structural for the built-in controllers tested in this report: OSC, IK, and JointPosition are designed for **delta commands** iterated over time, not **absolute targets** reached in one step. The 20 Hz control loop cannot achieve 3-9 mm per-step targets via absolute-position control, because the underlying control law is tuned for delta semantics.
+
+**Post-training confirmation (2026-06-29)**: A diffusion policy trained on `delta_eef_action` converges offline but obtains **0.0 rollout success** because its EEF-delta outputs are passed directly to the original `OSC_POSE` delta controller. This is the learned-policy version of Plan B-1, not a separate training failure.
+
+**Mink controller follow-up (2026-06-29)**: A non-built-in Panda + WholeBodyMinkIK controller can replay expert absolute EEF targets with high task success, including 100% success on the valid split for full-pose replay with `ik_hand_ori_cost=0.05`. This supersedes the broad claim that no EEF-native controller can replay the demonstrations. It does **not** rescue Route B training: a diffusion policy trained to output full-pose Mink EEF actions still produced 0.0 rollout success in the single-object environment. The remaining failure is learned closed-loop EEF target generation, not open-loop expert replay.
+
+### Built-in controller replay tests
 
 | Plan | Supervision signal | Controller | End-to-end error | Pass? |
 |---|---|---|---|---|
@@ -14,6 +20,14 @@
 | B-1 | `delta_eef_action[7]` (real EEF delta) | OSC delta | **39.3 cm** | ✗ |
 | B-2 | `next_eef_pos[3]` (absolute target) | OSC absolute | **37.3 cm** | ✗ |
 | C | `next_eef_pos[t] - eef[t]` (cumulative) | IK delta | **74.1 cm** | ✗ |
+
+### Follow-up status
+
+| Follow-up | Result | Current status |
+|---|---|---|
+| `real delta_EEF -> OSC command` adapters | Better offline regression, still fails open-loop replay | Rejected as execution bridge |
+| Panda Mink IK expert replay | Full-pose expert targets replay successfully | Controller interface feasible |
+| Full-pose Mink EEF diffusion policy | 0.0 rollout success | Route B training not solved |
 
 ## Per-step trajectory error
 
@@ -157,9 +171,133 @@ Action[0:3] = `next_eef_pos[t] - obs_eef_pos[t]` (in meters). Fed to `InverseKin
 
 ## Implications for Route B
 
-**Route B (predict EEF trajectory directly) cannot be cleanly executed using any built-in robosuite controller.** The cumulative error of 0.25 cm/step in B-1 means that even if a policy perfectly predicts the EEF trajectory, executing it via the OSC + `cumsum`-style approach gives the policy a "target" that the controller cannot physically achieve.
+**Route B (predict EEF trajectory directly) cannot be cleanly executed using the built-in robosuite controllers tested above.** The cumulative error of 0.25 cm/step in B-1 means that even if a policy perfectly predicts the EEF trajectory, executing it via the OSC + `cumsum`-style approach gives the policy a "target" that the controller cannot physically achieve.
 
 The 3-4 cm RMSE between `cumsum(action * 0.05)` and the actual EEF trajectory (the root cause for guidance failure per `RESEARCH_LOG.md` 2026-06-22) is **not** primarily a mapping approximation error. It is the fundamental OSC tracking error for small per-step deltas — exactly what Plan B-1 demonstrates.
+
+**Follow-up adapter result**: We also tested whether `real delta_EEF` can be
+converted back into the original OSC command using scalar, linear, and
+state-conditioned MLP adapters. The answer is **not reliably enough for
+execution**: adapters improve over raw `delta_eef_action` but still fail
+open-loop replay with centimeter-level drift and outlier divergence. See
+[`adapter_report.md`](./adapter_report.md) for the full focused report.
+
+## Panda Mink controller follow-up
+
+The built-in-controller result above was later narrowed by testing robosuite's
+third-party Panda + WholeBodyMinkIK controller:
+
+```text
+docs/route_b_validation/verify_panda_mink_controller.py
+outputs/route_b_validation/panda_mink_controller/STAGE_CONCLUSION.md
+```
+
+This controller accepts absolute EEF targets:
+
+```text
+[next_obs/robot0_eef_pos,
+ next_obs/robot0_eef_quat_site -> axis_angle,
+ original_gripper_action]
+```
+
+Full-pose replay with `ik_hand_ori_cost=0.05` achieved:
+
+| Split | Demos | Success final | Mean target pos error | End original pos error |
+|---|---:|---:|---:|---:|
+| valid | 20 | 20/20 = 100% | 1.312 cm | 0.267 cm |
+| train | 50 | 50/50 = 100% | 1.327 cm | 0.259 cm |
+
+This means the earlier broad conclusion "EEF replay is impossible" is too
+strong. The corrected conclusion is:
+
+```text
+built-in controllers cannot execute these EEF labels, but a custom / third-party
+Mink IK controller can replay expert EEF targets well enough for validation.
+```
+
+However, this does not solve Route B as a learning problem. A diffusion policy
+trained on the resulting full-pose EEF action dataset still failed rollout:
+
+```text
+outputs/robomimic/train/diffusion_policy_can_yq_abs_eef_pose_mink_image/20260629183845
+Epoch 20: Success_Rate = 0.0
+```
+
+So the current Route B status is:
+
+```text
+expert EEF replay through Mink IK: passes
+learned EEF target policy through Mink IK: fails
+```
+
+The likely issue is that open-loop replay uses expert absolute EEF targets and
+expert gripper timing, while rollout requires the learned policy to produce
+closed-loop EEF targets from its own visited states. Once the learned policy
+drifts, absolute EEF target prediction compounds in a way that replay does not
+test.
+
+## Post-training checkpoint validation
+
+After this replay study, we inspected the actual `delta_eef_action` diffusion
+policy training run:
+
+```text
+outputs/robomimic/train/diffusion_policy_can_yq_delta_eef_image/20260625221745
+```
+
+The checkpoint config confirms the semantic mismatch:
+
+```text
+train.action_keys = ["delta_eef_action"]
+train.action_config.delta_eef_action.normalization = null
+env_metadata.controller_configs.body_parts.right.type = "OSC_POSE"
+env_metadata.controller_configs.body_parts.right.input_type = "delta"
+```
+
+The training rollout path does not adapt EEF deltas back into OSC commands. It
+calls the policy and immediately executes the result:
+
+```python
+ac = policy(ob=policy_ob, goal=goal_dict)
+ob_dict, r, done, _ = env.step(ac)
+```
+
+Therefore the policy output is interpreted by robosuite as a normalized OSC
+delta command, even though it was trained to predict actual EEF displacement.
+
+The logs show that this is not a simple optimization failure. Training loss
+falls from `0.2759` at epoch 1 to approximately `0.0012` by epoch 440, while
+rollouts remain at:
+
+```text
+Epoch 20:  Success_Rate = 0.0, Horizon = 400
+Epoch 400: Success_Rate = 0.0, Horizon = 400
+Epoch 420: Success_Rate = 0.0, Horizon = 400
+```
+
+An offline forward pass on held-out dataset observations confirms that the
+checkpoint learned the `delta_eef_action` scale, not the original OSC action
+scale:
+
+| Quantity | Median `||xyz||` |
+|---|---:|
+| policy output | 0.0568 |
+| target `delta_eef_action` | 0.0599 |
+| original OSC `actions` | 0.2375 |
+
+The same check gives:
+
+```text
+MSE(policy, delta_eef_action) = 4.2e-5
+MSE(policy, original actions) = 5.9e-3
+```
+
+**Conclusion**: the trained checkpoint validates the replay result. A
+`delta_eef_action` policy can achieve low supervised loss while still failing
+all rollouts, because the learned action is not a valid command for the
+checkpoint's stored environment controller. Any future EEF-supervised Route B
+experiment must first provide an EEF-native `env.step(action)` interface and
+verify open-loop replay under that interface before training.
 
 ## Re-evaluation of remaining options
 
@@ -168,7 +306,7 @@ The 3-4 cm RMSE between `cumsum(action * 0.05)` and the actual EEF trajectory (t
    - (b) Train a learned residual model `EEF_actual ≈ f(action) + residual` and use it for cost — adds a model but uses real EEF.
    - (c) Use a longer-horizon cost (e.g., score the entire 16-step chunk) and rely on the *average* error being small, even if per-step error is 25%.
 
-2. **Write a custom absolute-position controller (the original Plan C).** This requires ~50 lines of code: solve IK with the target, set joint position goal, drive the joints. Estimated work: half a day. But the IK's null-space term and step-size limits need to be addressed.
+2. **Write or adopt a custom absolute-position controller.** This was partially tested with the Panda + WholeBodyMinkIK controller. Expert full-pose replay passes, so the controller-interface part is feasible. But the learned full-pose EEF policy still gets 0.0 rollout success, so this route is not a near-term solution unless the policy-learning problem is redesigned.
 
 3. **Re-formulate Route B as multi-task learning.** Train the policy to predict both `action` (for execution via OSC) and `EEF trajectory` (for guidance). At inference, the `action` head drives the robot; the `EEF` head provides the cost. This is a small change to the training loop (dual loss) and avoids the controller-bypass problem entirely.
 
