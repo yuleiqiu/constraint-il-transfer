@@ -10,14 +10,71 @@
 
 ## Current Unverified Hypotheses
 
-- [UNVERIFIED] After switching prediction target to EEF trajectory, will guidance become effective?
-- [UNVERIFIED] Is the Z-axis check (`pen_z`) the root cause of cost ≈ 0?
+- [UNVERIFIED] Does the single-object diffusion policy sample geometry-safe action chunks that can be recovered by forward-model ranking?
+- [UNVERIFIED] Can point-cloud obstacle geometry replace oracle obstacle geometry once action-chunk evaluation is reliable?
+
+---
+
+## 2026-07-03
+
+### Route B status narrowed: built-in controllers fail, Mink expert replay passes, learned EEF policy fails
+
+The 2026-06-26 Route B conclusion was too broad. The corrected conclusion is:
+
+- Built-in robosuite controller routes fail for EEF supervision: `delta_eef_action -> OSC`, absolute OSC, and built-in IK all diverge in open-loop replay.
+- `real delta_EEF -> OSC command` adapters improve offline regression but remain unreliable in open-loop replay, so adapter-based execution is rejected.
+- Panda + WholeBodyMinkIK can replay expert full-pose absolute EEF targets with high task success.
+- A learned full-pose EEF diffusion policy using the Mink interface still obtains 0.0 rollout success.
+
+Current interpretation: the controller-interface part is feasible with Mink IK, but Route B as learned EEF target generation is not solved. Open-loop expert replay does not imply closed-loop learned policy rollout.
+
+Relevant docs: `docs/route_b_validation/report.md`, `docs/route_b_validation/adapter_report.md`, `outputs/route_b_validation/panda_mink_controller/STAGE_CONCLUSION.md`.
+
+### OSC forward model validated as trajectory predictor, not as proof of guidance usefulness
+
+Trained a learned forward model:
+
+```text
+f_hat(state_t, OSC action chunk) -> actual future EEF xyz trajectory
+```
+
+The model substantially outperforms `cumsum(action * 0.05)` on held-out demo windows and random-action env rollout validation. Random full-range actions increase absolute error, as expected for out-of-distribution inputs, but the learned model still beats cumsum.
+
+Current interpretation: the forward model is useful as an action-chunk evaluator / trajectory predictor. This does not mean the current gradient-based obstacle guidance works.
+
+Relevant docs: `outputs/forward_model/osc_eef_forward_image_v15/summary.md`, `outputs/forward_model/random_rollout_validation/`.
+
+### Gradient guidance remains unreliable
+
+Controlled rollout comparison found that replacing cumsum with the learned forward model inside the current gradient guidance did not improve success rate. A counterfactual same-state diagnostic showed that guidance can improve predicted clearance while actual executed clearance improves inconsistently.
+
+Current interpretation: the bottleneck is likely the guidance update / cost / action-distribution interaction, not autograd or forward-model differentiability.
+
+### Decision: next test action-chunk ranking
+
+Before further tuning gradient guidance, answer whether the base single-object policy samples any geometry-safe action chunks in obstructed scenes.
+
+Next method:
+
+1. Sample multiple candidate action chunks from the diffusion policy.
+2. Predict EEF trajectories with the learned forward model.
+3. Score/rank candidates using obstacle geometry.
+4. Execute the safest candidate without gradient-updating the action tensor.
+
+If ranking cannot find safe chunks, inference-time geometry correction is probably insufficient and the project must introduce a new training distribution or training-side adaptation.
+
+Handoff doc: `docs/forward_model_guidance_next_steps.md`.
 
 ---
 
 ## 2026-06-26
 
-### Route B validation: all EEF-based signals fail open-loop replay
+### Route B validation: built-in EEF-controller routes fail open-loop replay
+
+Historical note: this conclusion was narrowed on 2026-07-03. It applies to the
+built-in robosuite controller routes tested here. The later Panda
+WholeBodyMinkIK follow-up can replay expert EEF targets, but learned EEF policy
+rollout still fails.
 
 Tested 4 supervision-signal/controller combinations on 5 demos (full report in `docs/route_b_validation/report.md`):
 
@@ -78,6 +135,10 @@ The cost function uses `cumsum(action * 0.05)` to convert predicted actions to E
 `obstacle_xyz_cylinder_cost` requires both XY penetration AND EEF below obstacle top Z. In pick-and-place tasks, EEF is always above obstacles → `pen_z` always 0 → cost always 0. `obstacle_xy_cost` (XY only) should be tested.
 
 ### Decision: Route B — switch prediction target to EEF trajectory
+
+Historical note: this decision was tested and superseded by the 2026-06-26 and
+2026-07-03 Route B findings. Direct EEF-action policy training is not currently
+a working route.
 
 Following from the root cause analysis:
 1. Rebuild hdf5 dataset with EEF trajectory labels (not just actions)

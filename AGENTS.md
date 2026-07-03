@@ -12,11 +12,9 @@ Single-to-multi-object diffusion policy transfer. Decompose failure modes into t
 - Masked-image policy (π_mask) trained on PickPlaceCan (oracle mask input)
 - Large-scale experiment (600 rollouts × 4 environments) completed: **inference-time guided obstacle avoidance does not improve success rate**
 - **Root cause confirmed**: `action → trajectory` mapping (`cumsum(action * 0.05)`) has 3-4cm RMSE vs. OSC PD-controller actual dynamics, comparable to obstacle radius (3-5cm), making cost guidance unreliable
-- **Route B validated and rejected (2026-06-26)**: Tried 4 EEF-based supervision signals (delta_eef_action, next_eef_pos absolute, IK cumulative). All fail open-loop replay with 37-74 cm end error. Detailed report: `docs/route_b_validation/report.md`. The 3-4cm RMSE is **not** an approximation error but the **physical tracking limit** of OSC's force-control PD law at 20 Hz — every EEF-based replay hits the same wall. All robosuite controllers (OSC, IK, JointPosition) are designed for delta commands, not absolute targets.
-- **Next step (open)**: re-evaluate strategy. Three options documented in the report:
-  1. Multi-task learning (action head for execution + EEF head for guidance) — smallest delta
-  2. Custom absolute-position controller — ~50 lines, requires fixing IK nullspace/step-size
-  3. Accept 3-4 cm RMSE and improve guidance differently (longer-horizon cost, residual model)
+- **Route B narrowed, still not solved (2026-07-03)**: Built-in robosuite EEF routes fail (`delta_eef_action -> OSC`, absolute OSC, built-in IK), and `real delta_EEF -> OSC command` adapters are not reliable enough for execution. Panda + WholeBodyMinkIK can replay expert full-pose EEF targets, but a learned full-pose EEF diffusion policy still gets 0.0 rollout success. See `docs/route_b_validation/report.md`, `docs/route_b_validation/adapter_report.md`, and `outputs/route_b_validation/panda_mink_controller/STAGE_CONCLUSION.md`.
+- **OSC forward model validated as trajectory predictor (2026-07-03)**: Learned `f_hat(state, OSC action chunk) -> future EEF xyz trajectory` clearly beats `cumsum(action * 0.05)` on held-out demos and random-action env rollouts. It is useful for action-chunk evaluation, but plugging it into current gradient guidance did not improve rollout success.
+- **Next step (open)**: test action-chunk ranking instead of gradient guidance. Determine whether the single-object policy samples any geometry-safe chunks in obstructed scenes; if yes, select them with the forward model; if no, inference-time correction is likely insufficient and training-side adaptation / new data distribution is needed. Handoff: `docs/forward_model_guidance_next_steps.md`.
 
 ## 3. Subproject AGENTS
 
@@ -24,12 +22,13 @@ Single-to-multi-object diffusion policy transfer. Decompose failure modes into t
 - `third_party/robosuite/` — (no separate AGENTS yet; distractor env variants in `robosuite/environments/manipulation/pick_place.py`)
 
 ### Project scripts (scripts/)
-- `scripts/AGENTS.md` — index of all 7 local scripts (categories, conventions, eval-matrix grouping)
+- `scripts/AGENTS.md` — index of local scripts (diagnostics, forward model, eval-matrix grouping)
 
 ### Experiment outputs (outputs/)
 - `robomimic/eval/baseline/` — baseline (no guidance) rollout results
 - `robomimic/eval/obstacle_guided/` — guided rollout results
-- `route_b_validation/` — EEF-based prediction-target validation (Plans A/B-1/B-2/C) + per-controller verifications
+- `forward_model/` — OSC action-chunk → EEF trajectory model + validation summaries
+- `route_b_validation/` — built-in EEF replay failures, adapter rejection, Panda Mink follow-up
 
 ## 4. File Map
 
@@ -40,7 +39,8 @@ constraint-il-transfer/             ← Project root (independent git repo)
 ├── metadata/                        ← Environment metadata
 ├── docs/                            ← Research artifacts
 │   ├── RESEARCH_LOG.md              ← Reverse-chronological log of discussions + decisions
-│   └── route_b_validation/          ← Route B report + figures (archived 2026-06-26)
+│   ├── forward_model_guidance_next_steps.md ← Current Δgeo handoff + next experiment
+│   └── route_b_validation/          ← Route B reports + controller / adapter validation
 ├── papers/<name>/                   ← Paper PDFs + agent-generated analysis.md
 ├── scripts/                         ← Local Python scripts (→ AGENTS.md for index)
 ├── outputs/                         ← Experiment outputs
@@ -57,10 +57,11 @@ constraint-il-transfer/             ← Project root (independent git repo)
 
 1. Read this file (AGENTS.md) first
 2. For project state + recent discussions → `docs/RESEARCH_LOG.md`
-3. For local scripts and how to run them → `scripts/AGENTS.md`
-4. For the Route B experiment report → `docs/route_b_validation/report.md`
-5. For paper comparisons → `papers/<name>/analysis.md`
-6. For inner robomimic code → `third_party/robomimic/AGENTS.md`, then invoke `code-explorer` agent
+3. For current Δgeo handoff + next experiment → `docs/forward_model_guidance_next_steps.md`
+4. For local scripts and how to run them → `scripts/AGENTS.md`
+5. For the Route B experiment report → `docs/route_b_validation/report.md`
+6. For paper comparisons → `papers/<name>/analysis.md`
+7. For inner robomimic code → `third_party/robomimic/AGENTS.md`, then invoke `code-explorer` agent
 
 ## 6. Environments
 
@@ -82,6 +83,8 @@ constraint-il-transfer/             ← Project root (independent git repo)
 - **OSC**: Operational Space Controller (PD controller)
 - **EEF**: End-Effector Frame (robot gripper position)
 - **Route B**: Switching prediction target from `action[16,7]` to `EEF trajectory[16,3]` to eliminate action→trajectory mapping error
+- **Forward model**: Learned surrogate `f_hat(state, OSC action chunk) -> future EEF xyz trajectory`, trained on original OSC-action demos and used for action-chunk evaluation
+- **Action-chunk ranking**: Proposed next inference-time strategy — sample multiple diffusion action chunks, score predicted EEF trajectories with obstacle geometry, execute the safest chunk without gradient-updating actions
 - For diffusion/guidance terminology → `third_party/robomimic/AGENTS.md`
 
 ## 9. Environment Setup
@@ -198,7 +201,7 @@ git check-ignore -v third_party/robomimic third_party/robosuite
 
 ## Maintenance Rules
 
-- **When to update**: when state materially changes (new model trained, root cause confirmed, Route B completed)
+- **When to update**: when state materially changes (new model trained, root cause confirmed, Route B / forward-model status changed)
 - **When NOT to update**: exploratory runs, unconfirmed hypotheses
 - **What to update**: overwrite old state directly, delete stale info. Keep file < 1 page
-- **Note**: agents may read this file but must not write to it. Maintenance rights belong to humans
+- **Note**: Maintenance rights belong to humans. Agents may change this file only under explicit permission.
