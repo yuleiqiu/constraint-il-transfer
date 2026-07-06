@@ -10,8 +10,61 @@
 
 ## Current Unverified Hypotheses
 
-- [UNVERIFIED] Does the single-object diffusion policy sample geometry-safe action chunks that can be recovered by forward-model ranking?
 - [UNVERIFIED] Can point-cloud obstacle geometry replace oracle obstacle geometry once action-chunk evaluation is reliable?
+
+---
+
+## 2026-07-06
+
+### Action-chunk ranking tested: safe chunks exist, geometry-only scoring is not enough
+
+Tested action-chunk ranking as the next inference-time `Delta geo` strategy:
+
+```text
+sample K diffusion action chunks
+-> score predicted EEF trajectories with obstacle geometry
+-> execute selected chunk without gradient-updating actions
+```
+
+Same-state diagnostic on `PickPlaceBreadCerealCan` answered the immediate open
+question: the base single-object policy does sample geometry-safer chunks. At
+`K=16`, forward-model ranking improved actual clearance in 8/10 states with
+mean `+1.54 mm`, while cumsum ranking improved 4/10 states with mean
+`-0.74 mm`. This supports the forward model as a better action-chunk evaluator
+than `cumsum(action * 0.05)`.
+
+Rollout pilots did not show success improvement. On `PickPlaceBreadCerealCan`
+with 10 rollouts, pure forward-model ranking reduced collision-any but hurt
+success; a gated variant restored success in that small setting but increased
+collision duration. On the hardest environment `PickPlaceBreadCerealMilkCan`
+with 3 seeds x 20 rollouts:
+
+| condition | success | collision-any | collision steps |
+|---|---:|---:|---:|
+| no guidance | 53/60 = 0.883 | 0.417 | 23.63 |
+| forward-model ranking K=4 | 35/60 = 0.583 | 0.383 | 47.27 |
+| forward-model ranking K=16 gated | 50/60 = 0.833 | 0.367 | 36.90 |
+
+Current interpretation:
+
+- The failure mode is not lack of safe samples.
+- Forward-model ranking is more faithful than cumsum ranking in same-state
+  diagnostics.
+- Geometry-only selection is too myopic: it can choose safer but less
+  task-preserving chunks, hurting grasp / placement timing and sometimes
+  increasing collision duration.
+- The oracle-mask baseline is already high even in the hardest environment
+  (`127/150 = 0.847` in the prior 600-rollout baseline; `53/60 = 0.883` in
+  this pilot), so `Delta geo` is a smaller remaining success bottleneck than
+  assumed.
+
+Decision: do not continue tuning geometry-only ranking as a final method. If
+ranking continues, add a task-preserving term such as distance to the first
+sampled chunk, policy likelihood, or task-progress heuristics. Also re-check
+whether failure episodes are truly caused by non-target collisions, because
+collision-any and success are not tightly coupled in these pilots.
+
+Relevant doc: `docs/action_chunk_ranking_report.md`.
 
 ---
 

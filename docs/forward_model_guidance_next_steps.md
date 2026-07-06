@@ -37,9 +37,9 @@ The defensible claim is narrower:
 ```text
 For OSC-controlled diffusion policies, naive action integration is an
 unreliable trajectory proxy. A learned action-to-EEF forward model provides a
-more accurate basis for geometry-aware action evaluation. Whether this enables
-single-to-multi transfer depends on whether the base policy samples
-geometry-safe action chunks.
+more accurate basis for geometry-aware action evaluation. The base policy does
+sample geometry-safer chunks, but geometry-only action selection is not enough
+to improve rollout success.
 ```
 
 ## Confirmed Facts
@@ -160,6 +160,56 @@ outputs/forward_model/random_rollout_validation/full_random_scale_1p0/SUMMARY.md
 outputs/forward_model/random_rollout_validation/random_scale_0p3/SUMMARY.md
 ```
 
+### 4. Action-Chunk Ranking Found Safe Samples But Did Not Improve Success
+
+The immediate action-ranking question has been tested:
+
+```text
+Does the single-object policy sample geometry-safe action chunks?
+```
+
+Answer:
+
+```text
+Yes, but geometry-only ranking is not a successful rollout method.
+```
+
+Same-state diagnostic:
+
+| backend | K | actual clearance improved | mean actual clearance delta |
+|---|---:|---:|---:|
+| forward model | 16 | 8/10 | +1.54 mm |
+| cumsum | 16 | 4/10 | -0.74 mm |
+
+Hardest-environment rollout pilot:
+
+```text
+PickPlaceBreadCerealMilkCan
+seeds = 700, 701, 702
+20 rollouts / seed
+```
+
+| condition | success | collision-any | collision steps |
+|---|---:|---:|---:|
+| no guidance | 53/60 = 0.883 | 0.417 | 23.63 |
+| forward-model ranking K=4 | 35/60 = 0.583 | 0.383 | 47.27 |
+| forward-model ranking K=16 gated | 50/60 = 0.833 | 0.367 | 36.90 |
+
+Interpretation:
+
+- The policy distribution contains safer chunks.
+- The forward model is a better selector than `cumsum` in same-state tests.
+- Selecting only for obstacle clearance can choose off-task chunks and hurt
+  grasp / placement timing.
+- The oracle-mask baseline is already high in the hardest environment, so
+  remaining `Delta geo` success headroom is smaller than expected.
+
+Relevant doc:
+
+```text
+docs/action_chunk_ranking_report.md
+```
+
 ## Current Code State
 
 Robomimic subrepo:
@@ -194,6 +244,9 @@ scripts/check_osc_forward_model_grad.py
 scripts/diagnose_control_timing.py
 scripts/diagnose_forward_model_random_rollout.py
 scripts/diagnose_guidance_update_effect.py
+scripts/2026-07-03_action_chunk_ranking/run_ranking_diagnostic.py
+scripts/2026-07-03_action_chunk_ranking/run_ranking_eval_matrix.py
+scripts/2026-07-03_action_chunk_ranking/aggregate_ranking_results.py
 ```
 
 Important checkpoint:
@@ -202,96 +255,49 @@ Important checkpoint:
 outputs/robomimic/checkpoints/diffusion_policy_can_yq_masked_image/model_epoch_140_image_v15_can_mask_success_1.0.pth
 ```
 
-## Immediate Question
+## Current Question
 
-Before further tuning gradient guidance, answer:
-
-```text
-Does the single-object diffusion policy generate any geometry-safe action
-chunks under multi-object obstruction?
-```
-
-If such chunks exist, use the forward model to select them. If they do not
-exist, inference-time correction alone is unlikely to solve single-to-multi
-transfer, and the project needs training-side adaptation / new data
-distribution.
-
-## Proposed Next Experiment: Action-Chunk Ranking
-
-Replace gradient guidance with sampling and ranking:
-
-1. At each decision point, sample multiple candidate action chunks from the
-   same diffusion policy.
-2. Predict each candidate's EEF trajectory with the learned forward model.
-3. Score each trajectory using obstacle geometry.
-4. Execute the safest candidate, without applying gradient updates to the
-   action tensor.
-
-Controlled comparison:
-
-| condition | purpose |
-|---|---|
-| no guidance | base policy reference |
-| `cumsum(action * 0.05)` ranking | old trajectory proxy baseline |
-| forward-model ranking | proposed next method |
-| current gradient guidance | existing guided implementation |
-
-Use identical policy, environments, seeds, rollout counts, and collision
-metrics.
-
-Suggested first environment:
+The action-ranking experiment changed the bottleneck. The question is no longer
+whether safe chunks exist; they do. The current question is:
 
 ```text
-PickPlaceBreadCerealCan
+Can action selection preserve task intent while avoiding obstacles?
 ```
 
-Then test harder setting:
+Concrete next directions:
 
-```text
-PickPlaceBreadCerealMilkCan
-```
-
-## Expected Outcomes
-
-If ranking improves collision / clearance metrics:
-
-```text
-Continue toward point-cloud geometry input and replace oracle obstacle geometry.
-```
-
-If ranking does not improve metrics, but candidate analysis shows safe chunks
-exist:
-
-```text
-The scoring / execution interface is still wrong; debug ranking cost and
-closed-loop replanning.
-```
-
-If ranking shows the base policy rarely samples safe chunks:
-
-```text
-Inference-time geometry alone is insufficient. The project must introduce a
-new training distribution, a learned critic, trajectory head, or multi-object
-adaptation.
-```
+1. Add task-preserving ranking terms:
+   - obstacle cost as a hard filter;
+   - distance to the first sampled chunk as a regularizer / tie-break;
+   - policy likelihood or denoising score as a prior;
+   - task-progress heuristics near grasp / place phases.
+2. Re-check failure attribution:
+   - success is already high with no guidance;
+   - collision-any is not tightly coupled to failure;
+   - determine whether failed episodes are actually caused by non-target
+     collision, grasp timing, placement, or other policy errors.
+3. Only after ranking is reliable with oracle geometry, revisit point-cloud
+   geometry as a replacement for oracle obstacle centers.
 
 ## What Not To Do Next
 
 - Do not claim forward-model guidance works based on forward-model validation.
-- Do not keep tuning gradient scale before checking whether safe candidate
-  chunks exist.
+- Do not keep tuning geometry-only ranking; it has been tested and hurts
+  rollout success.
 - Do not revive Route B EEF-action training without a new learning formulation;
   expert Mink replay passing did not make learned EEF policy rollout work.
 - Do not use the early 10-rollout scale sweep as final evidence; it is
   superseded by the larger controlled comparison.
+- Do not move to point-cloud ranking before oracle-geometry ranking has a
+  task-preserving scoring rule.
 
 ## Reading Order For A Fresh Agent
 
 1. This file.
 2. `docs/route_b_validation/report.md`
-3. `outputs/forward_model/osc_eef_forward_image_v15/summary.md`
-4. `outputs/forward_model/random_rollout_validation/random_scale_0p3/SUMMARY.md`
-5. `outputs/robomimic/eval/forward_model_controlled_comparison/SUMMARY.md`
-6. `outputs/diagnostics/guidance_update_effect/SUMMARY.md`
-7. `third_party/robomimic/AGENTS.md`
-
+3. `docs/action_chunk_ranking_report.md`
+4. `outputs/forward_model/osc_eef_forward_image_v15/summary.md`
+5. `outputs/forward_model/random_rollout_validation/random_scale_0p3/SUMMARY.md`
+6. `outputs/robomimic/eval/forward_model_controlled_comparison/SUMMARY.md`
+7. `outputs/diagnostics/guidance_update_effect/SUMMARY.md`
+8. `third_party/robomimic/AGENTS.md`
