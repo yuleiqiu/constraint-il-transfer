@@ -2,13 +2,21 @@
 
 ## Context
 
-This directory contains the **Route B validation** experiment: an offline
-investigation into whether EEF-based supervision signals (instead of OSC
-delta actions) can be replayed open-loop using built-in robosuite controllers.
-**Result: built-in controller routes fail** (0.4 cm → 37-74 cm
-end-of-trajectory error). A later Panda + WholeBodyMinkIK follow-up shows that
-expert absolute EEF targets can be replayed with a third-party controller, but
-the learned EEF policy still fails rollout.
+This directory contains the **Route B validation** experiments: offline
+investigations into whether EEF-based supervision signals (instead of OSC
+delta actions) can be replayed open-loop.
+
+**Current result (2026-07-06)**: corrected full-pose EEF actions can be
+replayed through built-in OSC absolute mode. The executable action is
+`[next_eef_pos, quat2axisangle(next_eef_quat_site), gripper]` with
+`OSC_POSE input_type=absolute`, `input_ref_frame=world`, and `kp=500`.
+This replays 200/200 PickPlaceCan demos successfully.
+
+Historical result: the original 4-plan report still shows that
+`delta_eef_action -> OSC delta`, position-only absolute OSC, and built-in IK
+delta routes fail. The Panda + WholeBodyMinkIK follow-up is retained as an
+alternate controller exploration; it is no longer the only passing EEF replay
+interface.
 
 The full report is in [`report.md`](./report.md). The follow-up adapter report
 is in [`adapter_report.md`](./adapter_report.md). **You are reading this
@@ -51,7 +59,9 @@ plot_delta_eef_to_osc_adapter_replay.py
 replay_norm_delta_eef.py
                        ← archived exploratory normalization check for delta_eef replay
 verify_position_controller.py
-                       ← standalone: OSC absolute mode diagnostic (Plan B-2)
+                       ← historical OSC absolute position-only diagnostic (Plan B-2)
+playback_eef_pose.py
+                       ← corrected full-pose OSC absolute replay reference
 verify_ik_controller.py
                        ← standalone: IK delta mode diagnostic (Plan C)
 verify_panda_mink_controller.py
@@ -81,10 +91,22 @@ The 4 plans:
 | B-2 | `next_eef_pos[3]` (absolute target) | OSC absolute |
 | C | `next_eef_pos[t] - eef[t]` (cumulative delta in meters) | IK delta |
 
-Only built-in Plan A passes (0.4 cm end error). See `report.md` for the data
-tables, plots, and structural analysis of why each built-in alternative fails.
-For the later third-party Mink controller follow-up, see
+In the original 4-plan experiment only built-in Plan A passed (0.4 cm end
+error), but that experiment did not test the corrected full-pose OSC absolute
+interface. See `report.md` for both the historical failure tables and the
+2026-07-06 correction. For the third-party Mink controller follow-up, see
 `outputs/route_b_validation/panda_mink_controller/STAGE_CONCLUSION.md`.
+
+The current corrected full-pose replay command is:
+
+```bash
+MUJOCO_GL=egl uv run python docs/route_b_validation/playback_eef_pose.py \
+  --dataset third_party/robomimic/datasets/can/yq/image_v15_delta_eef.hdf5 \
+  --all-demos \
+  --osc-kp 500 \
+  --osc-input-type absolute \
+  --output-json outputs/route_b_validation/playback_eef_pose_all_200.json
+```
 
 ## Reading the report
 
@@ -95,8 +117,10 @@ Start with `report.md`. Key sections:
 - **Re-evaluation of remaining options** — 3 follow-up directions if continuing this work
 - **Adapter follow-up** — `adapter_report.md` verifies that converting
   `real delta_EEF -> OSC command` is not reliable enough for execution
-- **Panda Mink controller follow-up** — expert EEF replay passes with a
-  third-party controller, but the learned EEF policy still fails rollout
+- **Corrected OSC full-pose replay** — expert EEF replay passes with built-in
+  OSC absolute mode; this is the next Route B training target
+- **Panda Mink controller follow-up** — expert EEF replay also passes with a
+  third-party controller, but the learned Mink EEF policy still fails rollout
 
 The `figures/err_per_step_overlay.png` is the most informative single image:
 4 plans on one axis, mean line + min-max range, log-scale-friendly.

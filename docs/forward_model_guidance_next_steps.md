@@ -26,6 +26,14 @@ failure is decomposed into:
 The current work assumes `Delta vis` is handled by oracle target mask / known
 target information, and focuses on `Delta geo`.
 
+**2026-07-06 status update**: this handoff remains useful for the
+forward-model / action-ranking branch, but it is no longer the primary next
+experiment. We found that built-in robosuite `OSC_POSE` can replay full-pose
+absolute EEF targets when the action is constructed as
+`[next_eef_pos, quat2axisangle(next_eef_quat_site), gripper]`, with controller
+references refreshed after `reset_to`. The current primary Route B experiment
+is to train a diffusion policy on that executable full-pose EEF action.
+
 The near-term claim should not be:
 
 ```text
@@ -70,15 +78,25 @@ current gradient-based guidance update: not reliable
 forward model itself: still useful as a trajectory predictor
 ```
 
-### 2. Route B, Predicting EEF Instead of OSC Action, Is Not Solved
+### 2. Route B Was Reopened With Full-Pose OSC Absolute Actions
 
-Built-in robosuite controller routes fail:
+The earlier Route B rejection was too broad. These built-in robosuite routes
+still fail and remain useful negative results:
 
 - `delta_eef_action -> OSC delta`: fails replay.
-- `next_eef_pos -> OSC absolute`: fails replay.
+- position-only `next_eef_pos -> OSC absolute`: fails replay.
 - cumulative EEF delta -> built-in IK delta: fails replay.
 - `real delta_EEF -> OSC command` adapters: better offline regression but
   still fail open-loop replay.
+
+Corrected built-in OSC route:
+
+- `abs_eef_pose_action = [next_eef_pos, quat2axisangle(next_eef_quat_site), gripper]`
+- controller: built-in `OSC_POSE`, `input_type=absolute`, `input_ref_frame=world`,
+  `kp=500`
+- replay result: 200/200 final success on both `image_v15.hdf5` and the older
+  Route B `image_v15_delta_eef.hdf5`
+- mean final position error: 0.51 cm
 
 Mink controller follow-up:
 
@@ -86,13 +104,16 @@ Mink controller follow-up:
 - Full-pose replay with `ik_hand_ori_cost=0.05` gets 100% final success on the
   tested valid split and first 50 train demos.
 - A learned full-pose EEF diffusion policy using that interface still gets
-  0.0 rollout success.
+  0.0 rollout success. This does not rule out the corrected OSC full-pose
+  interface, because it is a different controller and action convention.
 
 Current Route B status:
 
 ```text
-expert EEF replay through Mink IK: passes
-learned EEF target policy through Mink IK: fails
+expert full-pose EEF replay through OSC absolute: passes
+expert full-pose EEF replay through Mink IK: passes
+learned full-pose EEF target policy through Mink IK: fails
+learned full-pose EEF target policy through corrected OSC absolute: untested
 ```
 
 Relevant docs:
@@ -257,14 +278,31 @@ outputs/robomimic/checkpoints/diffusion_policy_can_yq_masked_image/model_epoch_1
 
 ## Current Question
 
-The action-ranking experiment changed the bottleneck. The question is no longer
-whether safe chunks exist; they do. The current question is:
+The primary question is now:
+
+```text
+Can diffusion policy learn the corrected executable full-pose EEF action and
+roll it out closed-loop through OSC absolute mode?
+```
+
+Concrete next direction:
+
+1. Build or reuse an action key with
+   `[next_eef_pos, quat2axisangle(next_eef_quat_site), gripper]`.
+2. Train DP with the same observation setup as the successful masked-image OSC
+   policy, but with the corrected full-pose EEF action target.
+3. Roll out through the same `OSC_POSE` absolute/world interface used by
+   `docs/route_b_validation/playback_eef_pose.py`.
+
+The action-ranking experiment remains a completed secondary branch. It changed
+that branch's bottleneck: the question is no longer whether safe chunks exist;
+they do. If ranking is revisited, the question should be:
 
 ```text
 Can action selection preserve task intent while avoiding obstacles?
 ```
 
-Concrete next directions:
+Concrete ranking directions:
 
 1. Add task-preserving ranking terms:
    - obstacle cost as a hard filter;
@@ -284,8 +322,9 @@ Concrete next directions:
 - Do not claim forward-model guidance works based on forward-model validation.
 - Do not keep tuning geometry-only ranking; it has been tested and hurts
   rollout success.
-- Do not revive Route B EEF-action training without a new learning formulation;
-  expert Mink replay passing did not make learned EEF policy rollout work.
+- Do not revive the old `delta_eef_action -> OSC delta` Route B path.
+- Do not treat the failed learned Mink EEF policy as evidence against the
+  corrected built-in OSC full-pose route; that route is untested.
 - Do not use the early 10-rollout scale sweep as final evidence; it is
   superseded by the larger controlled comparison.
 - Do not move to point-cloud ranking before oracle-geometry ranking has a

@@ -1,7 +1,8 @@
 # Route B Validation — Reproduction Artifacts
 
-This directory contains everything needed to reproduce the built-in-controller
-experiments in [`report.md`](./report.md) and the later Route B follow-ups.
+This directory contains everything needed to reproduce the Route B controller
+experiments in [`report.md`](./report.md), including the corrected 2026-07-06
+OSC absolute full-pose replay result.
 
 ## Files
 
@@ -18,7 +19,8 @@ experiments in [`report.md`](./report.md) and the later Route B follow-ups.
 | `replay_delta_eef_to_osc_adapter.py` | Replays adapter outputs through the original OSC controller |
 | `plot_delta_eef_to_osc_adapter_replay.py` | Plots adapter replay error from `replay_results.json` |
 | `results.json` | Per-step data from the experiment (1.8 MB; 5 demos × 4 plans × ~300 steps) |
-| `verify_position_controller.py` | Standalone: OSC absolute mode replay diagnostic (the script used to debug Plan B-2) |
+| `verify_position_controller.py` | Historical OSC absolute position-only diagnostic (Plan B-2; superseded for full-pose control) |
+| `playback_eef_pose.py` | Corrected OSC absolute full-pose replay (`eef_pos + eef_quat_site + gripper`) |
 | `verify_ik_controller.py` | Standalone: IK delta mode replay diagnostic (the script used to debug Plan C) |
 | `verify_panda_mink_controller.py` | Follow-up: Panda + WholeBodyMinkIK absolute EEF replay validation |
 | `create_abs_eef_mink_dataset.py` | Archived follow-up: creates the full-pose EEF dataset used for the failed Mink policy training run |
@@ -39,6 +41,30 @@ uv run python plot_results.py                # writes figures/*.png
 The `compare_all.py` script hardcodes the dataset path
 `third_party/robomimic/datasets/can/yq/image_v15_delta_eef.hdf5` (200 demos, PickPlaceCan).
 The first 5 demos are used.
+
+To reproduce the corrected full-pose OSC absolute replay:
+
+```bash
+MUJOCO_GL=egl uv run python docs/route_b_validation/playback_eef_pose.py \
+  --dataset third_party/robomimic/datasets/can/yq/image_v15_delta_eef.hdf5 \
+  --all-demos \
+  --osc-kp 500 \
+  --osc-input-type absolute \
+  --output-json outputs/route_b_validation/playback_eef_pose_all_200.json
+```
+
+Expected summary:
+
+```text
+Final success: 200/200
+Mean position error: 0.51 cm
+Mean orientation error: 0.39 deg
+```
+
+`playback_eef_pose.py` is the current reference for executable full-pose EEF
+actions through built-in OSC. `verify_position_controller.py` is retained as a
+historical position-only diagnostic and should not be used to reject full-pose
+absolute OSC control.
 
 ## What the data files contain
 

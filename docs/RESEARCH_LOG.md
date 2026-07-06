@@ -16,6 +16,66 @@
 
 ## 2026-07-06
 
+### Route B correction: full-pose EEF can control built-in OSC absolute
+
+Re-ran EEF-pose replay after fixing the action interface. The executable action
+is:
+
+```text
+[
+  next_obs/robot0_eef_pos,
+  quat2axisangle(next_obs/robot0_eef_quat_site),  # robosuite xyzw order
+  actions[:, 6],
+]
+```
+
+Environment/controller:
+
+```text
+OSC_POSE
+input_type = absolute
+input_ref_frame = world
+kp = 500
+```
+
+Critical implementation details:
+
+- use `robot0_eef_quat_site`, not `robot0_eef_quat`, because EEF position is a
+  site position and the site quaternion is in robosuite's `[x, y, z, w]` order;
+- do not reorder that quaternion before `quat2axisangle`;
+- do not clip absolute axis-angle action components to `[-1, 1]`;
+- after `env.reset_to(initial_state)`, force controller state/goal refresh with
+  `ctrl.update(force=True)` and `ctrl.reset_goal()`.
+
+Result on both `image_v15.hdf5` and the earlier Route B
+`image_v15_delta_eef.hdf5` dataset:
+
+| demos | final success | mean pos err | max pos err | mean ori err | max ori err |
+|---:|---:|---:|---:|---:|---:|
+| 200 | 200/200 = 1.0 | 0.51 cm | 2.90 cm | 0.39 deg | 5.81 deg |
+
+This overturns the previous broad conclusion that built-in robosuite absolute
+OSC cannot execute EEF pose labels. The previous Plan B-2 failure tested a
+different and incomplete interface: position-only absolute targets, lower
+`kp`, altered uncoupling, and, in standalone diagnostics, the wrong quaternion
+source / action clipping. It remains true that `delta_eef_action -> OSC delta`
+and `real delta_EEF -> OSC command` adapters fail; those are different action
+interfaces.
+
+Decision: reopen Route B with a simpler next experiment: train a diffusion
+policy to predict the executable full-pose EEF action above and roll it out
+through OSC absolute/world mode. The Panda Mink results are now historical
+controller exploration, not the required controller path.
+
+Relevant files:
+
+```text
+docs/route_b_validation/playback_eef_pose.py
+outputs/route_b_validation/playback_eef_pose_all_200.json
+```
+
+---
+
 ### Action-chunk ranking tested: safe chunks exist, geometry-only scoring is not enough
 
 Tested action-chunk ranking as the next inference-time `Delta geo` strategy:
@@ -58,11 +118,12 @@ Current interpretation:
   this pilot), so `Delta geo` is a smaller remaining success bottleneck than
   assumed.
 
-Decision: do not continue tuning geometry-only ranking as a final method. If
-ranking continues, add a task-preserving term such as distance to the first
-sampled chunk, policy likelihood, or task-progress heuristics. Also re-check
-whether failure episodes are truly caused by non-target collisions, because
-collision-any and success are not tightly coupled in these pilots.
+Decision: do not continue tuning geometry-only ranking as a final method while
+the corrected full-pose EEF Route B path is open. If ranking is revisited, add
+a task-preserving term such as distance to the first sampled chunk, policy
+likelihood, or task-progress heuristics. Also re-check whether failure episodes
+are truly caused by non-target collisions, because collision-any and success
+are not tightly coupled in these pilots.
 
 Relevant doc: `docs/action_chunk_ranking_report.md`.
 
@@ -70,16 +131,23 @@ Relevant doc: `docs/action_chunk_ranking_report.md`.
 
 ## 2026-07-03
 
-### Route B status narrowed: built-in controllers fail, Mink expert replay passes, learned EEF policy fails
+### Route B status narrowed: built-in delta routes fail, Mink expert replay passes, learned Mink EEF policy fails
 
 The 2026-06-26 Route B conclusion was too broad. The corrected conclusion is:
 
-- Built-in robosuite controller routes fail for EEF supervision: `delta_eef_action -> OSC`, absolute OSC, and built-in IK all diverge in open-loop replay.
+- Built-in robosuite controller routes tested here fail for EEF supervision:
+  `delta_eef_action -> OSC`, position-only absolute OSC, and built-in IK all
+  diverge in open-loop replay. This was later corrected again on 2026-07-06:
+  full-pose absolute OSC replay is feasible when using `robot0_eef_quat_site`
+  and the correct absolute action interface.
 - `real delta_EEF -> OSC command` adapters improve offline regression but remain unreliable in open-loop replay, so adapter-based execution is rejected.
 - Panda + WholeBodyMinkIK can replay expert full-pose absolute EEF targets with high task success.
 - A learned full-pose EEF diffusion policy using the Mink interface still obtains 0.0 rollout success.
 
-Current interpretation: the controller-interface part is feasible with Mink IK, but Route B as learned EEF target generation is not solved. Open-loop expert replay does not imply closed-loop learned policy rollout.
+Current interpretation after the 2026-07-06 correction: the controller-interface
+part is feasible with both corrected built-in OSC absolute mode and Mink IK.
+The remaining open question is learned closed-loop full-pose EEF target
+generation.
 
 Relevant docs: `docs/route_b_validation/report.md`, `docs/route_b_validation/adapter_report.md`, `outputs/route_b_validation/panda_mink_controller/STAGE_CONCLUSION.md`.
 
@@ -122,12 +190,12 @@ Handoff doc: `docs/forward_model_guidance_next_steps.md`.
 
 ## 2026-06-26
 
-### Route B validation: built-in EEF-controller routes fail open-loop replay
+### Route B validation: initial built-in EEF-controller routes fail open-loop replay
 
-Historical note: this conclusion was narrowed on 2026-07-03. It applies to the
-built-in robosuite controller routes tested here. The later Panda
-WholeBodyMinkIK follow-up can replay expert EEF targets, but learned EEF policy
-rollout still fails.
+Historical note: this conclusion was narrowed on 2026-07-03 and corrected again
+on 2026-07-06. It applies to the specific routes tested here, especially
+`delta_eef_action -> OSC delta`, position-only absolute OSC, and built-in IK.
+It does **not** apply to corrected full-pose absolute OSC replay.
 
 Tested 4 supervision-signal/controller combinations on 5 demos (full report in `docs/route_b_validation/report.md`):
 
@@ -138,11 +206,15 @@ Tested 4 supervision-signal/controller combinations on 5 demos (full report in `
 | B-2 | `next_eef_pos` (absolute target) | OSC absolute | 37.3 cm | ✗ |
 | C | `next_eef_pos` cumulative delta | IK delta | 74.1 cm | ✗ |
 
-### Why every EEF-based signal fails
+### Why these EEF-based signals failed
 
 - **OSC is force-control, not position-control.** With `kp=150, damping_ratio=1` the natural frequency is `sqrt(150) ≈ 12 rad/s`, settling time ~0.33s. At 20 Hz (50ms/step), the EEF moves only ~15% of the way to a small per-step target. Compounding over 300 steps gives 28-39 cm lag.
 - **`delta_eef_action` is the *achieved* delta in the data, smaller than the *commanded* delta that produced it.** When fed back to OSC as a new command, OSC under-achieves again — feedback loop with gain 0.28 shrinks the target by 28% per step.
-- **OSC absolute mode has a directional bug when `uncouple_pos_ori=True`.** The force comes out reversed. Setting `uncouple_pos_ori=False` fixes direction but the absolute-mode PD law is still under-tuned for 20 Hz position targets.
+- **The tested OSC absolute path was incomplete.** It sent only
+  `next_eef_pos`, used zero orientation targets, lower `kp`, and did not use
+  the corrected `next_eef_quat_site -> axis-angle` action interface. This
+  explains why the historical B-2 result diverged while the corrected
+  full-pose OSC absolute replay succeeds.
 - **IK controller only supports delta mode for single-arm robots** (`ik.py:265` asserts `use_delta=True` for `num_ref_sites == 1`). The `IKSolver` in `ik_utils.py` supports absolute mode but is not wired into the standard `arm_controller_factory`. The IK step overshoots by 5-10x with default `Kpos=0.95, integration_dt=0.1`. `Kpos` and `Kn` (nullspace gain) are hard-coded into the static-method `compute_joint_positions` and don't honor attribute overrides.
 
 ### Re-evaluation: the 3-4cm RMSE from `cumsum(action*0.05)` is not approximation error — it's OSC tracking error
@@ -151,11 +223,15 @@ Plan B-1 demonstrates that the *achieved* EEF delta is systematically smaller th
 
 - `cumsum(action * 0.05) ≠ actual EEF trajectory` because OSC's force controller is underdamped for small per-step commands.
 - The 3-4 cm RMSE we measured earlier is a *physical limit*, not a calibration error.
-- Any Route B approach that re-derives EEF from action will hit the same wall.
+- Any Route B approach that re-derives EEF from OSC delta action will hit the
+  same wall. This does not apply to directly predicting the corrected
+  executable full-pose EEF action.
 
-### Decision: pause Route B; re-evaluate strategy
+### Historical decision: pause Route B; re-evaluate strategy
 
-Three concrete next steps discussed (see report section "Re-evaluation of remaining options"):
+This decision is superseded by the 2026-07-06 corrected full-pose OSC absolute
+replay result. At the time, three concrete next steps were discussed (see
+report section "Re-evaluation of remaining options"):
 
 1. **Multi-task learning** (Plan A + EEF prediction as separate heads). Smallest delta, sidesteps the controller-bypass problem. Cost guidance operates on the EEF prediction; execution uses the action prediction via OSC.
 2. **Custom absolute-position controller** (write ~50 lines of code: IKSolver + JointPositionController in absolute mode). Requires fixing the IK nullspace/step-size issues.
@@ -189,9 +265,10 @@ The cost function uses `cumsum(action * 0.05)` to convert predicted actions to E
 
 ### Decision: Route B — switch prediction target to EEF trajectory
 
-Historical note: this decision was tested and superseded by the 2026-06-26 and
-2026-07-03 Route B findings. Direct EEF-action policy training is not currently
-a working route.
+Historical note: this decision was tested and superseded by the 2026-06-26,
+2026-07-03, and 2026-07-06 Route B findings. The viable formulation is not a
+position-only EEF trajectory; it is the executable full-pose EEF action
+`[next_eef_pos, quat2axisangle(next_eef_quat_site), gripper]`.
 
 Following from the root cause analysis:
 1. Rebuild hdf5 dataset with EEF trajectory labels (not just actions)

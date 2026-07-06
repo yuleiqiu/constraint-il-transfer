@@ -1,12 +1,23 @@
 # Route B Validation Report
 
 **Date**: 2026-06-26
+**Corrected**: 2026-07-06
 **Dataset**: `third_party/robomimic/datasets/can/yq/image_v15_delta_eef.hdf5` (200 demos, PickPlaceCan)
 **Goal**: Verify that EEF-based supervision signals can be replayed open-loop, before committing to a Route B retraining.
 
 ## TL;DR
 
-**All built-in robosuite EEF-based supervision signals tested here fail open-loop replay.** Only the original OSC delta action replays faithfully. The failure is structural for the built-in controllers tested in this report: OSC, IK, and JointPosition are designed for **delta commands** iterated over time, not **absolute targets** reached in one step. The 20 Hz control loop cannot achieve 3-9 mm per-step targets via absolute-position control, because the underlying control law is tuned for delta semantics.
+**2026-07-06 correction: full-pose EEF targets can be replayed through built-in OSC absolute mode.** The original 2026-06-26 report was correct for `delta_eef_action -> OSC delta`, position-only absolute OSC, and built-in IK delta routes, but too broad in concluding that built-in OSC absolute mode cannot execute EEF pose labels. A corrected action interface,
+
+```text
+[next_obs/robot0_eef_pos,
+ quat2axisangle(next_obs/robot0_eef_quat_site),
+ actions[:, 6]]
+```
+
+with `OSC_POSE input_type=absolute`, `input_ref_frame=world`, `kp=500`, no axis-angle clipping, and controller goal refresh after `reset_to`, replays all 200 PickPlaceCan demos with 100% final success.
+
+The previous failure therefore came from an incomplete / mismatched absolute action interface, not from a fundamental inability to control robosuite OSC with EEF pose. The remaining open Route B question is whether a learned diffusion policy can predict this full-pose EEF action robustly in closed-loop rollout.
 
 **Post-training confirmation (2026-06-29)**: A diffusion policy trained on `delta_eef_action` converges offline but obtains **0.0 rollout success** because its EEF-delta outputs are passed directly to the original `OSC_POSE` delta controller. This is the learned-policy version of Plan B-1, not a separate training failure.
 
@@ -18,16 +29,60 @@
 |---|---|---|---|---|
 | A | `action[7]` (OSC delta) | OSC delta | **0.4 cm** | ✓ |
 | B-1 | `delta_eef_action[7]` (real EEF delta) | OSC delta | **39.3 cm** | ✗ |
-| B-2 | `next_eef_pos[3]` (absolute target) | OSC absolute | **37.3 cm** | ✗ |
+| B-2 historical | `next_eef_pos[3]` position-only absolute target | OSC absolute, `kp=150`, no orientation target | **37.3 cm** | ✗ |
 | C | `next_eef_pos[t] - eef[t]` (cumulative) | IK delta | **74.1 cm** | ✗ |
+| B-3 corrected | `next_eef_pos[3] + next_eef_quat_site[4] + gripper` | OSC absolute full-pose, `kp=500` | **0.51 cm mean pos err, 100% final success on 200 demos** | ✓ |
 
 ### Follow-up status
 
 | Follow-up | Result | Current status |
 |---|---|---|
 | `real delta_EEF -> OSC command` adapters | Better offline regression, still fails open-loop replay | Rejected as execution bridge |
-| Panda Mink IK expert replay | Full-pose expert targets replay successfully | Controller interface feasible |
-| Full-pose Mink EEF diffusion policy | 0.0 rollout success | Route B training not solved |
+| Panda Mink IK expert replay | Full-pose expert targets replay successfully | Historical alternate controller; no longer required for expert replay |
+| Full-pose Mink EEF diffusion policy | 0.0 rollout success | Does not rule out corrected OSC full-pose policy |
+| Corrected OSC full-pose expert replay | 200/200 final success | Next training target |
+
+### Corrected OSC full-pose replay (2026-07-06)
+
+The corrected replay script is:
+
+```text
+docs/route_b_validation/playback_eef_pose.py
+```
+
+It was run on both the original image dataset and the earlier Route B
+`image_v15_delta_eef.hdf5` dataset. Results were identical:
+
+| Dataset | Demos | Final success | Mean pos err | Max pos err | Mean ori err | Max ori err |
+|---|---:|---:|---:|---:|---:|---:|
+| `image_v15.hdf5` | 200 | 200/200 | 0.51 cm | 2.90 cm | 0.39 deg | 5.81 deg |
+| `image_v15_delta_eef.hdf5` | 200 | 200/200 | 0.51 cm | 2.90 cm | 0.39 deg | 5.81 deg |
+
+Output JSON for the retained run:
+
+```text
+outputs/route_b_validation/playback_eef_pose_all_200.json
+```
+
+Important implementation details:
+
+1. Use `next_obs/robot0_eef_quat_site`, not `robot0_eef_quat`. The EEF
+   position is a MuJoCo site position, and `robot0_eef_quat_site` is the
+   matching site orientation. Robosuite returns this quaternion in `[x,y,z,w]`
+   order.
+2. Convert orientation with `T.quat2axisangle(q.copy())`; do not reorder the
+   quaternion.
+3. Do not clip absolute axis-angle action components to `[-1, 1]`. The
+   absolute orientation rotvec is commonly larger than 1 rad in individual
+   components.
+4. After `env.reset_to(initial_state)`, call `ctrl.update(force=True)` and
+   `ctrl.reset_goal()` so the controller reference and goal match the flattened
+   simulator state.
+5. Use full pose, not position-only: `[pos, axis_angle, gripper]`.
+
+This result invalidates the old statement that built-in OSC absolute mode is
+structurally unusable for EEF pose execution. It does **not** invalidate the
+old `delta_eef_action -> OSC delta`, adapter, or built-in IK failure results.
 
 ## Per-step trajectory error
 
@@ -112,9 +167,12 @@ This is the current production setup. Action is the original 7-D OSC delta in `[
 
 **Mathematical view**: If `actual_dpos = ε · commanded_dpos` (with `ε ≈ 0.28` for small targets), then feeding `actual_dpos` as the next command gives `next_actual = ε · actual_dpos = ε² · original_commanded`. The error compounds as `ε^n` per step, but the per-step target is also reduced, so the EEF asymptotically reaches a fixed point short of the goal.
 
-## Plan B-2: next_eef_pos as OSC absolute target
+## Plan B-2 historical: next_eef_pos as position-only OSC absolute target
 
-We use OSC's `input_type="absolute"` mode: action[0:3] is the world-frame target position. Per-step `desired = next_eef_pos[t] - obs_eef_pos[t]` (the gap between current EEF and the data's next position).
+This historical diagnostic used OSC's `input_type="absolute"` mode but sent
+only `action[0:3] = next_eef_pos[t]` with zero orientation target, `kp=150`,
+and `uncouple_pos_ori=False`. It is **not** the corrected full-pose OSC
+absolute interface above.
 
 | demo | desired | actual | track_med | err_target_mean | err_orig_end |
 |---|---|---|---|---|---|
@@ -127,13 +185,22 @@ We use OSC's `input_type="absolute"` mode: action[0:3] is the world-frame target
 
 **Note**: The `desired` metric here is the *average gap* over the whole trajectory — it grows each step as the EEF diverges from the recorded path. The per-step initial gap is the same as Plan C (~0.4 cm); it only becomes 28 cm on average because the EEF never catches up.
 
-**Why this fails (two compounding bugs)**:
+**Why this historical diagnostic failed**:
 
-1. **OSC absolute mode + `uncouple_pos_ori=True` reverses the force direction.** Verified empirically: with `uncouple_pos_ori=True` (the default), sending a 20 cm target in `+x` makes the EEF move in `-x`. Setting `uncouple_pos_ori=False` fixes the direction, but introduces the second bug.
+1. It was position-only: the controller was not given the expert site
+   orientation target, even though contact / grasp timing depends on the full
+   gripper pose.
 
-2. **OSC absolute mode is unstable at 20 Hz.** With `uncouple_pos_ori=False` and the target set to the data's `next_eef_pos[t]`, the EEF moves correctly but only ~0.2 cm per step (tracking_med = 0.3% per step, with each step's target being a 3-9 mm delta). This is the same as Plan B-1's compounding lag, but the EEF never reaches the target because OSC's PD law doesn't settle in 50 ms when the target is 5 mm away. The first 3 steps show tracking 0.3-0.5 cm per step (close to 1x), but the lag accumulates to 28 cm by the end.
+2. It used `kp=150`, while the corrected full-pose replay uses `kp=500`.
 
-**Root cause**: OSC is a force controller. With `kp=150, damping_ratio=1` (critical damping), the natural frequency is `sqrt(150) ≈ 12.2 rad/s`, giving a settling time of `~0.33 s`. The 20 Hz control loop is 50 ms per step, so the EEF moves only ~15% of the way to the target per step. After 20 steps (1 second), the EEF has only moved 95% of a constant target. With a moving target (the demo trajectory), the EEF lags by ~3-5 cm in steady state.
+3. The standalone follow-up script `verify_position_controller.py` also used
+   `robot0_eef_quat` instead of `robot0_eef_quat_site` when orientation was
+   enabled, clipped absolute actions to `[-1, 1]`, and did not reset the
+   controller goal after refreshing the controller reference.
+
+Therefore, the B-2 result should be retained as evidence that this incomplete
+position-only interface fails, but it should not be used to reject full-pose
+absolute OSC control.
 
 ## Plan C: Cumulative next_eef_pos delta in IK delta mode
 
@@ -166,14 +233,15 @@ Action[0:3] = `next_eef_pos[t] - obs_eef_pos[t]` (in meters). Fed to `InverseKin
 |---|---|---|
 | A | OSC's PD law is tuned for delta commands; 0.4-1.4 cm per step matches its designed regime | None — accumulates 0.4 cm end error |
 | B-1 | OSC underachieves small targets (28% per step) — but the gap is small (3-9 mm) | EEF falls behind 0.25 cm/step; after 293 steps it's 73 cm short |
-| B-2 | OSC absolute mode moves the EEF toward the target, just slowly (~0.2 cm per step) | Force-control dynamics give a 3-5 cm steady-state lag for moving targets |
+| B-2 historical | Position-only absolute OSC target partially moves the EEF but diverges | Incomplete action interface and low-gain absolute controller setup |
+| B-3 corrected | Full-pose absolute OSC target tracks expert EEF pose | Passes expert replay: 200/200 final success |
 | C | IK computes a `q_des` for the target, joint position controller tries to follow | The IK's first step demands 1 rad of joint motion; controller saturates; EEF overshoots by 5-10x; cumulative chaos |
 
 ## Implications for Route B
 
-**Route B (predict EEF trajectory directly) cannot be cleanly executed using the built-in robosuite controllers tested above.** The cumulative error of 0.25 cm/step in B-1 means that even if a policy perfectly predicts the EEF trajectory, executing it via the OSC + `cumsum`-style approach gives the policy a "target" that the controller cannot physically achieve.
+**Route B is executable if formulated as full-pose absolute EEF action prediction.** The old conclusion remains true only for the tested non-executable labels (`delta_eef_action` fed to OSC delta, position-only absolute OSC, cumulative IK delta, and adapters). A policy that predicts the corrected full-pose action can in principle be executed directly through built-in OSC absolute mode.
 
-The 3-4 cm RMSE between `cumsum(action * 0.05)` and the actual EEF trajectory (the root cause for guidance failure per `RESEARCH_LOG.md` 2026-06-22) is **not** primarily a mapping approximation error. It is the fundamental OSC tracking error for small per-step deltas — exactly what Plan B-1 demonstrates.
+The 3-4 cm RMSE between `cumsum(action * 0.05)` and the actual EEF trajectory (the root cause for guidance failure per `RESEARCH_LOG.md` 2026-06-22) still matters for **OSC-action guidance**. It is not an obstacle to Route B if the policy predicts executable absolute full-pose EEF actions directly.
 
 **Follow-up adapter result**: We also tested whether `real delta_EEF` can be
 converted back into the original OSC command using scalar, linear, and
@@ -207,16 +275,21 @@ Full-pose replay with `ik_hand_ori_cost=0.05` achieved:
 | valid | 20 | 20/20 = 100% | 1.312 cm | 0.267 cm |
 | train | 50 | 50/50 = 100% | 1.327 cm | 0.259 cm |
 
-This means the earlier broad conclusion "EEF replay is impossible" is too
-strong. The corrected conclusion is:
+This was the first correction to the broad conclusion "EEF replay is impossible".
+The 2026-07-06 OSC full-pose result narrows it further: a custom / third-party
+controller is not required for expert replay, because built-in OSC absolute
+mode also works when the full pose action is constructed correctly. The
+corrected conclusion is now:
 
 ```text
-built-in controllers cannot execute these EEF labels, but a custom / third-party
-Mink IK controller can replay expert EEF targets well enough for validation.
+delta-style EEF labels and incomplete absolute interfaces fail; corrected
+full-pose absolute EEF targets can replay expert demonstrations through both
+built-in OSC absolute mode and Panda Mink IK.
 ```
 
-However, this does not solve Route B as a learning problem. A diffusion policy
-trained on the resulting full-pose EEF action dataset still failed rollout:
+However, the Mink training result does not settle the corrected OSC route. A
+diffusion policy trained on the Mink full-pose EEF action dataset failed
+rollout:
 
 ```text
 outputs/robomimic/train/diffusion_policy_can_yq_abs_eef_pose_mink_image/20260629183845
@@ -226,8 +299,10 @@ Epoch 20: Success_Rate = 0.0
 So the current Route B status is:
 
 ```text
-expert EEF replay through Mink IK: passes
-learned EEF target policy through Mink IK: fails
+expert full-pose EEF replay through OSC absolute: passes
+expert full-pose EEF replay through Mink IK: passes
+learned full-pose EEF target policy through Mink IK: fails
+learned full-pose EEF target policy through corrected OSC absolute: untested
 ```
 
 The likely issue is that open-loop replay uses expert absolute EEF targets and
@@ -306,9 +381,15 @@ verify open-loop replay under that interface before training.
    - (b) Train a learned residual model `EEF_actual ≈ f(action) + residual` and use it for cost — adds a model but uses real EEF.
    - (c) Use a longer-horizon cost (e.g., score the entire 16-step chunk) and rely on the *average* error being small, even if per-step error is 25%.
 
-2. **Write or adopt a custom absolute-position controller.** This was partially tested with the Panda + WholeBodyMinkIK controller. Expert full-pose replay passes, so the controller-interface part is feasible. But the learned full-pose EEF policy still gets 0.0 rollout success, so this route is not a near-term solution unless the policy-learning problem is redesigned.
+2. **Train corrected full-pose OSC absolute Route B.** Create / reuse a dataset
+   with `abs_eef_pose_action = [next_eef_pos, quat2axisangle(next_eef_quat_site), gripper]`,
+   update env metadata to `OSC_POSE input_type=absolute, input_ref_frame=world, kp=500`,
+   and train DP on this executable action key. This is now the primary Route B
+   test.
 
-3. **Re-formulate Route B as multi-task learning.** Train the policy to predict both `action` (for execution via OSC) and `EEF trajectory` (for guidance). At inference, the `action` head drives the robot; the `EEF` head provides the cost. This is a small change to the training loop (dual loss) and avoids the controller-bypass problem entirely.
+3. **Re-formulate Route B as multi-task learning** if corrected full-pose OSC
+   learning fails. Train the policy to predict both original OSC action (for
+   execution) and EEF trajectory/action (for guidance or diagnostics).
 
 4. **Re-examine whether cost guidance is the right intervention.** With 600 rollouts showing guidance *hurts* rather than helps (per `RESEARCH_LOG.md`), the fundamental question may not be "is the cost accurate enough" but "is the policy's gradient from cost even the right direction to push it?" This is an open question.
 
