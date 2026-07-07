@@ -6,7 +6,7 @@ jointly executable, without overriding controller settings at runtime.
 
 Run from repo root:
     MUJOCO_GL=egl uv run python scripts/eef_pose_osc_policy/verify_abs_eef_osc_dataset.py \
-        --dataset /tmp/image_v15_abs_eef_osc_smoke.hdf5 --n-demos 2
+        --dataset /tmp/image_v15_abs_eef_pose_osc_smoke.hdf5 --n-demos 2
 """
 
 import argparse

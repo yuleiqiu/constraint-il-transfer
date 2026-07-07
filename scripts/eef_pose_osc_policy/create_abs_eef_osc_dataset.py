@@ -17,7 +17,7 @@ Run from repo root:
 
 For smoke tests without copying the full image dataset:
     uv run python scripts/eef_pose_osc_policy/create_abs_eef_osc_dataset.py \
-        --dest /tmp/image_v15_abs_eef_osc_smoke.hdf5 --demo-limit 4 --overwrite
+        --dest /tmp/image_v15_abs_eef_pose_osc_smoke.hdf5 --demo-limit 4 --overwrite
 """
 
 import argparse
@@ -32,7 +32,7 @@ from robosuite.utils import transform_utils as T
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_SOURCE = REPO_ROOT / "third_party/robomimic/datasets/can/yq/image_v15.hdf5"
-DEFAULT_DEST = REPO_ROOT / "third_party/robomimic/datasets/can/yq/image_v15_abs_eef_osc.hdf5"
+DEFAULT_DEST = REPO_ROOT / "third_party/robomimic/datasets/can/yq/image_v15_abs_eef_pose_osc.hdf5"
 DEFAULT_ACTION_KEY = "abs_eef_pose_action"
 DEFAULT_ORIENTATION_SOURCE = "robot0_eef_quat_site"
 

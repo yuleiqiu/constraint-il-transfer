@@ -8,7 +8,7 @@ environment wrapper with that action.
 
 Run from repo root:
     MUJOCO_GL=egl uv run python scripts/eef_pose_osc_policy/smoke_abs_eef_osc_wrapper.py \
-        --dataset /tmp/image_v15_abs_eef_osc_smoke.hdf5 \
+        --dataset /tmp/image_v15_abs_eef_pose_osc_smoke.hdf5 \
         --config third_party/robomimic/robomimic/exps/absolute_eef_osc/diffusion_policy_can_image.json
 """
 
