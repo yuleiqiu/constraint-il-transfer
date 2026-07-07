@@ -294,6 +294,53 @@ Concrete next direction:
 3. Roll out through the same `OSC_POSE` absolute/world interface used by
    `docs/route_b_validation/playback_eef_pose.py`.
 
+Concrete training decision recorded on 2026-07-06:
+
+```text
+start from clean image diffusion policy, not masked-image policy
+action target = full-pose absolute OSC action, 7D
+diffusion sampler = DDIM
+num_train_timesteps = 100
+num_inference_timesteps = 10
+action normalization = min_max
+```
+
+The intended 7D action is:
+
+```text
+[
+  next_obs/robot0_eef_pos,
+  quat2axisangle(next_obs/robot0_eef_quat_site),
+  actions[:, 6],
+]
+```
+
+Important implementation checks before long training:
+
+1. Dataset / checkpoint env metadata must select built-in `OSC_POSE` with
+   `input_type=absolute`, `input_ref_frame=world`, and `kp=500`.
+2. Axis-angle values must be normalized for DP training and unnormalized before
+   `env.step`.
+3. After unnormalization, the robomimic env path must not clip the absolute
+   pose action back to `[-1, 1]`; absolute rotation components may exceed 1.
+4. Dataset generation must use `robot0_eef_quat_site` in robosuite `[x, y, z, w]`
+   order and must not reorder the quaternion before `quat2axisangle`.
+5. If rollout uses `env.reset_to(...)`, refresh controller references / goals
+   after reset as in `docs/route_b_validation/playback_eef_pose.py`.
+6. Inference should not need online quaternion conversion if the learned action
+   is already axis-angle; quaternion handling belongs in dataset creation.
+
+Recommended validation order:
+
+1. Generate the absolute EEF OSC dataset and replay expert actions through the
+   corrected controller.
+2. Replay the same actions through the robomimic env wrapper to catch action
+   clipping or stale-controller-reset issues.
+3. Run a debug / short training job and verify action dimension, normalization
+   statistics, controller metadata in the checkpoint, and rollout action scale.
+4. Only then run full PickPlaceCan training. Multi-object transfer should wait
+   until the clean single-object policy succeeds with this action space.
+
 The action-ranking experiment remains a completed secondary branch. It changed
 that branch's bottleneck: the question is no longer whether safe chunks exist;
 they do. If ranking is revisited, the question should be:

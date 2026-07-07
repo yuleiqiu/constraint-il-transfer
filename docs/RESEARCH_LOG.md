@@ -74,6 +74,54 @@ docs/route_b_validation/playback_eef_pose.py
 outputs/route_b_validation/playback_eef_pose_all_200.json
 ```
 
+### Decision: next Route B training should use clean-image DDIM full-pose OSC
+
+Agreed next experiment, not yet executed: train a clean-image diffusion policy
+to predict the corrected executable full-pose OSC action. Do not start from the
+masked-image policy for this first Route B test.
+
+Planned policy / scheduler setup:
+
+```text
+observation setup: clean image policy, no oracle target mask
+action target: [next_eef_pos, quat2axisangle(next_eef_quat_site), gripper]
+action normalization: min_max
+sampler: DDIM
+num_train_timesteps: 100
+num_inference_timesteps: 10
+```
+
+Rationale:
+
+- absolute axis-angle components can exceed `[-1, 1]`, so normalization is
+  required for stable DP training;
+- inference should unnormalize before `env.step`;
+- corrected OSC execution depends on controller metadata and reset handling,
+  not just action labels.
+
+Implementation cautions:
+
+- dataset generation must use `robot0_eef_quat_site` in robosuite `[x, y, z, w]`
+  order, with no quaternion reordering before `quat2axisangle`;
+- the dataset / checkpoint env metadata must use `OSC_POSE`, absolute input,
+  world reference frame, and `kp=500`;
+- if the rollout path calls `env.reset_to(...)`, controller references / goals
+  must be refreshed afterward, matching the successful replay script;
+- after action unnormalization, verify that robomimic wrappers do not clip the
+  absolute pose action to `[-1, 1]`;
+- inference should not need per-step quaternion conversion if the policy output
+  is already axis-angle.
+
+Validation order:
+
+1. Generate the absolute EEF OSC dataset.
+2. Replay expert actions through the corrected controller.
+3. Replay through the robomimic env wrapper to check clipping / reset behavior.
+4. Run debug or short training and inspect action dimension, normalization
+   stats, checkpoint env metadata, and rollout action scale.
+5. Run full PickPlaceCan training only after the above pass; multi-object
+   rollout should wait until the single-object clean policy works.
+
 ---
 
 ### Action-chunk ranking tested: safe chunks exist, geometry-only scoring is not enough
