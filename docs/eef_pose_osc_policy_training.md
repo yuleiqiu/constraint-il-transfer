@@ -76,6 +76,23 @@ MUJOCO_GL=egl uv run python scripts/eef_pose_osc_policy/smoke_abs_eef_osc_wrappe
 
 These checks cover action dim, min-max action normalization, controller metadata, `reset_to` controller refresh, and whether raw actions are passed correctly to `env.step`.
 
+## Delta Trajectory Diagnostic
+
+After training a delta EEF policy, verify that policy action chunks reconstruct
+the executed EEF pose trajectory:
+
+```bash
+MUJOCO_GL=egl MUJOCO_EGL_DEVICE_ID=0 ROBOMIMIC_GPU_ID=0 \
+uv run python scripts/eef_pose_osc_policy/diagnose_delta_eef_policy_traj.py \
+  --agent outputs/robomimic/train/dp_can_delta_pose_osc/<run>/models/<checkpoint>.pth \
+  --n-rollouts 1 \
+  --horizon 400 \
+  --terminate-on-success \
+  --output outputs/eef_pose_osc_policy/delta_policy_traj_diagnostic/<name>.json
+```
+
+Reference result: `outputs/eef_pose_osc_policy/README.md`.
+
 ## Debug Train
 
 Delta:
@@ -126,7 +143,7 @@ Training-time rollout is serial in robomimic's train loop. If this is too slow, 
 Safe cleanup after debug or parallel eval:
 
 ```bash
-rm -rf /tmp/tmp_trained_models /tmp/parallel_worker_logs /tmp/guided_parallel_worker_logs /tmp/worker_logs
+rm -rf /tmp/tmp_trained_models /tmp/parallel_worker_logs /tmp/worker_logs
 rm -f /tmp/parallel_rollout_video_w*.mp4 /tmp/concat_list.txt
 find /tmp -maxdepth 1 -type d -name 'pymp-*' -exec rm -rf {} +
 find /tmp -maxdepth 2 -name '_remote_module_non_scriptable.py' -printf '%h\0' 2>/dev/null | xargs -0 -r rm -rf

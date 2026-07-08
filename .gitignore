@@ -1,6 +1,7 @@
 # Large binary outputs
 outputs/**/*.mp4
 outputs/**/*.pth
+outputs/robomimic/train/
 
 # Third-party source repos (managed independently)
 third_party/

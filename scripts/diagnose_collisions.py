@@ -18,13 +18,124 @@ import numpy as np
 
 import robomimic.utils.file_utils as FileUtils
 import robomimic.utils.torch_utils as TorchUtils
-import robomimic.utils.obstacle_guidance_utils as ObstacleGuidanceUtils
 
 
 def get_raw_env(env):
     while hasattr(env, 'env'):
         env = env.env
     return env
+
+
+def sim_geom_id(sim, geom_name):
+    try:
+        return sim.model.geom_name2id(geom_name)
+    except Exception:
+        return None
+
+
+def sim_body_pos(sim, body_name):
+    try:
+        body_id = sim.model.body_name2id(body_name)
+    except Exception:
+        return None
+    return np.asarray(sim.data.body_xpos[body_id], dtype=np.float32)
+
+
+def object_body_name(obj):
+    for attr in ("root_body", "body_name", "root_body_name"):
+        value = getattr(obj, attr, None)
+        if value is not None:
+            if isinstance(value, (list, tuple)):
+                if len(value) == 0:
+                    continue
+                value = value[0]
+            return value
+    name = getattr(obj, "name", None)
+    return "{}_main".format(name) if name is not None else None
+
+
+def object_geom_names(obj):
+    geom_names = []
+    for attr in ("visual_geoms", "contact_geoms"):
+        for geom_name in getattr(obj, attr, []):
+            if geom_name not in geom_names:
+                geom_names.append(geom_name)
+    return geom_names
+
+
+def object_is_active_in_scene(sim, obj):
+    body_name = object_body_name(obj)
+    if body_name is None:
+        return True
+    try:
+        body_id = sim.model.body_name2id(body_name)
+    except Exception:
+        return True
+    return bool(sim.model.body_pos[body_id][2] > -10.0)
+
+
+def geom_xy_radius(sim, geom_id):
+    size = np.asarray(sim.model.geom_size[geom_id], dtype=np.float32)
+    geom_type = int(sim.model.geom_type[geom_id])
+    if geom_type in (2, 3, 5):
+        return float(size[0])
+    if geom_type in (4, 6):
+        return float(np.linalg.norm(size[:2]))
+    return float(np.linalg.norm(size[:2])) if size.shape[0] >= 2 else float(size[0])
+
+
+def object_center_and_radius(sim, obj):
+    centers = []
+    radii = []
+    for geom_name in object_geom_names(obj):
+        geom_id = sim_geom_id(sim, geom_name)
+        if geom_id is None:
+            continue
+        centers.append(np.asarray(sim.data.geom_xpos[geom_id], dtype=np.float32))
+        radii.append(geom_xy_radius(sim, geom_id))
+    if centers:
+        center = np.mean(np.stack(centers, axis=0), axis=0)
+        radius = max(radii)
+        return center, radius
+
+    body_name = object_body_name(obj)
+    center = sim_body_pos(sim, body_name) if body_name is not None else None
+    if center is None:
+        return None, None
+    return center, 0.0
+
+
+def get_oracle_obstacle_geometry(env, target_object_name=None, obstacle_names=None):
+    raw_env = get_raw_env(env)
+    sim = getattr(raw_env, "sim", None)
+    if sim is None:
+        raise ValueError("Collision diagnosis requires simulator access")
+
+    target_lower = target_object_name.lower() if target_object_name is not None else None
+    obstacle_name_set = set(name.lower() for name in obstacle_names) if obstacle_names else None
+    centers = []
+    radii = []
+    names = []
+    for obj in getattr(raw_env, "objects", []):
+        name = getattr(obj, "name", None)
+        if name is None:
+            continue
+        name_lower = name.lower()
+        if target_lower is not None and name_lower == target_lower:
+            continue
+        if obstacle_name_set is not None and name_lower not in obstacle_name_set:
+            continue
+        if not object_is_active_in_scene(sim, obj):
+            continue
+        center, radius = object_center_and_radius(sim, obj)
+        if center is None:
+            continue
+        centers.append(center)
+        radii.append(radius)
+        names.append(name)
+    if not centers:
+        return np.zeros((0, 3), dtype=np.float32), np.zeros((0,), dtype=np.float32), names
+    return np.stack(centers, axis=0).astype(np.float32), np.asarray(radii, dtype=np.float32), names
 
 
 def rollout_with_diag(policy, env, horizon, target_object="Can", collision_threshold=0.03, verbose=True):
@@ -44,7 +155,7 @@ def rollout_with_diag(policy, env, horizon, target_object="Can", collision_thres
         success = env.is_success()["task"]
 
         try:
-            centers, radii, _, _, _ = ObstacleGuidanceUtils.get_oracle_obstacle_geometry(
+            centers, radii, _ = get_oracle_obstacle_geometry(
                 env=raw_env, target_object_name=target_object, obstacle_names=None)
             if len(centers) > 0:
                 eef = np.array(next_obs.get("robot0_eef_pos", np.array([0, 0, 0])), dtype=np.float32)

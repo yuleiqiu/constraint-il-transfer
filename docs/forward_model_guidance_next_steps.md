@@ -1,8 +1,14 @@
-# Forward Model / Guidance Handoff
+# Forward Model / Guidance Archive
+
+**Status (2026-07-08)**: archived result document. The forward-model,
+obstacle-guidance, and action-ranking implementation code has been removed from
+the active repository. The active replacement is `delta_eef_pose_action`, whose
+policy chunks reconstruct executed EEF pose trajectories directly; see
+`outputs/eef_pose_osc_policy/README.md`.
 
 ## Purpose
 
-This document is the current handoff for the `Delta geo` part of the project:
+This document records the completed `Delta geo` forward-model / ranking branch:
 
 ```text
 single-object OSC diffusion policy
@@ -10,9 +16,8 @@ single-object OSC diffusion policy
   -> multi-object obstacle-aware execution
 ```
 
-It should be enough for a new agent / new conversation to understand the
-current conclusions and the next concrete experiment without replaying the
-whole discussion history.
+It is retained so the experiment outcome remains auditable without keeping the
+implementation code.
 
 ## Project Framing
 
@@ -23,16 +28,13 @@ failure is decomposed into:
 - `Delta geo`: physical obstruction, i.e. the target is known but the arm path
   collides with extra objects.
 
-The current work assumes `Delta vis` is handled by oracle target mask / known
-target information, and focuses on `Delta geo`.
+The archived work assumed `Delta vis` was handled by oracle target mask / known
+target information, and focused on `Delta geo`.
 
-**2026-07-06 status update**: this handoff remains useful for the
-forward-model / action-ranking branch, but it is no longer the primary next
-experiment. We found that built-in robosuite `OSC_POSE` can replay full-pose
-absolute EEF targets when the action is constructed as
-`[next_eef_pos, quat2axisangle(next_eef_quat_site), gripper]`, with controller
-references refreshed after `reset_to`. The current primary Route B experiment
-is to train a diffusion policy on that executable full-pose EEF action.
+**2026-07-08 status update**: the active replacement is delta EEF pose policy.
+It learns an executable full-pose EEF action and reconstructs executed EEF pose
+chunks directly. The old OSC-action forward model is no longer part of the
+active code path.
 
 The near-term claim should not be:
 
@@ -43,11 +45,11 @@ forward-model guidance works
 The defensible claim is narrower:
 
 ```text
-For OSC-controlled diffusion policies, naive action integration is an
-unreliable trajectory proxy. A learned action-to-EEF forward model provides a
-more accurate basis for geometry-aware action evaluation. The base policy does
-sample geometry-safer chunks, but geometry-only action selection is not enough
-to improve rollout success.
+For original OSC-action diffusion policies, naive action integration is an
+unreliable trajectory proxy. A learned action-to-EEF forward model was a better
+diagnostic predictor, but geometry-only action selection was not enough to
+improve rollout success. Delta EEF pose replaces this route by making
+action-chunk to EEF-pose trajectory reconstruction direct.
 ```
 
 ## Confirmed Facts
@@ -71,11 +73,11 @@ outputs/robomimic/eval/forward_model_controlled_comparison/SUMMARY.md
 outputs/diagnostics/guidance_update_effect/SUMMARY.md
 ```
 
-Current interpretation:
+Archived interpretation:
 
 ```text
 current gradient-based guidance update: not reliable
-forward model itself: still useful as a trajectory predictor
+delta_eef_pose_action replaces the OSC-action forward-model route
 ```
 
 ### 2. Route B Was Reopened With Full-Pose OSC Absolute Actions
@@ -124,7 +126,7 @@ docs/route_b_validation/adapter_report.md
 outputs/route_b_validation/panda_mink_controller/STAGE_CONCLUSION.md
 ```
 
-### 3. Learned OSC Forward Model Is Useful
+### 3. Learned OSC Forward Model Was a Useful Diagnostic
 
 Forward model objective:
 
@@ -138,13 +140,13 @@ Trained on:
 third_party/robomimic/datasets/can/yq/image_v15.hdf5
 ```
 
-Config:
+Historical config, now removed from active code:
 
 ```text
 configs/forward_model/osc_eef_forward_image_v15.json
 ```
 
-Model output:
+Historical model output, now removed from active outputs:
 
 ```text
 outputs/forward_model/osc_eef_forward_image_v15/model.pth
@@ -165,13 +167,15 @@ Random-action env rollout validation:
 | random action scale 1.0 | 6.56 cm | 13.73 cm |
 | random action scale 0.3 | 2.72 cm | 4.01 cm |
 
-Interpretation:
+Archived interpretation:
 
 - The forward model is substantially better than naive cumsum.
 - Full-range random actions are out-of-distribution and produce larger
   absolute error.
-- The model should be used as an action-chunk evaluator / trajectory predictor,
-  not as proof that gradient guidance works.
+- The result explains why the original OSC action interface was a poor target
+  for geometry guidance.
+- The model is no longer an active dependency because `delta_eef_pose_action`
+  gives the policy a directly reconstructible EEF pose chunk.
 
 Relevant outputs:
 
@@ -231,9 +235,12 @@ Relevant doc:
 docs/action_chunk_ranking_report.md
 ```
 
-## Current Code State
+## Archived Code State
 
-Robomimic subrepo:
+The following paths are historical references from the completed branch. The
+implementation files have been removed from the active repository.
+
+Robomimic subrepo at the time:
 
 ```text
 third_party/robomimic
@@ -247,7 +254,7 @@ Relevant commits:
 c203b21 feat: add parallel guided rollout script
 ```
 
-Key robomimic files:
+Removed robomimic files:
 
 ```text
 third_party/robomimic/robomimic/utils/osc_forward_model_utils.py
@@ -257,7 +264,7 @@ third_party/robomimic/robomimic/scripts/run_obstacle_guided_agent.py
 third_party/robomimic/robomimic/scripts/run_obstacle_guided_agent_parallel.py
 ```
 
-Key local scripts:
+Removed local scripts:
 
 ```text
 scripts/train_osc_eef_forward_model.py
@@ -276,16 +283,16 @@ Important checkpoint:
 outputs/robomimic/checkpoints/diffusion_policy_can_yq_masked_image/model_epoch_140_image_v15_can_mask_success_1.0.pth
 ```
 
-## Current Question
+## Superseded Question
 
-The primary question is now:
+The primary question at the time was:
 
 ```text
 Can diffusion policy learn the corrected executable full-pose EEF action and
 roll it out closed-loop through OSC absolute mode?
 ```
 
-Concrete next direction:
+This direction was superseded by delta EEF pose:
 
 1. Build or reuse an action key with
    `[next_eef_pos, quat2axisangle(next_eef_quat_site), gripper]`.

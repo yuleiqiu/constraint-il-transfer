@@ -8,40 +8,27 @@
 ```
 scripts/
 ├── AGENTS.md
-├── benchmark_pointcloud.py
-├── check_osc_forward_model_grad.py
 ├── diagnose_collisions.py
 ├── diagnose_control_timing.py
-├── diagnose_forward_model_random_rollout.py
-├── diagnose_guidance_gradient.py
-├── diagnose_guidance_update_effect.py
-├── osc_forward_model.py
-├── train_osc_eef_forward_model.py
 ├── eef_pose_osc_policy/
     ├── create_abs_eef_osc_dataset.py
     ├── create_delta_eef_pose_osc_dataset.py
+    ├── diagnose_delta_eef_policy_traj.py
     ├── verify_abs_eef_osc_dataset.py
     ├── verify_delta_eef_pose_osc_dataset.py
     ├── smoke_abs_eef_osc_wrapper.py
     └── smoke_delta_eef_pose_osc_wrapper.py
-├── 2026-06-22_600_rollout_eval/
+└── 2026-06-22_600_rollout_eval/
     ├── run_baseline_eval_matrix.py
-    ├── run_baseline_eval_matrix_no_mask.py
-    ├── run_pc1_eval_matrix.py
-    └── run_pc1_eval_matrix_no_mask.py
-└── 2026-07-03_action_chunk_ranking/
-    ├── run_ranking_diagnostic.py
-    ├── run_ranking_eval_matrix.py
-    └── aggregate_ranking_results.py
+    └── run_baseline_eval_matrix_no_mask.py
 ```
 
 ## Categories
 
-- **Diagnostic / benchmark** (in `scripts/`) — standalone scripts for per-step EEF↔obstacle tracking, denoising-step cost logging, pointcloud overhead measurement, OSC control timing, guidance update counterfactuals, and forward-model random-rollout validation. See docstrings for usage.
-- **Forward model** (in `scripts/`) — `train_osc_eef_forward_model.py`, `osc_forward_model.py`, and `check_osc_forward_model_grad.py` train and validate the OSC action-chunk to EEF-trajectory surrogate used by guidance diagnostics.
-- **EEF-pose OSC policy** (in `scripts/eef_pose_osc_policy/`) — dataset converters, expert replay validators, and robomimic wrapper smoke tests for absolute and delta full-pose EEF actions executed by `OSC_POSE`. Training runbook: `docs/eef_pose_osc_policy_training.md`.
-- **Eval matrices** (in `scripts/2026-06-22_600_rollout_eval/`) — 4 scripts that reproduce the 600-rollout experiment from 2026-06-22. Each launches a 4-env × 3-seed grid of inner robomimic scripts and aggregates per-environment summaries. See `docs/RESEARCH_LOG.md` (2026-06-22 entry) for the experiment background.
-- **Action-chunk ranking** (in `scripts/2026-07-03_action_chunk_ranking/`) — same-state diagnostic, controlled rollout matrix launcher, and aggregation for sampling multiple diffusion action chunks and selecting the safest chunk with cumsum or learned-forward-model trajectory scoring.
+- **Diagnostic / benchmark** (in `scripts/`) — standalone scripts for per-step EEF↔obstacle tracking and OSC control timing. See docstrings for usage.
+- **EEF-pose OSC policy** (in `scripts/eef_pose_osc_policy/`) — dataset converters, expert replay validators, robomimic wrapper smoke tests, and delta-policy pose-trajectory diagnostics for full-pose EEF actions executed by `OSC_POSE`. Training runbook: `docs/eef_pose_osc_policy_training.md`; conclusion: `outputs/eef_pose_osc_policy/README.md`.
+- **Eval matrices** (in `scripts/2026-06-22_600_rollout_eval/`) — baseline launchers from the 2026-06-22 evaluation branch. Guided / PC1 launchers were removed with the archived guidance implementation. See `docs/RESEARCH_LOG.md` (2026-06-22 entry) for the experiment background.
+- **Archived forward-model / ranking results** — implementation scripts have been removed. Keep result documents only: `docs/forward_model_guidance_next_steps.md`, `docs/action_chunk_ranking_report.md`, and `outputs/forward_model/osc_eef_forward_image_v15/summary.md`.
 
 ## Convention for future experiments
 

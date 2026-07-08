@@ -11,23 +11,24 @@ Single-to-multi-object diffusion policy transfer. Decompose failure modes into t
 
 - Masked-image policy (π_mask) trained on PickPlaceCan (oracle mask input)
 - Large-scale experiment (600 rollouts × 4 environments) completed: **inference-time guided obstacle avoidance does not improve success rate**
-- **Root cause confirmed**: `action → trajectory` mapping (`cumsum(action * 0.05)`) has 3-4cm RMSE vs. OSC PD-controller actual dynamics, comparable to obstacle radius (3-5cm), making cost guidance unreliable
-- **Route B reopened (2026-07-06)**: Corrected full-pose OSC absolute replay succeeds: `next_obs/robot0_eef_pos + next_obs/robot0_eef_quat_site -> axis_angle + gripper` with `OSC_POSE input_type=absolute, input_ref_frame=world, kp=500` replays all 200 PickPlaceCan demos with 100% final success, mean position error 0.51 cm, and mean orientation error 0.39 deg. Earlier absolute-OSC failure was a diagnostic/action-interface issue, not proof that EEF pose cannot control the robot. Next step: train DP to predict this executable full-pose EEF action. See `docs/route_b_validation/report.md`.
-- **OSC forward model validated as trajectory predictor (2026-07-03)**: Learned `f_hat(state, OSC action chunk) -> future EEF xyz trajectory` clearly beats `cumsum(action * 0.05)` on held-out demos and random-action env rollouts. It is useful for action-chunk evaluation, but plugging it into current gradient guidance did not improve rollout success.
-- **Action-chunk ranking tested (2026-07-06)**: Safe chunks exist, and the forward model ranks them better than cumsum in same-state diagnostics, but geometry-only ranking did not improve rollout success. This is no longer the primary next step unless Route B full-pose learning fails again. Handoff: `docs/forward_model_guidance_next_steps.md`.
+- **Root cause confirmed**: original OSC `action → trajectory` mapping (`cumsum(action * 0.05)`) has 3-4cm RMSE vs. OSC PD-controller actual dynamics, comparable to obstacle radius (3-5cm), making cost guidance unreliable.
+- **Delta EEF pose replacement validated (2026-07-08)**: clean-image DP trained on `delta_eef_pose_action` reaches 0.98 PickPlaceCan rollout success. A policy action chunk can be reconstructed into the executed EEF pose trajectory with mean position error 0.131 cm and mean orientation error 0.253 deg over a successful rollout. This is the direct replacement for the old OSC-action forward-model path. See `outputs/eef_pose_osc_policy/README.md`.
+- **Absolute EEF pose remains a comparison baseline**: best clean-image abs EEF policy reached 0.82 PickPlaceCan rollout success; delta EEF is the preferred action interface.
+- **Forward-model / action-ranking branch archived**: the learned OSC-action forward model and geometry-only ranking experiments are retained as result documents only. Their implementation code has been removed because `delta_eef_pose_action` makes action-chunk to EEF-pose trajectory reconstruction direct.
 
 ## 3. Subproject AGENTS
 
-- `third_party/robomimic/AGENTS.md` — robomimic architecture, config system, diffusion policy pipeline, guidance components, rollout scripts
+- `third_party/robomimic/AGENTS.md` — robomimic architecture, config system, diffusion policy pipeline, rollout scripts
 - `third_party/robosuite/` — (no separate AGENTS yet; distractor env variants in `robosuite/environments/manipulation/pick_place.py`)
 
 ### Project scripts (scripts/)
-- `scripts/AGENTS.md` — index of local scripts (diagnostics, forward model, eval-matrix grouping)
+- `scripts/AGENTS.md` — index of local scripts (EEF-pose OSC policy tooling, diagnostics, eval-matrix grouping)
 
 ### Experiment outputs (outputs/)
 - `robomimic/eval/baseline/` — baseline (no guidance) rollout results
 - `robomimic/eval/obstacle_guided/` — guided rollout results
-- `forward_model/` — OSC action-chunk → EEF trajectory model + validation summaries
+- `forward_model/` — archived OSC-action forward-model result summaries only
+- `eef_pose_osc_policy/` — delta EEF pose policy conclusion and trajectory reconstruction diagnostics
 - `route_b_validation/` — EEF replay diagnostics, corrected OSC absolute replay, adapter rejection, Panda Mink follow-up
 
 ## 4. File Map
@@ -35,11 +36,10 @@ Single-to-multi-object diffusion policy transfer. Decompose failure modes into t
 ```
 constraint-il-transfer/             ← Project root (independent git repo)
 ├── AGENTS.md                        ← This file. Project global state + file index
-├── configs/                         ← Per-experiment training/eval configs
 ├── metadata/                        ← Environment metadata
 ├── docs/                            ← Research artifacts
 │   ├── RESEARCH_LOG.md              ← Reverse-chronological log of discussions + decisions
-│   ├── forward_model_guidance_next_steps.md ← Current Δgeo handoff + next experiment
+│   ├── forward_model_guidance_next_steps.md ← Archived Δgeo forward-model / ranking handoff and results
 │   └── route_b_validation/          ← Route B reports + controller / adapter validation + corrected OSC replay
 ├── papers/<name>/                   ← Paper PDFs + agent-generated analysis.md
 ├── scripts/                         ← Local Python scripts (→ AGENTS.md for index)
@@ -57,11 +57,12 @@ constraint-il-transfer/             ← Project root (independent git repo)
 
 1. Read this file (AGENTS.md) first
 2. For project state + recent discussions → `docs/RESEARCH_LOG.md`
-3. For current Δgeo handoff + next experiment → `docs/forward_model_guidance_next_steps.md`
+3. For current EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
 4. For local scripts and how to run them → `scripts/AGENTS.md`
 5. For the Route B experiment report → `docs/route_b_validation/report.md`
-6. For paper comparisons → `papers/<name>/analysis.md`
-7. For inner robomimic code → `third_party/robomimic/AGENTS.md`, then invoke `code-explorer` agent
+6. For archived Δgeo forward-model / ranking results → `docs/forward_model_guidance_next_steps.md`
+7. For paper comparisons → `papers/<name>/analysis.md`
+8. For inner robomimic code → `third_party/robomimic/AGENTS.md`, then invoke `code-explorer` agent
 
 ## 6. Environments
 
@@ -82,11 +83,10 @@ constraint-il-transfer/             ← Project root (independent git repo)
 - **Part B (Δgeo)**: Physical obstruction — "arm trajectory blocked by new objects"
 - **OSC**: Operational Space Controller (PD controller)
 - **EEF**: End-Effector Frame (robot gripper position)
-- **Route B**: Switching prediction target from `action[16,7]` to `EEF trajectory[16,3]` to eliminate action→trajectory mapping error
-- **Executable full-pose EEF action**: `[eef_pos_world(3), eef_quat_site_xyzw -> axis_angle(3), gripper(1)]` sent to `OSC_POSE` in absolute/world mode
-- **Forward model**: Learned surrogate `f_hat(state, OSC action chunk) -> future EEF xyz trajectory`, trained on original OSC-action demos and used for action-chunk evaluation
-- **Action-chunk ranking**: Proposed next inference-time strategy — sample multiple diffusion action chunks, score predicted EEF trajectories with obstacle geometry, execute the safest chunk without gradient-updating actions
-- For diffusion/guidance terminology → `third_party/robomimic/AGENTS.md`
+- **Route B**: Switching prediction target from original OSC actions to executable EEF pose actions so policy chunks map directly to EEF trajectories
+- **Executable full-pose EEF action**: `[eef_pos_world or delta_eef_pos_world(3), eef_quat_site_xyzw delta/absolute axis_angle(3), gripper(1)]` sent to `OSC_POSE`
+- **Delta EEF pose action**: `[next_obs/robot0_eef_pos - obs/robot0_eef_pos, axis_angle(R_next_site @ R_obs_site.T), gripper]`; preferred replacement for the old OSC-action forward-model path
+- **Forward model**: Archived learned surrogate `f_hat(state, OSC action chunk) -> future EEF xyz trajectory`; result documents are retained, implementation code is removed
 
 ## 9. Environment Setup
 

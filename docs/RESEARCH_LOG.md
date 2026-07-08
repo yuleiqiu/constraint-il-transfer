@@ -14,6 +14,63 @@
 
 ---
 
+## 2026-07-08
+
+### Delta EEF pose replaces the old OSC-action forward-model route
+
+Trained clean-image diffusion policies on executable EEF-pose OSC actions.
+The delta EEF policy is the preferred interface:
+
+```text
+delta_eef_pose_action = [
+  next_obs/robot0_eef_pos - obs/robot0_eef_pos,
+  axis_angle(R_next_site @ R_obs_site.T),
+  actions[:, 6],
+]
+```
+
+Controller:
+
+```text
+OSC_POSE
+input_type = delta
+input_ref_frame = world
+kp = 500
+controller_goal_update_mode = desired
+```
+
+The best delta policy reached 0.98 PickPlaceCan rollout success during
+training eval. A dedicated diagnostic confirmed that policy action chunks can
+be reconstructed into the executed EEF pose trajectory directly:
+
+| rollout | horizon | chunks | mean pos err | max pos err | mean ori err | max ori err |
+|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 334 | 42 | 0.131 cm | 0.541 cm | 0.253 deg | 1.019 deg |
+
+This resolves the action-to-trajectory problem for the active code path:
+guidance or ranking can operate directly on the policy-predicted EEF pose
+trajectory without a learned OSC forward model.
+
+The absolute EEF policy remains a useful comparison baseline, but was weaker
+in training eval: best success 0.82, final success 0.72.
+
+Decision: archive the old OSC-action forward-model / obstacle-guidance /
+geometry-only ranking implementation code. Keep result documents for audit,
+but do not keep the old implementation in the active repository. Future
+guidance, if needed, should be implemented against `delta_eef_pose_action`
+trajectory reconstruction rather than resurrecting the original OSC-action
+guidance stack.
+
+Relevant files:
+
+```text
+outputs/eef_pose_osc_policy/README.md
+scripts/eef_pose_osc_policy/diagnose_delta_eef_policy_traj.py
+docs/eef_pose_osc_policy_training.md
+docs/forward_model_guidance_next_steps.md
+docs/action_chunk_ranking_report.md
+```
+
 ## 2026-07-06
 
 ### Route B correction: full-pose EEF can control built-in OSC absolute

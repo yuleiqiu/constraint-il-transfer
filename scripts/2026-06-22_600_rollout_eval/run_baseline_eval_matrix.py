@@ -84,7 +84,7 @@ def find_existing_eval_processes() -> list[str]:
         raise RuntimeError("failed to inspect running processes: {}".format(proc.stderr.strip()))
     current_pid = os.getpid()
     matches = []
-    needles = ("run_trained_agent.py", "run_obstacle_guided_agent.py")
+    needles = ("run_trained_agent.py",)
     for line in proc.stdout.splitlines():
         if not any(needle in line for needle in needles):
             continue

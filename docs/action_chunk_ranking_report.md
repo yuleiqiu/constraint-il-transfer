@@ -2,6 +2,12 @@
 
 Date: 2026-07-06
 
+**Status (2026-07-08)**: archived result document. The ranking implementation
+scripts have been removed; the result is retained as evidence that
+geometry-only ranking on original OSC action chunks is not the active path.
+`delta_eef_pose_action` replaces this route by making action chunk to EEF pose
+trajectory reconstruction direct.
+
 ## Question
 
 Does the single-object OSC diffusion policy sample geometry-safe action chunks
@@ -26,13 +32,15 @@ Implemented variants:
 - `forward_model` gated ranking: keep the first sampled chunk if it is already
   safe; only rank/replace when the first chunk has positive obstacle cost.
 
-The main scripts are:
+The implementation scripts used for this report were:
 
 ```text
 scripts/2026-07-03_action_chunk_ranking/run_ranking_diagnostic.py
 scripts/2026-07-03_action_chunk_ranking/run_ranking_eval_matrix.py
 scripts/2026-07-03_action_chunk_ranking/aggregate_ranking_results.py
 ```
+
+These scripts are no longer present in the active repository.
 
 ## Same-State Diagnostic
 
