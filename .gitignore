@@ -2,6 +2,7 @@
 outputs/**/*.mp4
 outputs/**/*.pth
 outputs/robomimic/train/
+outputs/eef_pose_osc_policy/eval/
 
 # Third-party source repos (managed independently)
 third_party/

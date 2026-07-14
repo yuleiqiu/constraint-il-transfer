@@ -14,6 +14,58 @@
 
 ---
 
+## 2026-07-14
+
+### Delta EEF multi-environment evaluation separates obstruction from non-completion
+
+Evaluated the best clean-image delta EEF checkpoint over all four PickPlace
+environments using three evaluation seeds and 50 episodes per environment and
+seed. Standard task success decreases sharply as distractors are added, while
+non-target collision rate rises to roughly two thirds on the two hardest
+environments.
+
+Trajectory and contact analysis confirms that pre-target physical obstruction
+is the dominant hard-environment failure mode: most failures collide before
+the first target contact, and most never contact Can. This does not imply that
+collision-any is equivalent to failure. The data also contains successful
+episodes with incidental distractor contact and collision-free failures where
+Can is lifted or transported but not successfully placed.
+
+Decision: future obstacle-aware comparisons should report standard Task SR and
+the mutually exclusive Safe SR / CR / NCR metrics. For diagnosis, preserve the
+more informative four-way partition:
+
+```text
+safe success
+success with collision
+collision failure
+collision-free non-completion (NCR)
+```
+
+CR reduction without Task SR improvement can merely transfer probability mass
+from collision failure to NCR. Geometry-aware ranking should target pre-grasp
+obstruction, while grasp / placement failures remain a separate task-phase
+problem.
+
+The delta EEF action interface remains healthy across this evaluation: no
+actions were clipped, and reconstructed policy chunks track executed EEF pose
+within sub-centimeter mean position error. The old OSC action-to-trajectory
+mapping problem has not returned.
+
+This result narrows the earlier historical claim that all failures are
+collision-type: that observation was specific to the older policy and
+diagnostic setup and does not generalize to the current clean-image delta EEF
+policy.
+
+Relevant files:
+
+```text
+outputs/eef_pose_osc_policy/multienv_eval_report.md
+scripts/eef_pose_osc_policy/eval_delta_eef_multienv.py
+scripts/eef_pose_osc_policy/analyze_delta_eef_eval.py
+scripts/eef_pose_osc_policy/plot_delta_eef_eval_cases.py
+```
+
 ## 2026-07-08
 
 ### Delta EEF pose replaces the old OSC-action forward-model route

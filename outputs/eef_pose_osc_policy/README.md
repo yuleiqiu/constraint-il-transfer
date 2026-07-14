@@ -91,6 +91,22 @@ orientation error max = 1.019 deg
 action_clip_count = 0
 ```
 
+## Multi-Environment Evaluation
+
+The epoch-260 checkpoint was evaluated for 50 episodes on each of three
+evaluation seeds across all four PickPlace environments. Standard task success
+decreased from 0.907 on PickPlaceCan to 0.200 on the three-distractor variant,
+while non-target collision rate increased from 0.000 to 0.680.
+
+The harder-environment failures are dominated by pre-target obstruction, but
+the evaluation also contains collision-free placement failures and successful
+episodes with incidental distractor contact. Future evaluation should report
+Task SR together with Safe SR, CR, and NCR, and preserve the full four-way
+partition: safe success, success with collision, collision failure, and NCR.
+
+Full results and representative trajectories:
+[`multienv_eval_report.md`](multienv_eval_report.md).
+
 ## Implication
 
 For this action interface, guidance or action-chunk ranking can compute costs

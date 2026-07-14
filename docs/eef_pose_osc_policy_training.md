@@ -93,6 +93,58 @@ uv run python scripts/eef_pose_osc_policy/diagnose_delta_eef_policy_traj.py \
 
 Reference result: `outputs/eef_pose_osc_policy/README.md`.
 
+## Multi-Env Diagnostic Eval
+
+Before training more seeds, evaluate the current best delta EEF checkpoint over
+the four PickPlace variants and three eval seeds:
+
+```bash
+MUJOCO_GL=egl MUJOCO_EGL_DEVICE_ID=0 ROBOMIMIC_GPU_ID=0 \
+uv run python scripts/eef_pose_osc_policy/eval_delta_eef_multienv.py \
+  --agent outputs/robomimic/train/dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth \
+  --envs PickPlaceCan PickPlaceBreadCan PickPlaceBreadCerealCan PickPlaceBreadCerealMilkCan \
+  --seeds 600 601 602 \
+  --n-rollouts 50 \
+  --horizon 400 \
+  --out-dir outputs/eef_pose_osc_policy/eval/delta_epoch260_4env_3seed_n50
+```
+
+The script writes:
+
+```text
+manifest.json
+summary.csv
+summary.md
+<env>/seed_<seed>/episodes.hdf5
+<env>/seed_<seed>/episode_metrics.jsonl
+<env>/seed_<seed>/stats.json
+```
+
+It records raw and clipped actions, EEF pose trajectory, object poses and
+displacements, contact counts, obstacle clearance, and per-chunk predicted vs.
+executed EEF pose trajectories. MuJoCo states are optional via `--save-states`.
+
+Analyze the eval output:
+
+```bash
+uv run python scripts/eef_pose_osc_policy/analyze_delta_eef_eval.py \
+  --eval-dir outputs/eef_pose_osc_policy/eval/delta_epoch260_4env_3seed_n50
+```
+
+This writes `analysis/episode_features.csv`, `analysis/env_summary.csv`,
+`analysis/analysis_summary.json`, and `analysis/analysis.md`.
+
+Plot representative cases from the saved low-dimensional trajectories:
+
+```bash
+uv run python scripts/eef_pose_osc_policy/plot_delta_eef_eval_cases.py \
+  --eval-dir outputs/eef_pose_osc_policy/eval/delta_epoch260_4env_3seed_n50 \
+  --per-bucket 3
+```
+
+This writes `analysis/cases/case_index.md`, `analysis/cases/case_index.csv`,
+and one PNG / JSON pair per selected case.
+
 ## Debug Train
 
 Delta:
