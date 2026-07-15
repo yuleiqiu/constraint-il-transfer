@@ -161,11 +161,11 @@ This directory contains three **independent** git repos. The root repo
 only tracks files outside `third_party/`; the two forks are managed
 manually.
 
-| Repo | Path | Current branch | Commit style |
-|------|------|----------------|--------------|
-| root | `./` | `main` | `<scope>: <description>` |
-| robomimic | `third_party/robomimic/` | `exp/guided-dp` | `<scope>: <description>` |
-| robosuite | `third_party/robosuite/` | `multi-obj-env` | `feat: ...` (Conventional Commits) |
+| Repo | Path | Commit style |
+|------|------|--------------|
+| root | `./` | `<scope>: <description>` |
+| robomimic | `third_party/robomimic/` | `<scope>: <description>` |
+| robosuite | `third_party/robosuite/` | `feat: ...` (Conventional Commits) |
 
 ### Rules
 
@@ -196,8 +196,6 @@ git check-ignore -v third_party/robomimic third_party/robosuite
 
 ### Maintenance
 
-- The branch column reflects the current state. Update it when a fork
-  switches branches.
 - Commit-style column reflects the observed convention. Update only if
   the convention changes.
 
