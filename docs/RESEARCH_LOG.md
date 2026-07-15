@@ -10,7 +10,37 @@
 
 ## Current Unverified Hypotheses
 
-- [UNVERIFIED] Can point-cloud obstacle geometry replace oracle obstacle geometry once action-chunk evaluation is reliable?
+- [UNVERIFIED] Guided denoising over executable `delta_eef_pose_action` can
+  improve multi-object Task SR over the unguided baseline without merely
+  shifting collision failures to collision-free non-completion.
+
+---
+
+## 2026-07-15
+
+### Guided denoising becomes the active project direction
+
+Adopted a project-level formulation in which a pretrained diffusion imitation
+policy provides the action prior and a deployment-time cost guides the reverse
+denoising process through the predicted clean action chunk. The formulation is
+kept deliberately general and no longer uses the earlier `Delta vis` / `Delta
+geo` decomposition as the primary project framing.
+
+The active robomimic branch does not currently contain a guidance
+implementation. The completed negative guidance experiments used the original
+OSC-action policy with either the inaccurate `cumsum(action * 0.05)` trajectory
+proxy or its learned forward-model replacement. Those results do not constitute
+a test of denoising guidance over the current executable
+`delta_eef_pose_action` policy.
+
+Decision: implement the next guidance experiment directly against delta EEF
+pose trajectory reconstruction. Evaluate end-to-end utility by Task SR together
+with Safe SR / CR / NCR, rather than treating lower predicted cost or fewer
+collisions alone as success.
+
+Canonical formulation: `docs/guided_denoising/formulation.md`. The agreed
+first implementation contract is
+`docs/guided_denoising/implementation_plan.md`.
 
 ---
 

@@ -2,20 +2,22 @@
 
 ## 1. Goal
 
-Single-to-multi-object diffusion policy transfer. Decompose failure modes into two orthogonal dimensions:
+Single-to-multi-object diffusion policy transfer through deployment-time guided
+denoising. Use a pretrained diffusion imitation policy as the action prior and
+inject a deployment cost during denoising, without retraining the policy.
 
-- **Part A (Δvis)**: Visual ambiguity — "which object is the target?"
-- **Part B (Δgeo)**: Physical obstruction — "arm trajectory blocked by new objects"
+The immediate research question is whether guidance over executable delta EEF
+pose action chunks can improve multi-object task success while preserving the
+task behavior learned from demonstrations.
 
 ## 2. Current State
 
-- Masked-image policy (π_mask) trained on PickPlaceCan (oracle mask input)
-- Large-scale experiment (600 rollouts × 4 environments) completed: **inference-time guided obstacle avoidance does not improve success rate**
-- **Root cause confirmed**: original OSC `action → trajectory` mapping (`cumsum(action * 0.05)`) has 3-4cm RMSE vs. OSC PD-controller actual dynamics, comparable to obstacle radius (3-5cm), making cost guidance unreliable.
+- **Guided denoising adopted as the active direction (2026-07-15)**: the project-level formulation defines a deployment-cost-reweighted diffusion policy and guidance through the predicted clean action. See `docs/guided_denoising/formulation.md`.
+- **The active branch has no guidance implementation yet**: the next experiment is to implement denoising-time cost guidance against `delta_eef_pose_action` and evaluate whether it improves Task SR over the unguided baseline without merely shifting collision failures to collision-free non-completion.
 - **Delta EEF pose replacement validated (2026-07-08)**: clean-image DP trained on `delta_eef_pose_action` reaches 0.98 PickPlaceCan rollout success. A policy action chunk can be reconstructed into the executed EEF pose trajectory with mean position error 0.131 cm and mean orientation error 0.253 deg over a successful rollout. This is the direct replacement for the old OSC-action forward-model path. See `outputs/eef_pose_osc_policy/README.md`.
 - **Delta EEF multi-environment eval completed (2026-07-14)**: one best checkpoint evaluated over 4 environments x 3 eval seeds x 50 episodes reaches Task SR 0.907 / 0.707 / 0.253 / 0.200 as distractors increase, with CR 0.000 / 0.213 / 0.647 / 0.680. Hard-environment failures are dominated by pre-target obstruction, but successful collisions and collision-free placement failures both occur. Future comparisons should report Task SR plus Safe SR / CR / NCR and retain the four-way outcome partition. See `outputs/eef_pose_osc_policy/multienv_eval_report.md`.
 - **Absolute EEF pose remains a comparison baseline**: best clean-image abs EEF policy reached 0.82 PickPlaceCan rollout success; delta EEF is the preferred action interface.
-- **Forward-model / action-ranking branch archived**: the learned OSC-action forward model and geometry-only ranking experiments are retained as result documents only. Their implementation code has been removed because `delta_eef_pose_action` makes action-chunk to EEF-pose trajectory reconstruction direct.
+- **Old OSC-action guidance did not work end to end**: 600-rollout obstacle-guidance evaluation slightly reduced success, and replacing the inaccurate `cumsum(action * 0.05)` trajectory proxy with a learned forward model did not recover Task SR. The old guidance, forward-model, and action-ranking code is archived and must not be treated as the current delta-EEF guidance experiment.
 
 ## 3. Subproject AGENTS
 
@@ -40,6 +42,7 @@ constraint-il-transfer/             ← Project root (independent git repo)
 ├── metadata/                        ← Environment metadata
 ├── docs/                            ← Research artifacts
 │   ├── RESEARCH_LOG.md              ← Reverse-chronological log of discussions + decisions
+│   ├── guided_denoising/             ← Active formulation and implementation contract
 │   ├── forward_model_guidance_next_steps.md ← Archived Δgeo forward-model / ranking handoff and results
 │   └── route_b_validation/          ← Route B reports + controller / adapter validation + corrected OSC replay
 ├── papers/<name>/                   ← Paper PDFs + agent-generated analysis.md
@@ -58,12 +61,14 @@ constraint-il-transfer/             ← Project root (independent git repo)
 
 1. Read this file (AGENTS.md) first
 2. For project state + recent discussions → `docs/RESEARCH_LOG.md`
-3. For current EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
-4. For local scripts and how to run them → `scripts/AGENTS.md`
-5. For the Route B experiment report → `docs/route_b_validation/report.md`
-6. For archived Δgeo forward-model / ranking results → `docs/forward_model_guidance_next_steps.md`
-7. For paper comparisons → `papers/<name>/analysis.md`
-8. For inner robomimic code → `third_party/robomimic/AGENTS.md`, then invoke `code-explorer` agent
+3. For the active mathematical direction → `docs/guided_denoising/formulation.md`
+4. For the implementation contract → `docs/guided_denoising/implementation_plan.md`
+5. For current EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
+6. For local scripts and how to run them → `scripts/AGENTS.md`
+7. For the Route B experiment report → `docs/route_b_validation/report.md`
+8. For archived forward-model / ranking results → `docs/forward_model_guidance_next_steps.md`
+9. For paper comparisons → `papers/<name>/analysis.md`
+10. For inner robomimic code → `third_party/robomimic/AGENTS.md`
 
 ## 6. Environments
 
@@ -80,13 +85,14 @@ constraint-il-transfer/             ← Project root (independent git repo)
 
 ## 8. Terminology
 
-- **Part A (Δvis)**: Visual ambiguity — "which object is the target?"
-- **Part B (Δgeo)**: Physical obstruction — "arm trajectory blocked by new objects"
 - **OSC**: Operational Space Controller (PD controller)
 - **EEF**: End-Effector Frame (robot gripper position)
 - **Route B**: Switching prediction target from original OSC actions to executable EEF pose actions so policy chunks map directly to EEF trajectories
 - **Executable full-pose EEF action**: `[eef_pos_world or delta_eef_pos_world(3), eef_quat_site_xyzw delta/absolute axis_angle(3), gripper(1)]` sent to `OSC_POSE`
 - **Delta EEF pose action**: `[next_obs/robot0_eef_pos - obs/robot0_eef_pos, axis_angle(R_next_site @ R_obs_site.T), gripper]`; preferred replacement for the old OSC-action forward-model path
+- **Guided denoising**: modifying reverse diffusion at deployment time using the gradient of a deployment cost evaluated on the predicted clean action chunk
+- **Deployment cost**: a lower-is-better differentiable criterion `C(F(o, A), e*)` used to reweight or guide the pretrained policy distribution
+- **Predicted clean action**: the denoiser's estimate `A_0_hat` reconstructed from the noisy action at the current diffusion timestep
 - **Forward model**: Archived learned surrogate `f_hat(state, OSC action chunk) -> future EEF xyz trajectory`; result documents are retained, implementation code is removed
 
 ## 9. Environment Setup
