@@ -3,6 +3,13 @@ outputs/**/*.mp4
 outputs/**/*.pth
 outputs/robomimic/train/
 outputs/eef_pose_osc_policy/eval/
+outputs/guided_denoising/**/*.hdf5
+outputs/guided_denoising/**/*.jsonl
+!outputs/guided_denoising/same_state/states.hdf5
+!outputs/guided_denoising/same_state/sweep_results.jsonl
+!outputs/guided_denoising/paired_pilot/episode_metrics.jsonl
+outputs/guided_denoising/guidance_visualizations/
+outputs/guided_denoising/final_trajectory_comparison/without_arrows/
 
 # Third-party source repos (managed independently)
 third_party/

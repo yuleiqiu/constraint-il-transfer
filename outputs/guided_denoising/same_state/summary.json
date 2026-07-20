@@ -1,0 +1,74 @@
+{
+  "captured_states": {
+    "PickPlaceBreadCerealCan": 5,
+    "PickPlaceBreadCerealMilkCan": 5
+  },
+  "candidate_mode": "collision",
+  "clearance_margin": 0.02,
+  "scales": [
+    0.0,
+    0.001,
+    0.003,
+    0.01,
+    0.03
+  ],
+  "summary_by_scale": [
+    {
+      "scale": 0.0,
+      "states": 10,
+      "mean_predicted_min_clearance_m": -0.003788262978196144,
+      "mean_actual_min_clearance_m": -0.0025763487443327903,
+      "collision_rate": 0.8,
+      "action_clip_count": 0,
+      "max_guidance_update_norm": 0.0,
+      "max_physical_waypoint_displacement_m": 0.0,
+      "mean_raw_action_l2_change_from_scale_zero": 0.0
+    },
+    {
+      "scale": 0.001,
+      "states": 10,
+      "mean_predicted_min_clearance_m": -0.002143813855946064,
+      "mean_actual_min_clearance_m": -0.0019407055340707302,
+      "collision_rate": 0.8,
+      "action_clip_count": 0,
+      "max_guidance_update_norm": 0.5217010378837585,
+      "max_physical_waypoint_displacement_m": 0.003427026327699423,
+      "mean_raw_action_l2_change_from_scale_zero": 0.0028837663121521473
+    },
+    {
+      "scale": 0.003,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.0019396208226680756,
+      "mean_actual_min_clearance_m": -0.0003189576789736748,
+      "collision_rate": 0.5,
+      "action_clip_count": 0,
+      "max_guidance_update_norm": 1.5651030540466309,
+      "max_physical_waypoint_displacement_m": 0.010281078517436981,
+      "mean_raw_action_l2_change_from_scale_zero": 0.01604793407022953
+    },
+    {
+      "scale": 0.01,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.011086244881153107,
+      "mean_actual_min_clearance_m": 0.002093242667615414,
+      "collision_rate": 0.6,
+      "action_clip_count": 0,
+      "max_guidance_update_norm": 5.217008113861084,
+      "max_physical_waypoint_displacement_m": 0.034270260483026505,
+      "mean_raw_action_l2_change_from_scale_zero": 0.16934533417224884
+    },
+    {
+      "scale": 0.03,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.023156472109258176,
+      "mean_actual_min_clearance_m": 0.004991891607642174,
+      "collision_rate": 0.5,
+      "action_clip_count": 0,
+      "max_guidance_update_norm": 15.651021957397461,
+      "max_physical_waypoint_displacement_m": 0.10281077772378922,
+      "mean_raw_action_l2_change_from_scale_zero": 0.6781286001205444
+    }
+  ],
+  "selected_scale": 0.01,
+  "selection_note": "Selected as the largest scale with improved predicted and executed clearance in all 10 fixed states, zero action clipping, a 3.43 cm maximum waypoint displacement, and sub-centimeter mean executed-trajectory reconstruction error. Scale 0.03 was rejected because its maximum waypoint displacement reached 10.28 cm and mean reconstruction error increased to 2.45 cm."
+}

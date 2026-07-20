@@ -1,0 +1,3 @@
+env,pairs,baseline_task_sr,guided_task_sr,task_sr_delta,baseline_cr,guided_cr,cr_delta,baseline_ncr,guided_ncr,ncr_delta,collision_failure_to_ncr,baseline_success_to_guided_failure,baseline_failure_to_guided_success
+PickPlaceBreadCerealCan,10,0.1,0.2,0.1,0.8,0.6,-0.2,0.1,0.2,0.1,1,0,1
+PickPlaceBreadCerealMilkCan,10,0.2,0.3,0.1,0.7,0.9,0.2,0.1,0.0,-0.1,0,1,2

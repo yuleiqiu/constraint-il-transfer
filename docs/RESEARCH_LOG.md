@@ -18,6 +18,66 @@
 
 ## 2026-07-15
 
+### Guided Diffusion Policy clears fixed-state checks but not paired-rollout scaling
+
+Implemented the first delta-EEF guided-denoising contract as a separately
+registered `guided_diffusion_policy` algorithm. The original Diffusion Policy
+keeps an identity reverse-step hook, `RolloutPolicy` is unchanged, and existing
+Diffusion Policy checkpoints are adapted to the guided variant in memory
+without rewriting checkpoint files.
+
+The implementation uses the current DDIM step's predicted clean action,
+unnormalizes the executed `[:, 1:9]` slice with checkpoint statistics,
+reconstructs absolute EEF waypoints from delta positions, applies the agreed XY
+unsquared penetration push, differences pushed waypoints back to delta actions,
+and updates only the executed XY coordinates of the current reverse sample.
+
+Unit tests and an epoch-260 checkpoint smoke test pass. Guidance disabled and
+enabled with zero scale both reproduce the original policy output exactly under
+the same observation and random seed. A nonzero scale changes the sample and
+produces ten finite DDIM-step diagnostic records.
+
+Fixed-state capture saves both MuJoCo simulator state and the exact stacked
+policy observation. Direct restoration checks reproduced simulator state, RGB,
+and an eight-step executed EEF prefix exactly. This is paired-branch
+restoration, not a claim that hidden controller history can be resumed
+seamlessly.
+
+Gate C captured five collision-producing states in each of the two hardest
+environments and swept the five contracted scales with common diffusion noise.
+Every nonzero scale improved both predicted and short-prefix executed clearance
+in all ten states without action clipping. Selected `0.01` as the largest
+plausible setting: its maximum waypoint push was 3.43 cm and its mean executed
+trajectory reconstruction error remained below 1 cm. Rejected `0.03` because
+the maximum push reached 10.28 cm and mean reconstruction error rose to 2.45
+cm.
+
+Gate D then ran 20 matched full-episode pairs at scale `0.01`, split evenly
+between the two- and three-distractor environments. Task SR increased by 0.10
+in both environments, but the safety effect was not consistent. In the
+two-distractor environment CR fell by 0.20 while NCR rose by 0.10; in the
+three-distractor environment CR rose by 0.20 and Safe SR fell by 0.10, with two
+new successes still containing distractor contact. No action clipping occurred.
+
+Decision: do not scale this setting to the full evaluation matrix. The pilot is
+evidence that guidance changes task outcomes, but it does not yet support the
+project hypothesis that the current cost improves multi-object task success
+without trading or worsening safety. Keep the hypothesis unverified and use the
+paired cases to diagnose task phase, contact timing, and footprint/model
+mismatch before selecting another experiment.
+
+Relevant files:
+
+```text
+third_party/robomimic/robomimic/algo/guided_diffusion_policy.py
+third_party/robomimic/robomimic/utils/guided_denoising_utils.py
+scripts/guided_denoising/
+outputs/guided_denoising/same_state/
+outputs/guided_denoising/paired_pilot/report.md
+```
+
+---
+
 ### Guided denoising becomes the active project direction
 
 Adopted a project-level formulation in which a pretrained diffusion imitation

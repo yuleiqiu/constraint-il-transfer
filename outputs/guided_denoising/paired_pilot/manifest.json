@@ -1,0 +1,18 @@
+{
+  "agent": "outputs/robomimic/train/dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth",
+  "envs": [
+    "PickPlaceBreadCerealCan",
+    "PickPlaceBreadCerealMilkCan"
+  ],
+  "seeds": [
+    700,
+    701
+  ],
+  "n_rollouts": 5,
+  "horizon": 400,
+  "guidance_scale": 0.01,
+  "clearance_margin": 0.02,
+  "terminate_on_success": true,
+  "decision": "do_not_scale_to_full_matrix",
+  "decision_note": "The 20-pair pilot raises Task SR by 0.10 in both environments, but the safety effect is inconsistent: CR falls by 0.20 while NCR rises by 0.10 in PickPlaceBreadCerealCan, whereas CR rises by 0.20 and Safe SR falls by 0.10 in PickPlaceBreadCerealMilkCan. This does not satisfy the Gate D criterion for scaling the current setting."
+}

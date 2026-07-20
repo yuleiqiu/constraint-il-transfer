@@ -1,0 +1,24 @@
+{
+  "agent": "outputs/robomimic/train/dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth",
+  "envs": [
+    "PickPlaceBreadCerealCan",
+    "PickPlaceBreadCerealMilkCan"
+  ],
+  "capture_seeds": [
+    600,
+    601,
+    602
+  ],
+  "states_per_env": 5,
+  "horizon": 400,
+  "candidate_mode": "collision",
+  "scales": [
+    0.0,
+    0.001,
+    0.003,
+    0.01,
+    0.03
+  ],
+  "clearance_margin": 0.02,
+  "selected_scale": 0.01
+}
