@@ -80,10 +80,10 @@ current gradient-based guidance update: not reliable
 delta_eef_pose_action replaces the OSC-action forward-model route
 ```
 
-### 2. Route B Was Reopened With Full-Pose OSC Absolute Actions
+### 2. EEF Action-Interface Validation Was Resolved
 
-The earlier Route B rejection was too broad. These built-in robosuite routes
-still fail and remain useful negative results:
+The earlier rejection of EEF-space control was too broad. These tested routes
+failed and remain useful negative results:
 
 - `delta_eef_action -> OSC delta`: fails replay.
 - position-only `next_eef_pos -> OSC absolute`: fails replay.
@@ -97,7 +97,7 @@ Corrected built-in OSC route:
 - controller: built-in `OSC_POSE`, `input_type=absolute`, `input_ref_frame=world`,
   `kp=500`
 - replay result: 200/200 final success on both `image_v15.hdf5` and the older
-  Route B `image_v15_delta_eef.hdf5`
+  `image_v15_delta_eef.hdf5`
 - mean final position error: 0.51 cm
 
 Mink controller follow-up:
@@ -106,25 +106,24 @@ Mink controller follow-up:
 - Full-pose replay with `ik_hand_ori_cost=0.05` gets 100% final success on the
   tested valid split and first 50 train demos.
 - A learned full-pose EEF diffusion policy using that interface still gets
-  0.0 rollout success. This does not rule out the corrected OSC full-pose
-  interface, because it is a different controller and action convention.
+  0.0 rollout success.
 
-Current Route B status:
+Final interpretation:
 
 ```text
 expert full-pose EEF replay through OSC absolute: passes
 expert full-pose EEF replay through Mink IK: passes
 learned full-pose EEF target policy through Mink IK: fails
-learned full-pose EEF target policy through corrected OSC absolute: untested
+clean-image absolute EEF policy through OSC: 0.82 rollout success
+clean-image delta EEF policy through OSC: 0.98 rollout success
 ```
 
-Relevant docs:
-
-```text
-docs/route_b_validation/report.md
-docs/route_b_validation/adapter_report.md
-outputs/route_b_validation/panda_mink_controller/STAGE_CONCLUSION.md
-```
+The delta EEF policy is the preferred interface and reconstructs its executed
+trajectory directly. The superseded controller-validation implementation and
+per-controller outputs were removed from the active tree; their audit trail is
+preserved in Git history and `docs/RESEARCH_LOG.md`. Canonical current results
+are in `outputs/eef_pose_osc_policy/README.md` and
+`docs/eef_pose_osc_policy_training.md`.
 
 ### 3. Learned OSC Forward Model Was a Useful Diagnostic
 
@@ -285,68 +284,22 @@ outputs/robomimic/checkpoints/diffusion_policy_can_yq_masked_image/model_epoch_1
 
 ## Superseded Question
 
-The primary question at the time was:
+The primary question was whether a diffusion policy could learn an executable
+full-pose EEF action and roll it out closed-loop through OSC. It has been
+answered:
 
 ```text
-Can diffusion policy learn the corrected executable full-pose EEF action and
-roll it out closed-loop through OSC absolute mode?
+corrected absolute EEF replay through OSC: passes
+clean-image absolute EEF policy: 0.82 PickPlaceCan rollout success
+clean-image delta EEF policy: 0.98 PickPlaceCan rollout success
+delta EEF trajectory reconstruction: 0.131 cm mean position error
 ```
 
-This direction was superseded by delta EEF pose:
-
-1. Build or reuse an action key with
-   `[next_eef_pos, quat2axisangle(next_eef_quat_site), gripper]`.
-2. Train DP with the same observation setup as the successful masked-image OSC
-   policy, but with the corrected full-pose EEF action target.
-3. Roll out through the same `OSC_POSE` absolute/world interface used by
-   `docs/route_b_validation/playback_eef_pose.py`.
-
-Concrete training decision recorded on 2026-07-06:
-
-```text
-start from clean image diffusion policy, not masked-image policy
-action target = full-pose absolute OSC action, 7D
-diffusion sampler = DDIM
-num_train_timesteps = 100
-num_inference_timesteps = 10
-action normalization = min_max
-```
-
-The intended 7D action is:
-
-```text
-[
-  next_obs/robot0_eef_pos,
-  quat2axisangle(next_obs/robot0_eef_quat_site),
-  actions[:, 6],
-]
-```
-
-Important implementation checks before long training:
-
-1. Dataset / checkpoint env metadata must select built-in `OSC_POSE` with
-   `input_type=absolute`, `input_ref_frame=world`, and `kp=500`.
-2. Axis-angle values must be normalized for DP training and unnormalized before
-   `env.step`.
-3. After unnormalization, the robomimic env path must not clip the absolute
-   pose action back to `[-1, 1]`; absolute rotation components may exceed 1.
-4. Dataset generation must use `robot0_eef_quat_site` in robosuite `[x, y, z, w]`
-   order and must not reorder the quaternion before `quat2axisangle`.
-5. If rollout uses `env.reset_to(...)`, refresh controller references / goals
-   after reset as in `docs/route_b_validation/playback_eef_pose.py`.
-6. Inference should not need online quaternion conversion if the learned action
-   is already axis-angle; quaternion handling belongs in dataset creation.
-
-Recommended validation order:
-
-1. Generate the absolute EEF OSC dataset and replay expert actions through the
-   corrected controller.
-2. Replay the same actions through the robomimic env wrapper to catch action
-   clipping or stale-controller-reset issues.
-3. Run a debug / short training job and verify action dimension, normalization
-   statistics, controller metadata in the checkpoint, and rollout action scale.
-4. Only then run full PickPlaceCan training. Multi-object transfer should wait
-   until the clean single-object policy succeeds with this action space.
+No further controller-route experiment is needed. Current work should keep the
+validated `delta_eef_pose_action` interface and focus on deployment costs that
+preserve task intent during guided denoising. See
+`outputs/eef_pose_osc_policy/README.md` for the conclusion and
+`docs/eef_pose_osc_policy_training.md` for the maintained pipeline.
 
 The action-ranking experiment remains a completed secondary branch. It changed
 that branch's bottleneck: the question is no longer whether safe chunks exist;
@@ -376,9 +329,8 @@ Concrete ranking directions:
 - Do not claim forward-model guidance works based on forward-model validation.
 - Do not keep tuning geometry-only ranking; it has been tested and hurts
   rollout success.
-- Do not revive the old `delta_eef_action -> OSC delta` Route B path.
-- Do not treat the failed learned Mink EEF policy as evidence against the
-  corrected built-in OSC full-pose route; that route is untested.
+- Do not revive the old `delta_eef_action -> OSC delta`, adapter, or Mink
+  controller paths; the delta EEF pose interface has replaced them.
 - Do not use the early 10-rollout scale sweep as final evidence; it is
   superseded by the larger controlled comparison.
 - Do not move to point-cloud ranking before oracle-geometry ranking has a
@@ -387,10 +339,11 @@ Concrete ranking directions:
 ## Reading Order For A Fresh Agent
 
 1. This file.
-2. `docs/route_b_validation/report.md`
-3. `docs/action_chunk_ranking_report.md`
-4. `outputs/forward_model/osc_eef_forward_image_v15/summary.md`
-5. `outputs/forward_model/random_rollout_validation/random_scale_0p3/SUMMARY.md`
-6. `outputs/robomimic/eval/forward_model_controlled_comparison/SUMMARY.md`
-7. `outputs/diagnostics/guidance_update_effect/SUMMARY.md`
-8. `third_party/robomimic/AGENTS.md`
+2. `outputs/eef_pose_osc_policy/README.md`
+3. `docs/eef_pose_osc_policy_training.md`
+4. `docs/action_chunk_ranking_report.md`
+5. `outputs/forward_model/osc_eef_forward_image_v15/summary.md`
+6. `outputs/forward_model/random_rollout_validation/random_scale_0p3/SUMMARY.md`
+7. `outputs/robomimic/eval/forward_model_controlled_comparison/SUMMARY.md`
+8. `outputs/diagnostics/guidance_update_effect/SUMMARY.md`
+9. `third_party/robomimic/AGENTS.md`

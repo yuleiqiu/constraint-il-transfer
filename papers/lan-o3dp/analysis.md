@@ -61,7 +61,15 @@ The authors decompose the problem into:
 ### Action-Space vs Trajectory-Space Representation
 **Critical difference.** Lan-o3dp predicts action sequences A_t representing "end-effector poses" (likely EEF pose deltas or absolute poses in task space). They compute guidance cost on the estimated clean action sequence A_{0|k}.
 
-Our project previously predicted action[16,7] (OSC controller inputs) and tried to map actions to EEF trajectories for guidance, which failed due to 3-4cm RMSE mapping error. Lan-o3dp does not explicitly discuss this action-to-trajectory calibration issue because their action space appears to be closer to EEF poses directly. However, their **A_{0|k} estimation technique** is directly transferable to our planned Route B (predicting EEF trajectory [16,3] directly), where A_{0|k} would literally be the predicted EEF trajectory and cost could be computed natively without any action-to-trajectory mapping.
+Our project previously predicted OSC controller inputs and tried to map them to
+EEF trajectories for guidance, which failed due to centimeter-scale mapping
+error. That issue is now resolved by the executable 7D
+`delta_eef_pose_action`: each predicted clean chunk directly determines the
+full-pose EEF command trajectory while retaining the gripper action. Lan-o3dp's
+**A_{0|k} estimation technique** therefore transfers directly to the current
+interface; the remaining question is whether the deployment cost improves
+safety without destroying task intent, not how to map policy actions to an EEF
+trajectory.
 
 ### Inference-Side vs Training-Side Approach
 **Mixed approach, analogous to ours.**
@@ -74,7 +82,8 @@ Our project previously predicted action[16,7] (OSC controller inputs) and tried 
 ### Reproducibility in robomimic/robosuite
 **Highly reproducible.** The method is built on Diffusion Policy (Chi et al. 2023), the same codebase underlying robomimic. Their guidance formulation (Equation 3, Algorithm 1) is implementable within our existing `_guided_scheduler_step()` infrastructure. Specifically:
 - We already compute A_{0|k} (our x0_hat).
-- We already have pointcloud backprojection (action_chunk_to_eef_xyz_traj()).
+- We already reconstruct EEF trajectories directly from predicted clean delta
+  EEF pose chunks.
 - Their threshold-based cost (Equation 4) is a simpler variant of our cost functions.
 
 ### Relationship to STAR-Gen and Other Works
@@ -82,8 +91,12 @@ Our project previously predicted action[16,7] (OSC controller inputs) and tried 
 - **Compared to our work**: We share the same base approach (diffusion policy + guidance + object-centric conditioning). The key differences are:
   1. They use 3D point clouds; we use 2D masked images.
   2. They use language for object specification; we use oracle masks.
-  3. They compute cost on A_{0|k} (estimated clean actions); we initially computed cost on noisy actions and then tried mapping to trajectories.
-  4. They found guidance works; we found it didn't due to action-trajectory mapping errors.
+  3. Both now compute cost on A_{0|k} (estimated clean actions); our current
+     action interface is executable delta EEF pose rather than their reported
+     EEF-pose sequence.
+  4. They report successful guidance; our delta-EEF mechanism baseline changes
+     predicted and executed trajectories, but its paired-rollout safety effects
+     are inconsistent and do not yet support a method claim.
 
 ## Limitations and Gaps
 
@@ -91,28 +104,35 @@ Our project previously predicted action[16,7] (OSC controller inputs) and tried 
 2. **Ignoring z-axis in real world**: The real-world experiments only consider x,y distances for obstacle avoidance. In our pick-and-place tasks, the z-axis is critical for reaching over or around obstacles.
 3. **No systematic obstacle avoidance evaluation**: The paper shows qualitative trajectory visualizations (Figure 8) but lacks quantitative analysis of avoidance success rates as a function of obstacle position, size, or number. We have exactly this data from our 600-rollout experiments.
 4. **Segmentation dependency**: The entire pipeline assumes perfect open-vocabulary segmentation. Failure modes from false positives/negatives are not analyzed.
-5. **No action-to-dynamics calibration**: While they avoid our specific mapping problem, they don't discuss how their predicted EEF poses map to actual robot dynamics. In robosuite with OSC controllers, this remains a concern unless we predict trajectories directly.
+5. **No action-to-dynamics calibration**: They do not quantify how predicted
+   EEF poses map to executed robot motion. Our delta EEF reconstruction
+   diagnostic supplies this calibration, but Lan-o3dp itself does not.
 6. **Small-scale evaluation**: 40 demos per task and limited real-world tasks (3) make it unclear how the method scales to more complex multi-object manipulation.
 
 ## Potentially Reusable Code or Ideas
 
-1. **A_{0|k} cost computation** (Algorithm 1): Compute obstacle cost on the estimated clean trajectory (x0_hat) rather than the noisy intermediate. This is the most important technique for our Route B. Since we're switching to EEF trajectory prediction, our x0_hat will be a clean EEF trajectory and we can compute point-to-obstacle costs directly.
+1. **A_{0|k} cost computation** (Algorithm 1): Compute obstacle cost on the
+estimated clean trajectory (x0_hat) rather than the noisy intermediate. Our
+current delta EEF pose interface already supports this directly.
 
 2. **Late-stage guidance scheduling** (k <= S): Only apply guidance during the last S denoising steps. We should implement this in our `_guided_scheduler_step()` to avoid misleading gradients during early chaotic denoising.
 
 3. **Threshold-based cost with safety margin Q*** (Equation 4): Only apply gradients when the trajectory penetrates within a safety distance of the obstacle. This creates a "hard constraint" feel rather than a soft repulsion field, which may be more stable. We currently use continuous costs; adding a threshold could improve stability.
 
-4. **Epsilon prediction for guidance**: Their finding that epsilon prediction works for guidance while sample prediction is "almost ineffective" strongly supports keeping our noise-prediction formulation when we switch to trajectory-space.
+4. **Epsilon prediction for guidance**: Their finding that epsilon prediction works for guidance while sample prediction is "almost ineffective" supports keeping our current noise-prediction formulation.
 
 5. **DP3 encoder with residual connection**: If we ever incorporate pointcloud conditioning, their ablation shows this architecture (3-layer MLP + residual) outperforms PointNet by a large margin (+54%).
 
 6. **Language-based decomposition for deployable perception**: While we currently use oracle masks, their LLM -> target/obstacle decomposition is a concrete pipeline for removing oracle assumptions in future work.
 
-## Specific Recommendations for Our Route B
+## Specific Recommendations for the Current Delta-EEF Method
 
-Given our confirmed root cause (action->trajectory mapping error), Lan-o3dp strongly validates our Route B direction with these specific implementation notes:
+The action-to-trajectory issue is already resolved. The useful next ablations
+from Lan-o3dp are:
 
-- **Predict EEF trajectory [16,3] directly** as the diffusion target. Compute guidance cost directly on x0_hat (the predicted clean trajectory) without any action mapping.
+- **Keep the validated 7D delta EEF pose action interface.** Compute guidance
+  cost on the EEF trajectory reconstructed from x0_hat; do not introduce a new
+  position-only `[16,3]` prediction target.
 - **Use epsilon prediction** (not sample prediction) to maintain guidance efficacy.
 - **Implement step-thresholded guidance**: Only guide when k <= S (e.g., last 20-30% of denoising steps).
 - **Implement distance-thresholded cost**: Use Q* safety margin rather than continuous repulsion.

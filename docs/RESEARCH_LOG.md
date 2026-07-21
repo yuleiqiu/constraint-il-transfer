@@ -16,6 +16,27 @@
 
 ---
 
+## 2026-07-21
+
+### Superseded EEF controller-route artifacts removed from the active tree
+
+The executable delta EEF pose interface has resolved the controller/action
+representation question: the clean-image policy reaches 0.98 PickPlaceCan
+success and its action chunks reconstruct executed EEF trajectories directly.
+The old absolute/delta controller comparisons, adapter experiments, and Panda
+Mink follow-up are therefore no longer active code or current experiment
+outputs.
+
+Decision: remove the superseded validation implementation and per-controller
+outputs, remove the unused robomimic Mink experiment config, and retire the
+local Panda Mink robosuite branch. Keep the corrected OSC reset/controller
+support, the maintained delta/absolute EEF configs, this historical narrative,
+and the Git history. Canonical current references are
+`outputs/eef_pose_osc_policy/README.md` and
+`docs/eef_pose_osc_policy_training.md`.
+
+---
+
 ## 2026-07-20
 
 ### Clean-policy intent diagnostic finds no single dominant hard-environment mechanism
@@ -70,8 +91,8 @@ non-completion. Multiple independently trained policy seeds precede the final
 cross-task claim.
 
 Decision: use technical names instead of the historical `Route B` label in
-active documents. Preserve existing archival directory names until a separate
-path migration is justified. The complete staged plan and gates are in
+active documents. A separate path-cleanup decision was deferred here and then
+completed on 2026-07-21. The complete staged plan and gates are in
 `docs/guided_denoising/research_plan.md`.
 
 ---
@@ -326,12 +347,10 @@ policy to predict the executable full-pose EEF action above and roll it out
 through OSC absolute/world mode. The Panda Mink results are now historical
 controller exploration, not the required controller path.
 
-Relevant files:
-
-```text
-docs/route_b_validation/playback_eef_pose.py
-outputs/route_b_validation/playback_eef_pose_all_200.json
-```
+The replay implementation and raw summary were removed from the active tree on
+2026-07-21 after the delta EEF replacement was validated; this result remains
+recoverable from Git history. See `outputs/eef_pose_osc_policy/README.md` for
+the final action-interface conclusion.
 
 ### Decision: next Route B training should use clean-image DDIM full-pose OSC
 
@@ -456,7 +475,9 @@ part is feasible with both corrected built-in OSC absolute mode and Mink IK.
 The remaining open question is learned closed-loop full-pose EEF target
 generation.
 
-Relevant docs: `docs/route_b_validation/report.md`, `docs/route_b_validation/adapter_report.md`, `outputs/route_b_validation/panda_mink_controller/STAGE_CONCLUSION.md`.
+The detailed controller-validation artifacts were removed from the active tree
+on 2026-07-21 and remain recoverable from Git history. The superseding result is
+`outputs/eef_pose_osc_policy/README.md`.
 
 ### OSC forward model validated as trajectory predictor, not as proof of guidance usefulness
 
@@ -504,7 +525,9 @@ on 2026-07-06. It applies to the specific routes tested here, especially
 `delta_eef_action -> OSC delta`, position-only absolute OSC, and built-in IK.
 It does **not** apply to corrected full-pose absolute OSC replay.
 
-Tested 4 supervision-signal/controller combinations on 5 demos (full report in `docs/route_b_validation/report.md`):
+Tested 4 supervision-signal/controller combinations on 5 demos. The detailed
+report was removed from the active tree on 2026-07-21 after supersession and
+remains recoverable from Git history:
 
 | Plan | Signal | Controller | End error | Pass? |
 |---|---|---|---|---|

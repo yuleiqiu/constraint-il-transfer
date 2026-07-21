@@ -200,8 +200,7 @@ documents should use the actual object being discussed:
 
 Migration should be semantic rather than a global string replacement.
 Historical reports may say “historically called Route B” once when needed for
-traceability. Existing directory names such as `docs/route_b_validation/` and
-`outputs/route_b_validation/` should remain archival locators for now because
-renaming them would touch scripts and stored references without changing the
-research content. New files and active project summaries must not introduce
-the old label.
+traceability. The superseded validation implementation and result directories
+were removed from the active tree after the executable delta EEF pose route was
+validated; Git history and `docs/RESEARCH_LOG.md` retain the audit trail. New
+files and active project summaries must not introduce the old label.
