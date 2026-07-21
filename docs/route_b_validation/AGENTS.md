@@ -1,10 +1,11 @@
-# AGENTS.md — route_b_validation/
+# AGENTS.md — archived EEF action-interface validation
 
 ## Context
 
-This directory contains the **Route B validation** experiments: offline
-investigations into whether EEF-based supervision signals (instead of OSC
-delta actions) can be replayed open-loop.
+This directory contains archived **EEF action-interface validation**
+experiments: offline investigations into whether EEF-based supervision signals
+(instead of OSC delta actions) can be replayed open-loop. The directory keeps
+its historical name so existing scripts and result references remain valid.
 
 **Current result (2026-07-06)**: corrected full-pose EEF actions can be
 replayed through built-in OSC absolute mode. The executable action is
@@ -118,7 +119,7 @@ Start with `report.md`. Key sections:
 - **Adapter follow-up** — `adapter_report.md` verifies that converting
   `real delta_EEF -> OSC command` is not reliable enough for execution
 - **Corrected OSC full-pose replay** — expert EEF replay passes with built-in
-  OSC absolute mode; this is the next Route B training target
+  OSC absolute mode; this became the next EEF-pose policy training target
 - **Panda Mink controller follow-up** — expert EEF replay also passes with a
   third-party controller, but the learned Mink EEF policy still fails rollout
 

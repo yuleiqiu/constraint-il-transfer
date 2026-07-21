@@ -1,42 +1,46 @@
-# Guided Denoising Implementation Plan
+# LAN-O3DP-Style Guided-Denoising Mechanism Baseline
 
-Status: discussion draft. This document defines the implementation contract for
-the first delta-EEF guided-denoising experiment. It does not claim that the
-method works until end-to-end rollout results show an improvement.
+Status: completed mechanism-baseline record, 2026-07-15. The implementation
+passed unit, unguided-parity, and fixed-state checks. Its 20-pair rollout pilot
+changed task outcomes but produced inconsistent safety effects, so the tested
+setting was not scaled to the full matrix. See `research_plan.md` for the next
+research and evaluation gates.
 
 The general mathematical framework is in `formulation.md`. This document is the
-implementation contract for the LAN-O3DP-inspired first experiment.
+technical record for the LAN-O3DP-inspired first experiment, not the
+project's final method definition.
 
-## 1. Objective
+## 1. Question Tested
 
-Test whether deployment-time cost guidance can improve multi-object task
-success for the existing `delta_eef_pose_action` diffusion policy without
-retraining it.
+The experiment tested whether deployment-time cost guidance could improve
+multi-object task success for the existing `delta_eef_pose_action` diffusion
+policy without retraining it.
 
-The first experiment isolates inference-side guidance. It keeps the existing
+The experiment isolated inference-side guidance. It kept the existing
 RGB-conditioned policy, observation encoder, training data, and checkpoint
-frozen. Point-cloud policy training is a later, independent experiment.
+frozen.
 
-The experiment is successful only if robot-level Task SR improves. Lower
-predicted cost or fewer collisions alone is not sufficient.
+The acceptance criterion was robot-level Task SR improvement without merely
+moving collision failures into collision-free non-completion. Lower predicted
+cost or fewer collisions alone was not sufficient.
 
 ## 2. Scope
 
-The first implementation should:
+The implemented baseline:
 
-- reuse the existing trained delta-EEF checkpoint;
-- retain the existing two RGB observations and proprioceptive observations;
-- guide the reverse sample using a cost evaluated on the predicted clean
+- reused the existing trained delta-EEF checkpoint;
+- retained the existing two RGB observations and proprioceptive observations;
+- guided the reverse sample using a cost evaluated on the predicted clean
   action;
-- reconstruct EEF position trajectories directly from delta-EEF actions;
-- use simulator oracle obstacle geometry so perception error is not part of the
+- reconstructed EEF position trajectories directly from delta-EEF actions;
+- used simulator oracle obstacle geometry so perception error was not part of the
   first test;
-- support an opt-in deployment cost and a disabled baseline path;
-- preserve the existing rollout behavior when guidance is disabled;
-- expose enough diagnostics to explain whether guidance changes predicted and
+- supported an opt-in deployment cost and a disabled baseline path;
+- preserved the existing rollout behavior when guidance was disabled;
+- exposed enough diagnostics to determine whether guidance changed predicted and
   executed trajectories in the intended direction.
 
-The first implementation should not restore the archived OSC forward model,
+The baseline did not restore the archived OSC forward model,
 action-ranking stack, point-cloud observation pipeline, policy retraining, or
 post-hoc action refinement.
 
@@ -55,8 +59,8 @@ post-hoc action refinement.
 | $u^{\Delta}_t$ | Delta-action update obtained by differencing the pushed absolute waypoints |
 | $s_t$ | LAN-O3DP-style scheduler factor $\lambda/\sqrt{\bar\alpha_{t-1}}$ |
 
-The first version does not backpropagate through the RGB encoder or denoising
-network. Within each reverse step, it only needs autograd through:
+The baseline does not backpropagate through the RGB encoder or denoising
+network. Within each reverse step, autograd covers only:
 
 ```text
 predicted clean normalized action (treated as the current guidance point)
@@ -72,7 +76,7 @@ implementation does not backpropagate the cost through `cumsum` to obtain a
 delta-action gradient. The resulting delta update is applied directly to the
 scheduler's reverse sample.
 
-This is the operational meaning of "LAN-O3DP-style" in this plan; it is not
+This is the operational meaning of "LAN-O3DP-style" in this baseline; it is not
 classifier guidance through the conditional diffusion network.
 
 ## 4. Action and Trajectory Semantics
@@ -86,17 +90,16 @@ end = start + action_horizon
 executed_action = predicted_action[:, start:end]
 ```
 
-Guidance must evaluate this same slice. With the current defaults, this is
+Guidance evaluates this same slice. With the implemented defaults, this is
 `[:, 1:9]`, not `[:, 0:8]`.
 
-Before trajectory reconstruction, the slice must be converted from normalized
+Before trajectory reconstruction, the slice is converted from normalized
 policy coordinates to the raw `delta_eef_pose_action` coordinates using the
 checkpoint's action-normalization statistics.
 
-Those statistics currently belong to `RolloutPolicy`, not the inner diffusion
-policy. The rollout setup must pass the existing checkpoint statistics into the
-guidance context; the guidance implementation must not recompute or hard-code
-its own scale and offset.
+Those statistics belong to `RolloutPolicy`, not the inner diffusion policy.
+The rollout setup passes the checkpoint statistics into the guidance context
+rather than recomputing or hard-coding scale and offset.
 
 For the position dimensions:
 
@@ -110,21 +113,23 @@ uses delta positions, its distance calculation cannot be copied directly onto
 the first two action dimensions. The cumulative reconstruction above is
 mandatory.
 
-The initial cost is position-only. Guidance updates only the XY delta-position
-dimensions in the executed slice. It must not directly update Z, orientation,
+The cost is position-only. Guidance updates only the XY delta-position
+dimensions in the executed slice. It does not directly update Z, orientation,
 gripper, the past action at index 0, or the unexecuted suffix.
 
-## 5. Proposed Code Boundaries
+## 5. Implementation Boundaries
 
 ### robomimic fork
 
-Keep checkpoint compatibility and make guidance disabled by default.
+Checkpoint compatibility is preserved and guidance is disabled by default.
 
 - `robomimic/algo/diffusion_policy.py`
-  - add the smallest possible hook around each reverse-diffusion step;
-  - obtain the current step's predicted clean action and reverse sample;
-  - invoke guidance only when a context is present and enabled;
-  - leave the existing unguided path unchanged.
+  - exposes an identity hook around each reverse-diffusion step;
+  - leaves the existing unguided path unchanged.
+- `robomimic/algo/guided_diffusion_policy.py`
+  - registers the opt-in guided policy variant;
+  - obtains the current step's predicted clean action and reverse sample;
+  - invokes guidance only when a context is present and enabled.
 - `robomimic/utils/guided_denoising_utils.py`
   - clean-action extraction from scheduler output;
   - differentiable action unnormalization;
@@ -137,7 +142,7 @@ Keep checkpoint compatibility and make guidance disabled by default.
 - `tests/test_guided_denoising_utils.py`
   - unit and gradient-flow tests independent of robosuite rollout.
 
-The implementation should not use runtime monkey-patching of policy classes.
+The implementation does not use runtime monkey-patching of policy classes.
 
 ### Root project
 
@@ -148,10 +153,10 @@ The implementation should not use runtime monkey-patching of policy classes.
 - `outputs/guided_denoising/`
   - diagnostics and completed experiment reports.
 
-Project-specific obstacle extraction and evaluation metrics should remain in the
+Project-specific obstacle extraction and evaluation metrics remain in the
 root project rather than becoming generic robomimic library behavior.
 
-## 6. First Deployment Cost
+## 6. Implemented Deployment Cost
 
 For reconstructed EEF waypoints $P=(p_1,\ldots,p_H)$ and oracle obstacle
 footprints $(c_j,r_j)$, use the LAN-O3DP-equivalent XY unsquared penetration
@@ -169,10 +174,10 @@ $$
 
 This produces a near-unit outward update for each active waypoint-obstacle
 pair, rather than an update whose magnitude shrinks near the safety boundary as
-with a squared hinge. The implementation must use an epsilon-safe norm or an
-explicit zero-distance fallback so the gradient remains finite at $p_h=c_j$.
+with a squared hinge. The implementation uses an epsilon-safe norm so the
+gradient remains finite at $p_h=c_j$.
 
-For the first experiment:
+For this experiment:
 
 - $c_j$ comes from simulator oracle object geometry in world coordinates;
 - $r_j$ is the object's oracle XY collision footprint plus a named,
@@ -257,22 +262,23 @@ $\widetilde A_{t-1}$; do not reproduce the official code's accidental one-step
 gradient delay. Here $u^P_t$ is a unit-scale direction and $\lambda$ supplies
 its physical displacement magnitude. LAN-O3DP's $\lambda=0.03$ therefore
 corresponds roughly to a 3 cm waypoint push before division by
-$\sqrt{\bar\alpha_{t-1}}$. It is only a reference value: because action
-semantics and normalization differ, it must be exposed as a configuration
-value and checked in same-state diagnostics before rollouts.
+$\sqrt{\bar\alpha_{t-1}}$. Because action semantics and normalization differ,
+the scale is configurable and was selected through same-state diagnostics
+rather than copied directly.
 
-Keep the scheduler factor explicit rather than hiding it inside the cost. A
-predicted-noise / score update is a later comparison, not part of the first
-implementation.
+The scheduler factor remains explicit rather than being hidden inside the
+cost. A predicted-noise or score update was not tested.
 
-Record timestep, active penetration count, physical cost, minimum clearance,
-raw physical gradient norm, normalized applied-update norm, and resulting
-clean-action cost. Additional gradient normalization or clipping must be a
-named option and disabled by default.
+The diagnostics record timestep, active penetration count, physical cost,
+minimum clearance, raw physical gradient norm, normalized applied-update norm,
+and resulting clean-action cost. Additional gradient normalization and
+clipping are disabled by default.
 
-## 8. Verification Gates
+## 8. Verification Results
 
 ### Gate A: unit correctness
+
+Result: passed. The independent unit checks cover:
 
 - delta-EEF reconstruction matches a hand-computed trajectory;
 - normalized actions are converted to physical units correctly;
@@ -295,7 +301,7 @@ Purpose: prove that adding the optional guidance code does not change the
 existing policy when guidance is disabled. This catches accidental changes to
 the original inference path before evaluating the new method.
 
-With the same observation and random seed:
+Result: passed. With the same observation and random seed:
 
 - guidance disabled reproduces the existing policy output;
 - an enabled zero-cost function reproduces the existing output;
@@ -308,8 +314,8 @@ diffusion noise fixed, then vary only the guidance scale. This separates a real
 guidance effect from ordinary diffusion sampling randomness and reveals whether
 the update direction and magnitude are sensible before running full episodes.
 
-For saved obstructed states, compare unguided and guided samples generated from
-the same initial diffusion noise:
+Ten saved collision-producing states were evaluated with common diffusion
+noise. The diagnostic compared:
 
 - predicted deployment cost;
 - predicted minimum clearance;
@@ -318,17 +324,19 @@ the same initial diffusion noise:
 - executed EEF trajectory and actual clearance after a short prefix;
 - task-progress indicators.
 
-Predicted improvement without consistent executed improvement blocks rollout
-scaling.
+Every nonzero scale improved predicted and short-prefix executed clearance in
+all ten states without action clipping. Scale `0.01` was selected as the
+largest plausible setting: its maximum waypoint push was 3.43 cm. Scale `0.03`
+was rejected because its maximum push reached 10.28 cm and reconstruction error
+increased.
 
 ### Gate D: small matched rollout comparison (paired rollout pilot)
 
 Purpose: test whether a guidance change that looks correct in a fixed state
-actually helps complete the robot task. Run a small number of full baseline and
-guided episodes from matching initial environment seeds before committing to a
-large evaluation.
+actually helps complete the robot task.
 
-Use identical environment seeds for unguided and guided conditions. Report:
+The pilot used identical environment and policy seeds for unguided and guided
+conditions and reported:
 
 - Task SR;
 - Safe SR, CR, and NCR;
@@ -336,50 +344,45 @@ Use identical environment seeds for unguided and guided conditions. Report:
 - guidance trigger rate and action-update magnitude;
 - trajectory reconstruction error and action clipping.
 
-Only scale to the full evaluation matrix if guidance does not simply trade CR
-for NCR or materially reduce Task SR.
+Result: did not pass the scaling gate. Across 20 matched pairs, Task SR rose by
+0.10 in each hard environment, but CR fell by 0.20 in the two-distractor case
+and rose by 0.20 in the three-distractor case. Safe SR also fell in the latter,
+and two guided successes still contained distractor contact. The result shows
+that the mechanism changes closed-loop outcomes, but it does not establish a
+consistent method benefit. See
+`../../outputs/guided_denoising/paired_pilot/report.md`.
 
-## 9. Experiment Sequence
+## 9. Scope Boundaries
 
-The representation experiments remain separated:
+The experiment deliberately kept representation changes separate:
 
-1. **RGB policy + oracle geometry guidance**: current implementation target;
-2. **RGB policy + perceived geometry guidance**: only after inference-side
-   guidance shows useful signal;
-3. **point-cloud-conditioned policy + 3D guidance**: later retraining and
-   representation comparison.
+1. **RGB policy + oracle geometry guidance**: implemented here;
+2. **RGB policy + perceived geometry guidance**: not tested;
+3. **point-cloud-conditioned policy + 3D guidance**: not tested.
 
-This ordering prevents a policy-observation change from confounding the first
-test of guided denoising.
+This separation prevents a policy-observation change from confounding the
+mechanism test. It is not a commitment to pursue the two untested variants.
 
-## 10. Fixed Defaults and Pre-Rollout Selection
+## 10. Fixed Settings and Selection Outcome
 
-Decisions already made:
+The experiment used:
 
-- freeze the existing RGB-conditioned delta-EEF policy;
-- use oracle simulator obstacle geometry;
-- use the LAN-equivalent XY unsquared penetration cost;
-- push absolute EEF waypoints and difference them back into delta actions;
-- use the LAN-O3DP-style direct DDIM reverse-sample update;
-- use the current predicted clean action without the official one-step delay;
-- transform physical update vectors with normalizer scale and no offset;
-- use each distractor's oracle `horizontal_radius` plus a configurable 2 cm
+- a frozen RGB-conditioned delta-EEF policy;
+- oracle simulator obstacle geometry;
+- the LAN-equivalent XY unsquared penetration cost;
+- absolute EEF waypoint pushes differenced back into delta actions;
+- the LAN-O3DP-style direct DDIM reverse-sample update;
+- the current predicted clean action without the official one-step delay;
+- physical update vectors transformed with normalizer scale and no offset;
+- each distractor's oracle `horizontal_radius` plus a configurable 2 cm
   clearance for the initial circular XY footprint;
-- guide all 10 DDIM inference steps in the first diagnostic;
-- retain `action_horizon=8` for the first baseline comparison;
-- run the same-state scale sweep at `0`, `0.001`, `0.003`, `0.01`, and the LAN
+- guidance on all 10 DDIM inference steps in the first diagnostic;
+- `action_horizon=8` for the first baseline comparison;
+- a same-state scale sweep at `0`, `0.001`, `0.003`, `0.01`, and the LAN
   reference `0.03`.
 
-No conceptual decision blocks implementation. Before paired rollouts, the
-diagnostic must still select:
-
-1. the largest scale that improves predicted clearance without implausible
-   waypoint displacement or action clipping;
-2. a fixed paired set of collision-producing states and rollout seeds from the
-   two- and three-distractor environments. Existing outputs contain aggregate
-   results but not reusable simulator-state snapshots, so the diagnostic script
-   must capture these states before evaluating the sweep.
-
-The selected scale, states, and seeds must be recorded before the paired pilot.
-After code lands, `third_party/robomimic/AGENTS.md` must map this contract to the
-concrete implementation files and verification commands.
+The fixed-state sweep selected scale `0.01`; `0.03` was rejected as
+implausibly large. The paired pilot used five captured collision-producing
+states from each of the two hardest environments and matching rollout seeds.
+Concrete implementation files and verification commands are mapped in
+`third_party/robomimic/AGENTS.md`.

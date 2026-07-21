@@ -10,24 +10,27 @@ scripts/
 ├── AGENTS.md
 ├── diagnose_collisions.py
 ├── diagnose_control_timing.py
+├── 2026-07-20_intent_diagnostic/
+│   ├── analyze_intent.py
+│   └── test_analyze_intent.py
 ├── eef_pose_osc_policy/
-    ├── create_abs_eef_osc_dataset.py
-    ├── create_delta_eef_pose_osc_dataset.py
-    ├── analyze_delta_eef_eval.py
-    ├── diagnose_delta_eef_policy_traj.py
-    ├── eval_delta_eef_multienv.py
-    ├── plot_delta_eef_eval_cases.py
-    ├── verify_abs_eef_osc_dataset.py
-    ├── verify_delta_eef_pose_osc_dataset.py
-    ├── smoke_abs_eef_osc_wrapper.py
-    └── smoke_delta_eef_pose_osc_wrapper.py
+│   ├── create_abs_eef_osc_dataset.py
+│   ├── create_delta_eef_pose_osc_dataset.py
+│   ├── analyze_delta_eef_eval.py
+│   ├── diagnose_delta_eef_policy_traj.py
+│   ├── eval_delta_eef_multienv.py
+│   ├── plot_delta_eef_eval_cases.py
+│   ├── verify_abs_eef_osc_dataset.py
+│   ├── verify_delta_eef_pose_osc_dataset.py
+│   ├── smoke_abs_eef_osc_wrapper.py
+│   └── smoke_delta_eef_pose_osc_wrapper.py
 ├── guided_denoising/
-    ├── common.py
-    ├── same_state_diagnostic.py
-    ├── paired_rollout_eval.py
-    ├── aggregate_results.py
-    ├── visualize_guidance_vectors.py
-    └── visualize_final_trajectory_comparison.py
+│   ├── common.py
+│   ├── same_state_diagnostic.py
+│   ├── paired_rollout_eval.py
+│   ├── aggregate_results.py
+│   ├── visualize_guidance_vectors.py
+│   └── visualize_final_trajectory_comparison.py
 └── 2026-06-22_600_rollout_eval/
     ├── run_baseline_eval_matrix.py
     └── run_baseline_eval_matrix_no_mask.py
@@ -36,6 +39,7 @@ scripts/
 ## Categories
 
 - **Diagnostic / benchmark** (in `scripts/`) — standalone scripts for per-step EEF↔obstacle tracking and OSC control timing. See docstrings for usage.
+- **Clean-policy intent diagnostic** (in `scripts/2026-07-20_intent_diagnostic/`) — CPU-only offline analysis of the 600 existing unguided delta-EEF rollouts. It measures closest target progress and segment-to-footprint clearance for every pre-target chunk, selects one fixed critical chunk per episode, applies the three-way intent / obstruction partition and A/B/C Wilson decision rule, and produces deterministic CSV / JSON summaries and representative plots. Run the companion `test_analyze_intent.py` directly for the pure-Python geometry and selection tests. Canonical result: `outputs/guided_denoising/intent_diagnostic/report.md`.
 - **EEF-pose OSC policy** (in `scripts/eef_pose_osc_policy/`) — dataset converters, expert replay validators, robomimic wrapper smoke tests, delta-policy pose-trajectory diagnostics, multi-env eval tooling, and eval analysis for full-pose EEF actions executed by `OSC_POSE`. Training runbook: `docs/eef_pose_osc_policy_training.md`; conclusion: `outputs/eef_pose_osc_policy/README.md`.
 - **Guided denoising** (in `scripts/guided_denoising/`) — captures fixed clean-image delta-EEF states, sweeps the agreed guidance scales under identical observations and diffusion seeds, visualizes either one DDIM step's pushed target or the paired final `scale=0` / guided trajectories after all DDIM steps on full and locally zoomed `agentview` images, runs matched baseline / guided rollout pilots, and reports Task SR together with Safe SR / CR / NCR and the four-way outcome partition. Raw HDF5 / JSONL artifacts under `outputs/guided_denoising/` are ignored; summaries and reports remain trackable.
 - **Eval matrices** (in `scripts/2026-06-22_600_rollout_eval/`) — baseline launchers from the 2026-06-22 evaluation branch. Guided / PC1 launchers were removed with the archived guidance implementation. See `docs/RESEARCH_LOG.md` (2026-06-22 entry) for the experiment background.

@@ -12,8 +12,9 @@ task behavior learned from demonstrations.
 
 ## 2. Current State
 
-- **Guided denoising adopted as the active direction (2026-07-15)**: the project-level formulation defines a deployment-cost-reweighted diffusion policy and guidance through the predicted clean action. See `docs/guided_denoising/formulation.md`.
-- **The active branch has no guidance implementation yet**: the next experiment is to implement denoising-time cost guidance against `delta_eef_pose_action` and evaluate whether it improves Task SR over the unguided baseline without merely shifting collision failures to collision-free non-completion.
+- **Guided denoising is the active direction (2026-07-20)**: the project-level formulation defines a deployment-cost-reweighted diffusion policy and guidance through the predicted clean action. See `docs/guided_denoising/formulation.md`.
+- **P0 clean-policy intent diagnostic completed (2026-07-20)**: offline analysis of all 600 unguided episodes gives decision C, mixed / no single dominant mechanism. In the two- and three-distractor main cohorts, target-directed obstruction is 34.4% / 37.5%, non-target-directed behavior is 43.0% / 26.0%, and target-directed clear behavior is 22.6% / 36.5%; neither A nor B meets the fixed Wilson-majority rule. P1 must target and report a stated regime rather than treating feasibility guidance as a universal explanation. See `outputs/guided_denoising/intent_diagnostic/report.md` and `docs/guided_denoising/research_plan.md`.
+- **The first guided-denoising mechanism baseline is implemented**: fixed-state checks show that guidance changes predicted and executed delta-EEF trajectories, but the 20-pair rollout pilot has inconsistent safety effects and must not be scaled to the full matrix. It remains a mechanism baseline rather than the project method. See `docs/guided_denoising/lan_o3dp_mechanism_baseline.md`.
 - **Delta EEF pose replacement validated (2026-07-08)**: clean-image DP trained on `delta_eef_pose_action` reaches 0.98 PickPlaceCan rollout success. A policy action chunk can be reconstructed into the executed EEF pose trajectory with mean position error 0.131 cm and mean orientation error 0.253 deg over a successful rollout. This is the direct replacement for the old OSC-action forward-model path. See `outputs/eef_pose_osc_policy/README.md`.
 - **Delta EEF multi-environment eval completed (2026-07-14)**: one best checkpoint evaluated over 4 environments x 3 eval seeds x 50 episodes reaches Task SR 0.907 / 0.707 / 0.253 / 0.200 as distractors increase, with CR 0.000 / 0.213 / 0.647 / 0.680. Hard-environment failures are dominated by pre-target obstruction, but successful collisions and collision-free placement failures both occur. Future comparisons should report Task SR plus Safe SR / CR / NCR and retain the four-way outcome partition. See `outputs/eef_pose_osc_policy/multienv_eval_report.md`.
 - **Absolute EEF pose remains a comparison baseline**: best clean-image abs EEF policy reached 0.82 PickPlaceCan rollout success; delta EEF is the preferred action interface.
@@ -25,14 +26,14 @@ task behavior learned from demonstrations.
 - `third_party/robosuite/` — (no separate AGENTS yet; distractor env variants in `robosuite/environments/manipulation/pick_place.py`)
 
 ### Project scripts (scripts/)
-- `scripts/AGENTS.md` — index of local scripts (EEF-pose OSC policy tooling, diagnostics, eval-matrix grouping)
+- `scripts/AGENTS.md` — index of local scripts (EEF-pose OSC policy tooling, intent diagnostics, guided-denoising diagnostics, eval-matrix grouping)
 
 ### Experiment outputs (outputs/)
 - `robomimic/eval/baseline/` — baseline (no guidance) rollout results
 - `robomimic/eval/obstacle_guided/` — guided rollout results
 - `forward_model/` — archived OSC-action forward-model result summaries only
 - `eef_pose_osc_policy/` — delta EEF pose policy conclusion and trajectory reconstruction diagnostics
-- `route_b_validation/` — EEF replay diagnostics, corrected OSC absolute replay, adapter rejection, Panda Mink follow-up
+- `route_b_validation/` — archived EEF action-interface validation, corrected OSC absolute replay, adapter rejection, Panda Mink follow-up
 
 ## 4. File Map
 
@@ -42,14 +43,14 @@ constraint-il-transfer/             ← Project root (independent git repo)
 ├── metadata/                        ← Environment metadata
 ├── docs/                            ← Research artifacts
 │   ├── RESEARCH_LOG.md              ← Reverse-chronological log of discussions + decisions
-│   ├── guided_denoising/             ← Active formulation and implementation contract
+│   ├── guided_denoising/             ← Active formulation, mechanism-baseline record, and research plan
 │   ├── forward_model_guidance_next_steps.md ← Archived Δgeo forward-model / ranking handoff and results
-│   └── route_b_validation/          ← Route B reports + controller / adapter validation + corrected OSC replay
+│   └── route_b_validation/          ← Archived EEF action-interface and controller validation
 ├── papers/<name>/                   ← Paper PDFs + agent-generated analysis.md
 ├── scripts/                         ← Local Python scripts (→ AGENTS.md for index)
 ├── outputs/                         ← Experiment outputs
 │   ├── robomimic/eval/              ← Baseline + obstacle_guided rollouts (600 rollouts)
-│   └── route_b_validation/          ← Per-controller verification summaries
+│   └── route_b_validation/          ← Archived per-controller verification summaries
 ├── .opencode/agents/                ← Agent definitions (paper-reader, code-explorer)
 ├── third_party/                     ← Editable source deps (managed independently, see §10)
 │   ├── robomimic/                   ← robomimic fork (→ AGENTS.md)
@@ -62,13 +63,14 @@ constraint-il-transfer/             ← Project root (independent git repo)
 1. Read this file (AGENTS.md) first
 2. For project state + recent discussions → `docs/RESEARCH_LOG.md`
 3. For the active mathematical direction → `docs/guided_denoising/formulation.md`
-4. For the implementation contract → `docs/guided_denoising/implementation_plan.md`
-5. For current EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
-6. For local scripts and how to run them → `scripts/AGENTS.md`
-7. For the Route B experiment report → `docs/route_b_validation/report.md`
-8. For archived forward-model / ranking results → `docs/forward_model_guidance_next_steps.md`
-9. For paper comparisons → `papers/<name>/analysis.md`
-10. For inner robomimic code → `third_party/robomimic/AGENTS.md`
+4. For the implemented LAN-style mechanism baseline → `docs/guided_denoising/lan_o3dp_mechanism_baseline.md`
+5. For current method and evaluation gates → `docs/guided_denoising/research_plan.md`
+6. For current EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
+7. For local scripts and how to run them → `scripts/AGENTS.md`
+8. For archived EEF action-interface validation → `docs/route_b_validation/report.md`
+9. For archived forward-model / ranking results → `docs/forward_model_guidance_next_steps.md`
+10. For paper comparisons → `papers/<name>/analysis.md`
+11. For inner robomimic code → `third_party/robomimic/AGENTS.md`
 
 ## 6. Environments
 
@@ -87,7 +89,6 @@ constraint-il-transfer/             ← Project root (independent git repo)
 
 - **OSC**: Operational Space Controller (PD controller)
 - **EEF**: End-Effector Frame (robot gripper position)
-- **Route B**: Switching prediction target from original OSC actions to executable EEF pose actions so policy chunks map directly to EEF trajectories
 - **Executable full-pose EEF action**: `[eef_pos_world or delta_eef_pos_world(3), eef_quat_site_xyzw delta/absolute axis_angle(3), gripper(1)]` sent to `OSC_POSE`
 - **Delta EEF pose action**: `[next_obs/robot0_eef_pos - obs/robot0_eef_pos, axis_angle(R_next_site @ R_obs_site.T), gripper]`; preferred replacement for the old OSC-action forward-model path
 - **Guided denoising**: modifying reverse diffusion at deployment time using the gradient of a deployment cost evaluated on the predicted clean action chunk
@@ -207,7 +208,7 @@ git check-ignore -v third_party/robomimic third_party/robosuite
 
 ## Maintenance Rules
 
-- **When to update**: when state materially changes (new model trained, root cause confirmed, Route B / forward-model status changed)
+- **When to update**: when state materially changes (new model trained, root cause confirmed, EEF action-interface / forward-model status changed)
 - **When NOT to update**: exploratory runs, unconfirmed hypotheses
 - **What to update**: overwrite old state directly, delete stale info. Keep file < 1 page
 - **Note**: Maintenance rights belong to humans. Agents may change this file only under explicit permission.

@@ -134,3 +134,6 @@ The central question is:
 
 This formulation treats the deployment signal generically as a cost, without
 requiring a predefined taxonomy of failure modes.
+
+The staged method-discovery and cross-environment evaluation gates are defined
+in `research_plan.md`.

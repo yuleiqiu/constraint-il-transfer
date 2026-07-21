@@ -16,6 +16,66 @@
 
 ---
 
+## 2026-07-20
+
+### Clean-policy intent diagnostic finds no single dominant hard-environment mechanism
+
+Completed the P0 offline diagnostic over the existing 12 HDF5 files and 600
+unguided episodes, without new rollouts or policy / guidance changes. The main
+cohort is fixed to task failures that never contacted Can and contains 32 / 93
+/ 96 episodes in the one / two / three-distractor environments. The critical
+chunk is selected by first obstacle contact when present and otherwise by the
+last chunk; success and post-target-contact failure cohorts use the chunk
+containing first Can contact.
+
+Intent is measured by the closest 3D approach to Can within the predicted
+clean delta-EEF chunk. Obstruction is signed segment clearance against
+chunk-start distractor footprints using robosuite `horizontal_radius`. In the
+two-distractor environment, target-directed obstructed / non-target-directed /
+target-directed clear account for 34.4% / 43.0% / 22.6% of the main cohort. In
+the three-distractor environment they account for 37.5% / 26.0% / 36.5%.
+Neither candidate dominant mechanism is a majority with Wilson 95% lower bound
+above 0.5 in both environments. Endpoint, XY, 0.5 / 1 mm intent thresholds,
+and +1 / +2 cm clearance margins do not change the fixed decision.
+
+Decision: P0 outcome C, mixed / no single dominant mechanism. Method
+development must state which regime it targets and report effects by the
+three-way partition; obstacle feasibility adaptation cannot be presented as a
+complete explanation of clean-policy failure. Successful critical chunks are
+target-directed in 85.8% / 92.1% / 90.0% of the one / two / three-distractor
+environments, supporting the primary measure as an intent calibration.
+
+Canonical result:
+`outputs/guided_denoising/intent_diagnostic/report.md`.
+
+---
+
+### Method discovery precedes environment expansion
+
+The current LAN-O3DP-style guide is a mechanism baseline, not yet the project
+method. Before designing another deployment cost, first determine whether
+failed clean-policy chunks in multi-object scenes still make progress toward
+the target but intersect a distractor, or whether the predicted action has
+already lost target-directed intent. This separates a feasibility failure from
+an observation-conditioned action-prior failure without introducing
+counterfactual observations or whole-robot collision bookkeeping.
+
+Environment breadth is a later evidence question rather than the immediate
+method bottleneck. Keep the current PickPlace family as the development test,
+perform only cheap unguided scouts for Lift with distractors and
+NutAssemblySquare with distractors, and expand to full cross-task comparison
+only after one unchanged method improves both the two- and three-distractor
+PickPlace variants without trading collision failures for collision-free
+non-completion. Multiple independently trained policy seeds precede the final
+cross-task claim.
+
+Decision: use technical names instead of the historical `Route B` label in
+active documents. Preserve existing archival directory names until a separate
+path migration is justified. The complete staged plan and gates are in
+`docs/guided_denoising/research_plan.md`.
+
+---
+
 ## 2026-07-15
 
 ### Guided Diffusion Policy clears fixed-state checks but not paired-rollout scaling
@@ -98,9 +158,9 @@ pose trajectory reconstruction. Evaluate end-to-end utility by Task SR together
 with Safe SR / CR / NCR, rather than treating lower predicted cost or fewer
 collisions alone as success.
 
-Canonical formulation: `docs/guided_denoising/formulation.md`. The agreed
-first implementation contract is
-`docs/guided_denoising/implementation_plan.md`.
+Canonical formulation: `docs/guided_denoising/formulation.md`. The completed
+first mechanism-baseline record is
+`docs/guided_denoising/lan_o3dp_mechanism_baseline.md`.
 
 ---
 
