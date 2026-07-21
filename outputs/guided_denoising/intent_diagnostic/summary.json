@@ -1,0 +1,3664 @@
+{
+  "analysis": "P0 clean-policy intent diagnostic",
+  "analysis_date": "2026-07-20",
+  "decision": {
+    "hard_environments": [
+      {
+        "categories": {
+          "non_target_directed": {
+            "count": 40,
+            "rate": 0.43010752688172044,
+            "wilson_95": [
+              0.3342352296059102,
+              0.5315247438774509
+            ]
+          },
+          "target_directed_clear": {
+            "count": 21,
+            "rate": 0.22580645161290322,
+            "wilson_95": [
+              0.15270154318255835,
+              0.32066450663678026
+            ]
+          },
+          "target_directed_obstructed": {
+            "count": 32,
+            "rate": 0.34408602150537637,
+            "wilson_95": [
+              0.2554506870336849,
+              0.445090792275351
+            ]
+          }
+        },
+        "distractors": 2,
+        "env": "PickPlaceBreadCerealCan",
+        "largest_category": "non_target_directed",
+        "n": 93,
+        "target_directed_clear_is_largest": false
+      },
+      {
+        "categories": {
+          "non_target_directed": {
+            "count": 25,
+            "rate": 0.2604166666666667,
+            "wilson_95": [
+              0.18305899970298767,
+              0.35621055281214864
+            ]
+          },
+          "target_directed_clear": {
+            "count": 35,
+            "rate": 0.3645833333333333,
+            "wilson_95": [
+              0.27523940085174403,
+              0.4643477375263765
+            ]
+          },
+          "target_directed_obstructed": {
+            "count": 36,
+            "rate": 0.375,
+            "wilson_95": [
+              0.2847260813834063,
+              0.47489281558101265
+            ]
+          }
+        },
+        "distractors": 3,
+        "env": "PickPlaceBreadCerealMilkCan",
+        "largest_category": "target_directed_obstructed",
+        "n": 96,
+        "target_directed_clear_is_largest": false
+      }
+    ],
+    "label": "mixed / no single dominant mechanism",
+    "outcome": "C",
+    "rule": "A or B requires the same category to exceed 0.5 with Wilson 95% CI lower bound > 0.5 in both 2- and 3-distractor main-analysis cohorts; otherwise C.",
+    "target_directed_clear_largest_in_any_hard_environment": false
+  },
+  "definitions": {
+    "categories": [
+      "target_directed_obstructed",
+      "non_target_directed",
+      "target_directed_clear"
+    ],
+    "clearance_margins_m": [
+      0.0,
+      0.01,
+      0.02
+    ],
+    "downstream_failure": "task failure after contacting Can; critical chunk contains first Can contact",
+    "main_analysis": "task failure and never contacted Can",
+    "obstruction_primary": "minimum XY polyline-to-distractor-circle clearance using chunk-start positions and robosuite horizontal_radius; obstructed iff <= 0 m",
+    "path": "chunk start plus raw_pred_eef_pos waypoints",
+    "progress_thresholds_m": [
+      0.0,
+      0.0005,
+      0.001
+    ],
+    "success_calibration": "task success; critical chunk contains first Can contact",
+    "target_intent_primary": "3D start distance to Can minus minimum 3D waypoint distance; target-directed iff > 0 m"
+  },
+  "diagnostic_rate_summaries": [
+    {
+      "cohort": "downstream_failure",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "intent_rates": {
+        "closest_3d_gt_0_5mm": 0.6666666666666666,
+        "closest_3d_gt_0mm": 0.6666666666666666,
+        "closest_3d_gt_1mm": 0.6666666666666666,
+        "closest_xy_gt_0mm": 0.4166666666666667,
+        "endpoint_3d_gt_0mm": 0.6666666666666666,
+        "endpoint_xy_gt_0mm": 0.25
+      },
+      "n": 12,
+      "obstruction_rates": {
+        "margin_0cm": 0.0,
+        "margin_1cm": 0.08333333333333333,
+        "margin_2cm": 0.25
+      }
+    },
+    {
+      "cohort": "main_analysis",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "intent_rates": {
+        "closest_3d_gt_0_5mm": 0.21875,
+        "closest_3d_gt_0mm": 0.46875,
+        "closest_3d_gt_1mm": 0.1875,
+        "closest_xy_gt_0mm": 0.40625,
+        "endpoint_3d_gt_0mm": 0.28125,
+        "endpoint_xy_gt_0mm": 0.25
+      },
+      "n": 32,
+      "obstruction_rates": {
+        "margin_0cm": 0.71875,
+        "margin_1cm": 0.71875,
+        "margin_2cm": 0.71875
+      }
+    },
+    {
+      "cohort": "success_calibration",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "intent_rates": {
+        "closest_3d_gt_0_5mm": 0.7452830188679245,
+        "closest_3d_gt_0mm": 0.8584905660377359,
+        "closest_3d_gt_1mm": 0.6037735849056604,
+        "closest_xy_gt_0mm": 0.4716981132075472,
+        "endpoint_3d_gt_0mm": 0.660377358490566,
+        "endpoint_xy_gt_0mm": 0.2830188679245283
+      },
+      "n": 106,
+      "obstruction_rates": {
+        "margin_0cm": 0.0,
+        "margin_1cm": 0.0,
+        "margin_2cm": 0.009433962264150943
+      }
+    },
+    {
+      "cohort": "downstream_failure",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "intent_rates": {
+        "closest_3d_gt_0_5mm": 0.47368421052631576,
+        "closest_3d_gt_0mm": 0.5789473684210527,
+        "closest_3d_gt_1mm": 0.42105263157894735,
+        "closest_xy_gt_0mm": 0.6842105263157895,
+        "endpoint_3d_gt_0mm": 0.42105263157894735,
+        "endpoint_xy_gt_0mm": 0.5789473684210527
+      },
+      "n": 19,
+      "obstruction_rates": {
+        "margin_0cm": 0.21052631578947367,
+        "margin_1cm": 0.3157894736842105,
+        "margin_2cm": 0.3684210526315789
+      }
+    },
+    {
+      "cohort": "main_analysis",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "intent_rates": {
+        "closest_3d_gt_0_5mm": 0.5376344086021505,
+        "closest_3d_gt_0mm": 0.5698924731182796,
+        "closest_3d_gt_1mm": 0.5053763440860215,
+        "closest_xy_gt_0mm": 0.43010752688172044,
+        "endpoint_3d_gt_0mm": 0.5376344086021505,
+        "endpoint_xy_gt_0mm": 0.3870967741935484
+      },
+      "n": 93,
+      "obstruction_rates": {
+        "margin_0cm": 0.6021505376344086,
+        "margin_1cm": 0.6989247311827957,
+        "margin_2cm": 0.7526881720430108
+      }
+    },
+    {
+      "cohort": "success_calibration",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "intent_rates": {
+        "closest_3d_gt_0_5mm": 0.7894736842105263,
+        "closest_3d_gt_0mm": 0.9210526315789473,
+        "closest_3d_gt_1mm": 0.6842105263157895,
+        "closest_xy_gt_0mm": 0.4473684210526316,
+        "endpoint_3d_gt_0mm": 0.7368421052631579,
+        "endpoint_xy_gt_0mm": 0.3157894736842105
+      },
+      "n": 38,
+      "obstruction_rates": {
+        "margin_0cm": 0.0,
+        "margin_1cm": 0.0,
+        "margin_2cm": 0.0
+      }
+    },
+    {
+      "cohort": "downstream_failure",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "intent_rates": {
+        "closest_3d_gt_0_5mm": 0.7083333333333334,
+        "closest_3d_gt_0mm": 0.75,
+        "closest_3d_gt_1mm": 0.6666666666666666,
+        "closest_xy_gt_0mm": 0.5833333333333334,
+        "endpoint_3d_gt_0mm": 0.7083333333333334,
+        "endpoint_xy_gt_0mm": 0.5833333333333334
+      },
+      "n": 24,
+      "obstruction_rates": {
+        "margin_0cm": 0.041666666666666664,
+        "margin_1cm": 0.16666666666666666,
+        "margin_2cm": 0.16666666666666666
+      }
+    },
+    {
+      "cohort": "main_analysis",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "intent_rates": {
+        "closest_3d_gt_0_5mm": 0.7083333333333334,
+        "closest_3d_gt_0mm": 0.7395833333333334,
+        "closest_3d_gt_1mm": 0.65625,
+        "closest_xy_gt_0mm": 0.6041666666666666,
+        "endpoint_3d_gt_0mm": 0.6979166666666666,
+        "endpoint_xy_gt_0mm": 0.5520833333333334
+      },
+      "n": 96,
+      "obstruction_rates": {
+        "margin_0cm": 0.53125,
+        "margin_1cm": 0.6041666666666666,
+        "margin_2cm": 0.6770833333333334
+      }
+    },
+    {
+      "cohort": "success_calibration",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "intent_rates": {
+        "closest_3d_gt_0_5mm": 0.6666666666666666,
+        "closest_3d_gt_0mm": 0.9,
+        "closest_3d_gt_1mm": 0.6333333333333333,
+        "closest_xy_gt_0mm": 0.43333333333333335,
+        "endpoint_3d_gt_0mm": 0.7,
+        "endpoint_xy_gt_0mm": 0.26666666666666666
+      },
+      "n": 30,
+      "obstruction_rates": {
+        "margin_0cm": 0.0,
+        "margin_1cm": 0.0,
+        "margin_2cm": 0.0
+      }
+    },
+    {
+      "cohort": "downstream_failure",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "intent_rates": {
+        "closest_3d_gt_0_5mm": 0.7272727272727273,
+        "closest_3d_gt_0mm": 0.7272727272727273,
+        "closest_3d_gt_1mm": 0.6363636363636364,
+        "closest_xy_gt_0mm": 0.5454545454545454,
+        "endpoint_3d_gt_0mm": 0.5454545454545454,
+        "endpoint_xy_gt_0mm": 0.45454545454545453
+      },
+      "n": 11,
+      "obstruction_rates": {
+        "margin_0cm": 0.0,
+        "margin_1cm": 0.0,
+        "margin_2cm": 0.0
+      }
+    },
+    {
+      "cohort": "main_analysis",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "intent_rates": {
+        "closest_3d_gt_0_5mm": 0.3333333333333333,
+        "closest_3d_gt_0mm": 0.3333333333333333,
+        "closest_3d_gt_1mm": 0.3333333333333333,
+        "closest_xy_gt_0mm": 0.3333333333333333,
+        "endpoint_3d_gt_0mm": 0.3333333333333333,
+        "endpoint_xy_gt_0mm": 0.3333333333333333
+      },
+      "n": 3,
+      "obstruction_rates": {
+        "margin_0cm": 0.0,
+        "margin_1cm": 0.0,
+        "margin_2cm": 0.0
+      }
+    },
+    {
+      "cohort": "success_calibration",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "intent_rates": {
+        "closest_3d_gt_0_5mm": 0.6764705882352942,
+        "closest_3d_gt_0mm": 0.8088235294117647,
+        "closest_3d_gt_1mm": 0.5955882352941176,
+        "closest_xy_gt_0mm": 0.5220588235294118,
+        "endpoint_3d_gt_0mm": 0.6544117647058824,
+        "endpoint_xy_gt_0mm": 0.375
+      },
+      "n": 136,
+      "obstruction_rates": {
+        "margin_0cm": 0.0,
+        "margin_1cm": 0.0,
+        "margin_2cm": 0.0
+      }
+    }
+  ],
+  "environment_cohort_summaries": [
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 4,
+          "rate": 0.3333333333333333,
+          "wilson_95": [
+            0.13812009109121315,
+            0.6093779111272004
+          ]
+        },
+        "target_directed_clear": {
+          "count": 8,
+          "rate": 0.6666666666666666,
+          "wilson_95": [
+            0.39062208887279953,
+            0.8618799089087867
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            2.7755575615628914e-17,
+            0.24249400665524085
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.27431305674427775,
+        "mean": 0.0966035846767422,
+        "median": 0.06510528139104052,
+        "min": 0.005947263713768171
+      },
+      "cohort": "downstream_failure",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 12,
+      "progress_closest_m": {
+        "max": 0.021145131773860737,
+        "mean": 0.005392548569614741,
+        "median": 0.003636037193135846,
+        "min": -0.0006821608656819161
+      },
+      "progress_closest_xy_m": {
+        "max": 0.01521279323311947,
+        "mean": 0.001794028377146866,
+        "median": -8.96665852929779e-05,
+        "min": -0.00142347902169844
+      },
+      "progress_endpoint_m": {
+        "max": 0.021145131773860737,
+        "mean": 0.004113453901666899,
+        "median": 0.003502924342039271,
+        "min": -0.005417108249837512
+      }
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 17,
+          "rate": 0.53125,
+          "wilson_95": [
+            0.3644951711897464,
+            0.6913061289193116
+          ]
+        },
+        "target_directed_clear": {
+          "count": 6,
+          "rate": 0.1875,
+          "wilson_95": [
+            0.08889544689565954,
+            0.3530915520137596
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 9,
+          "rate": 0.28125,
+          "wilson_95": [
+            0.15564580497742764,
+            0.45374509425916565
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.48156410610216416,
+        "mean": 0.0714148790576402,
+        "median": -0.020726418082264057,
+        "min": -0.029529429326449988
+      },
+      "cohort": "main_analysis",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 32,
+      "progress_closest_m": {
+        "max": 0.01171751362380169,
+        "mean": 0.0005285548273501449,
+        "median": -0.00014910085488355207,
+        "min": -0.003796167293164454
+      },
+      "progress_closest_xy_m": {
+        "max": 0.011137798195647197,
+        "mean": 0.0004109830908999683,
+        "median": -0.00018606887873775027,
+        "min": -0.004196559471061567
+      },
+      "progress_endpoint_m": {
+        "max": 0.0117175136238018,
+        "mean": -0.0022549851324895763,
+        "median": -0.0012205633396412882,
+        "min": -0.029895551494952988
+      }
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 15,
+          "rate": 0.14150943396226415,
+          "wilson_95": [
+            0.08767037317283104,
+            0.22042330278550748
+          ]
+        },
+        "target_directed_clear": {
+          "count": 91,
+          "rate": 0.8584905660377359,
+          "wilson_95": [
+            0.7795766972144925,
+            0.9123296268271689
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.034972758573472214
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.27993854896550363,
+        "mean": 0.12189564134010308,
+        "median": 0.12137591991179758,
+        "min": 0.015153099109325406
+      },
+      "cohort": "success_calibration",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 106,
+      "progress_closest_m": {
+        "max": 0.026460284847960376,
+        "mean": 0.0036698241490883935,
+        "median": 0.0023922007274489957,
+        "min": -0.00031636093989649214
+      },
+      "progress_closest_xy_m": {
+        "max": 0.00420794707105178,
+        "mean": 0.00031029453093192047,
+        "median": -8.793985789370008e-05,
+        "min": -0.000686177546170133
+      },
+      "progress_endpoint_m": {
+        "max": 0.026460284847960376,
+        "mean": 0.002895223617316075,
+        "median": 0.0016322687933625823,
+        "min": -0.004912419808351186
+      }
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 8,
+          "rate": 0.42105263157894735,
+          "wilson_95": [
+            0.23141891282454238,
+            0.6372409646574496
+          ]
+        },
+        "target_directed_clear": {
+          "count": 8,
+          "rate": 0.42105263157894735,
+          "wilson_95": [
+            0.23141891282454238,
+            0.6372409646574496
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 3,
+          "rate": 0.15789473684210525,
+          "wilson_95": [
+            0.05520471638534141,
+            0.37565475270329074
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.12556858443527052,
+        "mean": 0.036853093538593985,
+        "median": 0.037194276756470634,
+        "min": -0.027245175131722574
+      },
+      "cohort": "downstream_failure",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 19,
+      "progress_closest_m": {
+        "max": 0.015487698862791055,
+        "mean": 0.003364391321208395,
+        "median": 0.00039182615193794276,
+        "min": -0.0025889682546189167
+      },
+      "progress_closest_xy_m": {
+        "max": 0.01603605867534061,
+        "mean": 0.0031337935356464293,
+        "median": 0.0022457673582335497,
+        "min": -0.0012608666700551496
+      },
+      "progress_endpoint_m": {
+        "max": 0.015487698862791055,
+        "mean": 0.00044316546461923705,
+        "median": -0.00031103442044433903,
+        "min": -0.020229007980919023
+      }
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 40,
+          "rate": 0.43010752688172044,
+          "wilson_95": [
+            0.3342352296059102,
+            0.5315247438774509
+          ]
+        },
+        "target_directed_clear": {
+          "count": 21,
+          "rate": 0.22580645161290322,
+          "wilson_95": [
+            0.15270154318255835,
+            0.32066450663678026
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 32,
+          "rate": 0.34408602150537637,
+          "wilson_95": [
+            0.2554506870336849,
+            0.445090792275351
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.578508634668174,
+        "mean": 0.05324662622160662,
+        "median": -0.006109034741159258,
+        "min": -0.03860697507952257
+      },
+      "cohort": "main_analysis",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 93,
+      "progress_closest_m": {
+        "max": 0.03176954378782568,
+        "mean": 0.004576327195397042,
+        "median": 0.001228422292076814,
+        "min": -0.004100822280685812
+      },
+      "progress_closest_xy_m": {
+        "max": 0.03509131369319629,
+        "mean": 0.0029344459339054356,
+        "median": -0.0003775955840977091,
+        "min": -0.003592459965191974
+      },
+      "progress_endpoint_m": {
+        "max": 0.03176954378782565,
+        "mean": 0.0002947020611939084,
+        "median": 0.0012246886690408243,
+        "min": -0.03936504778974673
+      }
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 3,
+          "rate": 0.07894736842105263,
+          "wilson_95": [
+            0.027214595506987724,
+            0.20799371457771454
+          ]
+        },
+        "target_directed_clear": {
+          "count": 35,
+          "rate": 0.9210526315789473,
+          "wilson_95": [
+            0.7920062854222853,
+            0.9727854044930122
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.09180986822558396
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.23999995412549344,
+        "mean": 0.10913612026300687,
+        "median": 0.10003083505776564,
+        "min": 0.027683288441413607
+      },
+      "cohort": "success_calibration",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 38,
+      "progress_closest_m": {
+        "max": 0.017806923442119246,
+        "mean": 0.004676087009168612,
+        "median": 0.0033597519162216283,
+        "min": -0.0016598211622744843
+      },
+      "progress_closest_xy_m": {
+        "max": 0.003925025646215884,
+        "mean": 0.0003148575629812779,
+        "median": -6.642743521461866e-05,
+        "min": -0.0008481433552754271
+      },
+      "progress_endpoint_m": {
+        "max": 0.017806923442119246,
+        "mean": 0.0034283151525172405,
+        "median": 0.0024332493574414273,
+        "min": -0.016967382060535045
+      }
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 6,
+          "rate": 0.25,
+          "wilson_95": [
+            0.11999366228595004,
+            0.44899444005154004
+          ]
+        },
+        "target_directed_clear": {
+          "count": 17,
+          "rate": 0.7083333333333334,
+          "wilson_95": [
+            0.5083230633550337,
+            0.8508535180303913
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 1,
+          "rate": 0.041666666666666664,
+          "wilson_95": [
+            0.0073934561655057685,
+            0.20241806478655938
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.14149460544240766,
+        "mean": 0.048986253795465756,
+        "median": 0.04719862434696469,
+        "min": -0.0002273725305916019
+      },
+      "cohort": "downstream_failure",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 24,
+      "progress_closest_m": {
+        "max": 0.024790871290556092,
+        "mean": 0.0051103281119472595,
+        "median": 0.003500239415500664,
+        "min": -0.002205269810769156
+      },
+      "progress_closest_xy_m": {
+        "max": 0.018264379257022928,
+        "mean": 0.0025519103488415395,
+        "median": 0.0010807902356453087,
+        "min": -0.002303579161753569
+      },
+      "progress_endpoint_m": {
+        "max": 0.024790871290556092,
+        "mean": 0.003128518338126708,
+        "median": 0.0035002394155006777,
+        "min": -0.01889640506132853
+      }
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 25,
+          "rate": 0.2604166666666667,
+          "wilson_95": [
+            0.18305899970298767,
+            0.35621055281214864
+          ]
+        },
+        "target_directed_clear": {
+          "count": 35,
+          "rate": 0.3645833333333333,
+          "wilson_95": [
+            0.27523940085174403,
+            0.4643477375263765
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 36,
+          "rate": 0.375,
+          "wilson_95": [
+            0.2847260813834063,
+            0.47489281558101265
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.5411115170421836,
+        "mean": 0.0797111931881477,
+        "median": -0.0029077717049660317,
+        "min": -0.0398535082717768
+      },
+      "cohort": "main_analysis",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 96,
+      "progress_closest_m": {
+        "max": 0.02421985102379587,
+        "mean": 0.004897703281964484,
+        "median": 0.0039824719051004265,
+        "min": -0.003980216173255821
+      },
+      "progress_closest_xy_m": {
+        "max": 0.029546885015894836,
+        "mean": 0.0029790455893045787,
+        "median": 0.0007298338965060977,
+        "min": -0.003943923229925747
+      },
+      "progress_endpoint_m": {
+        "max": 0.02421985102379587,
+        "mean": 0.0021549509745693615,
+        "median": 0.00398247190510044,
+        "min": -0.03036229936889706
+      }
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 3,
+          "rate": 0.1,
+          "wilson_95": [
+            0.03459988874733419,
+            0.25621082579184085
+          ]
+        },
+        "target_directed_clear": {
+          "count": 27,
+          "rate": 0.9,
+          "wilson_95": [
+            0.7437891742081593,
+            0.9654001112526658
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.11351339317396876
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.21888453971837893,
+        "mean": 0.09817479690109772,
+        "median": 0.09255621581080312,
+        "min": 0.040733678985189835
+      },
+      "cohort": "success_calibration",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 30,
+      "progress_closest_m": {
+        "max": 0.017047448886422713,
+        "mean": 0.003824903556968014,
+        "median": 0.0015576936894679816,
+        "min": -0.00019532414059276332
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0036100309420265143,
+        "mean": 0.00032674883886642974,
+        "median": -4.329814201789678e-05,
+        "min": -0.0014694519881274948
+      },
+      "progress_endpoint_m": {
+        "max": 0.017047448886422706,
+        "mean": 0.002538651030012918,
+        "median": 0.0013586241730239954,
+        "min": -0.009751335897964314
+      }
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 3,
+          "rate": 0.2727272727272727,
+          "wilson_95": [
+            0.09746059290024889,
+            0.5656453011761291
+          ]
+        },
+        "target_directed_clear": {
+          "count": 8,
+          "rate": 0.7272727272727273,
+          "wilson_95": [
+            0.43435469882387084,
+            0.902539407099751
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.2588329669680317
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null
+      },
+      "cohort": "downstream_failure",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "n": 11,
+      "progress_closest_m": {
+        "max": 0.01324654102357915,
+        "mean": 0.0030671286558142624,
+        "median": 0.0018832213896995843,
+        "min": -0.0002771200679076227
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0039056517932657513,
+        "mean": 0.0003878225399659756,
+        "median": 7.365347917780152e-06,
+        "min": -0.0007374283277033567
+      },
+      "progress_endpoint_m": {
+        "max": 0.013246541023579151,
+        "mean": 0.0018827293625472237,
+        "median": 0.0008463200918276403,
+        "min": -0.006607776931651557
+      }
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 2,
+          "rate": 0.6666666666666666,
+          "wilson_95": [
+            0.2076596008020477,
+            0.9385080552796037
+          ]
+        },
+        "target_directed_clear": {
+          "count": 1,
+          "rate": 0.3333333333333333,
+          "wilson_95": [
+            0.06149194472039621,
+            0.7923403991979522
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            5.551115123125783e-17,
+            0.5614970317550454
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null
+      },
+      "cohort": "main_analysis",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "n": 3,
+      "progress_closest_m": {
+        "max": 0.012453573016844133,
+        "mean": 0.0024493353383786185,
+        "median": -0.0014128942961503244,
+        "min": -0.0036926727055579533
+      },
+      "progress_closest_xy_m": {
+        "max": 0.013387120456509333,
+        "mean": 0.0039182912418381415,
+        "median": -0.00016270417964756034,
+        "min": -0.001469542551347347
+      },
+      "progress_endpoint_m": {
+        "max": 0.012453573016844133,
+        "mean": -0.010155003962814565,
+        "median": -0.012359292860593174,
+        "min": -0.030559292044694653
+      }
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 26,
+          "rate": 0.19117647058823528,
+          "wilson_95": [
+            0.1339361008255754,
+            0.26538366665693136
+          ]
+        },
+        "target_directed_clear": {
+          "count": 110,
+          "rate": 0.8088235294117647,
+          "wilson_95": [
+            0.7346163333430686,
+            0.8660638991744245
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.027470099733582408
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null
+      },
+      "cohort": "success_calibration",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "n": 136,
+      "progress_closest_m": {
+        "max": 0.021195835804102697,
+        "mean": 0.003936711224491082,
+        "median": 0.0019752122090116973,
+        "min": -0.0006465179714399312
+      },
+      "progress_closest_xy_m": {
+        "max": 0.005455739325128298,
+        "mean": 0.0004415590933798193,
+        "median": 4.3693902497260765e-05,
+        "min": -0.0008827504310511469
+      },
+      "progress_endpoint_m": {
+        "max": 0.021195835804102697,
+        "mean": 0.002929900433433729,
+        "median": 0.0015401483250898976,
+        "min": -0.00879331424364185
+      }
+    }
+  ],
+  "input": {
+    "critical_rows": 600,
+    "episodes": 600,
+    "eval_dir": "/home/yulei/codes/constraint-il-transfer/outputs/eef_pose_osc_policy/eval/delta_epoch260_4env_3seed_n50",
+    "hdf5_files": 12,
+    "main_analysis_counts": {
+      "0": 3,
+      "1": 32,
+      "2": 93,
+      "3": 96
+    },
+    "pre_target_chunk_rows": 18012
+  },
+  "object_horizontal_radii_m": {
+    "Bread": 0.03,
+    "Can": 0.025,
+    "Cereal": 0.04,
+    "Milk": 0.025
+  },
+  "representatives": [
+    {
+      "category": "target_directed_obstructed",
+      "category_clearance_median": -0.015184284834823434,
+      "category_progress_median": 0.0077754219927420876,
+      "chunk_index": 11,
+      "clearance_m": -0.01696910402966229,
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "episode": 22,
+      "progress_closest_m": 0.0092163014181042,
+      "seed": 602
+    },
+    {
+      "category": "non_target_directed",
+      "category_clearance_median": -0.010984901985401089,
+      "category_progress_median": -0.0012101923119304525,
+      "chunk_index": 7,
+      "clearance_m": -0.01130433979620002,
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "episode": 23,
+      "progress_closest_m": -0.0012511003420785372,
+      "seed": 602
+    },
+    {
+      "category": "target_directed_clear",
+      "category_clearance_median": 0.030703715021306595,
+      "category_progress_median": 0.008673936261805085,
+      "chunk_index": 9,
+      "clearance_m": 0.030703715021306595,
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "episode": 6,
+      "progress_closest_m": 0.011473416644475376,
+      "seed": 600
+    },
+    {
+      "category": "target_directed_obstructed",
+      "category_clearance_median": -0.01638175330249781,
+      "category_progress_median": 0.008312166264389922,
+      "chunk_index": 22,
+      "clearance_m": -0.01632931119878128,
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "episode": 1,
+      "progress_closest_m": 0.009446330125699787,
+      "seed": 600
+    },
+    {
+      "category": "non_target_directed",
+      "category_clearance_median": -0.008245685215255948,
+      "category_progress_median": -0.0008421356744728326,
+      "chunk_index": 11,
+      "clearance_m": -0.010304061273637276,
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "episode": 36,
+      "progress_closest_m": -0.0006379869776359237,
+      "seed": 600
+    },
+    {
+      "category": "target_directed_clear",
+      "category_clearance_median": 0.16488715473503196,
+      "category_progress_median": 0.005705144156936459,
+      "chunk_index": 49,
+      "clearance_m": 0.16488715473503196,
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "episode": 4,
+      "progress_closest_m": 0.0007310204679585874,
+      "seed": 601
+    }
+  ],
+  "seed_cohort_summaries": [
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 1,
+          "rate": 0.5,
+          "wilson_95": [
+            0.09453120573423074,
+            0.9054687942657693
+          ]
+        },
+        "target_directed_clear": {
+          "count": 1,
+          "rate": 0.5,
+          "wilson_95": [
+            0.09453120573423074,
+            0.9054687942657693
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.6576197724933469
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.04755427598550374,
+        "mean": 0.0305773972535938,
+        "median": 0.0305773972535938,
+        "min": 0.013600518521683862
+      },
+      "cohort": "downstream_failure",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 2,
+      "progress_closest_m": {
+        "max": 0.005865362003319965,
+        "mean": 0.0025916005688190243,
+        "median": 0.0025916005688190243,
+        "min": -0.0006821608656819161
+      },
+      "progress_closest_xy_m": {
+        "max": 0.00010473948608360952,
+        "mean": -0.0006593697678074152,
+        "median": -0.0006593697678074152,
+        "min": -0.00142347902169844
+      },
+      "progress_endpoint_m": {
+        "max": 0.0057590550911756425,
+        "mean": 0.0011059825112494405,
+        "median": 0.0011059825112494405,
+        "min": -0.0035470900686767615
+      },
+      "seed": 600
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 8,
+          "rate": 0.7272727272727273,
+          "wilson_95": [
+            0.43435469882387084,
+            0.902539407099751
+          ]
+        },
+        "target_directed_clear": {
+          "count": 2,
+          "rate": 0.18181818181818182,
+          "wilson_95": [
+            0.05136768974608513,
+            0.4769805619608442
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 1,
+          "rate": 0.09090909090909091,
+          "wilson_95": [
+            0.016232172885884855,
+            0.37735843645159567
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.4353326556499447,
+        "mean": 0.0898727213956464,
+        "median": -0.02048845292035114,
+        "min": -0.026226639332595458
+      },
+      "cohort": "main_analysis",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 11,
+      "progress_closest_m": {
+        "max": 0.005337426046567617,
+        "mean": 1.654988828881452e-05,
+        "median": -0.0002451247844696136,
+        "min": -0.0031546937041160295
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0048008731009999694,
+        "mean": -0.00016621160583855552,
+        "median": -0.0002949635485015867,
+        "min": -0.003367792225777627
+      },
+      "progress_endpoint_m": {
+        "max": 0.005337426046567617,
+        "mean": -0.003133174020780134,
+        "median": -0.0013083157575689564,
+        "min": -0.02718392065710648
+      },
+      "seed": 600
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 8,
+          "rate": 0.21621621621621623,
+          "wilson_95": [
+            0.11386511993385592,
+            0.3719514839196916
+          ]
+        },
+        "target_directed_clear": {
+          "count": 29,
+          "rate": 0.7837837837837838,
+          "wilson_95": [
+            0.6280485160803084,
+            0.8861348800661442
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            -6.938893903907228e-18,
+            0.09405782583720251
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.27993854896550363,
+        "mean": 0.10977573600299206,
+        "median": 0.10370201496183601,
+        "min": 0.02709999541543443
+      },
+      "cohort": "success_calibration",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 37,
+      "progress_closest_m": {
+        "max": 0.014721943833642642,
+        "mean": 0.003780444229153755,
+        "median": 0.002041404356516249,
+        "min": -0.00031636093989649214
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0035341637570056586,
+        "mean": 0.00017997937386628448,
+        "median": -9.312550675007539e-05,
+        "min": -0.000686177546170133
+      },
+      "progress_endpoint_m": {
+        "max": 0.014721943833642642,
+        "mean": 0.0029325946545276566,
+        "median": 0.0016468314141203366,
+        "min": -0.004912419808351186
+      },
+      "seed": 600
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.7934506856227626
+          ]
+        },
+        "target_directed_clear": {
+          "count": 1,
+          "rate": 1.0,
+          "wilson_95": [
+            0.20654931437723745,
+            1.0
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.7934506856227626
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.01145746000358732,
+        "mean": 0.01145746000358732,
+        "median": 0.01145746000358732,
+        "min": 0.01145746000358732
+      },
+      "cohort": "downstream_failure",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 1,
+      "progress_closest_m": {
+        "max": 0.002235885303983366,
+        "mean": 0.002235885303983366,
+        "median": 0.002235885303983366,
+        "min": 0.002235885303983366
+      },
+      "progress_closest_xy_m": {
+        "max": -0.0007038995066586916,
+        "mean": -0.0007038995066586916,
+        "median": -0.0007038995066586916,
+        "min": -0.0007038995066586916
+      },
+      "progress_endpoint_m": {
+        "max": 0.002127112914685248,
+        "mean": 0.002127112914685248,
+        "median": 0.002127112914685248,
+        "min": 0.002127112914685248
+      },
+      "seed": 601
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 3,
+          "rate": 0.3333333333333333,
+          "wilson_95": [
+            0.1205838183869109,
+            0.6457978644196036
+          ]
+        },
+        "target_directed_clear": {
+          "count": 2,
+          "rate": 0.2222222222222222,
+          "wilson_95": [
+            0.06322510711784671,
+            0.5474110308930111
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 4,
+          "rate": 0.4444444444444444,
+          "wilson_95": [
+            0.18877852109766452,
+            0.733348706504507
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.27740837284366304,
+        "mean": 0.03948766026923588,
+        "median": -0.022292028510401317,
+        "min": -0.029529429326449988
+      },
+      "cohort": "main_analysis",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 9,
+      "progress_closest_m": {
+        "max": 0.00203181510562217,
+        "mean": 0.00010788189189028487,
+        "median": 0.00037388006098204585,
+        "min": -0.003796167293164454
+      },
+      "progress_closest_xy_m": {
+        "max": 0.00246549836713561,
+        "mean": 2.331118155628352e-05,
+        "median": 0.0003978592451299723,
+        "min": -0.004196559471061567
+      },
+      "progress_endpoint_m": {
+        "max": 0.00144498372780838,
+        "mean": -0.003743973098834662,
+        "median": -0.0004059865115475514,
+        "min": -0.029895551494952988
+      },
+      "seed": 601
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 3,
+          "rate": 0.075,
+          "wilson_95": [
+            0.025836025774588198,
+            0.19864233524310543
+          ]
+        },
+        "target_directed_clear": {
+          "count": 37,
+          "rate": 0.925,
+          "wilson_95": [
+            0.8013576647568946,
+            0.9741639742254119
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.08762160119728664
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.2677265288635873,
+        "mean": 0.1296970560503854,
+        "median": 0.1359537708739365,
+        "min": 0.015153099109325406
+      },
+      "cohort": "success_calibration",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 40,
+      "progress_closest_m": {
+        "max": 0.026460284847960376,
+        "mean": 0.004153472123035745,
+        "median": 0.0026933414520628907,
+        "min": -5.9900647971733445e-05
+      },
+      "progress_closest_xy_m": {
+        "max": 0.00420794707105178,
+        "mean": 0.0002507325601085014,
+        "median": 2.2045711321129653e-06,
+        "min": -0.000575618805756511
+      },
+      "progress_endpoint_m": {
+        "max": 0.026460284847960376,
+        "mean": 0.0035151336665868666,
+        "median": 0.0022129488006261567,
+        "min": -0.0027623655822858473
+      },
+      "seed": 601
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 3,
+          "rate": 0.3333333333333333,
+          "wilson_95": [
+            0.1205838183869109,
+            0.6457978644196036
+          ]
+        },
+        "target_directed_clear": {
+          "count": 6,
+          "rate": 0.6666666666666666,
+          "wilson_95": [
+            0.3542021355803963,
+            0.879416181613089
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.2991450484195441
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.27431305674427775,
+        "mean": 0.1207367512900146,
+        "median": 0.08373446597613565,
+        "min": 0.005947263713768171
+      },
+      "cohort": "downstream_failure",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 9,
+      "progress_closest_m": {
+        "max": 0.021145131773860737,
+        "mean": 0.0063657218215283865,
+        "median": 0.005036189082288325,
+        "min": -0.0006353854143581888
+      },
+      "progress_closest_xy_m": {
+        "max": 0.01521279323311947,
+        "mean": 0.0026167755075595465,
+        "median": -3.787016189977241e-05,
+        "min": -0.0006366972218236214
+      },
+      "progress_endpoint_m": {
+        "max": 0.021145131773860737,
+        "mean": 0.005002485431424296,
+        "median": 0.004878735769393294,
+        "min": -0.005417108249837512
+      },
+      "seed": 602
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 6,
+          "rate": 0.5,
+          "wilson_95": [
+            0.2537815976337061,
+            0.7462184023662939
+          ]
+        },
+        "target_directed_clear": {
+          "count": 2,
+          "rate": 0.16666666666666666,
+          "wilson_95": [
+            0.04696514218385378,
+            0.4480308622529734
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 4,
+          "rate": 0.3333333333333333,
+          "wilson_95": [
+            0.13812009109121315,
+            0.6093779111272004
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.48156410610216416,
+        "mean": 0.07844060433910442,
+        "median": -0.01922489519936054,
+        "min": -0.025021477649257905
+      },
+      "cohort": "main_analysis",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 12,
+      "progress_closest_m": {
+        "max": 0.01171751362380169,
+        "mean": 0.0013133973897512593,
+        "median": -8.42129629801125e-05,
+        "min": -0.001234120724377341
+      },
+      "progress_closest_xy_m": {
+        "max": 0.011137798195647197,
+        "mean": 0.001230832161584712,
+        "median": -9.038869431735388e-05,
+        "min": -0.001240556410263688
+      },
+      "progress_endpoint_m": {
+        "max": 0.0117175136238018,
+        "mean": -0.00033323767679775104,
+        "median": -0.0014020823705431576,
+        "min": -0.008552904266643319
+      },
+      "seed": 602
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 4,
+          "rate": 0.13793103448275862,
+          "wilson_95": [
+            0.05497439964111964,
+            0.30558993720352023
+          ]
+        },
+        "target_directed_clear": {
+          "count": 25,
+          "rate": 0.8620689655172413,
+          "wilson_95": [
+            0.6944100627964798,
+            0.9450256003588804
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.11696979849974075
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.2656995932210824,
+        "mean": 0.12659839682499327,
+        "median": 0.13367083314562878,
+        "min": 0.024331165984867183
+      },
+      "cohort": "success_calibration",
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 29,
+      "progress_closest_m": {
+        "max": 0.0136343322205719,
+        "mean": 0.0028615875311465843,
+        "median": 0.0022818390305921754,
+        "min": -0.00023477839241378
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0032180573366341553,
+        "mean": 0.00055871313935831,
+        "median": -0.00014843416047117738,
+        "min": -0.0004406232031278247
+      },
+      "progress_endpoint_m": {
+        "max": 0.013634332220571903,
+        "mean": 0.0019924949846381384,
+        "median": 0.0009265615737317663,
+        "min": -0.0030688451760444643
+      },
+      "seed": 602
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 4,
+          "rate": 0.4,
+          "wilson_95": [
+            0.16818032970623614,
+            0.6873262302663417
+          ]
+        },
+        "target_directed_clear": {
+          "count": 4,
+          "rate": 0.4,
+          "wilson_95": [
+            0.16818032970623614,
+            0.6873262302663417
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 2,
+          "rate": 0.2,
+          "wilson_95": [
+            0.05668215145437519,
+            0.5098375284633583
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.07176950939480575,
+        "mean": 0.019178409259636087,
+        "median": 0.021134778854316298,
+        "min": -0.027245175131722574
+      },
+      "cohort": "downstream_failure",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 10,
+      "progress_closest_m": {
+        "max": 0.015487698862791055,
+        "mean": 0.004167789906951519,
+        "median": 0.0005361917650071168,
+        "min": -0.0010296782415231964
+      },
+      "progress_closest_xy_m": {
+        "max": 0.01603605867534061,
+        "mean": 0.003236505239793956,
+        "median": 0.002313938047428674,
+        "min": -0.0012608666700551496
+      },
+      "progress_endpoint_m": {
+        "max": 0.015487698862791055,
+        "mean": 0.002460594538320119,
+        "median": -0.00018478180703098823,
+        "min": -0.007648210715854031
+      },
+      "seed": 600
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 12,
+          "rate": 0.5,
+          "wilson_95": [
+            0.3142742581957335,
+            0.6857257418042665
+          ]
+        },
+        "target_directed_clear": {
+          "count": 7,
+          "rate": 0.2916666666666667,
+          "wilson_95": [
+            0.14914648196960875,
+            0.49167693664496637
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 5,
+          "rate": 0.20833333333333334,
+          "wilson_95": [
+            0.09244825352851857,
+            0.40470453253188665
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.37479489106510067,
+        "mean": 0.06437859201332573,
+        "median": 0.005143213725658489,
+        "min": -0.031660750309535475
+      },
+      "cohort": "main_analysis",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 24,
+      "progress_closest_m": {
+        "max": 0.016609384728739296,
+        "mean": 0.0029222091583718866,
+        "median": 9.706758327920895e-05,
+        "min": -0.003884616414071812
+      },
+      "progress_closest_xy_m": {
+        "max": 0.015308853547823159,
+        "mean": 0.0022479247370210255,
+        "median": -0.0006278904690630929,
+        "min": -0.003592459965191974
+      },
+      "progress_endpoint_m": {
+        "max": 0.016609384728739296,
+        "mean": -0.0033738492602304626,
+        "median": -0.0024980243260032675,
+        "min": -0.03936504778974673
+      },
+      "seed": 600
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 2,
+          "rate": 0.125,
+          "wilson_95": [
+            0.03497748774324047,
+            0.36022827265758695
+          ]
+        },
+        "target_directed_clear": {
+          "count": 14,
+          "rate": 0.875,
+          "wilson_95": [
+            0.639771727342413,
+            0.9650225122567595
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.1936076805344365
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.23999995412549344,
+        "mean": 0.11194914351806147,
+        "median": 0.09559340192462336,
+        "min": 0.027683288441413607
+      },
+      "cohort": "success_calibration",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 16,
+      "progress_closest_m": {
+        "max": 0.017806923442119246,
+        "mean": 0.007018962773736818,
+        "median": 0.005417743154140758,
+        "min": -0.0016598211622744843
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0030597319606985606,
+        "mean": 0.0005220929022979589,
+        "median": 0.0001912873169492976,
+        "min": -0.0008481433552754271
+      },
+      "progress_endpoint_m": {
+        "max": 0.017806923442119246,
+        "mean": 0.005732432067120026,
+        "median": 0.005121165956276997,
+        "min": -0.016967382060535045
+      },
+      "seed": 600
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 2,
+          "rate": 0.5,
+          "wilson_95": [
+            0.15003898915214947,
+            0.8499610108478506
+          ]
+        },
+        "target_directed_clear": {
+          "count": 1,
+          "rate": 0.25,
+          "wilson_95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 1,
+          "rate": 0.25,
+          "wilson_95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.12556858443527052,
+        "mean": 0.06945203856869667,
+        "median": 0.07979414253494133,
+        "min": -0.007348715230366513
+      },
+      "cohort": "downstream_failure",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 4,
+      "progress_closest_m": {
+        "max": 0.008619169057925605,
+        "mean": 0.002092400671500132,
+        "median": 0.0011697009413469198,
+        "min": -0.0025889682546189167
+      },
+      "progress_closest_xy_m": {
+        "max": 0.008399959788845654,
+        "mean": 0.002484088768145521,
+        "median": 0.0013979529539913365,
+        "min": -0.0012595106242462434
+      },
+      "progress_endpoint_m": {
+        "max": 0.008619169057925605,
+        "mean": -0.005117148231209477,
+        "median": -0.004429377000922247,
+        "min": -0.020229007980919023
+      },
+      "seed": 601
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 14,
+          "rate": 0.3783783783783784,
+          "wilson_95": [
+            0.24063999175798265,
+            0.5389956956078235
+          ]
+        },
+        "target_directed_clear": {
+          "count": 9,
+          "rate": 0.24324324324324326,
+          "wilson_95": [
+            0.13361352989116398,
+            0.40117292121442655
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 14,
+          "rate": 0.3783783783783784,
+          "wilson_95": [
+            0.24063999175798265,
+            0.5389956956078235
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.578508634668174,
+        "mean": 0.03630132668922406,
+        "median": -0.00646906461778099,
+        "min": -0.03462659832171947
+      },
+      "cohort": "main_analysis",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 37,
+      "progress_closest_m": {
+        "max": 0.025173866006232448,
+        "mean": 0.005698604295712508,
+        "median": 0.003962130508195494,
+        "min": -0.0031949531087080707
+      },
+      "progress_closest_xy_m": {
+        "max": 0.028703364386173352,
+        "mean": 0.0029029019945876126,
+        "median": -0.0003087369953817514,
+        "min": -0.0031987349629731265
+      },
+      "progress_endpoint_m": {
+        "max": 0.025173866006232448,
+        "mean": 0.002506180055444361,
+        "median": 0.003962130508195508,
+        "min": -0.026032054437856667
+      },
+      "seed": 601
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.2991450484195441
+          ]
+        },
+        "target_directed_clear": {
+          "count": 9,
+          "rate": 1.0,
+          "wilson_95": [
+            0.7008549515804559,
+            1.0
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.2991450484195441
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.20798649610848868,
+        "mean": 0.11798381311073346,
+        "median": 0.10088802796343024,
+        "min": 0.04118888628038668
+      },
+      "cohort": "success_calibration",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 9,
+      "progress_closest_m": {
+        "max": 0.010818211564581811,
+        "mean": 0.003281083164837724,
+        "median": 0.0014593317786875497,
+        "min": 0.00040619621347413697
+      },
+      "progress_closest_xy_m": {
+        "max": 0.003925025646215884,
+        "mean": 0.0003651325815693873,
+        "median": -0.00015746626793489496,
+        "min": -0.0003242259113861428
+      },
+      "progress_endpoint_m": {
+        "max": 0.010818211564581811,
+        "mean": 0.002192835872510757,
+        "median": 0.00015296044557025837,
+        "min": -0.0030514267495847028
+      },
+      "seed": 601
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 2,
+          "rate": 0.4,
+          "wilson_95": [
+            0.11762077423264783,
+            0.769275718723987
+          ]
+        },
+        "target_directed_clear": {
+          "count": 3,
+          "rate": 0.6,
+          "wilson_95": [
+            0.2307242812760128,
+            0.882379225767352
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.43448246478317476
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.08346566238660902,
+        "mean": 0.04612330607242762,
+        "median": 0.037194276756470634,
+        "min": 0.002801924089526696
+      },
+      "cohort": "downstream_failure",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 5,
+      "progress_closest_m": {
+        "max": 0.009958758775587023,
+        "mean": 0.002775186669488758,
+        "median": 0.0002488360639592898,
+        "min": -0.0007071362134011792
+      },
+      "progress_closest_xy_m": {
+        "max": 0.012251586775749751,
+        "mean": 0.0034481339413521017,
+        "median": 0.002706146124764896,
+        "min": -0.001188273945881434
+      },
+      "progress_endpoint_m": {
+        "max": 0.009958758775587023,
+        "mean": 0.0008565582738804453,
+        "median": -0.0015132154225075637,
+        "min": -0.005214889277967809
+      },
+      "seed": 602
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 14,
+          "rate": 0.4375,
+          "wilson_95": [
+            0.2816533111504036,
+            0.6067440886314801
+          ]
+        },
+        "target_directed_clear": {
+          "count": 5,
+          "rate": 0.15625,
+          "wilson_95": [
+            0.0686442028250571,
+            0.3175414959753039
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 13,
+          "rate": 0.40625,
+          "wilson_95": [
+            0.2551963484266544,
+            0.5773997512461713
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.49392949503769595,
+        "mean": 0.06449065446213459,
+        "median": -0.012212465751303492,
+        "min": -0.03860697507952257
+      },
+      "cohort": "main_analysis",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 32,
+      "progress_closest_m": {
+        "max": 0.03176954378782568,
+        "mean": 0.004519282825926152,
+        "median": 0.0004717877552245092,
+        "min": -0.004100822280685812
+      },
+      "progress_closest_xy_m": {
+        "max": 0.03509131369319629,
+        "mean": 0.003485809511404976,
+        "median": -0.0002860878295246269,
+        "min": -0.0030889697719202747
+      },
+      "progress_endpoint_m": {
+        "max": 0.03176954378782565,
+        "mean": 0.000489094121410101,
+        "median": 0.000417840092462457,
+        "min": -0.03757361016019814
+      },
+      "seed": 602
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 1,
+          "rate": 0.07692307692307693,
+          "wilson_95": [
+            0.013710421242556586,
+            0.3331395092109959
+          ]
+        },
+        "target_directed_clear": {
+          "count": 12,
+          "rate": 0.9230769230769231,
+          "wilson_95": [
+            0.6668604907890041,
+            0.9862895787574435
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.22809537235419838
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.159949815371278,
+        "mean": 0.09954861197759043,
+        "median": 0.09542120229803217,
+        "min": 0.05605281002935708
+      },
+      "cohort": "success_calibration",
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 13,
+      "progress_closest_m": {
+        "max": 0.010188314698931611,
+        "mean": 0.002758319498852202,
+        "median": 0.0023368459612257905,
+        "min": -1.833273438070493e-05
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0007996232657931325,
+        "mean": 2.4992901722825488e-05,
+        "median": -0.0001448805534103783,
+        "min": -0.0007079433730451598
+      },
+      "progress_endpoint_m": {
+        "max": 0.010188314698931614,
+        "mean": 0.0014478107591644543,
+        "median": 0.001533657814038445,
+        "min": -0.004395336177390553
+      },
+      "seed": 602
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 1,
+          "rate": 0.1,
+          "wilson_95": [
+            0.017876213095072896,
+            0.4041500267952385
+          ]
+        },
+        "target_directed_clear": {
+          "count": 9,
+          "rate": 0.9,
+          "wilson_95": [
+            0.5958499732047615,
+            0.9821237869049271
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.2775327998628892
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.10451479030913893,
+        "mean": 0.05345602847148555,
+        "median": 0.049306128371230815,
+        "min": 0.007002364927530265
+      },
+      "cohort": "downstream_failure",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 10,
+      "progress_closest_m": {
+        "max": 0.024790871290556092,
+        "mean": 0.009361915826716255,
+        "median": 0.007178130040623279,
+        "min": -0.0015304233364990018
+      },
+      "progress_closest_xy_m": {
+        "max": 0.018264379257022928,
+        "mean": 0.004348667213045803,
+        "median": 0.003270563046663239,
+        "min": -0.0005726557618114005
+      },
+      "progress_endpoint_m": {
+        "max": 0.024790871290556092,
+        "mean": 0.00802223437715358,
+        "median": 0.007178130040623282,
+        "min": -0.014695969600363921
+      },
+      "seed": 600
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 7,
+          "rate": 0.22580645161290322,
+          "wilson_95": [
+            0.11395135561262493,
+            0.3981241838334205
+          ]
+        },
+        "target_directed_clear": {
+          "count": 11,
+          "rate": 0.3548387096774194,
+          "wilson_95": [
+            0.21116659093865403,
+            0.5305204593563113
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 13,
+          "rate": 0.41935483870967744,
+          "wilson_95": [
+            0.2641554306731223,
+            0.5923373750463029
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.5411115170421836,
+        "mean": 0.05263262061399195,
+        "median": -0.00475766419677124,
+        "min": -0.03366389032303646
+      },
+      "cohort": "main_analysis",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 31,
+      "progress_closest_m": {
+        "max": 0.014198044527114748,
+        "mean": 0.00462322202371852,
+        "median": 0.004317639910697169,
+        "min": -0.0037629624614516355
+      },
+      "progress_closest_xy_m": {
+        "max": 0.01608254025418354,
+        "mean": 0.002657152971795127,
+        "median": 0.0013338987552829473,
+        "min": -0.0033365339444851316
+      },
+      "progress_endpoint_m": {
+        "max": 0.014198044527114748,
+        "mean": 0.002641807104794997,
+        "median": 0.004317639910697169,
+        "min": -0.02780464574244365
+      },
+      "seed": 600
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 1,
+          "rate": 0.1111111111111111,
+          "wilson_95": [
+            0.019890887638544907,
+            0.434999705576656
+          ]
+        },
+        "target_directed_clear": {
+          "count": 8,
+          "rate": 0.8888888888888888,
+          "wilson_95": [
+            0.5650002944233439,
+            0.9801091123614551
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.2991450484195441
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.13864213548874224,
+        "mean": 0.09865455425237955,
+        "median": 0.10541652528425849,
+        "min": 0.04307974346823775
+      },
+      "cohort": "success_calibration",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 9,
+      "progress_closest_m": {
+        "max": 0.011705296666351396,
+        "mean": 0.00406346170357978,
+        "median": 0.0015884464071821043,
+        "min": -0.00014857078314549355
+      },
+      "progress_closest_xy_m": {
+        "max": 0.002717993655737861,
+        "mean": 0.0004291663214383219,
+        "median": -3.731279975053778e-05,
+        "min": -0.0014694519881274948
+      },
+      "progress_endpoint_m": {
+        "max": 0.011705296666351396,
+        "mean": 0.0036650015540452088,
+        "median": 0.0015269409717538623,
+        "min": -0.0017298284037060678
+      },
+      "seed": 600
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 1,
+          "rate": 0.2,
+          "wilson_95": [
+            0.03622410863243014,
+            0.6244653702374747
+          ]
+        },
+        "target_directed_clear": {
+          "count": 4,
+          "rate": 0.8,
+          "wilson_95": [
+            0.37553462976252533,
+            0.9637758913675698
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.43448246478317476
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.14149460544240766,
+        "mean": 0.07251412394943078,
+        "median": 0.0543782922802137,
+        "min": 0.045615151050581615
+      },
+      "cohort": "downstream_failure",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 5,
+      "progress_closest_m": {
+        "max": 0.008860924879977555,
+        "mean": 0.0023865161600999975,
+        "median": 0.0017878459760697109,
+        "min": -0.002205269810769156
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0074408034703681986,
+        "mean": 0.002171112330797664,
+        "median": 0.0013637556644644881,
+        "min": -0.002303579161753569
+      },
+      "progress_endpoint_m": {
+        "max": 0.008860924879977555,
+        "mean": -0.0010068826509267471,
+        "median": 0.0017878459760697109,
+        "min": -0.01889640506132853
+      },
+      "seed": 601
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 11,
+          "rate": 0.3333333333333333,
+          "wilson_95": [
+            0.19750227679220683,
+            0.5039210557219438
+          ]
+        },
+        "target_directed_clear": {
+          "count": 10,
+          "rate": 0.30303030303030304,
+          "wilson_95": [
+            0.17375531424053606,
+            0.47338135145800575
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 12,
+          "rate": 0.36363636363636365,
+          "wilson_95": [
+            0.2218717823524236,
+            0.5338382169773361
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.35736058549406235,
+        "mean": 0.05153176339885337,
+        "median": -0.003159406051692886,
+        "min": -0.036607407124035915
+      },
+      "cohort": "main_analysis",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 33,
+      "progress_closest_m": {
+        "max": 0.02421985102379587,
+        "mean": 0.00474101301514286,
+        "median": 0.003642257944709404,
+        "min": -0.003980216173255821
+      },
+      "progress_closest_xy_m": {
+        "max": 0.029546885015894836,
+        "mean": 0.0029671876343269816,
+        "median": 0.0004139313791981236,
+        "min": -0.003943923229925747
+      },
+      "progress_endpoint_m": {
+        "max": 0.02421985102379587,
+        "mean": 0.0018879213335419919,
+        "median": 0.003642257944709293,
+        "min": -0.027085991362814574
+      },
+      "seed": 601
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 1,
+          "rate": 0.08333333333333333,
+          "wilson_95": [
+            0.014865094404917095,
+            0.35387991114111694
+          ]
+        },
+        "target_directed_clear": {
+          "count": 11,
+          "rate": 0.9166666666666666,
+          "wilson_95": [
+            0.646120088858883,
+            0.9851349055950829
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            2.7755575615628914e-17,
+            0.24249400665524085
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.21888453971837893,
+        "mean": 0.09936881380042385,
+        "median": 0.09190824375261167,
+        "min": 0.040733678985189835
+      },
+      "cohort": "success_calibration",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 12,
+      "progress_closest_m": {
+        "max": 0.007645156793193209,
+        "mean": 0.0024682310818728947,
+        "median": 0.0021613107917286076,
+        "min": -0.00019532414059276332
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0023314265910772515,
+        "mean": 0.00015843257701150907,
+        "median": -3.7726679361000694e-05,
+        "min": -0.0003052872807291641
+      },
+      "progress_endpoint_m": {
+        "max": 0.007645156793193209,
+        "mean": 0.0003744304519900134,
+        "median": 0.0017997449059168596,
+        "min": -0.009751335897964314
+      },
+      "seed": 601
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 4,
+          "rate": 0.4444444444444444,
+          "wilson_95": [
+            0.18877852109766452,
+            0.733348706504507
+          ]
+        },
+        "target_directed_clear": {
+          "count": 4,
+          "rate": 0.4444444444444444,
+          "wilson_95": [
+            0.18877852109766452,
+            0.733348706504507
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 1,
+          "rate": 0.1111111111111111,
+          "wilson_95": [
+            0.019890887638544907,
+            0.434999705576656
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.08657569406682492,
+        "mean": 0.030948798514352092,
+        "median": 0.026282814752757677,
+        "min": -0.0002273725305916019
+      },
+      "cohort": "downstream_failure",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 9,
+      "progress_closest_m": {
+        "max": 0.006414578292200213,
+        "mean": 0.0018995706243413002,
+        "median": 0.001068392061542009,
+        "min": -0.0008222823918717578
+      },
+      "progress_closest_xy_m": {
+        "max": 0.006308973779592497,
+        "mean": 0.0007670682875278442,
+        "median": -9.123226271952334e-05,
+        "min": -0.001321694693549938
+      },
+      "progress_endpoint_m": {
+        "max": 0.006414578292200213,
+        "mean": -1.1498933540118305e-05,
+        "median": 0.001068392061542009,
+        "min": -0.007900472413519627
+      },
+      "seed": 602
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 7,
+          "rate": 0.21875,
+          "wilson_95": [
+            0.11023836252604186,
+            0.3875499364924353
+          ]
+        },
+        "target_directed_clear": {
+          "count": 14,
+          "rate": 0.4375,
+          "wilson_95": [
+            0.2816533111504036,
+            0.6067440886314801
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 11,
+          "rate": 0.34375,
+          "wilson_95": [
+            0.20410437924433172,
+            0.5168891202103778
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.521452702098392,
+        "mean": 0.13500359733957087,
+        "median": 0.007163912911966658,
+        "min": -0.0398535082717768
+      },
+      "cohort": "main_analysis",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 32,
+      "progress_closest_m": {
+        "max": 0.017718777434872685,
+        "mean": 0.005325193838550062,
+        "median": 0.005364690845978098,
+        "min": -0.0037269246684261542
+      },
+      "progress_closest_xy_m": {
+        "max": 0.019375739069475706,
+        "mean": 0.0033031075785875073,
+        "median": 0.0009049176907281672,
+        "min": -0.003468048265915749
+      },
+      "progress_endpoint_m": {
+        "max": 0.017718777434872685,
+        "mean": 0.001958683415722753,
+        "median": 0.005364690845978098,
+        "min": -0.03036229936889706
+      },
+      "seed": 602
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 1,
+          "rate": 0.1111111111111111,
+          "wilson_95": [
+            0.019890887638544907,
+            0.434999705576656
+          ]
+        },
+        "target_directed_clear": {
+          "count": 8,
+          "rate": 0.8888888888888888,
+          "wilson_95": [
+            0.5650002944233439,
+            0.9801091123614551
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.2991450484195441
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": 0.15303624814820932,
+        "mean": 0.09610301701738098,
+        "median": 0.09123080706215297,
+        "min": 0.04286672707107129
+      },
+      "cohort": "success_calibration",
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 9,
+      "progress_closest_m": {
+        "max": 0.017047448886422713,
+        "mean": 0.0053952420438164094,
+        "median": 0.0010176433148309967,
+        "min": -0.000195295703331419
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0036100309420265143,
+        "mean": 0.00044875303876776507,
+        "median": -0.00011936665300296646,
+        "min": -0.00049161186628267
+      },
+      "progress_endpoint_m": {
+        "max": 0.017047448886422706,
+        "mean": 0.0042979279433445015,
+        "median": 0.000560269157329563,
+        "min": -0.004155525897201272
+      },
+      "seed": 602
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 1,
+          "rate": 0.25,
+          "wilson_95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        },
+        "target_directed_clear": {
+          "count": 3,
+          "rate": 0.75,
+          "wilson_95": [
+            0.30064184258240184,
+            0.9544127391902995
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.4898908364545973
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null
+      },
+      "cohort": "downstream_failure",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "n": 4,
+      "progress_closest_m": {
+        "max": 0.004857818282790194,
+        "mean": 0.002366022876318203,
+        "median": 0.0023537817793830027,
+        "min": -0.00010129033628338696
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0006353620885897037,
+        "mean": 0.00017077379288264142,
+        "median": 0.00010691407770771228,
+        "min": -0.0001660950724745626
+      },
+      "progress_endpoint_m": {
+        "max": 0.0030405107352913553,
+        "mean": -0.00027067038392316906,
+        "median": 0.0012422923303337628,
+        "min": -0.006607776931651557
+      },
+      "seed": 600
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 12,
+          "rate": 0.2608695652173913,
+          "wilson_95": [
+            0.156008864456426,
+            0.4025915352801559
+          ]
+        },
+        "target_directed_clear": {
+          "count": 34,
+          "rate": 0.7391304347826086,
+          "wilson_95": [
+            0.597408464719844,
+            0.843991135543574
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.07707356308558039
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null
+      },
+      "cohort": "success_calibration",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "n": 46,
+      "progress_closest_m": {
+        "max": 0.02081038360624298,
+        "mean": 0.0037979615110470422,
+        "median": 0.0018207803491854142,
+        "min": -0.0003383427695661696
+      },
+      "progress_closest_xy_m": {
+        "max": 0.005024627044392987,
+        "mean": 0.0005435418025620061,
+        "median": 9.881227587139538e-05,
+        "min": -0.0007599348162978387
+      },
+      "progress_endpoint_m": {
+        "max": 0.02081038360624298,
+        "mean": 0.0030273837274274883,
+        "median": 0.0015401483250898976,
+        "min": -0.005610724626388262
+      },
+      "seed": 600
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 1,
+          "rate": 0.25,
+          "wilson_95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        },
+        "target_directed_clear": {
+          "count": 3,
+          "rate": 0.75,
+          "wilson_95": [
+            0.30064184258240184,
+            0.9544127391902995
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.4898908364545973
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null
+      },
+      "cohort": "downstream_failure",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "n": 4,
+      "progress_closest_m": {
+        "max": 0.007170309132023888,
+        "mean": 0.002491799595536192,
+        "median": 0.0014116998564281096,
+        "min": -2.651046273534005e-05
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0039056517932657513,
+        "mean": 0.001090756418593928,
+        "median": 0.0002496604928973554,
+        "min": -4.1947104684750096e-05
+      },
+      "progress_endpoint_m": {
+        "max": 0.007165855300367691,
+        "mean": 0.002306657624008301,
+        "median": 0.001157632107056366,
+        "min": -0.00025448901844721955
+      },
+      "seed": 601
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 1,
+          "rate": 0.5,
+          "wilson_95": [
+            0.09453120573423074,
+            0.9054687942657693
+          ]
+        },
+        "target_directed_clear": {
+          "count": 1,
+          "rate": 0.5,
+          "wilson_95": [
+            0.09453120573423074,
+            0.9054687942657693
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.6576197724933469
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null
+      },
+      "cohort": "main_analysis",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "n": 2,
+      "progress_closest_m": {
+        "max": 0.012453573016844133,
+        "mean": 0.00438045015564309,
+        "median": 0.00438045015564309,
+        "min": -0.0036926727055579533
+      },
+      "progress_closest_xy_m": {
+        "max": 0.013387120456509333,
+        "mean": 0.006612208138430886,
+        "median": 0.006612208138430886,
+        "min": -0.00016270417964756034
+      },
+      "progress_endpoint_m": {
+        "max": 0.012453573016844133,
+        "mean": -0.00905285951392526,
+        "median": -0.00905285951392526,
+        "min": -0.030559292044694653
+      },
+      "seed": 601
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 6,
+          "rate": 0.13636363636363635,
+          "wilson_95": [
+            0.06402954497555872,
+            0.2670945304851544
+          ]
+        },
+        "target_directed_clear": {
+          "count": 38,
+          "rate": 0.8636363636363636,
+          "wilson_95": [
+            0.7329054695148456,
+            0.9359704550244412
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.08029560375848066
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null
+      },
+      "cohort": "success_calibration",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "n": 44,
+      "progress_closest_m": {
+        "max": 0.020793901221300225,
+        "mean": 0.003953588604917435,
+        "median": 0.0014252849988540435,
+        "min": -0.0004874372093359048
+      },
+      "progress_closest_xy_m": {
+        "max": 0.0045573375955819005,
+        "mean": 0.000483595784304202,
+        "median": 3.800024142640887e-05,
+        "min": -0.0008827504310511469
+      },
+      "progress_endpoint_m": {
+        "max": 0.020793901221300225,
+        "mean": 0.002770540041989787,
+        "median": 0.0012838292594608046,
+        "min": -0.00879331424364185
+      },
+      "seed": 601
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 1,
+          "rate": 0.3333333333333333,
+          "wilson_95": [
+            0.06149194472039621,
+            0.7923403991979522
+          ]
+        },
+        "target_directed_clear": {
+          "count": 2,
+          "rate": 0.6666666666666666,
+          "wilson_95": [
+            0.2076596008020477,
+            0.9385080552796037
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            5.551115123125783e-17,
+            0.5614970317550454
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null
+      },
+      "cohort": "downstream_failure",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "n": 3,
+      "progress_closest_m": {
+        "max": 0.01324654102357915,
+        "mean": 0.004769041775513103,
+        "median": 0.001337704370867783,
+        "min": -0.0002771200679076227
+      },
+      "progress_closest_xy_m": {
+        "max": 7.365347917780152e-06,
+        "mean": -0.0002600243020935153,
+        "median": -5.000992649496945e-05,
+        "min": -0.0007374283277033567
+      },
+      "progress_endpoint_m": {
+        "max": 0.013246541023579151,
+        "mean": 0.0041886913425596434,
+        "median": -3.7763602563994914e-05,
+        "min": -0.0006427033933362261
+      },
+      "seed": 602
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 1,
+          "rate": 1.0,
+          "wilson_95": [
+            0.20654931437723745,
+            1.0
+          ]
+        },
+        "target_directed_clear": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.7934506856227626
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.7934506856227626
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null
+      },
+      "cohort": "main_analysis",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "n": 1,
+      "progress_closest_m": {
+        "max": -0.0014128942961503244,
+        "mean": -0.0014128942961503244,
+        "median": -0.0014128942961503244,
+        "min": -0.0014128942961503244
+      },
+      "progress_closest_xy_m": {
+        "max": -0.001469542551347347,
+        "mean": -0.001469542551347347,
+        "median": -0.001469542551347347,
+        "min": -0.001469542551347347
+      },
+      "progress_endpoint_m": {
+        "max": -0.012359292860593174,
+        "mean": -0.012359292860593174,
+        "median": -0.012359292860593174,
+        "min": -0.012359292860593174
+      },
+      "seed": 602
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 8,
+          "rate": 0.17391304347826086,
+          "wilson_95": [
+            0.09085791702246311,
+            0.30723353716378493
+          ]
+        },
+        "target_directed_clear": {
+          "count": 38,
+          "rate": 0.8260869565217391,
+          "wilson_95": [
+            0.692766462836215,
+            0.9091420829775368
+          ]
+        },
+        "target_directed_obstructed": {
+          "count": 0,
+          "rate": 0.0,
+          "wilson_95": [
+            0.0,
+            0.07707356308558039
+          ]
+        }
+      },
+      "clearance_m": {
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null
+      },
+      "cohort": "success_calibration",
+      "distractors": 0,
+      "env": "PickPlaceCan",
+      "n": 46,
+      "progress_closest_m": {
+        "max": 0.021195835804102697,
+        "mean": 0.004059317356657742,
+        "median": 0.0026150530940764333,
+        "min": -0.0006465179714399312
+      },
+      "progress_closest_xy_m": {
+        "max": 0.005455739325128298,
+        "mean": 0.00029936737548735327,
+        "median": -9.758978090352362e-05,
+        "min": -0.0006268866206921367
+      },
+      "progress_endpoint_m": {
+        "max": 0.021195835804102697,
+        "mean": 0.002984848818212436,
+        "median": 0.0017999375940267442,
+        "min": -0.007907499635187842
+      },
+      "seed": 602
+    }
+  ],
+  "sensitivity": [
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 17,
+          "rate": 0.53125
+        },
+        "target_directed_clear": {
+          "count": 6,
+          "rate": 0.1875
+        },
+        "target_directed_obstructed": {
+          "count": 9,
+          "rate": 0.28125
+        }
+      },
+      "clearance_margin_m": 0.0,
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 32,
+      "progress_threshold_m": 0.0
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 17,
+          "rate": 0.53125
+        },
+        "target_directed_clear": {
+          "count": 6,
+          "rate": 0.1875
+        },
+        "target_directed_obstructed": {
+          "count": 9,
+          "rate": 0.28125
+        }
+      },
+      "clearance_margin_m": 0.01,
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 32,
+      "progress_threshold_m": 0.0
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 17,
+          "rate": 0.53125
+        },
+        "target_directed_clear": {
+          "count": 6,
+          "rate": 0.1875
+        },
+        "target_directed_obstructed": {
+          "count": 9,
+          "rate": 0.28125
+        }
+      },
+      "clearance_margin_m": 0.02,
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 32,
+      "progress_threshold_m": 0.0
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 25,
+          "rate": 0.78125
+        },
+        "target_directed_clear": {
+          "count": 5,
+          "rate": 0.15625
+        },
+        "target_directed_obstructed": {
+          "count": 2,
+          "rate": 0.0625
+        }
+      },
+      "clearance_margin_m": 0.0,
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 32,
+      "progress_threshold_m": 0.0005
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 25,
+          "rate": 0.78125
+        },
+        "target_directed_clear": {
+          "count": 5,
+          "rate": 0.15625
+        },
+        "target_directed_obstructed": {
+          "count": 2,
+          "rate": 0.0625
+        }
+      },
+      "clearance_margin_m": 0.01,
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 32,
+      "progress_threshold_m": 0.0005
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 25,
+          "rate": 0.78125
+        },
+        "target_directed_clear": {
+          "count": 5,
+          "rate": 0.15625
+        },
+        "target_directed_obstructed": {
+          "count": 2,
+          "rate": 0.0625
+        }
+      },
+      "clearance_margin_m": 0.02,
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 32,
+      "progress_threshold_m": 0.0005
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 26,
+          "rate": 0.8125
+        },
+        "target_directed_clear": {
+          "count": 4,
+          "rate": 0.125
+        },
+        "target_directed_obstructed": {
+          "count": 2,
+          "rate": 0.0625
+        }
+      },
+      "clearance_margin_m": 0.0,
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 32,
+      "progress_threshold_m": 0.001
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 26,
+          "rate": 0.8125
+        },
+        "target_directed_clear": {
+          "count": 4,
+          "rate": 0.125
+        },
+        "target_directed_obstructed": {
+          "count": 2,
+          "rate": 0.0625
+        }
+      },
+      "clearance_margin_m": 0.01,
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 32,
+      "progress_threshold_m": 0.001
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 26,
+          "rate": 0.8125
+        },
+        "target_directed_clear": {
+          "count": 4,
+          "rate": 0.125
+        },
+        "target_directed_obstructed": {
+          "count": 2,
+          "rate": 0.0625
+        }
+      },
+      "clearance_margin_m": 0.02,
+      "distractors": 1,
+      "env": "PickPlaceBreadCan",
+      "n": 32,
+      "progress_threshold_m": 0.001
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 40,
+          "rate": 0.43010752688172044
+        },
+        "target_directed_clear": {
+          "count": 21,
+          "rate": 0.22580645161290322
+        },
+        "target_directed_obstructed": {
+          "count": 32,
+          "rate": 0.34408602150537637
+        }
+      },
+      "clearance_margin_m": 0.0,
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 93,
+      "progress_threshold_m": 0.0
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 40,
+          "rate": 0.43010752688172044
+        },
+        "target_directed_clear": {
+          "count": 16,
+          "rate": 0.17204301075268819
+        },
+        "target_directed_obstructed": {
+          "count": 37,
+          "rate": 0.3978494623655914
+        }
+      },
+      "clearance_margin_m": 0.01,
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 93,
+      "progress_threshold_m": 0.0
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 40,
+          "rate": 0.43010752688172044
+        },
+        "target_directed_clear": {
+          "count": 14,
+          "rate": 0.15053763440860216
+        },
+        "target_directed_obstructed": {
+          "count": 39,
+          "rate": 0.41935483870967744
+        }
+      },
+      "clearance_margin_m": 0.02,
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 93,
+      "progress_threshold_m": 0.0
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 43,
+          "rate": 0.46236559139784944
+        },
+        "target_directed_clear": {
+          "count": 21,
+          "rate": 0.22580645161290322
+        },
+        "target_directed_obstructed": {
+          "count": 29,
+          "rate": 0.3118279569892473
+        }
+      },
+      "clearance_margin_m": 0.0,
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 93,
+      "progress_threshold_m": 0.0005
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 43,
+          "rate": 0.46236559139784944
+        },
+        "target_directed_clear": {
+          "count": 16,
+          "rate": 0.17204301075268819
+        },
+        "target_directed_obstructed": {
+          "count": 34,
+          "rate": 0.3655913978494624
+        }
+      },
+      "clearance_margin_m": 0.01,
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 93,
+      "progress_threshold_m": 0.0005
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 43,
+          "rate": 0.46236559139784944
+        },
+        "target_directed_clear": {
+          "count": 14,
+          "rate": 0.15053763440860216
+        },
+        "target_directed_obstructed": {
+          "count": 36,
+          "rate": 0.3870967741935484
+        }
+      },
+      "clearance_margin_m": 0.02,
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 93,
+      "progress_threshold_m": 0.0005
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 46,
+          "rate": 0.4946236559139785
+        },
+        "target_directed_clear": {
+          "count": 18,
+          "rate": 0.1935483870967742
+        },
+        "target_directed_obstructed": {
+          "count": 29,
+          "rate": 0.3118279569892473
+        }
+      },
+      "clearance_margin_m": 0.0,
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 93,
+      "progress_threshold_m": 0.001
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 46,
+          "rate": 0.4946236559139785
+        },
+        "target_directed_clear": {
+          "count": 13,
+          "rate": 0.13978494623655913
+        },
+        "target_directed_obstructed": {
+          "count": 34,
+          "rate": 0.3655913978494624
+        }
+      },
+      "clearance_margin_m": 0.01,
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 93,
+      "progress_threshold_m": 0.001
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 46,
+          "rate": 0.4946236559139785
+        },
+        "target_directed_clear": {
+          "count": 11,
+          "rate": 0.11827956989247312
+        },
+        "target_directed_obstructed": {
+          "count": 36,
+          "rate": 0.3870967741935484
+        }
+      },
+      "clearance_margin_m": 0.02,
+      "distractors": 2,
+      "env": "PickPlaceBreadCerealCan",
+      "n": 93,
+      "progress_threshold_m": 0.001
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 25,
+          "rate": 0.2604166666666667
+        },
+        "target_directed_clear": {
+          "count": 35,
+          "rate": 0.3645833333333333
+        },
+        "target_directed_obstructed": {
+          "count": 36,
+          "rate": 0.375
+        }
+      },
+      "clearance_margin_m": 0.0,
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 96,
+      "progress_threshold_m": 0.0
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 25,
+          "rate": 0.2604166666666667
+        },
+        "target_directed_clear": {
+          "count": 30,
+          "rate": 0.3125
+        },
+        "target_directed_obstructed": {
+          "count": 41,
+          "rate": 0.4270833333333333
+        }
+      },
+      "clearance_margin_m": 0.01,
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 96,
+      "progress_threshold_m": 0.0
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 25,
+          "rate": 0.2604166666666667
+        },
+        "target_directed_clear": {
+          "count": 26,
+          "rate": 0.2708333333333333
+        },
+        "target_directed_obstructed": {
+          "count": 45,
+          "rate": 0.46875
+        }
+      },
+      "clearance_margin_m": 0.02,
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 96,
+      "progress_threshold_m": 0.0
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 28,
+          "rate": 0.2916666666666667
+        },
+        "target_directed_clear": {
+          "count": 34,
+          "rate": 0.3541666666666667
+        },
+        "target_directed_obstructed": {
+          "count": 34,
+          "rate": 0.3541666666666667
+        }
+      },
+      "clearance_margin_m": 0.0,
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 96,
+      "progress_threshold_m": 0.0005
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 28,
+          "rate": 0.2916666666666667
+        },
+        "target_directed_clear": {
+          "count": 29,
+          "rate": 0.3020833333333333
+        },
+        "target_directed_obstructed": {
+          "count": 39,
+          "rate": 0.40625
+        }
+      },
+      "clearance_margin_m": 0.01,
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 96,
+      "progress_threshold_m": 0.0005
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 28,
+          "rate": 0.2916666666666667
+        },
+        "target_directed_clear": {
+          "count": 25,
+          "rate": 0.2604166666666667
+        },
+        "target_directed_obstructed": {
+          "count": 43,
+          "rate": 0.4479166666666667
+        }
+      },
+      "clearance_margin_m": 0.02,
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 96,
+      "progress_threshold_m": 0.0005
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 33,
+          "rate": 0.34375
+        },
+        "target_directed_clear": {
+          "count": 30,
+          "rate": 0.3125
+        },
+        "target_directed_obstructed": {
+          "count": 33,
+          "rate": 0.34375
+        }
+      },
+      "clearance_margin_m": 0.0,
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 96,
+      "progress_threshold_m": 0.001
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 33,
+          "rate": 0.34375
+        },
+        "target_directed_clear": {
+          "count": 26,
+          "rate": 0.2708333333333333
+        },
+        "target_directed_obstructed": {
+          "count": 37,
+          "rate": 0.3854166666666667
+        }
+      },
+      "clearance_margin_m": 0.01,
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 96,
+      "progress_threshold_m": 0.001
+    },
+    {
+      "categories": {
+        "non_target_directed": {
+          "count": 33,
+          "rate": 0.34375
+        },
+        "target_directed_clear": {
+          "count": 22,
+          "rate": 0.22916666666666666
+        },
+        "target_directed_obstructed": {
+          "count": 41,
+          "rate": 0.4270833333333333
+        }
+      },
+      "clearance_margin_m": 0.02,
+      "distractors": 3,
+      "env": "PickPlaceBreadCerealMilkCan",
+      "n": 96,
+      "progress_threshold_m": 0.001
+    }
+  ]
+}
