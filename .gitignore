@@ -10,6 +10,9 @@ outputs/guided_denoising/**/*.jsonl
 !outputs/guided_denoising/paired_pilot/episode_metrics.jsonl
 outputs/guided_denoising/guidance_visualizations/
 outputs/guided_denoising/final_trajectory_comparison/without_arrows/
+outputs/sample_refine/**/*.jsonl
+outputs/sample_refine/fixed_state_sweep/
+outputs/sample_refine/fixed_state_sweep_v2/
 
 # Third-party source repos (managed independently)
 third_party/

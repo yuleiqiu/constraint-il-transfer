@@ -1,6 +1,6 @@
 # Guided Denoising Research and Evaluation Plan
 
-Status: active research plan, 2026-07-20.
+Status: active research plan, 2026-07-22.
 
 This document separates three questions that should not be answered by one
 large experiment:
@@ -34,6 +34,14 @@ The first 20-pair guidance pilot changes outcomes but does not establish a
 reliable benefit. Task SR increased by 0.10 in both tested environments, while
 the safety effect changed sign between them. This setting must not be scaled to
 the full matrix.
+
+The next sample-refine candidate also failed the development gate. A 20-layout
+two-distractor pilot found identical baseline and sample+refine outcomes on all
+matched layouts: Task SR 0.10, Safe SR 0.05, CR 0.75, and NCR 0.20. Sample only
+added one safe success, while refine only exchanged three collision failures
+for three NCRs. The complete method added 76% inference time without task or
+safety benefit and was not evaluated on held-out clutter levels. See
+`sample_refine_pilot.md`.
 
 ## 2. P0 Failure-Mechanism Diagnostic — Complete
 
@@ -160,8 +168,9 @@ method separately on the scout environments.
 1. **P0 — failure-mechanism diagnostic (complete, decision C):** the clean
    policy exhibits a mixed partition with no mechanism dominant in both hard
    environments.
-2. **P1 — method on the current family (next):** choose one stated diagnostic
-   regime, develop and falsify candidates using
+2. **P1 — method on the current family (active):** the first sample-refine
+   candidate is falsified. Any replacement must choose one stated diagnostic
+   regime and use
    paired rollouts in the two-distractor environment, then test unchanged in
    the one- and three-distractor variants.
 3. **P2 — policy-seed robustness:** repeat the accepted comparison with at
@@ -200,8 +209,7 @@ documents should use the actual object being discussed:
 
 Migration should be semantic rather than a global string replacement.
 Historical reports may say “historically called Route B” once when needed for
-traceability. Existing directory names such as `docs/route_b_validation/` and
-`outputs/route_b_validation/` should remain archival locators for now because
-renaming them would touch scripts and stored references without changing the
-research content. New files and active project summaries must not introduce
-the old label.
+traceability. The superseded validation implementation and result directories
+were removed from the active tree after the executable delta EEF pose route was
+validated; Git history and `docs/RESEARCH_LOG.md` retain the audit trail. New
+files and active project summaries must not introduce the old label.

@@ -33,7 +33,6 @@ task behavior learned from demonstrations.
 - `robomimic/eval/obstacle_guided/` — guided rollout results
 - `forward_model/` — archived OSC-action forward-model result summaries only
 - `eef_pose_osc_policy/` — delta EEF pose policy conclusion and trajectory reconstruction diagnostics
-- `route_b_validation/` — archived EEF action-interface validation, corrected OSC absolute replay, adapter rejection, Panda Mink follow-up
 
 ## 4. File Map
 
@@ -44,13 +43,12 @@ constraint-il-transfer/             ← Project root (independent git repo)
 ├── docs/                            ← Research artifacts
 │   ├── RESEARCH_LOG.md              ← Reverse-chronological log of discussions + decisions
 │   ├── guided_denoising/             ← Active formulation, mechanism-baseline record, and research plan
-│   ├── forward_model_guidance_next_steps.md ← Archived Δgeo forward-model / ranking handoff and results
-│   └── route_b_validation/          ← Archived EEF action-interface and controller validation
+│   └── forward_model_guidance_next_steps.md ← Archived Δgeo forward-model / ranking handoff and results
 ├── papers/<name>/                   ← Paper PDFs + agent-generated analysis.md
 ├── scripts/                         ← Local Python scripts (→ AGENTS.md for index)
 ├── outputs/                         ← Experiment outputs
 │   ├── robomimic/eval/              ← Baseline + obstacle_guided rollouts (600 rollouts)
-│   └── route_b_validation/          ← Archived per-controller verification summaries
+│   └── eef_pose_osc_policy/         ← Active delta-EEF conclusions and diagnostics
 ├── .opencode/agents/                ← Agent definitions (paper-reader, code-explorer)
 ├── third_party/                     ← Editable source deps (managed independently, see §10)
 │   ├── robomimic/                   ← robomimic fork (→ AGENTS.md)
@@ -67,10 +65,9 @@ constraint-il-transfer/             ← Project root (independent git repo)
 5. For current method and evaluation gates → `docs/guided_denoising/research_plan.md`
 6. For current EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
 7. For local scripts and how to run them → `scripts/AGENTS.md`
-8. For archived EEF action-interface validation → `docs/route_b_validation/report.md`
-9. For archived forward-model / ranking results → `docs/forward_model_guidance_next_steps.md`
-10. For paper comparisons → `papers/<name>/analysis.md`
-11. For inner robomimic code → `third_party/robomimic/AGENTS.md`
+8. For archived forward-model / ranking results → `docs/forward_model_guidance_next_steps.md`
+9. For paper comparisons → `papers/<name>/analysis.md`
+10. For inner robomimic code → `third_party/robomimic/AGENTS.md`
 
 ## 6. Environments
 

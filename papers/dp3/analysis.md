@@ -143,7 +143,7 @@ Our function outputs points in the **world frame** (via `camera_to_world` matrix
 2. **Workspace cropping required:** Performance drops dramatically without cropping (78.3 → 45.3). We need to define appropriate workspace bounds for PickPlaceCan variants.
 3. **No explicit geometric reasoning:** While DP3 generalizes well spatially, it does not explicitly model obstacle avoidance or collision constraints. It may still fail on Δgeo (physical obstruction) if the training distribution does not include similar obstacles.
 4. **Short action horizon:** H=4 is very short. Our current setup may benefit from a longer horizon for smooth trajectories.
-5. **No guidance integration:** DP3 is pure behavior cloning. If we want to combine DP3's 3D encoder with our obstacle guidance (Route B), that is a novel combination not explored in the paper.
+5. **No guidance integration:** DP3 is pure behavior cloning. Combining DP3's 3D encoder with guided denoising over executable delta-EEF trajectories is not explored in the paper.
 6. **Single-view only:** DP3 deliberately uses a single camera. Multi-view point clouds might help but are not studied.
 
 ---
