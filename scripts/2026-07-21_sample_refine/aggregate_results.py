@@ -2,6 +2,7 @@
 
 import argparse
 import json
+from collections import Counter, defaultdict
 from pathlib import Path
 
 import numpy as np
@@ -10,6 +11,73 @@ import numpy as np
 def mean(rows, key):
     values = [row[key] for row in rows if row.get(key) is not None]
     return float(np.mean(values)) if values else None
+
+
+def outcome(row):
+    for key in ("safe_success", "success_with_collision", "collision_failure", "ncr"):
+        if row[key]:
+            return key
+    raise ValueError("Episode row has no four-way outcome")
+
+
+def paired_transition_summary(rows):
+    groups = defaultdict(list)
+    for row in rows:
+        groups[(row["env"], row["seed"], row["episode"])].append(row)
+    result = []
+    for env_name in sorted({row["env"] for row in rows}):
+        env_groups = [group for key, group in groups.items() if key[0] == env_name]
+        for condition in ("sample_only", "refine_only", "sample_refine"):
+            counts = Counter()
+            for group in env_groups:
+                baseline = next(row for row in group if row["condition"] == "baseline")
+                compared = next(row for row in group if row["condition"] == condition)
+                counts[(outcome(baseline), outcome(compared))] += 1
+            for (before, after), count in sorted(counts.items()):
+                result.append(
+                    {
+                        "env": env_name,
+                        "condition": condition,
+                        "baseline_outcome": before,
+                        "condition_outcome": after,
+                        "count": count,
+                    }
+                )
+    return result
+
+
+def gate_decisions(summary):
+    decisions = []
+    for env_name in sorted({row["env"] for row in summary}):
+        baseline = next(
+            row for row in summary if row["env"] == env_name and row["condition"] == "baseline"
+        )
+        method = next(
+            row for row in summary if row["env"] == env_name and row["condition"] == "sample_refine"
+        )
+        task_gain = method["task_sr"] - baseline["task_sr"]
+        ncr_delta = method["ncr"] - baseline["ncr"]
+        if task_gain <= 0:
+            decision = "do_not_advance"
+            reason = "sample_refine did not improve paired Task SR"
+        elif ncr_delta >= task_gain:
+            decision = "do_not_advance"
+            reason = "Task SR gain was matched or exceeded by increased NCR"
+        else:
+            decision = "advance_to_held_out"
+            reason = "sample_refine passed the development Task SR and NCR exchange gate"
+        decisions.append(
+            {
+                "env": env_name,
+                "decision": decision,
+                "reason": reason,
+                "task_sr_gain": task_gain,
+                "safe_sr_gain": method["safe_sr"] - baseline["safe_sr"],
+                "cr_delta": method["cr"] - baseline["cr"],
+                "ncr_delta": ncr_delta,
+            }
+        )
+    return decisions
 
 
 def summarize(rows):
@@ -57,22 +125,22 @@ def summarize(rows):
     regimes = []
     for env_name, condition, regime in sorted(
         {
-            (r["env"], r["condition"], r["initial_p0_regime"])
+            (r["env"], r["condition"], r["baseline_p0_critical_regime"])
             for r in rows
-            if r.get("initial_p0_regime") is not None
+            if r.get("baseline_p0_critical_regime") is not None
         }
     ):
         selected = [
             r for r in rows
             if r["env"] == env_name
             and r["condition"] == condition
-            and r.get("initial_p0_regime") == regime
+            and r.get("baseline_p0_critical_regime") == regime
         ]
         regimes.append(
             {
                 "env": env_name,
                 "condition": condition,
-                "initial_p0_regime": regime,
+                "baseline_p0_critical_regime": regime,
                 "episodes": len(selected),
                 "task_sr": mean(selected, "success"),
                 "safe_sr": mean(selected, "safe_success"),
@@ -87,7 +155,7 @@ def fmt(value):
     return "—" if value is None else "{:.3f}".format(value)
 
 
-def markdown(summary, regimes):
+def markdown(summary, regimes, transitions=None, decisions=None):
     lines = [
         "# Sample-Refine Paired Rollout Report",
         "",
@@ -109,18 +177,34 @@ def markdown(summary, regimes):
             )
         )
     lines.extend([
-        "", "## Initial P0-regime stratification", "",
-        "This stratification uses candidate 0 at the first chunk, so the paired conditions share the same regime label.", "",
-        "| env | condition | initial regime | n | Task SR | Safe SR | CR | NCR |",
+        "", "## Baseline P0 critical-regime stratification", "",
+        "Each matched layout uses the baseline episode's canonical P0 critical chunk as a shared label across all four conditions.", "",
+        "| env | condition | baseline critical regime | n | Task SR | Safe SR | CR | NCR |",
         "|---|---|---|---:|---:|---:|---:|---:|",
     ])
     for row in regimes:
         lines.append(
             "| {} | {} | {} | {} | {} | {} | {} | {} |".format(
-                row["env"], row["condition"], row["initial_p0_regime"], row["episodes"],
+                row["env"], row["condition"], row["baseline_p0_critical_regime"], row["episodes"],
                 fmt(row["task_sr"]), fmt(row["safe_sr"]), fmt(row["cr"]), fmt(row["ncr"]),
             )
         )
+    if transitions is not None:
+        lines.extend([
+            "", "## Paired outcome transitions", "",
+            "| env | condition | baseline outcome | condition outcome | count |",
+            "|---|---|---|---|---:|",
+        ])
+        for row in transitions:
+            lines.append(
+                "| {env} | {condition} | {baseline_outcome} | {condition_outcome} | {count} |".format(**row)
+            )
+    if decisions is not None:
+        lines.extend(["", "## Development gate", ""])
+        for row in decisions:
+            lines.append(
+                "- **{env}: `{decision}`.** {reason}. Task SR Δ={task_sr_gain:+.3f}, Safe SR Δ={safe_sr_gain:+.3f}, CR Δ={cr_delta:+.3f}, NCR Δ={ncr_delta:+.3f}.".format(**row)
+            )
     return "\n".join(lines) + "\n"
 
 
@@ -130,8 +214,23 @@ def main():
     args = parser.parse_args()
     rows = [json.loads(line) for line in (args.eval_dir / "episode_metrics.jsonl").read_text().splitlines() if line]
     summary, regimes = summarize(rows)
-    (args.eval_dir / "summary.json").write_text(json.dumps({"summary": summary, "regimes": regimes}, indent=2) + "\n")
-    (args.eval_dir / "report.md").write_text(markdown(summary, regimes))
+    transitions = paired_transition_summary(rows)
+    decisions = gate_decisions(summary)
+    (args.eval_dir / "summary.json").write_text(
+        json.dumps(
+            {
+                "summary": summary,
+                "regimes": regimes,
+                "paired_transitions": transitions,
+                "decisions": decisions,
+            },
+            indent=2,
+        )
+        + "\n"
+    )
+    (args.eval_dir / "report.md").write_text(
+        markdown(summary, regimes, transitions, decisions)
+    )
     print("wrote summary.json and report.md", flush=True)
 
 

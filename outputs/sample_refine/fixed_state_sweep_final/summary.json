@@ -1,0 +1,139 @@
+{
+  "fixed": {
+    "candidate_count": 4,
+    "refine_timestep": 40
+  },
+  "gates": {
+    "action_clips": 0,
+    "max_waypoint_displacement_m": 0.02,
+    "min_task_intent_preservation_rate": 0.9
+  },
+  "ranking": [
+    "actual_safety_conversions",
+    "median_clearance_improvement_m_rounded_to_1um",
+    "smaller_margin",
+    "smaller_scale"
+  ],
+  "configs": [
+    {
+      "margin": 0.02,
+      "scale": 0.001,
+      "states": 5,
+      "action_clip_states": 0,
+      "max_waypoint_displacement_m": 0.0027720893267542124,
+      "task_intent_preservation_rate": 1.0,
+      "actual_safety_conversions": 0,
+      "actual_safety_regressions": 0,
+      "median_clearance_improvement_m": 0.0007491596043109894,
+      "eligible": true
+    },
+    {
+      "margin": 0.02,
+      "scale": 0.003,
+      "states": 5,
+      "action_clip_states": 0,
+      "max_waypoint_displacement_m": 0.00937977060675621,
+      "task_intent_preservation_rate": 1.0,
+      "actual_safety_conversions": 1,
+      "actual_safety_regressions": 0,
+      "median_clearance_improvement_m": 0.0010151639580726624,
+      "eligible": true
+    },
+    {
+      "margin": 0.02,
+      "scale": 0.01,
+      "states": 5,
+      "action_clip_states": 0,
+      "max_waypoint_displacement_m": 0.02374814637005329,
+      "task_intent_preservation_rate": 1.0,
+      "actual_safety_conversions": 0,
+      "actual_safety_regressions": 0,
+      "median_clearance_improvement_m": 0.00019663944840431213,
+      "eligible": false
+    },
+    {
+      "margin": 0.03,
+      "scale": 0.001,
+      "states": 5,
+      "action_clip_states": 0,
+      "max_waypoint_displacement_m": 0.0027720893267542124,
+      "task_intent_preservation_rate": 1.0,
+      "actual_safety_conversions": 0,
+      "actual_safety_regressions": 0,
+      "median_clearance_improvement_m": 0.0007491558790206909,
+      "eligible": true
+    },
+    {
+      "margin": 0.03,
+      "scale": 0.003,
+      "states": 5,
+      "action_clip_states": 0,
+      "max_waypoint_displacement_m": 0.00937977060675621,
+      "task_intent_preservation_rate": 1.0,
+      "actual_safety_conversions": 1,
+      "actual_safety_regressions": 0,
+      "median_clearance_improvement_m": 0.0010151676833629608,
+      "eligible": true
+    },
+    {
+      "margin": 0.03,
+      "scale": 0.01,
+      "states": 5,
+      "action_clip_states": 0,
+      "max_waypoint_displacement_m": 0.02374814637005329,
+      "task_intent_preservation_rate": 1.0,
+      "actual_safety_conversions": 0,
+      "actual_safety_regressions": 0,
+      "median_clearance_improvement_m": 0.00019663944840431213,
+      "eligible": false
+    },
+    {
+      "margin": 0.04,
+      "scale": 0.001,
+      "states": 5,
+      "action_clip_states": 0,
+      "max_waypoint_displacement_m": 0.0027720893267542124,
+      "task_intent_preservation_rate": 1.0,
+      "actual_safety_conversions": 0,
+      "actual_safety_regressions": 0,
+      "median_clearance_improvement_m": 0.0007491596043109894,
+      "eligible": true
+    },
+    {
+      "margin": 0.04,
+      "scale": 0.003,
+      "states": 5,
+      "action_clip_states": 0,
+      "max_waypoint_displacement_m": 0.00937977060675621,
+      "task_intent_preservation_rate": 1.0,
+      "actual_safety_conversions": 1,
+      "actual_safety_regressions": 0,
+      "median_clearance_improvement_m": 0.0010151639580726624,
+      "eligible": true
+    },
+    {
+      "margin": 0.04,
+      "scale": 0.01,
+      "states": 5,
+      "action_clip_states": 0,
+      "max_waypoint_displacement_m": 0.02374814637005329,
+      "task_intent_preservation_rate": 1.0,
+      "actual_safety_conversions": 0,
+      "actual_safety_regressions": 0,
+      "median_clearance_improvement_m": 0.00019663944840431213,
+      "eligible": false
+    }
+  ],
+  "selected": {
+    "margin": 0.02,
+    "scale": 0.003,
+    "states": 5,
+    "action_clip_states": 0,
+    "max_waypoint_displacement_m": 0.00937977060675621,
+    "task_intent_preservation_rate": 1.0,
+    "actual_safety_conversions": 1,
+    "actual_safety_regressions": 0,
+    "median_clearance_improvement_m": 0.0010151639580726624,
+    "eligible": true
+  }
+}

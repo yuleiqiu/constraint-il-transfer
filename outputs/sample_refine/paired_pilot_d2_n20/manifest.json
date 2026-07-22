@@ -1,0 +1,21 @@
+{
+  "agent": "outputs/robomimic/train/dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth",
+  "envs": [
+    "PickPlaceBreadCerealCan"
+  ],
+  "seeds": [
+    700,
+    701
+  ],
+  "n_rollouts": 10,
+  "horizon": 400,
+  "candidate_count": 4,
+  "margin": 0.02,
+  "guidance_scale": 0.003,
+  "refine_timestep": 40,
+  "eef_radius": 0.0,
+  "target_object_name": "Can",
+  "terminate_on_success": true,
+  "out_dir": "outputs/sample_refine/paired_pilot_d2_n20",
+  "overwrite": false
+}

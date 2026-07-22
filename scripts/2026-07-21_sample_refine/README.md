@@ -11,15 +11,19 @@ Use fixed states captured by `scripts/guided_denoising/same_state_diagnostic.py`
 ```bash
 uv run python scripts/2026-07-21_sample_refine/fixed_state_sweep.py \
   --states <fixed_states.hdf5> \
+  --envs PickPlaceBreadCerealCan \
   --out-dir outputs/sample_refine/fixed_state_sweep
 ```
 
-The fixed grid is `K=4`, refinement timestep 40, margins 2/3/4 cm, and scales
+Parameter selection defaults to the two-distractor development environment;
+three-distractor states must remain held out. The fixed grid is `K=4`,
+refinement timestep 40, margins 2/3/4 cm, and scales
 0.001/0.003/0.01. A configuration is eliminated for any action clipping, more
 than 2 cm total predicted waypoint displacement from candidate 0, or less than
 90% preservation of originally positive task progress. Eligible configurations
 are ranked by actual short-prefix collision conversions, median predicted
-clearance improvement, smaller margin, then smaller scale.
+clearance improvement (with differences below 1 µm treated as ties), smaller
+margin, then smaller scale.
 
 ## 2. Paired development pilot
 
@@ -42,7 +46,7 @@ uv run python scripts/2026-07-21_sample_refine/aggregate_results.py \
 The conditions are baseline, sample only, refine only (`K=1`), and sample plus
 refine. The report includes Task SR, Safe SR, CR, NCR, the four-way outcome
 partition, synchronized inference overhead, candidate coverage, refinement
-accept/fallback, and initial P0-regime stratification.
+accept/fallback, and baseline-critical P0-regime stratification.
 
 Only after the two-distractor pilot passes should the selected parameters be
 held fixed and evaluated on `PickPlaceBreadCerealMilkCan` and `PickPlaceCan`.

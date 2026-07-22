@@ -16,6 +16,50 @@
 
 ---
 
+## 2026-07-22
+
+### Sample-refine candidate fails the two-distractor development gate
+
+Tested an inference-isolated sample-refine Diffusion Policy that draws four
+DDIM candidates, selects using staged task progress and swept-segment
+clearance, and optionally performs timestep-40 masked XY refinement with
+strict clearance, intent-preservation, finite-action, and clipping acceptance
+gates. Candidate 0 exactly reproduces the original Diffusion Policy under the
+same seed; the original DP and guided-DP implementations remain unchanged.
+
+A five-state two-distractor screen over 2 / 3 / 4 cm margins and scales 0.001 /
+0.003 / 0.01 selected margin 0.02 and scale 0.003. The selected configuration
+had no final-action clipping, 9.38 mm maximum waypoint displacement, 100%
+positive-intent preservation, and one short-prefix collision-to-safe
+conversion without a regression. Scale 0.01 exceeded the fixed 2 cm
+displacement gate.
+
+The subsequent 20-layout paired pilot in `PickPlaceBreadCerealCan` compared
+baseline, sample only, refine only, and sample+refine. Baseline and the complete
+sample+refine method both obtained Task SR 0.10, Safe SR 0.05, CR 0.75, and NCR
+0.20; all 20 matched layouts retained exactly the same four-way outcome.
+Sample only converted one baseline NCR into a safe success. Refine only reduced
+CR from 0.75 to 0.60 by converting three collision failures into three NCRs,
+leaving Task SR unchanged. The complete method selected a nonzero candidate on
+46.2% of chunks and accepted refinement on 19.2%, so the null task result was
+not caused by an inactive mechanism. It added 76% inference time and produced
+no action clipping.
+
+Baseline critical-chunk stratification contained nine non-target-directed,
+four target-directed-clear, and seven target-directed-obstructed layouts. The
+isolated sample-only success occurred in the target-directed-clear stratum. The
+complete method retained zero Task SR and CR 1.0 across all seven
+target-directed-obstructed layouts.
+
+Decision: falsify this sample-refine candidate and do not run held-out clutter,
+single-object preservation, policy-seed, or full-matrix evaluation. The result
+does not rule out all deployment-time sampling methods, but further work would
+need a materially different value or task-feasibility criterion rather than
+another local margin / scale sweep. Canonical interpretation:
+`docs/guided_denoising/sample_refine_pilot.md`.
+
+---
+
 ## 2026-07-21
 
 ### Superseded EEF controller-route artifacts removed from the active tree

@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+
 SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 import common  # noqa: E402
@@ -21,6 +22,20 @@ CONDITIONS = {
     "refine_only": (False, True),
     "sample_refine": (True, True),
 }
+
+
+def critical_p0_regime(chunk_records):
+    """Select the canonical P0 critical pre-target chunk for one rollout."""
+
+    if not chunk_records:
+        return None
+    target_chunks = [row for row in chunk_records if row["target_contact_in_prefix"]]
+    if target_chunks:
+        return target_chunks[0]["regime"]
+    collision_chunks = [row for row in chunk_records if row["obstacle_contact_in_prefix"]]
+    if collision_chunks:
+        return collision_chunks[0]["regime"]
+    return chunk_records[-1]["regime"]
 
 
 def warmup_policy(policy, env, args):
@@ -69,9 +84,11 @@ def rollout_condition(policy, env, initial_state, condition, policy_seed, args):
     refine_triggered = refine_accepted = refine_fallback = 0
     initial_regime = None
     pregrasp_regimes = []
+    p0_chunk_records = []
     done = False
 
     while step < args.horizon and not success:
+        chunk_start = step
         candidate_seed = policy_seed + chunks * 2
         context = common.make_context(
             policy,
@@ -93,6 +110,7 @@ def rollout_condition(policy, env, initial_state, condition, policy_seed, args):
         )
         candidate_progress = diagnostics["candidate_progress_m"]
         candidate_clearance = diagnostics["candidate_clearance_m"]
+        chunk_regime = None
         if candidate_progress:
             chunk_regime = common.regime(candidate_progress[0], candidate_clearance[0])
             if initial_regime is None:
@@ -111,20 +129,34 @@ def rollout_condition(policy, env, initial_state, condition, policy_seed, args):
         )
         action_clip_count += int(np.count_nonzero(np.abs(np.clip(raw_chunk, low, high) - raw_chunk) > 1e-5))
 
+        target_before_prefix = target_contact_any
         progressed = False
         done = False
+        chunk_target_contact = False
+        chunk_obstacle_contact = False
         for action in raw_chunk:
             if step >= args.horizon:
                 break
             obs, _, done, _ = env.step(action)
             target_contacts, obstacle_names = common.contact_snapshot(raw_env, maps)
             target_contact_any = target_contact_any or target_contacts > 0
+            chunk_target_contact = chunk_target_contact or target_contacts > 0
+            chunk_obstacle_contact = chunk_obstacle_contact or bool(obstacle_names)
             collisions.update(obstacle_names)
             success = success or common.task_success(env)
             step += 1
             progressed = True
             if done or (args.terminate_on_success and success):
                 break
+        if chunk_regime is not None and not target_before_prefix:
+            p0_chunk_records.append(
+                {
+                    "start_step": chunk_start,
+                    "regime": chunk_regime,
+                    "target_contact_in_prefix": chunk_target_contact,
+                    "obstacle_contact_in_prefix": chunk_obstacle_contact,
+                }
+            )
         chunks += 1
         if not progressed or done or (args.terminate_on_success and success):
             break
@@ -155,6 +187,8 @@ def rollout_condition(policy, env, initial_state, condition, policy_seed, args):
         "refine_fallback_count": refine_fallback,
         "refine_accept_rate": refine_accepted / refine_triggered if refine_triggered else None,
         "initial_p0_regime": initial_regime,
+        "p0_critical_regime": critical_p0_regime(p0_chunk_records),
+        "p0_chunk_records": p0_chunk_records,
         "pregrasp_regime_counts": {
             name: pregrasp_regimes.count(name)
             for name in (
@@ -209,16 +243,20 @@ def main():
                         np.random.seed(layout_seed)
                         env.reset()
                         initial_state = env.get_state()
+                        baseline_p0_regime = None
                         for condition in CONDITIONS:
                             metrics = rollout_condition(
                                 policy, env, initial_state, condition, seed * 1_000_000 + episode, args
                             )
+                            if condition == "baseline":
+                                baseline_p0_regime = metrics["p0_critical_regime"]
                             row = {
                                 "env": env_name,
                                 "seed": seed,
                                 "episode": episode,
                                 "layout_seed": layout_seed,
                                 "initial_state_hash": common.state_hash(initial_state),
+                                "baseline_p0_critical_regime": baseline_p0_regime,
                                 **metrics,
                             }
                             output.write(json.dumps(common.json_safe(row)) + "\n")

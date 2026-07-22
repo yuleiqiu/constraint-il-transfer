@@ -113,7 +113,9 @@ def summarize(rows, margins, scales):
     eligible.sort(
         key=lambda row: (
             -row["actual_safety_conversions"],
-            -(row["median_clearance_improvement_m"] if row["median_clearance_improvement_m"] is not None else -float("inf")),
+            -round(row["median_clearance_improvement_m"], 6)
+            if row["median_clearance_improvement_m"] is not None
+            else float("inf"),
             row["margin"],
             row["scale"],
         )
@@ -125,6 +127,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--agent", type=Path, default=common.DEFAULT_AGENT)
     parser.add_argument("--states", type=Path, required=True)
+    parser.add_argument("--envs", nargs="+", default=["PickPlaceBreadCerealCan"])
     parser.add_argument("--margins", nargs="+", type=float, default=[0.02, 0.03, 0.04])
     parser.add_argument("--scales", nargs="+", type=float, default=[0.001, 0.003, 0.01])
     parser.add_argument("--target-object-name", default="Can")
@@ -148,6 +151,8 @@ def main():
         with h5py.File(args.states, "r") as states, (args.out_dir / "state_metrics.jsonl").open("w") as output:
             for state_id in sorted(states["states"]):
                 saved = read_state(states["states"][state_id])
+                if saved["env"] not in args.envs:
+                    continue
                 if saved["env"] not in envs:
                     envs[saved["env"]], _ = FileUtils.env_from_checkpoint(
                         ckpt_dict=ckpt, env_name=saved["env"], render=False, render_offscreen=False, verbose=False
@@ -199,7 +204,8 @@ def main():
                             "final_progress_m": diagnostics["final_progress_m"],
                             "baseline_clearance_m": baseline_clearance,
                             "final_clearance_m": diagnostics["final_clearance_m"],
-                            "action_clipping": diagnostics["action_clipping"] or requires_clip,
+                            "action_clipping": requires_clip,
+                            "refinement_proposal_clipping": diagnostics["action_clipping"],
                             "waypoint_displacement_m": max(
                                 diagnostics["masked_xy_waypoint_update_max_m"],
                                 total_waypoint_displacement,
@@ -219,7 +225,12 @@ def main():
     result = {
         "fixed": {"candidate_count": 4, "refine_timestep": 40},
         "gates": {"action_clips": 0, "max_waypoint_displacement_m": 0.02, "min_task_intent_preservation_rate": 0.90},
-        "ranking": ["actual_safety_conversions", "median_clearance_improvement_m", "smaller_margin", "smaller_scale"],
+        "ranking": [
+            "actual_safety_conversions",
+            "median_clearance_improvement_m_rounded_to_1um",
+            "smaller_margin",
+            "smaller_scale",
+        ],
         "configs": summary,
         "selected": selected,
     }
