@@ -24,3 +24,7 @@ Canonical result files:
 
 The per-state and per-episode JSONL files remain local audit artifacts and are
 not intended for version control.
+
+Reproduction requires the root and robomimic repositories at their respective
+`archive/s2m-sample-refine-20260722` tags. The active robomimic
+`exp/guided-dp` baseline intentionally excludes this failed algorithm.

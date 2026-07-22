@@ -151,3 +151,14 @@ outputs/sample_refine/paired_pilot_d2_n20/manifest.json
 outputs/sample_refine/paired_pilot_d2_n20/summary.json
 outputs/sample_refine/paired_pilot_d2_n20/report.md
 ```
+
+Archive revisions:
+
+```text
+root repository tag:      archive/s2m-sample-refine-20260722
+robomimic repository tag: archive/s2m-sample-refine-20260722
+```
+
+The active robomimic development baseline is `exp/guided-dp`, which
+intentionally does not contain the failed sample-refine algorithm. Check out
+the robomimic archive tag temporarily when reproducing this pilot.
