@@ -1,0 +1,72 @@
+{
+  "date": "2026-07-22",
+  "decision": "stage1_gate_failed_stop_before_posterior_gradient",
+  "frozen_horizons": {
+    "observation": 2,
+    "prediction": 16,
+    "action": 8
+  },
+  "selection": {
+    "environment": "PickPlaceBreadCerealCan",
+    "strict_target_directed_obstructed_layouts": 20,
+    "episodes_searched": 290,
+    "collision_lead_chunks": 1,
+    "minimum_start_clearance_m": 0.01,
+    "predicted_clearance_threshold_m": 0.01
+  },
+  "primary_config": {
+    "clearance_margin_m": 0.01,
+    "clearance_recovery_steps": 2,
+    "progress_tolerance_m": 0.0005,
+    "trust_radius_m": 0.035,
+    "smoothness_weight": 1.0,
+    "edited_coordinates": "eef_xy_only"
+  },
+  "fixed_state_short_continuation": {
+    "layouts": 20,
+    "solver_feasible": 9,
+    "solver_feasible_rate": 0.45,
+    "feasible_pair_baseline_collision": 7,
+    "feasible_pair_corrected_collision": 4,
+    "collision_to_safe": 3,
+    "safe_to_collision": 0
+  },
+  "full_episode_pairs": {
+    "pairs": 9,
+    "baseline_can_contact": 3,
+    "corrected_can_contact": 6,
+    "can_contact_gains": 3,
+    "can_contact_losses": 0,
+    "baseline_task_success": 0,
+    "corrected_task_success": 2,
+    "task_success_gains": 2,
+    "task_success_losses": 0,
+    "baseline_collision_any": 9,
+    "corrected_collision_any": 9,
+    "repeat_correction_attempts": 54,
+    "repeat_correction_accepts": 25
+  },
+  "advance_gate": {
+    "at_least_four_additional_can_contacts": false,
+    "at_least_two_additional_task_successes": true,
+    "no_correction_induced_action_clipping": true,
+    "no_equal_exchange_into_collision_free_noncompletion": true,
+    "accepted_corrections_satisfy_progress_and_trust": true,
+    "all_conditions_pass": false
+  },
+  "bounded_diagnostics": {
+    "margin_6mm_five_layouts": {
+      "solver_feasible": 3,
+      "baseline_collision_among_feasible": 2,
+      "corrected_collision_among_feasible": 3,
+      "collision_to_safe": 0,
+      "safe_to_collision": 1
+    },
+    "safety_only_five_layouts": {
+      "solver_feasible": 2,
+      "baseline_collision_among_feasible": 2,
+      "corrected_collision_among_feasible": 2,
+      "collision_to_safe": 0
+    }
+  }
+}
