@@ -18,6 +18,40 @@
 
 ## 2026-07-22
 
+### Task-constrained eight-step feasibility misses its Stage 1 gate
+
+Tested an oracle upper bound for the explicitly selected `pre-target +
+target-directed + predicted-obstruction` regime without retraining or changing
+the policy's 2 / 16 / 8 horizon contract. The optimizer changed only the XY
+path of the existing eight executable delta-EEF actions while preserving Z,
+orientation, gripper, target progress, action bounds, and a fixed trajectory
+trust region. A conservative 1 cm EEF clearance margin was calibrated from
+gripper-only contact inspection.
+
+Twenty strict layouts were selected from 290 baseline episodes at states one
+chunk before their first pre-target collision. Nine admitted an accepted
+correction. In full paired continuations of those nine, Can-contact increased
+from 3 to 6 and Task success from 0 to 2, with no paired losses. However, the
+preregistered gate required at least four additional Can-contact episodes and
+observed only three. Both branches also retained distractor collision in all
+nine layouts, so the candidate recovered task intent in some cases without
+becoming a reliable safety method.
+
+Bounded attribution did not identify a parameter-only repair. Reducing the EEF
+margin to 6 mm increased feasibility but produced no collision-to-safe
+conversion and one regression in a five-layout diagnostic. Removing the
+target-progress constraint made only two of five layouts feasible and neither
+avoided collision. Some later collisions also fell outside the stated regime
+gate.
+
+Decision: stop this EEF-circle, eight-step task-constrained geometry candidate
+and do not implement its noisy-action posterior-gradient Stage 2. Further work
+would need a materially different whole-gripper / temporally consistent task
+model or training-side adaptation, not another guidance-scale sweep. Canonical
+result: `outputs/task_constrained_guidance/stage1_report.md`.
+
+---
+
 ### Sample-refine candidate fails the two-distractor development gate
 
 Tested an inference-isolated sample-refine Diffusion Policy that draws four

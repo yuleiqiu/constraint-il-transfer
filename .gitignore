@@ -13,6 +13,9 @@ outputs/guided_denoising/final_trajectory_comparison/without_arrows/
 outputs/sample_refine/**/*.jsonl
 outputs/sample_refine/fixed_state_sweep/
 outputs/sample_refine/fixed_state_sweep_v2/
+outputs/task_constrained_guidance/**
+!outputs/task_constrained_guidance/stage1_report.md
+!outputs/task_constrained_guidance/stage1_summary.json
 
 # Third-party source repos (managed independently)
 third_party/

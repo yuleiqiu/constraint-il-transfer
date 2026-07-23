@@ -13,6 +13,12 @@ scripts/
 ├── 2026-07-20_intent_diagnostic/
 │   ├── analyze_intent.py
 │   └── test_analyze_intent.py
+├── 2026-07-22_task_constrained_guidance/
+│   ├── capture_preentry_states.py
+│   ├── feasibility.py
+│   ├── fixed_state_feasibility.py
+│   ├── test_feasibility.py
+│   └── README.md
 ├── eef_pose_osc_policy/
 │   ├── create_abs_eef_osc_dataset.py
 │   ├── create_delta_eef_pose_osc_dataset.py
@@ -40,6 +46,7 @@ scripts/
 
 - **Diagnostic / benchmark** (in `scripts/`) — standalone scripts for per-step EEF↔obstacle tracking and OSC control timing. See docstrings for usage.
 - **Clean-policy intent diagnostic** (in `scripts/2026-07-20_intent_diagnostic/`) — CPU-only offline analysis of the 600 existing unguided delta-EEF rollouts. It measures closest target progress and segment-to-footprint clearance for every pre-target chunk, selects one fixed critical chunk per episode, applies the three-way intent / obstruction partition and A/B/C Wilson decision rule, and produces deterministic CSV / JSON summaries and representative plots. Run the companion `test_analyze_intent.py` directly for the pure-Python geometry and selection tests. Canonical result: `outputs/guided_denoising/intent_diagnostic/report.md`.
+- **Task-constrained guidance** (in `scripts/2026-07-22_task_constrained_guidance/`) — completed Stage 1 diagnostic that preserves the frozen `2 / 16 / 8` horizon contract. It captures pre-entry target-directed-obstructed states and applies a CPU-testable eight-step XY feasibility correction with swept segment clearance, target-progress, trust-region, and action-bound constraints; it preserves Z, orientation, and gripper actions. The 20-layout preregistered gate failed, so posterior-gradient Stage 2 was not implemented. See `outputs/task_constrained_guidance/stage1_report.md`.
 - **EEF-pose OSC policy** (in `scripts/eef_pose_osc_policy/`) — dataset converters, expert replay validators, robomimic wrapper smoke tests, delta-policy pose-trajectory diagnostics, multi-env eval tooling, and eval analysis for full-pose EEF actions executed by `OSC_POSE`. Training runbook: `docs/eef_pose_osc_policy_training.md`; conclusion: `outputs/eef_pose_osc_policy/README.md`.
 - **Guided denoising** (in `scripts/guided_denoising/`) — captures fixed clean-image delta-EEF states, sweeps the agreed guidance scales under identical observations and diffusion seeds, visualizes either one DDIM step's pushed target or the paired final `scale=0` / guided trajectories after all DDIM steps on full and locally zoomed `agentview` images, runs matched baseline / guided rollout pilots, and reports Task SR together with Safe SR / CR / NCR and the four-way outcome partition. Raw HDF5 / JSONL artifacts under `outputs/guided_denoising/` are ignored; summaries and reports remain trackable.
 - **Eval matrices** (in `scripts/2026-06-22_600_rollout_eval/`) — baseline launchers from the 2026-06-22 evaluation branch. Guided / PC1 launchers were removed with the archived guidance implementation. See `docs/RESEARCH_LOG.md` (2026-06-22 entry) for the experiment background.
