@@ -16,6 +16,33 @@
 
 ---
 
+## 2026-07-23
+
+### LAN-O3DP point-cloud training chain clears Phase-1 preflight
+
+Implemented the Phase-1-only point-cloud-conditioned delta-EEF Diffusion Policy
+path. The slim clean PickPlaceCan dataset contains all 200 demonstrations and
+64,094 simulator states. Each observation merges oracle-segmented `Can` and
+`VisualCan` pixels from 256×256 agentview depth, unprojects them to world XYZ,
+and deterministically samples 512 points. Offline generation and online
+rollout use the same extractor; full HDF5 integrity and same-state parity
+checks pass.
+
+The policy uses the fixed 3→32→64→64 residual point encoder, DDPM epsilon
+prediction with 100 train and inference steps, the existing delta full-pose EEF
+action and normalization path, and 2 / 16 / 8 horizons. Unit tests cover
+geometry, deterministic sampling, encoder invariance and gradients, online
+scan layout, and checkpoint tie-breaking. A fixed-batch test reduced loss by
+76.6% in 50 updates, and a two-epoch debug run completed validation and clean
+PickPlaceCan rollout.
+
+Decision: launch only the seed-500, at-most-600-epoch clean-source training
+run. Rank checkpoints by 50-episode clean Task SR, then validation loss, then
+earlier epoch. Keep paper guidance and multi-object paired rollout out of scope
+until the user explicitly confirms the final checkpoint.
+
+---
+
 ## 2026-07-22
 
 ### Task-constrained eight-step feasibility misses its Stage 1 gate
