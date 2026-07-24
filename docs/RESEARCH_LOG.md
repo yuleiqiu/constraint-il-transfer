@@ -18,6 +18,24 @@
 
 ## 2026-07-23
 
+### LAN-O3DP seed-500 point-cloud policy misses the clean-source gate
+
+Completed the full 600-epoch point-cloud DDPM100 training run after the Phase-1
+preflight. Thirty checkpoints were evaluated with 50 clean PickPlaceCan
+rollouts each. Task SR rose from 0.06 at epoch 20 to an early plateau near
+0.66, reached 0.80 at epoch 260, and achieved its maximum of 0.82 at epoch 580.
+The epoch-580 checkpoint reloads successfully and emits a finite executable
+7-D action, but obtains only 41 / 50 successes against the fixed 45 / 50
+acceptance threshold.
+
+Decision: Phase 1 fails its clean-source Task SR ≥ 0.90 gate. Do not implement
+paper guidance or multi-object paired rollout, and do not treat epoch 580 as an
+accepted final checkpoint without an explicit human decision to revise the
+gate or the representation / training design. The complete candidate table is
+in `outputs/guided_denoising/lan_o3dp_phase1_training/report.md`.
+
+---
+
 ### LAN-O3DP point-cloud training chain clears Phase-1 preflight
 
 Implemented the Phase-1-only point-cloud-conditioned delta-EEF Diffusion Policy

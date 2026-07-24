@@ -1,7 +1,7 @@
 # LAN-O3DP Reproduction Phase 1: Point-Cloud Policy
 
-Status: training chain validated; seed-500 production run is ready to launch,
-2026-07-23.
+Status: training chain validated and seed-500 run complete; clean-source
+acceptance gate failed, 2026-07-23.
 
 This phase isolates the point-cloud policy training chain. It does not add
 paper clean-action guidance, oracle obstacle rollout context, or multi-object
@@ -61,3 +61,16 @@ scan-layout processing tests pass. On one fixed full-dataset batch, loss fell
 from 1.094030 to 0.256250 in 50 updates (76.6%). A two-epoch debug run
 completed training, validation, checkpointing, and clean PickPlaceCan online
 rollout with the point-cloud-only observation.
+
+## Production result
+
+The seed-500 run completed all 600 epochs and 30 scheduled 50-episode clean
+rollouts. Its best candidate is epoch 580 with Task SR 0.82 (41 / 50) and
+validation loss 0.304707. This misses the fixed Task SR ≥ 0.90 gate, so no
+checkpoint is accepted for Phase 2. The best checkpoint reloads successfully
+and produces a finite 7-D action, but it remains an empirical best candidate
+rather than a final checkpoint.
+
+The complete candidate table and artifact paths are recorded in
+`outputs/guided_denoising/lan_o3dp_phase1_training/report.md`. Paper guidance
+and multi-object rollout remain unimplemented.
