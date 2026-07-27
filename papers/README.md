@@ -1,14 +1,6 @@
 # Paper Library
 
-Each paper has one directory under `papers/<short-name>/`:
-
-```text
-<short-name>/
-├── paper.pdf       # source PDF, preferably downloaded from arXiv
-├── paper.md        # optional extracted, searchable text
-├── images/         # optional figures referenced by the notes
-└── analysis.md     # project-focused reading notes
-```
+See [AGENTS.md](AGENTS.md) for directory structure and the paper ingestion workflow.
 
 | Directory | Paper | arXiv | Project relevance |
 |---|---|---:|---|
@@ -20,7 +12,7 @@ Each paper has one directory under `papers/<short-name>/`:
 | `temporal-logic-guidance` | *Temporal Logic Guidance for Action-Only Diffusion Policies with World Models* | 2606.22729 | STL constraints guided through a world model |
 | `cape` | *CAPE: Context-Aware Diffusion Policy Via Proximal Mode Expansion for Collision Avoidance* | 2511.22773 | Collision-aware iterative guided refinement |
 | `vls` | *VLS: Steering Pretrained Robot Policies via Vision-Language Models* | 2602.03973 | Vision-language-derived trajectory rewards |
-
-Do not keep parser-specific intermediate artifacts (for example `*_model.json`,
-`*_middle.json`, or layout PDFs) in the long-term library. Add an `analysis.md`
-when a paper has been reviewed in the context of this project.
+| `reguide` | *ReGuide: From Test-Time Guidance to Self-Improving Diffusion Policies* | 2606.28939 | Test-time guidance → self-improving diffusion policies |
+| `guided-discovery` | *Guided Discovery of New Behaviors using Diffusion Policies* | 2606.08743 | Guided discovery of new behaviors from pretrained diffusion policies |
+| `physics-grounded-diffusion` | *Grounding Generative Policies in Physics: Optimization-Guided Diffusion for Robot Control* | 2606.24208 | Physics-based optimization guidance for diffusion policies |
+| `lpb` | *Latent Policy Barrier: Learning Robust Visuomotor Policies by Staying In-Distribution* | 2508.05941 | Latent barrier for out-of-distribution robustness |
