@@ -1,0 +1,17 @@
+{
+  "states": 20,
+  "margins": {
+    "0.01": {
+      "states": 20,
+      "states_with_raw_safe_progress_sample": 0,
+      "raw_safe_progress_state_rate": 0.0,
+      "projection_feasible_states": 1,
+      "projection_feasible_rate": 0.05,
+      "projection_only_rescues": 1,
+      "median_feasible_support_ratio": 0.13619829600118197,
+      "median_feasible_max_waypoint_displacement_cm": 0.07500183038298347
+    }
+  },
+  "median_effective_rank": 14.619732567352596,
+  "median_condition_number": 3.45349087897738
+}

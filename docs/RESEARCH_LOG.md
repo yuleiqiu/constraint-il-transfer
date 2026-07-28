@@ -2,770 +2,334 @@
 
 ## Maintenance Rules
 
-- **Format**: reverse chronological, newest on top. Each day is `## YYYY-MM-DD`. Each topic within a day uses `###`.
-- **Content**: discussions, findings, decisions with rationale, comparisons with competing works, dead ends.
-- **Do NOT write**: raw experiment commands, data directly readable from `outputs/`.
-- **When to update**: immediately after each discussion reaches a conclusion. Do not backfill.
-- **Marking**: use `[UNVERIFIED]` for hypotheses not yet confirmed.
+- Reverse chronological; one `## YYYY-MM-DD` section per decision date.
+- Keep findings, decisions, rationale, and canonical artifacts.
+- Exclude commands, implementation walkthroughs, and data already available in
+  `outputs/` or a dedicated report.
+- Mark unresolved claims `[UNVERIFIED]`.
+- When a result is superseded, retain only the correction and historical
+  significance; Git history preserves the full original narrative.
 
 ## Current Unverified Hypotheses
 
-- [UNVERIFIED] Guided denoising over executable `delta_eef_pose_action` can
-  improve multi-object Task SR over the unguided baseline without merely
-  shifting collision failures to collision-free non-completion.
+- [UNVERIFIED] A materially different, volume-aware geometry model may improve
+  one-distractor Task SR with the reliable clean-image delta-EEF policy; the
+  tested uniform 5 cm XY expansion does not.
+- [UNVERIFIED] A small balanced set of successful obstacle-avoidance
+  corrections can inject the missing action support into the epoch-260 policy
+  without materially degrading its clean behavior.
 
----
+## 2026-07-28
+
+### Targeted fine-tuning selected as the next upper-bound experiment
+
+An oracle Cartesian waypoint teacher was tested on the 20 held-out strict
+pre-collision states. Discrete yaw search found a safe lifted grasp in 18/20
+states. Teacher-then-policy Task success changed from 1/20 to 18/20 and
+distractor collision from 20/20 to 2/20, with 17 failure-to-success and no
+success-to-failure transitions. This establishes that task-compatible safe
+continuations exist outside the frozen policy's effective local support; it is
+a selected-state teacher upper bound, not a rollout policy result.
+
+Decision: collect a small set of complete successful hybrid correction
+episodes on fresh training layouts, keeping the existing 20-state diagnostic
+bank and evaluation seeds held out. Fine-tune the epoch-260 policy with
+balanced replay from the original clean demonstrations and oversampled
+correction windows. The first experiment is a full-policy adaptation upper
+bound, not the final proposed method. Compare it with the frozen checkpoint
+and a clean-only continued-training control, and select checkpoints by held-out
+Task SR / Safe SR / CR / NCR plus the fixed support diagnostic rather than
+training loss.
+
+World-model approaches remain possible successors, but should not be adopted
+for narrative novelty before this upper bound establishes whether the task is
+learnable from targeted corrective support. Canonical teacher artifact:
+`scripts/2026-07-27_semi_manual_waypoint_teacher/README.md`.
+
+## 2026-07-27
+
+### Frozen-policy inference-only evidence reaches a negative stage conclusion
+
+Across oracle guided denoising, multi-sample refinement, task-constrained
+trajectory correction, expanded-boundary guidance, and a policy-support
+diagnostic, inference-time changes improved local clearance but did not provide
+reliable single-to-multi Task SR gains. At a 1 cm expanded boundary, none of
+640 policy samples was safe and progress-preserving; support-constrained
+projection was feasible in 1/20 pre-collision states, versus 14/20 when support
+was effectively removed.
+
+Decision: for the current epoch-260 delta-EEF checkpoint, stop treating
+additional obstacle information or tuning of the same frozen-policy local
+guidance family as sufficient. The evidence points to missing
+task-preserving avoidance action support; training-side adaptation or an
+external controller allowed to leave the policy manifold is required before
+gating can help. This is not a universal impossibility claim for all planners.
+Canonical synthesis:
+`docs/guided_denoising/frozen_policy_inference_limitations.md`.
+
+### One-distractor 5 cm XY expansion trades collision for non-completion
+
+Tested the existing RGB delta-EEF guidance in `PickPlaceBreadCan`, keeping the
+source policy and DDIM mechanism frozen while expanding Bread's XY radius by
+5 cm. Ten fixed states selected the historically comparable scale 0.01: mean
+predicted / executed safety-margin clearance changed from -0.94 / -0.59 cm to
++0.21 / +0.28 cm without action clipping.
+
+The 20-pair pilot did not improve closed-loop performance. Task SR and Safe SR
+fell 0.70→0.65. Guidance removed the only baseline collision, but NCR rose
+0.25→0.35: one failure became success, two successes became failures, and one
+collision failure became NCR.
+
+Decision: reject and do not scale or retune this uniform 5 cm XY point guide.
+The one-distractor environment is not itself disproven; a successor must
+materially change the geometry, for example by accounting for obstacle height
+or task phase, rather than another margin or scale sweep. Canonical report:
+`outputs/guided_denoising/breadcan_expanded_5cm_paired_pilot/report.md`.
+
+### LAN-aligned epoch-350 branch fails its closure gates
+
+The seed-42, 40-demo point-cloud DDPM checkpoint obtained clean
+`PickPlaceCan` Task SR 0.54 / 0.54 / 0.42 over three fixed 50-episode seeds:
+75 / 150 = 0.50 pooled, Wilson 95% interval `[0.421, 0.579]`. It fails the
+project's approximately 0.80 source-policy competence gate.
+
+DDPM-100 guidance adaptation and fixed-state calibration were mechanically
+successful. At scale 0.003, mean predicted / executed raw clearance increased
+from 1.45 / 1.72 cm to 2.01 / 2.15 cm, with 3.15 mm maximum one-step waypoint
+displacement. The 20-pair closed-loop pilot nevertheless produced no
+failure-to-success transition. Two-distractor Task SR stayed 0.40 while CR
+rose 0.40→0.50; three-distractor Task SR fell 0.80→0.60 as two successes
+became collision-free failures.
+
+The one-distractor `PickPlaceBreadCan` follow-up also failed: over 20 matched
+pairs, Task SR stayed 0.45, Safe SR fell 0.40→0.35, and CR rose 0.05→0.15.
+One failure became a success with collision, while one safe success became a
+collision failure.
+
+Decision: reject this checkpoint as the final source policy and stop tuning or
+scaling the same point-level EEF guidance. This closes the tested branch, not
+all possible LAN components. Canonical report:
+`docs/guided_denoising/lan_o3dp_epoch350_closure.md`.
+
+### Reliable RGB delta-EEF source retained; LPB deferred
+
+Use the clean-image delta-EEF Diffusion Policy epoch-260 checkpoint as the
+frozen source prior. Its independent clean Task SR is 0.907, its action chunks
+accurately reconstruct executed EEF trajectories, and Task SR falls to 0.253 /
+0.200 with two / three distractors, providing both source competence and a
+meaningful transfer gap.
+
+Decision: retain this checkpoint for subsequent method studies, but defer the
+LPB direction per the current research decision. Any successor must use the
+existing executable delta-EEF action and Task SR / Safe SR / CR / NCR
+contract. Do not present this RGB + DDIM policy as LAN-O3DP. Canonical plan:
+`docs/guided_denoising/research_plan.md`.
 
 ## 2026-07-23
 
-### LAN-O3DP seed-500 point-cloud policy misses the clean-source gate
+### First point-cloud DDPM source misses the clean gate
 
-Completed the full 600-epoch point-cloud DDPM100 training run after the Phase-1
-preflight. Thirty checkpoints were evaluated with 50 clean PickPlaceCan
-rollouts each. Task SR rose from 0.06 at epoch 20 to an early plateau near
-0.66, reached 0.80 at epoch 260, and achieved its maximum of 0.82 at epoch 580.
-The epoch-580 checkpoint reloads successfully and emits a finite executable
-7-D action, but obtains only 41 / 50 successes against the fixed 45 / 50
-acceptance threshold.
+The seed-500 point-cloud DDPM-100 training chain passed dataset, geometry,
+encoder, checkpoint, and overfit preflight checks. A 600-epoch run peaked at
+41 / 50 = 0.82 clean Task SR at epoch 580, below its fixed 0.90 gate.
 
-Decision: Phase 1 fails its clean-source Task SR ≥ 0.90 gate. Do not implement
-paper guidance or multi-object paired rollout, and do not treat epoch 580 as an
-accepted final checkpoint without an explicit human decision to revise the
-gate or the representation / training design. The complete candidate table is
-in `outputs/guided_denoising/lan_o3dp_phase1_training/report.md`.
-
----
-
-### LAN-O3DP point-cloud training chain clears Phase-1 preflight
-
-Implemented the Phase-1-only point-cloud-conditioned delta-EEF Diffusion Policy
-path. The slim clean PickPlaceCan dataset contains all 200 demonstrations and
-64,094 simulator states. Each observation merges oracle-segmented `Can` and
-`VisualCan` pixels from 256×256 agentview depth, unprojects them to world XYZ,
-and deterministically samples 512 points. Offline generation and online
-rollout use the same extractor; full HDF5 integrity and same-state parity
-checks pass.
-
-The policy uses the fixed 3→32→64→64 residual point encoder, DDPM epsilon
-prediction with 100 train and inference steps, the existing delta full-pose EEF
-action and normalization path, and 2 / 16 / 8 horizons. Unit tests cover
-geometry, deterministic sampling, encoder invariance and gradients, online
-scan layout, and checkpoint tie-breaking. A fixed-batch test reduced loss by
-76.6% in 50 updates, and a two-epoch debug run completed validation and clean
-PickPlaceCan rollout.
-
-Decision: launch only the seed-500, at-most-600-epoch clean-source training
-run. Rank checkpoints by 50-episode clean Task SR, then validation loss, then
-earlier epoch. Keep paper guidance and multi-object paired rollout out of scope
-until the user explicitly confirms the final checkpoint.
-
----
+Decision: do not advance this checkpoint to guidance or paired multi-object
+evaluation. Canonical artifacts:
+`docs/guided_denoising/lan_o3dp_reproduction_phase1.md` and
+`outputs/guided_denoising/lan_o3dp_phase1_training/report.md`.
 
 ## 2026-07-22
 
-### Task-constrained eight-step feasibility misses its Stage 1 gate
+### Task-constrained eight-step feasibility misses Stage 1
 
-Tested an oracle upper bound for the explicitly selected `pre-target +
-target-directed + predicted-obstruction` regime without retraining or changing
-the policy's 2 / 16 / 8 horizon contract. The optimizer changed only the XY
-path of the existing eight executable delta-EEF actions while preserving Z,
-orientation, gripper, target progress, action bounds, and a fixed trajectory
-trust region. A conservative 1 cm EEF clearance margin was calibrated from
-gripper-only contact inspection.
+An oracle pre-target, target-directed, predicted-obstruction upper bound
+changed only the existing eight-step XY path while preserving task progress,
+other action dimensions, bounds, and a trust region. Nine of twenty strict
+layouts admitted a correction; Can contact increased 3→6 and Task success
+0→2 without paired losses, but the preregistered gate required four additional
+Can contacts and observed three. All nine retained distractor collision.
 
-Twenty strict layouts were selected from 290 baseline episodes at states one
-chunk before their first pre-target collision. Nine admitted an accepted
-correction. In full paired continuations of those nine, Can-contact increased
-from 3 to 6 and Task success from 0 to 2, with no paired losses. However, the
-preregistered gate required at least four additional Can-contact episodes and
-observed only three. Both branches also retained distractor collision in all
-nine layouts, so the candidate recovered task intent in some cases without
-becoming a reliable safety method.
+Decision: stop this EEF-circle, eight-step candidate and do not implement its
+posterior-gradient Stage 2. A successor needs whole-gripper or temporally
+consistent task modeling, not another parameter sweep. Canonical result:
+`outputs/task_constrained_guidance/stage1_report.md`.
 
-Bounded attribution did not identify a parameter-only repair. Reducing the EEF
-margin to 6 mm increased feasibility but produced no collision-to-safe
-conversion and one regression in a five-layout diagnostic. Removing the
-target-progress constraint made only two of five layouts feasible and neither
-avoided collision. Some later collisions also fell outside the stated regime
-gate.
+### Sample-refine fails the two-distractor development gate
 
-Decision: stop this EEF-circle, eight-step task-constrained geometry candidate
-and do not implement its noisy-action posterior-gradient Stage 2. Further work
-would need a materially different whole-gripper / temporally consistent task
-model or training-side adaptation, not another guidance-scale sweep. Canonical
-result: `outputs/task_constrained_guidance/stage1_report.md`.
+The method sampled four DDIM candidates, ranked them by task progress and
+swept-segment clearance, and optionally refined XY under intent and trust
+constraints. In twenty matched layouts, baseline and complete sample+refine
+both obtained Task SR 0.10, Safe SR 0.05, CR 0.75, and NCR 0.20, with identical
+four-way outcomes. Sample-only created one safe success; refine-only exchanged
+three collision failures for three NCRs. The complete method added 76%
+inference time without task benefit.
 
----
-
-### Sample-refine candidate fails the two-distractor development gate
-
-Tested an inference-isolated sample-refine Diffusion Policy that draws four
-DDIM candidates, selects using staged task progress and swept-segment
-clearance, and optionally performs timestep-40 masked XY refinement with
-strict clearance, intent-preservation, finite-action, and clipping acceptance
-gates. Candidate 0 exactly reproduces the original Diffusion Policy under the
-same seed; the original DP and guided-DP implementations remain unchanged.
-
-A five-state two-distractor screen over 2 / 3 / 4 cm margins and scales 0.001 /
-0.003 / 0.01 selected margin 0.02 and scale 0.003. The selected configuration
-had no final-action clipping, 9.38 mm maximum waypoint displacement, 100%
-positive-intent preservation, and one short-prefix collision-to-safe
-conversion without a regression. Scale 0.01 exceeded the fixed 2 cm
-displacement gate.
-
-The subsequent 20-layout paired pilot in `PickPlaceBreadCerealCan` compared
-baseline, sample only, refine only, and sample+refine. Baseline and the complete
-sample+refine method both obtained Task SR 0.10, Safe SR 0.05, CR 0.75, and NCR
-0.20; all 20 matched layouts retained exactly the same four-way outcome.
-Sample only converted one baseline NCR into a safe success. Refine only reduced
-CR from 0.75 to 0.60 by converting three collision failures into three NCRs,
-leaving Task SR unchanged. The complete method selected a nonzero candidate on
-46.2% of chunks and accepted refinement on 19.2%, so the null task result was
-not caused by an inactive mechanism. It added 76% inference time and produced
-no action clipping.
-
-Baseline critical-chunk stratification contained nine non-target-directed,
-four target-directed-clear, and seven target-directed-obstructed layouts. The
-isolated sample-only success occurred in the target-directed-clear stratum. The
-complete method retained zero Task SR and CR 1.0 across all seven
-target-directed-obstructed layouts.
-
-Decision: falsify this sample-refine candidate and do not run held-out clutter,
-single-object preservation, policy-seed, or full-matrix evaluation. The result
-does not rule out all deployment-time sampling methods, but further work would
-need a materially different value or task-feasibility criterion rather than
-another local margin / scale sweep. Canonical interpretation:
+Decision: falsify this candidate. Further sampling work requires a materially
+different task-value or feasibility criterion. Canonical interpretation:
 `docs/guided_denoising/sample_refine_pilot.md`.
-
----
 
 ## 2026-07-21
 
-### Superseded EEF controller-route artifacts removed from the active tree
+### Superseded controller-route artifacts removed
 
-The executable delta EEF pose interface has resolved the controller/action
-representation question: the clean-image policy reaches 0.98 PickPlaceCan
-success and its action chunks reconstruct executed EEF trajectories directly.
-The old absolute/delta controller comparisons, adapter experiments, and Panda
-Mink follow-up are therefore no longer active code or current experiment
-outputs.
+Executable delta EEF pose resolved the action-interface question, so obsolete
+controller comparisons, adapter experiments, and Mink follow-up code were
+removed from the active tree. Historical evidence remains in Git.
 
-Decision: remove the superseded validation implementation and per-controller
-outputs, remove the unused robomimic Mink experiment config, and retire the
-local Panda Mink robosuite branch. Keep the corrected OSC reset/controller
-support, the maintained delta/absolute EEF configs, this historical narrative,
-and the Git history. Canonical current references are
-`outputs/eef_pose_osc_policy/README.md` and
-`docs/eef_pose_osc_policy_training.md`.
-
----
+Decision: keep the maintained OSC reset/controller support and current
+delta/absolute EEF configs; use `outputs/eef_pose_osc_policy/README.md` and
+`docs/eef_pose_osc_policy_training.md` as canonical references.
 
 ## 2026-07-20
 
-### Clean-policy intent diagnostic finds no single dominant hard-environment mechanism
+### Intent diagnostic finds mixed hard-environment failure mechanisms
 
-Completed the P0 offline diagnostic over the existing 12 HDF5 files and 600
-unguided episodes, without new rollouts or policy / guidance changes. The main
-cohort is fixed to task failures that never contacted Can and contains 32 / 93
-/ 96 episodes in the one / two / three-distractor environments. The critical
-chunk is selected by first obstacle contact when present and otherwise by the
-last chunk; success and post-target-contact failure cohorts use the chunk
-containing first Can contact.
+The P0 analysis covered all 600 unguided episodes. Among failures that never
+contacted Can, the two-distractor target-directed-obstructed /
+non-target-directed / target-directed-clear split was 34.4% / 43.0% / 22.6%;
+the three-distractor split was 37.5% / 26.0% / 36.5%. No category passed the
+fixed Wilson-majority rule in both environments. Successful critical chunks
+were target-directed 92.1% / 90.0% in the two hard environments, validating
+the intent measure.
 
-Intent is measured by the closest 3D approach to Can within the predicted
-clean delta-EEF chunk. Obstruction is signed segment clearance against
-chunk-start distractor footprints using robosuite `horizontal_radius`. In the
-two-distractor environment, target-directed obstructed / non-target-directed /
-target-directed clear account for 34.4% / 43.0% / 22.6% of the main cohort. In
-the three-distractor environment they account for 37.5% / 26.0% / 36.5%.
-Neither candidate dominant mechanism is a majority with Wilson 95% lower bound
-above 0.5 in both environments. Endpoint, XY, 0.5 / 1 mm intent thresholds,
-and +1 / +2 cm clearance margins do not change the fixed decision.
-
-Decision: P0 outcome C, mixed / no single dominant mechanism. Method
-development must state which regime it targets and report effects by the
-three-way partition; obstacle feasibility adaptation cannot be presented as a
-complete explanation of clean-policy failure. Successful critical chunks are
-target-directed in 85.8% / 92.1% / 90.0% of the one / two / three-distractor
-environments, supporting the primary measure as an intent calibration.
-
-Canonical result:
-`outputs/guided_denoising/intent_diagnostic/report.md`.
-
----
+Decision C: no single dominant mechanism. Every method must state its targeted
+regime and cannot treat obstacle feasibility as a universal explanation.
+Canonical result: `outputs/guided_denoising/intent_diagnostic/report.md`.
 
 ### Method discovery precedes environment expansion
 
-The current LAN-O3DP-style guide is a mechanism baseline, not yet the project
-method. Before designing another deployment cost, first determine whether
-failed clean-policy chunks in multi-object scenes still make progress toward
-the target but intersect a distractor, or whether the predicted action has
-already lost target-directed intent. This separates a feasibility failure from
-an observation-conditioned action-prior failure without introducing
-counterfactual observations or whole-robot collision bookkeeping.
+Keep the PickPlace family as the development task. Require one unchanged
+configuration to improve paired Task SR in the two- and three-distractor
+variants without a collision-failure→NCR exchange before full Lift,
+NutAssembly, policy-seed, or cross-task evaluation.
 
-Environment breadth is a later evidence question rather than the immediate
-method bottleneck. Keep the current PickPlace family as the development test,
-perform only cheap unguided scouts for Lift with distractors and
-NutAssemblySquare with distractors, and expand to full cross-task comparison
-only after one unchanged method improves both the two- and three-distractor
-PickPlace variants without trading collision failures for collision-free
-non-completion. Multiple independently trained policy seeds precede the final
-cross-task claim.
-
-Decision: use technical names instead of the historical `Route B` label in
-active documents. A separate path-cleanup decision was deferred here and then
-completed on 2026-07-21. The complete staged plan and gates are in
+Decision: environment breadth is a later evidence question; the immediate
+bottleneck is a task-effective method. Canonical plan:
 `docs/guided_denoising/research_plan.md`.
-
----
 
 ## 2026-07-15
 
-### Guided Diffusion Policy clears fixed-state checks but not paired-rollout scaling
+### First delta-EEF guided-denoising baseline changes behavior but fails scaling
 
-Implemented the first delta-EEF guided-denoising contract as a separately
-registered `guided_diffusion_policy` algorithm. The original Diffusion Policy
-keeps an identity reverse-step hook, `RolloutPolicy` is unchanged, and existing
-Diffusion Policy checkpoints are adapted to the guided variant in memory
-without rewriting checkpoint files.
+Implemented opt-in predicted-clean-action guidance for the reliable RGB
+delta-EEF policy. Disabled and zero-scale paths reproduce the original policy;
+fixed-state guidance improves predicted and short-prefix executed clearance.
+Scale 0.01 was selected over 0.03 because the latter produced implausibly
+large waypoint pushes.
 
-The implementation uses the current DDIM step's predicted clean action,
-unnormalizes the executed `[:, 1:9]` slice with checkpoint statistics,
-reconstructs absolute EEF waypoints from delta positions, applies the agreed XY
-unsquared penetration push, differences pushed waypoints back to delta actions,
-and updates only the executed XY coordinates of the current reverse sample.
+In twenty matched pairs, Task SR rose 0.10 in both hard environments, but
+safety effects disagreed: two-distractor CR fell while NCR rose; three-
+distractor CR rose and Safe SR fell. The task gain therefore did not meet the
+fixed safety gate.
 
-Unit tests and an epoch-260 checkpoint smoke test pass. Guidance disabled and
-enabled with zero scale both reproduce the original policy output exactly under
-the same observation and random seed. A nonzero scale changes the sample and
-produces ten finite DDIM-step diagnostic records.
-
-Fixed-state capture saves both MuJoCo simulator state and the exact stacked
-policy observation. Direct restoration checks reproduced simulator state, RGB,
-and an eight-step executed EEF prefix exactly. This is paired-branch
-restoration, not a claim that hidden controller history can be resumed
-seamlessly.
-
-Gate C captured five collision-producing states in each of the two hardest
-environments and swept the five contracted scales with common diffusion noise.
-Every nonzero scale improved both predicted and short-prefix executed clearance
-in all ten states without action clipping. Selected `0.01` as the largest
-plausible setting: its maximum waypoint push was 3.43 cm and its mean executed
-trajectory reconstruction error remained below 1 cm. Rejected `0.03` because
-the maximum push reached 10.28 cm and mean reconstruction error rose to 2.45
-cm.
-
-Gate D then ran 20 matched full-episode pairs at scale `0.01`, split evenly
-between the two- and three-distractor environments. Task SR increased by 0.10
-in both environments, but the safety effect was not consistent. In the
-two-distractor environment CR fell by 0.20 while NCR rose by 0.10; in the
-three-distractor environment CR rose by 0.20 and Safe SR fell by 0.10, with two
-new successes still containing distractor contact. No action clipping occurred.
-
-Decision: do not scale this setting to the full evaluation matrix. The pilot is
-evidence that guidance changes task outcomes, but it does not yet support the
-project hypothesis that the current cost improves multi-object task success
-without trading or worsening safety. Keep the hypothesis unverified and use the
-paired cases to diagnose task phase, contact timing, and footprint/model
-mismatch before selecting another experiment.
-
-Relevant files:
-
-```text
-third_party/robomimic/robomimic/algo/guided_diffusion_policy.py
-third_party/robomimic/robomimic/utils/guided_denoising_utils.py
-scripts/guided_denoising/
-outputs/guided_denoising/same_state/
-outputs/guided_denoising/paired_pilot/report.md
-```
-
----
-
-### Guided denoising becomes the active project direction
-
-Adopted a project-level formulation in which a pretrained diffusion imitation
-policy provides the action prior and a deployment-time cost guides the reverse
-denoising process through the predicted clean action chunk. The formulation is
-kept deliberately general and no longer uses the earlier `Delta vis` / `Delta
-geo` decomposition as the primary project framing.
-
-The active robomimic branch does not currently contain a guidance
-implementation. The completed negative guidance experiments used the original
-OSC-action policy with either the inaccurate `cumsum(action * 0.05)` trajectory
-proxy or its learned forward-model replacement. Those results do not constitute
-a test of denoising guidance over the current executable
-`delta_eef_pose_action` policy.
-
-Decision: implement the next guidance experiment directly against delta EEF
-pose trajectory reconstruction. Evaluate end-to-end utility by Task SR together
-with Safe SR / CR / NCR, rather than treating lower predicted cost or fewer
-collisions alone as success.
-
-Canonical formulation: `docs/guided_denoising/formulation.md`. The completed
-first mechanism-baseline record is
+Decision: retain this as a mechanism baseline, not the project method, and do
+not scale it. Canonical record:
 `docs/guided_denoising/lan_o3dp_mechanism_baseline.md`.
-
----
 
 ## 2026-07-14
 
-### Delta EEF multi-environment evaluation separates obstruction from non-completion
+### Multi-environment evaluation defines the active baseline and metrics
 
-Evaluated the best clean-image delta EEF checkpoint over all four PickPlace
-environments using three evaluation seeds and 50 episodes per environment and
-seed. Standard task success decreases sharply as distractors are added, while
-non-target collision rate rises to roughly two thirds on the two hardest
-environments.
+The reliable RGB delta-EEF checkpoint was evaluated over four environments,
+three seeds, and fifty episodes per seed. Task SR for zero through three
+distractors was 0.907 / 0.707 / 0.253 / 0.200; CR was 0.000 / 0.213 / 0.647 /
+0.680. Hard failures often collide before target contact, but successful
+collisions and collision-free placement failures both occur.
 
-Trajectory and contact analysis confirms that pre-target physical obstruction
-is the dominant hard-environment failure mode: most failures collide before
-the first target contact, and most never contact Can. This does not imply that
-collision-any is equivalent to failure. The data also contains successful
-episodes with incidental distractor contact and collision-free failures where
-Can is lifted or transported but not successfully placed.
-
-Decision: future obstacle-aware comparisons should report standard Task SR and
-the mutually exclusive Safe SR / CR / NCR metrics. For diagnosis, preserve the
-more informative four-way partition:
-
-```text
-safe success
-success with collision
-collision failure
-collision-free non-completion (NCR)
-```
-
-CR reduction without Task SR improvement can merely transfer probability mass
-from collision failure to NCR. Geometry-aware ranking should target pre-grasp
-obstruction, while grasp / placement failures remain a separate task-phase
-problem.
-
-The delta EEF action interface remains healthy across this evaluation: no
-actions were clipped, and reconstructed policy chunks track executed EEF pose
-within sub-centimeter mean position error. The old OSC action-to-trajectory
-mapping problem has not returned.
-
-This result narrows the earlier historical claim that all failures are
-collision-type: that observation was specific to the older policy and
-diagnostic setup and does not generalize to the current clean-image delta EEF
-policy.
-
-Relevant files:
-
-```text
-outputs/eef_pose_osc_policy/multienv_eval_report.md
-scripts/eef_pose_osc_policy/eval_delta_eef_multienv.py
-scripts/eef_pose_osc_policy/analyze_delta_eef_eval.py
-scripts/eef_pose_osc_policy/plot_delta_eef_eval_cases.py
-```
+Decision: report Task SR, Safe SR, CR, NCR, and the four-way partition. CR
+reduction without Task SR improvement can be only failure redistribution.
+The action interface remains healthy, with no clipping and sub-centimeter mean
+trajectory reconstruction error. Canonical report:
+`outputs/eef_pose_osc_policy/multienv_eval_report.md`.
 
 ## 2026-07-08
 
-### Delta EEF pose replaces the old OSC-action forward-model route
+### Delta EEF pose replaces the OSC-action forward-model route
 
-Trained clean-image diffusion policies on executable EEF-pose OSC actions.
-The delta EEF policy is the preferred interface:
+The clean-image delta-EEF policy reached 0.98 training-time rollout success.
+Its predicted action chunks reconstruct the executed EEF trajectory with
+0.131 cm mean position and 0.253° mean orientation error in a successful
+rollout. The absolute EEF comparison peaked at 0.82.
 
-```text
-delta_eef_pose_action = [
-  next_obs/robot0_eef_pos - obs/robot0_eef_pos,
-  axis_angle(R_next_site @ R_obs_site.T),
-  actions[:, 6],
-]
-```
-
-Controller:
-
-```text
-OSC_POSE
-input_type = delta
-input_ref_frame = world
-kp = 500
-controller_goal_update_mode = desired
-```
-
-The best delta policy reached 0.98 PickPlaceCan rollout success during
-training eval. A dedicated diagnostic confirmed that policy action chunks can
-be reconstructed into the executed EEF pose trajectory directly:
-
-| rollout | horizon | chunks | mean pos err | max pos err | mean ori err | max ori err |
-|---:|---:|---:|---:|---:|---:|---:|
-| 1 | 334 | 42 | 0.131 cm | 0.541 cm | 0.253 deg | 1.019 deg |
-
-This resolves the action-to-trajectory problem for the active code path:
-guidance or ranking can operate directly on the policy-predicted EEF pose
-trajectory without a learned OSC forward model.
-
-The absolute EEF policy remains a useful comparison baseline, but was weaker
-in training eval: best success 0.82, final success 0.72.
-
-Decision: archive the old OSC-action forward-model / obstacle-guidance /
-geometry-only ranking implementation code. Keep result documents for audit,
-but do not keep the old implementation in the active repository. Future
-guidance, if needed, should be implemented against `delta_eef_pose_action`
-trajectory reconstruction rather than resurrecting the original OSC-action
-guidance stack.
-
-Relevant files:
-
-```text
-outputs/eef_pose_osc_policy/README.md
-scripts/eef_pose_osc_policy/diagnose_delta_eef_policy_traj.py
-docs/eef_pose_osc_policy_training.md
-docs/forward_model_guidance_next_steps.md
-docs/action_chunk_ranking_report.md
-```
+Decision: use executable 7-D `delta_eef_pose_action` through `OSC_POSE` as the
+active interface. Guidance and ranking can score its reconstructed trajectory
+directly; the old OSC-action forward model is archived. Canonical result:
+`outputs/eef_pose_osc_policy/README.md`.
 
 ## 2026-07-06
 
-### Route B correction: full-pose EEF can control built-in OSC absolute
+### Corrected full-pose EEF replay overturns the earlier controller conclusion
 
-Re-ran EEF-pose replay after fixing the action interface. The executable action
-is:
+Using `robot0_eef_quat_site`, full-pose targets, absolute/world `OSC_POSE`,
+`kp=500`, and controller refresh after reset achieved 200 / 200 expert replay
+success with 0.51 cm mean position error. Earlier position-only and delta
+routes had tested incomplete or non-equivalent interfaces.
 
-```text
-[
-  next_obs/robot0_eef_pos,
-  quat2axisangle(next_obs/robot0_eef_quat_site),  # robosuite xyzw order
-  actions[:, 6],
-]
-```
+Decision: built-in OSC can execute full-pose EEF labels. This historical
+branch was later superseded by the simpler validated delta-EEF policy.
 
-Environment/controller:
+### Geometry-only action ranking is task-myopic
 
-```text
-OSC_POSE
-input_type = absolute
-input_ref_frame = world
-kp = 500
-```
+The base policy sampled geometrically safer chunks, and a learned forward
+model ranked them more faithfully than `cumsum(action * 0.05)`. Rollout
+success nevertheless fell: on the hardest pilot, baseline / K=4 / gated K=16
+success was 0.883 / 0.583 / 0.833. Lower collision-any did not compensate for
+lost task behavior.
 
-Critical implementation details:
-
-- use `robot0_eef_quat_site`, not `robot0_eef_quat`, because EEF position is a
-  site position and the site quaternion is in robosuite's `[x, y, z, w]` order;
-- do not reorder that quaternion before `quat2axisangle`;
-- do not clip absolute axis-angle action components to `[-1, 1]`;
-- after `env.reset_to(initial_state)`, force controller state/goal refresh with
-  `ctrl.update(force=True)` and `ctrl.reset_goal()`.
-
-Result on both `image_v15.hdf5` and the earlier Route B
-`image_v15_delta_eef.hdf5` dataset:
-
-| demos | final success | mean pos err | max pos err | mean ori err | max ori err |
-|---:|---:|---:|---:|---:|---:|
-| 200 | 200/200 = 1.0 | 0.51 cm | 2.90 cm | 0.39 deg | 5.81 deg |
-
-This overturns the previous broad conclusion that built-in robosuite absolute
-OSC cannot execute EEF pose labels. The previous Plan B-2 failure tested a
-different and incomplete interface: position-only absolute targets, lower
-`kp`, altered uncoupling, and, in standalone diagnostics, the wrong quaternion
-source / action clipping. It remains true that `delta_eef_action -> OSC delta`
-and `real delta_EEF -> OSC command` adapters fail; those are different action
-interfaces.
-
-Decision: reopen Route B with a simpler next experiment: train a diffusion
-policy to predict the executable full-pose EEF action above and roll it out
-through OSC absolute/world mode. The Panda Mink results are now historical
-controller exploration, not the required controller path.
-
-The replay implementation and raw summary were removed from the active tree on
-2026-07-21 after the delta EEF replacement was validated; this result remains
-recoverable from Git history. See `outputs/eef_pose_osc_policy/README.md` for
-the final action-interface conclusion.
-
-### Decision: next Route B training should use clean-image DDIM full-pose OSC
-
-Agreed next experiment, not yet executed: train a clean-image diffusion policy
-to predict the corrected executable full-pose OSC action. Do not start from the
-masked-image policy for this first Route B test.
-
-Planned policy / scheduler setup:
-
-```text
-observation setup: clean image policy, no oracle target mask
-action target: [next_eef_pos, quat2axisangle(next_eef_quat_site), gripper]
-action normalization: min_max
-sampler: DDIM
-num_train_timesteps: 100
-num_inference_timesteps: 10
-```
-
-Rationale:
-
-- absolute axis-angle components can exceed `[-1, 1]`, so normalization is
-  required for stable DP training;
-- inference should unnormalize before `env.step`;
-- corrected OSC execution depends on controller metadata and reset handling,
-  not just action labels.
-
-Implementation cautions:
-
-- dataset generation must use `robot0_eef_quat_site` in robosuite `[x, y, z, w]`
-  order, with no quaternion reordering before `quat2axisangle`;
-- the dataset / checkpoint env metadata must use `OSC_POSE`, absolute input,
-  world reference frame, and `kp=500`;
-- if the rollout path calls `env.reset_to(...)`, controller references / goals
-  must be refreshed afterward, matching the successful replay script;
-- after action unnormalization, verify that robomimic wrappers do not clip the
-  absolute pose action to `[-1, 1]`;
-- inference should not need per-step quaternion conversion if the policy output
-  is already axis-angle.
-
-Validation order:
-
-1. Generate the absolute EEF OSC dataset.
-2. Replay expert actions through the corrected controller.
-3. Replay through the robomimic env wrapper to check clipping / reset behavior.
-4. Run debug or short training and inspect action dimension, normalization
-   stats, checkpoint env metadata, and rollout action scale.
-5. Run full PickPlaceCan training only after the above pass; multi-object
-   rollout should wait until the single-object clean policy works.
-
----
-
-### Action-chunk ranking tested: safe chunks exist, geometry-only scoring is not enough
-
-Tested action-chunk ranking as the next inference-time `Delta geo` strategy:
-
-```text
-sample K diffusion action chunks
--> score predicted EEF trajectories with obstacle geometry
--> execute selected chunk without gradient-updating actions
-```
-
-Same-state diagnostic on `PickPlaceBreadCerealCan` answered the immediate open
-question: the base single-object policy does sample geometry-safer chunks. At
-`K=16`, forward-model ranking improved actual clearance in 8/10 states with
-mean `+1.54 mm`, while cumsum ranking improved 4/10 states with mean
-`-0.74 mm`. This supports the forward model as a better action-chunk evaluator
-than `cumsum(action * 0.05)`.
-
-Rollout pilots did not show success improvement. On `PickPlaceBreadCerealCan`
-with 10 rollouts, pure forward-model ranking reduced collision-any but hurt
-success; a gated variant restored success in that small setting but increased
-collision duration. On the hardest environment `PickPlaceBreadCerealMilkCan`
-with 3 seeds x 20 rollouts:
-
-| condition | success | collision-any | collision steps |
-|---|---:|---:|---:|
-| no guidance | 53/60 = 0.883 | 0.417 | 23.63 |
-| forward-model ranking K=4 | 35/60 = 0.583 | 0.383 | 47.27 |
-| forward-model ranking K=16 gated | 50/60 = 0.833 | 0.367 | 36.90 |
-
-Current interpretation:
-
-- The failure mode is not lack of safe samples.
-- Forward-model ranking is more faithful than cumsum ranking in same-state
-  diagnostics.
-- Geometry-only selection is too myopic: it can choose safer but less
-  task-preserving chunks, hurting grasp / placement timing and sometimes
-  increasing collision duration.
-- The oracle-mask baseline is already high even in the hardest environment
-  (`127/150 = 0.847` in the prior 600-rollout baseline; `53/60 = 0.883` in
-  this pilot), so `Delta geo` is a smaller remaining success bottleneck than
-  assumed.
-
-Decision: do not continue tuning geometry-only ranking as a final method while
-the corrected full-pose EEF Route B path is open. If ranking is revisited, add
-a task-preserving term such as distance to the first sampled chunk, policy
-likelihood, or task-progress heuristics. Also re-check whether failure episodes
-are truly caused by non-target collisions, because collision-any and success
-are not tightly coupled in these pilots.
-
-Relevant doc: `docs/action_chunk_ranking_report.md`.
-
----
+Decision: do not use geometry-only ranking as the final method. A future
+ranking method needs an explicit task-preservation or value term. Canonical
+report: `docs/action_chunk_ranking_report.md`.
 
 ## 2026-07-03
 
-### Route B status narrowed: built-in delta routes fail, Mink expert replay passes, learned Mink EEF policy fails
+### Learned OSC forward model improves prediction, not guidance
 
-The 2026-06-26 Route B conclusion was too broad. The corrected conclusion is:
+The learned `state + OSC action chunk -> future EEF trajectory` model beat the
+cumulative-action proxy on held-out and random rollouts. Replacing the proxy
+inside gradient guidance still did not improve Task SR, and same-state
+clearance improvements transferred inconsistently to execution.
 
-- Built-in robosuite controller routes tested here fail for EEF supervision:
-  `delta_eef_action -> OSC`, position-only absolute OSC, and built-in IK all
-  diverge in open-loop replay. This was later corrected again on 2026-07-06:
-  full-pose absolute OSC replay is feasible when using `robot0_eef_quat_site`
-  and the correct absolute action interface.
-- `real delta_EEF -> OSC command` adapters improve offline regression but remain unreliable in open-loop replay, so adapter-based execution is rejected.
-- Panda + WholeBodyMinkIK can replay expert full-pose absolute EEF targets with high task success.
-- A learned full-pose EEF diffusion policy using the Mink interface still obtains 0.0 rollout success.
-
-Current interpretation after the 2026-07-06 correction: the controller-interface
-part is feasible with both corrected built-in OSC absolute mode and Mink IK.
-The remaining open question is learned closed-loop full-pose EEF target
-generation.
-
-The detailed controller-validation artifacts were removed from the active tree
-on 2026-07-21 and remain recoverable from Git history. The superseding result is
-`outputs/eef_pose_osc_policy/README.md`.
-
-### OSC forward model validated as trajectory predictor, not as proof of guidance usefulness
-
-Trained a learned forward model:
-
-```text
-f_hat(state_t, OSC action chunk) -> actual future EEF xyz trajectory
-```
-
-The model substantially outperforms `cumsum(action * 0.05)` on held-out demo windows and random-action env rollout validation. Random full-range actions increase absolute error, as expected for out-of-distribution inputs, but the learned model still beats cumsum.
-
-Current interpretation: the forward model is useful as an action-chunk evaluator / trajectory predictor. This does not mean the current gradient-based obstacle guidance works.
-
-Relevant docs: `outputs/forward_model/osc_eef_forward_image_v15/summary.md`, `outputs/forward_model/random_rollout_validation/`.
-
-### Gradient guidance remains unreliable
-
-Controlled rollout comparison found that replacing cumsum with the learned forward model inside the current gradient guidance did not improve success rate. A counterfactual same-state diagnostic showed that guidance can improve predicted clearance while actual executed clearance improves inconsistently.
-
-Current interpretation: the bottleneck is likely the guidance update / cost / action-distribution interaction, not autograd or forward-model differentiability.
-
-### Decision: next test action-chunk ranking
-
-Before further tuning gradient guidance, answer whether the base single-object policy samples any geometry-safe action chunks in obstructed scenes.
-
-Next method:
-
-1. Sample multiple candidate action chunks from the diffusion policy.
-2. Predict EEF trajectories with the learned forward model.
-3. Score/rank candidates using obstacle geometry.
-4. Execute the safest candidate without gradient-updating the action tensor.
-
-If ranking cannot find safe chunks, inference-time geometry correction is probably insufficient and the project must introduce a new training distribution or training-side adaptation.
-
-Handoff doc: `docs/forward_model_guidance_next_steps.md`.
-
----
+Decision: the bottleneck was the guidance update, cost, and action-distribution
+interaction rather than forward-model accuracy or autograd. The implementation
+is archived; canonical handoff:
+`docs/forward_model_guidance_next_steps.md`.
 
 ## 2026-06-26
 
-### Route B validation: initial built-in EEF-controller routes fail open-loop replay
+### Initial EEF-controller failure was route-specific
 
-Historical note: this conclusion was narrowed on 2026-07-03 and corrected again
-on 2026-07-06. It applies to the specific routes tested here, especially
-`delta_eef_action -> OSC delta`, position-only absolute OSC, and built-in IK.
-It does **not** apply to corrected full-pose absolute OSC replay.
+Early open-loop tests found that achieved EEF deltas cannot be replayed as new
+OSC delta commands: controller tracking lag compounds into large error.
+Position-only absolute OSC and the tested IK route also failed. These results
+did not test the corrected full-pose absolute interface discovered on
+2026-07-06.
 
-Tested 4 supervision-signal/controller combinations on 5 demos. The detailed
-report was removed from the active tree on 2026-07-21 after supersession and
-remains recoverable from Git history:
-
-| Plan | Signal | Controller | End error | Pass? |
-|---|---|---|---|---|
-| A | OSC delta action | OSC delta | 0.4 cm | ✓ |
-| B-1 | `delta_eef_action` (real EEF delta) | OSC delta | 39.3 cm | ✗ |
-| B-2 | `next_eef_pos` (absolute target) | OSC absolute | 37.3 cm | ✗ |
-| C | `next_eef_pos` cumulative delta | IK delta | 74.1 cm | ✗ |
-
-### Why these EEF-based signals failed
-
-- **OSC is force-control, not position-control.** With `kp=150, damping_ratio=1` the natural frequency is `sqrt(150) ≈ 12 rad/s`, settling time ~0.33s. At 20 Hz (50ms/step), the EEF moves only ~15% of the way to a small per-step target. Compounding over 300 steps gives 28-39 cm lag.
-- **`delta_eef_action` is the *achieved* delta in the data, smaller than the *commanded* delta that produced it.** When fed back to OSC as a new command, OSC under-achieves again — feedback loop with gain 0.28 shrinks the target by 28% per step.
-- **The tested OSC absolute path was incomplete.** It sent only
-  `next_eef_pos`, used zero orientation targets, lower `kp`, and did not use
-  the corrected `next_eef_quat_site -> axis-angle` action interface. This
-  explains why the historical B-2 result diverged while the corrected
-  full-pose OSC absolute replay succeeds.
-- **IK controller only supports delta mode for single-arm robots** (`ik.py:265` asserts `use_delta=True` for `num_ref_sites == 1`). The `IKSolver` in `ik_utils.py` supports absolute mode but is not wired into the standard `arm_controller_factory`. The IK step overshoots by 5-10x with default `Kpos=0.95, integration_dt=0.1`. `Kpos` and `Kn` (nullspace gain) are hard-coded into the static-method `compute_joint_positions` and don't honor attribute overrides.
-
-### Re-evaluation: the 3-4cm RMSE from `cumsum(action*0.05)` is not approximation error — it's OSC tracking error
-
-Plan B-1 demonstrates that the *achieved* EEF delta is systematically smaller than the *commanded* delta. The mapping `action → EEF` is not a noise problem; it's the structural tracking lag of a force-control PD law. This means:
-
-- `cumsum(action * 0.05) ≠ actual EEF trajectory` because OSC's force controller is underdamped for small per-step commands.
-- The 3-4 cm RMSE we measured earlier is a *physical limit*, not a calibration error.
-- Any Route B approach that re-derives EEF from OSC delta action will hit the
-  same wall. This does not apply to directly predicting the corrected
-  executable full-pose EEF action.
-
-### Historical decision: pause Route B; re-evaluate strategy
-
-This decision is superseded by the 2026-07-06 corrected full-pose OSC absolute
-replay result. At the time, three concrete next steps were discussed (see
-report section "Re-evaluation of remaining options"):
-
-1. **Multi-task learning** (Plan A + EEF prediction as separate heads). Smallest delta, sidesteps the controller-bypass problem. Cost guidance operates on the EEF prediction; execution uses the action prediction via OSC.
-2. **Custom absolute-position controller** (write ~50 lines of code: IKSolver + JointPositionController in absolute mode). Requires fixing the IK nullspace/step-size issues.
-3. **Accept the 3-4 cm RMSE and improve guidance differently** (e.g., longer-horizon cost, residual model).
-
-Open question: with 600 rollouts showing guidance *hurts* rather than helps, is the cost gradient even pointing in the right direction at all? This is independent of the mapping error.
-
----
+Decision: reject adapters that infer executable EEF motion from the old OSC
+delta action. Preserve this only as historical motivation for direct
+executable EEF supervision.
 
 ## 2026-06-22
 
-### Core finding: action→trajectory mapping error is the root cause
+### Old OSC-action obstacle guidance fails end to end
 
-The cost function uses `cumsum(action * 0.05)` to convert predicted actions to EEF waypoints. Calibration revealed:
-- Actual mapping: 3-4cm RMSE vs OSC PD-controller dynamics
-- This error is comparable to obstacle radii (3-5cm), making collision cost unreliable
-- `delta_pos_scale` = 0.05 (from controller config) is correct for normalized `[-1,1]` actions, but our actions were not normalized (`normalization = null`). Scale=1.0 was 6-300x worse.
-- Even the best approximation (0.05) has 3-4cm error — too large for reliable cost computation
+The `cumsum(action * 0.05)` trajectory proxy had 3–4 cm error, comparable to
+obstacle radii. Across 600 rollouts, guidance reduced success by roughly
+3–5%, triggered almost independently of clutter, and produced near-zero costs.
+A learned forward model later improved trajectory prediction but not guidance.
 
-### Cost guidance experiment: no improvement across 600 rollouts
-
-- Baseline vs Guided across 4 environments × 3 seeds × 50 rollouts each
-- Guidance slightly **reduces** success rates (-3% to -5%) as distractor count increases
-- Guidance trigger rate constant at ~12.5% regardless of environment difficulty → not collision-responsive
-- PC cost max = 1.13e-04, oracle cost max = 6.66e-04 → both near zero
-- Policy's x0_hat does not deeply penetrate obstacles
-
-### Z-axis check in cost function may be a secondary issue
-
-`obstacle_xyz_cylinder_cost` requires both XY penetration AND EEF below obstacle top Z. In pick-and-place tasks, EEF is always above obstacles → `pen_z` always 0 → cost always 0. `obstacle_xy_cost` (XY only) should be tested.
-
-### Decision: Route B — switch prediction target to EEF trajectory
-
-Historical note: this decision was tested and superseded by the 2026-06-26,
-2026-07-03, and 2026-07-06 Route B findings. The viable formulation is not a
-position-only EEF trajectory; it is the executable full-pose EEF action
-`[next_eef_pos, quat2axisangle(next_eef_quat_site), gripper]`.
-
-Following from the root cause analysis:
-1. Rebuild hdf5 dataset with EEF trajectory labels (not just actions)
-2. Modify diffusion policy output from `[7, 16]` to `[3, 16]`
-3. Eliminate `action_chunk_to_eef_xyz_traj` conversion entirely
-4. Re-train and test whether guidance becomes effective
-
-### Discussion: relation to Lan-o3dp
-
-Lan-o3dp predicts EEF trajectory directly — they never face this mapping error. Our work differs in two ways:
-1. We discovered and documented this limitation (they didn't)
-2. We provide the Δvis + Δgeo decomposition framework (they don't)
-
-### Agent infrastructure planning
-
-Set up project workspace for multi-agent collaboration:
-- `AGENTS.md` as entry point for all agents
-- `docs/RESEARCH_LOG.md` for discussion history
-- `.opencode/agents/paper-reader.md` (Kimi K2.6) for paper analysis
-- `.opencode/agents/code-explorer.md` (DeepSeek V4 Pro) for code exploration
+Decision: stop treating OSC action chunks as executable EEF trajectories and
+move to direct EEF supervision. Later delta-EEF results supersede the original
+position-only plan.
 
 ## 2026-06-21 (approximate)
 
-### Earlier discussion: diagnostic tools and failure analysis
+### Initial diagnostics and project infrastructure
 
-Created three diagnostic tools:
-- `diagnose_collisions.py`: passive EEF-obstacle distance logging during baseline rollouts
-- `diagnose_guidance_gradient.py`: per-denoising-step cost/grad_norm logging
-- `calibrate_action_scale.py`: action↔EEF delta mapping verification
+Collision, guidance-gradient, and action-scale diagnostics established the
+first evidence base. Early oracle-mask experiments suggested collision-
+dominated failures, but the later 600-episode delta-EEF evaluation narrowed
+that claim by identifying mixed failure modes.
 
-### Collision diagnostics: all failures are collision-type
-
-On PickPlaceBreadCerealMilkCan (hardest environment), baseline diagnostics show ALL failures involve collisions (hit_threshold < 3cm). Zero non-collision failures. This confirms the Δvis+Δgeo decomposition: oracle mask solves Part A (visual ambiguity), leaving only Part B (physical obstruction).
-
-### Pointcloud caching optimization
-
-Added static obstacle caching in `run_obstacle_guided_agent.py`. Obstacles are static (placed once at reset), so pointcloud is computed once per episode instead of every step. Saves ~674ms per episode (99.8%). Combined with `guidance_start_step_pct=0.7` (skip early denoising steps) for ~20% end-to-end speedup.
-
-### Training-side approaches discussed
-
-Several directions considered for injecting multi-object information during training:
-- Object position vector conditioning (oracle in sim, detector+depth in real)
-- Structured depth (target-highlighting in depth channel)
-- Training-time geometric augmentation (synthetic obstacles in depth)
-- Curriculum learning with increasing distractor density
-
-None chosen yet — blocked on the action→trajectory representation issue.
+Established `AGENTS.md`, this research log, and specialist agent definitions.
+Training-side multi-object conditioning ideas were deferred until the action
+representation problem was resolved.

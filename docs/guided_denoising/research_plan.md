@@ -1,6 +1,6 @@
 # Guided Denoising Research and Evaluation Plan
 
-Status: active research plan, 2026-07-22.
+Status: active research plan, 2026-07-28.
 
 This document separates three questions that should not be answered by one
 large experiment:
@@ -9,10 +9,13 @@ large experiment:
 2. what the method should change at inference time; and
 3. how much environment diversity is needed to support the resulting claim.
 
-The current LAN-O3DP-style implementation is a mechanism baseline. It shows
-that a frozen delta-EEF diffusion policy can be changed during denoising and
-that the change reaches the executed trajectory. It is not yet the project
-method.
+The LAN-O3DP-style point-guidance branch is closed after its mechanism pilots
+and LAN-aligned checkpoint closure failed the project gate. LPB is deferred by
+the current research decision. A subsequent one-distractor test also rejected
+uniform 5 cm XY obstacle expansion. The next experiment is a targeted
+fine-tuning upper bound: inject a small number of successful multi-object
+corrections into the reliable clean-image delta-EEF policy while replaying its
+original clean demonstrations.
 
 ## 1. Evidence Available Now
 
@@ -42,6 +45,22 @@ added one safe success, while refine only exchanged three collision failures
 for three NCRs. The complete method added 76% inference time without task or
 safety benefit and was not evaluated on held-out clutter levels. See
 `sample_refine_pilot.md`.
+
+The later LAN-aligned 40-demo, seed-42 point-cloud DDPM checkpoint also failed
+both required gates. Its independent clean `PickPlaceCan` Task SR was 0.50
+over 150 episodes, below the approximately 0.80 source-policy competence
+threshold. After fixed-state calibration, scale 0.003 improved predicted and
+executed short-prefix clearance, but the 20-pair pilot produced no
+failure-to-success transition, increased CR by 0.10 in the two-distractor
+environment, and reduced Task SR by 0.20 in the three-distractor environment.
+See `lan_o3dp_epoch350_closure.md`.
+
+The easier `PickPlaceBreadCan` test did not rescue the existing point guide.
+With Bread's XY radius expanded by 5 cm, fixed-state clearance improved, but a
+20-pair pilot reduced Task SR and Safe SR from 0.70 to 0.65. CR fell 0.05 to
+zero while NCR rose 0.25 to 0.35, including two baseline successes lost and
+only one failure recovered. The same uniform XY expansion must not be scaled
+or retuned.
 
 ## 2. P0 Failure-Mechanism Diagnostic — Complete
 
@@ -107,6 +126,11 @@ Canonical artifacts:
 
 ## 3. Method-Development Gate in the Current Environment
 
+Use the clean-image delta-EEF Diffusion Policy epoch-260 checkpoint as the
+source prior for any next method study. Its independent single-object Task SR
+is 0.907, so it passes the source gate; the LAN-aligned epoch-350 point-cloud
+checkpoint does not.
+
 Develop on `PickPlaceBreadCerealCan`, where the baseline exhibits the regime
 change but still has enough successful rollouts for comparison. Treat
 `PickPlaceBreadCan` and `PickPlaceBreadCerealMilkCan` as easier and harder
@@ -134,6 +158,12 @@ collision-free non-completion
 Small matched pilots are for eliminating candidates. A positive pilot must be
 followed by a statistically sized evaluation and multiple independently
 trained policy seeds before making a robustness claim.
+
+Before implementing the next candidate, document its mechanism, required
+deployment information, operation on the existing 2 / 16 / 8 executable
+delta-EEF action contract, and intended P0 regime. Do not rerun either the
+rejected LAN penetration guide or uniform 5 cm XY expansion under another
+scale, margin, or timestep cutoff.
 
 ## 4. Environment Expansion
 
@@ -168,11 +198,15 @@ method separately on the scout environments.
 1. **P0 — failure-mechanism diagnostic (complete, decision C):** the clean
    policy exhibits a mixed partition with no mechanism dominant in both hard
    environments.
-2. **P1 — method on the current family (active):** the first sample-refine
-   candidate is falsified. Any replacement must choose one stated diagnostic
-   regime and use
-   paired rollouts in the two-distractor environment, then test unchanged in
-   the one- and three-distractor variants.
+2. **P1 — targeted support-injection upper bound (active):** the LAN mechanism
+   baselines, sample-refine candidate, task-constrained eight-step feasibility
+   candidate, LAN-aligned epoch-350 closure, and one-distractor 5 cm XY
+   expansion have not passed the gate. Collect successful waypoint-teacher
+   corrections on fresh layouts, keep the strict 20-state bank held out, and
+   compare balanced mixed-data fine-tuning against the frozen checkpoint and a
+   clean-only continued-training control. Treat success as a learnability
+   upper bound before selecting a final adapter, world-model, controller, or
+   hybrid method.
 3. **P2 — policy-seed robustness:** repeat the accepted comparison with at
    least three independently trained source-policy seeds. The current evidence
    uses one checkpoint and cannot establish training robustness.

@@ -1,0 +1,30 @@
+{
+  "agent": "outputs/robomimic/train/dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth",
+  "state_banks": [
+    "outputs/task_constrained_guidance/one_chunk_lead_states/states.hdf5",
+    "outputs/task_constrained_guidance/one_chunk_lead_states_seed601_602/states.hdf5",
+    "outputs/task_constrained_guidance/one_chunk_lead_states_seed603_607/states.hdf5"
+  ],
+  "samples_per_state": 32,
+  "clearance_margins_m": [
+    0.01
+  ],
+  "target_object_name": "Can",
+  "frozen_horizons": {
+    "observation": 2,
+    "prediction": 16,
+    "action": 8
+  },
+  "manifold_config": {
+    "shrinkage": 0.2,
+    "variance_floor_m": 0.001,
+    "support_quantile": 0.95,
+    "support_multiplier": 2.0,
+    "progress_tolerance_m": 0.0005,
+    "solver_max_iterations": 500,
+    "solver_ftol": 1e-10,
+    "constraint_tolerance": 1e-05,
+    "maximum_multistarts": 10
+  },
+  "scope": "fixed-state policy-support upper bound using oracle XY EEF-point/object-circle geometry; projected actions are not executed"
+}
