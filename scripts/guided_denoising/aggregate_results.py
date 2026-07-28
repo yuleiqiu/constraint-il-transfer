@@ -119,14 +119,31 @@ def write_report(path, aggregate_rows, paired_rows, manifest):
     aggregate_by_key = {
         (row["env"], row["condition"]): row for row in aggregate_rows
     }
+    max_timestep = manifest.get("max_guidance_timestep")
+    timestep_description = (
+        "at all configured diffusion timesteps"
+        if max_timestep is None
+        else "at diffusion timesteps `t <= {}`".format(max_timestep)
+    )
+    displacement_cap = manifest.get("max_waypoint_displacement_m")
+    cap_description = (
+        "without a per-waypoint reverse-step displacement cap"
+        if displacement_cap is None
+        else "with a per-waypoint reverse-step displacement cap of `{}` m".format(
+            displacement_cap
+        )
+    )
     lines = [
         "# Guided Denoising Paired Pilot",
         "",
         "This is a small matched-rollout study before a full evaluation matrix. Each pair runs baseline and guided policies from the same initial simulator state and policy random seed; only guidance differs.",
         "",
         "- **Baseline:** guidance scale `0` (no guidance).",
-        "- **Guided:** guidance scale `{}`. This is the base physical waypoint-push coefficient $\\lambda$; the actual per-step displacement also includes the DDIM timestep factor $1 / \\sqrt{{\\bar{{\\alpha}}_{{t-1}}}}$, so this value is not a fixed displacement at every denoising step.".format(
-            manifest["guidance_scale"]
+        "- **Guided:** `{}` cost with guidance scale `{}`; guidance is applied {} {}.".format(
+            manifest.get("cost_type", "penetration"),
+            manifest["guidance_scale"],
+            timestep_description,
+            cap_description,
         ),
         "- **Clearance margin:** `{}` m (`{:g}` cm). The deployment cost expands each oracle obstacle's circular XY radius by this amount before testing waypoint penetration. It is a cost boundary, not a claim that the executed robot maintains that clearance.".format(
             manifest["clearance_margin"], manifest["clearance_margin"] * 100.0
@@ -195,25 +212,28 @@ def write_report(path, aggregate_rows, paired_rows, manifest):
             "",
             "## Guidance diagnostics",
             "",
-            "`trigger rate` is the fraction of DDIM reverse steps whose predicted trajectory enters the deployment-cost boundary. The baseline can therefore have a nonzero trigger rate even though scale `0` applies no update. Update norms are measured in normalized action space; reconstruction errors compare predicted and executed EEF trajectories. `action clips` counts policy actions outside environment limits.",
+            "`trigger rate` is the fraction of evaluated reverse steps whose predicted trajectory enters the deployment-cost boundary. The baseline can therefore have a nonzero trigger rate even though scale `0` applies no update. Update norms are measured in normalized action space; reconstruction errors compare predicted and executed EEF trajectories. `action clips` counts policy actions outside environment limits.",
             "",
-            "| environment | condition | trigger rate | update norm mean | update norm max | reconstruction mean (cm) | reconstruction max (cm) | action clips |",
-            "|---|---|---:|---:|---:|---:|---:|---:|",
+            "| environment | condition | trigger rate | update norm mean | update norm max | max waypoint displacement (cm) | reconstruction mean (cm) | reconstruction max (cm) | observation failure rate | action clips | max clip excess |",
+            "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
         ]
     )
     for env_name in sorted({row["env"] for row in aggregate_rows}):
         for condition in ("baseline", "guided"):
             row = aggregate_by_key[(env_name, condition)]
             lines.append(
-                "| {env} | {condition} | {trigger:.3f} | {update_mean:.3f} | {update_max:.3f} | {recon_mean:.3f} | {recon_max:.3f} | {clips} |".format(
+                "| {env} | {condition} | {trigger:.3f} | {update_mean:.3f} | {update_max:.3f} | {waypoint:.3f} | {recon_mean:.3f} | {recon_max:.3f} | {obs_failure:.3f} | {clips} | {clip_max:.2e} |".format(
                     env=env_name,
                     condition=condition,
                     trigger=row["guidance_trigger_rate"],
                     update_mean=row["guidance_update_norm_mean"],
                     update_max=row["guidance_update_norm_max"],
+                    waypoint=row["max_waypoint_displacement_m"] * 100.0,
                     recon_mean=row["trajectory_reconstruction_error_mean_cm"],
                     recon_max=row["trajectory_reconstruction_error_max_cm"],
+                    obs_failure=row["observation_failure_rate"],
                     clips=row["action_clip_count"],
+                    clip_max=row["action_clip_max_abs"],
                 )
             )
     lines.extend(
@@ -238,23 +258,74 @@ def write_report(path, aggregate_rows, paired_rows, manifest):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--eval-dir", type=Path, required=True)
+    parser.add_argument(
+        "--eval-dir",
+        type=Path,
+        nargs="+",
+        required=True,
+        help="One or more paired-evaluation directories to aggregate.",
+    )
+    parser.add_argument(
+        "--out-dir",
+        type=Path,
+        default=None,
+        help="Required when combining multiple evaluation directories.",
+    )
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-    rows = load_rows(args.eval_dir / "episode_metrics.jsonl")
-    manifest = json.loads((args.eval_dir / "manifest.json").read_text())
+    if len(args.eval_dir) > 1 and args.out_dir is None:
+        raise ValueError("--out-dir is required with multiple --eval-dir inputs")
+    out_dir = args.out_dir or args.eval_dir[0]
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    rows = []
+    manifests = []
+    for eval_dir in args.eval_dir:
+        rows.extend(load_rows(eval_dir / "episode_metrics.jsonl"))
+        manifests.append(json.loads((eval_dir / "manifest.json").read_text()))
+
+    duplicate_keys = set()
+    seen_keys = set()
+    for row in rows:
+        key = (row["env"], row["seed"], row["episode"], row["condition"])
+        if key in seen_keys:
+            duplicate_keys.add(key)
+        seen_keys.add(key)
+    if duplicate_keys:
+        raise ValueError("Duplicate episode-condition keys: {}".format(duplicate_keys))
+
+    manifest = dict(manifests[0])
+    ignored_keys = {"envs", "seeds", "decision", "decision_note"}
+    expected = {key: value for key, value in manifest.items() if key not in ignored_keys}
+    for other in manifests[1:]:
+        observed = {key: value for key, value in other.items() if key not in ignored_keys}
+        if observed != expected:
+            raise ValueError("Evaluation manifests have incompatible settings")
+    manifest["envs"] = sorted({env for item in manifests for env in item["envs"]})
+    manifest["seeds"] = sorted({seed for item in manifests for seed in item["seeds"]})
+
+    if len(args.eval_dir) > 1:
+        manifest.pop("decision", None)
+        manifest.pop("decision_note", None)
+        (out_dir / "episode_metrics.jsonl").write_text(
+            "".join(json.dumps(row) + "\n" for row in rows)
+        )
+        (out_dir / "manifest.json").write_text(
+            json.dumps(manifest, indent=2) + "\n"
+        )
+
     aggregate_rows = paired_rollout_eval.aggregate(rows)
     paired_rows = paired_summary(rows)
-    (args.eval_dir / "summary.json").write_text(
+    (out_dir / "summary.json").write_text(
         json.dumps(aggregate_rows, indent=2) + "\n"
     )
-    write_csv(args.eval_dir / "aggregate_summary.csv", aggregate_rows)
-    write_csv(args.eval_dir / "paired_summary.csv", paired_rows)
-    write_report(args.eval_dir / "report.md", aggregate_rows, paired_rows, manifest)
-    print("wrote paired report in {}".format(args.eval_dir), flush=True)
+    write_csv(out_dir / "aggregate_summary.csv", aggregate_rows)
+    write_csv(out_dir / "paired_summary.csv", paired_rows)
+    write_report(out_dir / "report.md", aggregate_rows, paired_rows, manifest)
+    print("wrote paired report in {}".format(out_dir), flush=True)
 
 
 if __name__ == "__main__":

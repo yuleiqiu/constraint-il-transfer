@@ -1,0 +1,20 @@
+{
+  "agent": "outputs/robomimic/train/dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth",
+  "envs": [
+    "PickPlaceBreadCan"
+  ],
+  "seeds": [
+    760,
+    761
+  ],
+  "n_rollouts": 10,
+  "horizon": 400,
+  "guidance_scale": 0.01,
+  "clearance_margin": 0.05,
+  "cost_type": "penetration",
+  "max_guidance_timestep": null,
+  "max_waypoint_displacement_m": null,
+  "terminate_on_success": true,
+  "decision": "reject_breadcan_5cm_xy_expansion",
+  "decision_note": "The 20-pair one-distractor pilot failed the task-level gate. Task SR and Safe SR fell from 0.70 to 0.65. Guidance removed the only baseline collision (CR 0.05 to 0.00) but increased NCR from 0.25 to 0.35: one baseline collision failure became NCR, one baseline failure became success, and two baseline successes became failures. Do not scale or tune this same 5 cm XY point-guidance setting."
+}

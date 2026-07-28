@@ -1,0 +1,5 @@
+env,condition,episodes,task_sr,safe_sr,cr,ncr,safe_success,success_with_collision,collision_failure,collision_free_non_completion,guidance_trigger_rate,guidance_update_norm_mean,guidance_update_norm_max,action_clip_count,action_clip_max_abs,max_waypoint_displacement_m,observation_failure_rate,trajectory_reconstruction_error_mean_cm,trajectory_reconstruction_error_max_cm
+PickPlaceBreadCerealCan,baseline,10,0.6,0.4,0.5,0.1,4,2,3,1,0.05678362573099416,0.0,0.0,1515,1.5020370483398438e-05,0.0,0.0,0.3118989978446274,13.642066717147827
+PickPlaceBreadCerealCan,guided,10,0.5,0.4,0.6,0.0,4,1,5,0,0.09882352941176471,0.03091662907435504,1.4350842237472534,1482,1.5020370483398438e-05,0.02458478882908821,0.0,0.4263547476511541,14.957879483699799
+PickPlaceBreadCerealMilkCan,baseline,10,0.8,0.6,0.4,0.0,6,2,2,0,0.11058466898954704,0.0,0.0,1348,1.5020370483398438e-05,0.0,0.0,0.31828508797546956,16.717052459716797
+PickPlaceBreadCerealMilkCan,guided,10,0.7,0.5,0.4,0.1,5,2,2,1,0.08107815256875973,0.028905522093364437,1.3042256832122803,1482,1.5020370483398438e-05,0.01965886726975441,0.0,0.3063018044087637,9.525313973426819

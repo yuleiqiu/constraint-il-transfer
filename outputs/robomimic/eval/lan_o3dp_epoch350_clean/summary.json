@@ -1,0 +1,36 @@
+{
+  "checkpoint": "outputs/robomimic/train/lan_o3dp_can_delta_pose_eps_residual_40demo_seed42/20260724165723/models/model_epoch_350_image_v15_delta_eef_pose_osc_pointcloud_lan40_seed42_success_0.65.pth",
+  "environment": "PickPlaceCan",
+  "episodes_per_seed": 50,
+  "seed_results": [
+    {
+      "seed": 600,
+      "successes": 27,
+      "episodes": 50,
+      "success_rate": 0.54
+    },
+    {
+      "seed": 601,
+      "successes": 27,
+      "episodes": 50,
+      "success_rate": 0.54
+    },
+    {
+      "seed": 602,
+      "successes": 21,
+      "episodes": 50,
+      "success_rate": 0.42
+    }
+  ],
+  "pooled_successes": 75,
+  "pooled_episodes": 150,
+  "pooled_success_rate": 0.5,
+  "wilson_95_interval": [
+    0.42099012028854144,
+    0.5790098797114586
+  ],
+  "mean_seed_success_rate": 0.5,
+  "sample_sd_across_seed_rates": 0.06928203230275512,
+  "decision": "source_policy_not_acceptable_for_method_claim",
+  "decision_note": "The independently evaluated clean single-object success rate is 0.50, well below the project's approximately 0.80 source-competence gate. The checkpoint remains usable for a LAN-aligned closure pilot, but not as the final source policy for a positive method claim."
+}

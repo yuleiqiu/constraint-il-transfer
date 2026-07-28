@@ -36,6 +36,7 @@ def rollout_condition(
     guidance_scale,
     policy_seed,
     args,
+    frame_callback=None,
 ):
     policy.start_episode()
     random.seed(policy_seed)
@@ -61,8 +62,18 @@ def rollout_condition(
     update_norms = []
     reconstruction_errors = []
     min_clearance = float("inf")
+    max_waypoint_displacement = 0.0
+    observation_failure = False
+    observation_failure_reason = None
+    if frame_callback is not None:
+        frame_callback(env, obs, step, success, collision_any)
 
     while step < args.horizon and not success:
+        obs_valid, obs_error = common.validate_policy_observation(obs)
+        if not obs_valid:
+            observation_failure = True
+            observation_failure_reason = obs_error
+            break
         centers, radii, _ = common.oracle_obstacle_geometry(
             raw_env, records, args.target_object_name
         )
@@ -74,6 +85,9 @@ def rollout_condition(
             radii,
             scale=scale,
             clearance_margin=args.clearance_margin,
+            cost_type=args.cost_type,
+            max_guidance_timestep=args.max_guidance_timestep,
+            max_waypoint_displacement_m=args.max_waypoint_displacement_m,
         )
         start_position = common.current_eef_position(obs)
         _, raw_chunk, diagnostics = common.sample_action_chunk(
@@ -86,17 +100,35 @@ def rollout_condition(
         trigger_steps += sum(item["active_penetration_count"] > 0 for item in diagnostics)
         reverse_steps += len(diagnostics)
         update_norms.extend(item["normalized_applied_update_norm"] for item in diagnostics)
+        if diagnostics:
+            max_waypoint_displacement = max(
+                max_waypoint_displacement,
+                max(item["max_waypoint_displacement_m"] for item in diagnostics),
+            )
 
         actual = []
+        chunk_observation_failure = False
         for action in raw_chunk:
             if step >= args.horizon:
                 break
-            obs, _, done, _ = env.step(action)
-            position = common.current_eef_position(obs)
+            try:
+                obs, _, done, _ = env.step(action)
+                position = common.current_eef_position(obs)
+            except (RuntimeError, AssertionError, ValueError) as exc:
+                obs = None
+                done = False
+                position = common.current_raw_eef_position(raw_env)
+                chunk_observation_failure = True
+                observation_failure = True
+                if observation_failure_reason is None:
+                    observation_failure_reason = str(exc) or type(exc).__name__
             actual.append(position)
+            step_centers, step_radii, _ = common.oracle_obstacle_geometry(
+                raw_env, records, args.target_object_name
+            )
             min_clearance = min(
                 min_clearance,
-                common.minimum_clearance(position, centers, radii),
+                common.minimum_clearance(position, step_centers, step_radii),
             )
             target_contacts, obstacle_contacts, names = common.contact_snapshot(raw_env, maps)
             target_contact_any = target_contact_any or target_contacts > 0
@@ -104,6 +136,8 @@ def rollout_condition(
             collision_names.update(names)
             success = success or common.task_success(env)
             step += 1
+            if frame_callback is not None:
+                frame_callback(env, obs, step, success, collision_any)
             if done or (args.terminate_on_success and success):
                 break
 
@@ -113,7 +147,12 @@ def rollout_condition(
                 np.linalg.norm(predicted[: len(actual)] - actual, axis=1).tolist()
             )
         chunks += 1
-        if len(actual) == 0 or done or (args.terminate_on_success and success):
+        if (
+            len(actual) == 0
+            or done
+            or chunk_observation_failure
+            or (args.terminate_on_success and success)
+        ):
             break
 
     target_end = common.target_object_position(raw_env, records, args.target_object_name)
@@ -140,6 +179,9 @@ def rollout_condition(
         "guidance_trigger_rate": trigger_steps / reverse_steps if reverse_steps else 0.0,
         "guidance_update_norm_mean": float(np.mean(update_norms)) if update_norms else 0.0,
         "guidance_update_norm_max": float(np.max(update_norms)) if update_norms else 0.0,
+        "max_waypoint_displacement_m": max_waypoint_displacement,
+        "observation_failure": observation_failure,
+        "observation_failure_reason": observation_failure_reason,
         "trajectory_reconstruction_error_mean_cm": float(
             np.mean(reconstruction_errors) * 100.0
         )
@@ -193,6 +235,17 @@ def aggregate(rows):
                     np.max([row["guidance_update_norm_max"] for row in selected])
                 ),
                 "action_clip_count": int(sum(row["action_clip_count"] for row in selected)),
+                "action_clip_max_abs": float(
+                    np.max([row["action_clip_max_abs"] for row in selected])
+                ),
+                "max_waypoint_displacement_m": float(
+                    np.max(
+                        [row.get("max_waypoint_displacement_m", 0.0) for row in selected]
+                    )
+                ),
+                "observation_failure_rate": float(
+                    np.mean([row.get("observation_failure", False) for row in selected])
+                ),
                 "trajectory_reconstruction_error_mean_cm": mean_present(
                     selected, "trajectory_reconstruction_error_mean_cm"
                 ),
@@ -213,6 +266,13 @@ def parse_args():
     parser.add_argument("--horizon", type=int, default=400)
     parser.add_argument("--guidance-scale", type=float, required=True)
     parser.add_argument("--clearance-margin", type=float, default=0.02)
+    parser.add_argument(
+        "--cost-type",
+        choices=("penetration", "vector_field"),
+        default="penetration",
+    )
+    parser.add_argument("--max-guidance-timestep", type=int, default=None)
+    parser.add_argument("--max-waypoint-displacement-m", type=float, default=None)
     parser.add_argument("--target-object-name", default="Can")
     parser.add_argument(
         "--terminate-on-success", action=argparse.BooleanOptionalAction, default=True
@@ -236,6 +296,10 @@ def main():
 
     device = TorchUtils.get_torch_device(try_to_use_cuda=True)
     policy, ckpt = common.load_guided_policy_and_checkpoint(args.agent, device)
+    needs_offscreen = any(
+        "scan" in key or "pointcloud" in key
+        for key in policy.policy.global_config.all_obs_keys
+    )
     rows = []
     jsonl_path = args.out_dir / "episode_metrics.jsonl"
     with jsonl_path.open("w") as output:
@@ -244,7 +308,7 @@ def main():
                 ckpt_dict=ckpt,
                 env_name=env_name,
                 render=False,
-                render_offscreen=False,
+                render_offscreen=needs_offscreen,
                 verbose=False,
             )
             for seed in args.seeds:
@@ -302,6 +366,9 @@ def main():
         "horizon": args.horizon,
         "guidance_scale": args.guidance_scale,
         "clearance_margin": args.clearance_margin,
+        "cost_type": args.cost_type,
+        "max_guidance_timestep": args.max_guidance_timestep,
+        "max_waypoint_displacement_m": args.max_waypoint_displacement_m,
         "terminate_on_success": args.terminate_on_success,
     }
     (args.out_dir / "manifest.json").write_text(

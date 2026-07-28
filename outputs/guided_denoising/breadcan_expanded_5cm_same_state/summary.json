@@ -1,0 +1,141 @@
+{
+  "captured_states": {
+    "PickPlaceBreadCan": 10
+  },
+  "candidate_mode": "active",
+  "cost_type": "penetration",
+  "clearance_margin": 0.05,
+  "max_guidance_timestep": null,
+  "max_waypoint_displacement_m": null,
+  "scales": [
+    0.0,
+    0.001,
+    0.003,
+    0.01,
+    0.03
+  ],
+  "summary_by_scale": [
+    {
+      "scale": 0.0,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.040602403320372106,
+      "mean_actual_min_clearance_m": 0.04406388308852911,
+      "mean_predicted_safety_clearance_m": -0.009397597424685955,
+      "mean_actual_safety_clearance_m": -0.0059361176565289496,
+      "collision_rate": 0.0,
+      "action_clip_count": 0,
+      "action_clip_max_abs": 1.0728836059570312e-06,
+      "max_guidance_update_norm": 0.0,
+      "max_physical_waypoint_displacement_m": 0.0,
+      "mean_raw_action_l2_change_from_scale_zero": 0.0,
+      "max_abs_action_change_from_scale_zero_by_dim": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_guidance_trigger_steps": 8.4
+    },
+    {
+      "scale": 0.001,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.04271115567535162,
+      "mean_actual_min_clearance_m": 0.045942430198192594,
+      "mean_predicted_safety_clearance_m": -0.00728884506970644,
+      "mean_actual_safety_clearance_m": -0.004057570546865463,
+      "collision_rate": 0.0,
+      "action_clip_count": 0,
+      "action_clip_max_abs": 1.0728836059570312e-06,
+      "max_guidance_update_norm": 0.5186797976493835,
+      "max_physical_waypoint_displacement_m": 0.003427026327699423,
+      "mean_raw_action_l2_change_from_scale_zero": 0.0017154773231595755,
+      "max_abs_action_change_from_scale_zero_by_dim": [
+        0.001926504890434444,
+        0.001298218034207821,
+        0.00013311055954545736,
+        0.0004891948774456978,
+        0.0005146913463249803,
+        0.0003973790444433689,
+        0.0011385679244995117
+      ],
+      "mean_guidance_trigger_steps": 8.3
+    },
+    {
+      "scale": 0.003,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.04667986184358597,
+      "mean_actual_min_clearance_m": 0.04917883723974228,
+      "mean_predicted_safety_clearance_m": -0.0033201389014720917,
+      "mean_actual_safety_clearance_m": -0.0008211635053157806,
+      "collision_rate": 0.0,
+      "action_clip_count": 0,
+      "action_clip_max_abs": 1.0728836059570312e-06,
+      "max_guidance_update_norm": 1.5560396909713745,
+      "max_physical_waypoint_displacement_m": 0.010281078517436981,
+      "mean_raw_action_l2_change_from_scale_zero": 0.00628753611817956,
+      "max_abs_action_change_from_scale_zero_by_dim": [
+        0.005521335639059544,
+        0.0044119395315647125,
+        0.0004647063324227929,
+        0.0021935347467660904,
+        0.001671692356467247,
+        0.0013103997334837914,
+        0.008076012134552002
+      ],
+      "mean_guidance_trigger_steps": 8.2
+    },
+    {
+      "scale": 0.01,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.05209659487009048,
+      "mean_actual_min_clearance_m": 0.05279653966426849,
+      "mean_predicted_safety_clearance_m": 0.0020965941250324248,
+      "mean_actual_safety_clearance_m": 0.002796538919210434,
+      "collision_rate": 0.0,
+      "action_clip_count": 0,
+      "action_clip_max_abs": 1.0728836059570312e-06,
+      "max_guidance_update_norm": 5.186798572540283,
+      "max_physical_waypoint_displacement_m": 0.034270260483026505,
+      "mean_raw_action_l2_change_from_scale_zero": 0.028699826449155807,
+      "max_abs_action_change_from_scale_zero_by_dim": [
+        0.008456287905573845,
+        0.005278145428746939,
+        0.0019416386494413018,
+        0.009065446443855762,
+        0.007610738277435303,
+        0.004213226959109306,
+        0.061472296714782715
+      ],
+      "mean_guidance_trigger_steps": 6.1
+    },
+    {
+      "scale": 0.03,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.052967607975006104,
+      "mean_actual_min_clearance_m": 0.0537538006901741,
+      "mean_predicted_safety_clearance_m": 0.002967607229948044,
+      "mean_actual_safety_clearance_m": 0.003753799945116043,
+      "collision_rate": 0.0,
+      "action_clip_count": 0,
+      "action_clip_max_abs": 1.0728836059570312e-06,
+      "max_guidance_update_norm": 17.74017906188965,
+      "max_physical_waypoint_displacement_m": 0.10281077772378922,
+      "mean_raw_action_l2_change_from_scale_zero": 0.09198775142431259,
+      "max_abs_action_change_from_scale_zero_by_dim": [
+        0.009350486099720001,
+        0.00991224218159914,
+        0.003733274294063449,
+        0.011968807317316532,
+        0.01025302428752184,
+        0.005652342922985554,
+        0.14325296878814697
+      ],
+      "mean_guidance_trigger_steps": 2.5
+    }
+  ],
+  "selected_scale": 0.01,
+  "selection_note": "Selected because it is the previously accepted RGB mechanism-baseline scale and therefore changes only the environment and 5 cm obstacle expansion in the paired test. Across 10 fixed active-cost states it changed mean predicted / executed 5 cm safety-margin clearance from -0.94 / -0.59 cm to +0.21 / +0.28 cm, with zero action clipping and a 3.43 cm maximum one-step waypoint displacement. Scale 0.03 added little clearance while increasing the maximum displacement to 10.28 cm."
+}

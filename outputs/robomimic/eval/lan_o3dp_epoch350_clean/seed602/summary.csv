@@ -1,0 +1,2 @@
+env,seed,num_episodes,success_rate,mean_horizon,mean_return,non_target_collision_rate,mean_non_target_contact_count,mean_target_contact_count,min_eef_obstacle_clearance,max_target_displacement,max_non_target_displacement,action_clip_count,action_clip_max_abs_delta,raw_pos_err_mean_cm,raw_ori_err_mean_deg
+PickPlaceCan,602,50,0.42,353.72,0.42,0.0,0.0,469.8,nan,0.7444339394569397,0.0,7127,1.5020370483398438e-05,0.1753632412983022,0.23710100131144768

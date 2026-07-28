@@ -27,6 +27,24 @@ import robomimic.utils.torch_utils as TorchUtils  # noqa: E402
 STRING_DTYPE = h5py.string_dtype(encoding="utf-8")
 
 
+def validate_policy_observation(obs):
+    return common.validate_policy_observation(obs)
+
+
+def obstacle_contact_precedes_target(
+    *,
+    target_before_prefix,
+    first_obstacle_contact_offset,
+    first_target_contact_offset,
+):
+    if target_before_prefix or first_obstacle_contact_offset is None:
+        return False
+    return (
+        first_target_contact_offset is None
+        or first_obstacle_contact_offset < first_target_contact_offset
+    )
+
+
 def write_state(group, state_id, payload):
     item = group.create_group(state_id)
     for key in ("env", "seed", "episode", "chunk", "start_step", "noise_seed"):
@@ -76,6 +94,10 @@ def read_state(item):
 
 def capture_states(policy, ckpt, args, states_path):
     counts = {env_name: 0 for env_name in args.envs}
+    needs_offscreen = any(
+        "scan" in key or "pointcloud" in key
+        for key in policy.policy.global_config.all_obs_keys
+    )
     with h5py.File(states_path, "w") as output:
         states_group = output.create_group("states")
         for env_name in args.envs:
@@ -83,7 +105,7 @@ def capture_states(policy, ckpt, args, states_path):
                 ckpt_dict=ckpt,
                 env_name=env_name,
                 render=False,
-                render_offscreen=False,
+                render_offscreen=needs_offscreen,
                 verbose=False,
             )
             for seed in args.capture_seeds:
@@ -94,7 +116,16 @@ def capture_states(policy, ckpt, args, states_path):
                         break
                     common.seed_everything(seed * 1000 + episode)
                     policy.start_episode()
-                    obs = env.reset()
+                    try:
+                        obs = env.reset()
+                    except (RuntimeError, AssertionError, ValueError) as exc:
+                        print(
+                            "skipping {} seed={} episode={} after reset observation failure: {}".format(
+                                env_name, seed, episode, exc
+                            ),
+                            flush=True,
+                        )
+                        continue
                     records = common.active_object_records(common.raw_env_from_wrapper(env))
                     maps = common.contact_maps(
                         common.raw_env_from_wrapper(env), records, args.target_object_name
@@ -107,6 +138,15 @@ def capture_states(policy, ckpt, args, states_path):
                         start_step = step
                         state_before = env.get_state()
                         obs_before = common.policy_observation(obs, policy)
+                        obs_valid, obs_error = validate_policy_observation(obs_before)
+                        if not obs_valid:
+                            print(
+                                "ending {} seed={} episode={} at chunk={}: {}".format(
+                                    env_name, seed, episode, chunk_index, obs_error
+                                ),
+                                flush=True,
+                            )
+                            break
                         raw_env = common.raw_env_from_wrapper(env)
                         centers, radii, names = common.oracle_obstacle_geometry(
                             raw_env, records, args.target_object_name
@@ -119,6 +159,9 @@ def capture_states(policy, ckpt, args, states_path):
                             radii,
                             scale=0.0,
                             clearance_margin=args.clearance_margin,
+                            cost_type=args.cost_type,
+                            max_guidance_timestep=args.max_guidance_timestep,
+                            max_waypoint_displacement_m=args.max_waypoint_displacement_m,
                         )
                         _, raw_chunk, diagnostics = common.sample_action_chunk(
                             policy, obs_before, context, noise_seed=noise_seed
@@ -129,13 +172,34 @@ def capture_states(policy, ckpt, args, states_path):
 
                         collision_in_prefix = False
                         target_before_prefix = target_seen
-                        for action in raw_chunk:
+                        first_target_contact_offset = None
+                        first_obstacle_contact_offset = None
+                        observation_failed = False
+                        for action_offset, action in enumerate(raw_chunk):
                             if step >= args.horizon:
                                 break
-                            obs, _, done, _ = env.step(action)
+                            try:
+                                obs, _, done, _ = env.step(action)
+                            except (RuntimeError, AssertionError, ValueError) as exc:
+                                if not observation_failed:
+                                    print(
+                                        "observation unavailable after action in {} seed={} "
+                                        "episode={} chunk={}; finishing the sampled prefix "
+                                        "without policy observations: {}".format(
+                                            env_name, seed, episode, chunk_index, exc
+                                        ),
+                                        flush=True,
+                                    )
+                                observation_failed = True
+                                obs = None
+                                done = False
                             target_contacts, obstacle_contacts, _ = common.contact_snapshot(
                                 raw_env, maps
                             )
+                            if target_contacts > 0 and first_target_contact_offset is None:
+                                first_target_contact_offset = action_offset
+                            if obstacle_contacts > 0 and first_obstacle_contact_offset is None:
+                                first_obstacle_contact_offset = action_offset
                             target_seen = target_seen or target_contacts > 0
                             collision_in_prefix = collision_in_prefix or obstacle_contacts > 0
                             step += 1
@@ -148,7 +212,11 @@ def capture_states(policy, ckpt, args, states_path):
                             eligible = (
                                 eligible
                                 and collision_in_prefix
-                                and not target_before_prefix
+                                and obstacle_contact_precedes_target(
+                                    target_before_prefix=target_before_prefix,
+                                    first_obstacle_contact_offset=first_obstacle_contact_offset,
+                                    first_target_contact_offset=first_target_contact_offset,
+                                )
                             )
                         if eligible:
                             state_id = "{}_state_{:03d}".format(
@@ -173,15 +241,21 @@ def capture_states(policy, ckpt, args, states_path):
                             )
                             counts[env_name] += 1
                             print("captured {}".format(state_id), flush=True)
-                            if counts[env_name] >= args.states_per_env:
-                                break
+                            # Keep fixed-state samples independent at the episode level.
+                            break
                         chunk_index += 1
+                        if observation_failed:
+                            break
     return counts
 
 
 def sweep_states(policy, ckpt, args, states_path, results_path):
     envs = {}
     rows = []
+    needs_offscreen = any(
+        "scan" in key or "pointcloud" in key
+        for key in policy.policy.global_config.all_obs_keys
+    )
     try:
         with h5py.File(states_path, "r") as states, results_path.open("w") as output:
             for state_id in sorted(states["states"]):
@@ -192,7 +266,7 @@ def sweep_states(policy, ckpt, args, states_path, results_path):
                         ckpt_dict=ckpt,
                         env_name=env_name,
                         render=False,
-                        render_offscreen=False,
+                        render_offscreen=needs_offscreen,
                         verbose=False,
                     )
                 env = envs[env_name]
@@ -217,6 +291,9 @@ def sweep_states(policy, ckpt, args, states_path, results_path):
                         radii,
                         scale=scale,
                         clearance_margin=args.clearance_margin,
+                        cost_type=args.cost_type,
+                        max_guidance_timestep=args.max_guidance_timestep,
+                        max_waypoint_displacement_m=args.max_waypoint_displacement_m,
                     )
                     normalized, raw_chunk, diagnostics = common.sample_action_chunk(
                         policy,
@@ -231,15 +308,31 @@ def sweep_states(policy, ckpt, args, states_path, results_path):
 
                     actual = []
                     actual_clearance = []
+                    actual_safety_clearance = []
                     collision_any = False
                     target_contact_any = False
                     success = common.task_success(env)
                     for action in raw_chunk:
-                        next_obs, _, done, _ = env.step(action)
-                        position = common.current_eef_position(next_obs)
+                        try:
+                            next_obs, _, done, _ = env.step(action)
+                            position = common.current_eef_position(next_obs)
+                        except (RuntimeError, AssertionError, ValueError):
+                            position = common.current_raw_eef_position(raw_env)
+                            done = False
                         actual.append(position)
+                        step_centers, step_radii, _ = common.oracle_obstacle_geometry(
+                            raw_env, records, args.target_object_name
+                        )
                         actual_clearance.append(
-                            common.minimum_clearance(position, centers, radii)
+                            common.minimum_clearance(position, step_centers, step_radii)
+                        )
+                        actual_safety_clearance.append(
+                            common.minimum_clearance(
+                                position,
+                                step_centers,
+                                step_radii,
+                                args.clearance_margin,
+                            )
                         )
                         target_contacts, obstacle_contacts, _ = common.contact_snapshot(
                             raw_env, maps
@@ -278,6 +371,9 @@ def sweep_states(policy, ckpt, args, states_path, results_path):
                         ),
                         "actual_min_clearance_m": min(actual_clearance)
                         if actual_clearance
+                        else None,
+                        "actual_safety_clearance_m": min(actual_safety_clearance)
+                        if actual_safety_clearance
                         else None,
                         "collision_any": collision_any,
                         "target_contact_any": target_contact_any,
@@ -347,6 +443,11 @@ def write_summary(path, rows, counts, args):
             )
             for row in selected
         ]
+        action_change_arrays = [
+            np.asarray(row["raw_action_chunk"])
+            - np.asarray(baseline_by_state[row["state_id"]]["raw_action_chunk"])
+            for row in selected
+        ]
         summary = {
             "scale": float(scale),
             "states": len(selected),
@@ -362,11 +463,26 @@ def write_summary(path, rows, counts, args):
                     ]
                 )
             ),
+            "mean_predicted_safety_clearance_m": float(
+                np.mean([row["predicted_safety_clearance_m"] for row in selected])
+            ),
+            "mean_actual_safety_clearance_m": float(
+                np.mean(
+                    [
+                        row["actual_safety_clearance_m"]
+                        for row in selected
+                        if row["actual_safety_clearance_m"] is not None
+                    ]
+                )
+            ),
             "collision_rate": float(
                 np.mean([row["collision_any"] for row in selected])
             ),
             "action_clip_count": int(
                 sum(row["action_clip_count"] for row in selected)
+            ),
+            "action_clip_max_abs": float(
+                max(row["action_clip_max_abs"] for row in selected)
             ),
             "max_guidance_update_norm": float(
                 max(row["guidance_update_norm_max"] for row in selected)
@@ -377,13 +493,22 @@ def write_summary(path, rows, counts, args):
             "mean_raw_action_l2_change_from_scale_zero": float(
                 np.mean(raw_action_changes)
             ),
+            "max_abs_action_change_from_scale_zero_by_dim": np.max(
+                np.abs(np.stack(action_change_arrays)), axis=(0, 1)
+            ),
+            "mean_guidance_trigger_steps": float(
+                np.mean([row["guidance_trigger_steps"] for row in selected])
+            ),
         }
         by_scale.append(summary)
 
     payload = {
         "captured_states": counts,
         "candidate_mode": args.candidate_mode,
+        "cost_type": args.cost_type,
         "clearance_margin": args.clearance_margin,
+        "max_guidance_timestep": args.max_guidance_timestep,
+        "max_waypoint_displacement_m": args.max_waypoint_displacement_m,
         "scales": args.scales,
         "summary_by_scale": by_scale,
         "selected_scale": None,
@@ -408,6 +533,23 @@ def parse_args():
     parser.add_argument("--target-object-name", default="Can")
     parser.add_argument("--candidate-mode", choices=("collision", "active"), default="collision")
     parser.add_argument(
+        "--cost-type",
+        choices=("penetration", "vector_field"),
+        default="penetration",
+    )
+    parser.add_argument(
+        "--max-guidance-timestep",
+        type=int,
+        default=None,
+        help="Apply guidance only when the diffusion training timestep is at or below this value.",
+    )
+    parser.add_argument(
+        "--max-waypoint-displacement-m",
+        type=float,
+        default=None,
+        help="Maximum physical displacement for one waypoint in one reverse step.",
+    )
+    parser.add_argument(
         "--out-dir",
         type=Path,
         default=Path("outputs/guided_denoising/same_state"),
@@ -428,6 +570,17 @@ def main():
     policy, ckpt = common.load_guided_policy_and_checkpoint(args.agent, device)
     states_path = args.out_dir / "states.hdf5"
     counts = capture_states(policy, ckpt, args, states_path)
+    incomplete = {
+        env_name: count
+        for env_name, count in counts.items()
+        if count != args.states_per_env
+    }
+    if incomplete:
+        raise RuntimeError(
+            "Could not capture the requested {} independent states per environment; "
+            "incomplete counts: {}. Expand --capture-seeds or "
+            "--max-episodes-per-seed.".format(args.states_per_env, incomplete)
+        )
     rows = sweep_states(
         policy,
         ckpt,
@@ -443,8 +596,12 @@ def main():
         "states_per_env": args.states_per_env,
         "horizon": args.horizon,
         "candidate_mode": args.candidate_mode,
+        "cost_type": args.cost_type,
+        "max_states_per_episode": 1,
         "scales": args.scales,
         "clearance_margin": args.clearance_margin,
+        "max_guidance_timestep": args.max_guidance_timestep,
+        "max_waypoint_displacement_m": args.max_waypoint_displacement_m,
     }
     (args.out_dir / "manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n"

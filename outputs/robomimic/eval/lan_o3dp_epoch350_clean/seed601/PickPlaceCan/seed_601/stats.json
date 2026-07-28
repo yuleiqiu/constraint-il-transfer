@@ -1,0 +1,2572 @@
+{
+  "env": "PickPlaceCan",
+  "seed": 601,
+  "aggregate": {
+    "num_episodes": 50,
+    "success_rate": 0.54,
+    "mean_horizon": 332.68,
+    "mean_return": 0.54,
+    "non_target_collision_rate": 0.0,
+    "mean_non_target_contact_count": 0.0,
+    "mean_target_contact_count": 518.48,
+    "min_eef_obstacle_clearance": null,
+    "max_target_displacement": 1.0759522914886475,
+    "max_non_target_displacement": 0.0,
+    "action_clip_count": 7098,
+    "action_clip_max_abs_delta": 1.5020370483398438e-05,
+    "raw_pos_err_mean_cm": 0.1630630123375059,
+    "raw_ori_err_mean_deg": 0.2284203206810562
+  },
+  "episodes": [
+    {
+      "episode": 0,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 306,
+      "return": 1.0,
+      "num_chunks": 39,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 144,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 1294,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.7338157296180725,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12670019692531992,
+          "median": 0.08811371942010957,
+          "p90": 0.28681341928201437,
+          "max": 0.5306753715036493
+        },
+        "ori_deg": {
+          "mean": 0.24282944497428077,
+          "median": 0.14437934635987143,
+          "p90": 0.6334682060358978,
+          "max": 1.4736338397590425
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12670019692531992,
+          "median": 0.08811371942010957,
+          "p90": 0.28681341928201437,
+          "max": 0.5306753715036493
+        },
+        "ori_deg": {
+          "mean": 0.24282944497428077,
+          "median": 0.14437934635987143,
+          "p90": 0.6334682060358978,
+          "max": 1.4736338397590425
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 1,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 140,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 0,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.0003241892554797232,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1346343107114273,
+          "median": 0.0811666955692443,
+          "p90": 0.24166058484867958,
+          "max": 1.8064464927427735
+        },
+        "ori_deg": {
+          "mean": 0.15233281957824896,
+          "median": 0.11242492362420548,
+          "p90": 0.35603717544812713,
+          "max": 0.5520657159514448
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1346343107114273,
+          "median": 0.0811666955692443,
+          "p90": 0.24166058484867958,
+          "max": 1.8064464927427735
+        },
+        "ori_deg": {
+          "mean": 0.15233281957824896,
+          "median": 0.11242492362420548,
+          "p90": 0.35603717544812713,
+          "max": 0.5520657159514448
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 2,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 321,
+      "return": 1.0,
+      "num_chunks": 41,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 112,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 965,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.6421663761138916,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.10901954805392279,
+          "median": 0.06865240743000083,
+          "p90": 0.2597627350071954,
+          "max": 0.4789588937060969
+        },
+        "ori_deg": {
+          "mean": 0.14728947164505146,
+          "median": 0.07469645524627748,
+          "p90": 0.3587633633524639,
+          "max": 1.152931870408229
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.10901954805392279,
+          "median": 0.06865240743000083,
+          "p90": 0.2597627350071954,
+          "max": 0.4789588937060969
+        },
+        "ori_deg": {
+          "mean": 0.14728947164505146,
+          "median": 0.07469645524627748,
+          "p90": 0.3587633633524639,
+          "max": 1.152931870408229
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 3,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 255,
+      "return": 1.0,
+      "num_chunks": 32,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 124,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 615,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.4929061830043793,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1421114552993494,
+          "median": 0.08707041678911778,
+          "p90": 0.31047803614928937,
+          "max": 1.1731775156288455
+        },
+        "ori_deg": {
+          "mean": 0.12264001694307325,
+          "median": 0.0855129073825778,
+          "p90": 0.28241532040514955,
+          "max": 0.5907447084771524
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1421114552993494,
+          "median": 0.08707041678911778,
+          "p90": 0.31047803614928937,
+          "max": 1.1731775156288455
+        },
+        "ori_deg": {
+          "mean": 0.12264001694307325,
+          "median": 0.0855129073825778,
+          "p90": 0.28241532040514955,
+          "max": 0.5907447084771524
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 4,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 272,
+      "return": 1.0,
+      "num_chunks": 34,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 117,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 1050,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5877567529678345,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.14938724326455724,
+          "median": 0.10186036160037053,
+          "p90": 0.359514883520492,
+          "max": 0.6057688320234166
+        },
+        "ori_deg": {
+          "mean": 0.18185464854905997,
+          "median": 0.13345936044525722,
+          "p90": 0.4349930517762386,
+          "max": 0.7233706553865816
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.14938724326455724,
+          "median": 0.10186036160037053,
+          "p90": 0.359514883520492,
+          "max": 0.6057688320234166
+        },
+        "ori_deg": {
+          "mean": 0.18185464854905997,
+          "median": 0.13345936044525722,
+          "p90": 0.4349930517762386,
+          "max": 0.7233706553865816
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 5,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 172,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 97,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.024214552715420723,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.19652277009436644,
+          "median": 0.13277828301255623,
+          "p90": 0.45979269584112054,
+          "max": 1.2668612280956901
+        },
+        "ori_deg": {
+          "mean": 0.19634061906303393,
+          "median": 0.1475336317018603,
+          "p90": 0.4488203114310324,
+          "max": 1.0808206701593852
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.19652277009436644,
+          "median": 0.13277828301255623,
+          "p90": 0.45979269584112054,
+          "max": 1.2668612280956901
+        },
+        "ori_deg": {
+          "mean": 0.19634061906303393,
+          "median": 0.1475336317018603,
+          "p90": 0.4488203114310324,
+          "max": 1.0808206701593852
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 6,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 136,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 146,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.16027599573135376,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.13216626088822486,
+          "median": 0.06050231656695063,
+          "p90": 0.34371834244227767,
+          "max": 0.873745875526998
+        },
+        "ori_deg": {
+          "mean": 0.10272540409467984,
+          "median": 0.08420514614114621,
+          "p90": 0.2286104957105974,
+          "max": 0.39540497578541706
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.13216626088822486,
+          "median": 0.06050231656695063,
+          "p90": 0.34371834244227767,
+          "max": 0.873745875526998
+        },
+        "ori_deg": {
+          "mean": 0.10272540409467984,
+          "median": 0.08420514614114621,
+          "p90": 0.2286104957105974,
+          "max": 0.39540497578541706
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 7,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 263,
+      "return": 1.0,
+      "num_chunks": 33,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 110,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 558,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5875328779220581,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.13727049410583456,
+          "median": 0.10686597075896516,
+          "p90": 0.2827718478068767,
+          "max": 0.5776898530095214
+        },
+        "ori_deg": {
+          "mean": 0.2370120508248409,
+          "median": 0.14306483526057237,
+          "p90": 0.5443377947981919,
+          "max": 1.2572446253933163
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.13727049410583456,
+          "median": 0.10686597075896516,
+          "p90": 0.2827718478068767,
+          "max": 0.5776898530095214
+        },
+        "ori_deg": {
+          "mean": 0.2370120508248409,
+          "median": 0.14306483526057237,
+          "p90": 0.5443377947981919,
+          "max": 1.2572446253933163
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 8,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 236,
+      "return": 1.0,
+      "num_chunks": 30,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 78,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 764,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5954300761222839,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12751258500380863,
+          "median": 0.09693010086605422,
+          "p90": 0.25486109134222107,
+          "max": 0.5344652891694585
+        },
+        "ori_deg": {
+          "mean": 0.11782875083742825,
+          "median": 0.07884505448469131,
+          "p90": 0.2898485294539461,
+          "max": 0.6505102376325163
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12751258500380863,
+          "median": 0.09693010086605422,
+          "p90": 0.25486109134222107,
+          "max": 0.5344652891694585
+        },
+        "ori_deg": {
+          "mean": 0.11782875083742825,
+          "median": 0.07884505448469131,
+          "p90": 0.2898485294539461,
+          "max": 0.6505102376325163
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 9,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 186,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 296,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.2646268308162689,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.14706638648726755,
+          "median": 0.08646084976121352,
+          "p90": 0.3817669849559365,
+          "max": 1.413352219451584
+        },
+        "ori_deg": {
+          "mean": 0.16060717207968764,
+          "median": 0.09062587896363485,
+          "p90": 0.361745373465174,
+          "max": 1.011044883114563
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.14706638648726755,
+          "median": 0.08646084976121352,
+          "p90": 0.3817669849559365,
+          "max": 1.413352219451584
+        },
+        "ori_deg": {
+          "mean": 0.16060717207968764,
+          "median": 0.09062587896363485,
+          "p90": 0.361745373465174,
+          "max": 1.011044883114563
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 10,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 311,
+      "return": 1.0,
+      "num_chunks": 39,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 171,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 773,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.6968680620193481,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.13010468528027566,
+          "median": 0.08283995243763087,
+          "p90": 0.3013116626469616,
+          "max": 0.7260918122167394
+        },
+        "ori_deg": {
+          "mean": 0.17463053257595848,
+          "median": 0.1157789598351119,
+          "p90": 0.4035039210265796,
+          "max": 1.17931191675477
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.13010468528027566,
+          "median": 0.08283995243763087,
+          "p90": 0.3013116626469616,
+          "max": 0.7260918122167394
+        },
+        "ori_deg": {
+          "mean": 0.17463053257595848,
+          "median": 0.1157789598351119,
+          "p90": 0.4035039210265796,
+          "max": 1.17931191675477
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 11,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 130,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 1249,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.6114892959594727,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12791503058598663,
+          "median": 0.08693782024219933,
+          "p90": 0.30638214164054184,
+          "max": 0.6813467058949138
+        },
+        "ori_deg": {
+          "mean": 0.22415231922382384,
+          "median": 0.13812755215327702,
+          "p90": 0.5356784676598484,
+          "max": 1.7874438384299123
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12791503058598663,
+          "median": 0.08693782024219933,
+          "p90": 0.30638214164054184,
+          "max": 0.6813467058949138
+        },
+        "ori_deg": {
+          "mean": 0.22415231922382384,
+          "median": 0.13812755215327702,
+          "p90": 0.5356784676598484,
+          "max": 1.7874438384299123
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 12,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 124,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 98,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.024806149303913116,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.3118437911861951,
+          "median": 0.17692944240607372,
+          "p90": 0.5930621000011977,
+          "max": 4.225410784064352
+        },
+        "ori_deg": {
+          "mean": 0.4145938125183978,
+          "median": 0.18350514658184044,
+          "p90": 0.9543067842662858,
+          "max": 8.949532003178529
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.3118437911861951,
+          "median": 0.17692944240607372,
+          "p90": 0.5930621000011977,
+          "max": 4.225410784064352
+        },
+        "ori_deg": {
+          "mean": 0.4145938125183978,
+          "median": 0.18350514658184044,
+          "p90": 0.9543067842662858,
+          "max": 8.949532003178529
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 13,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 163,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 72,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.019765689969062805,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.18904667258585242,
+          "median": 0.11798582765409191,
+          "p90": 0.449082598038422,
+          "max": 1.2762321339130522
+        },
+        "ori_deg": {
+          "mean": 0.20744721968266333,
+          "median": 0.14591419518781024,
+          "p90": 0.41933151047944356,
+          "max": 1.471587729342484
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.18904667258585242,
+          "median": 0.11798582765409191,
+          "p90": 0.449082598038422,
+          "max": 1.2762321339130522
+        },
+        "ori_deg": {
+          "mean": 0.20744721968266333,
+          "median": 0.14591419518781024,
+          "p90": 0.41933151047944356,
+          "max": 1.471587729342484
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 14,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 184,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 77,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.017288386821746826,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1800527613885299,
+          "median": 0.08648802634727637,
+          "p90": 0.4307171233647994,
+          "max": 2.3713775658312657
+        },
+        "ori_deg": {
+          "mean": 0.13839110443043,
+          "median": 0.10070316666804408,
+          "p90": 0.3131214512460862,
+          "max": 0.6955278924814664
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1800527613885299,
+          "median": 0.08648802634727637,
+          "p90": 0.4307171233647994,
+          "max": 2.3713775658312657
+        },
+        "ori_deg": {
+          "mean": 0.13839110443043,
+          "median": 0.10070316666804408,
+          "p90": 0.3131214512460862,
+          "max": 0.6955278924814664
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 15,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 284,
+      "return": 1.0,
+      "num_chunks": 36,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 124,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 577,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5059596300125122,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.11227796351182395,
+          "median": 0.07867908895214995,
+          "p90": 0.22632494895764657,
+          "max": 0.8477174100959378
+        },
+        "ori_deg": {
+          "mean": 0.129334287823361,
+          "median": 0.08742703593677006,
+          "p90": 0.31088698135608744,
+          "max": 0.5550165641873761
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.11227796351182395,
+          "median": 0.07867908895214995,
+          "p90": 0.22632494895764657,
+          "max": 0.8477174100959378
+        },
+        "ori_deg": {
+          "mean": 0.129334287823361,
+          "median": 0.08742703593677006,
+          "p90": 0.31088698135608744,
+          "max": 0.5550165641873761
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 16,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 235,
+      "return": 1.0,
+      "num_chunks": 30,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 123,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 909,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5913609862327576,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12766466589906714,
+          "median": 0.08857243100909014,
+          "p90": 0.24475365860270212,
+          "max": 0.8562746606182
+        },
+        "ori_deg": {
+          "mean": 0.17462420077034713,
+          "median": 0.12501494637946503,
+          "p90": 0.3707371738057582,
+          "max": 0.9276748361144717
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12766466589906714,
+          "median": 0.08857243100909014,
+          "p90": 0.24475365860270212,
+          "max": 0.8562746606182
+        },
+        "ori_deg": {
+          "mean": 0.17462420077034713,
+          "median": 0.12501494637946503,
+          "p90": 0.3707371738057582,
+          "max": 0.9276748361144717
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 17,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 129,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 84,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.017740288749337196,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.18779948330180019,
+          "median": 0.11517230833501135,
+          "p90": 0.4007673548249627,
+          "max": 1.8481794044027726
+        },
+        "ori_deg": {
+          "mean": 0.12646854712211547,
+          "median": 0.0851857600486238,
+          "p90": 0.29682929810146996,
+          "max": 0.8037075840124952
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.18779948330180019,
+          "median": 0.11517230833501135,
+          "p90": 0.4007673548249627,
+          "max": 1.8481794044027726
+        },
+        "ori_deg": {
+          "mean": 0.12646854712211547,
+          "median": 0.0851857600486238,
+          "p90": 0.29682929810146996,
+          "max": 0.8037075840124952
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 18,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 201,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 57,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.010029668919742107,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.17202464717807714,
+          "median": 0.11485759603677051,
+          "p90": 0.3622866292321941,
+          "max": 1.8034305437344083
+        },
+        "ori_deg": {
+          "mean": 0.13667476719874816,
+          "median": 0.10700686645866267,
+          "p90": 0.2687069606442338,
+          "max": 0.8936761618969667
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.17202464717807714,
+          "median": 0.11485759603677051,
+          "p90": 0.3622866292321941,
+          "max": 1.8034305437344083
+        },
+        "ori_deg": {
+          "mean": 0.13667476719874816,
+          "median": 0.10700686645866267,
+          "p90": 0.2687069606442338,
+          "max": 0.8936761618969667
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 19,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 289,
+      "return": 1.0,
+      "num_chunks": 37,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 128,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 1080,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5665686130523682,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12486252214029644,
+          "median": 0.08492000452784076,
+          "p90": 0.2627686242808246,
+          "max": 0.7932168792254171
+        },
+        "ori_deg": {
+          "mean": 0.21031801079605686,
+          "median": 0.12482768614965631,
+          "p90": 0.5902898155677807,
+          "max": 0.8204906328375605
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12486252214029644,
+          "median": 0.08492000452784076,
+          "p90": 0.2627686242808246,
+          "max": 0.7932168792254171
+        },
+        "ori_deg": {
+          "mean": 0.21031801079605686,
+          "median": 0.12482768614965631,
+          "p90": 0.5902898155677807,
+          "max": 0.8204906328375605
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 20,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 226,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 4,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.07249531149864197,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1505810803765227,
+          "median": 0.10364716094707108,
+          "p90": 0.31267872463428714,
+          "max": 0.8819509397902979
+        },
+        "ori_deg": {
+          "mean": 0.16566761946472494,
+          "median": 0.11293184029441278,
+          "p90": 0.3626266670128853,
+          "max": 0.9626966950533109
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1505810803765227,
+          "median": 0.10364716094707108,
+          "p90": 0.31267872463428714,
+          "max": 0.8819509397902979
+        },
+        "ori_deg": {
+          "mean": 0.16566761946472494,
+          "median": 0.11293184029441278,
+          "p90": 0.3626266670128853,
+          "max": 0.9626966950533109
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 21,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 227,
+      "return": 1.0,
+      "num_chunks": 29,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 119,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 703,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5963374376296997,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12210713448279382,
+          "median": 0.07807704392252461,
+          "p90": 0.24750876905191044,
+          "max": 0.7043467277517199
+        },
+        "ori_deg": {
+          "mean": 0.1580296695766528,
+          "median": 0.10908513153096913,
+          "p90": 0.32702532697777925,
+          "max": 0.7984790945176711
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12210713448279382,
+          "median": 0.07807704392252461,
+          "p90": 0.24750876905191044,
+          "max": 0.7043467277517199
+        },
+        "ori_deg": {
+          "mean": 0.1580296695766528,
+          "median": 0.10908513153096913,
+          "p90": 0.32702532697777925,
+          "max": 0.7984790945176711
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 22,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 242,
+      "return": 1.0,
+      "num_chunks": 31,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 115,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 706,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.4807770550251007,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.11442996822279239,
+          "median": 0.0862671359163725,
+          "p90": 0.23302633127302458,
+          "max": 0.48483472427797863
+        },
+        "ori_deg": {
+          "mean": 0.15029082144348177,
+          "median": 0.09152991415428192,
+          "p90": 0.3861200396356613,
+          "max": 0.8244298709437304
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.11442996822279239,
+          "median": 0.0862671359163725,
+          "p90": 0.23302633127302458,
+          "max": 0.48483472427797863
+        },
+        "ori_deg": {
+          "mean": 0.15029082144348177,
+          "median": 0.09152991415428192,
+          "p90": 0.3861200396356613,
+          "max": 0.8244298709437304
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 23,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 94,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 57,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.0138792609795928,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.16916444173009146,
+          "median": 0.06969385906884465,
+          "p90": 0.4813983722386707,
+          "max": 1.4363476252147742
+        },
+        "ori_deg": {
+          "mean": 0.10176076499007138,
+          "median": 0.07158133789258336,
+          "p90": 0.21996416071202407,
+          "max": 0.6145084426267243
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.16916444173009146,
+          "median": 0.06969385906884465,
+          "p90": 0.4813983722386707,
+          "max": 1.4363476252147742
+        },
+        "ori_deg": {
+          "mean": 0.10176076499007138,
+          "median": 0.07158133789258336,
+          "p90": 0.21996416071202407,
+          "max": 0.6145084426267243
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 24,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 261,
+      "return": 1.0,
+      "num_chunks": 33,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 102,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 525,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.541355550289154,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.13411930393941185,
+          "median": 0.0814558920005524,
+          "p90": 0.29618140359364564,
+          "max": 0.7112017639696067
+        },
+        "ori_deg": {
+          "mean": 0.18666901650203252,
+          "median": 0.11424584786503886,
+          "p90": 0.4544176494863594,
+          "max": 0.9265476066620344
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.13411930393941185,
+          "median": 0.0814558920005524,
+          "p90": 0.29618140359364564,
+          "max": 0.7112017639696067
+        },
+        "ori_deg": {
+          "mean": 0.18666901650203252,
+          "median": 0.11424584786503886,
+          "p90": 0.4544176494863594,
+          "max": 0.9265476066620344
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 25,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 203,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 586,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5973882079124451,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.10008684200286455,
+          "median": 0.067381863122731,
+          "p90": 0.22731357548030048,
+          "max": 0.6297283222306946
+        },
+        "ori_deg": {
+          "mean": 0.1729320472453547,
+          "median": 0.10072915931384374,
+          "p90": 0.4287202516154237,
+          "max": 0.9109038129724985
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.10008684200286455,
+          "median": 0.067381863122731,
+          "p90": 0.22731357548030048,
+          "max": 0.6297283222306946
+        },
+        "ori_deg": {
+          "mean": 0.1729320472453547,
+          "median": 0.10072915931384374,
+          "p90": 0.4287202516154237,
+          "max": 0.9109038129724985
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 26,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 32,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 0,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.00032418803311884403,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.5758828668761962,
+          "median": 0.20764619331794448,
+          "p90": 1.5419038163369805,
+          "max": 4.585503330457724
+        },
+        "ori_deg": {
+          "mean": 1.5695240446444427,
+          "median": 0.07607677117224297,
+          "p90": 2.766332786453379,
+          "max": 53.270763394972434
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.5758828668761962,
+          "median": 0.20764619331794448,
+          "p90": 1.5419038163369805,
+          "max": 4.585503330457724
+        },
+        "ori_deg": {
+          "mean": 1.5695240446444427,
+          "median": 0.07607677117224297,
+          "p90": 2.766332786453379,
+          "max": 53.270763394972434
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 27,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 351,
+      "return": 1.0,
+      "num_chunks": 44,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 125,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 705,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.7510316967964172,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1411035107965558,
+          "median": 0.09424821898667589,
+          "p90": 0.344407087749233,
+          "max": 0.8966815797855423
+        },
+        "ori_deg": {
+          "mean": 0.280611828971984,
+          "median": 0.1572277608533994,
+          "p90": 0.7208716319566071,
+          "max": 1.5791720684675687
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1411035107965558,
+          "median": 0.09424821898667589,
+          "p90": 0.344407087749233,
+          "max": 0.8966815797855423
+        },
+        "ori_deg": {
+          "mean": 0.280611828971984,
+          "median": 0.1572277608533994,
+          "p90": 0.7208716319566071,
+          "max": 1.5791720684675687
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 28,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 244,
+      "return": 1.0,
+      "num_chunks": 31,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 96,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 656,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5239741802215576,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.14748264801285788,
+          "median": 0.11064377606679052,
+          "p90": 0.28535398183987554,
+          "max": 0.8536909219171274
+        },
+        "ori_deg": {
+          "mean": 0.3112304420147034,
+          "median": 0.18574834454089578,
+          "p90": 0.7919916239274472,
+          "max": 1.4869535102883633
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.14748264801285788,
+          "median": 0.11064377606679052,
+          "p90": 0.28535398183987554,
+          "max": 0.8536909219171274
+        },
+        "ori_deg": {
+          "mean": 0.3112304420147034,
+          "median": 0.18574834454089578,
+          "p90": 0.7919916239274472,
+          "max": 1.4869535102883633
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 29,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 278,
+      "return": 1.0,
+      "num_chunks": 35,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 103,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 767,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.47102177143096924,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.15413058303610905,
+          "median": 0.09290361565452311,
+          "p90": 0.3009612793790937,
+          "max": 1.2765112377799714
+        },
+        "ori_deg": {
+          "mean": 0.14439245153571917,
+          "median": 0.08946416344858571,
+          "p90": 0.3448890773822869,
+          "max": 0.9127954574285648
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.15413058303610905,
+          "median": 0.09290361565452311,
+          "p90": 0.3009612793790937,
+          "max": 1.2765112377799714
+        },
+        "ori_deg": {
+          "mean": 0.14439245153571917,
+          "median": 0.08946416344858571,
+          "p90": 0.3448890773822869,
+          "max": 0.9127954574285648
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 30,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 153,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 62,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.016820868477225304,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.15708890659027214,
+          "median": 0.08899005942800764,
+          "p90": 0.31944667871398036,
+          "max": 1.9252611273062312
+        },
+        "ori_deg": {
+          "mean": 0.1220488403601335,
+          "median": 0.09452337372990727,
+          "p90": 0.2449393065170444,
+          "max": 0.5752008549341141
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.15708890659027214,
+          "median": 0.08899005942800764,
+          "p90": 0.31944667871398036,
+          "max": 1.9252611273062312
+        },
+        "ori_deg": {
+          "mean": 0.1220488403601335,
+          "median": 0.09452337372990727,
+          "p90": 0.2449393065170444,
+          "max": 0.5752008549341141
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 31,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 151,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 84,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.017337573692202568,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.2676614132352103,
+          "median": 0.14215945321899237,
+          "p90": 0.7383091760408421,
+          "max": 1.6348900869578544
+        },
+        "ori_deg": {
+          "mean": 0.3946959911697448,
+          "median": 0.18084062066146384,
+          "p90": 1.1331998839064816,
+          "max": 3.1798301438344256
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.2676614132352103,
+          "median": 0.14215945321899237,
+          "p90": 0.7383091760408421,
+          "max": 1.6348900869578544
+        },
+        "ori_deg": {
+          "mean": 0.3946959911697448,
+          "median": 0.18084062066146384,
+          "p90": 1.1331998839064816,
+          "max": 3.1798301438344256
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 32,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 355,
+      "return": 1.0,
+      "num_chunks": 45,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 154,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 714,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.6613928079605103,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12213286704216371,
+          "median": 0.08252045104606782,
+          "p90": 0.26398736586099913,
+          "max": 0.7517160192492901
+        },
+        "ori_deg": {
+          "mean": 0.17951656049558948,
+          "median": 0.1193606301360649,
+          "p90": 0.4594879154479539,
+          "max": 0.978101826952707
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12213286704216371,
+          "median": 0.08252045104606782,
+          "p90": 0.26398736586099913,
+          "max": 0.7517160192492901
+        },
+        "ori_deg": {
+          "mean": 0.17951656049558948,
+          "median": 0.1193606301360649,
+          "p90": 0.4594879154479539,
+          "max": 0.978101826952707
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 33,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 122,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 161,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.01827184483408928,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.22398655461595696,
+          "median": 0.14502731601618446,
+          "p90": 0.47991712447747253,
+          "max": 2.0327150107091243
+        },
+        "ori_deg": {
+          "mean": 0.28483342606976425,
+          "median": 0.16626264865729876,
+          "p90": 0.6910490101190218,
+          "max": 3.0156726584775218
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.22398655461595696,
+          "median": 0.14502731601618446,
+          "p90": 0.47991712447747253,
+          "max": 2.0327150107091243
+        },
+        "ori_deg": {
+          "mean": 0.28483342606976425,
+          "median": 0.16626264865729876,
+          "p90": 0.6910490101190218,
+          "max": 3.0156726584775218
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 34,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 212,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 15,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.1045876070857048,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.17361564333035878,
+          "median": 0.11459198562641015,
+          "p90": 0.3804737255837337,
+          "max": 0.8906583073727989
+        },
+        "ori_deg": {
+          "mean": 0.1466483553637104,
+          "median": 0.11875489247321636,
+          "p90": 0.28866907390300794,
+          "max": 0.650161165341094
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.17361564333035878,
+          "median": 0.11459198562641015,
+          "p90": 0.3804737255837337,
+          "max": 0.8906583073727989
+        },
+        "ori_deg": {
+          "mean": 0.1466483553637104,
+          "median": 0.11875489247321636,
+          "p90": 0.28866907390300794,
+          "max": 0.650161165341094
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 35,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 284,
+      "return": 1.0,
+      "num_chunks": 36,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 109,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 1013,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5772294402122498,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12760974950975204,
+          "median": 0.0906005313691529,
+          "p90": 0.2934045164114406,
+          "max": 0.7101627194899304
+        },
+        "ori_deg": {
+          "mean": 0.15401750268350994,
+          "median": 0.10367625188100468,
+          "p90": 0.37584331366404916,
+          "max": 0.7475782688478543
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.12760974950975204,
+          "median": 0.0906005313691529,
+          "p90": 0.2934045164114406,
+          "max": 0.7101627194899304
+        },
+        "ori_deg": {
+          "mean": 0.15401750268350994,
+          "median": 0.10367625188100468,
+          "p90": 0.37584331366404916,
+          "max": 0.7475782688478543
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 36,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 275,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 493,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.4842848479747772,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.14579879397253218,
+          "median": 0.09670928359328879,
+          "p90": 0.2888300479586204,
+          "max": 0.8971142650080852
+        },
+        "ori_deg": {
+          "mean": 0.1962807611470582,
+          "median": 0.13906266480170906,
+          "p90": 0.4331810368140915,
+          "max": 1.2572419388834453
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.14579879397253218,
+          "median": 0.09670928359328879,
+          "p90": 0.2888300479586204,
+          "max": 0.8971142650080852
+        },
+        "ori_deg": {
+          "mean": 0.1962807611470582,
+          "median": 0.13906266480170906,
+          "p90": 0.4331810368140915,
+          "max": 1.2572419388834453
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 37,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 253,
+      "return": 1.0,
+      "num_chunks": 32,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 133,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 532,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5215622782707214,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.11231683310039697,
+          "median": 0.09179811289291098,
+          "p90": 0.20970134877357796,
+          "max": 0.6117421197394293
+        },
+        "ori_deg": {
+          "mean": 0.1451322118203276,
+          "median": 0.09023213638419698,
+          "p90": 0.33805020678892433,
+          "max": 0.6367256061477058
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.11231683310039697,
+          "median": 0.09179811289291098,
+          "p90": 0.20970134877357796,
+          "max": 0.6117421197394293
+        },
+        "ori_deg": {
+          "mean": 0.1451322118203276,
+          "median": 0.09023213638419698,
+          "p90": 0.33805020678892433,
+          "max": 0.6367256061477058
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 38,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 246,
+      "return": 1.0,
+      "num_chunks": 31,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 135,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 549,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5006334781646729,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.11561802186345906,
+          "median": 0.09561139312255298,
+          "p90": 0.22033253827910207,
+          "max": 0.45846072301655577
+        },
+        "ori_deg": {
+          "mean": 0.1692843603086383,
+          "median": 0.10361996255479246,
+          "p90": 0.43136626456226723,
+          "max": 0.9491604390031448
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.11561802186345906,
+          "median": 0.09561139312255298,
+          "p90": 0.22033253827910207,
+          "max": 0.45846072301655577
+        },
+        "ori_deg": {
+          "mean": 0.1692843603086383,
+          "median": 0.10361996255479246,
+          "p90": 0.43136626456226723,
+          "max": 0.9491604390031448
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 39,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 238,
+      "return": 1.0,
+      "num_chunks": 30,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 134,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 784,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.6112812161445618,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1365503125733631,
+          "median": 0.1096342989917792,
+          "p90": 0.30002448743910176,
+          "max": 0.6674536143871097
+        },
+        "ori_deg": {
+          "mean": 0.14946505995994508,
+          "median": 0.09780444058020867,
+          "p90": 0.37584565914724166,
+          "max": 0.7450354911766303
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1365503125733631,
+          "median": 0.1096342989917792,
+          "p90": 0.30002448743910176,
+          "max": 0.6674536143871097
+        },
+        "ori_deg": {
+          "mean": 0.14946505995994508,
+          "median": 0.09780444058020867,
+          "p90": 0.37584565914724166,
+          "max": 0.7450354911766303
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 40,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 154,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 448,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.24206236004829407,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.2030537340219567,
+          "median": 0.12753210602984572,
+          "p90": 0.49114378628859,
+          "max": 1.6056195059809664
+        },
+        "ori_deg": {
+          "mean": 0.2884954683056994,
+          "median": 0.16836949740044488,
+          "p90": 0.6845314390348683,
+          "max": 2.2464611724626655
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.2030537340219567,
+          "median": 0.12753210602984572,
+          "p90": 0.49114378628859,
+          "max": 1.6056195059809664
+        },
+        "ori_deg": {
+          "mean": 0.2884954683056994,
+          "median": 0.16836949740044488,
+          "p90": 0.6845314390348683,
+          "max": 2.2464611724626655
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 41,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 271,
+      "return": 1.0,
+      "num_chunks": 34,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 177,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 1167,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.6302773952484131,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1139987722241014,
+          "median": 0.08714354674947745,
+          "p90": 0.24961902928939075,
+          "max": 0.5489336335511099
+        },
+        "ori_deg": {
+          "mean": 0.1443479466096569,
+          "median": 0.10672564750021986,
+          "p90": 0.3491039508187895,
+          "max": 0.4829057752807734
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.1139987722241014,
+          "median": 0.08714354674947745,
+          "p90": 0.24961902928939075,
+          "max": 0.5489336335511099
+        },
+        "ori_deg": {
+          "mean": 0.1443479466096569,
+          "median": 0.10672564750021986,
+          "p90": 0.3491039508187895,
+          "max": 0.4829057752807734
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 42,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 254,
+      "return": 1.0,
+      "num_chunks": 32,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 102,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 625,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.46995076537132263,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.10658616567998722,
+          "median": 0.08655285241001487,
+          "p90": 0.20574146538743157,
+          "max": 0.5562828812537769
+        },
+        "ori_deg": {
+          "mean": 0.13282696999758956,
+          "median": 0.10881197028984116,
+          "p90": 0.3143858474764954,
+          "max": 0.7447844907644632
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.10658616567998722,
+          "median": 0.08655285241001487,
+          "p90": 0.20574146538743157,
+          "max": 0.5562828812537769
+        },
+        "ori_deg": {
+          "mean": 0.13282696999758956,
+          "median": 0.10881197028984116,
+          "p90": 0.3143858474764954,
+          "max": 0.7447844907644632
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 43,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 258,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 553,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 1.0759522914886475,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.15461803764712123,
+          "median": 0.08705685220237627,
+          "p90": 0.3432740363531117,
+          "max": 2.566795303905061
+        },
+        "ori_deg": {
+          "mean": 0.2553800546969422,
+          "median": 0.1273507058848824,
+          "p90": 0.5700138463811587,
+          "max": 4.668035647600536
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.15461803764712123,
+          "median": 0.08705685220237627,
+          "p90": 0.3432740363531117,
+          "max": 2.566795303905061
+        },
+        "ori_deg": {
+          "mean": 0.2553800546969422,
+          "median": 0.1273507058848824,
+          "p90": 0.5700138463811587,
+          "max": 4.668035647600536
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 44,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 329,
+      "return": 1.0,
+      "num_chunks": 42,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 192,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 609,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5755089521408081,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.10991552523776113,
+          "median": 0.07626153358375061,
+          "p90": 0.2594225778566622,
+          "max": 0.436059974903351
+        },
+        "ori_deg": {
+          "mean": 0.23774161840786115,
+          "median": 0.12239555823164872,
+          "p90": 0.6395725708656649,
+          "max": 1.8174245282269417
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.10991552523776113,
+          "median": 0.07626153358375061,
+          "p90": 0.2594225778566622,
+          "max": 0.436059974903351
+        },
+        "ori_deg": {
+          "mean": 0.23774161840786115,
+          "median": 0.12239555823164872,
+          "p90": 0.6395725708656649,
+          "max": 1.8174245282269417
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 45,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 254,
+      "return": 1.0,
+      "num_chunks": 32,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 93,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 854,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.6031546592712402,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.18915421526964726,
+          "median": 0.13612152032963665,
+          "p90": 0.41807451966928233,
+          "max": 0.8643908356613664
+        },
+        "ori_deg": {
+          "mean": 0.26470976357402365,
+          "median": 0.17165179798962332,
+          "p90": 0.6139499018792598,
+          "max": 1.3598286988258987
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.18915421526964726,
+          "median": 0.13612152032963665,
+          "p90": 0.41807451966928233,
+          "max": 0.8643908356613664
+        },
+        "ori_deg": {
+          "mean": 0.26470976357402365,
+          "median": 0.17165179798962332,
+          "p90": 0.6139499018792598,
+          "max": 1.3598286988258987
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 46,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 103,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 99,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.014980683103203773,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.31392427642206955,
+          "median": 0.20275157100526808,
+          "p90": 0.796141298999461,
+          "max": 2.3077614603186074
+        },
+        "ori_deg": {
+          "mean": 0.5536188220091874,
+          "median": 0.25369618544615075,
+          "p90": 1.5762349600379857,
+          "max": 4.133514570949251
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.31392427642206955,
+          "median": 0.20275157100526808,
+          "p90": 0.796141298999461,
+          "max": 2.3077614603186074
+        },
+        "ori_deg": {
+          "mean": 0.5536188220091874,
+          "median": 0.25369618544615075,
+          "p90": 1.5762349600379857,
+          "max": 4.133514570949251
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 47,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": false,
+      "horizon": 400,
+      "return": 0.0,
+      "num_chunks": 50,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 120,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 11,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.008013231679797173,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.21150222053880496,
+          "median": 0.13299873324978623,
+          "p90": 0.5015034439094428,
+          "max": 1.2842404790168853
+        },
+        "ori_deg": {
+          "mean": 0.3395473620544617,
+          "median": 0.18132959810516225,
+          "p90": 0.8647037932109768,
+          "max": 2.337826141321833
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.21150222053880496,
+          "median": 0.13299873324978623,
+          "p90": 0.5015034439094428,
+          "max": 1.2842404790168853
+        },
+        "ori_deg": {
+          "mean": 0.3395473620544617,
+          "median": 0.18132959810516225,
+          "p90": 0.8647037932109768,
+          "max": 2.337826141321833
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 48,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 248,
+      "return": 1.0,
+      "num_chunks": 31,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 170,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 699,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.5743988752365112,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.13796477803669246,
+          "median": 0.08413266351403778,
+          "p90": 0.28529567536464245,
+          "max": 1.0673934338580078
+        },
+        "ori_deg": {
+          "mean": 0.18351577772774622,
+          "median": 0.1334862093351903,
+          "p90": 0.379991451580168,
+          "max": 0.98022423579237
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.13796477803669246,
+          "median": 0.08413266351403778,
+          "p90": 0.28529567536464245,
+          "max": 1.0673934338580078
+        },
+        "ori_deg": {
+          "mean": 0.18351577772774622,
+          "median": 0.1334862093351903,
+          "p90": 0.379991451580168,
+          "max": 0.98022423579237
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    },
+    {
+      "episode": 49,
+      "env": "PickPlaceCan",
+      "seed": 601,
+      "success": true,
+      "horizon": 327,
+      "return": 1.0,
+      "num_chunks": 41,
+      "quat_obs_key": "robot0_eef_quat_site",
+      "action_clip_count": 140,
+      "action_clip_max_abs_delta": 1.5020370483398438e-05,
+      "target_contact_count": 982,
+      "non_target_contact_count": 0,
+      "non_target_collision_any": false,
+      "first_non_target_collision_step": null,
+      "non_target_contact_names": [],
+      "min_eef_obstacle_clearance": null,
+      "target_max_displacement": 0.689483106136322,
+      "non_target_max_displacement": 0.0,
+      "raw_chunk_error": {
+        "pos_cm": {
+          "mean": 0.15498194259550843,
+          "median": 0.13477401521767235,
+          "p90": 0.3136535391616667,
+          "max": 0.5469168070831032
+        },
+        "ori_deg": {
+          "mean": 0.23970527417076531,
+          "median": 0.16108420417953767,
+          "p90": 0.5382215191664039,
+          "max": 1.3105000788740997
+        }
+      },
+      "clipped_chunk_error": {
+        "pos_cm": {
+          "mean": 0.15498194259550843,
+          "median": 0.13477401521767235,
+          "p90": 0.3136535391616667,
+          "max": 0.5469168070831032
+        },
+        "ori_deg": {
+          "mean": 0.23970527417076531,
+          "median": 0.16108420417953767,
+          "p90": 0.5382215191664039,
+          "max": 1.3105000788740997
+        }
+      },
+      "object_names": [
+        "Can"
+      ]
+    }
+  ]
+}

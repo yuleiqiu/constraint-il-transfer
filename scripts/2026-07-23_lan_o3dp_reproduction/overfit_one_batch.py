@@ -64,6 +64,11 @@ def main():
     trainset, _ = TrainUtils.load_data_for_training(
         config, obs_keys=shape_meta["all_obs_keys"]
     )
+    obs_normalization_stats = (
+        trainset.get_obs_normalization_stats()
+        if config.train.hdf5_normalize_obs
+        else None
+    )
     trainset.get_action_normalization_stats()
     loader = DataLoader(
         trainset,
@@ -82,7 +87,9 @@ def main():
         device=device,
     )
     batch = model.process_batch_for_training(raw_batch)
-    batch = model.postprocess_batch_for_training(batch, obs_normalization_stats=None)
+    batch = model.postprocess_batch_for_training(
+        batch, obs_normalization_stats=obs_normalization_stats
+    )
 
     model.set_train()
     initial = fixed_loss(model, batch, args.noise_seed)

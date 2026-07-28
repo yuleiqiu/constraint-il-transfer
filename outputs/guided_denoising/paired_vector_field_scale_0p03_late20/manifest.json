@@ -1,0 +1,21 @@
+{
+  "agent": "outputs/robomimic/train/dp3_can_delta_pose_osc_ddpm100_seed500/20260723192459/models/model_epoch_580_image_v15_delta_eef_pose_osc_pointcloud_success_0.82.pth",
+  "envs": [
+    "PickPlaceBreadCerealCan",
+    "PickPlaceBreadCerealMilkCan"
+  ],
+  "seeds": [
+    710,
+    711
+  ],
+  "n_rollouts": 5,
+  "horizon": 400,
+  "guidance_scale": 0.03,
+  "clearance_margin": 0.02,
+  "cost_type": "vector_field",
+  "max_guidance_timestep": 19,
+  "max_waypoint_displacement_m": 0.03,
+  "terminate_on_success": true,
+  "decision": "stop_point_level_guidance",
+  "decision_note": "The 20-pair pilot failed the fixed gate. Task SR fell by 0.10 in both environments; CR increased by 0.10 in PickPlaceBreadCerealCan and was unchanged in PickPlaceBreadCerealMilkCan. No baseline failure became a guided success, while two baseline successes became guided failures. Stop tuning point-level EEF guidance and move to a gripper-aware geometry formulation."
+}

@@ -1,0 +1,27 @@
+{
+  "agent": "outputs/robomimic/train/dp3_can_delta_pose_osc_ddpm100_seed500/20260723192459/models/model_epoch_580_image_v15_delta_eef_pose_osc_pointcloud_success_0.82.pth",
+  "envs": [
+    "PickPlaceBreadCerealCan",
+    "PickPlaceBreadCerealMilkCan"
+  ],
+  "capture_seeds": [
+    500,
+    501,
+    502
+  ],
+  "states_per_env": 5,
+  "horizon": 100,
+  "candidate_mode": "collision",
+  "cost_type": "vector_field",
+  "max_states_per_episode": 1,
+  "scales": [
+    0.0,
+    0.001,
+    0.003,
+    0.01,
+    0.03
+  ],
+  "clearance_margin": 0.02,
+  "max_guidance_timestep": 19,
+  "max_waypoint_displacement_m": 0.03
+}

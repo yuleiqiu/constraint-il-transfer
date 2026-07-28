@@ -1,0 +1,167 @@
+{
+  "captured_states": {
+    "PickPlaceBreadCerealCan": 5,
+    "PickPlaceBreadCerealMilkCan": 5
+  },
+  "candidate_mode": "active",
+  "cost_type": "penetration",
+  "clearance_margin": 0.02,
+  "max_guidance_timestep": 19,
+  "max_waypoint_displacement_m": 0.03,
+  "scales": [
+    0.0,
+    0.0001,
+    0.0002,
+    0.0003,
+    0.001,
+    0.003
+  ],
+  "summary_by_scale": [
+    {
+      "scale": 0.0,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.01449173241853714,
+      "mean_actual_min_clearance_m": 0.017180944979190826,
+      "mean_predicted_safety_clearance_m": -0.005508267134428024,
+      "mean_actual_safety_clearance_m": -0.0028190545737743376,
+      "collision_rate": 0.1,
+      "action_clip_count": 26,
+      "action_clip_max_abs": 1.5020370483398438e-05,
+      "max_guidance_update_norm": 0.0,
+      "max_physical_waypoint_displacement_m": 0.0,
+      "mean_raw_action_l2_change_from_scale_zero": 0.0,
+      "max_abs_action_change_from_scale_zero_by_dim": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_guidance_trigger_steps": 14.8
+    },
+    {
+      "scale": 0.0001,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.014733492583036422,
+      "mean_actual_min_clearance_m": 0.017374548688530923,
+      "mean_predicted_safety_clearance_m": -0.005266506969928741,
+      "mean_actual_safety_clearance_m": -0.002625450864434242,
+      "collision_rate": 0.1,
+      "action_clip_count": 28,
+      "action_clip_max_abs": 1.5020370483398438e-05,
+      "max_guidance_update_norm": 0.019949698820710182,
+      "max_physical_waypoint_displacement_m": 0.00010494840535102412,
+      "mean_raw_action_l2_change_from_scale_zero": 0.00023524316202383488,
+      "max_abs_action_change_from_scale_zero_by_dim": [
+        0.00018741236999630928,
+        0.00011629916843958199,
+        1.2369127944111824e-05,
+        6.88607688061893e-05,
+        9.630364365875721e-05,
+        3.768387250602245e-05,
+        0.00035506486892700195
+      ],
+      "mean_guidance_trigger_steps": 14.8
+    },
+    {
+      "scale": 0.0002,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.014982017129659653,
+      "mean_actual_min_clearance_m": 0.01757045090198517,
+      "mean_predicted_safety_clearance_m": -0.005017982423305511,
+      "mean_actual_safety_clearance_m": -0.0024295486509799957,
+      "collision_rate": 0.1,
+      "action_clip_count": 29,
+      "action_clip_max_abs": 1.5020370483398438e-05,
+      "max_guidance_update_norm": 0.039900824427604675,
+      "max_physical_waypoint_displacement_m": 0.00020989681070204824,
+      "mean_raw_action_l2_change_from_scale_zero": 0.0004528528661467135,
+      "max_abs_action_change_from_scale_zero_by_dim": [
+        0.00038536894135177135,
+        0.0002326073299627751,
+        2.5967718102037907e-05,
+        0.00013837037840858102,
+        0.00020015455083921552,
+        8.050631731748581e-05,
+        0.0006163120269775391
+      ],
+      "mean_guidance_trigger_steps": 14.8
+    },
+    {
+      "scale": 0.0003,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.015239030867815018,
+      "mean_actual_min_clearance_m": 0.017764713615179062,
+      "mean_predicted_safety_clearance_m": -0.004760968685150147,
+      "mean_actual_safety_clearance_m": -0.0022352859377861023,
+      "collision_rate": 0.1,
+      "action_clip_count": 30,
+      "action_clip_max_abs": 1.5020370483398438e-05,
+      "max_guidance_update_norm": 0.05985052511096001,
+      "max_physical_waypoint_displacement_m": 0.0003148452378809452,
+      "mean_raw_action_l2_change_from_scale_zero": 0.0006936628487892449,
+      "max_abs_action_change_from_scale_zero_by_dim": [
+        0.0005967810284346342,
+        0.0003483316977508366,
+        4.0360610000789165e-05,
+        0.00020932673942297697,
+        0.00030826678266748786,
+        0.0001267360057681799,
+        0.0008679032325744629
+      ],
+      "mean_guidance_trigger_steps": 14.8
+    },
+    {
+      "scale": 0.001,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.01695704013109207,
+      "mean_actual_min_clearance_m": 0.01915718801319599,
+      "mean_predicted_safety_clearance_m": -0.0030429594218730925,
+      "mean_actual_safety_clearance_m": -0.0008428115397691727,
+      "collision_rate": 0.1,
+      "action_clip_count": 34,
+      "action_clip_max_abs": 1.5020370483398438e-05,
+      "max_guidance_update_norm": 0.1995028704404831,
+      "max_physical_waypoint_displacement_m": 0.0010494841262698174,
+      "mean_raw_action_l2_change_from_scale_zero": 0.003147729206830263,
+      "max_abs_action_change_from_scale_zero_by_dim": [
+        0.002156726084649563,
+        0.0012129148235544562,
+        0.0001374830026179552,
+        0.0007136939093470573,
+        0.0008683336200192571,
+        0.0005972564686089754,
+        0.00391775369644165
+      ],
+      "mean_guidance_trigger_steps": 14.6
+    },
+    {
+      "scale": 0.003,
+      "states": 10,
+      "mean_predicted_min_clearance_m": 0.020135724544525148,
+      "mean_actual_min_clearance_m": 0.02154836766421795,
+      "mean_predicted_safety_clearance_m": 0.0001357249915599823,
+      "mean_actual_safety_clearance_m": 0.0015483681112527848,
+      "collision_rate": 0.1,
+      "action_clip_count": 35,
+      "action_clip_max_abs": 1.5020370483398438e-05,
+      "max_guidance_update_norm": 1.132014274597168,
+      "max_physical_waypoint_displacement_m": 0.003148452378809452,
+      "mean_raw_action_l2_change_from_scale_zero": 0.008065864443778992,
+      "max_abs_action_change_from_scale_zero_by_dim": [
+        0.004186296369880438,
+        0.004474732559174299,
+        0.00036921887658536434,
+        0.002517102984711528,
+        0.001420706743374467,
+        0.001411317614838481,
+        0.01178288459777832
+      ],
+      "mean_guidance_trigger_steps": 12.5
+    }
+  ],
+  "selected_scale": 0.003,
+  "selection_note": "Selected as the largest tested LAN-scale setting. Across 10 fixed active-cost states it raised mean predicted / executed raw clearance from 1.45 / 1.72 cm to 2.01 / 2.15 cm, made the mean 2 cm safety-margin clearance positive, limited any one reverse-step waypoint displacement to 0.315 cm, and introduced only the same 1.50e-05 numerical action-limit excess seen at scale zero. The paired pilot must decide whether this geometric effect improves task outcomes."
+}

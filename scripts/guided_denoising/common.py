@@ -40,6 +40,37 @@ def current_eef_position(obs):
     return np.asarray(latest_obs_value(obs, "robot0_eef_pos"), dtype=np.float32).copy()
 
 
+def validate_policy_observation(obs):
+    """Reject non-finite or empty scan observations before policy sampling."""
+
+    for key, value in obs.items():
+        if "scan" not in key and "pointcloud" not in key:
+            continue
+        array = np.asarray(value)
+        if array.size == 0:
+            return False, "{} is empty".format(key)
+        if not np.isfinite(array).all():
+            return False, "{} contains non-finite values".format(key)
+        frames = array.reshape(array.shape[0], -1) if array.ndim >= 3 else array.reshape(1, -1)
+        empty_frames = np.flatnonzero(np.count_nonzero(frames, axis=1) == 0)
+        if len(empty_frames):
+            return False, "{} has all-zero frame(s) {}".format(
+                key, empty_frames.tolist()
+            )
+    return True, None
+
+
+def current_raw_eef_position(raw_env):
+    """Read the current EEF site position without constructing an observation."""
+
+    robot = raw_env.robots[0]
+    arm = robot.arms[0]
+    return np.asarray(
+        raw_env.sim.data.site_xpos[robot.eef_site_id[arm]],
+        dtype=np.float32,
+    ).copy()
+
+
 def object_body_name(obj):
     for attr in ("root_body", "body_name", "root_body_name"):
         value = getattr(obj, attr, None)
@@ -196,6 +227,9 @@ def make_guidance_context(
     radii,
     scale,
     clearance_margin,
+    cost_type="penetration",
+    max_guidance_timestep=None,
+    max_waypoint_displacement_m=None,
 ):
     return guidance_context_from_rollout_policy(
         rollout_policy,
@@ -204,6 +238,9 @@ def make_guidance_context(
         obstacle_radii=radii,
         guidance_scale=scale,
         clearance_margin=clearance_margin,
+        cost_type=cost_type,
+        max_guidance_timestep=max_guidance_timestep,
+        max_waypoint_displacement_m=max_waypoint_displacement_m,
     )
 
 
