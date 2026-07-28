@@ -13,6 +13,7 @@ See [AGENTS.md](AGENTS.md) for directory structure and the paper ingestion workf
 | `cape` | *CAPE: Context-Aware Diffusion Policy Via Proximal Mode Expansion for Collision Avoidance* | 2511.22773 | Collision-aware iterative guided refinement |
 | `vls` | *VLS: Steering Pretrained Robot Policies via Vision-Language Models* | 2602.03973 | Vision-language-derived trajectory rewards |
 | `reguide` | *ReGuide: From Test-Time Guidance to Self-Improving Diffusion Policies* | 2606.28939 | Test-time guidance → self-improving diffusion policies |
+| `sdp` | *Set-Supervised Diffusion Policy: Learning Action-Chunking Diffusion through Corrections* | 2606.01865 | Set-valued action targets from contrastive correction data |
 | `guided-discovery` | *Guided Discovery of New Behaviors using Diffusion Policies* | 2606.08743 | Guided discovery of new behaviors from pretrained diffusion policies |
 | `physics-grounded-diffusion` | *Grounding Generative Policies in Physics: Optimization-Guided Diffusion for Robot Control* | 2606.24208 | Physics-based optimization guidance for diffusion policies |
 | `lpb` | *Latent Policy Barrier: Learning Robust Visuomotor Policies by Staying In-Distribution* | 2508.05941 | Latent barrier for out-of-distribution robustness |
