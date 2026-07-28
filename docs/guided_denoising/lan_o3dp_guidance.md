@@ -1,5 +1,8 @@
 # LAN-O3DP Guidance：按官方代码整理
 
+状态：历史方法分析。对应的 point-guidance 分支已经完成并关闭；当前实验见
+`docs/targeted_finetuning/plan.md`。
+
 这份文档只用于理清 LAN-O3DP 的实际 guidance 实现，以及它如何写进我们的
 cost-based formulation。它不是最终论文表述。
 

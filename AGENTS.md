@@ -2,23 +2,57 @@
 
 ## 1. Goal
 
-Single-to-multi-object diffusion policy transfer through deployment-time guided
-denoising. Use a pretrained diffusion imitation policy as the action prior and
-inject a deployment cost during denoising, without retraining the policy.
+Study single-to-multi-object transfer for a diffusion imitation policy using an
+executable delta-EEF action interface.
 
-The immediate research question is whether guidance over executable delta EEF
-pose action chunks can improve multi-object task success while preserving the
-task behavior learned from demonstrations.
+The current question is whether a small number of targeted, successful
+multi-object corrections can inject missing task-preserving avoidance behavior
+into the reliable single-object policy without materially degrading its clean
+behavior. The immediate experiment is a full-policy targeted fine-tuning upper
+bound, not yet the final proposed method.
+
+Deployment-time guided denoising was the preceding research stage. Its
+formulation and negative results remain important evidence, but it is no longer
+the active implementation direction.
 
 ## 2. Current State
 
-- **Guided denoising is the active direction (2026-07-20)**: the project-level formulation defines a deployment-cost-reweighted diffusion policy and guidance through the predicted clean action. See `docs/guided_denoising/formulation.md`.
-- **P0 clean-policy intent diagnostic completed (2026-07-20)**: offline analysis of all 600 unguided episodes gives decision C, mixed / no single dominant mechanism. In the two- and three-distractor main cohorts, target-directed obstruction is 34.4% / 37.5%, non-target-directed behavior is 43.0% / 26.0%, and target-directed clear behavior is 22.6% / 36.5%; neither A nor B meets the fixed Wilson-majority rule. P1 must target and report a stated regime rather than treating feasibility guidance as a universal explanation. See `outputs/guided_denoising/intent_diagnostic/report.md` and `docs/guided_denoising/research_plan.md`.
-- **The first guided-denoising mechanism baseline is implemented**: fixed-state checks show that guidance changes predicted and executed delta-EEF trajectories, but the 20-pair rollout pilot has inconsistent safety effects and must not be scaled to the full matrix. It remains a mechanism baseline rather than the project method. See `docs/guided_denoising/lan_o3dp_mechanism_baseline.md`.
-- **Delta EEF pose replacement validated (2026-07-08)**: clean-image DP trained on `delta_eef_pose_action` reaches 0.98 PickPlaceCan rollout success. A policy action chunk can be reconstructed into the executed EEF pose trajectory with mean position error 0.131 cm and mean orientation error 0.253 deg over a successful rollout. This is the direct replacement for the old OSC-action forward-model path. See `outputs/eef_pose_osc_policy/README.md`.
-- **Delta EEF multi-environment eval completed (2026-07-14)**: one best checkpoint evaluated over 4 environments x 3 eval seeds x 50 episodes reaches Task SR 0.907 / 0.707 / 0.253 / 0.200 as distractors increase, with CR 0.000 / 0.213 / 0.647 / 0.680. Hard-environment failures are dominated by pre-target obstruction, but successful collisions and collision-free placement failures both occur. Future comparisons should report Task SR plus Safe SR / CR / NCR and retain the four-way outcome partition. See `outputs/eef_pose_osc_policy/multienv_eval_report.md`.
-- **Absolute EEF pose remains a comparison baseline**: best clean-image abs EEF policy reached 0.82 PickPlaceCan rollout success; delta EEF is the preferred action interface.
-- **Old OSC-action guidance did not work end to end**: 600-rollout obstacle-guidance evaluation slightly reduced success, and replacing the inaccurate `cumsum(action * 0.05)` trajectory proxy with a learned forward model did not recover Task SR. The old guidance, forward-model, and action-ranking code is archived and must not be treated as the current delta-EEF guidance experiment.
+- **Targeted fine-tuning upper bound is active (2026-07-28)**: collect a small
+  set of complete successful hybrid correction episodes on fresh multi-object
+  layouts, initialize from the epoch-260 delta-EEF checkpoint, and train with
+  balanced clean replay plus oversampled correction data. Compare against the
+  frozen checkpoint and a clean-only continued-training control. See
+  `docs/targeted_finetuning/plan.md`.
+- **Waypoint teacher feasibility is positive**: on the 20 held-out strict
+  pre-collision states, discrete-yaw waypoint search changed Task success from
+  1/20 to 18/20 and distractor collision from 20/20 to 2/20, with 17
+  failure-to-success and no success-to-failure transitions. This is a selected
+  teacher upper bound, not rollout policy evaluation. See
+  `scripts/2026-07-27_semi_manual_waypoint_teacher/README.md`.
+- **Frozen-policy inference-only methods reached a negative stage conclusion
+  (2026-07-27)**: oracle guidance changes trajectories and local clearance, but
+  did not provide reliable Task SR gains. At 20 strict states, none of 640
+  policy samples was safe and progress-preserving at a 1 cm expanded boundary;
+  support-constrained projection was feasible in 1/20 states versus 14/20
+  without the support bound. See
+  `docs/guided_denoising/frozen_policy_inference_limitations.md`.
+- **The reliable source policy is fixed**: use the clean-image
+  `delta_eef_pose_action` Diffusion Policy epoch-260 checkpoint. Independent
+  Task SR over 0/1/2/3 distractors is 0.907 / 0.707 / 0.253 / 0.200; CR is
+  0.000 / 0.213 / 0.647 / 0.680. See
+  `outputs/eef_pose_osc_policy/multienv_eval_report.md`.
+- **The action interface is validated**: delta-EEF chunks reconstruct executed
+  EEF trajectories with 0.131 cm mean position error and 0.253 deg mean
+  orientation error over a successful rollout. This replaces the old
+  OSC-action forward-model route. See
+  `outputs/eef_pose_osc_policy/README.md`.
+- **Evaluation remains task-level**: report Task SR, Safe SR, CR, NCR, and the
+  four-way outcome partition. Local clearance or support diagnostics are
+  mechanism evidence, not substitutes for rollout success.
+- **World-model and adapter methods are deferred, not rejected**: first use
+  full-policy targeted fine-tuning to establish a learnability upper bound.
+  If it succeeds, choose where the new avoidance knowledge should live; if it
+  fails, revisit observation, architecture, temporal credit, or data quality.
 
 ## 3. Subproject AGENTS
 
@@ -29,10 +63,12 @@ task behavior learned from demonstrations.
 - `scripts/AGENTS.md` — index of local scripts (EEF-pose OSC policy tooling, intent diagnostics, guided-denoising diagnostics, eval-matrix grouping)
 
 ### Experiment outputs (outputs/)
-- `robomimic/eval/baseline/` — baseline (no guidance) rollout results
-- `robomimic/eval/obstacle_guided/` — guided rollout results
-- `forward_model/` — archived OSC-action forward-model result summaries only
-- `eef_pose_osc_policy/` — delta EEF pose policy conclusion and trajectory reconstruction diagnostics
+- `eef_pose_osc_policy/` — active source-policy conclusion, reconstruction
+  diagnostics, and multi-environment baseline
+- `policy_manifold_diagnostic/` — frozen-policy support diagnostic
+- `guided_denoising/` — completed inference-only experiment summaries
+- `task_constrained_guidance/` and `sample_refine/` — completed negative stages
+- `forward_model/` — archived OSC-action forward-model summaries
 
 ## 4. File Map
 
@@ -42,13 +78,15 @@ constraint-il-transfer/             ← Project root (independent git repo)
 ├── metadata/                        ← Environment metadata
 ├── docs/                            ← Research artifacts
 │   ├── RESEARCH_LOG.md              ← Reverse-chronological log of discussions + decisions
-│   ├── guided_denoising/             ← Active formulation, mechanism-baseline record, and research plan
+│   ├── targeted_finetuning/          ← Active upper-bound plan
+│   ├── guided_denoising/             ← Completed inference-only formulations and results
 │   └── forward_model_guidance_next_steps.md ← Archived Δgeo forward-model / ranking handoff and results
 ├── papers/<name>/                   ← Paper PDFs + agent-generated analysis.md
 ├── scripts/                         ← Local Python scripts (→ AGENTS.md for index)
 ├── outputs/                         ← Experiment outputs
-│   ├── robomimic/eval/              ← Baseline + obstacle_guided rollouts (600 rollouts)
-│   └── eef_pose_osc_policy/         ← Active delta-EEF conclusions and diagnostics
+│   ├── eef_pose_osc_policy/          ← Active source-policy conclusions and diagnostics
+│   ├── policy_manifold_diagnostic/   ← Frozen-policy support evidence
+│   └── guided_denoising/             ← Completed inference-only experiment summaries
 ├── .opencode/agents/                ← Agent definitions (paper-reader, code-explorer)
 ├── third_party/                     ← Editable source deps (managed independently, see §10)
 │   ├── robomimic/                   ← robomimic fork (→ AGENTS.md)
@@ -60,12 +98,14 @@ constraint-il-transfer/             ← Project root (independent git repo)
 
 1. Read this file (AGENTS.md) first
 2. For project state + recent discussions → `docs/RESEARCH_LOG.md`
-3. For the active mathematical direction → `docs/guided_denoising/formulation.md`
-4. For the implemented LAN-style mechanism baseline → `docs/guided_denoising/lan_o3dp_mechanism_baseline.md`
-5. For current method and evaluation gates → `docs/guided_denoising/research_plan.md`
-6. For current EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
+3. For the active experiment contract → `docs/targeted_finetuning/plan.md`
+4. For why the frozen-policy stage stopped →
+   `docs/guided_denoising/frozen_policy_inference_limitations.md`
+5. For the waypoint-teacher upper bound →
+   `scripts/2026-07-27_semi_manual_waypoint_teacher/README.md`
+6. For EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
 7. For local scripts and how to run them → `scripts/AGENTS.md`
-8. For archived forward-model / ranking results → `docs/forward_model_guidance_next_steps.md`
+8. For historical inference-only methods → `docs/guided_denoising/`
 9. For paper comparisons → `papers/<name>/analysis.md`
 10. For inner robomimic code → `third_party/robomimic/AGENTS.md`
 
@@ -79,7 +119,9 @@ constraint-il-transfer/             ← Project root (independent git repo)
 - All local scripts: `uv run python scripts/...`
 - Robomimic scripts: `uv run python third_party/robomimic/robomimic/scripts/<script.py> ...`
 - Temporary output: `/tmp/`
-- Model checkpoints: `outputs/robomimic/checkpoints/<policy>/best.pth` (not the robomimic default `runs/trained_models/`)
+- Model checkpoints:
+  `outputs/robomimic/train/<experiment>/<run>/models/<checkpoint>.pth`
+  (not the robomimic default `runs/trained_models/`)
 - Python 3.10, managed by uv
 
 ## 8. Terminology
@@ -91,6 +133,15 @@ constraint-il-transfer/             ← Project root (independent git repo)
 - **Guided denoising**: modifying reverse diffusion at deployment time using the gradient of a deployment cost evaluated on the predicted clean action chunk
 - **Deployment cost**: a lower-is-better differentiable criterion `C(F(o, A), e*)` used to reweight or guide the pretrained policy distribution
 - **Predicted clean action**: the denoiser's estimate `A_0_hat` reconstructed from the noisy action at the current diffusion timestep
+- **Effective policy support**: the high-probability local set of action
+  trajectories the current policy can produce while preserving task progress;
+  diagnostics use an empirical Mahalanobis ellipsoid as a proxy, not strict
+  mathematical support
+- **Correction episode**: a complete successful hybrid rollout in which the
+  frozen policy runs normally, an oracle waypoint teacher intervenes in the
+  targeted obstruction phase, and the frozen policy resumes after grasp/lift
+- **Targeted fine-tuning upper bound**: full-policy adaptation from epoch260
+  with original clean replay and deliberately oversampled correction data
 - **Forward model**: Archived learned surrogate `f_hat(state, OSC action chunk) -> future EEF xyz trajectory`; result documents are retained, implementation code is removed
 
 ## 9. Environment Setup
@@ -173,7 +224,7 @@ manually.
 
 ### Rules
 
-- `third_party/` is `.gitignore`d at the root (`.gitignore:6`). The root
+- `third_party/` is `.gitignore`d at the root. The root
   repo **must not** attempt to `git add` files under it.
 - Before any `git add` / `git commit`, run `git status` to confirm the
   working directory is the right repo. Each fork has its own `.git/`
@@ -207,5 +258,8 @@ git check-ignore -v third_party/robomimic third_party/robosuite
 
 - **When to update**: when state materially changes (new model trained, root cause confirmed, EEF action-interface / forward-model status changed)
 - **When NOT to update**: exploratory runs, unconfirmed hypotheses
-- **What to update**: overwrite old state directly, delete stale info. Keep file < 1 page
+- **What to update**: keep the active goal, current evidence, reading order,
+  runtime contract, and repository workflow accurate. Replace stale current
+  state rather than accumulating chronological history here; detailed history
+  belongs in `docs/RESEARCH_LOG.md`.
 - **Note**: Maintenance rights belong to humans. Agents may change this file only under explicit permission.

@@ -2,6 +2,10 @@
 
 Status: completed negative closure result, 2026-07-27.
 
+Superseded-next-step note, 2026-07-28: this report originally handed off to an
+LPB-style study. The project subsequently selected targeted fine-tuning as the
+next learnability upper bound. Experimental findings below are unchanged.
+
 ## 1. Decision
 
 The LAN-aligned 40-demo, seed-42 point-cloud policy is not an acceptable source
@@ -16,8 +20,8 @@ Do not:
 - scale this configuration to the full environment matrix or multiple policy
   seeds.
 
-For the next LPB study, freeze the earlier clean-image delta-EEF Diffusion
-Policy epoch-260 checkpoint as the source prior. Its independently evaluated
+For any successor study, use the earlier clean-image delta-EEF Diffusion Policy
+epoch-260 checkpoint as the source prior. Its independently evaluated
 single-object Task SR is 0.907, and its executable action chunks already have
 validated EEF trajectory reconstruction.
 
@@ -170,11 +174,12 @@ without creating a successful alternative. This is consistent with the prior
 RGB-policy mechanism baseline and sample-refine experiments: geometric changes
 alone have not produced a repeatable task-level gain.
 
-The next activity is an LPB-style method study using the reliable clean-image
-delta-EEF Diffusion Policy as the frozen source prior. Before implementation,
-the LPB paper should be mapped onto this project's executable action chunk,
-observation interface, deployment information, and four-way evaluation gate.
-The resulting method should not be described as a LAN-O3DP reproduction.
+At closure time, the planned next activity was an LPB-style method study using
+the reliable clean-image delta-EEF policy. That handoff was superseded on
+2026-07-28 by the targeted fine-tuning upper bound. Any later LPB-derived
+method should still be mapped onto this project's executable action chunk,
+observation interface, deployment information, and four-way evaluation gate,
+and should not be described as a LAN-O3DP reproduction.
 
 ## 7. Canonical Artifacts
 

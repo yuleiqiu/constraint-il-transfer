@@ -3,8 +3,8 @@
 Status: completed mechanism-baseline record, 2026-07-15. The implementation
 passed unit, unguided-parity, and fixed-state checks. Its 20-pair rollout pilot
 changed task outcomes but produced inconsistent safety effects, so the tested
-setting was not scaled to the full matrix. See `research_plan.md` for the next
-research and evaluation gates.
+setting was not scaled to the full matrix. See `research_plan.md` for the
+completed stage summary.
 
 The general mathematical framework is in `formulation.md`. This document is the
 technical record for the LAN-O3DP-inspired first experiment, not the

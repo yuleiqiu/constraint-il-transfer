@@ -159,6 +159,6 @@ root repository tag:      archive/s2m-sample-refine-20260722
 robomimic repository tag: archive/s2m-sample-refine-20260722
 ```
 
-The active robomimic development baseline is `exp/guided-dp`, which
-intentionally does not contain the failed sample-refine algorithm. Check out
-the robomimic archive tag temporarily when reproducing this pilot.
+At archive time, the robomimic development baseline was `exp/guided-dp`, which
+intentionally did not contain the failed sample-refine algorithm. Check out the
+robomimic archive tag temporarily when reproducing this pilot.

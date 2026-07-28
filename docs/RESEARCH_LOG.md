@@ -44,7 +44,8 @@ training loss.
 World-model approaches remain possible successors, but should not be adopted
 for narrative novelty before this upper bound establishes whether the task is
 learnable from targeted corrective support. Canonical teacher artifact:
-`scripts/2026-07-27_semi_manual_waypoint_teacher/README.md`.
+`scripts/2026-07-27_semi_manual_waypoint_teacher/README.md`. Active experiment
+contract: `docs/targeted_finetuning/plan.md`.
 
 ## 2026-07-27
 

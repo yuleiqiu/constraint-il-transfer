@@ -1,25 +1,15 @@
-# Guided Denoising Research and Evaluation Plan
+# Guided-Denoising Stage Record
 
-Status: active research plan, 2026-07-28.
+Status: completed inference-only research stage, superseded 2026-07-28.
 
-This document separates three questions that should not be answered by one
-large experiment:
+The active experiment is now the targeted fine-tuning upper bound in
+`docs/targeted_finetuning/plan.md`. This file is a compact index of the
+questions, gates, and conclusions from the preceding frozen-policy stage.
+Git history retains the former detailed working plan.
 
-1. what fails when a single-object policy is deployed in multi-object scenes;
-2. what the method should change at inference time; and
-3. how much environment diversity is needed to support the resulting claim.
+## 1. Starting Baseline
 
-The LAN-O3DP-style point-guidance branch is closed after its mechanism pilots
-and LAN-aligned checkpoint closure failed the project gate. LPB is deferred by
-the current research decision. A subsequent one-distractor test also rejected
-uniform 5 cm XY obstacle expansion. The next experiment is a targeted
-fine-tuning upper bound: inject a small number of successful multi-object
-corrections into the reliable clean-image delta-EEF policy while replaying its
-original clean demonstrations.
-
-## 1. Evidence Available Now
-
-The unguided checkpoint has the following deployment behavior:
+The reliable clean-image epoch-260 delta-EEF policy produced:
 
 | distractors | Task SR | Safe SR | CR | NCR |
 |---:|---:|---:|---:|---:|
@@ -28,125 +18,8 @@ The unguided checkpoint has the following deployment behavior:
 | 2 | 0.253 | 0.240 | 0.647 | 0.113 |
 | 3 | 0.200 | 0.153 | 0.680 | 0.167 |
 
-The sharpest drop occurs from one to two distractors. In the two hardest
-environments, most failures collide before target contact and never contact
-the Can. However, collision is not equivalent to failure: successful
-collisions and collision-free task failures both exist.
-
-The first 20-pair guidance pilot changes outcomes but does not establish a
-reliable benefit. Task SR increased by 0.10 in both tested environments, while
-the safety effect changed sign between them. This setting must not be scaled to
-the full matrix.
-
-The next sample-refine candidate also failed the development gate. A 20-layout
-two-distractor pilot found identical baseline and sample+refine outcomes on all
-matched layouts: Task SR 0.10, Safe SR 0.05, CR 0.75, and NCR 0.20. Sample only
-added one safe success, while refine only exchanged three collision failures
-for three NCRs. The complete method added 76% inference time without task or
-safety benefit and was not evaluated on held-out clutter levels. See
-`sample_refine_pilot.md`.
-
-The later LAN-aligned 40-demo, seed-42 point-cloud DDPM checkpoint also failed
-both required gates. Its independent clean `PickPlaceCan` Task SR was 0.50
-over 150 episodes, below the approximately 0.80 source-policy competence
-threshold. After fixed-state calibration, scale 0.003 improved predicted and
-executed short-prefix clearance, but the 20-pair pilot produced no
-failure-to-success transition, increased CR by 0.10 in the two-distractor
-environment, and reduced Task SR by 0.20 in the three-distractor environment.
-See `lan_o3dp_epoch350_closure.md`.
-
-The easier `PickPlaceBreadCan` test did not rescue the existing point guide.
-With Bread's XY radius expanded by 5 cm, fixed-state clearance improved, but a
-20-pair pilot reduced Task SR and Safe SR from 0.70 to 0.65. CR fell 0.05 to
-zero while NCR rose 0.25 to 0.35, including two baseline successes lost and
-only one failure recovered. The same uniform XY expansion must not be scaled
-or retuned.
-
-## 2. P0 Failure-Mechanism Diagnostic — Complete
-
-The offline diagnostic reuses all 600 unguided rollout episodes. Its main
-analysis cohort contains only task failures that never contacted Can;
-successful episodes calibrate the intent measure, and failures after Can
-contact are retained as a downstream comparison.
-
-For a predicted clean chunk with start $p_0$ and reconstructed EEF waypoints
-$P=(p_1,\ldots,p_H)$, target intent is the nearest approach rather than only
-the endpoint:
-
-$$
-\Delta d_{\mathrm{closest}}
-=d(p_0,p_{\mathrm{Can}})-\min_{1\le h\le H}d(p_h,p_{\mathrm{Can}}).
-$$
-
-A chunk is target-directed iff this 3D quantity is strictly positive.
-Endpoint progress, XY progress, and 0.5 / 1 mm thresholds are sensitivity
-checks. Obstruction is the minimum signed XY segment clearance between the EEF
-polyline and distractor circles at the chunk start, using each robosuite
-object's `horizontal_radius`; clearance at or below zero is obstructed, with
-+1 / +2 cm margins as sensitivity checks.
-
-Each episode has one critical chunk selected without reference to the computed
-category: the chunk containing first obstacle contact for main episodes with
-contact, the last chunk for main episodes without any contact, or the chunk
-containing first Can contact for success and downstream-failure cohorts. The
-three fixed, mutually exclusive categories are:
-
-```text
-target_directed_obstructed
-non_target_directed
-target_directed_clear
-```
-
-### Result and decision gate
-
-| distractors | main n | target-directed obstructed | non-target-directed | target-directed clear |
-|---:|---:|---:|---:|---:|
-| 1 | 32 | 9 (28.1%) | 17 (53.1%) | 6 (18.8%) |
-| 2 | 93 | 32 (34.4%) | 40 (43.0%) | 21 (22.6%) |
-| 3 | 96 | 36 (37.5%) | 25 (26.0%) | 35 (36.5%) |
-
-Decision **C: mixed / no single dominant mechanism**. In neither hard
-environment does target-directed obstruction or non-target-directed behavior
-form a majority with a Wilson 95% lower bound above 0.5. The largest category
-also changes from non-target-directed with two distractors to
-target-directed-obstructed with three, while target-directed-clear is nearly
-co-largest in the latter. The one-distractor environment remains a trend
-reference and does not decide the gate.
-
-The primary intent measure is calibrated by successful critical chunks, where
-85.8% / 92.1% / 90.0% are target-directed in the one / two / three-distractor
-environments. Threshold and footprint-margin sensitivity changes proportions
-but not the fixed A/B/C conclusion. P1 must therefore report regime-stratified
-effects and solve one stated regime first; a pure feasibility guide must not be
-presented as explaining every pre-target failure.
-
-Canonical artifacts:
-`outputs/guided_denoising/intent_diagnostic/report.md` and
-`outputs/guided_denoising/intent_diagnostic/summary.json`.
-
-## 3. Method-Development Gate in the Current Environment
-
-Use the clean-image delta-EEF Diffusion Policy epoch-260 checkpoint as the
-source prior for any next method study. Its independent single-object Task SR
-is 0.907, so it passes the source gate; the LAN-aligned epoch-350 point-cloud
-checkpoint does not.
-
-Develop on `PickPlaceBreadCerealCan`, where the baseline exhibits the regime
-change but still has enough successful rollouts for comparison. Treat
-`PickPlaceBreadCan` and `PickPlaceBreadCerealMilkCan` as easier and harder
-held-out clutter levels during method selection.
-
-A candidate method advances only when one guidance configuration:
-
-- improves paired Task SR on both the two- and three-distractor variants;
-- does not obtain the gain by exchanging collision failures for an equal
-  number of collision-free non-completions;
-- preserves the single-object behavior;
-- uses the same cost definition, schedule, and hyperparameters across clutter
-  levels; and
-- explains its gains using the diagnostic regime identified in Section 2.
-
-The four-way outcome partition remains mandatory:
+Task-level evaluation always required Task SR, Safe SR, CR, NCR, and the
+four-way partition:
 
 ```text
 safe success
@@ -155,95 +28,79 @@ collision failure
 collision-free non-completion
 ```
 
-Small matched pilots are for eliminating candidates. A positive pilot must be
-followed by a statistically sized evaluation and multiple independently
-trained policy seeds before making a robustness claim.
+Local trajectory clearance was mechanism evidence, not a success criterion.
 
-Before implementing the next candidate, document its mechanism, required
-deployment information, operation on the existing 2 / 16 / 8 executable
-delta-EEF action contract, and intended P0 regime. Do not rerun either the
-rejected LAN penetration guide or uniform 5 cm XY expansion under another
-scale, margin, or timestep cutoff.
+## 2. P0 Failure Partition
 
-## 4. Environment Expansion
+The 600-episode intent diagnostic divided critical failure chunks into:
 
-Environment breadth is important, but full expansion is not the current
-bottleneck. Select and freeze the suite now; run only cheap unguided scouting
-until the method passes the gate above.
+```text
+target_directed_obstructed
+non_target_directed
+target_directed_clear
+```
 
-### Selection criteria
+Two- and three-distractor failures had no common majority category. The fixed
+decision was C: mixed / no single dominant mechanism. Consequently, every
+candidate had to name its targeted regime and report regime-stratified effects;
+obstacle feasibility could not be presented as a universal explanation.
 
-An environment enters the suite only if:
+Canonical result:
+`outputs/guided_denoising/intent_diagnostic/report.md`.
 
-- the single-object/source policy has at least about 80% Task SR;
-- adding distractors produces at least about a 20 percentage-point drop;
-- the source and deployment tasks keep the same semantic skill and target;
-- the existing delta-EEF action interface and evaluation metrics remain valid;
-- failure is not primarily caused by controller instability or timeout.
+## 3. Tested Inference-Only Branches
 
-### Planned robosuite suite
+- **LAN-style guided denoising:** changed predicted and executed trajectories,
+  but its paired safety effects were inconsistent.
+- **Sample-refine:** four-candidate sampling plus masked refinement left all 20
+  complete paired task outcomes unchanged while adding 76% inference time.
+- **Task-constrained eight-step correction:** recovered two task successes
+  among nine feasible layouts, but all nine retained distractor collision and
+  the preregistered Can-contact gate failed.
+- **LAN-aligned point-cloud policy and DDPM guide:** the source checkpoint
+  obtained only 0.50 clean Task SR over 150 episodes; calibrated guidance
+  produced no failure-to-success transition and caused paired regressions.
+- **One-distractor 5 cm XY expansion:** removed the only baseline collision,
+  but Task SR fell 0.70 to 0.65 and NCR rose 0.25 to 0.35.
+- **Policy-support diagnostic:** none of 640 samples was safe and
+  progress-preserving at the 1 cm boundary; support-constrained projection was
+  feasible in 1/20 states versus 14/20 without the support bound.
 
-| family | role | when to run |
-|---|---|---|
-| PickPlaceCan with 0--3 distractors | main development task; long-horizon reach, grasp, transport, and placement | now |
-| Lift with distractors | minimal pre-grasp test that isolates target acquisition and obstruction | baseline scout now; full comparison after the current method gate |
-| NutAssemblySquare with distractors | precision and alignment test; checks whether guidance preserves constrained downstream behavior | baseline scout now; full comparison after the current method gate |
+## 4. Stage Conclusion
 
-The scout should be minimal: verify source-policy competence, measure the
-single-to-multi drop, and inspect a small number of failures. Do not tune the
-method separately on the scout environments.
+For this checkpoint and tested local guidance family:
 
-## 5. Evaluation Order and Priority
+```text
+valid source policy and action interface
+    -> large degradation under distractors
+    -> oracle inference information changes local motion
+    -> local clearance improves without reliable Task SR gains
+    -> safe paths often lie outside effective policy support
+```
 
-1. **P0 — failure-mechanism diagnostic (complete, decision C):** the clean
-   policy exhibits a mixed partition with no mechanism dominant in both hard
-   environments.
-2. **P1 — targeted support-injection upper bound (active):** the LAN mechanism
-   baselines, sample-refine candidate, task-constrained eight-step feasibility
-   candidate, LAN-aligned epoch-350 closure, and one-distractor 5 cm XY
-   expansion have not passed the gate. Collect successful waypoint-teacher
-   corrections on fresh layouts, keep the strict 20-state bank held out, and
-   compare balanced mixed-data fine-tuning against the frozen checkpoint and a
-   clean-only continued-training control. Treat success as a learnability
-   upper bound before selecting a final adapter, world-model, controller, or
-   hybrid method.
-3. **P2 — policy-seed robustness:** repeat the accepted comparison with at
-   least three independently trained source-policy seeds. The current evidence
-   uses one checkpoint and cannot establish training robustness.
-4. **P3 — cross-task robosuite evaluation:** run the frozen method on Lift and
-   NutAssemblySquare only after their unguided scouts meet the entry criteria.
-5. **P4 — broader embodiment or simulator:** add this only if the intended
-   claim is simulator- or embodiment-general. It is not required to decide the
-   method now.
+Do not continue with another nearby scale, margin, or denoising-schedule sweep
+of the same point-clearance guide. This is not a universal impossibility claim
+for all frozen-policy planners or world models.
 
-This ordering prevents environment engineering from running ahead of the
-scientific question while still committing to a credible generalization test.
+The next experiment must first create or supply task-preserving avoidance
+support. The project selected targeted training-side correction as the
+learnability upper bound.
 
-## 6. Claim Discipline
+## 5. Canonical Artifacts
 
-The intended claim should match the result of the mechanism diagnostic and the
-eventual evidence:
-
-- one PickPlace family supports a controlled single-to-multi case study;
-- several robosuite task families support cross-task transfer within one
-  simulator and embodiment;
-- simulator- or embodiment-general language requires an additional platform.
-
-Until the cross-task stage succeeds, describe results as a controlled study,
-not as general multi-object transfer.
-
-## 7. Terminology Migration
-
-`Route B` was a temporary decision-tree label, not a technical concept. Active
-documents should use the actual object being discussed:
-
-- `delta EEF pose policy` for the active action representation;
-- `EEF action-interface validation` for the archived controller/replay work;
-- `OSC-action forward-model path` for the rejected earlier approach.
-
-Migration should be semantic rather than a global string replacement.
-Historical reports may say “historically called Route B” once when needed for
-traceability. The superseded validation implementation and result directories
-were removed from the active tree after the executable delta EEF pose route was
-validated; Git history and `docs/RESEARCH_LOG.md` retain the audit trail. New
-files and active project summaries must not introduce the old label.
+- synthesis:
+  `docs/guided_denoising/frozen_policy_inference_limitations.md`
+- source policy:
+  `outputs/eef_pose_osc_policy/multienv_eval_report.md`
+- first mechanism baseline:
+  `docs/guided_denoising/lan_o3dp_mechanism_baseline.md`
+- sample-refine:
+  `docs/guided_denoising/sample_refine_pilot.md`
+- task-constrained correction:
+  `outputs/task_constrained_guidance/stage1_report.md`
+- LAN-aligned closure:
+  `docs/guided_denoising/lan_o3dp_epoch350_closure.md`
+- support diagnostic:
+  `outputs/policy_manifold_diagnostic/report.md`
+- chronological decisions:
+  `docs/RESEARCH_LOG.md`

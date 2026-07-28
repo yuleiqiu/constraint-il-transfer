@@ -1,5 +1,9 @@
 # Guided Denoising Formulation
 
+Status: retained mathematical formulation for the completed inference-only
+stage. It is not the active experiment as of 2026-07-28; see
+`docs/targeted_finetuning/plan.md`.
+
 ## 1. Problem Setup
 
 We first train a diffusion policy from an imitation-learning dataset:

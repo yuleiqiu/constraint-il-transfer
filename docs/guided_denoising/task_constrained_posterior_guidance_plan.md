@@ -4,10 +4,11 @@ Status: Stage 1 stopped at the preregistered gate, 2026-07-22. The posterior-
 gradient Stage 2 was not started. See
 `outputs/task_constrained_guidance/stage1_report.md`.
 
-This document is the self-contained handoff for the next guided-denoising
-candidate. It supersedes no completed result. The LAN-style mechanism baseline
-and sample-refine pilot remain negative baselines rather than implementations
-of this plan.
+This document preserves the preregistered execution plan for the stopped
+candidate. It is not a current handoff: Stage 1 failed its gate, Stage 2 was
+never implemented, and the project subsequently moved to targeted
+training-side adaptation. The LAN-style mechanism baseline and sample-refine
+pilot remain separate negative baselines.
 
 ## 1. Objective and Scope
 

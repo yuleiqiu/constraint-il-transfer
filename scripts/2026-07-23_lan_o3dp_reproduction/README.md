@@ -1,8 +1,14 @@
 # LAN-O3DP Reproduction
 
+Status: completed and closed. Both trained point-cloud source policies missed
+their clean-source gates, and the later epoch-350 guidance evaluation failed
+its paired task gate. See
+`docs/guided_denoising/lan_o3dp_epoch350_closure.md`.
+
 This directory builds and verifies the point-cloud-conditioned delta-EEF
-Diffusion Policy training chain. It does not implement paper guidance or
-multi-object evaluation.
+Diffusion Policy training chain. Guidance and multi-object evaluation use the
+shared guided-denoising scripts outside this directory. The commands below are
+retained for reproduction, not as the current project runbook.
 
 Generate or resume the full dataset:
 
@@ -88,4 +94,6 @@ demos. The deliberate project deviations are:
   execution chain; and
 - epsilon prediction, retained for later guided denoising.
 
-No guided variant or additional control training is part of this run.
+No guided variant or additional control training is part of this training run.
+The later frozen-checkpoint guidance evaluation is recorded in the closure
+document linked above.
