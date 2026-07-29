@@ -18,6 +18,14 @@ outputs/sample_refine/fixed_state_sweep_v2/
 outputs/task_constrained_guidance/**
 !outputs/task_constrained_guidance/stage1_report.md
 !outputs/task_constrained_guidance/stage1_summary.json
+outputs/targeted_finetuning/**/*.hdf5
+outputs/targeted_finetuning/**/*.jsonl
+outputs/targeted_finetuning/**/stats.json
+outputs/targeted_finetuning/**/analysis/episode_features.csv
+outputs/targeted_finetuning/**/analysis/env_summary.csv
+outputs/gated_support_selector/**/*.jsonl
+outputs/oracle_branch_value/**/*.jsonl
+outputs/oracle_branch_value/**/teacher_control.json
 
 # Third-party source repos (managed independently)
 third_party/

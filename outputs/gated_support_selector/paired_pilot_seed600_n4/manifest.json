@@ -1,0 +1,26 @@
+{
+  "source_agent": "outputs/robomimic/train/dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth",
+  "corrective_agent": "outputs/robomimic/train/dp_can_delta_pose_osc_targeted_sdp/20260729173254/models/model_epoch_12.pth",
+  "envs": [
+    "PickPlaceCan",
+    "PickPlaceBreadCerealCan"
+  ],
+  "seeds": [
+    600
+  ],
+  "n_rollouts": 4,
+  "horizon": 400,
+  "candidate_count": 32,
+  "selector": {
+    "trigger_clearance_m": 0.01,
+    "minimum_start_clearance_m": 0.01,
+    "candidate_clearance_m": 0.01,
+    "progress_tolerance_m": 0.0005,
+    "progress_rule": "nonretreat"
+  },
+  "paired_initial_states": true,
+  "policy_seed_formula": "seed * 1_000_000 + episode",
+  "nominal_chunk_seed_formula": "policy_seed * 10_000 + chunk_index",
+  "candidate_seed_formula": "[nominal_seed] + [nominal_seed + 100_000 + i for i in range(K-1)]",
+  "deterministic_torch": true
+}

@@ -1,0 +1,21 @@
+{
+  "agent": "outputs/robomimic/train/dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth",
+  "envs": [
+    "PickPlaceBreadCan"
+  ],
+  "seeds": [
+    601,
+    602
+  ],
+  "n_rollouts": 50,
+  "horizon": 400,
+  "target_object_name": "Can",
+  "terminate_on_success": true,
+  "save_states": false,
+  "paired_action_seeds": true,
+  "deterministic_torch": true,
+  "paired_action_seed_formula": "env_seed * 100000 + episode_index",
+  "command": "MUJOCO_GL=egl MUJOCO_EGL_DEVICE_ID=0 ROBOMIMIC_GPU_ID=0 /home/yulei/codes/constraint-il-transfer/.venv/bin/python3 scripts/eef_pose_osc_policy/eval_delta_eef_multienv.py --agent outputs/robomimic/train/dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth --envs PickPlaceBreadCan --seeds 601 602 --n-rollouts 50 --horizon 400 --paired-action-seeds --deterministic-torch --out-dir outputs/targeted_finetuning/d1_final_source_seeds601_602_n50",
+  "git_commit": "40ca5e874234858d3b0ef7cf4aa31656cb9761d7",
+  "robomimic_commit": "862398aa80509708a19019d165fe86cdaff1189d"
+}

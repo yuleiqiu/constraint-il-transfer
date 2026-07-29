@@ -1,0 +1,24 @@
+{
+  "states": 3,
+  "source_outcomes": {
+    "collision_failure": 3
+  },
+  "oracle_any_outcomes": {
+    "ncr": 1,
+    "collision_failure": 2
+  },
+  "oracle_geometry_eligible_outcomes": {
+    "ncr": 1,
+    "collision_failure": 2
+  },
+  "states_with_any_corrective_success": 0,
+  "states_with_any_corrective_safe_success": 0,
+  "states_with_eligible_corrective_success": 0,
+  "states_with_eligible_corrective_safe_success": 0,
+  "states_with_geometry_eligible_candidate": 1,
+  "total_geometry_eligible_candidates": 30,
+  "oracle_any_failure_to_success": 0,
+  "oracle_any_success_to_failure": 0,
+  "oracle_eligible_failure_to_success": 0,
+  "oracle_eligible_success_to_failure": 0
+}

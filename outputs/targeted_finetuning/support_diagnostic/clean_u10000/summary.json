@@ -1,0 +1,27 @@
+{
+  "states": 20,
+  "margins": {
+    "0.0": {
+      "states": 20,
+      "states_with_raw_safe_progress_sample": 11,
+      "raw_safe_progress_state_rate": 0.55,
+      "projection_feasible_states": 11,
+      "projection_feasible_rate": 0.55,
+      "projection_only_rescues": 0,
+      "median_feasible_support_ratio": 0.24548049319968313,
+      "median_feasible_max_waypoint_displacement_cm": 5.6678953264867437e-08
+    },
+    "0.01": {
+      "states": 20,
+      "states_with_raw_safe_progress_sample": 0,
+      "raw_safe_progress_state_rate": 0.0,
+      "projection_feasible_states": 1,
+      "projection_feasible_rate": 0.05,
+      "projection_only_rescues": 1,
+      "median_feasible_support_ratio": 0.6822328626565058,
+      "median_feasible_max_waypoint_displacement_cm": 0.10981324006042585
+    }
+  },
+  "median_effective_rank": 15.800001296264165,
+  "median_condition_number": 1.6788242345574718
+}

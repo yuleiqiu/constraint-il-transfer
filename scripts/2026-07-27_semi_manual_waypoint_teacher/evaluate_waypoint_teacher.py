@@ -8,6 +8,7 @@ back to the frozen delta-EEF Diffusion Policy.
 import argparse
 import json
 import sys
+from collections import deque
 from pathlib import Path
 
 import h5py
@@ -133,12 +134,21 @@ def execute_action(
     env,
     raw_env,
     maps,
+    obs,
     action,
     metrics,
     phase,
     label=None,
+    transition_callback=None,
 ):
-    obs, _, done, _ = env.step(np.asarray(action, dtype=np.float32))
+    action = np.asarray(action, dtype=np.float32)
+    state_before = env.get_state() if transition_callback is not None else None
+    obs_before = (
+        {key: np.asarray(value).copy() for key, value in obs.items()}
+        if transition_callback is not None
+        else None
+    )
+    next_obs, reward, done, info = env.step(action)
     target_contact, obstacle_contact, obstacle_names = contact_state(raw_env, maps)
     metrics["target_contact_any"] |= target_contact
     metrics["collision_any"] |= obstacle_contact
@@ -160,7 +170,25 @@ def execute_action(
         )
     metrics["success"] |= guided_common.task_success(env)
     metrics["executed_steps"] += 1
-    return obs, bool(done or metrics["success"])
+    if transition_callback is not None:
+        transition_callback(
+            state_before=state_before,
+            obs=obs_before,
+            next_obs={
+                key: np.asarray(value).copy() for key, value in next_obs.items()
+            },
+            action=action.copy(),
+            reward=float(reward),
+            done=bool(done),
+            info=info,
+            phase=phase,
+            label=label,
+            target_contact=target_contact,
+            obstacle_contact=obstacle_contact,
+            obstacle_names=obstacle_names,
+            task_success=metrics["success"],
+        )
+    return next_obs, bool(done or metrics["success"])
 
 
 def execute_frozen_policy(
@@ -173,6 +201,7 @@ def execute_frozen_policy(
     target_object_name,
     maximum_steps,
     noise_seed_base,
+    transition_callback=None,
 ):
     policy.start_episode()
     chunk_index = 0
@@ -201,7 +230,15 @@ def execute_frozen_policy(
             if metrics["executed_steps"] >= maximum_steps:
                 break
             obs, terminal = execute_action(
-                env, raw_env, maps, action, metrics, "policy", "policy_chunk"
+                env,
+                raw_env,
+                maps,
+                obs,
+                action,
+                metrics,
+                "policy",
+                "policy_chunk",
+                transition_callback=transition_callback,
             )
             if terminal:
                 break
@@ -238,6 +275,40 @@ def finalize_metrics(metrics, obs, raw_env, target_object_name):
     ).tolist()
     result["final_staged_rewards"] = guided_common.staged_task_progress(raw_env)
     return result
+
+
+def restore_stacked_observation(env, state, obs_history=None, timestep=None):
+    """Reset a frame-stacked env and optionally restore its exact history."""
+
+    obs = env.reset_to(state)
+    if obs_history is None:
+        return obs
+    if not hasattr(env, "obs_history") or not hasattr(env, "num_frames"):
+        raise TypeError("Expected a FrameStackWrapper when restoring obs history")
+    restored = {}
+    for key, values in obs_history.items():
+        values = np.asarray(values)
+        if values.shape[0] != env.num_frames:
+            raise ValueError(
+                "Observation history for {} has {} frames, expected {}".format(
+                    key, values.shape[0], env.num_frames
+                )
+            )
+        restored[key] = deque(
+            [values[index : index + 1].copy() for index in range(env.num_frames)],
+            maxlen=env.num_frames,
+        )
+    missing = set(obs) - set(restored)
+    extra = set(restored) - set(obs)
+    if missing or extra:
+        raise ValueError(
+            "Restored observation keys differ from environment keys; "
+            "missing={} extra={}".format(sorted(missing), sorted(extra))
+        )
+    env.obs_history = restored
+    if timestep is not None:
+        env.timestep = int(timestep)
+    return env._get_stacked_obs_from_history()
 
 
 def evaluate_baseline(
@@ -286,8 +357,14 @@ def evaluate_teacher(
     max_rotation_delta_rad,
     restore_yaw_before_handoff,
     continue_with_policy=True,
+    transition_callback=None,
 ):
-    obs = env.reset_to(saved["state"])
+    obs = restore_stacked_observation(
+        env,
+        saved["state"],
+        obs_history=saved.get("obs_history"),
+        timestep=saved.get("start_step"),
+    )
     raw_env = guided_common.raw_env_from_wrapper(env)
     records = guided_common.active_object_records(raw_env)
     maps = guided_common.contact_maps(raw_env, records, target_object_name)
@@ -340,10 +417,12 @@ def evaluate_teacher(
             env,
             raw_env,
             maps,
+            obs,
             action,
             metrics,
             "teacher",
             "route_segment_{}".format(segment_index),
+            transition_callback=transition_callback,
         )
         metrics["teacher_steps"] += 1
         if terminal or metrics["executed_steps"] >= maximum_steps:
@@ -355,10 +434,12 @@ def evaluate_teacher(
                     env,
                     raw_env,
                     maps,
+                    obs,
                     hold,
                     metrics,
                     "teacher",
                     "settle_segment_{}".format(segment_index),
+                    transition_callback=transition_callback,
                 )
                 metrics["teacher_steps"] += 1
                 if terminal or metrics["executed_steps"] >= maximum_steps:
@@ -380,10 +461,12 @@ def evaluate_teacher(
                         env,
                         raw_env,
                         maps,
+                        obs,
                         rotate,
                         metrics,
                         "teacher",
                         "yaw_rotation",
+                        transition_callback=transition_callback,
                     )
                     metrics["teacher_steps"] += 1
                     if terminal or metrics["executed_steps"] >= maximum_steps:
@@ -411,7 +494,15 @@ def evaluate_teacher(
         close_action = action_from_position_delta(np.zeros(3), 1.0)
         for _ in range(close_steps):
             obs, terminal = execute_action(
-                env, raw_env, maps, close_action, metrics, "teacher", "close"
+                env,
+                raw_env,
+                maps,
+                obs,
+                close_action,
+                metrics,
+                "teacher",
+                "close",
+                transition_callback=transition_callback,
             )
             metrics["teacher_steps"] += 1
             if terminal or metrics["executed_steps"] >= maximum_steps:
@@ -426,7 +517,15 @@ def evaluate_teacher(
                 break
             action = action_from_position_delta(delta, 1.0)
             obs, terminal = execute_action(
-                env, raw_env, maps, action, metrics, "teacher", "grasp_lift"
+                env,
+                raw_env,
+                maps,
+                obs,
+                action,
+                metrics,
+                "teacher",
+                "grasp_lift",
+                transition_callback=transition_callback,
             )
             metrics["teacher_steps"] += 1
         final_teacher_goal = lift_goal
@@ -452,10 +551,12 @@ def evaluate_teacher(
                     env,
                     raw_env,
                     maps,
+                    obs,
                     rotate,
                     metrics,
                     "teacher",
                     "restore_yaw",
+                    transition_callback=transition_callback,
                 )
                 metrics["teacher_steps"] += 1
                 if terminal or metrics["executed_steps"] >= maximum_steps:
@@ -482,6 +583,7 @@ def evaluate_teacher(
             target_object_name,
             maximum_steps,
             saved["noise_seed"] + 100_000,
+            transition_callback=transition_callback,
         )
     result = finalize_metrics(metrics, obs, raw_env, target_object_name)
     result.update(

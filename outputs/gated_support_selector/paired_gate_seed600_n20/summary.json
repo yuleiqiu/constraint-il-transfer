@@ -1,0 +1,78 @@
+{
+  "conditions": [
+    {
+      "env": "PickPlaceBreadCerealCan",
+      "condition": "source",
+      "episodes": 20,
+      "task_sr": 0.25,
+      "safe_sr": 0.15,
+      "cr": 0.8,
+      "ncr": 0.05,
+      "safe_success": 3,
+      "success_with_collision": 2,
+      "collision_failure": 14,
+      "collision_free_non_completion": 1,
+      "triggered_chunks": 0,
+      "corrective_chunks": 0,
+      "fallback_chunks": 0,
+      "action_clip_count": 0,
+      "observation_failure_count": 0
+    },
+    {
+      "env": "PickPlaceBreadCerealCan",
+      "condition": "gated",
+      "episodes": 20,
+      "task_sr": 0.15,
+      "safe_sr": 0.1,
+      "cr": 0.75,
+      "ncr": 0.15,
+      "safe_success": 2,
+      "success_with_collision": 1,
+      "collision_failure": 14,
+      "collision_free_non_completion": 3,
+      "triggered_chunks": 13,
+      "corrective_chunks": 5,
+      "fallback_chunks": 8,
+      "action_clip_count": 0,
+      "observation_failure_count": 0
+    }
+  ],
+  "paired_transitions": [
+    {
+      "env": "PickPlaceBreadCerealCan",
+      "source_outcome": "collision_failure",
+      "gated_outcome": "collision_failure",
+      "count": 14
+    },
+    {
+      "env": "PickPlaceBreadCerealCan",
+      "source_outcome": "ncr",
+      "gated_outcome": "ncr",
+      "count": 1
+    },
+    {
+      "env": "PickPlaceBreadCerealCan",
+      "source_outcome": "safe_success",
+      "gated_outcome": "ncr",
+      "count": 1
+    },
+    {
+      "env": "PickPlaceBreadCerealCan",
+      "source_outcome": "safe_success",
+      "gated_outcome": "safe_success",
+      "count": 2
+    },
+    {
+      "env": "PickPlaceBreadCerealCan",
+      "source_outcome": "success_with_collision",
+      "gated_outcome": "ncr",
+      "count": 1
+    },
+    {
+      "env": "PickPlaceBreadCerealCan",
+      "source_outcome": "success_with_collision",
+      "gated_outcome": "success_with_collision",
+      "count": 1
+    }
+  ]
+}

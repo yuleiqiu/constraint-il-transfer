@@ -1,0 +1,17 @@
+{
+  "source_agent": "outputs/robomimic/train/dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth",
+  "corrective_agent": "outputs/robomimic/train/dp_can_delta_pose_osc_targeted_sdp/20260729173254/models/model_epoch_12.pth",
+  "state_banks": [
+    "outputs/task_constrained_guidance/one_chunk_lead_states/states.hdf5",
+    "outputs/task_constrained_guidance/one_chunk_lead_states_seed601_602/states.hdf5",
+    "outputs/task_constrained_guidance/one_chunk_lead_states_seed603_607/states.hdf5"
+  ],
+  "candidate_count": 32,
+  "selector": {
+    "trigger_clearance_m": 0.01,
+    "minimum_start_clearance_m": 0.01,
+    "candidate_clearance_m": 0.01,
+    "progress_tolerance_m": 0.0005,
+    "progress_rule": "source_relative"
+  }
+}

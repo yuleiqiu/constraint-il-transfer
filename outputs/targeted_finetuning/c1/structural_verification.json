@@ -1,0 +1,342 @@
+{
+  "status": "pass",
+  "raw": {
+    "episodes": [
+      {
+        "episode": "demo_0",
+        "train_eligible": true,
+        "samples": 378,
+        "teacher_steps": 125,
+        "longest_teacher_interval": 125,
+        "pairs": 111,
+        "split": "valid"
+      },
+      {
+        "episode": "demo_1",
+        "train_eligible": true,
+        "samples": 311,
+        "teacher_steps": 143,
+        "longest_teacher_interval": 143,
+        "pairs": 129,
+        "split": "train"
+      },
+      {
+        "episode": "demo_2",
+        "train_eligible": true,
+        "samples": 374,
+        "teacher_steps": 134,
+        "longest_teacher_interval": 134,
+        "pairs": 120,
+        "split": "train"
+      },
+      {
+        "episode": "demo_3",
+        "train_eligible": true,
+        "samples": 390,
+        "teacher_steps": 148,
+        "longest_teacher_interval": 148,
+        "pairs": 134,
+        "split": "train"
+      },
+      {
+        "episode": "demo_4",
+        "train_eligible": true,
+        "samples": 363,
+        "teacher_steps": 143,
+        "longest_teacher_interval": 143,
+        "pairs": 129,
+        "split": "train"
+      },
+      {
+        "episode": "demo_5",
+        "train_eligible": true,
+        "samples": 271,
+        "teacher_steps": 117,
+        "longest_teacher_interval": 117,
+        "pairs": 103,
+        "split": "train"
+      },
+      {
+        "episode": "demo_6",
+        "train_eligible": true,
+        "samples": 382,
+        "teacher_steps": 122,
+        "longest_teacher_interval": 122,
+        "pairs": 108,
+        "split": "train"
+      },
+      {
+        "episode": "demo_7",
+        "train_eligible": true,
+        "samples": 273,
+        "teacher_steps": 94,
+        "longest_teacher_interval": 94,
+        "pairs": 80,
+        "split": "train"
+      },
+      {
+        "episode": "demo_8",
+        "train_eligible": false,
+        "samples": 358,
+        "teacher_steps": 134,
+        "longest_teacher_interval": 134,
+        "pairs": 0,
+        "split": "train"
+      },
+      {
+        "episode": "demo_9",
+        "train_eligible": true,
+        "samples": 365,
+        "teacher_steps": 125,
+        "longest_teacher_interval": 125,
+        "pairs": 111,
+        "split": "train"
+      },
+      {
+        "episode": "demo_10",
+        "train_eligible": true,
+        "samples": 254,
+        "teacher_steps": 124,
+        "longest_teacher_interval": 124,
+        "pairs": 110,
+        "split": "train"
+      },
+      {
+        "episode": "demo_11",
+        "train_eligible": true,
+        "samples": 258,
+        "teacher_steps": 109,
+        "longest_teacher_interval": 109,
+        "pairs": 95,
+        "split": "valid"
+      },
+      {
+        "episode": "demo_12",
+        "train_eligible": true,
+        "samples": 250,
+        "teacher_steps": 126,
+        "longest_teacher_interval": 126,
+        "pairs": 112,
+        "split": "train"
+      },
+      {
+        "episode": "demo_13",
+        "train_eligible": true,
+        "samples": 307,
+        "teacher_steps": 121,
+        "longest_teacher_interval": 121,
+        "pairs": 107,
+        "split": "train"
+      },
+      {
+        "episode": "demo_14",
+        "train_eligible": true,
+        "samples": 312,
+        "teacher_steps": 130,
+        "longest_teacher_interval": 130,
+        "pairs": 116,
+        "split": "train"
+      },
+      {
+        "episode": "demo_15",
+        "train_eligible": true,
+        "samples": 369,
+        "teacher_steps": 128,
+        "longest_teacher_interval": 128,
+        "pairs": 114,
+        "split": "train"
+      },
+      {
+        "episode": "demo_16",
+        "train_eligible": true,
+        "samples": 310,
+        "teacher_steps": 118,
+        "longest_teacher_interval": 118,
+        "pairs": 104,
+        "split": "train"
+      },
+      {
+        "episode": "demo_17",
+        "train_eligible": true,
+        "samples": 360,
+        "teacher_steps": 112,
+        "longest_teacher_interval": 112,
+        "pairs": 98,
+        "split": "valid"
+      },
+      {
+        "episode": "demo_18",
+        "train_eligible": true,
+        "samples": 396,
+        "teacher_steps": 162,
+        "longest_teacher_interval": 162,
+        "pairs": 148,
+        "split": "valid"
+      },
+      {
+        "episode": "demo_19",
+        "train_eligible": true,
+        "samples": 311,
+        "teacher_steps": 136,
+        "longest_teacher_interval": 136,
+        "pairs": 122,
+        "split": "train"
+      },
+      {
+        "episode": "demo_20",
+        "train_eligible": true,
+        "samples": 350,
+        "teacher_steps": 125,
+        "longest_teacher_interval": 125,
+        "pairs": 111,
+        "split": "train"
+      },
+      {
+        "episode": "demo_21",
+        "train_eligible": true,
+        "samples": 236,
+        "teacher_steps": 114,
+        "longest_teacher_interval": 114,
+        "pairs": 100,
+        "split": "train"
+      },
+      {
+        "episode": "demo_22",
+        "train_eligible": true,
+        "samples": 365,
+        "teacher_steps": 105,
+        "longest_teacher_interval": 105,
+        "pairs": 91,
+        "split": "train"
+      },
+      {
+        "episode": "demo_23",
+        "train_eligible": true,
+        "samples": 351,
+        "teacher_steps": 132,
+        "longest_teacher_interval": 132,
+        "pairs": 118,
+        "split": "valid"
+      },
+      {
+        "episode": "demo_24",
+        "train_eligible": true,
+        "samples": 372,
+        "teacher_steps": 130,
+        "longest_teacher_interval": 130,
+        "pairs": 116,
+        "split": "train"
+      },
+      {
+        "episode": "demo_25",
+        "train_eligible": true,
+        "samples": 333,
+        "teacher_steps": 145,
+        "longest_teacher_interval": 145,
+        "pairs": 131,
+        "split": "valid"
+      }
+    ],
+    "total_pairs": 2818
+  },
+  "pairs": {
+    "pairs": 2818,
+    "positive_normalized": {
+      "minimum": [
+        -0.7312970161437988,
+        -0.013274037279188633,
+        -0.4855208992958069,
+        0.33732810616493225,
+        -0.1587485820055008,
+        -0.5566014051437378,
+        -1.0
+      ],
+      "maximum": [
+        0.7406812906265259,
+        0.8300586342811584,
+        0.7627505660057068,
+        0.4933313727378845,
+        0.2015337496995926,
+        0.8486419320106506,
+        0.999998927116394
+      ],
+      "outside_count": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "outside_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "maximum_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "total_outside": 0
+    },
+    "negative_normalized": {
+      "minimum": [
+        -0.7312970161437988,
+        -0.013274037279188633,
+        -0.4855208992958069,
+        0.17238105833530426,
+        -0.43576690554618835,
+        -0.5566014051437378,
+        -1.0
+      ],
+      "maximum": [
+        0.7406812906265259,
+        0.8300586342811584,
+        0.7627505660057068,
+        0.5573927164077759,
+        0.6216719746589661,
+        0.8486419320106506,
+        1.0
+      ],
+      "outside_count": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "outside_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "maximum_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "total_outside": 0
+    }
+  },
+  "replay": null
+}

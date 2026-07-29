@@ -5,11 +5,10 @@
 Study single-to-multi-object transfer for a diffusion imitation policy using an
 executable delta-EEF action interface.
 
-The current question is whether a small number of targeted, successful
-multi-object corrections can inject missing task-preserving avoidance behavior
-into the reliable single-object policy without materially degrading its clean
-behavior. The immediate experiment is a full-policy targeted fine-tuning upper
-bound, not yet the final proposed method.
+The current question is how to select and localize targeted avoidance
+adaptation without disrupting the task modes of the reliable single-object
+policy. Positive-only and set-supervised full-policy fine-tuning both inject
+local safe-progress support but fail closed loop.
 
 Deployment-time guided denoising was the preceding research stage. Its
 formulation and negative results remain important evidence, but it is no longer
@@ -17,12 +16,52 @@ the active implementation direction.
 
 ## 2. Current State
 
-- **Targeted fine-tuning upper bound is active (2026-07-28)**: collect a small
-  set of complete successful hybrid correction episodes on fresh multi-object
-  layouts, initialize from the epoch-260 delta-EEF checkpoint, and train with
-  balanced clean replay plus oversampled correction data. Compare against the
-  frozen checkpoint and a clean-only continued-training control. See
-  `docs/targeted_finetuning/plan.md`.
+- **SDP gives a positive D1 transfer result when horizon matches the slower
+  corrective behavior (2026-07-29)**: the fixed SDP-6k checkpoint changes
+  untouched-seed D1 Task SR / CR from `0.66 / 0.25` to `0.72 / 0.18` at
+  horizon 400. At the equally applied 600-step horizon, source / SDP Task SR
+  is `0.67 / 0.78`, with 12 failure-to-success versus one
+  success-to-failure transition (exact paired `p=0.0034`) and CR
+  `0.26 / 0.19`. Horizon 800 adds no successes beyond 600. Retain D1/H600 as
+  the positive targeted-transfer regime and D2 as the capacity boundary. See
+  `outputs/targeted_finetuning/d1_horizon_salvage_report.md`.
+- **Oracle branch-value pilot rejects ranking-only world models
+  (2026-07-29)**: on three held-out pre-collision states, 96 SDP chunks all
+  avoid immediate contact but their full frozen-source continuations yield
+  32 NCRs and 64 collision failures, with zero Can contacts and zero Task
+  successes. A hindsight oracle has no successful branch to select, while the
+  waypoint teacher solves the same states 3/3 without collision using
+  121--144 controlled steps. Stop the 20-state expansion and do not train a
+  model that only ranks these one-chunk candidates. See
+  `outputs/oracle_branch_value/pilot_3state/result_report.md`.
+- **Oracle-gated corrective selection fails the D2 gate (2026-07-29)**:
+  source-default gating with 32 SDP-6k samples finds a 1 cm-clearance,
+  non-retreating candidate in 11/20 strict states. In 20 paired D2 rollouts it
+  changes Task SR / Safe SR / CR / NCR from 0.25 / 0.15 / 0.80 / 0.05 to
+  0.15 / 0.10 / 0.75 / 0.15, with zero failure-to-success and two
+  success-to-NCR transitions. Local support plus oracle geometry still lacks
+  a temporally extended task-value / recovery criterion. Do not tune or scale
+  this selector. See `outputs/gated_support_selector/report.md`.
+- **SDP and lower-exposure BC fail the closed-loop gate (2026-07-29)**:
+  paper-aligned SDP (`r=0.1`, `N=16`, `K_A=16`) and a 90/10 positive-BC
+  exposure control were each trained for 10,000 updates. Their best paired D2
+  Task SR is 0.25 versus source 0.35; no checkpoint meets the transition gate.
+  SDP nevertheless reaches 10/20 strict direct safe-progress states and 11/20
+  support-feasible states. This strengthens the conclusion that full-policy
+  correction training adds avoidance support but does not reliably enter,
+  sustain, and exit the corrective mode in D2. A subsequent fixed-checkpoint
+  D1 evaluation is positive; do not run D3 or broad ratio/radius sweeps. See
+  `outputs/targeted_finetuning/sdp_result_report.md`.
+- **Positive correction BC injects support but fails closed loop
+  (2026-07-28)**: 25 verified D2 episodes yield 2,849 paired windows. A 50/50
+  clean / paired-positive treatment changes strict 1 cm support coverage from
+  source 0/20 direct hits and 1/20 feasible projections to 10/20 and 13/20,
+  while D0 remains 1.00. It nevertheless lowers paired D2 Task SR from 0.35
+  to 0.25 and causes two failure-to-success versus four success-to-failure
+  transitions. The clean-only control preserves the source success set.
+  Do not scale this BC recipe or collect more identical corrections; reuse the
+  fixed pairs for an SDP-style comparison. See
+  `outputs/targeted_finetuning/upper_bound_report.md`.
 - **Waypoint teacher feasibility is positive**: on the 20 held-out strict
   pre-collision states, discrete-yaw waypoint search changed Task success from
   1/20 to 18/20 and distractor collision from 20/20 to 2/20, with 17
@@ -49,10 +88,12 @@ the active implementation direction.
 - **Evaluation remains task-level**: report Task SR, Safe SR, CR, NCR, and the
   four-way outcome partition. Local clearance or support diagnostics are
   mechanism evidence, not substitutes for rollout success.
-- **World-model and adapter methods are deferred, not rejected**: first use
-  full-policy targeted fine-tuning to establish a learnability upper bound.
-  If it succeeds, choose where the new avoidance knowledge should live; if it
-  fails, revisit observation, architecture, temporal credit, or data quality.
+- **The next model should generate a multi-step corrective route**: keep the
+  source frozen and learn an object-relative waypoint / residual expert with
+  an explicit phase and handoff. The existing waypoint teacher is the positive
+  control and data source. Do not introduce a world model merely to rank the
+  current SDP chunks; long-horizon planning is only justified if it also
+  generates behavior beyond that candidate set.
 
 ## 3. Subproject AGENTS
 
@@ -66,6 +107,10 @@ the active implementation direction.
 - `eef_pose_osc_policy/` — active source-policy conclusion, reconstruction
   diagnostics, and multi-environment baseline
 - `policy_manifold_diagnostic/` — frozen-policy support diagnostic
+- `targeted_finetuning/` — correction-data gates, checkpoint screen, and
+  positive-BC / support conclusion
+- `gated_support_selector/` — fixed-state and paired-rollout localization gate
+- `oracle_branch_value/` — cloned-simulator candidate-existence pilot
 - `guided_denoising/` — completed inference-only experiment summaries
 - `task_constrained_guidance/` and `sample_refine/` — completed negative stages
 - `forward_model/` — archived OSC-action forward-model summaries
@@ -78,7 +123,7 @@ constraint-il-transfer/             ← Project root (independent git repo)
 ├── metadata/                        ← Environment metadata
 ├── docs/                            ← Research artifacts
 │   ├── RESEARCH_LOG.md              ← Reverse-chronological log of discussions + decisions
-│   ├── targeted_finetuning/          ← Active upper-bound plan
+│   ├── targeted_finetuning/          ← Paired-data contract and positive-BC result
 │   ├── guided_denoising/             ← Completed inference-only formulations and results
 │   └── forward_model_guidance_next_steps.md ← Archived Δgeo forward-model / ranking handoff and results
 ├── papers/<name>/                   ← Paper PDFs + agent-generated analysis.md
@@ -86,6 +131,9 @@ constraint-il-transfer/             ← Project root (independent git repo)
 ├── outputs/                         ← Experiment outputs
 │   ├── eef_pose_osc_policy/          ← Active source-policy conclusions and diagnostics
 │   ├── policy_manifold_diagnostic/   ← Frozen-policy support evidence
+│   ├── targeted_finetuning/          ← Correction gates, screen, and support result
+│   ├── gated_support_selector/       ← Gated SDP selector result
+│   ├── oracle_branch_value/          ← Oracle continuation-existence result
 │   └── guided_denoising/             ← Completed inference-only experiment summaries
 ├── .opencode/agents/                ← Agent definitions (paper-reader, code-explorer)
 ├── third_party/                     ← Editable source deps (managed independently, see §10)
@@ -98,16 +146,24 @@ constraint-il-transfer/             ← Project root (independent git repo)
 
 1. Read this file (AGENTS.md) first
 2. For project state + recent discussions → `docs/RESEARCH_LOG.md`
-3. For the active experiment contract → `docs/targeted_finetuning/plan.md`
-4. For why the frozen-policy stage stopped →
+3. For the oracle branch-value result →
+   `outputs/oracle_branch_value/pilot_3state/result_report.md`
+4. For the completed gated selector result →
+   `outputs/gated_support_selector/report.md`
+5. For the completed SDP and exposure-control result →
+   `outputs/targeted_finetuning/sdp_result_report.md`
+6. For the positive-BC predecessor →
+   `outputs/targeted_finetuning/upper_bound_report.md`
+7. For why the frozen-policy stage stopped →
    `docs/guided_denoising/frozen_policy_inference_limitations.md`
-5. For the waypoint-teacher upper bound →
+8. For the waypoint-teacher upper bound →
    `scripts/2026-07-27_semi_manual_waypoint_teacher/README.md`
-6. For EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
-7. For local scripts and how to run them → `scripts/AGENTS.md`
-8. For historical inference-only methods → `docs/guided_denoising/`
-9. For paper comparisons → `papers/<name>/analysis.md`
-10. For inner robomimic code → `third_party/robomimic/AGENTS.md`
+9. For EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
+10. For local scripts and how to run them → `scripts/AGENTS.md`
+11. For historical inference-only methods → `docs/guided_denoising/`
+12. For paper comparisons → `papers/<name>/analysis.md`
+13. For inner robomimic code → `third_party/robomimic/AGENTS.md`
+14. Before deleting local checkpoints → `docs/checkpoint_retention.md`
 
 ## 6. Environments
 

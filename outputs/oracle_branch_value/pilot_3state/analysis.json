@@ -1,0 +1,98 @@
+{
+  "states": 3,
+  "source_branches": 3,
+  "corrective_branches": 96,
+  "source_outcomes": {
+    "collision_failure": 3
+  },
+  "corrective_outcomes": {
+    "ncr": 32,
+    "collision_failure": 64
+  },
+  "local_selector_outcomes": {
+    "ncr": 1,
+    "collision_failure": 2
+  },
+  "oracle_any_outcomes": {
+    "ncr": 1,
+    "collision_failure": 2
+  },
+  "oracle_geometry_eligible_outcomes": {
+    "ncr": 1,
+    "collision_failure": 2
+  },
+  "corrective_task_successes": 0,
+  "corrective_target_contacts": 0,
+  "corrective_safe_successes": 0,
+  "corrective_immediate_collision_free": 96,
+  "corrective_full_collision_free": 32,
+  "geometry_eligible_branches": 30,
+  "action_clip_count": 0,
+  "maximum_action_clip_abs": 1.0728836059570312e-06,
+  "maximum_source_capture_reproduction_abs": 3.1054019927978516e-05,
+  "mean_branch_wall_time_s": 6.757842042713868,
+  "teacher_control": {
+    "states": 3,
+    "baseline": {
+      "successes": 1,
+      "target_contacts": 1,
+      "collisions": 3
+    },
+    "teacher_then_policy": {
+      "successes": 3,
+      "target_contacts": 3,
+      "collisions": 0
+    },
+    "paired": {
+      "failure_to_success": 2,
+      "success_to_failure": 0,
+      "collision_to_safe": 3,
+      "safe_to_collision": 0
+    },
+    "yaw_search": {
+      "safe_picks": 3,
+      "selected_yaw_counts": {
+        "0.0": 2,
+        "20.0": 1
+      }
+    }
+  },
+  "per_state": [
+    {
+      "state_id": "one_chunk_lead_states:PickPlaceBreadCerealCan_preentry_000",
+      "source_outcome": "collision_failure",
+      "geometry_eligible": 30,
+      "immediate_collision_free": 32,
+      "corrective_target_contacts": 0,
+      "corrective_successes": 0,
+      "local_outcome": "ncr",
+      "oracle_any_outcome": "ncr",
+      "oracle_eligible_outcome": "ncr",
+      "capture_reproduction_max_abs": 2.9206275939941406e-05
+    },
+    {
+      "state_id": "one_chunk_lead_states:PickPlaceBreadCerealCan_preentry_001",
+      "source_outcome": "collision_failure",
+      "geometry_eligible": 0,
+      "immediate_collision_free": 32,
+      "corrective_target_contacts": 0,
+      "corrective_successes": 0,
+      "local_outcome": "collision_failure",
+      "oracle_any_outcome": "collision_failure",
+      "oracle_eligible_outcome": "collision_failure",
+      "capture_reproduction_max_abs": 2.5570392608642578e-05
+    },
+    {
+      "state_id": "one_chunk_lead_states:PickPlaceBreadCerealCan_preentry_002",
+      "source_outcome": "collision_failure",
+      "geometry_eligible": 0,
+      "immediate_collision_free": 32,
+      "corrective_target_contacts": 0,
+      "corrective_successes": 0,
+      "local_outcome": "collision_failure",
+      "oracle_any_outcome": "collision_failure",
+      "oracle_eligible_outcome": "collision_failure",
+      "capture_reproduction_max_abs": 3.1054019927978516e-05
+    }
+  ]
+}

@@ -650,6 +650,19 @@ def parse_args():
     parser.add_argument("--target-object-name", type=str, default="Can")
     parser.add_argument("--terminate-on-success", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--save-states", action="store_true")
+    parser.add_argument(
+        "--paired-action-seeds",
+        action="store_true",
+        help=(
+            "Reset the torch RNG before every episode using a seed derived from "
+            "(environment seed, episode index). Use this for paired checkpoint comparisons."
+        ),
+    )
+    parser.add_argument(
+        "--deterministic-torch",
+        action="store_true",
+        help="Request deterministic CUDA / cuDNN algorithms for reproducible paired evaluation.",
+    )
     parser.add_argument("--overwrite", action="store_true")
     return parser.parse_args()
 
@@ -659,6 +672,9 @@ def main():
     if args.out_dir.exists() and any(args.out_dir.iterdir()) and not args.overwrite:
         raise FileExistsError(f"{args.out_dir} already exists and is not empty; pass --overwrite")
     args.out_dir.mkdir(parents=True, exist_ok=True)
+
+    if args.deterministic_torch:
+        os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
 
     repo_root = Path(__file__).resolve().parents[2]
     manifest = {
@@ -670,6 +686,11 @@ def main():
         "target_object_name": args.target_object_name,
         "terminate_on_success": args.terminate_on_success,
         "save_states": args.save_states,
+        "paired_action_seeds": args.paired_action_seeds,
+        "deterministic_torch": args.deterministic_torch,
+        "paired_action_seed_formula": "env_seed * 100000 + episode_index"
+        if args.paired_action_seeds
+        else None,
         "command": shell_command(),
         "git_commit": git_rev(repo_root),
         "robomimic_commit": git_rev(repo_root / "third_party" / "robomimic"),
@@ -677,6 +698,14 @@ def main():
     write_stats_json(args.out_dir / "manifest.json", manifest)
 
     device = TorchUtils.get_torch_device(try_to_use_cuda=True)
+    if args.deterministic_torch:
+        # get_torch_device enables cudnn.benchmark, so configure deterministic
+        # execution after selecting the device and before loading the policy.
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cuda.matmul.allow_tf32 = False
+        torch.backends.cudnn.allow_tf32 = False
+        torch.use_deterministic_algorithms(True)
     policy, ckpt_dict = FileUtils.policy_from_checkpoint(ckpt_path=str(args.agent), device=device, verbose=False)
 
     summary_rows = []
@@ -705,6 +734,9 @@ def main():
                 data_group = h5.create_group("episodes")
                 for rollout_i in range(args.n_rollouts):
                     print(f"{env_name} seed={seed} rollout {rollout_i + 1}/{args.n_rollouts}", flush=True)
+                    action_seed = seed * 100000 + rollout_i
+                    if args.paired_action_seeds:
+                        torch.manual_seed(action_seed)
                     summary, traj = rollout_episode(
                         policy=policy,
                         env=env,
@@ -714,7 +746,13 @@ def main():
                         terminate_on_success=args.terminate_on_success,
                         save_states=args.save_states,
                     )
-                    summary = {"episode": rollout_i, "env": env_name, "seed": seed, **summary}
+                    summary = {
+                        "episode": rollout_i,
+                        "env": env_name,
+                        "seed": seed,
+                        "action_seed": action_seed if args.paired_action_seeds else None,
+                        **summary,
+                    }
                     episode_summaries.append(summary)
                     jsonl.write(json.dumps(json_sanitize(summary)) + "\n")
                     jsonl.flush()

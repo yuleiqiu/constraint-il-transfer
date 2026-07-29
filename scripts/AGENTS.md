@@ -42,6 +42,28 @@ scripts/
 │   ├── evaluate_waypoint_teacher.py
 │   ├── test_waypoint_teacher.py
 │   └── README.md
+├── 2026-07-28_targeted_correction/
+│   ├── paired_correction.py
+│   ├── collect_corrections.py
+│   ├── extract_correction_pairs.py
+│   ├── verify_correction_data.py
+│   ├── smoke_mixed_training.py
+│   ├── screen_checkpoints.py
+│   ├── test_paired_correction.py
+│   └── README.md
+├── 2026-07-29_gated_support_selector/
+│   ├── selector.py
+│   ├── runtime.py
+│   ├── fixed_state_preflight.py
+│   ├── paired_rollout_eval.py
+│   ├── test_selector.py
+│   └── README.md
+├── 2026-07-29_oracle_branch_value/
+│   ├── branch_value.py
+│   ├── simulator_branch_eval.py
+│   ├── analyze_results.py
+│   ├── test_branch_value.py
+│   └── README.md
 ├── eef_pose_osc_policy/
 │   ├── create_abs_eef_osc_dataset.py
 │   ├── create_delta_eef_pose_osc_dataset.py
@@ -76,6 +98,9 @@ scripts/
 - **LAN-O3DP reproduction** (in `scripts/2026-07-23_lan_o3dp_reproduction/`) — completed point-cloud dataset generation, HDF5/runtime parity verification, fixed-batch overfit smoke testing, and 40-demo subset preflight. The resulting point-cloud policies missed the clean-source gate; the epoch-350 guidance closure also failed its paired task gate. See `docs/guided_denoising/lan_o3dp_epoch350_closure.md`.
 - **Policy-manifold feasibility diagnostic** (in `scripts/2026-07-27_policy_manifold_diagnostic/`) — completed phase-free fixed-state upper-bound test over the existing two-distractor pre-collision state bank. It samples the frozen delta-EEF policy repeatedly, fits a shrinkage covariance over executable EEF waypoint trajectories, and tests whether a target-progress-preserving path can satisfy expanded obstacle boundaries while remaining inside an empirically calibrated Mahalanobis support ellipsoid. Support-constrained projection is feasible in 1/20 states versus 14/20 when the support bound is removed; projected actions are not executed.
 - **Semi-manual waypoint teacher** (in `scripts/2026-07-27_semi_manual_waypoint_teacher/`) — oracle Cartesian grasp-and-lift teacher with discrete yaw search over the 20 held-out pre-collision states. It restores every candidate from the same simulator state, selects the smallest safe yaw, replays only that route, and hands back to the frozen policy. The teacher upper bound reaches 18/20 Task success with 2/20 distractor collisions; it is a correction-data feasibility result, not a deployment method.
+- **Targeted paired corrections** (in `scripts/2026-07-28_targeted_correction/`) — fresh-layout D2 collector, append-only raw HDF5 schema, per-teacher-step frozen-policy queries, deterministic pair extraction, mixed-training preflight, and paired checkpoint screening. C1 passes with 25 successful eligible episodes and 2,849 pairs. Positive BC, a 90/10 exposure control, and paper-aligned SDP all inject strict safe-progress support but fail the closed-loop D2 gate. SDP reaches 10/20 direct and 11/20 projection-feasible states while its best D2 Task SR remains 0.25 versus source 0.35. See `outputs/targeted_finetuning/sdp_result_report.md`.
+- **Gated corrective-support selector** (in `scripts/2026-07-29_gated_support_selector/`) — source-default oracle gate with 32-sample SDP candidate filtering and least-deviation selection. A no-substantial-retreat preflight finds candidates in 11/20 strict states, but the paired D2 gate lowers Task SR from 0.25 to 0.15 with zero failure-to-success and two success-to-NCR transitions. The method is stopped; see `outputs/gated_support_selector/report.md`.
+- **Oracle branch value** (in `scripts/2026-07-29_oracle_branch_value/`) — cloned-simulator existence test for a ranking-only world/value model. On three strict states, 96 SDP chunks all avoid immediate contact but produce zero Can contacts and zero Task successes after full source continuation; the waypoint control solves all three. The 20-state expansion is stopped because no successful branch exists for an oracle to select. See `outputs/oracle_branch_value/pilot_3state/result_report.md`.
 - **EEF-pose OSC policy** (in `scripts/eef_pose_osc_policy/`) — dataset converters, expert replay validators, robomimic wrapper smoke tests, delta-policy pose-trajectory diagnostics, multi-env eval tooling, and eval analysis for full-pose EEF actions executed by `OSC_POSE`. Training runbook: `docs/eef_pose_osc_policy_training.md`; conclusion: `outputs/eef_pose_osc_policy/README.md`.
 - **Guided denoising** (in `scripts/guided_denoising/`) — completed inference-only experiment tooling. It captures fixed clean-image delta-EEF states, sweeps guidance scales under identical observations and diffusion seeds, visualizes DDIM updates and final trajectories, runs matched baseline / guided rollout pilots, and reports Task SR together with Safe SR / CR / NCR. Preserve it for reproduction; the active experiment is targeted fine-tuning. Raw HDF5 / JSONL artifacts under `outputs/guided_denoising/` are ignored; summaries and reports remain trackable.
 - `render_paired_rollout.py` replays selected recorded pairs, verifies the exact

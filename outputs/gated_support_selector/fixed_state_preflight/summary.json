@@ -1,0 +1,12 @@
+{
+  "states": 20,
+  "triggered_states": 20,
+  "trigger_rate": 1.0,
+  "states_with_eligible_corrective_candidate": 11,
+  "selection_rate_all_states": 0.55,
+  "selection_rate_triggered_states": 0.55,
+  "total_eligible_candidates": 138,
+  "median_selected_clearance_m": 0.01230378156679908,
+  "median_selected_progress_m": 0.00028316422414392806,
+  "median_selected_normalized_rms_deviation": 0.14437872001454008
+}

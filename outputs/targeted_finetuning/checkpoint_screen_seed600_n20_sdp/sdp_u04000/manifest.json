@@ -1,0 +1,21 @@
+{
+  "agent": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/dp_can_delta_pose_osc_targeted_sdp/20260729173254/models/model_epoch_8.pth",
+  "envs": [
+    "PickPlaceCan",
+    "PickPlaceBreadCerealCan"
+  ],
+  "seeds": [
+    600
+  ],
+  "n_rollouts": 20,
+  "horizon": 400,
+  "target_object_name": "Can",
+  "terminate_on_success": true,
+  "save_states": false,
+  "paired_action_seeds": true,
+  "deterministic_torch": true,
+  "paired_action_seed_formula": "env_seed * 100000 + episode_index",
+  "command": "MUJOCO_GL=egl MUJOCO_EGL_DEVICE_ID=1 ROBOMIMIC_GPU_ID=1 /home/yulei/codes/constraint-il-transfer/.venv/bin/python3 /home/yulei/codes/constraint-il-transfer/scripts/eef_pose_osc_policy/eval_delta_eef_multienv.py --agent /home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/dp_can_delta_pose_osc_targeted_sdp/20260729173254/models/model_epoch_8.pth --envs PickPlaceCan PickPlaceBreadCerealCan --seeds 600 --n-rollouts 20 --horizon 400 --paired-action-seeds --deterministic-torch --out-dir /home/yulei/codes/constraint-il-transfer/outputs/targeted_finetuning/checkpoint_screen_seed600_n20_sdp/sdp_u04000",
+  "git_commit": "40ca5e874234858d3b0ef7cf4aa31656cb9761d7",
+  "robomimic_commit": "862398aa80509708a19019d165fe86cdaff1189d"
+}
