@@ -10,12 +10,23 @@ adaptation without disrupting the task modes of the reliable single-object
 policy. Positive-only and set-supervised full-policy fine-tuning both inject
 local safe-progress support but fail closed loop.
 
-Deployment-time guided denoising was the preceding research stage. Its
-formulation and negative results remain important evidence, but it is no longer
-the active implementation direction.
+The active method hypothesis is a temporally persistent corrective option that
+returns control when the frozen source policy becomes safely recoverable.
+Deployment-time guided denoising was the preceding research stage; its
+formulation and negative results remain important evidence.
 
 ## 2. Current State
 
+- **Persistent correction passes the minimum source-recoverability gate
+  (2026-07-29)**: on the same three strict D2 states where all 96 one-chunk
+  SDP branches failed, persistent SDP produces 32 safe recoverable handoffs
+  among 219 safe-prefix boundaries. They occur in 3/4 trajectories on one
+  state, with earliest windows after 5--7 chunks / 40--56 actions. No
+  corrective trajectory directly succeeds, and recoverability windows are
+  non-monotonic. This supports temporal persistence plus a learned handoff,
+  but only as selected-state oracle evidence. Expand the unchanged protocol to
+  the remaining 17 states before training a critic. See
+  `outputs/persistent_correction_oracle/pilot_3state/report.md`.
 - **SDP gives a positive D1 transfer result when horizon matches the slower
   corrective behavior (2026-07-29)**: the fixed SDP-6k checkpoint changes
   untouched-seed D1 Task SR / CR from `0.66 / 0.25` to `0.72 / 0.18` at
@@ -89,11 +100,12 @@ the active implementation direction.
   four-way outcome partition. Local clearance or support diagnostics are
   mechanism evidence, not substitutes for rollout success.
 - **The next model should generate a multi-step corrective route**: keep the
-  source frozen and learn an object-relative waypoint / residual expert with
-  an explicit phase and handoff. The existing waypoint teacher is the positive
-  control and data source. Do not introduce a world model merely to rank the
-  current SDP chunks; long-horizon planning is only justified if it also
-  generates behavior beyond that candidate set.
+  source frozen and treat correction as a persistent option terminated by
+  source recoverability. First measure persistent-SDP coverage on all 20
+  strict states. If sparse, learn a correction-only object-relative waypoint /
+  residual policy before a handoff estimator. The existing waypoint teacher
+  is the positive control and data source. Do not introduce a general world
+  model merely to rank local chunks.
 
 ## 3. Subproject AGENTS
 
@@ -111,6 +123,7 @@ the active implementation direction.
   positive-BC / support conclusion
 - `gated_support_selector/` — fixed-state and paired-rollout localization gate
 - `oracle_branch_value/` — cloned-simulator candidate-existence pilot
+- `persistent_correction_oracle/` — temporal source-recoverability pilot
 - `guided_denoising/` — completed inference-only experiment summaries
 - `task_constrained_guidance/` and `sample_refine/` — completed negative stages
 - `forward_model/` — archived OSC-action forward-model summaries
@@ -134,6 +147,7 @@ constraint-il-transfer/             ← Project root (independent git repo)
 │   ├── targeted_finetuning/          ← Correction gates, screen, and support result
 │   ├── gated_support_selector/       ← Gated SDP selector result
 │   ├── oracle_branch_value/          ← Oracle continuation-existence result
+│   ├── persistent_correction_oracle/ ← Persistent correction handoff result
 │   └── guided_denoising/             ← Completed inference-only experiment summaries
 ├── .opencode/agents/                ← Agent definitions (paper-reader, code-explorer)
 ├── third_party/                     ← Editable source deps (managed independently, see §10)
@@ -146,24 +160,28 @@ constraint-il-transfer/             ← Project root (independent git repo)
 
 1. Read this file (AGENTS.md) first
 2. For project state + recent discussions → `docs/RESEARCH_LOG.md`
-3. For the oracle branch-value result →
+3. For the active corrective-option hypothesis →
+   `docs/recoverability_corrective_option/README.md`
+4. For the persistent-correction oracle result →
+   `outputs/persistent_correction_oracle/pilot_3state/report.md`
+5. For the oracle branch-value result →
    `outputs/oracle_branch_value/pilot_3state/result_report.md`
-4. For the completed gated selector result →
+6. For the completed gated selector result →
    `outputs/gated_support_selector/report.md`
-5. For the completed SDP and exposure-control result →
+7. For the completed SDP and exposure-control result →
    `outputs/targeted_finetuning/sdp_result_report.md`
-6. For the positive-BC predecessor →
+8. For the positive-BC predecessor →
    `outputs/targeted_finetuning/upper_bound_report.md`
-7. For why the frozen-policy stage stopped →
+9. For why the frozen-policy stage stopped →
    `docs/guided_denoising/frozen_policy_inference_limitations.md`
-8. For the waypoint-teacher upper bound →
+10. For the waypoint-teacher upper bound →
    `scripts/2026-07-27_semi_manual_waypoint_teacher/README.md`
-9. For EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
-10. For local scripts and how to run them → `scripts/AGENTS.md`
-11. For historical inference-only methods → `docs/guided_denoising/`
-12. For paper comparisons → `papers/<name>/analysis.md`
-13. For inner robomimic code → `third_party/robomimic/AGENTS.md`
-14. Before deleting local checkpoints → `docs/checkpoint_retention.md`
+11. For EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
+12. For local scripts and how to run them → `scripts/AGENTS.md`
+13. For historical inference-only methods → `docs/guided_denoising/`
+14. For paper comparisons → `papers/<name>/analysis.md`
+15. For inner robomimic code → `third_party/robomimic/AGENTS.md`
+16. Before deleting local checkpoints → `docs/checkpoint_retention.md`
 
 ## 6. Environments
 

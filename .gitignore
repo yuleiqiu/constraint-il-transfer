@@ -26,6 +26,7 @@ outputs/targeted_finetuning/**/analysis/env_summary.csv
 outputs/gated_support_selector/**/*.jsonl
 outputs/oracle_branch_value/**/*.jsonl
 outputs/oracle_branch_value/**/teacher_control.json
+outputs/persistent_correction_oracle/**/*.jsonl
 
 # Third-party source repos (managed independently)
 third_party/

@@ -18,6 +18,35 @@
 
 ## 2026-07-29
 
+### Persistent correction creates source-recoverable handoff windows
+
+Tested the existing SDP-6k checkpoint as a temporally persistent corrective
+option on the same first three strict D2 states where all 96 one-chunk
+SDP-to-source branches previously failed. Four correction trajectories per
+state were replanned every eight actions for at most 20 chunks; every
+collision-free boundary was cloned and handed to the frozen source through
+absolute horizon 600.
+
+The fixed existence gate passes. Among 219 safe-prefix boundaries, 32 yield a
+collision-free successful source continuation. All 32 occur on one state, in
+three of its four correction trajectories; their earliest windows begin after
+5, 6, and 7 correction chunks (40--56 actions). No correction trajectory
+directly completes the task, and its prefix has not contacted Can at the
+earliest successful handoff. Recoverability is non-monotonic: a trajectory can
+enter, leave, and later re-enter a safe handoff window. The other two states
+have zero safe handoffs despite mostly reaching the 20-chunk limit.
+
+Decision: retain the recoverability-gated corrective option as the active
+method hypothesis. Temporal persistence generates source-recoverable states
+that the rejected one-chunk candidate set does not contain, while the
+non-monotonic windows establish that a handoff model is necessary rather than
+a fixed-duration correction. This is only selected-state oracle evidence; run
+the identical protocol on the remaining 17 strict states before training a
+source-recoverability estimator. If coverage remains sparse, train a
+correction-only temporally extended policy first. Method note:
+`docs/recoverability_corrective_option/README.md`. Canonical result:
+`outputs/persistent_correction_oracle/pilot_3state/report.md`.
+
 ### SDP succeeds in D1 when the execution budget matches slower correction
 
 Evaluated the already selected SDP-6k checkpoint in the previously untouched
