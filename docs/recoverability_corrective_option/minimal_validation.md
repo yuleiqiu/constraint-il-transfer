@@ -1,6 +1,8 @@
 # Persistent-Correction Recoverability Gate
 
-Status: fixed pilot contract, 2026-07-29.
+Status: completed fixed protocol, including the unchanged 20-state expansion,
+2026-07-30. Results are in
+`outputs/persistent_correction_oracle/full_20/conclusion.md`.
 
 ## Question
 
@@ -58,10 +60,9 @@ continuations.
   under any of its four persistent corrective trajectories.
 - **Fail:** zero of three states has a safe recoverable handoff.
 
-If the pilot fails, stop using the existing SDP policy as the corrective
-option and train a correction-only temporally extended policy before building
-any recoverability critic. If it passes, expand the identical protocol to the
-remaining 17 strict states before learning a handoff model.
+The pilot passed and the identical protocol was expanded to the remaining
+17 strict states. Final coverage is 7/20 states. Train a correction-only
+temporally extended policy before building any recoverability critic.
 
 Do not tune the number of trajectories, correction duration, source horizon,
 or seeds after inspecting the pilot.

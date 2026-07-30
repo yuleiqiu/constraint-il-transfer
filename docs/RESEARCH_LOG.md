@@ -16,6 +16,26 @@
   one-distractor Task SR with the reliable clean-image delta-EEF policy; the
   tested uniform 5 cm XY expansion does not.
 
+## 2026-07-30
+
+### Recoverability boundary archived for a controlled recovery-objective prototype
+
+Closed the current manipulation stage without changing its implementation.
+Frozen geometric guidance improves local clearance but does not establish
+source-policy recovery. Correction training has a positive D1/H600 result
+(Task SR `0.67 -> 0.78`) while full-policy mixing and single-chunk correction
+remain insufficient in D2. Persistent correction establishes non-monotonic
+safe-recoverability windows, but the existing SDP generator covers only 7/20
+strict states versus the waypoint teacher's 18/20 upper bound.
+
+Decision: retain the frozen source, SDP-6k, LAN-350, verified C1 correction
+raw/pairs, and all audit/config/report artifacts. Remove superseded
+checkpoints and duplicate/rejected correction data under the retention
+manifest. Continue recovery-objective comparison in an independent PointNav
+rapid prototype; it is mechanism isolation, not a replacement manipulation
+claim. The next manipulation policy remains a correction-only temporally
+extended option trained before a handoff estimator.
+
 ## 2026-07-29
 
 ### Persistent correction creates recoverability windows but covers 7/20 states

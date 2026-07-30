@@ -3,6 +3,13 @@
 Status: positive BC, lower-exposure control, and SDP successor completed; all
 miss the closed-loop gate, 2026-07-29.
 
+Archive note, 2026-07-30: the selected SDP-6k checkpoint subsequently produced
+a positive D1 result at the equally applied 600-step horizon (Task SR
+`0.67 -> 0.78`) but remained capacity-limited in D2. Persistent use created
+oracle safe-recoverability windows in 7/20 strict D2 states, below the waypoint
+teacher's 18/20. This plan is closed; do not resume full-policy mixing or
+single-chunk correction sweeps.
+
 ## 1. Question
 
 Can a small number of successful, targeted multi-object corrections inject

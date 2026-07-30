@@ -2,10 +2,12 @@
 
 Status: completed inference-only research stage, superseded 2026-07-28.
 
-The active experiment is now the targeted fine-tuning upper bound in
-`docs/targeted_finetuning/plan.md`. This file is a compact index of the
-questions, gates, and conclusions from the preceding frozen-policy stage.
-Git history retains the former detailed working plan.
+The successor targeted fine-tuning stage is also complete. Its final D1/D2
+boundary and the persistent-correction result are summarized in
+`outputs/targeted_finetuning/sdp_result_report.md` and
+`outputs/persistent_correction_oracle/full_20/conclusion.md`. This file is a
+compact historical index of the frozen-policy stage. Git history retains the
+former detailed working plan.
 
 ## 1. Starting Baseline
 
