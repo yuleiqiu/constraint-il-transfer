@@ -60,6 +60,21 @@ def continuation_seed(saved_noise_seed):
     return int(saved_noise_seed) + 1
 
 
+def select_saved_states(paths, state_offset, state_limit):
+    requested = state_offset + state_limit
+    states = load_saved_states(paths, requested)
+    selected = states[state_offset:requested]
+    if len(selected) != state_limit:
+        raise ValueError(
+            "Requested states [{}:{}) but only {} states are available".format(
+                state_offset,
+                requested,
+                len(states),
+            )
+        )
+    return selected
+
+
 def earliest_safe_handoff(trajectory):
     eligible = [
         boundary
@@ -422,8 +437,18 @@ def compact_chunk_ranges(chunks):
 
 
 def write_report(path, states, summary):
+    title = (
+        "# Persistent-Correction Oracle: Full 20-State Evaluation"
+        if len(states) == 20
+        else "# Persistent-Correction Oracle Pilot"
+    )
+    decision_label = (
+        "existence-gate decision"
+        if len(states) == 20
+        else "pilot decision"
+    )
     lines = [
-        "# Persistent-Correction Oracle Pilot",
+        title,
         "",
         "The existing SDP-6k policy is executed for multiple consecutive "
         "closed-loop chunks. Every collision-free chunk boundary is cloned and "
@@ -452,8 +477,9 @@ def write_report(path, states, summary):
         "- source-continuation outcomes: `{}`".format(
             summary["continuation_outcomes"]
         ),
-        "- pilot decision: **{}**".format(
-            "PASS" if summary["pilot_pass"] else "FAIL"
+        "- {}: **{}**".format(
+            decision_label,
+            "PASS" if summary["pilot_pass"] else "FAIL",
         ),
         "",
         "## Per state",
@@ -546,6 +572,7 @@ def parse_args():
     parser.add_argument(
         "--states", nargs="+", type=Path, default=DEFAULT_STATE_BANKS
     )
+    parser.add_argument("--state-offset", type=int, default=0)
     parser.add_argument("--state-limit", type=int, default=3)
     parser.add_argument("--trajectory-count", type=int, default=4)
     parser.add_argument("--maximum-correction-chunks", type=int, default=20)
@@ -569,6 +596,8 @@ def parse_args():
 
 def main():
     args = parse_args()
+    if args.state_offset < 0:
+        raise ValueError("state_offset must be non-negative")
     for name in (
         "state_limit",
         "trajectory_count",
@@ -588,11 +617,14 @@ def main():
     if args.deterministic_torch:
         os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
 
-    states = load_saved_states(args.states, args.state_limit)
+    states = select_saved_states(
+        args.states, args.state_offset, args.state_limit
+    )
     manifest = {
         "source_agent": str(args.source_agent),
         "corrective_agent": str(args.corrective_agent),
         "states": [str(path) for path in args.states],
+        "state_offset": args.state_offset,
         "state_limit": args.state_limit,
         "trajectory_count": args.trajectory_count,
         "maximum_correction_chunks": args.maximum_correction_chunks,

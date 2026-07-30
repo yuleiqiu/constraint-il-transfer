@@ -1,0 +1,16 @@
+{
+  "states": 20,
+  "trajectories": 80,
+  "total_safe_prefix_boundaries": 1099,
+  "safe_recoverable_handoffs": 311,
+  "states_with_safe_recoverable_handoff": 7,
+  "trajectories_with_safe_recoverable_handoff": 27,
+  "direct_safe_correction_successes": 0,
+  "continuation_outcomes": {
+    "collision_failure": 280,
+    "ncr": 488,
+    "safe_success": 311,
+    "success_with_collision": 20
+  },
+  "pilot_pass": true
+}

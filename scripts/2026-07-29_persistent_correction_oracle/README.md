@@ -11,7 +11,7 @@ source continuation can complete safely.
 The pilot is an existence test for the proposed recoverability-gated
 corrective option. It is not a deployment method and does not train a model.
 
-## Result
+## Pilot result
 
 The fixed pilot passes: 32 of 219 safe-prefix temporal boundaries are safe
 recoverable handoffs. They occur in three of four correction trajectories on
@@ -21,3 +21,16 @@ task. Safe windows can disappear and later reappear, so persistence alone is
 insufficient and the handoff condition is substantive.
 
 See `outputs/persistent_correction_oracle/pilot_3state/report.md`.
+
+Disjoint state ranges can be run with `--state-offset` and `--state-limit`.
+Use `merge_partitions.py` to validate and merge the resulting directories in
+global state order.
+
+## Full result
+
+The unchanged expansion covers 7/20 strict states. Six of the seven
+recoverable states have safe handoffs in all four trajectories; all 52
+trajectories from the thirteen uncovered states fail. Five recoverable states
+require more than one correction chunk, but current SDP coverage remains well
+below the 18/20 waypoint-teacher upper bound. See
+`outputs/persistent_correction_oracle/full_20/conclusion.md`.

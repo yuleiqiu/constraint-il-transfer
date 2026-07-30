@@ -1,6 +1,7 @@
 import importlib.util
 from pathlib import Path
 import unittest
+from unittest import mock
 
 
 MODULE_PATH = Path(__file__).with_name("persistent_oracle.py")
@@ -91,6 +92,25 @@ class TestPersistentOracle(unittest.TestCase):
             MODULE.compact_chunk_ranges([5, 6, 7, 11, 13, 14]),
             "5-7, 11, 13-14",
         )
+
+    def test_select_saved_states_applies_offset_after_global_ordering(self):
+        with mock.patch.object(
+            MODULE,
+            "load_saved_states",
+            return_value=["s0", "s1", "s2", "s3", "s4"],
+        ) as loader:
+            selected = MODULE.select_saved_states(["bank"], 3, 2)
+        loader.assert_called_once_with(["bank"], 5)
+        self.assertEqual(selected, ["s3", "s4"])
+
+    def test_select_saved_states_rejects_short_bank(self):
+        with mock.patch.object(
+            MODULE,
+            "load_saved_states",
+            return_value=["s0", "s1", "s2"],
+        ):
+            with self.assertRaisesRegex(ValueError, "only 3 states"):
+                MODULE.select_saved_states(["bank"], 2, 2)
 
 
 if __name__ == "__main__":

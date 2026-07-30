@@ -17,16 +17,16 @@ formulation and negative results remain important evidence.
 
 ## 2. Current State
 
-- **Persistent correction passes the minimum source-recoverability gate
-  (2026-07-29)**: on the same three strict D2 states where all 96 one-chunk
-  SDP branches failed, persistent SDP produces 32 safe recoverable handoffs
-  among 219 safe-prefix boundaries. They occur in 3/4 trajectories on one
-  state, with earliest windows after 5--7 chunks / 40--56 actions. No
-  corrective trajectory directly succeeds, and recoverability windows are
-  non-monotonic. This supports temporal persistence plus a learned handoff,
-  but only as selected-state oracle evidence. Expand the unchanged protocol to
-  the remaining 17 states before training a critic. See
-  `outputs/persistent_correction_oracle/pilot_3state/report.md`.
+- **Persistent correction creates recoverability windows but the current SDP
+  generator covers only 7/20 states (2026-07-30)**: within the seven
+  recoverable strict D2 states, 27/28 trajectories contain a safe handoff; the
+  other thirteen states have 0/52. Five recoverable states require multiple
+  correction chunks, no correction trajectory directly completes the task,
+  and the windows are non-monotonic. This validates temporal persistence plus
+  a safe-recoverability handoff as the method abstraction, but 7/20 remains
+  below the waypoint teacher's 18/20. Train a correction-only temporally
+  extended option before a handoff estimator. See
+  `outputs/persistent_correction_oracle/full_20/conclusion.md`.
 - **SDP gives a positive D1 transfer result when horizon matches the slower
   corrective behavior (2026-07-29)**: the fixed SDP-6k checkpoint changes
   untouched-seed D1 Task SR / CR from `0.66 / 0.25` to `0.72 / 0.18` at
@@ -101,8 +101,8 @@ formulation and negative results remain important evidence.
   mechanism evidence, not substitutes for rollout success.
 - **The next model should generate a multi-step corrective route**: keep the
   source frozen and treat correction as a persistent option terminated by
-  source recoverability. First measure persistent-SDP coverage on all 20
-  strict states. If sparse, learn a correction-only object-relative waypoint /
+  safe source recoverability. The persistent-SDP upper bound covers 7/20
+  strict states, so next learn a correction-only object-relative waypoint /
   residual policy before a handoff estimator. The existing waypoint teacher
   is the positive control and data source. Do not introduce a general world
   model merely to rank local chunks.
@@ -163,7 +163,7 @@ constraint-il-transfer/             ← Project root (independent git repo)
 3. For the active corrective-option hypothesis →
    `docs/recoverability_corrective_option/README.md`
 4. For the persistent-correction oracle result →
-   `outputs/persistent_correction_oracle/pilot_3state/report.md`
+   `outputs/persistent_correction_oracle/full_20/conclusion.md`
 5. For the oracle branch-value result →
    `outputs/oracle_branch_value/pilot_3state/result_report.md`
 6. For the completed gated selector result →

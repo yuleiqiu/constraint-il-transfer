@@ -6,6 +6,7 @@
     "outputs/task_constrained_guidance/one_chunk_lead_states_seed601_602/states.hdf5",
     "outputs/task_constrained_guidance/one_chunk_lead_states_seed603_607/states.hdf5"
   ],
+  "state_offset": 0,
   "state_limit": 3,
   "trajectory_count": 4,
   "maximum_correction_chunks": 20,

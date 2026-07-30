@@ -1,0 +1,34 @@
+{
+  "source_agent": "outputs/robomimic/train/dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth",
+  "corrective_agent": "outputs/robomimic/train/dp_can_delta_pose_osc_targeted_sdp/20260729173254/models/model_epoch_12.pth",
+  "states": [
+    "outputs/task_constrained_guidance/one_chunk_lead_states/states.hdf5",
+    "outputs/task_constrained_guidance/one_chunk_lead_states_seed601_602/states.hdf5",
+    "outputs/task_constrained_guidance/one_chunk_lead_states_seed603_607/states.hdf5"
+  ],
+  "trajectory_count": 4,
+  "maximum_correction_chunks": 20,
+  "maximum_correction_actions": 160,
+  "rollout_horizon": 600,
+  "target_object_name": "Can",
+  "correction_seed_formula": "saved_noise_seed + 10000000 + trajectory_index * 100000 + chunk_index",
+  "continuation_seed_formula": "saved_noise_seed + 1",
+  "deterministic_torch": true,
+  "gate": "pass iff at least one state has a collision-free correction prefix and collision-free successful source continuation",
+  "state_offset": 0,
+  "state_limit": 20,
+  "partitions": [
+    {
+      "state_offset": 0,
+      "state_limit": 3
+    },
+    {
+      "state_offset": 3,
+      "state_limit": 8
+    },
+    {
+      "state_offset": 11,
+      "state_limit": 9
+    }
+  ]
+}

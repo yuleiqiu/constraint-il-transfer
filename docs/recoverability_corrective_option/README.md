@@ -1,7 +1,7 @@
 # Recoverability-Gated Corrective Option
 
-Status: method hypothesis supported by a three-state oracle pilot,
-2026-07-29.
+Status: method hypothesis supported; current SDP generator coverage bounded on
+all 20 strict states, 2026-07-30.
 
 ## Motivation
 
@@ -36,38 +36,38 @@ world model.
 This boundary intentionally excludes an LLM/VLM phase parser, a general
 dynamics world model, and task-specific named checkpoints such as "lift 5 cm."
 
-## Minimum oracle evidence
+## Oracle evidence
 
-The fixed three-state pilot executed the existing SDP-6k policy persistently
-for at most 20 closed-loop chunks and tested the frozen source at every safe
-chunk boundary.
+The fixed pilot and its unchanged 17-state expansion executed the existing
+SDP-6k policy persistently for at most 20 closed-loop chunks and tested the
+frozen source at every safe chunk boundary.
 
-- 219 safe-prefix boundaries were tested.
-- 32 were safe recoverable handoffs.
-- The existence gate passed on one of three states.
-- Three of four correction trajectories on that state contained a safe
-  handoff window.
-- The earliest safe windows began after 5, 6, and 7 correction chunks
-  (40, 48, and 56 actions).
-- No correction trajectory directly completed the task, and none had contacted
-  the target at its earliest successful handoff.
+- 7/20 states contain a safe recoverable handoff.
+- Within those states, 27/28 correction trajectories contain a safe handoff;
+  the remaining thirteen states have 0/52.
+- Five of seven recoverable states require more than one correction chunk.
+- The median earliest state-level handoff is five chunks.
+- No correction trajectory directly completed the task.
 - Recoverability was non-monotonic: trajectories could enter, leave, and later
   re-enter a safe handoff window.
 
 Thus temporal persistence creates behavior that the rejected one-chunk
 candidate set did not contain, and a handoff decision is genuinely necessary.
-The result is still an existence diagnostic on selected D2 states, not a
-learned method or a rollout-level success claim.
+The result is still an oracle existence diagnostic, not a learned method or a
+rollout-level success claim.
 
 ## Next gate
 
-Apply the identical oracle protocol to the remaining 17 strict states before
-training a recoverability estimator. That expansion should measure state
-coverage, window width, correction collision rate, and the amount of
-correction required. If coverage remains sparse, replace the mixed-policy
-SDP checkpoint with a correction-only temporally extended policy before
-learning the handoff model.
+The waypoint teacher solves 18/20 of the same states, while persistent SDP
+covers only 7/20 even with an oracle handoff. Replace the mixed-policy SDP
+checkpoint with a correction-only temporally extended option trained from
+the existing verified intervention segments, then repeat the identical
+20-state oracle gate. Collect more segments only if the stored sequences
+cannot support that interface. Do not train the handoff estimator until the
+behavior generator materially expands coverage.
 
 Fixed pilot contract:
 `docs/recoverability_corrective_option/minimal_validation.md`. Canonical
 result: `outputs/persistent_correction_oracle/pilot_3state/report.md`.
+Full result:
+`outputs/persistent_correction_oracle/full_20/conclusion.md`.
