@@ -300,8 +300,8 @@ class TrajectoryWindowDataset(Dataset):
             # Match robomimic SequenceDataset with frame_stack=2,
             # seq_length=16, and pad_same=True. The predicted sequence starts
             # one action before the current observation, and inference executes
-            # [observation_horizon - 1 : + action_horizon]. Boundary values are
-            # repeated instead of introducing artificial zero-action targets.
+            # [observation_horizon - 1 : + action_horizon]. The leading boundary
+            # repeats the first real action; the terminal boundary is absorbing.
             sequence_indices = (
                 np.arange(p.prediction_horizon)
                 + step
@@ -311,6 +311,13 @@ class TrajectoryWindowDataset(Dataset):
             valid = (sequence_indices >= 0) & (sequence_indices < action_count)
             clipped_indices = np.clip(sequence_indices, 0, action_count - 1)
             actions = episode["action"][...][clipped_indices]
+            # A delta-action episode is absorbing after success: once the
+            # recorded trajectory ends, the agent should remain at the
+            # terminal state. Repeating the last (typically nonzero) delta
+            # instead teaches the policy to run through the goal. Keep the
+            # repeated first action for the observation-alignment slot, but
+            # make every post-terminal action an explicit zero delta.
+            actions[sequence_indices >= action_count] = 0.0
         return {
             "rgb": torch.from_numpy(history.copy()).permute(0, 3, 1, 2).float()
             / 255.0,

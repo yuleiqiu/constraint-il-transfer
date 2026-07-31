@@ -34,7 +34,8 @@ def test_hdf5_round_trip_replay(tmp_path) -> None:
     assert torch.equal(item["action"][0], item["action"][1])
     final = dataset[len(dataset) - 1]
     assert final["valid"].sum().item() == 2
-    assert torch.all(final["action"][1:] == final["action"][1])
+    assert torch.linalg.vector_norm(final["action"][1]) > 0
+    assert torch.all(final["action"][2:] == 0)
 
 
 def test_action_normalization_round_trip_and_clipping() -> None:

@@ -134,6 +134,11 @@ def train_source_policy(
                 ema_state=ema_state,
             )
             checkpoint_paths.append(str(path))
+            print(
+                f"source checkpoint update={update} loss={final_loss:.6f} "
+                f"path={path}",
+                flush=True,
+            )
     return SourceTrainingResult(
         checkpoint_paths=tuple(checkpoint_paths),
         final_loss=final_loss,
