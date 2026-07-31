@@ -1,6 +1,6 @@
 # Checkpoint Retention
 
-Status: active retention manifest, 2026-07-30.
+Status: active retention manifest, 2026-07-31.
 
 Training outputs under `outputs/robomimic/train/` are local, ignored artifacts.
 Keep only checkpoints that are required by a canonical result, comparison, or
@@ -17,6 +17,23 @@ directories.
 
 All paths are relative to `outputs/robomimic/train/`.
 
+## Retained Toy checkpoints
+
+The active absorbing-terminal PointNav source retains all five ordered
+checkpoints because a fresh dynamics collection requires every source-training
+stage:
+
+```text
+outputs/toy_recovery_objectives/train/source_seed0_absorbing_v3/source_update_001000.pth
+outputs/toy_recovery_objectives/train/source_seed0_absorbing_v3/source_update_002000.pth
+outputs/toy_recovery_objectives/train/source_seed0_absorbing_v3/source_update_003000.pth
+outputs/toy_recovery_objectives/train/source_seed0_absorbing_v3/source_update_004000.pth
+outputs/toy_recovery_objectives/train/source_seed0_absorbing_v3/source_update_005000.pth
+```
+
+The final checkpoint hash and source-training contract are recorded in
+`outputs/toy_recovery_objectives/source/absorbing_terminal/checkpoint_manifest.json`.
+
 ## Cleanup record
 
 On 2026-07-29, intermediate checkpoints and resumable `last*.pth` snapshots
@@ -32,12 +49,25 @@ rollout results remain. Rejected 0.04-rad and duplicate C0 correction HDF5
 files were also removed; the verified C1 raw and paired files are the retained
 training data.
 
+On 2026-07-31, the repeated-terminal Toy source was superseded by an
+absorbing-terminal retraining. Its five checkpoints, latent-dynamics model,
+and rollout HDF5 were deleted after compact audit artifacts were moved under
+`outputs/toy_recovery_objectives/archive/`. Two pre-delta-EEF image-action
+checkpoints under `outputs/robomimic/checkpoints/` were also deleted. Completed
+evaluation `episodes.hdf5` payloads and source/absolute-EEF training videos
+were removed after their summaries and manifests were verified. The outputs
+tree decreased from approximately 14 GiB to 8.4 GiB. These deleted local
+artifacts are recoverable only by rerunning preserved code and configs or by
+checking out their historical implementation state.
+
 Do not delete:
 
 - the correction raw / paired HDF5 data;
 - fixed-state banks used by the support and branch diagnostics;
 - any checkpoint in the table above;
 - training configs, logs, result manifests, or canonical reports.
+- the frozen Toy layout manifest, 200-demo D0 HDF5, or five absorbing-source
+  checkpoints listed above.
 
 Before a future cleanup, update this manifest first and verify every retained
 path exists.
