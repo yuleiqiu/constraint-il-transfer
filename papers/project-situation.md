@@ -28,6 +28,63 @@ behavior. The shift is **geometric-constraint out-of-distribution**: the
 observation space contains novel object configurations, and the required
 collision-avoidance behavior lies outside the policy's effective support.
 
+## OOD Terminology and Evidence Boundary (2026-07-31)
+
+The phrase "eliminating OOD" is not a valid description of any reviewed
+method. OOD is defined relative to a policy's training distribution: if an
+intervention moves the closed-loop system into states not covered by that
+distribution, those states remain OOD even when the controller happens to act
+successfully in them. A method can reduce the observable shift, remain robust
+under a specified shift, steer back toward the training manifold, or absorb
+visited recovery states into an updated training set. None of these eliminates
+all present or future OOD states.
+
+Two different shifts must therefore be kept separate:
+
+1. **Exogenous environment / observation OOD**: the scene changes independently
+   of the policy, for example through unseen obstacles, clutter, viewpoints,
+   object instances, language, or embodiment. LAN-O3DP and DP3 primarily test
+   this kind of generalization. A target-only point cloud can remove distractor
+   geometry from the policy observation and thereby reduce obstacle-induced
+   observation shift. It does **not** make the robot states reached after an
+   avoidance intervention part of the source demonstration distribution.
+2. **Endogenous intervention-induced state OOD**: guidance or a corrective
+   controller deliberately changes the source action, moves the robot away from
+   demonstrated task trajectories, and subsequently queries the source policy
+   at novel states. This is the failure exposed by our guided-denoising,
+   single-chunk handoff, and persistent-correction experiments. Target-only
+   perception cannot remove it because it is a shift in the robot/task state
+   and required continuation behavior, not merely a distractor pixel or point
+   cloud shift.
+
+The reviewed papers occupy different points on this distinction:
+
+| Paper | OOD evidence actually provided | Correct interpretation |
+|---|---|---|
+| [LAN-O3DP](lan-o3dp/paper.md), [DP3](dp3/paper.md) | Generalization to unseen obstacles, clutter, viewpoints, appearances, or instances | Representation reduces exogenous observation shift; it does not establish source-policy recovery after an action intervention. |
+| [CAPE](cape/paper.md) | Obstacle-free training followed by evaluation in unseen clutter | Persistent suffix refinement expands avoidance modes and preserves task endpoints. It operates under a bounded OOD family rather than eliminating OOD or handing off immediately to an unchanged source policy. |
+| [VLS](vls/paper.md), [Feedback World Model](feedback-world-model/paper.md) | Explicit observation/language or environment-distribution shifts | Closed-loop reward regeneration or feedback correction improves adaptation in the tested shifts; the underlying states do not thereby cease to be OOD. |
+| [LPB](lpb/paper.md) | Inference perturbations and behavior-cloning covariate shift | Predicts future latent states and steers them toward the expert manifold. It attempts to prevent or reverse drift, not to eliminate OOD. |
+| [ReGuide](reguide/paper.md) | Drifted-but-recoverable behavior-cloning states | Uses phase-conditioned recovery guidance and then trains on successful guided rollouts. Of the reviewed methods, this comes closest to *absorbing* encountered OOD: those visited recovery states can become covered by the updated policy, but unvisited future OOD remains. |
+
+The strict literature conclusion is therefore:
+
+> No reviewed paper demonstrates that OOD has been eliminated. Several papers
+> demonstrate success on bounded OOD benchmarks; LPB and ReGuide most directly
+> address intervention-induced covariate shift; only data aggregation or
+> retraining can make specific encountered recovery states part of an updated
+> training distribution.
+
+This changes the standard used in this project. The relevant question is not
+whether a method "eliminates OOD," but whether it can maintain task-valid
+control after intervention until the system enters a state from which the
+frozen source policy is empirically recoverable. Success in an unseen-obstacle
+benchmark, or reduced obstacle content in the policy observation, is not
+evidence of that handoff property. LAN-O3DP Figure 7 should be cited only as
+evidence that continued closed-loop geometric guidance can succeed on some
+unseen obstacle layouts, not as evidence that intervention-induced state OOD
+was removed.
+
 ## Three Layers of Observed Failure
 
 We have tested methods at three levels of intervention. Each level revealed a
@@ -147,6 +204,24 @@ trained before any handoff gating model. A separate PointNav rapid prototype
 may isolate recovery objectives, but it does not replace this manipulation
 evidence.
 
+## PointNav Rapid-Prototype Status (2026-07-31)
+
+The active image-based PointNav source uses 200 D0 demonstrations and
+absorbing zero-delta terminal padding. It passes the frozen D0/D1/D2
+calibration gate at success `1.00 / 0.56 / 0.14`. This supersedes a
+repeated-terminal source whose final nonzero delta was incorrectly copied into
+post-episode action slots.
+
+The old source's latent predictor passed action shuffle (`1.93x`) but failed to
+beat latent persistence. Its geometry-only screen improved net paired
+transitions by `+5/100` in D1 and `+6/100` in D2, below the preregistered
+`+10/100` gate. Both results are archived as pre-fix evidence and cannot be
+combined with the active encoder. No dynamics, guidance screen, or test rollout
+has yet been run with the absorbing source. A new latent comparison must begin
+with the fixed 150-rollout collection from the five retained source
+checkpoints; geometry requires fresh scale selection. See
+`../outputs/toy_recovery_objectives/README.md`.
+
 ## Available Tools
 
 - **Frozen source policy**: epoch-260 delta-EEF Diffusion Policy
@@ -168,7 +243,10 @@ above:
 
 1. **What distribution shift does this paper address?** Is it a
    geometric-constraint shift in the observation/state space, a different
-   embodiment, a goal generalization, etc.?
+   embodiment, a goal generalization, etc.? Explicitly distinguish exogenous
+   environment / observation OOD from endogenous intervention-induced state
+   OOD. Do not treat success on the former as evidence that the latter has
+   been removed.
 
 2. **What supervision does it add?** Corrections, ranking labels, a world
    model, human feedback, constraint specifications, etc. Does it require an
@@ -183,12 +261,17 @@ above:
    three layers of observed failure above. For example: if a method assumes
    single-chunk correction is sufficient, our Layer 3 result contradicts it.
 
-5. **If applied, what observable failure would we expect?** Based on the
+5. **What does the paper mean by OOD success?** Determine whether it reduces a
+   representation shift, acts robustly while still OOD, steers back toward an
+   expert manifold, or retrains on encountered recovery states. Do not describe
+   any of these as eliminating OOD without direct distributional evidence.
+
+6. **If applied, what observable failure would we expect?** Based on the
    assumption that is violated, predict: (a) local avoidance succeeds but task
    fails; (b) mode switching fails; (c) source recovery fails; (d) something
    else. Map to our existing four-way partition (Task SR / Safe SR / CR / NCR).
 
-6. **What is the minimal decisive experiment?** Define the smallest evaluation
+7. **What is the minimal decisive experiment?** Define the smallest evaluation
    that would falsify the method in our setting: which environment, which
    metric, which comparison baseline, and what threshold gate.
 

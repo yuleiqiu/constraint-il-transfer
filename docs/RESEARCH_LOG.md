@@ -18,31 +18,56 @@
 
 ## 2026-07-31
 
-### Corrected image source passes; latent dynamics stops the toy funnel
+### Absorbing-terminal source supersedes the first Toy source chain
 
-The first PointNav source run used a custom global-average image encoder and
-misaligned zero-padded action windows. Its D0 failure was an invalid
-implementation preflight, not evidence against image observations or the
-200-demo budget. Replaced it with the repository's established ResNet18 +
-SpatialSoftmax visual core, source-aligned `[1:9]` action execution,
-repeat-padding, GroupNorm, and reference DDIM clipping. With the same 200 D0
-demonstrations, the corrected 5k checkpoint reached D0/D1/D2 calibration
-success `1.00 / 0.54 / 0.06`; the oracle remained 1.00. D1/D2 templates were
-calibrated only on their calibration split as strict near-tangent blockers,
-then the manifest was frozen without test rollout inspection.
+The first corrected PointNav image policy used ResNet18 + SpatialSoftmax and
+passed its calibration gate at D0/D1/D2 success `1.00 / 0.54 / 0.06`, but its
+training windows repeated the final nonzero delta action after each episode.
+Because every D0 demonstration moves toward positive X, this incorrectly
+trained the policy to continue through the goal. Replaced only the
+post-terminal targets with absorbing zero deltas and retrained from random
+initialization on the byte-identical 200-demo D0 HDF5. The resulting source
+passes the unchanged calibration gate at `1.00 / 0.56 / 0.14`; oracle SR
+remains 1.00 and no screen or test layout was inspected.
 
-Collected the authorized 150 balanced, unlabeled dynamics rollouts from five
-source checkpoints. Across 990 source-aligned 15-step clone queries, the
-latent predictor passed action shuffle (`1.93x` normal MSE) but failed to beat
-latent persistence (`0.000779` versus `0.000716`).
+The prior 150-rollout dynamics model passed action shuffle (`1.93x`) but lost
+to latent persistence (`0.000779` versus `0.000716`). A separately requested
+geometry-only screen on that same old source changed D0/D1/D2 SR from
+`1.00/0.53/0.10` to `1.00/0.58/0.16`, with net paired transitions `0`, `+5`,
+and `+6` per 100. It reduced collisions but missed the preregistered `+10/100`
+gate. Both conclusions remain valid for the repeated-terminal checkpoint but
+cannot be transferred to the new encoder.
 
-Decision: the source and environment gates now pass, but stop before guidance
-because the representation dynamics gate fails. Do not use the superseded
-source failure as a 200-demo conclusion, and do not tune dynamics or build the
-expert bank after observing this gate. No scale-tuning, screen, fixed-state,
-test, or confirmation rollout was run. Canonical reports:
-`outputs/toy_recovery_objectives/source_gate_report.md` and
-`outputs/toy_recovery_objectives/dynamics_gate_report.md`.
+Decision: retain the absorbing source and all five intermediate checkpoints.
+Archive the repeated-terminal source, its failed dynamics gate, and its
+geometry screen as historical pre-fix evidence; delete their raw rollouts and
+models. The Toy funnel is no longer stopped by a current dynamics result: no
+dynamics collection has yet been made from the absorbing source. Any future
+latent comparison must recollect the fixed 150 rollouts; any geometry screen
+must retune scale first. Canonical index:
+`outputs/toy_recovery_objectives/README.md`.
+
+### OOD success is not OOD elimination
+
+The paper comparison exposed two shifts that had previously been conflated.
+LAN-O3DP and DP3 primarily reduce **exogenous environment / observation OOD**
+from obstacles, clutter, viewpoints, and instances. Guidance itself can create
+**endogenous intervention-induced state OOD** by moving the robot away from
+demonstrated task trajectories. Removing distractors from the policy input
+does not make those post-intervention robot states part of the source training
+distribution.
+
+No reviewed paper demonstrates that OOD is eliminated. LPB tries to steer
+future latent states toward the expert manifold; CAPE continues refining the
+remaining trajectory under a bounded unseen-clutter family; ReGuide comes
+closest to absorbing encountered OOD by training on successful guided recovery
+rollouts. Unvisited future OOD remains in every case.
+
+Decision: stop using “eliminate OOD” as an evaluation standard. Distinguish
+representation invariance, robustness while OOD, steering back to an expert
+manifold, and data aggregation. For this project, the operative test is whether
+an intervention can maintain task-valid control until the frozen source is
+empirically recoverable. Canonical synthesis: `papers/project-situation.md`.
 
 ## 2026-07-30
 

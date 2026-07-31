@@ -17,95 +17,50 @@ formulation and negative results remain important evidence.
 
 ## 2. Current State
 
-- **Persistent correction creates recoverability windows but the current SDP
-  generator covers only 7/20 states (2026-07-30)**: within the seven
-  recoverable strict D2 states, 27/28 trajectories contain a safe handoff; the
-  other thirteen states have 0/52. Five recoverable states require multiple
-  correction chunks, no correction trajectory directly completes the task,
-  and the windows are non-monotonic. This validates temporal persistence plus
-  a safe-recoverability handoff as the method abstraction, but 7/20 remains
-  below the waypoint teacher's 18/20. Train a correction-only temporally
-  extended option before a handoff estimator. See
-  `outputs/persistent_correction_oracle/full_20/conclusion.md`.
-- **SDP gives a positive D1 transfer result when horizon matches the slower
-  corrective behavior (2026-07-29)**: the fixed SDP-6k checkpoint changes
-  untouched-seed D1 Task SR / CR from `0.66 / 0.25` to `0.72 / 0.18` at
-  horizon 400. At the equally applied 600-step horizon, source / SDP Task SR
-  is `0.67 / 0.78`, with 12 failure-to-success versus one
-  success-to-failure transition (exact paired `p=0.0034`) and CR
-  `0.26 / 0.19`. Horizon 800 adds no successes beyond 600. Retain D1/H600 as
-  the positive targeted-transfer regime and D2 as the capacity boundary. See
-  `outputs/targeted_finetuning/d1_horizon_salvage_report.md`.
-- **Oracle branch-value pilot rejects ranking-only world models
-  (2026-07-29)**: on three held-out pre-collision states, 96 SDP chunks all
-  avoid immediate contact but their full frozen-source continuations yield
-  32 NCRs and 64 collision failures, with zero Can contacts and zero Task
-  successes. A hindsight oracle has no successful branch to select, while the
-  waypoint teacher solves the same states 3/3 without collision using
-  121--144 controlled steps. Stop the 20-state expansion and do not train a
-  model that only ranks these one-chunk candidates. See
-  `outputs/oracle_branch_value/pilot_3state/result_report.md`.
-- **Oracle-gated corrective selection fails the D2 gate (2026-07-29)**:
-  source-default gating with 32 SDP-6k samples finds a 1 cm-clearance,
-  non-retreating candidate in 11/20 strict states. In 20 paired D2 rollouts it
-  changes Task SR / Safe SR / CR / NCR from 0.25 / 0.15 / 0.80 / 0.05 to
-  0.15 / 0.10 / 0.75 / 0.15, with zero failure-to-success and two
-  success-to-NCR transitions. Local support plus oracle geometry still lacks
-  a temporally extended task-value / recovery criterion. Do not tune or scale
-  this selector. See `outputs/gated_support_selector/report.md`.
-- **SDP and lower-exposure BC fail the closed-loop gate (2026-07-29)**:
-  paper-aligned SDP (`r=0.1`, `N=16`, `K_A=16`) and a 90/10 positive-BC
-  exposure control were each trained for 10,000 updates. Their best paired D2
-  Task SR is 0.25 versus source 0.35; no checkpoint meets the transition gate.
-  SDP nevertheless reaches 10/20 strict direct safe-progress states and 11/20
-  support-feasible states. This strengthens the conclusion that full-policy
-  correction training adds avoidance support but does not reliably enter,
-  sustain, and exit the corrective mode in D2. A subsequent fixed-checkpoint
-  D1 evaluation is positive; do not run D3 or broad ratio/radius sweeps. See
+- **The manipulation boundary is a persistent corrective option, not local
+  chunk selection**: persistent SDP creates non-monotonic source-recoverability
+  windows in 7/20 strict D2 states, including five that require multiple
+  correction chunks. The other 13 states have zero recoverable trajectories,
+  while the waypoint teacher solves 18/20. Learn a correction-only,
+  temporally extended object-relative route before a handoff estimator. Do not
+  train a general world/value model merely to rank the current one-chunk
+  candidates. See `outputs/persistent_correction_oracle/full_20/conclusion.md`.
+- **Correction training has a bounded positive regime and a D2 capacity
+  boundary**: fixed SDP-6k at D1/H600 changes Task SR from `0.67` to `0.78`,
+  with 12 failure-to-success and one success-to-failure transition (exact
+  paired `p=0.0034`). In D2, positive BC, lower-exposure BC, SDP, and an
+  oracle-gated selector all add local avoidance support but fail to improve
+  closed-loop Task SR. Preserve D1/H600 as the positive result; do not scale
+  the rejected D2 recipes. See
+  `outputs/targeted_finetuning/d1_horizon_salvage_report.md` and
   `outputs/targeted_finetuning/sdp_result_report.md`.
-- **Positive correction BC injects support but fails closed loop
-  (2026-07-28)**: 25 verified D2 episodes yield 2,849 paired windows. A 50/50
-  clean / paired-positive treatment changes strict 1 cm support coverage from
-  source 0/20 direct hits and 1/20 feasible projections to 10/20 and 13/20,
-  while D0 remains 1.00. It nevertheless lowers paired D2 Task SR from 0.35
-  to 0.25 and causes two failure-to-success versus four success-to-failure
-  transitions. The clean-only control preserves the source success set.
-  Do not scale this BC recipe or collect more identical corrections; reuse the
-  fixed pairs for an SDP-style comparison. See
-  `outputs/targeted_finetuning/upper_bound_report.md`.
-- **Waypoint teacher feasibility is positive**: on the 20 held-out strict
-  pre-collision states, discrete-yaw waypoint search changed Task success from
-  1/20 to 18/20 and distractor collision from 20/20 to 2/20, with 17
-  failure-to-success and no success-to-failure transitions. This is a selected
-  teacher upper bound, not rollout policy evaluation. See
-  `scripts/2026-07-27_semi_manual_waypoint_teacher/README.md`.
-- **Frozen-policy inference-only methods reached a negative stage conclusion
-  (2026-07-27)**: oracle guidance changes trajectories and local clearance, but
-  did not provide reliable Task SR gains. At 20 strict states, none of 640
-  policy samples was safe and progress-preserving at a 1 cm expanded boundary;
-  support-constrained projection was feasible in 1/20 states versus 14/20
-  without the support bound. See
-  `docs/guided_denoising/frozen_policy_inference_limitations.md`.
-- **The reliable source policy is fixed**: use the clean-image
-  `delta_eef_pose_action` Diffusion Policy epoch-260 checkpoint. Independent
-  Task SR over 0/1/2/3 distractors is 0.907 / 0.707 / 0.253 / 0.200; CR is
-  0.000 / 0.213 / 0.647 / 0.680. See
-  `outputs/eef_pose_osc_policy/multienv_eval_report.md`.
-- **The action interface is validated**: delta-EEF chunks reconstruct executed
-  EEF trajectories with 0.131 cm mean position error and 0.253 deg mean
-  orientation error over a successful rollout. This replaces the old
-  OSC-action forward-model route. See
+- **The active Toy source is clean and the successor gates are unrun
+  (2026-07-31)**: retraining on the same 200 D0 demonstrations with absorbing
+  zero-delta terminal padding yields D0/D1/D2 calibration SR
+  `1.00 / 0.56 / 0.14`. It supersedes the repeated-terminal source. The old
+  encoder's 150-rollout dynamics model passed action shuffle (`1.93x`) but
+  lost to persistence; its geometry-only screen reached net `+5/100` in D1
+  and `+6/100` in D2, below the `+10/100` gate. Those results are archived and
+  cannot be reused with the new encoder. No absorbing-source dynamics, screen,
+  or test rollout has run. See `outputs/toy_recovery_objectives/README.md`.
+- **OOD success is not OOD elimination**: LAN-O3DP / DP3 primarily reduce
+  exogenous environment or observation shift. Avoidance guidance can itself
+  create endogenous intervention-induced state OOD by moving the robot away
+  from demonstrated trajectories. No reviewed paper eliminates OOD; LPB
+  steers toward an expert manifold and ReGuide can absorb specific successful
+  recovery states through retraining. Evaluate whether control reaches a
+  frozen-source-recoverable state, not whether obstacle content was removed
+  from the policy input. See `papers/project-situation.md`.
+- **The reliable manipulation source and action interface remain fixed**: use
+  the clean-image epoch-260 `delta_eef_pose_action` policy. Task SR over
+  0/1/2/3 distractors is `0.907 / 0.707 / 0.253 / 0.200`; CR is
+  `0.000 / 0.213 / 0.647 / 0.680`. Delta-EEF chunks reconstruct executed EEF
+  motion with 0.131 cm mean position and 0.253 deg mean orientation error. See
   `outputs/eef_pose_osc_policy/README.md`.
-- **Evaluation remains task-level**: report Task SR, Safe SR, CR, NCR, and the
-  four-way outcome partition. Local clearance or support diagnostics are
-  mechanism evidence, not substitutes for rollout success.
-- **The next model should generate a multi-step corrective route**: keep the
-  source frozen and treat correction as a persistent option terminated by
-  safe source recoverability. The persistent-SDP upper bound covers 7/20
-  strict states, so next learn a correction-only object-relative waypoint /
-  residual policy before a handoff estimator. The existing waypoint teacher
-  is the positive control and data source. Do not introduce a general world
-  model merely to rank local chunks.
+- **Evaluation remains task-level**: report Task SR, Safe SR, CR, NCR, paired
+  failure-to-success / success-to-failure transitions, and the four-way
+  outcome partition. Local clearance, support, and latent-distance diagnostics
+  are mechanism evidence, not substitutes for rollout success.
 
 ## 3. Subproject AGENTS
 
@@ -124,6 +79,8 @@ formulation and negative results remain important evidence.
 - `gated_support_selector/` — fixed-state and paired-rollout localization gate
 - `oracle_branch_value/` — cloned-simulator candidate-existence pilot
 - `persistent_correction_oracle/` — temporal source-recoverability pilot
+- `toy_recovery_objectives/` — PointNav source, archived pre-fix gates, and
+  retained rapid-prototype summaries
 - `guided_denoising/` — completed inference-only experiment summaries
 - `task_constrained_guidance/` and `sample_refine/` — completed negative stages
 - `forward_model/` — archived OSC-action forward-model summaries
@@ -148,6 +105,7 @@ constraint-il-transfer/             ← Project root (independent git repo)
 │   ├── gated_support_selector/       ← Gated SDP selector result
 │   ├── oracle_branch_value/          ← Oracle continuation-existence result
 │   ├── persistent_correction_oracle/ ← Persistent correction handoff result
+│   ├── toy_recovery_objectives/      ← PointNav recovery-objective prototype
 │   └── guided_denoising/             ← Completed inference-only experiment summaries
 ├── .opencode/agents/                ← Agent definitions (paper-reader, code-explorer)
 ├── third_party/                     ← Editable source deps (managed independently, see §10)
@@ -160,28 +118,32 @@ constraint-il-transfer/             ← Project root (independent git repo)
 
 1. Read this file (AGENTS.md) first
 2. For project state + recent discussions → `docs/RESEARCH_LOG.md`
-3. For the active corrective-option hypothesis →
+3. For the cross-paper OOD and project-gap synthesis →
+   `papers/project-situation.md`
+4. For the active corrective-option hypothesis →
    `docs/recoverability_corrective_option/README.md`
-4. For the persistent-correction oracle result →
+5. For the persistent-correction oracle result →
    `outputs/persistent_correction_oracle/full_20/conclusion.md`
-5. For the oracle branch-value result →
+6. For the current Toy rapid-prototype state →
+   `outputs/toy_recovery_objectives/README.md`
+7. For the oracle branch-value result →
    `outputs/oracle_branch_value/pilot_3state/result_report.md`
-6. For the completed gated selector result →
+8. For the completed gated selector result →
    `outputs/gated_support_selector/report.md`
-7. For the completed SDP and exposure-control result →
+9. For the completed SDP and exposure-control result →
    `outputs/targeted_finetuning/sdp_result_report.md`
-8. For the positive-BC predecessor →
+10. For the positive-BC predecessor →
    `outputs/targeted_finetuning/upper_bound_report.md`
-9. For why the frozen-policy stage stopped →
+11. For why the frozen-policy stage stopped →
    `docs/guided_denoising/frozen_policy_inference_limitations.md`
-10. For the waypoint-teacher upper bound →
+12. For the waypoint-teacher upper bound →
    `scripts/2026-07-27_semi_manual_waypoint_teacher/README.md`
-11. For EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
-12. For local scripts and how to run them → `scripts/AGENTS.md`
-13. For historical inference-only methods → `docs/guided_denoising/`
-14. For paper comparisons → `papers/<name>/analysis.md`
-15. For inner robomimic code → `third_party/robomimic/AGENTS.md`
-16. Before deleting local checkpoints → `docs/checkpoint_retention.md`
+13. For EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
+14. For local scripts and how to run them → `scripts/AGENTS.md`
+15. For historical inference-only methods → `docs/guided_denoising/`
+16. For paper comparisons → `papers/<name>/analysis.md`
+17. For inner robomimic code → `third_party/robomimic/AGENTS.md`
+18. Before deleting local checkpoints → `docs/checkpoint_retention.md`
 
 ## 6. Environments
 
