@@ -16,6 +16,27 @@
   one-distractor Task SR with the reliable clean-image delta-EEF policy; the
   tested uniform 5 cm XY expansion does not.
 
+## 2026-07-31
+
+### The 200-demo PointNav prototype stops at its source-policy gate
+
+Implemented and verified the independent PointNav recovery-objective
+prototype, then ran its formal source stage with 200 D0 demonstrations. The
+initial 5,000-update source reached D0 calibration success 0.62. A D0-only
+checkpoint diagnostic was still improving, so the one preregistered resume to
+the fixed 10,000-update cap was used. The final source reached only 0.76 D0
+success, below the 0.95 gate; D1 and D2 were both zero while the shortest-path
+oracle remained 1.00 on all three calibration sets.
+
+Decision: stop before target-domain dynamics collection or either guidance
+objective. D0 contains no obstacles, so obstacle-template tuning cannot repair
+the failed source gate, and neither the data nor update budget should be
+silently expanded. No test rollouts were inspected and no frozen layout
+manifest was produced. This result does not compare geometry with latent
+guidance; it says the reduced 200-demo source setting did not establish the
+required base policy. Canonical report:
+`outputs/toy_recovery_objectives/source_gate_report.md`.
+
 ## 2026-07-30
 
 ### Recoverability boundary archived for a controlled recovery-objective prototype

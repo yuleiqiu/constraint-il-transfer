@@ -10,9 +10,19 @@ dependencies = [
     "wandb>=0.28.0",
 ]
 
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["toy_recovery*"]
+
 [tool.uv.sources]
 robosuite = { path = "third_party/robosuite", editable = true }
 robomimic = { path = "third_party/robomimic", editable = true }
 
 [[tool.uv.index]]
 url = "https://download.pytorch.org/whl/cu121"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
