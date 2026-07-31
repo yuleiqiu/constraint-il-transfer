@@ -1,5 +1,9 @@
 # PointNav image-source gate result
 
+> Superseded for future Toy work by the absorbing-terminal retraining in
+> `../../source/absorbing_terminal/report.md`. This report preserves the original
+> repeated-terminal source result.
+
 Date: 2026-07-31
 Status: **passed after correcting the source implementation**
 

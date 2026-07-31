@@ -1,9 +1,11 @@
 # PointNav Recovery-Objective Rapid Prototype
 
-Status: corrected image source passed on 2026-07-31 at D0/D1/D2 calibration
-success `1.00 / 0.54 / 0.06`. The subsequent 150-rollout dynamics stage passed
-action shuffle (`1.93x`) but failed to beat latent persistence, so the funnel
-stopped before guidance. See `outputs/toy_recovery_objectives/`.
+Status: the image source was retrained from scratch on 2026-07-31 with
+absorbing zero-delta terminal padding and the unchanged 200 D0 demonstrations.
+It passes D0/D1/D2 calibration at `1.00 / 0.56 / 0.14` and supersedes the
+legacy `1.00 / 0.54 / 0.06` source. Earlier latent-dynamics and geometry-only
+results use the superseded encoder and cannot be reused. See
+`outputs/toy_recovery_objectives/source/absorbing_terminal/report.md`.
 
 ## Scope
 
@@ -88,6 +90,13 @@ Run paired evaluation with `--split screen`, then run
 applying the rapid gate with `analyze_screen.py`. The analyzer exits nonzero
 when the screen fails; confirmation and any ReGuide-style extension must not
 run in that case.
+
+`evaluate_geometry.py` is the reproducible geometry-only exception requested
+after the latent gate stopped. It has separate `tune` and `screen` phases and
+does not load latent dynamics. Its results are diagnostic only and cannot
+advance the original joint funnel by themselves. The archived run used the
+superseded repeated-terminal source; any use with the absorbing source requires
+fresh scale selection before a screen.
 
 ## Gates
 

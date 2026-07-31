@@ -1,0 +1,168 @@
+{
+  "metrics": {
+    "geometry guidance/D0": {
+      "collision_rate": 0.0,
+      "collision_wilson_95": [
+        0.0,
+        0.03699349876899627
+      ],
+      "episodes": 100,
+      "mean_completion_steps": 32.06,
+      "mean_guidance_activations": 0.0,
+      "mean_inference_seconds": 0.12070800991728901,
+      "mean_minimum_clearance": null,
+      "mean_path_length": 1.527451479121787,
+      "success_rate": 1.0,
+      "success_wilson_95": [
+        0.9630065012310038,
+        1.0000000000000002
+      ],
+      "timeout_rate": 0.0,
+      "timeout_wilson_95": [
+        0.0,
+        0.03699349876899627
+      ]
+    },
+    "geometry guidance/D1": {
+      "collision_rate": 0.0,
+      "collision_wilson_95": [
+        0.0,
+        0.03699349876899627
+      ],
+      "episodes": 100,
+      "mean_completion_steps": 32.293103448275865,
+      "mean_guidance_activations": 0.18,
+      "mean_inference_seconds": 0.19806541427969931,
+      "mean_minimum_clearance": 0.029878934747889288,
+      "mean_path_length": 1.7228229949840728,
+      "success_rate": 0.58,
+      "success_wilson_95": [
+        0.48206486626332634,
+        0.6720161739336342
+      ],
+      "timeout_rate": 0.42,
+      "timeout_wilson_95": [
+        0.3279838260663658,
+        0.5179351337366737
+      ]
+    },
+    "geometry guidance/D2": {
+      "collision_rate": 0.07,
+      "collision_wilson_95": [
+        0.0343192608798127,
+        0.13749514806152413
+      ],
+      "episodes": 100,
+      "mean_completion_steps": 32.8125,
+      "mean_guidance_activations": 0.32,
+      "mean_inference_seconds": 0.2508665254432708,
+      "mean_minimum_clearance": 0.02225943427100996,
+      "mean_path_length": 1.8212111443251917,
+      "success_rate": 0.16,
+      "success_wilson_95": [
+        0.10095288451828571,
+        0.2442026946446318
+      ],
+      "timeout_rate": 0.77,
+      "timeout_wilson_95": [
+        0.6784561689907251,
+        0.841567341674017
+      ]
+    },
+    "source/D0": {
+      "collision_rate": 0.0,
+      "collision_wilson_95": [
+        0.0,
+        0.03699349876899627
+      ],
+      "episodes": 100,
+      "mean_completion_steps": 32.06,
+      "mean_guidance_activations": 0.0,
+      "mean_inference_seconds": 0.12442564591765404,
+      "mean_minimum_clearance": null,
+      "mean_path_length": 1.527451479121787,
+      "success_rate": 1.0,
+      "success_wilson_95": [
+        0.9630065012310038,
+        1.0000000000000002
+      ],
+      "timeout_rate": 0.0,
+      "timeout_wilson_95": [
+        0.0,
+        0.03699349876899627
+      ]
+    },
+    "source/D1": {
+      "collision_rate": 0.05,
+      "collision_wilson_95": [
+        0.021543679017992173,
+        0.1117504698741045
+      ],
+      "episodes": 100,
+      "mean_completion_steps": 32.35849056603774,
+      "mean_guidance_activations": 0.0,
+      "mean_inference_seconds": 0.18433056449983268,
+      "mean_minimum_clearance": 0.027370349298182862,
+      "mean_path_length": 1.6836865648106385,
+      "success_rate": 0.53,
+      "success_wilson_95": [
+        0.43288856895480055,
+        0.6248918211190597
+      ],
+      "timeout_rate": 0.42,
+      "timeout_wilson_95": [
+        0.3279838260663658,
+        0.5179351337366737
+      ]
+    },
+    "source/D2": {
+      "collision_rate": 0.17,
+      "collision_wilson_95": [
+        0.10893566075403192,
+        0.2554800484335057
+      ],
+      "episodes": 100,
+      "mean_completion_steps": 32.4,
+      "mean_guidance_activations": 0.0,
+      "mean_inference_seconds": 0.22357589721214027,
+      "mean_minimum_clearance": 0.020617833361631054,
+      "mean_path_length": 1.6960938087048252,
+      "success_rate": 0.1,
+      "success_wilson_95": [
+        0.0552291368050726,
+        0.17436566221012445
+      ],
+      "timeout_rate": 0.73,
+      "timeout_wilson_95": [
+        0.6356788315330401,
+        0.8073041590332216
+      ]
+    }
+  },
+  "paired": {
+    "geometry guidance/D0": {
+      "exact_paired_pvalue": 1.0,
+      "failure_to_success": 0,
+      "net_transitions": 0,
+      "pairs": 100,
+      "success_to_failure": 0
+    },
+    "geometry guidance/D1": {
+      "exact_paired_pvalue": 0.0625,
+      "failure_to_success": 5,
+      "net_transitions": 5,
+      "pairs": 100,
+      "success_to_failure": 0
+    },
+    "geometry guidance/D2": {
+      "exact_paired_pvalue": 0.109375,
+      "failure_to_success": 8,
+      "net_transitions": 6,
+      "pairs": 100,
+      "success_to_failure": 2
+    }
+  },
+  "scope": "geometry-only diagnostic after latent-dynamics gate failure",
+  "selected_scale": 5.0,
+  "split": "screen"
+}

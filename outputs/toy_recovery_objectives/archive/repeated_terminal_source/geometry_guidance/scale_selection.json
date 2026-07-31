@@ -1,0 +1,82 @@
+{
+  "candidate_scales": [
+    0.0,
+    0.5,
+    1.0,
+    2.0,
+    5.0,
+    10.0,
+    20.0
+  ],
+  "candidates": [
+    {
+      "scale": 0.0,
+      "score": 0.85,
+      "success_rates": {
+        "0": 1.0,
+        "1": 0.5333333333333333,
+        "2": 0.06666666666666667
+      }
+    },
+    {
+      "scale": 0.5,
+      "score": 0.85,
+      "success_rates": {
+        "0": 1.0,
+        "1": 0.5333333333333333,
+        "2": 0.06666666666666667
+      }
+    },
+    {
+      "scale": 1.0,
+      "score": 0.9166666666666666,
+      "success_rates": {
+        "0": 1.0,
+        "1": 0.5666666666666667,
+        "2": 0.1
+      }
+    },
+    {
+      "scale": 2.0,
+      "score": 0.9833333333333333,
+      "success_rates": {
+        "0": 1.0,
+        "1": 0.6,
+        "2": 0.13333333333333333
+      }
+    },
+    {
+      "scale": 5.0,
+      "score": 1.0166666666666666,
+      "success_rates": {
+        "0": 1.0,
+        "1": 0.6666666666666666,
+        "2": 0.1
+      }
+    },
+    {
+      "scale": 10.0,
+      "score": 1.0166666666666666,
+      "success_rates": {
+        "0": 1.0,
+        "1": 0.6666666666666666,
+        "2": 0.1
+      }
+    },
+    {
+      "scale": 20.0,
+      "score": 0.9833333333333333,
+      "success_rates": {
+        "0": 1.0,
+        "1": 0.6333333333333333,
+        "2": 0.1
+      }
+    }
+  ],
+  "policy_seed": 0,
+  "schema": "toy-recovery-geometry-only-scale-selection-v1",
+  "scope": "geometry-only diagnostic after latent-dynamics gate failure",
+  "selected_scale": 5.0,
+  "selection_rule": "maximize D1 SR + D2 SR + 0.25 * D0 SR; prefer smaller scale on ties",
+  "split": "scale_tuning"
+}

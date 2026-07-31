@@ -1,0 +1,15 @@
+{
+  "checkpoint": "outputs/toy_recovery_objectives/train/source_seed0_absorbing_v3/source_update_005000.pth",
+  "checkpoint_sha256": "e37a058d03ab7078319e60f4ed77c98b43823eb60267893439ab158ab7ab53a0",
+  "dataset": "outputs/toy_recovery_objectives/data/d0_demonstrations.hdf5",
+  "dataset_sha256": "773bca494923d746b69276ad98c5a091ee2fb5825f224dbd9085e6fba419a260",
+  "encoder": "ResNet18Conv + SpatialSoftmax + GroupNorm",
+  "layout_manifest_sha256": "fcf3f21f973307d69b1c2502e0797c8264ef45fe6ae2eeba6e007ba8b68dd110",
+  "policy_seed": 0,
+  "schema": "toy-recovery-absorbing-source-checkpoint-v1",
+  "source_demonstrations": 200,
+  "terminal_action_contract": "post-episode delta actions are zero; leading observation-alignment action repeats the first real action",
+  "train_seconds": 365.902,
+  "training_updates": 5000,
+  "weights": "ema"
+}
