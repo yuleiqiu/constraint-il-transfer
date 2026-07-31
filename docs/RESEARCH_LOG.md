@@ -18,24 +18,31 @@
 
 ## 2026-07-31
 
-### The 200-demo PointNav prototype stops at its source-policy gate
+### Corrected image source passes; latent dynamics stops the toy funnel
 
-Implemented and verified the independent PointNav recovery-objective
-prototype, then ran its formal source stage with 200 D0 demonstrations. The
-initial 5,000-update source reached D0 calibration success 0.62. A D0-only
-checkpoint diagnostic was still improving, so the one preregistered resume to
-the fixed 10,000-update cap was used. The final source reached only 0.76 D0
-success, below the 0.95 gate; D1 and D2 were both zero while the shortest-path
-oracle remained 1.00 on all three calibration sets.
+The first PointNav source run used a custom global-average image encoder and
+misaligned zero-padded action windows. Its D0 failure was an invalid
+implementation preflight, not evidence against image observations or the
+200-demo budget. Replaced it with the repository's established ResNet18 +
+SpatialSoftmax visual core, source-aligned `[1:9]` action execution,
+repeat-padding, GroupNorm, and reference DDIM clipping. With the same 200 D0
+demonstrations, the corrected 5k checkpoint reached D0/D1/D2 calibration
+success `1.00 / 0.54 / 0.06`; the oracle remained 1.00. D1/D2 templates were
+calibrated only on their calibration split as strict near-tangent blockers,
+then the manifest was frozen without test rollout inspection.
 
-Decision: stop before target-domain dynamics collection or either guidance
-objective. D0 contains no obstacles, so obstacle-template tuning cannot repair
-the failed source gate, and neither the data nor update budget should be
-silently expanded. No test rollouts were inspected and no frozen layout
-manifest was produced. This result does not compare geometry with latent
-guidance; it says the reduced 200-demo source setting did not establish the
-required base policy. Canonical report:
-`outputs/toy_recovery_objectives/source_gate_report.md`.
+Collected the authorized 150 balanced, unlabeled dynamics rollouts from five
+source checkpoints. Across 990 source-aligned 15-step clone queries, the
+latent predictor passed action shuffle (`1.93x` normal MSE) but failed to beat
+latent persistence (`0.000779` versus `0.000716`).
+
+Decision: the source and environment gates now pass, but stop before guidance
+because the representation dynamics gate fails. Do not use the superseded
+source failure as a 200-demo conclusion, and do not tune dynamics or build the
+expert bank after observing this gate. No scale-tuning, screen, fixed-state,
+test, or confirmation rollout was run. Canonical reports:
+`outputs/toy_recovery_objectives/source_gate_report.md` and
+`outputs/toy_recovery_objectives/dynamics_gate_report.md`.
 
 ## 2026-07-30
 

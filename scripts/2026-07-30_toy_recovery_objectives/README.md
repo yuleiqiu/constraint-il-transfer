@@ -1,9 +1,9 @@
 # PointNav Recovery-Objective Rapid Prototype
 
-Status: source gate failed on 2026-07-31. The formal 200-demo source run used
-its fixed 10,000-update cap and reached D0 calibration success `0.76 < 0.95`.
-The funnel therefore stopped before dynamics collection or guidance. See
-`outputs/toy_recovery_objectives/source_gate_report.md`.
+Status: corrected image source passed on 2026-07-31 at D0/D1/D2 calibration
+success `1.00 / 0.54 / 0.06`. The subsequent 150-rollout dynamics stage passed
+action shuffle (`1.93x`) but failed to beat latent persistence, so the funnel
+stopped before guidance. See `outputs/toy_recovery_objectives/`.
 
 ## Scope
 
@@ -71,8 +71,10 @@ uv run python scripts/2026-07-30_toy_recovery_objectives/train_dynamics.py \
 
 The dynamics collection is fixed at 150 rollouts: ten for every D0/D1/D2 and
 source-checkpoint combination. At each main-rollout replan state, the exact
-predicted 16-action chunk is executed open loop from a simulator clone; this
-matches the chunk consumed by guidance. Train/validation splitting is by
+15-action future suffix of the source-aligned 16-slot prediction is executed
+open loop from a simulator clone; slot zero is the preceding alignment action
+and is never re-executed. This matches the future consumed by guidance.
+Train/validation splitting is by
 rollout and stratified by difficulty and checkpoint. `train_dynamics.py`
 requires both shuffled-action MSE at least `1.2x` normal MSE over ten fixed
 permutations and improvement over the latent-persistence baseline. Do not run

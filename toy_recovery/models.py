@@ -9,7 +9,9 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
+from robomimic.algo.diffusion_policy import replace_bn_with_gn
 from robomimic.models.diffusion_policy_nets import ConditionalUnet1D
+from robomimic.models.obs_core import VisualCore
 
 from .config import PolicyConfig
 
@@ -21,8 +23,8 @@ class GuidanceObjective(Protocol):
         """Return one lower-is-better scalar per batch element."""
 
 
-class ImageEncoder(nn.Module):
-    """Small GroupNorm CNN used by both the source policy and latent study."""
+class LegacyImageEncoder(nn.Module):
+    """Original prototype encoder, retained only to read archived v1 checkpoints."""
 
     def __init__(self, latent_dim: int = 64) -> None:
         super().__init__()
@@ -47,11 +49,52 @@ class ImageEncoder(nn.Module):
         return self.projection(self.features(image).flatten(1))
 
 
+class ImageEncoder(nn.Module):
+    """The repository's established ResNet18 + SpatialSoftmax visual core."""
+
+    def __init__(self, latent_dim: int = 64) -> None:
+        super().__init__()
+        self.core = VisualCore(
+            input_shape=(3, 64, 64),
+            backbone_class="ResNet18Conv",
+            backbone_kwargs={
+                "pretrained": False,
+                "input_coord_conv": False,
+            },
+            pool_class="SpatialSoftmax",
+            pool_kwargs={
+                "num_kp": 32,
+                "learnable_temperature": False,
+                "temperature": 1.0,
+                "noise_std": 0.0,
+            },
+            flatten=True,
+            feature_dimension=latent_dim,
+        )
+        replace_bn_with_gn(self.core)
+
+    def forward(self, image: torch.Tensor) -> torch.Tensor:
+        # ObservationGroupEncoder applies this activation after each core in the
+        # established robomimic Diffusion Policy stack.
+        return F.relu(self.core(image))
+
+
 class SourceDiffusionPolicy(nn.Module):
-    def __init__(self, config: PolicyConfig | None = None) -> None:
+    def __init__(
+        self,
+        config: PolicyConfig | None = None,
+        *,
+        encoder_kind: str = "resnet18_spatial_softmax",
+    ) -> None:
         super().__init__()
         self.config = config or PolicyConfig()
-        self.encoder = ImageEncoder(self.config.latent_dim)
+        self.encoder_kind = encoder_kind
+        if encoder_kind == "resnet18_spatial_softmax":
+            self.encoder = ImageEncoder(self.config.latent_dim)
+        elif encoder_kind == "legacy_global_average":
+            self.encoder = LegacyImageEncoder(self.config.latent_dim)
+        else:
+            raise ValueError(f"unsupported image encoder {encoder_kind}")
         self.noise_pred_net = ConditionalUnet1D(
             input_dim=2,
             global_cond_dim=self.config.latent_dim
@@ -63,12 +106,11 @@ class SourceDiffusionPolicy(nn.Module):
             cond_predict_scale=True,
         )
 
-    @staticmethod
-    def scheduler(train_timesteps: int = 100) -> DDIMScheduler:
+    def scheduler(self, train_timesteps: int = 100) -> DDIMScheduler:
         return DDIMScheduler(
             num_train_timesteps=train_timesteps,
             beta_schedule="squaredcos_cap_v2",
-            clip_sample=False,
+            clip_sample=self.encoder_kind != "legacy_global_average",
             set_alpha_to_one=True,
             steps_offset=0,
             prediction_type="epsilon",
@@ -80,6 +122,26 @@ class SourceDiffusionPolicy(nn.Module):
             rgb_history.reshape(batch * horizon, channels, height, width)
         )
         return encoded.reshape(batch, horizon * self.config.latent_dim)
+
+    @property
+    def execution_slice(self) -> slice:
+        """Match robomimic Diffusion Policy's observation-aligned action slice."""
+
+        start = self.config.observation_horizon - 1
+        return slice(start, start + self.config.action_horizon)
+
+    def executable_actions(self, action_sequence: torch.Tensor) -> torch.Tensor:
+        return action_sequence[..., self.execution_slice, :]
+
+    @property
+    def future_slice(self) -> slice:
+        """Predicted actions at and after the current observation."""
+
+        start = self.config.observation_horizon - 1
+        return slice(start, self.config.prediction_horizon)
+
+    def future_actions(self, action_sequence: torch.Tensor) -> torch.Tensor:
+        return action_sequence[..., self.future_slice, :]
 
     def training_loss(
         self,
@@ -200,8 +262,9 @@ class SourceDiffusionPolicy(nn.Module):
         target = Path(path)
         target.parent.mkdir(parents=True, exist_ok=True)
         payload: dict[str, object] = {
-            "schema": "toy-recovery-source-v1",
+            "schema": "toy-recovery-source-v2",
             "config": asdict(self.config),
+            "encoder_kind": self.encoder_kind,
             "update": update,
             "model": ema_state or self.state_dict(),
             "weights": "ema" if ema_state is not None else "online",
@@ -220,22 +283,29 @@ class SourceDiffusionPolicy(nn.Module):
         device: str | torch.device = "cpu",
     ) -> tuple["SourceDiffusionPolicy", dict[str, object]]:
         payload = torch.load(path, map_location=device, weights_only=False)
-        if payload.get("schema") != "toy-recovery-source-v1":
+        schema = payload.get("schema")
+        if schema not in {"toy-recovery-source-v1", "toy-recovery-source-v2"}:
             raise ValueError("unsupported source checkpoint")
         config_raw = dict(payload["config"])
         config_raw["unet_down_dims"] = tuple(config_raw["unet_down_dims"])
-        model = cls(PolicyConfig(**config_raw)).to(device)
+        encoder_kind = payload.get(
+            "encoder_kind",
+            "legacy_global_average"
+            if schema == "toy-recovery-source-v1"
+            else "resnet18_spatial_softmax",
+        )
+        model = cls(PolicyConfig(**config_raw), encoder_kind=encoder_kind).to(device)
         model.load_state_dict(payload["model"])
         return model, payload
 
 
 class LatentDynamics(nn.Module):
-    """Action-conditioned 16-step latent predictor."""
+    """Action-conditioned source-aligned future-latent predictor."""
 
     def __init__(
         self,
         latent_dim: int = 64,
-        prediction_horizon: int = 16,
+        prediction_horizon: int = 15,
         hidden_dim: int = 256,
     ) -> None:
         super().__init__()
@@ -254,7 +324,9 @@ class LatentDynamics(nn.Module):
         self, latent: torch.Tensor, normalized_actions: torch.Tensor
     ) -> torch.Tensor:
         if normalized_actions.shape[1:] != (self.prediction_horizon, 2):
-            raise ValueError("latent dynamics requires a full 16-action chunk")
+            raise ValueError(
+                f"latent dynamics requires {self.prediction_horizon} future actions"
+            )
         inputs = torch.cat((latent, normalized_actions.flatten(1)), dim=1)
         return self.network(inputs)
 

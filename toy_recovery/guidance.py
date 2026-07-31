@@ -33,6 +33,7 @@ def geometry_context(
     margin: float = 0.02,
     progress_tolerance: float = 0.02,
     max_step: float = 0.05,
+    future_action_start: int = 0,
     device: torch.device | None = None,
 ) -> dict[str, Any]:
     target_device = device or source_actions.device
@@ -83,6 +84,7 @@ def geometry_context(
         "margin": margin,
         "progress_tolerance": progress_tolerance,
         "max_step": max_step,
+        "future_action_start": future_action_start,
     }
 
 
@@ -95,12 +97,16 @@ class GeometryObjective:
         self, actions: torch.Tensor, context: dict[str, Any]
     ) -> torch.Tensor:
         actions = radial_clip_actions(actions, float(context["max_step"]))
+        source_actions = context["source_actions"]
+        action_start = int(context.get("future_action_start", 0))
+        if action_start:
+            actions = actions[:, action_start:]
+            source_actions = source_actions[:, action_start:]
         position = context["position"]
         goal = context["goal"]
         centers = context["obstacle_centers"]
         radii = context["obstacle_radii"]
         mask = context["obstacle_mask"]
-        source_actions = context["source_actions"]
         if centers.shape[1] == 0:
             clearance_cost = torch.zeros(
                 actions.shape[0], device=actions.device, dtype=actions.dtype
@@ -152,6 +158,14 @@ class GlobalLatentObjective:
     ) -> torch.Tensor:
         latent = context["latent"]
         actions = radial_clip_actions(actions, self.max_step)
+        expected = self.dynamics.prediction_horizon
+        if actions.shape[1] == expected + 1:
+            actions = actions[:, 1:]
+        elif actions.shape[1] != expected:
+            raise ValueError(
+                f"latent objective expected {expected} future actions or one "
+                "leading alignment action"
+            )
         normalized_actions = actions / self.max_step
         predicted = self.dynamics(latent, normalized_actions)
         bank = self.expert_bank.to(

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import numpy as np
 import torch
+from robomimic.models.base_nets import SpatialSoftmax
 
 from toy_recovery.config import PolicyConfig
 from toy_recovery.env import make_layout
@@ -18,6 +19,16 @@ def small_policy() -> SourceDiffusionPolicy:
     return SourceDiffusionPolicy(
         PolicyConfig(latent_dim=16, unet_down_dims=(16, 32))
     ).eval()
+
+
+def test_source_uses_established_spatial_encoder_and_execution_slice() -> None:
+    policy = small_policy()
+    assert any(isinstance(module, SpatialSoftmax) for module in policy.encoder.modules())
+    assert not any(isinstance(module, torch.nn.BatchNorm2d) for module in policy.encoder.modules())
+    assert any(isinstance(module, torch.nn.GroupNorm) for module in policy.encoder.modules())
+    assert policy.execution_slice == slice(1, 9)
+    assert policy.future_slice == slice(1, 16)
+    assert policy.scheduler().config.clip_sample is True
 
 
 def test_disabled_guidance_has_bitwise_source_parity() -> None:

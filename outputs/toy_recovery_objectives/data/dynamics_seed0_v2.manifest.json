@@ -1,0 +1,33 @@
+{
+  "checkpoint_paths": [
+    "outputs/toy_recovery_objectives/train/source_seed0_v2/source_update_001000.pth",
+    "outputs/toy_recovery_objectives/train/source_seed0_v2/source_update_002000.pth",
+    "outputs/toy_recovery_objectives/train/source_seed0_v2/source_update_003000.pth",
+    "outputs/toy_recovery_objectives/train/source_seed0_v2/source_update_004000.pth",
+    "outputs/toy_recovery_objectives/train/source_seed0_v2/source_update_005000.pth"
+  ],
+  "count": 150,
+  "difficulty_counts": {
+    "D0": 50,
+    "D1": 50,
+    "D2": 50
+  },
+  "dynamics_contract": "clone each main-rollout replan state, execute its predicted 15-action source-aligned future open loop, and encode the absorbing terminal future",
+  "dynamics_queries": 990,
+  "outcome_counts": {
+    "D0": {
+      "failure": 1,
+      "success": 49
+    },
+    "D1": {
+      "failure": 30,
+      "success": 20
+    },
+    "D2": {
+      "failure": 45,
+      "success": 5
+    }
+  },
+  "schema": "toy-recovery-dynamics-collection-v2",
+  "uses_reward_or_correction_labels": false
+}

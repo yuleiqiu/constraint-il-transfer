@@ -297,24 +297,25 @@ class TrajectoryWindowDataset(Dataset):
                     axis=0,
                 )
                 history = np.concatenate((padding, history), axis=0)
-            actions = episode["action"][step : step + p.prediction_horizon]
-            valid = actions.shape[0]
-            if valid < p.prediction_horizon:
-                actions = np.concatenate(
-                    (
-                        actions,
-                        np.zeros(
-                            (p.prediction_horizon - valid, 2),
-                            dtype=np.float32,
-                        ),
-                    ),
-                    axis=0,
-                )
+            # Match robomimic SequenceDataset with frame_stack=2,
+            # seq_length=16, and pad_same=True. The predicted sequence starts
+            # one action before the current observation, and inference executes
+            # [observation_horizon - 1 : + action_horizon]. Boundary values are
+            # repeated instead of introducing artificial zero-action targets.
+            sequence_indices = (
+                np.arange(p.prediction_horizon)
+                + step
+                - (p.observation_horizon - 1)
+            )
+            action_count = episode["action"].shape[0]
+            valid = (sequence_indices >= 0) & (sequence_indices < action_count)
+            clipped_indices = np.clip(sequence_indices, 0, action_count - 1)
+            actions = episode["action"][...][clipped_indices]
         return {
             "rgb": torch.from_numpy(history.copy()).permute(0, 3, 1, 2).float()
             / 255.0,
             "action": torch.from_numpy(
                 normalize_actions(actions, self.max_step).astype(np.float32)
             ),
-            "valid": torch.arange(p.prediction_horizon) < valid,
+            "valid": torch.from_numpy(valid.copy()),
         }

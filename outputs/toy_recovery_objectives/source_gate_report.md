@@ -1,55 +1,58 @@
-# PointNav source-policy gate result
+# PointNav image-source gate result
 
 Date: 2026-07-31
-Status: **stopped at the source gate**
+Status: **passed after correcting the source implementation**
 
-## Result
+## Superseded preflight
 
-The formal rapid prototype did not advance to dynamics collection or guidance.
-The final source policy reached only `0.76` success on 50 D0 calibration
-layouts, below the preregistered `0.95` threshold. D1 and D2 success were both
-zero. The shortest-path oracle succeeded on every calibration layout in all
-three difficulties.
+The first source run used a custom global-average CNN, zero-padded action
+suffixes, the wrong executable slice, and DDIM sampling without the clipping
+used by the repository's established image Diffusion Policy. It reached only
+`0.76` D0 calibration success after 10,000 updates. This was an implementation
+preflight failure, not evidence that image observations or 200 demonstrations
+are insufficient. Its checkpoints were removed after the corrected run passed.
+
+## Corrected image policy
+
+The replacement keeps RGB-only policy input, 200 D0 demonstrations, horizons
+`2 / 16 / 8`, and DDIM `100 / 10`. It directly reuses robomimic's
+`VisualCore(ResNet18Conv + SpatialSoftmax)`, replaces BatchNorm with GroupNorm,
+uses the source-aligned executable slice `[1:9]`, repeat-pads sequence
+boundaries, and enables the reference DDIM sample clipping.
+
+A 1,000-update preflight reached `47/50` D0 calibration successes. Continuing
+the same run to the preregistered initial 5,000-update budget produced the
+formal gate result:
 
 | Difficulty | Oracle success | Source success | Required source range |
 |---|---:|---:|---:|
-| D0 | 1.00 | 0.76 | at least 0.95 |
-| D1 | 1.00 | 0.00 | 0.20--0.80 |
-| D2 | 1.00 | 0.00 | 0.05--0.50 and at least 0.10 below D1 |
+| D0 | 1.00 | 1.00 | at least 0.95 |
+| D1 | 1.00 | 0.54 | 0.20--0.80 |
+| D2 | 1.00 | 0.06 | 0.05--0.50 and at least 0.10 below D1 |
 
-The failing D0 result cannot be repaired by tuning obstacle geometry: D0 has
-no obstacle. Changing its task distribution after observing this result would
-also invalidate the intended source-policy gate. No frozen
-`layout_manifest.json` was written, and no untouched test rollout was run.
+## Calibration-only environment repair
 
-## Executed budget
+The original obstacle centers sat directly on the D0 route, making every
+high-quality straight source trajectory collide. Obstacle scale alone left D1
+at zero. On calibration layouts only, the templates were changed to strict
+near-tangent blockers:
 
-- Generated 200 D0 demonstrations. Exact replay passed for all 200; all were
-  successful and collision-free. Maximum recorded action norm was `0.048479`,
-  below the `0.05` limit.
-- Generated disjoint candidate splits: 50 calibration, 30 scale-tuning, 100
-  screen, and 200 untouched test layouts per difficulty (1,140 unique layout
-  seeds). Merely constructing and geometrically validating these layouts did
-  not run policy evaluation on test layouts.
-- Trained one source seed for the initial 5,000 updates. Its calibration D0
-  success was `0.62`; a D0-only 20-layout diagnostic showed an improving but
-  noisy checkpoint trend (`3, 6, 4, 8, 14` successes at 1k--5k).
-- Used the single allowed resume to the fixed 10,000-update cap. Training loss
-  decreased from `0.007243` at 5k to `0.002845` at 10k. The final checkpoint
-  then produced the gate result above.
-- Audited the 6k, 8k, and 10k checkpoint payloads: model, EMA model, online
-  model, and optimizer state are present and all floating tensors are finite.
+- D1 uses one radius-`0.07` obstacle offset to `0.85` of its agent-inflated
+  radius, with the side fixed deterministically by layout-seed parity.
+- D2 uses two radius-`0.07` blockers on the same side at separated x positions,
+  offset by `0.78` and `0.82` of their inflated radii. This requires a
+  persistent lateral detour without demanding an unseen D0 source execute an
+  untrained S-turn.
 
-## Work not authorized by the failed gate
+Every accepted D1 layout retains genuine upper and lower oracle modes. Every
+accepted D2 layout has both obstacles blocking the direct segment and at least
+eight actions between their closest oracle interaction points. Oracle success
+is 1.00. No source rollout on scale-tuning, screen, or test layouts was used
+to select these templates.
 
-- zero dynamics rollouts collected (the revised maximum would have been 150);
-- no latent-dynamics model or D0 expert latent bank trained;
-- no scale selection, rapid screen, fixed-state recovery diagnostic, or
-  confirmation evaluation run;
-- no LPB/ReGuide-style extension implemented or evaluated beyond the generic
-  prototype components already covered by unit/smoke tests.
+The passing candidate manifest was copied byte-for-byte to
+`layout_manifest.json`; both files had SHA-256
+`c970b55e925e6d2ad12bbbdf815851a9a749bfbb602ce410d3ca1cee002f0be6`.
 
-This is a source-policy capacity/training result for the 200-demo setting, not
-evidence for or against either recovery objective. A later run would require a
-new, explicitly approved source-policy plan rather than silently expanding the
-training or data budget.
+The source gate authorized the fixed 150-rollout dynamics stage. Its separate
+result is in `dynamics_gate_report.md`.

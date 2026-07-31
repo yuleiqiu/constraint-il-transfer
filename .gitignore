@@ -29,6 +29,7 @@ outputs/oracle_branch_value/**/teacher_control.json
 outputs/persistent_correction_oracle/**/*.jsonl
 outputs/toy_recovery_objectives/**/*.hdf5
 outputs/toy_recovery_objectives/**/*.jsonl
+outputs/toy_recovery_objectives/visualizations/
 
 # Third-party source repos (managed independently)
 third_party/

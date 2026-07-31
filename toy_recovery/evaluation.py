@@ -84,9 +84,11 @@ def evaluate_episode(
             torch.cuda.synchronize(target_device)
         start_time = time.perf_counter()
         source_normalized = policy.sample(rgb, noise=noise)
-        source_actions = radial_clip_actions(
-            source_normalized * cfg.max_step, cfg.max_step
+        source_sequence_actions = radial_clip_actions(
+            source_normalized * cfg.max_step,
+            cfg.max_step,
         )
+        source_actions = policy.executable_actions(source_sequence_actions)
         triggered = obstruction_trigger(
             layout,
             env.state.position,
@@ -104,11 +106,12 @@ def evaluate_episode(
                 context = geometry_context(
                     [layout],
                     env.state.position,
-                    source_actions.detach(),
+                    source_sequence_actions.detach(),
                     agent_radius=cfg.agent_radius,
                     margin=guide_cfg.inflated_margin,
                     progress_tolerance=guide_cfg.progress_tolerance,
                     max_step=cfg.max_step,
+                    future_action_start=policy.future_slice.start,
                     device=target_device,
                 )
                 objective = geometry_objective
@@ -132,7 +135,7 @@ def evaluate_episode(
             torch.cuda.synchronize(target_device)
         inference_seconds += time.perf_counter() - start_time
         chunk = (
-            selected[0, : policy.config.action_horizon].detach().cpu().numpy()
+            policy.executable_actions(selected)[0].detach().cpu().numpy()
             * cfg.max_step
         )
         for action in chunk:

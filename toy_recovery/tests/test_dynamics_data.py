@@ -31,6 +31,16 @@ class FixedPolicy(torch.nn.Module):
         actions[..., 0] = 0.8
         return actions
 
+    @property
+    def execution_slice(self) -> slice:
+        start = self.config.observation_horizon - 1
+        return slice(start, start + self.config.action_horizon)
+
+    @property
+    def future_slice(self) -> slice:
+        start = self.config.observation_horizon - 1
+        return slice(start, self.config.prediction_horizon)
+
 
 def test_dynamics_query_executes_the_same_predicted_chunk_open_loop() -> None:
     layout = make_layout(0, 22_000)
@@ -45,7 +55,7 @@ def test_dynamics_query_executes_the_same_predicted_chunk_open_loop() -> None:
     )
     assert trajectory.action.shape[0] == 80
     first = queries[0]
-    assert first["normalized_action_chunk"].shape == (16, 2)
+    assert first["normalized_action_chunk"].shape == (15, 2)
     env = PointNavEnv(layout=layout)
     env.reset(layout.seed, layout)
     done = False
@@ -75,7 +85,7 @@ def test_dynamics_split_is_rollout_level_and_stratified(tmp_path) -> None:
         future[index, ..., 1] = index
     with h5py.File(path, "w") as handle:
         group = handle.create_group("dynamics_queries")
-        group.attrs["schema"] = "open-loop-predicted-chunk-v1"
+        group.attrs["schema"] = "source-aligned-open-loop-future-v2"
         group.create_dataset("rollout_index", data=np.asarray(rollout_ids))
         group.create_dataset("difficulty", data=np.asarray(difficulties))
         group.create_dataset("checkpoint_index", data=np.asarray(checkpoints))
@@ -83,7 +93,7 @@ def test_dynamics_split_is_rollout_level_and_stratified(tmp_path) -> None:
         group.create_dataset("future_rgb", data=future)
         group.create_dataset(
             "normalized_action_chunk",
-            data=np.zeros((count, 16, 2), dtype=np.float32),
+            data=np.zeros((count, 15, 2), dtype=np.float32),
         )
     train, validation, manifest = load_dynamics_batches(
         path, ColorMeanEncoder(), batch_size=8, split_seed=3

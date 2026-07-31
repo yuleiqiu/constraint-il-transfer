@@ -55,7 +55,7 @@ def rollout_policy(
         rgb = rgb_history_tensor(history, target_device)
         normalized_chunk = policy.sample(rgb, generator=generator)
         chunk = (
-            normalized_chunk[0, : policy.config.action_horizon]
+            policy.executable_actions(normalized_chunk)[0]
             .detach()
             .cpu()
             .numpy()
@@ -140,7 +140,7 @@ def collect_dynamics_rollouts(
     write_trajectories(target, trajectories)
     with h5py.File(target, "a") as handle:
         group = handle.create_group("dynamics_queries")
-        group.attrs["schema"] = "open-loop-predicted-chunk-v1"
+        group.attrs["schema"] = "source-aligned-open-loop-future-v2"
         group.attrs["absorbing_terminal_state"] = True
         group.create_dataset(
             "current_rgb",
@@ -175,7 +175,7 @@ def collect_dynamics_rollouts(
                 data=np.asarray([query[key] for query in queries], dtype=np.int64),
             )
     return {
-        "schema": "toy-recovery-dynamics-collection-v1",
+        "schema": "toy-recovery-dynamics-collection-v2",
         "count": count,
         "checkpoint_paths": [str(path) for path in checkpoint_paths],
         "difficulty_counts": {
@@ -188,7 +188,8 @@ def collect_dynamics_rollouts(
         "dynamics_queries": len(queries),
         "dynamics_contract": (
             "clone each main-rollout replan state, execute its predicted "
-            "16-action chunk open loop, and encode the absorbing terminal future"
+            "15-action source-aligned future open loop, and encode the "
+            "absorbing terminal future"
         ),
         "uses_reward_or_correction_labels": False,
     }
@@ -217,19 +218,20 @@ def _rollout_with_open_loop_queries(
     while not done:
         rgb = rgb_history_tensor(history, target_device)
         normalized_chunk = policy.sample(rgb, generator=generator)
-        planned = (
+        planned_sequence = (
             normalized_chunk[0].detach().cpu().numpy() * config.max_step
         )
-        norms = np.linalg.norm(planned, axis=1, keepdims=True)
-        planned = planned * np.minimum(
+        norms = np.linalg.norm(planned_sequence, axis=1, keepdims=True)
+        planned_sequence = planned_sequence * np.minimum(
             1.0, config.max_step / np.maximum(norms, 1e-12)
         )
+        planned_future = planned_sequence[policy.future_slice]
 
         branch = PointNavEnv(layout=layout, config=config)
         branch.restore_state(env.clone_state())
         branch_done = False
         executed_steps = 0
-        for action in planned:
+        for action in planned_future:
             if branch_done:
                 break
             _, _, branch_done, _ = branch.step(action)
@@ -239,7 +241,7 @@ def _rollout_with_open_loop_queries(
                 "current_rgb": history[-1].copy(),
                 "future_rgb": branch.render().copy(),
                 "normalized_action_chunk": normalize_actions(
-                    planned, config.max_step
+                    planned_future, config.max_step
                 ).astype(np.float32),
                 "rollout_index": rollout_index,
                 "difficulty": layout.difficulty,
@@ -251,7 +253,8 @@ def _rollout_with_open_loop_queries(
             }
         )
 
-        for action in planned[: policy.config.action_horizon]:
+        executable = planned_sequence[policy.execution_slice]
+        for action in executable:
             obs, _, done, info = env.step(action)
             history.append(obs["rgb"])
             rgbs.append(obs["rgb"])
@@ -290,8 +293,10 @@ def load_dynamics_batches(
     encoder.eval()
     with h5py.File(rollout_path, "r") as handle, torch.no_grad():
         queries = handle["dynamics_queries"]
-        if queries.attrs.get("schema") != "open-loop-predicted-chunk-v1":
-            raise ValueError("dynamics data does not use the open-loop chunk contract")
+        if queries.attrs.get("schema") != "source-aligned-open-loop-future-v2":
+            raise ValueError(
+                "dynamics data does not use the source-aligned future contract"
+            )
         rollout_ids = queries["rollout_index"][...]
         difficulties = queries["difficulty"][...]
         checkpoints = queries["checkpoint_index"][...]

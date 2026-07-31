@@ -57,8 +57,10 @@ def train_source_policy(
         resume_payload = torch.load(
             resume_checkpoint, map_location=target_device, weights_only=False
         )
-        if resume_payload.get("schema") != "toy-recovery-source-v1":
-            raise ValueError("unsupported source resume checkpoint")
+        if resume_payload.get("schema") != "toy-recovery-source-v2":
+            raise ValueError(
+                "source resume requires a v2 ResNet18-SpatialSoftmax checkpoint"
+            )
         start_update = int(resume_payload["update"])
         if updates <= start_update:
             raise ValueError("target updates must exceed resume checkpoint update")
@@ -208,12 +210,18 @@ def train_latent_dynamics(
     target_device = torch.device(
         device or ("cuda" if torch.cuda.is_available() else "cpu")
     )
-    model = LatentDynamics(latent_dim=latent_dim).to(target_device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     cached_train = list(train_batches)
     cached_validation = list(validation_batches)
     if not cached_train or not cached_validation:
         raise ValueError("dynamics training requires non-empty rollout splits")
+    action_horizon = int(cached_train[0].action.shape[1])
+    if any(batch.action.shape[1] != action_horizon for batch in cached_train):
+        raise ValueError("dynamics training batches disagree on action horizon")
+    model = LatentDynamics(
+        latent_dim=latent_dim,
+        prediction_horizon=action_horizon,
+    ).to(target_device)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     best_validation = float("inf")
     best_state: dict[str, torch.Tensor] | None = None
     stale_epochs = 0

@@ -137,42 +137,68 @@ def swept_clearance(
     return min(clearances, default=math.inf)
 
 
-def _raw_layout(difficulty: int, seed: int, attempt: int) -> LayoutSpec:
+def _raw_layout(
+    difficulty: int,
+    seed: int,
+    attempt: int,
+    config: EnvironmentConfig,
+) -> LayoutSpec:
     rng = np.random.default_rng(np.random.SeedSequence([seed, difficulty, attempt]))
     start = (-0.78 + rng.uniform(-0.07, 0.07), rng.uniform(-0.28, 0.28))
     goal = (0.78 + rng.uniform(-0.07, 0.07), rng.uniform(-0.28, 0.28))
-    line_mid_y = 0.5 * (start[1] + goal[1])
+
+    def line_y_at(x: float) -> float:
+        fraction = (x - start[0]) / (goal[0] - start[0])
+        return float(start[1] + fraction * (goal[1] - start[1]))
 
     if difficulty == 0:
         obstacles: tuple[Obstacle, ...] = ()
+        template = "pointnav-v1"
     elif difficulty == 1:
+        x = rng.uniform(-0.08, 0.08)
+        radius = 0.07
+        side = 1.0 if seed % 2 == 0 else -1.0
+        tangent_fraction = 0.85
         obstacles = (
             Obstacle(
-                x=rng.uniform(-0.08, 0.08),
-                y=line_mid_y + rng.uniform(-0.035, 0.035),
-                radius=rng.uniform(0.19, 0.23),
+                x=x,
+                y=line_y_at(x)
+                + side
+                * tangent_fraction
+                * (radius + config.agent_radius),
+                radius=radius,
             ),
         )
+        template = "pointnav-v2-tangent-d1"
     else:
-        sign = -1.0 if rng.integers(0, 2) == 0 else 1.0
-        obstacles = (
-            Obstacle(
-                x=-0.22 + rng.uniform(-0.035, 0.035),
-                y=line_mid_y + sign * (0.15 + rng.uniform(-0.025, 0.025)),
-                radius=rng.uniform(0.18, 0.21),
-            ),
-            Obstacle(
-                x=0.22 + rng.uniform(-0.035, 0.035),
-                y=line_mid_y - sign * (0.15 + rng.uniform(-0.025, 0.025)),
-                radius=rng.uniform(0.18, 0.21),
-            ),
-        )
+        # Two separated near-tangent blockers on the same side of the direct
+        # route. Passing requires maintaining a lateral detour across multiple
+        # action chunks, while leaving a small natural source success set.
+        side = 1.0 if seed % 2 == 0 else -1.0
+        generated = []
+        for index, nominal_x in enumerate((-0.22, 0.22)):
+            x = nominal_x + rng.uniform(-0.035, 0.035)
+            radius = 0.07
+            tangent_fraction = 0.78 + 0.04 * index
+            generated.append(
+                Obstacle(
+                    x=x,
+                    y=line_y_at(x)
+                    + side
+                    * tangent_fraction
+                    * (radius + config.agent_radius),
+                    radius=radius,
+                )
+            )
+        obstacles = tuple(generated)
+        template = "pointnav-v2-tangent-d2"
     return LayoutSpec(
         difficulty=difficulty,
         seed=seed,
         start=start,
         goal=goal,
         obstacles=tuple(sorted(obstacles)),
+        template=template,
     )
 
 
@@ -188,7 +214,7 @@ def make_layout(
 
     cfg = config or EnvironmentConfig()
     for attempt in range(max_attempts):
-        layout = _raw_layout(difficulty, seed, attempt)
+        layout = _raw_layout(difficulty, seed, attempt, cfg)
         path = shortest_path(layout, cfg, margin=cfg.planner_margin)
         direct_clearance = swept_clearance(
             np.asarray(layout.start),
@@ -228,7 +254,6 @@ def make_layout(
             ]
             structure_ok = (
                 direct_block_count == 2
-                and len(path) >= 4
                 and max(nearest_indices) - min(nearest_indices) >= 8
             )
         if path is not None and blocks_direct and structure_ok:

@@ -41,9 +41,7 @@ def _continue_source(
     while not done and env.state.step_count < env.config.horizon:
         rgb = rgb_history_tensor(history, device)
         chunk = (
-            policy.sample(rgb, generator=generator)[
-                0, : policy.config.action_horizon
-            ]
+            policy.executable_actions(policy.sample(rgb, generator=generator))[0]
             .detach()
             .cpu()
             .numpy()
@@ -81,7 +79,10 @@ def capture_failure_obstruction_states(
         while not done:
             rgb = rgb_history_tensor(history, target_device)
             normalized = policy.sample(rgb, generator=generator)
-            actions = normalized[0].detach().cpu().numpy() * cfg.max_step
+            actions = (
+                policy.executable_actions(normalized)[0].detach().cpu().numpy()
+                * cfg.max_step
+            )
             if first_obstruction is None and obstruction_trigger(
                 layout,
                 env.state.position,
@@ -97,7 +98,7 @@ def capture_failure_obstruction_states(
                     rgb_history=(padded[0].copy(), padded[1].copy()),
                     policy_seed=policy_seed,
                 )
-            for action in actions[: policy.config.action_horizon]:
+            for action in actions:
                 obs, _, done, _ = env.step(action)
                 history.append(obs["rgb"])
                 if done:
@@ -169,9 +170,7 @@ def fixed_state_recovery_diagnostic(
             captured.rgb_history[1].copy(),
         ]
         prefix_safe = True
-        for action in actions[
-            0, : policy.config.action_horizon
-        ].detach().cpu().numpy():
+        for action in policy.executable_actions(actions)[0].detach().cpu().numpy():
             obs, _, done, _ = prefix_env.step(action)
             prefix_history.append(obs["rgb"])
             if prefix_env.state.collision:
@@ -251,6 +250,7 @@ def fixed_state_recovery_diagnostic(
                 margin=guide_cfg.inflated_margin,
                 progress_tolerance=guide_cfg.progress_tolerance,
                 max_step=cfg.max_step,
+                future_action_start=policy.future_slice.start,
                 device=target_device,
             )
             method_actions = [("source", source_actions)]

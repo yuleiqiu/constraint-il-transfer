@@ -42,7 +42,7 @@ def test_latent_dynamics_overfits_one_batch() -> None:
     torch.manual_seed(2)
     model = LatentDynamics(latent_dim=4, hidden_dim=32)
     latent = torch.randn(8, 4)
-    action = torch.randn(8, 16, 2)
+    action = torch.randn(8, 15, 2)
     target = torch.cat(
         (action[:, 0], action[:, 1]), dim=1
     )

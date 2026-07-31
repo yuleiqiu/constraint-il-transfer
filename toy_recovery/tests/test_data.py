@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import numpy as np
 import json
+import torch
 
 from toy_recovery.data import (
     EvaluationRecord,
@@ -29,6 +30,11 @@ def test_hdf5_round_trip_replay(tmp_path) -> None:
     assert item["rgb"].shape == (2, 3, 64, 64)
     assert item["action"].shape == (16, 2)
     assert item["valid"].shape == (16,)
+    assert not item["valid"][0]
+    assert torch.equal(item["action"][0], item["action"][1])
+    final = dataset[len(dataset) - 1]
+    assert final["valid"].sum().item() == 2
+    assert torch.all(final["action"][1:] == final["action"][1])
 
 
 def test_action_normalization_round_trip_and_clipping() -> None:
