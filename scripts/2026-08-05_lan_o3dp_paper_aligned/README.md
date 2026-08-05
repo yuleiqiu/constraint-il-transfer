@@ -61,7 +61,9 @@ Three configurations are explicit rather than runtime mutations:
 All use DDPM-100, batch 64, 500 epochs, 2/16/8 observation/prediction/action
 horizons, the residual 3-32-64-64 point encoder, the 512-1024-2048 UNet,
 AdamW at `1e-4`, betas `(0.95, 0.999)`, weight decay `1e-6`, cosine decay with
-300 warmup steps, and EMA power `0.75`.
+300 warmup steps, and EMA power `0.75`. The two `paper256` formal runs upload
+metrics to the W&B project `lan_o3dp_paper_aligned`; TensorBoard and terminal
+logs are also retained locally.
 
 Run the paper-primary training:
 
