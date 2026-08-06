@@ -2,8 +2,10 @@
 
 The output contains a fixed 40-demonstration subset, a 38/2 train/validation
 split, a 6-D absolute EEF pose observation, a 7-D absolute EEF pose action,
-and a target-object point cloud rendered from one calibrated 120x120 front
-camera with oracle simulator masks.
+and a target-object point cloud rendered from one calibrated front camera
+with oracle simulator masks. The opt-in corrected profile also removes the
+absolute rotation-vector branch discontinuity and raises raster density before
+sampling 256 target points.
 """
 
 import argparse
@@ -24,6 +26,10 @@ from robomimic.utils.target_pointcloud_utils import (
     normalize_target_pointcloud_config,
     render_target_pointcloud,
 )
+from robomimic.utils.continuous_rotation_utils import (
+    continuous_quaternion_sequence_to_rotation_vectors,
+    normalize_quaternion_xyzw,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -35,6 +41,12 @@ DEFAULT_SOURCE = (
 PROFILE_CONFIGS = {
     "paper256": {"num_points": 256, "padding_mode": "repeat"},
     "official512": {"num_points": 512, "padding_mode": "zero"},
+    "paper256_hires_continuous": {
+        "height": 256,
+        "width": 256,
+        "num_points": 256,
+        "padding_mode": "repeat",
+    },
 }
 SEED = 42
 SUBSET_SIZE = 40
@@ -80,7 +92,34 @@ def select_demo_split(names, seed=SEED):
     return selected, train, valid
 
 
-def build_agent_pos(obs_group):
+def rotation_vector_config(profile, reference_quaternion=None):
+    if profile != "paper256_hires_continuous":
+        return {"mode": "principal"}
+    if reference_quaternion is None:
+        raise ValueError(
+            "paper256_hires_continuous requires a reference quaternion"
+        )
+    return {
+        "mode": "continuous",
+        "reference_quaternion_xyzw": normalize_quaternion_xyzw(
+            reference_quaternion
+        ).tolist(),
+    }
+
+
+def quaternion_sequence_to_rotation_vectors(quaternions, rotation_config):
+    if rotation_config["mode"] == "continuous":
+        return continuous_quaternion_sequence_to_rotation_vectors(
+            quaternions,
+            rotation_config["reference_quaternion_xyzw"],
+        )
+    return np.asarray(
+        [T.quat2axisangle(quaternion.copy()) for quaternion in quaternions],
+        dtype=np.float64,
+    )
+
+
+def build_agent_pos(obs_group, rotation_config=None):
     positions = np.asarray(obs_group["robot0_eef_pos"], dtype=np.float32)
     quaternions = np.asarray(
         obs_group["robot0_eef_quat_site"],
@@ -90,11 +129,32 @@ def build_agent_pos(obs_group):
         raise ValueError("robot0_eef_pos must have shape [T, 3]")
     if quaternions.shape != (positions.shape[0], 4):
         raise ValueError("robot0_eef_quat_site must have shape [T, 4]")
-    rotations = np.asarray(
-        [T.quat2axisangle(quaternion.copy()) for quaternion in quaternions],
-        dtype=np.float32,
-    )
+    rotation_config = rotation_config or {"mode": "principal"}
+    rotations = quaternion_sequence_to_rotation_vectors(
+        quaternions,
+        rotation_config,
+    ).astype(np.float32)
     return np.concatenate((positions, rotations), axis=1)
+
+
+def build_absolute_action(source_demo, rotation_config):
+    positions = np.asarray(
+        source_demo["next_obs/robot0_eef_pos"],
+        dtype=np.float64,
+    )
+    quaternions = np.asarray(
+        source_demo["next_obs/robot0_eef_quat_site"],
+        dtype=np.float64,
+    )
+    gripper = np.asarray(source_demo["actions"][:, 6], dtype=np.float64)
+    rotations = quaternion_sequence_to_rotation_vectors(
+        quaternions,
+        rotation_config,
+    )
+    return np.concatenate(
+        (positions, rotations, gripper[:, None]),
+        axis=1,
+    )
 
 
 def source_fingerprint(path):
@@ -106,7 +166,14 @@ def source_fingerprint(path):
     }
 
 
-def build_config(source, profile, selected, train, valid):
+def build_config(
+    source,
+    profile,
+    selected,
+    train,
+    valid,
+    reference_quaternion=None,
+):
     pointcloud = dict(DEFAULT_POINTCLOUD_CONFIG)
     pointcloud.update(
         {
@@ -119,8 +186,14 @@ def build_config(source, profile, selected, train, valid):
             **PROFILE_CONFIGS[profile],
         }
     )
-    return {
-        "format_version": FORMAT_VERSION,
+    rotation_config = rotation_vector_config(
+        profile,
+        reference_quaternion=reference_quaternion,
+    )
+    config = {
+        "format_version": (
+            2 if rotation_config["mode"] == "continuous" else FORMAT_VERSION
+        ),
         "source": source_fingerprint(source),
         "profile": profile,
         "selected": selected,
@@ -133,6 +206,13 @@ def build_config(source, profile, selected, train, valid):
         ),
         "pointcloud": normalize_target_pointcloud_config(pointcloud),
     }
+    if rotation_config["mode"] == "continuous":
+        config["rotation_vector"] = rotation_config
+        config["agent_pos"] = (
+            "obs/robot0_eef_pos + continuous_axis_angle("
+            "obs/robot0_eef_quat_site_xyzw)"
+        )
+    return config
 
 
 def config_digest(config):
@@ -140,7 +220,7 @@ def config_digest(config):
     return hashlib.sha256(payload).hexdigest()
 
 
-def runtime_env_args(source_env_args, pointcloud):
+def runtime_env_args(source_env_args, pointcloud, rotation_config=None):
     env_args = json.loads(source_env_args)
     env_kwargs = env_args["env_kwargs"]
     env_kwargs["has_renderer"] = False
@@ -153,11 +233,25 @@ def runtime_env_args(source_env_args, pointcloud):
         "obs_key": OBS_KEY,
         "robot_prefix": "robot0",
     }
+    if rotation_config is not None and rotation_config["mode"] == "continuous":
+        env_kwargs["eef_pose_observation"].update(
+            {
+                "rotation_vector_mode": "continuous",
+                "reference_quaternion_xyzw": rotation_config[
+                    "reference_quaternion_xyzw"
+                ],
+            }
+        )
     env_args["lan_o3dp_observation"] = {
         "camera": "single calibrated agentview",
         "point_frame": "world",
         "segmentation": "oracle visible geom mask",
-        "agent_pos": "world xyz + site axis-angle",
+        "agent_pos": (
+            "world xyz + continuous site axis-angle"
+            if rotation_config is not None
+            and rotation_config["mode"] == "continuous"
+            else "world xyz + site axis-angle"
+        ),
     }
     return json.dumps(env_args, indent=4)
 
@@ -165,7 +259,9 @@ def runtime_env_args(source_env_args, pointcloud):
 def initialize_output(output, source_file, config, digest):
     for key, value in source_file.attrs.items():
         output.attrs[key] = value
-    output.attrs["lan_o3dp_paper_aligned_format_version"] = FORMAT_VERSION
+    output.attrs["lan_o3dp_paper_aligned_format_version"] = config[
+        "format_version"
+    ]
     output.attrs["lan_o3dp_config_json"] = json.dumps(config, sort_keys=True)
     output.attrs["lan_o3dp_config_sha256"] = digest
     output.attrs["lan_o3dp_complete"] = False
@@ -180,9 +276,12 @@ def initialize_output(output, source_file, config, digest):
     data.attrs["env_args"] = runtime_env_args(
         source_file["data"].attrs["env_args"],
         config["pointcloud"],
+        config.get("rotation_vector"),
     )
     data.attrs["lan_o3dp_action_semantics"] = (
-        "absolute world EEF next pose: xyz + site axis-angle + gripper"
+        "absolute world EEF next pose: xyz + {}site axis-angle + gripper".format(
+            "continuous " if "rotation_vector" in config else ""
+        )
     )
 
     mask = output.create_group("mask")
@@ -208,7 +307,7 @@ def copy_dataset(source_group, destination_group, key):
     )
 
 
-def process_demo(env, source_demo, output_data, demo_name, pointcloud):
+def process_demo(env, source_demo, output_data, demo_name, config):
     if demo_name in output_data:
         existing = output_data[demo_name]
         if bool(existing.attrs.get("lan_o3dp_complete", False)):
@@ -219,14 +318,21 @@ def process_demo(env, source_demo, output_data, demo_name, pointcloud):
     for key, value in source_demo.attrs.items():
         demo.attrs[key] = value
     demo.attrs["lan_o3dp_complete"] = False
-    for key in ("states", ACTION_KEY, "rewards", "dones"):
+    for key in ("states", "rewards", "dones"):
         copy_dataset(source_demo, demo, key)
+    rotation_config = config.get("rotation_vector", {"mode": "principal"})
+    if rotation_config["mode"] == "continuous":
+        action = build_absolute_action(source_demo, rotation_config)
+        demo.create_dataset(ACTION_KEY, data=action, compression="gzip")
+    else:
+        copy_dataset(source_demo, demo, ACTION_KEY)
 
     obs = demo.create_group("obs")
-    agent_pos = build_agent_pos(source_demo["obs"])
+    agent_pos = build_agent_pos(source_demo["obs"], rotation_config)
     obs.create_dataset(OBS_KEY, data=agent_pos, compression="gzip")
 
     states = source_demo["states"]
+    pointcloud = config["pointcloud"]
     clouds = obs.create_dataset(
         POINTCLOUD_KEY,
         shape=(len(states), pointcloud["num_points"], 3),
@@ -297,7 +403,19 @@ def main():
     )
     with h5py.File(source, "r") as source_file:
         selected, train, valid = select_demo_split(source_file["data"].keys())
-        config = build_config(source, args.profile, selected, train, valid)
+        reference_quaternion = None
+        if args.profile == "paper256_hires_continuous":
+            reference_quaternion = source_file[
+                "data/{}/obs/robot0_eef_quat_site".format(selected[0])
+            ][0]
+        config = build_config(
+            source,
+            args.profile,
+            selected,
+            train,
+            valid,
+            reference_quaternion=reference_quaternion,
+        )
         digest = config_digest(config)
         dest.parent.mkdir(parents=True, exist_ok=True)
         mode = "r+" if dest.exists() else "w"
@@ -324,7 +442,7 @@ def main():
                             source_file["data/{}".format(demo_name)],
                             output["data"],
                             demo_name,
-                            config["pointcloud"],
+                            config,
                         )
                     )
                     if (

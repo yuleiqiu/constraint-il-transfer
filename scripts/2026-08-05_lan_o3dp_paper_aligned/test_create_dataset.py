@@ -54,9 +54,50 @@ def test_profiles_freeze_camera_and_point_count(tmp_path):
         train,
         valid,
     )
+    reference = T.axisangle2quat(np.array([0.0, 0.0, np.pi - 0.1]))
+    corrected = MODULE.build_config(
+        source,
+        "paper256_hires_continuous",
+        selected,
+        train,
+        valid,
+        reference_quaternion=reference,
+    )
     assert paper["pointcloud"]["height"] == 120
     assert paper["pointcloud"]["width"] == 120
     assert paper["pointcloud"]["num_points"] == 256
     assert paper["pointcloud"]["padding_mode"] == "repeat"
     assert official["pointcloud"]["num_points"] == 512
     assert official["pointcloud"]["padding_mode"] == "zero"
+    assert corrected["pointcloud"]["height"] == 256
+    assert corrected["pointcloud"]["width"] == 256
+    assert corrected["pointcloud"]["num_points"] == 256
+    assert corrected["rotation_vector"]["mode"] == "continuous"
+
+
+def test_continuous_agent_and_action_cross_pi_without_a_jump():
+    class Group(dict):
+        pass
+
+    first = T.axisangle2quat(np.array([0.0, 0.0, np.pi - 0.01]))
+    second = -T.axisangle2quat(np.array([0.0, 0.0, np.pi + 0.01]))
+    rotation_config = {
+        "mode": "continuous",
+        "reference_quaternion_xyzw": first.tolist(),
+    }
+    obs = Group(
+        robot0_eef_pos=np.zeros((2, 3)),
+        robot0_eef_quat_site=np.stack((first, second)),
+    )
+    agent = MODULE.build_agent_pos(obs, rotation_config)
+    assert np.linalg.norm(agent[1, 3:6] - agent[0, 3:6]) < 0.03
+
+    demo = Group(
+        **{
+            "next_obs/robot0_eef_pos": np.zeros((2, 3)),
+            "next_obs/robot0_eef_quat_site": np.stack((first, second)),
+        },
+        actions=np.column_stack((np.zeros((2, 6)), -np.ones(2))),
+    )
+    action = MODULE.build_absolute_action(demo, rotation_config)
+    assert np.linalg.norm(action[1, 3:6] - action[0, 3:6]) < 0.03
