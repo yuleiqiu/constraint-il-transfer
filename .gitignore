@@ -27,6 +27,9 @@ outputs/gated_support_selector/**/*.jsonl
 outputs/oracle_branch_value/**/*.jsonl
 outputs/oracle_branch_value/**/teacher_control.json
 outputs/persistent_correction_oracle/**/*.jsonl
+outputs/lan_o3dp_paper_aligned/**
+!outputs/lan_o3dp_paper_aligned/d2_guidance_report.md
+!outputs/lan_o3dp_paper_aligned/d2_guidance_summary.json
 outputs/toy_recovery_objectives/**/*.hdf5
 outputs/toy_recovery_objectives/**/*.jsonl
 outputs/toy_recovery_objectives/visualizations/

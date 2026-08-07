@@ -1,0 +1,51 @@
+{
+  "date": "2026-08-07",
+  "environment": "PickPlaceBreadCerealCan",
+  "checkpoint": "model_epoch_50_image_v15_abs_eef_pose_osc_lan40_paper256_hires_continuous_success_0.7.pth",
+  "state_protocol": {
+    "layout_seed": 705,
+    "paired_states": 10,
+    "horizon": 600
+  },
+  "paper_scale_q_0.04": {
+    "baseline": {
+      "task_success": 9,
+      "safe_success": 6,
+      "collisions": 4,
+      "pairs": 10
+    },
+    "rho_0.0003": {
+      "task_success": 9,
+      "safe_success": 6,
+      "collisions": 4,
+      "collision_to_clear": 0,
+      "failure_to_success": 0,
+      "success_to_failure": 0
+    },
+    "rho_0.01": {
+      "task_success": 7,
+      "safe_success": 6,
+      "collisions": 4,
+      "collision_to_clear": 0,
+      "failure_to_success": 0,
+      "success_to_failure": 2
+    }
+  },
+  "expanded_q_collision_states": {
+    "pairs": 4,
+    "rho": 0.01,
+    "q_values": [0.08, 0.1, 0.12],
+    "baseline_collisions": 4,
+    "collision_to_clear_by_q": {
+      "0.08": 0,
+      "0.1": 0,
+      "0.12": 0
+    },
+    "contact_partition": {
+      "arm": 0,
+      "gripper": 4,
+      "carried_target": 0
+    }
+  },
+  "conclusion": "Paper-aligned point-EEF guidance did not clear any D2 gripper collision, including after Q expansion."
+}
