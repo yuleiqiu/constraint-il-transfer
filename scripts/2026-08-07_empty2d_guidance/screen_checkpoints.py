@@ -47,6 +47,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-dir", type=Path, required=True)
     parser.add_argument("--out", type=Path, default=Path("outputs/empty2d_guidance/source_screen.json"))
+    parser.add_argument(
+        "--device",
+        help="Explicit torch device such as cuda:1 (default: cuda if available).",
+    )
     args = parser.parse_args()
     checkpoints = []
     for path in (args.run_dir / "models").glob("model_epoch_*.pth"):
@@ -57,7 +61,7 @@ def main():
     if [epoch for epoch, _ in checkpoints] != [100, 200, 300, 400, 500]:
         raise RuntimeError("Expected exactly the five formal checkpoint epochs")
     losses = validation_losses(args.run_dir / "logs/log.txt")
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device(args.device or ("cuda" if torch.cuda.is_available() else "cpu"))
     rows = []
     seeds = list(range(420_000, 420_050))
     for epoch, checkpoint in checkpoints:

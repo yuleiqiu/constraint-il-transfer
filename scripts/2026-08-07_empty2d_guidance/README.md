@@ -29,7 +29,8 @@ Screen the timestamped run, then calibrate and test the selected checkpoint:
 
 ```bash
 uv run python scripts/2026-08-07_empty2d_guidance/screen_checkpoints.py \
-  --run-dir outputs/robomimic/train/empty2d_guidance_sample_seed42/<timestamp>
+  --run-dir outputs/robomimic/train/empty2d_guidance_sample_seed42/<timestamp> \
+  --device cuda:1
 
 ROBOMIMIC_GPU_ID=0 uv run python \
   scripts/2026-08-07_empty2d_guidance/paired_evaluation.py \
