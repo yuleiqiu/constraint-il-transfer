@@ -33,6 +33,18 @@ def test_swept_collision_detects_segment_crossing_without_endpoint_penetration()
     assert not square.segment_collides(np.asarray([-0.5, 0.33]), np.asarray([0.5, 0.33]))
 
 
+def test_swept_clearance_uses_closest_interior_point_of_segment():
+    circle = EnvEmpty2DExtraSphere(robot_radius=0.02)
+    start = np.asarray([-0.5, 0.4])
+    end = np.asarray([0.5, 0.4])
+    np.testing.assert_allclose(circle.segment_clearance(start, end), 0.08)
+    assert circle.segment_clearance(np.asarray([-0.5, 0.31]), np.asarray([0.5, 0.31])) == 0.0
+
+    square = EnvEmpty2DExtraSquare(robot_radius=0.02)
+    np.testing.assert_allclose(square.segment_clearance(start, end), 0.08)
+    assert square.segment_clearance(np.asarray([-0.5, 0.31]), np.asarray([0.5, 0.31])) == 0.0
+
+
 def test_oracle_cloud_is_uninflated_true_boundary():
     circle = EnvEmpty2DExtraSphere()
     circle_points = circle.oracle_obstacle_points()

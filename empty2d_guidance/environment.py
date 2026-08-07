@@ -56,6 +56,22 @@ def _segment_intersects_box(
     return True
 
 
+def _segment_segment_distance(
+    first_start: np.ndarray,
+    first_end: np.ndarray,
+    second_start: np.ndarray,
+    second_end: np.ndarray,
+) -> float:
+    """Distance between disjoint 2-D segments via their four endpoints."""
+
+    return min(
+        _segment_point_distance(first_start, first_end, second_start),
+        _segment_point_distance(first_start, first_end, second_end),
+        _segment_point_distance(second_start, second_end, first_start),
+        _segment_point_distance(second_start, second_end, first_end),
+    )
+
+
 @dataclass(frozen=True)
 class Empty2DState:
     position: np.ndarray
@@ -153,6 +169,30 @@ class EnvEmpty2D:
             np.asarray([expanded, expanded]),
         )
 
+    def segment_clearance(self, start: np.ndarray, end: np.ndarray) -> float:
+        """Exact non-negative swept clearance for the circular robot body."""
+
+        if self.obstacle_kind is None:
+            return float("inf")
+        if self.segment_collides(start, end):
+            return 0.0
+        if self.obstacle_kind == "circle":
+            return _segment_point_distance(start, end, np.zeros(2)) - (
+                self.obstacle_radius + self.robot_radius
+            )
+        extent = self.square_half_extent
+        corners = (
+            np.asarray([-extent, -extent]),
+            np.asarray([extent, -extent]),
+            np.asarray([extent, extent]),
+            np.asarray([-extent, extent]),
+        )
+        distance = min(
+            _segment_segment_distance(start, end, corners[index], corners[(index + 1) % 4])
+            for index in range(4)
+        )
+        return distance - self.robot_radius
+
     def trajectory_collides(self, points: np.ndarray) -> bool:
         points = np.asarray(points, dtype=np.float64)
         return any(self.segment_collides(a, b) for a, b in zip(points[:-1], points[1:]))
@@ -173,11 +213,8 @@ class EnvEmpty2D:
         collision = self.segment_collides(self.position, executed)
         self.minimum_clearance = min(
             self.minimum_clearance,
-            self._point_clearance(self.position),
-            self._point_clearance(executed),
+            self.segment_clearance(self.position, executed),
         )
-        if collision:
-            self.minimum_clearance = min(self.minimum_clearance, 0.0)
         self.collision_any = self.collision_any or collision
         self.position = executed
         self.step_count += 1
