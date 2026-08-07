@@ -37,6 +37,23 @@ ROBOMIMIC_GPU_ID=0 uv run python \
   --out-dir outputs/empty2d_guidance/eval_seed42
 ```
 
+Circle and Square can instead be sharded across the two GPUs without changing
+their fixed seeds or selection rule. Run these two evaluation commands in
+parallel, then merge their disjoint artifacts:
+
+```bash
+uv run python scripts/2026-08-07_empty2d_guidance/paired_evaluation.py \
+  --checkpoint /path/to/selected.pth --training-seed 42 \
+  --out-dir outputs/empty2d_guidance/eval_seed42 \
+  --environment circle --device cuda:0
+uv run python scripts/2026-08-07_empty2d_guidance/paired_evaluation.py \
+  --checkpoint /path/to/selected.pth --training-seed 42 \
+  --out-dir outputs/empty2d_guidance/eval_seed42 \
+  --environment square --device cuda:1
+uv run python scripts/2026-08-07_empty2d_guidance/merge_geometry_evaluations.py \
+  --eval-dir outputs/empty2d_guidance/eval_seed42
+```
+
 Only if seed 42 passes or partially passes, train 43 and 44 with the same
 launcher. Their evaluations must pass seed 42's
 `eval_seed42/locked_parameters.json` via `--locked-parameters`; they do not

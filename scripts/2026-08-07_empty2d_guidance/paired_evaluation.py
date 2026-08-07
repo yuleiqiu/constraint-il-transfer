@@ -154,29 +154,50 @@ def main():
     parser.add_argument("--source-screen", type=Path, default=Path("outputs/empty2d_guidance/source_screen.json"))
     parser.add_argument("--locked-parameters", type=Path)
     parser.add_argument("--out-dir", type=Path, required=True)
+    parser.add_argument(
+        "--environment",
+        choices=("circle", "square", "both"),
+        default="both",
+        help="Run one geometry for two-GPU sharding, or both sequentially.",
+    )
+    parser.add_argument(
+        "--device",
+        help="Explicit torch device such as cuda:0 or cuda:1 (default: cuda if available).",
+    )
     args = parser.parse_args()
     screen = json.loads(args.source_screen.read_text())
     if not screen["passed"]:
         raise RuntimeError("Source gate has not passed")
     args.out_dir.mkdir(parents=True, exist_ok=True)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device(args.device or ("cuda" if torch.cuda.is_available() else "cpu"))
+    environments = (
+        ("circle", "square") if args.environment == "both" else (args.environment,)
+    )
     calibration = {}
     if args.locked_parameters is None:
         if args.training_seed != 42:
             raise ValueError("Only seed 42 may select calibration parameters")
-        for environment in ("circle", "square"):
+        for environment in environments:
             raw, candidates, selected = evaluate_grid(args.checkpoint, environment, device)
             write_jsonl(args.out_dir / f"calibration_{environment}.jsonl", raw)
             (args.out_dir / f"calibration_{environment}_summary.json").write_text(
                 json.dumps({"candidates": candidates, "selected": selected}, indent=2, allow_nan=True) + "\n"
             )
             calibration[environment] = selected
-        (args.out_dir / "locked_parameters.json").write_text(json.dumps(calibration, indent=2) + "\n")
+        parameter_path = (
+            args.out_dir / "locked_parameters.json"
+            if args.environment == "both"
+            else args.out_dir / f"locked_parameters_{args.environment}.json"
+        )
+        parameter_path.write_text(json.dumps(calibration, indent=2) + "\n")
     else:
         calibration = json.loads(args.locked_parameters.read_text())
+        missing = set(environments) - set(calibration)
+        if missing:
+            raise ValueError(f"Locked parameters missing geometries: {sorted(missing)}")
 
     tests = {}
-    for environment in ("circle", "square"):
+    for environment in environments:
         baseline, guided, result = held_out_test(
             args.checkpoint,
             environment,
@@ -186,7 +207,11 @@ def main():
         write_jsonl(args.out_dir / f"test_{environment}_baseline.jsonl", baseline)
         write_jsonl(args.out_dir / f"test_{environment}_guided.jsonl", guided)
         tests[environment] = result
-    final_conclusion = conclusion(tests)
+    final_conclusion = (
+        conclusion(tests)
+        if args.environment == "both"
+        else f"{args.environment} {'passed' if tests[args.environment]['passed'] else 'failed'} its mechanism gate."
+    )
     manifest = {
         "checkpoint": str(args.checkpoint.resolve()),
         "training_seed": args.training_seed,
@@ -196,8 +221,14 @@ def main():
         "tests": tests,
         "conclusion": final_conclusion,
     }
-    (args.out_dir / "result.json").write_text(json.dumps(manifest, indent=2, allow_nan=True) + "\n")
-    write_report(args.out_dir / "report.md", args.training_seed, calibration, tests, final_conclusion)
+    result_path = (
+        args.out_dir / "result.json"
+        if args.environment == "both"
+        else args.out_dir / f"result_{args.environment}.json"
+    )
+    result_path.write_text(json.dumps(manifest, indent=2, allow_nan=True) + "\n")
+    if args.environment == "both":
+        write_report(args.out_dir / "report.md", args.training_seed, calibration, tests, final_conclusion)
     print(json.dumps(manifest, indent=2, allow_nan=True))
 
 
