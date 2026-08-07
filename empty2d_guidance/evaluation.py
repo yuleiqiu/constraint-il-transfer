@@ -67,6 +67,8 @@ def rollout(
     chunks = []
     active_steps = 0
     diagnostic_steps = 0
+    chunk_count = 0
+    triggered_chunks = 0
     while True:
         new_chunk = len(policy.policy.action_queue) == 0
         if new_chunk:
@@ -87,8 +89,11 @@ def rollout(
         action = policy(policy_observation)
         if new_chunk:
             diagnostics = policy.policy.get_guidance_diagnostics()
-            active_steps += sum(item["active_waypoint_count"] > 0 for item in diagnostics)
+            active = sum(item["active_waypoint_count"] > 0 for item in diagnostics)
+            active_steps += active
             diagnostic_steps += len(diagnostics)
+            chunk_count += 1
+            triggered_chunks += int(active > 0)
             if record_chunks:
                 points = environment.oracle_obstacle_points()
                 closest = None
@@ -127,7 +132,10 @@ def rollout(
         "ncr": bool((not environment.is_success()) and (not environment.collision_any)),
         "steps": environment.step_count,
         "minimum_clearance": float(environment.minimum_clearance),
-        "trigger_rate": active_steps / diagnostic_steps if diagnostic_steps else 0.0,
+        "trigger_rate": triggered_chunks / chunk_count if chunk_count else 0.0,
+        "reverse_step_trigger_rate": (
+            active_steps / diagnostic_steps if diagnostic_steps else 0.0
+        ),
         "trajectory_length": length,
         "clip_rate": environment.clip_count / environment.step_count,
     }

@@ -46,6 +46,9 @@ def summarize(rows: list[dict]) -> dict:
         "outcomes": {name: outcomes[name] for name in OUTCOMES},
         "minimum_clearance": min(row["minimum_clearance"] for row in rows),
         "mean_trigger_rate": sum(row.get("trigger_rate", 0.0) for row in rows) / count,
+        "mean_reverse_step_trigger_rate": sum(
+            row.get("reverse_step_trigger_rate", 0.0) for row in rows
+        ) / count,
         "mean_trajectory_length": sum(row["trajectory_length"] for row in rows) / count,
         "mean_clip_rate": sum(row["clip_rate"] for row in rows) / count,
     }

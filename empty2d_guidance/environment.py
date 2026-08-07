@@ -166,10 +166,9 @@ class EnvEmpty2D:
         clipped = distance > self.max_step
         if clipped:
             displacement *= self.max_step / distance
-            self.clip_count += 1
         executed = np.clip(self.position + displacement, WORKSPACE_LOW, WORKSPACE_HIGH)
         workspace_clipped = not np.array_equal(executed, self.position + displacement)
-        if workspace_clipped:
+        if clipped or workspace_clipped:
             self.clip_count += 1
         collision = self.segment_collides(self.position, executed)
         self.minimum_clearance = min(
@@ -177,6 +176,8 @@ class EnvEmpty2D:
             self._point_clearance(self.position),
             self._point_clearance(executed),
         )
+        if collision:
+            self.minimum_clearance = min(self.minimum_clearance, 0.0)
         self.collision_any = self.collision_any or collision
         self.position = executed
         self.step_count += 1
