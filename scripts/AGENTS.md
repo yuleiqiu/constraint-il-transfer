@@ -69,18 +69,15 @@ scripts/
 │   ├── merge_partitions.py
 │   ├── test_persistent_oracle.py
 │   └── README.md
-├── 2026-07-30_toy_recovery_objectives/
+├── 2026-08-07_empty2d_guidance/
 │   ├── generate_data.py
-│   ├── train_source.py
-│   ├── environment_gate.py
-│   ├── collect_dynamics.py
-│   ├── train_dynamics.py
-│   ├── evaluate.py
-│   ├── evaluate_geometry.py
-│   ├── fixed_state_diagnostic.py
-│   ├── analyze_screen.py
-│   ├── smoke_test.py
-│   ├── rapid_config.json
+│   ├── verify_data.py
+│   ├── preflight.py
+│   ├── train.py
+│   ├── screen_checkpoints.py
+│   ├── paired_evaluation.py
+│   ├── render_videos.py
+│   ├── aggregate_seeds.py
 │   └── README.md
 ├── eef_pose_osc_policy/
 │   ├── create_abs_eef_osc_dataset.py
@@ -120,7 +117,7 @@ scripts/
 - **Gated corrective-support selector** (in `scripts/2026-07-29_gated_support_selector/`) — source-default oracle gate with 32-sample SDP candidate filtering and least-deviation selection. A no-substantial-retreat preflight finds candidates in 11/20 strict states, but the paired D2 gate lowers Task SR from 0.25 to 0.15 with zero failure-to-success and two success-to-NCR transitions. The method is stopped; see `outputs/gated_support_selector/report.md`.
 - **Oracle branch value** (in `scripts/2026-07-29_oracle_branch_value/`) — cloned-simulator existence test for a ranking-only world/value model. On three strict states, 96 SDP chunks all avoid immediate contact but produce zero Can contacts and zero Task successes after full source continuation; the waypoint control solves all three. The 20-state expansion is stopped because no successful branch exists for an oracle to select. See `outputs/oracle_branch_value/pilot_3state/result_report.md`.
 - **Persistent-correction oracle** (in `scripts/2026-07-29_persistent_correction_oracle/`) — temporal source-recoverability existence test with partitioned execution and validated merging. The existing SDP-6k policy is replanned for up to 20 consecutive chunks, with an exact frozen-source continuation from every safe boundary. Full coverage is 7/20 states and 27/80 trajectories; six recoverable states succeed under all four samples, while all 52 trajectories in the thirteen uncovered states fail. Recoverability windows are non-monotonic and correction alone never finishes. See `outputs/persistent_correction_oracle/full_20/conclusion.md`.
-- **Toy recovery objectives** (in `scripts/2026-07-30_toy_recovery_objectives/`) — independent PointNav single-to-multi rapid prototype. The active RGB-only source uses ResNet18 + SpatialSoftmax, absorbing terminal actions, and 200 D0 demonstrations; it passes D0/D1/D2 calibration at 1.00 / 0.56 / 0.14. The earlier repeated-terminal source's latent dynamics passed action shuffle at 1.93x but lost to persistence, while its geometry-only screen improved net paired transitions by only +5/100 in D1 and +6/100 in D2. Both results are archived and cannot be reused with the active encoder. No absorbing-source dynamics, screen, or test rollout has run. This prototype is mechanism isolation and does not replace the PickPlace manipulation claim. See `outputs/toy_recovery_objectives/README.md`.
+- **Empty2D guidance** (in `scripts/2026-08-07_empty2d_guidance/`) — active point-geometry mechanism test. It generates and gates a fixed conditional-RBF absolute-XY dataset, trains a standard low-dimensional Diffusion Policy with required online W&B, screens five source checkpoints on D0, calibrates paper-aligned predicted-clean guidance independently on Circle/Square, runs 100 held-out paired rollouts per geometry, and renders typical pairs. The implementation/data gates and batch-256 CUDA preflight pass; formal training and rollout results are not yet available. See `outputs/empty2d_guidance/README.md`.
 - **EEF-pose OSC policy** (in `scripts/eef_pose_osc_policy/`) — dataset converters, expert replay validators, robomimic wrapper smoke tests, delta-policy pose-trajectory diagnostics, multi-env eval tooling, and eval analysis for full-pose EEF actions executed by `OSC_POSE`. Training runbook: `docs/eef_pose_osc_policy_training.md`; conclusion: `outputs/eef_pose_osc_policy/README.md`.
 - **Guided denoising** (in `scripts/guided_denoising/`) — completed inference-only experiment tooling. It captures fixed clean-image delta-EEF states, sweeps guidance scales under identical observations and diffusion seeds, visualizes DDIM updates and final trajectories, runs matched baseline / guided rollout pilots, and reports Task SR together with Safe SR / CR / NCR. Preserve it for reproduction; its local-clearance result is historical evidence for the recoverability boundary, not an active experiment. Raw HDF5 / JSONL artifacts under `outputs/guided_denoising/` are ignored; summaries and reports remain trackable.
 - `render_paired_rollout.py` replays selected recorded pairs, verifies the exact

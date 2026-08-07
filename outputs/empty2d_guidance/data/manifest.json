@@ -1,0 +1,66 @@
+{
+  "format_version": 1,
+  "generator": {
+    "type": "endpoint-conditioned RBF Gaussian process",
+    "length_scale": 1.1,
+    "kernel_amplitude": 8.0,
+    "seed": 42,
+    "accepted": 100,
+    "attempts": 112,
+    "rejection": "workspace bounds or adjacent displacement > 0.03 only",
+    "amplitude_deviation": "Raised from upstream-script value 1 to 8 to provide counterfactual avoidance support."
+  },
+  "split": {
+    "train": 90,
+    "valid": 10
+  },
+  "validation": {
+    "endpoint_max_abs_error": 0.0,
+    "workspace_max_violation": 0.0,
+    "maximum_adjacent_step": 0.021604184061288834,
+    "support": {
+      "circle": {
+        "safe": 33,
+        "collision": 57,
+        "upper_safe": 19,
+        "lower_safe": 14
+      },
+      "square": {
+        "safe": 20,
+        "collision": 70,
+        "upper_safe": 11,
+        "lower_safe": 9
+      }
+    },
+    "gates": {
+      "endpoint_exact": true,
+      "workspace": true,
+      "max_step": true,
+      "circle_safe_20": true,
+      "circle_upper_8": true,
+      "circle_lower_8": true,
+      "circle_collision_40": true,
+      "square_safe_20": true,
+      "square_upper_8": true,
+      "square_lower_8": true,
+      "square_collision_40": true
+    },
+    "passed": true
+  },
+  "hdf5_validation": {
+    "gates": {
+      "demo_count": true,
+      "split_90_10_disjoint": true,
+      "action_shift": true,
+      "absorbing_absolute_terminal": true,
+      "sequence_shapes": true
+    },
+    "passed": true
+  },
+  "hdf5": {
+    "path": "/home/yulei/codes/constraint-il-transfer/outputs/empty2d_guidance/data/empty2d_guidance.hdf5",
+    "bytes": 2186878,
+    "sha256": "6c613f9b60bb1204e2b4609a9e7aacc638d541be1b97fc4454dd6b5c4f95b061"
+  },
+  "support_plot": "/home/yulei/codes/constraint-il-transfer/outputs/empty2d_guidance/data/support.png"
+}

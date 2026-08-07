@@ -16,6 +16,34 @@
   one-distractor Task SR with the reliable clean-image delta-EEF policy; the
   tested uniform 5 cm XY expansion does not.
 
+## 2026-08-07
+
+### Empty2D replaces the old Toy prototype as the guidance mechanism test
+
+Archived the paper-aligned LAN D2 evaluator and renderer after the fixed
+ten-state study found zero collision-to-clear transitions at `Q=0.04` and at
+expanded `Q` through 0.12. All four diagnosed contacts were between the Panda
+gripper and Cereal, while the carried Can and arm had zero contacts. The
+point-EEF cost was active but did not represent swept hand geometry.
+
+Replaced the superseded `toy_recovery` package and artifacts with a minimal
+`empty2d_guidance` experiment derived only from MPD's MIT-licensed Empty2D
+geometry definitions. The policy sees current XY only and outputs absolute XY;
+obstacles are available only to guidance as 256 true boundary points. The
+fixed conditional-RBF dataset uses length scale 1.1 and the explicitly biased
+amplitude 8. Its 90 training paths contain 33 Circle-safe and 20 Square-safe
+counterfactuals, with both upper/lower routes and at least 57 collision paths
+for either geometry. Every data gate passes. A real batch-256 CUDA update with
+the formal 65,267,202-parameter sample-prediction model has finite loss,
+reloads, and produces a finite online action.
+
+Decision: proceed only after the 500-epoch seed-42 source passes D0. The
+calibration/test protocol and seeds are frozen in code. A two-geometry pass
+would validate the implementation in idealized point geometry and support,
+but not prove, a swept-geometry explanation for D2. It cannot establish that
+geometry is the unique D2 failure cause. Canonical index:
+`outputs/empty2d_guidance/README.md`.
+
 ## 2026-07-31
 
 ### Absorbing-terminal source supersedes the first Toy source chain

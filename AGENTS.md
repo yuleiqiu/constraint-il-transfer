@@ -15,6 +15,10 @@ returns control when the frozen source policy becomes safely recoverable.
 Deployment-time guided denoising was the preceding research stage; its
 formulation and negative results remain important evidence.
 
+The active mechanism-isolation experiment is `empty2d_guidance`: it asks
+whether the paper-aligned predicted-clean point cost can work at all when EEF,
+robot, and obstacle geometry are reduced to an idealized 2-D point setting.
+
 ## 2. Current State
 
 - **The manipulation boundary is a persistent corrective option, not local
@@ -34,15 +38,21 @@ formulation and negative results remain important evidence.
   the rejected D2 recipes. See
   `outputs/targeted_finetuning/d1_horizon_salvage_report.md` and
   `outputs/targeted_finetuning/sdp_result_report.md`.
-- **The active Toy source is clean and the successor gates are unrun
-  (2026-07-31)**: retraining on the same 200 D0 demonstrations with absorbing
-  zero-delta terminal padding yields D0/D1/D2 calibration SR
-  `1.00 / 0.56 / 0.14`. It supersedes the repeated-terminal source. The old
-  encoder's 150-rollout dynamics model passed action shuffle (`1.93x`) but
-  lost to persistence; its geometry-only screen reached net `+5/100` in D1
-  and `+6/100` in D2, below the `+10/100` gate. Those results are archived and
-  cannot be reused with the new encoder. No absorbing-source dynamics, screen,
-  or test rollout has run. See `outputs/toy_recovery_objectives/README.md`.
+- **Empty2D data and implementation gates pass; formal training is pending
+  (2026-08-07)**: the old Toy package and artifacts were deleted in favor of a
+  minimal 2-D absolute-target policy with hidden fixed goal and oracle-only
+  obstacle boundaries. The fixed 100-trajectory conditional-RBF dataset passes
+  all gates: Circle has 33 safe / 57 collision training paths with 19/14
+  upper/lower routes; Square has 20 / 70 with 11/9 routes. HDF5 verification,
+  24 mechanism/backward-compatibility tests, and a real batch-256 CUDA update,
+  reload, and online-action smoke pass. No 500-epoch source or paired guidance
+  result exists yet. See `outputs/empty2d_guidance/README.md`.
+- **Paper-aligned D2 point guidance is archived as a negative result**: on ten
+  fixed D2 states, neither `Q=0.04` nor expanded `Q<=0.12` clears any of four
+  gripper collisions. All contacts are gripper/Cereal rather than arm or
+  carried-target contact. This motivates, but does not prove, the Empty2D
+  geometry-mismatch test. See
+  `outputs/lan_o3dp_paper_aligned/d2_guidance_report.md`.
 - **OOD success is not OOD elimination**: LAN-O3DP / DP3 primarily reduce
   exogenous environment or observation shift. Avoidance guidance can itself
   create endogenous intervention-induced state OOD by moving the robot away
@@ -79,8 +89,7 @@ formulation and negative results remain important evidence.
 - `gated_support_selector/` — fixed-state and paired-rollout localization gate
 - `oracle_branch_value/` — cloned-simulator candidate-existence pilot
 - `persistent_correction_oracle/` — temporal source-recoverability pilot
-- `toy_recovery_objectives/` — PointNav source, archived pre-fix gates, and
-  retained rapid-prototype summaries
+- `empty2d_guidance/` — active idealized point-geometry mechanism test
 - `guided_denoising/` — completed inference-only experiment summaries
 - `task_constrained_guidance/` and `sample_refine/` — completed negative stages
 - `forward_model/` — archived OSC-action forward-model summaries
@@ -105,7 +114,7 @@ constraint-il-transfer/             ← Project root (independent git repo)
 │   ├── gated_support_selector/       ← Gated SDP selector result
 │   ├── oracle_branch_value/          ← Oracle continuation-existence result
 │   ├── persistent_correction_oracle/ ← Persistent correction handoff result
-│   ├── toy_recovery_objectives/      ← PointNav recovery-objective prototype
+│   ├── empty2d_guidance/              ← Active point-geometry guidance test
 │   └── guided_denoising/             ← Completed inference-only experiment summaries
 ├── .opencode/agents/                ← Agent definitions (paper-reader, code-explorer)
 ├── third_party/                     ← Editable source deps (managed independently, see §10)
@@ -124,8 +133,8 @@ constraint-il-transfer/             ← Project root (independent git repo)
    `docs/recoverability_corrective_option/README.md`
 5. For the persistent-correction oracle result →
    `outputs/persistent_correction_oracle/full_20/conclusion.md`
-6. For the current Toy rapid-prototype state →
-   `outputs/toy_recovery_objectives/README.md`
+6. For the current Empty2D mechanism test →
+   `outputs/empty2d_guidance/README.md`
 7. For the oracle branch-value result →
    `outputs/oracle_branch_value/pilot_3state/result_report.md`
 8. For the completed gated selector result →
@@ -149,6 +158,10 @@ constraint-il-transfer/             ← Project root (independent git repo)
 
 4 PickPlace variants with increasing distractors:
 - PickPlaceCan (0) → PickPlaceBreadCan (1) → BreadCerealCan (2) → BreadCerealMilkCan (3)
+
+Empty2D mechanism environments use workspace `[-1,1]^2`, start
+`(-0.875,0)`, goal `(0.875,0)`, and either no obstacle, a radius-0.3 circle,
+or a centered 0.6-by-0.6 square.
 
 ## 7. Runtime Conventions
 

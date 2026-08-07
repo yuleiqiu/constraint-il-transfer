@@ -1,6 +1,6 @@
 # Checkpoint Retention
 
-Status: active retention manifest, 2026-07-31.
+Status: active retention manifest, 2026-08-07.
 
 Training outputs under `outputs/robomimic/train/` are local, ignored artifacts.
 Keep only checkpoints that are required by a canonical result, comparison, or
@@ -14,25 +14,13 @@ directories.
 | frozen delta-EEF source | `dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth` |
 | LAN closure baseline | `lan_o3dp_can_delta_pose_eps_residual_40demo_seed42/20260724165723/models/model_epoch_350_image_v15_delta_eef_pose_osc_pointcloud_lan40_seed42_success_0.65.pth` |
 | SDP 6k targeted-transfer checkpoint | `dp_can_delta_pose_osc_targeted_sdp/20260729173254/models/model_epoch_12.pth` |
+| paper-aligned sample-hires D2 checkpoint | `lan_o3dp_can_abs_pose_sample_paper256_hires_continuous_seed42/20260806121402/models/model_epoch_50_image_v15_abs_eef_pose_osc_lan40_paper256_hires_continuous_success_0.7.pth` |
+| paper-aligned epsilon-hires comparison | `lan_o3dp_can_abs_pose_epsilon_paper256_hires_continuous_seed42/20260806121403/models/model_epoch_300_image_v15_abs_eef_pose_osc_lan40_paper256_hires_continuous_success_0.5.pth` |
 
 All paths are relative to `outputs/robomimic/train/`.
 
-## Retained Toy checkpoints
-
-The active absorbing-terminal PointNav source retains all five ordered
-checkpoints because a fresh dynamics collection requires every source-training
-stage:
-
-```text
-outputs/toy_recovery_objectives/train/source_seed0_absorbing_v3/source_update_001000.pth
-outputs/toy_recovery_objectives/train/source_seed0_absorbing_v3/source_update_002000.pth
-outputs/toy_recovery_objectives/train/source_seed0_absorbing_v3/source_update_003000.pth
-outputs/toy_recovery_objectives/train/source_seed0_absorbing_v3/source_update_004000.pth
-outputs/toy_recovery_objectives/train/source_seed0_absorbing_v3/source_update_005000.pth
-```
-
-The final checkpoint hash and source-training contract are recorded in
-`outputs/toy_recovery_objectives/source/absorbing_terminal/checkpoint_manifest.json`.
+The SHA256 and byte size of every retained checkpoint are recorded in
+`outputs/empty2d_guidance/checkpoint_cleanup_2026-08-07.json`.
 
 ## Cleanup record
 
@@ -60,14 +48,22 @@ tree decreased from approximately 14 GiB to 8.4 GiB. These deleted local
 artifacts are recoverable only by rerunning preserved code and configs or by
 checking out their historical implementation state.
 
+On 2026-08-07, the paper-aligned LAN stage was archived. The two low-resolution
+sample/epsilon run directories and all non-canonical checkpoint snapshots in
+the two high-resolution continuous-rotation runs were deleted. The sample
+epoch-50 checkpoint used by the D2 report and the epsilon epoch-300 comparison
+were retained. The superseded `toy_recovery` package, dated scripts, complete
+`outputs/toy_recovery_objectives/` tree, and its five absorbing-source
+checkpoints were deleted as explicitly planned; tracked content remains
+recoverable from Git history. See the cleanup manifest above for the exact
+retained hashes and before/after disk audit.
+
 Do not delete:
 
 - the correction raw / paired HDF5 data;
 - fixed-state banks used by the support and branch diagnostics;
 - any checkpoint in the table above;
 - training configs, logs, result manifests, or canonical reports.
-- the frozen Toy layout manifest, 200-demo D0 HDF5, or five absorbing-source
-  checkpoints listed above.
 
 Before a future cleanup, update this manifest first and verify every retained
 path exists.
