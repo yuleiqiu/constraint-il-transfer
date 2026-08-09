@@ -16,6 +16,22 @@
   one-distractor Task SR with the reliable clean-image delta-EEF policy; the
   tested uniform 5 cm XY expansion does not.
 
+## 2026-08-09
+
+### Empty2D source gate passes and freezes epoch 100
+
+The seed-42 sample-prediction source completed 500 epochs with all five formal
+checkpoints uploaded to the required online W&B run. On fifty fixed D0
+diffusion seeds, epoch 100 reaches 50/50 Task and Safe success with zero NCR,
+collision, or action clipping. Later checkpoints reach 0.96 / 0.88 / 0.98 /
+0.96 Task SR at epochs 200 / 300 / 400 / 500, so the preregistered Task SR,
+NCR, validation-loss, and earlier-epoch ordering selects epoch 100.
+
+Decision: the source gate passes, so proceed to independently calibrated
+Circle and Square paired evaluations with epoch 100. This establishes only
+source-domain policy health; it is not evidence that guidance works. Canonical
+screen: `outputs/empty2d_guidance/source_screen.json`.
+
 ## 2026-08-07
 
 ### Empty2D replaces the old Toy prototype as the guidance mechanism test

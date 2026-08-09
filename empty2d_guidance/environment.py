@@ -267,7 +267,16 @@ class EnvEmpty2D:
         trace = np.asarray(self.trajectory if trajectory is None else trajectory)
         if len(trace):
             axis.plot(trace[:, 0], trace[:, 1], color="tab:blue", linewidth=2)
-            axis.scatter(*trace[-1], color="tab:blue", s=35)
+            axis.add_patch(
+                Circle(
+                    trace[-1],
+                    self.robot_radius,
+                    facecolor="tab:blue",
+                    edgecolor="navy",
+                    linewidth=1.0,
+                    zorder=5,
+                )
+            )
         if predicted_chunk is not None and len(predicted_chunk):
             chunk = np.asarray(predicted_chunk)
             axis.plot(chunk[:, 0], chunk[:, 1], "--", color="tab:orange", linewidth=1.5)

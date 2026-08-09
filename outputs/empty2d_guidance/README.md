@@ -1,7 +1,7 @@
 # Empty2D Guidance
 
-Status: data and implementation gates pass; formal seed-42 source training is
-running, 2026-08-07.
+Status: data, implementation, and seed-42 source gates pass; Circle/Square
+paired evaluation is running, 2026-08-09.
 
 This experiment isolates whether the paper-aligned predicted-clean
 point-trajectory gradient can produce task-level avoidance when the executed
@@ -44,11 +44,14 @@ shift, and absorbing-terminal checks pass. The canonical manifest is
 The formal model has 65,267,202 parameters. A real batch-256 CUDA update has
 finite deterministic loss `0.44514683`, peaks at 4.138 GiB allocated memory,
 saves/reloads a checkpoint, and produces finite baseline and guided actions
-with 100 finite reverse-step diagnostics. The full 500-epoch seed-42 run
-started on GPU0 in `empty2d_guidance_sample_seed42/20260807210551`. Its
-required online W&B run is `ar7j7h06`; checkpoint correspondence is recorded
-in the run's local `logs/wandb_run.json`. Source screening, calibration, and
-held-out testing remain gated on training completion.
+with 100 finite reverse-step diagnostics. The full seed-42 run completed all
+500 epochs in `empty2d_guidance_sample_seed42/20260807210551`; required online
+W&B run `ar7j7h06` contains the training record and its local manifest maps all
+five formal checkpoints. The fixed 50-seed D0 screen selected epoch 100 with
+Task/Safe SR `1.00`, CR/NCR `0.00 / 0.00`, and zero action clipping, so all
+source gates pass. Its canonical result is `source_screen.json`. Circle and
+Square calibration plus held-out evaluation are now running as two GPU
+shards; no guidance conclusion is available yet.
 
 ## Result boundary
 
