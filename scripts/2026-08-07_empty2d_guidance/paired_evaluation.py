@@ -2,12 +2,13 @@
 
 import argparse
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 
 import torch
 
-from empty2d_guidance.evaluation import load_guidable_policy, rollout, write_jsonl
-from empty2d_guidance.metrics import paired_summary, summarize
+from empty2d_guidance.evaluation import load_guidable_policy, rollout
+from empty2d_guidance.metrics import paired_summary
 
 
 RHO_VALUES = (1e-4, 3e-4, 1e-3, 3e-3, 1e-2)
@@ -16,36 +17,132 @@ CALIBRATION_SEEDS = list(range(421_000, 421_020))
 TEST_SEEDS = list(range(422_000, 422_100))
 
 
-def evaluate_grid(checkpoint, environment, device):
+def progress(message):
+    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    print(f"[{timestamp}] {message}", flush=True)
+
+
+def read_jsonl(path):
+    if not path.exists():
+        return []
+    return [json.loads(line) for line in path.read_text().splitlines() if line]
+
+
+def append_jsonl(path, row):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a") as stream:
+        stream.write(json.dumps(row, allow_nan=True, sort_keys=True) + "\n")
+        stream.flush()
+
+
+def evaluate_grid(checkpoint, environment, device, out_dir):
+    raw_path = out_dir / f"calibration_{environment}.jsonl"
+    summary_path = out_dir / f"calibration_{environment}_summary.json"
+    checkpoint_path = str(Path(checkpoint).resolve())
+    raw = read_jsonl(raw_path)
+    candidates = []
+    if summary_path.exists():
+        saved = json.loads(summary_path.read_text())
+        if saved.get("checkpoint") != checkpoint_path or saved.get("environment") != environment:
+            raise RuntimeError(f"Stale calibration progress at {summary_path}")
+        candidates = saved.get("candidates", [])
+
+    progress(f"{environment}: loading baseline and guided policies on {device}")
     baseline_policy, _ = load_guidable_policy(checkpoint, device)
     guided_policy, _ = load_guidable_policy(checkpoint, device)
-    baseline = [
-        rollout(
+    baseline_by_seed = {
+        row["policy_seed"]: row
+        for row in raw
+        if row["guidance_scale"] == 0.0
+    }
+    for index, seed in enumerate(CALIBRATION_SEEDS, start=1):
+        if seed in baseline_by_seed:
+            progress(
+                f"{environment}: baseline {index}/{len(CALIBRATION_SEEDS)} "
+                f"seed={seed} resumed"
+            )
+            continue
+        row = rollout(
             baseline_policy,
             environment_name=environment,
             policy_seed=seed,
             guidance_scale=0.0,
             safety_distance=Q_VALUES[0],
         )
-        for seed in CALIBRATION_SEEDS
-    ]
-    candidates = []
-    raw = list(baseline)
-    for rho in RHO_VALUES:
-        for q_value in Q_VALUES:
-            guided = [
-                rollout(
-                    guided_policy,
-                    environment_name=environment,
-                    policy_seed=seed,
-                    guidance_scale=rho,
-                    safety_distance=q_value,
+        append_jsonl(raw_path, row)
+        raw.append(row)
+        baseline_by_seed[seed] = row
+        progress(
+            f"{environment}: baseline {index}/{len(CALIBRATION_SEEDS)} seed={seed} "
+            f"success={int(row['success'])} collision={int(row['collision_any'])} "
+            f"steps={row['steps']}"
+        )
+    baseline = [baseline_by_seed[seed] for seed in CALIBRATION_SEEDS]
+
+    completed = {(float(row["rho"]), float(row["q"])) for row in candidates}
+    combinations = [(rho, q_value) for rho in RHO_VALUES for q_value in Q_VALUES]
+    for candidate_index, (rho, q_value) in enumerate(combinations, start=1):
+        if (rho, q_value) in completed:
+            progress(
+                f"{environment}: candidate {candidate_index}/{len(combinations)} rho={rho:g} "
+                f"Q={q_value:g} resumed"
+            )
+            continue
+        guided_by_seed = {
+            row["policy_seed"]: row
+            for row in raw
+            if float(row["guidance_scale"]) == rho
+            and float(row["safety_distance"]) == q_value
+        }
+        for rollout_index, seed in enumerate(CALIBRATION_SEEDS, start=1):
+            if seed in guided_by_seed:
+                progress(
+                    f"{environment}: candidate {candidate_index}/{len(combinations)} rho={rho:g} "
+                    f"Q={q_value:g} rollout={rollout_index}/{len(CALIBRATION_SEEDS)} "
+                    f"seed={seed} resumed"
                 )
-                for seed in CALIBRATION_SEEDS
-            ]
-            raw.extend(guided)
-            paired = paired_summary(baseline, guided)
-            candidates.append({"rho": rho, "q": q_value, **paired})
+                continue
+            row = rollout(
+                guided_policy,
+                environment_name=environment,
+                policy_seed=seed,
+                guidance_scale=rho,
+                safety_distance=q_value,
+            )
+            append_jsonl(raw_path, row)
+            raw.append(row)
+            guided_by_seed[seed] = row
+            progress(
+                f"{environment}: candidate {candidate_index}/{len(combinations)} rho={rho:g} "
+                f"Q={q_value:g} rollout={rollout_index}/{len(CALIBRATION_SEEDS)} seed={seed} "
+                f"success={int(row['success'])} collision={int(row['collision_any'])} "
+                f"steps={row['steps']}"
+            )
+        guided = [guided_by_seed[seed] for seed in CALIBRATION_SEEDS]
+        paired = paired_summary(baseline, guided)
+        candidate = {"rho": rho, "q": q_value, **paired}
+        candidates.append(candidate)
+        summary_path.write_text(
+            json.dumps(
+                {
+                    "checkpoint": checkpoint_path,
+                    "environment": environment,
+                    "completed_candidates": len(candidates),
+                    "total_candidates": len(combinations),
+                    "candidates": candidates,
+                    "selected": None,
+                },
+                indent=2,
+                allow_nan=True,
+            )
+            + "\n"
+        )
+        progress(
+            f"{environment}: candidate {candidate_index}/{len(combinations)} complete "
+            f"safe_sr={paired['guided']['safe_sr']:.3f} "
+            f"task_sr={paired['guided']['task_sr']:.3f} "
+            f"cr={paired['guided']['cr']:.3f}"
+        )
     selected = min(
         candidates,
         key=lambda row: (
@@ -56,16 +153,38 @@ def evaluate_grid(checkpoint, environment, device):
             row["q"],
         ),
     )
+    summary_path.write_text(
+        json.dumps(
+            {
+                "checkpoint": checkpoint_path,
+                "environment": environment,
+                "completed_candidates": len(candidates),
+                "total_candidates": len(combinations),
+                "candidates": candidates,
+                "selected": {"rho": selected["rho"], "q": selected["q"]},
+            },
+            indent=2,
+            allow_nan=True,
+        )
+        + "\n"
+    )
+    progress(
+        f"{environment}: calibration selected rho={selected['rho']:g} Q={selected['q']:g}"
+    )
     return raw, candidates, {"rho": selected["rho"], "q": selected["q"]}
 
 
-def held_out_test(checkpoint, environment, parameters, device):
+def held_out_test(checkpoint, environment, parameters, device, out_dir):
+    baseline_path = out_dir / f"test_{environment}_baseline.jsonl"
+    guided_path = out_dir / f"test_{environment}_guided.jsonl"
+    baseline_by_seed = {row["policy_seed"]: row for row in read_jsonl(baseline_path)}
+    guided_by_seed = {row["policy_seed"]: row for row in read_jsonl(guided_path)}
+    progress(f"{environment}: loading held-out policies on {device}")
     baseline_policy, _ = load_guidable_policy(checkpoint, device)
     guided_policy, _ = load_guidable_policy(checkpoint, device)
-    baseline, guided = [], []
-    for seed in TEST_SEEDS:
-        baseline.append(
-            rollout(
+    for index, seed in enumerate(TEST_SEEDS, start=1):
+        if seed not in baseline_by_seed:
+            row = rollout(
                 baseline_policy,
                 environment_name=environment,
                 policy_seed=seed,
@@ -73,9 +192,10 @@ def held_out_test(checkpoint, environment, parameters, device):
                 safety_distance=parameters["q"],
                 record_chunks=True,
             )
-        )
-        guided.append(
-            rollout(
+            append_jsonl(baseline_path, row)
+            baseline_by_seed[seed] = row
+        if seed not in guided_by_seed:
+            row = rollout(
                 guided_policy,
                 environment_name=environment,
                 policy_seed=seed,
@@ -83,7 +203,17 @@ def held_out_test(checkpoint, environment, parameters, device):
                 safety_distance=parameters["q"],
                 record_chunks=True,
             )
+            append_jsonl(guided_path, row)
+            guided_by_seed[seed] = row
+        before = baseline_by_seed[seed]
+        after = guided_by_seed[seed]
+        progress(
+            f"{environment}: held-out pair {index}/{len(TEST_SEEDS)} seed={seed} "
+            f"baseline=({int(before['success'])},{int(before['collision_any'])}) "
+            f"guided=({int(after['success'])},{int(after['collision_any'])})"
         )
+    baseline = [baseline_by_seed[seed] for seed in TEST_SEEDS]
+    guided = [guided_by_seed[seed] for seed in TEST_SEEDS]
     paired = paired_summary(baseline, guided)
     paired["cr_percentage_point_drop"] = 100 * (
         paired["baseline"]["cr"] - paired["guided"]["cr"]
@@ -178,10 +308,8 @@ def main():
         if args.training_seed != 42:
             raise ValueError("Only seed 42 may select calibration parameters")
         for environment in environments:
-            raw, candidates, selected = evaluate_grid(args.checkpoint, environment, device)
-            write_jsonl(args.out_dir / f"calibration_{environment}.jsonl", raw)
-            (args.out_dir / f"calibration_{environment}_summary.json").write_text(
-                json.dumps({"candidates": candidates, "selected": selected}, indent=2, allow_nan=True) + "\n"
+            raw, candidates, selected = evaluate_grid(
+                args.checkpoint, environment, device, args.out_dir
             )
             calibration[environment] = selected
         parameter_path = (
@@ -203,9 +331,8 @@ def main():
             environment,
             calibration[environment],
             device,
+            args.out_dir,
         )
-        write_jsonl(args.out_dir / f"test_{environment}_baseline.jsonl", baseline)
-        write_jsonl(args.out_dir / f"test_{environment}_guided.jsonl", guided)
         tests[environment] = result
     final_conclusion = (
         conclusion(tests)
