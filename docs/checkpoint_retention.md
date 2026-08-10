@@ -1,6 +1,6 @@
 # Checkpoint Retention
 
-Status: active retention manifest, 2026-08-07.
+Status: active retention manifest, 2026-08-10.
 
 Training outputs under `outputs/robomimic/train/` are local, ignored artifacts.
 Keep only checkpoints that are required by a canonical result, comparison, or
@@ -16,11 +16,16 @@ directories.
 | SDP 6k targeted-transfer checkpoint | `dp_can_delta_pose_osc_targeted_sdp/20260729173254/models/model_epoch_12.pth` |
 | paper-aligned sample-hires D2 checkpoint | `lan_o3dp_can_abs_pose_sample_paper256_hires_continuous_seed42/20260806121402/models/model_epoch_50_image_v15_abs_eef_pose_osc_lan40_paper256_hires_continuous_success_0.7.pth` |
 | paper-aligned epsilon-hires comparison | `lan_o3dp_can_abs_pose_epsilon_paper256_hires_continuous_seed42/20260806121403/models/model_epoch_300_image_v15_abs_eef_pose_osc_lan40_paper256_hires_continuous_success_0.5.pth` |
+| Empty2D failed mechanism-gate source | `empty2d_guidance_sample_seed42/20260807210551/models/model_epoch_100.pth` |
 
 All paths are relative to `outputs/robomimic/train/`.
 
-The SHA256 and byte size of every retained checkpoint are recorded in
-`outputs/empty2d_guidance/checkpoint_cleanup_2026-08-07.json`.
+The SHA256 and byte size of the pre-Empty2D retained checkpoints are recorded
+in `outputs/empty2d_guidance/checkpoint_cleanup_2026-08-07.json`.
+The retained Empty2D epoch-100 checkpoint is 1,044,552,106 bytes with SHA256
+`fce1fd26a7b1f64d0cd1e5bdf7cd351dce96aca5163c0f52f53cad927eb5d1ba`.
+Its stage-close cleanup is recorded in
+`outputs/empty2d_guidance/checkpoint_cleanup_2026-08-10.json`.
 
 ## Cleanup record
 
@@ -57,6 +62,13 @@ were retained. The superseded `toy_recovery` package, dated scripts, complete
 checkpoints were deleted as explicitly planned; tracked content remains
 recoverable from Git history. See the cleanup manifest above for the exact
 retained hashes and before/after disk audit.
+
+On 2026-08-10, the Empty2D stage was closed after its seed-42 mechanism gate
+failed in both geometries. Epoch 100 is the only retained checkpoint because
+it is the source used by the canonical paired result. Epochs 200/300/400/500
+and the duplicate `last.pth` / `last_bak.pth` snapshots were deleted after the
+selected checkpoint hash, merged result, reports, and training logs were
+verified. Seeds 43/44 were not trained.
 
 Do not delete:
 

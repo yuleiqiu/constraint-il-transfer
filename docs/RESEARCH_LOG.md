@@ -16,6 +16,34 @@
   one-distractor Task SR with the reliable clean-image delta-EEF policy; the
   tested uniform 5 cm XY expansion does not.
 
+## 2026-08-10
+
+### Empty2D guidance fails both idealized point-geometry gates
+
+Completed all 20 preregistered calibration settings and 100 held-out paired
+rollouts for each of Circle and Square using the seed-42 epoch-100 source. Every
+calibration candidate and both selected held-out tests retain Task SR `1.00`,
+Safe SR `0.00`, CR `1.00`, and NCR `0.00`. Both geometries have zero net
+rescues, zero CR reduction, and exact McNemar `p=1.0`. Guidance triggers in the
+formal sweep but does not remove any collision.
+
+Post-hoc single-seed Circle diagnostics establish a scale transition rather
+than a positive regime: `rho=0.1, Q=0.12` visibly deflects the trajectory but
+still collides; `rho=1, Q=0.12` avoids collision by retreating or stalling and
+does not reach the goal. This is consistent with the nearest-point cost
+providing an anti-progress outward normal and no persistent upper/lower bypass
+choice in the centered configuration. It confirms that the gradient path can
+change executed actions, not that the current formulation produces safe task
+completion.
+
+Decision: close Empty2D as a negative mechanism result. Do not train seeds 43
+or 44 and do not continue blind scale tuning of the same cost. The result does
+not validate guidance even in matched point geometry and therefore cannot
+attribute the earlier D2 failure primarily or uniquely to swept gripper/object
+geometry. Any successor must add task-compatible directional structure and a
+persistent bypass choice before repeating the paired gate. Canonical result:
+`outputs/empty2d_guidance/conclusion.md`.
+
 ## 2026-08-09
 
 ### Empty2D source gate passes and freezes epoch 100

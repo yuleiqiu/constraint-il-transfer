@@ -1,0 +1,21 @@
+{
+  "date": "2026-08-10",
+  "run": "outputs/robomimic/train/empty2d_guidance_sample_seed42/20260807210551",
+  "active_training_processes_before_cleanup": 0,
+  "retained": {
+    "path": "models/model_epoch_100.pth",
+    "bytes": 1044552106,
+    "sha256": "fce1fd26a7b1f64d0cd1e5bdf7cd351dce96aca5163c0f52f53cad927eb5d1ba",
+    "role": "source used by the canonical seed-42 calibration and held-out result"
+  },
+  "deleted": [
+    {"path": "models/model_epoch_200.pth", "bytes": 1044552106},
+    {"path": "models/model_epoch_300.pth", "bytes": 1044552106},
+    {"path": "models/model_epoch_400.pth", "bytes": 1044552106},
+    {"path": "models/model_epoch_500.pth", "bytes": 1044552106},
+    {"path": "last.pth", "bytes": 1044506290},
+    {"path": "last_bak.pth", "bytes": 1044506290}
+  ],
+  "deleted_bytes": 6267221004,
+  "recovery": "Deleted checkpoints can be recreated from the retained config, logs, data manifest, robomimic commit, and W&B run ar7j7h06."
+}

@@ -242,21 +242,25 @@ def write_report(path, seed, calibration, tests, final_conclusion):
         "",
         f"Training seed: {seed}",
         "",
-        "| Geometry | rho | Q | Base Task SR | Guided Task SR | Base CR | Guided CR | F→S | S→F | exact p | Pass |",
+        "| Geometry | rho | Q | Base / guided Task SR | Base / guided Safe SR | Base / guided CR | Base / guided NCR | F→S | S→F | exact p | Pass |",
         "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
     ]
     for geometry in ("circle", "square"):
         result = tests[geometry]
         parameters = calibration[geometry]
         lines.append(
-            "| {g} | {rho:g} | {q:g} | {bt:.2f} | {gt:.2f} | {bc:.2f} | {gc:.2f} | {fs} | {sf} | {p:.4g} | {passed} |".format(
+            "| {g} | {rho:g} | {q:g} | {bt:.2f} / {gt:.2f} | {bs:.2f} / {gs:.2f} | {bc:.2f} / {gc:.2f} | {bn:.2f} / {gn:.2f} | {fs} | {sf} | {p:.4g} | {passed} |".format(
                 g=geometry,
                 rho=parameters["rho"],
                 q=parameters["q"],
                 bt=result["baseline"]["task_sr"],
                 gt=result["guided"]["task_sr"],
+                bs=result["baseline"]["safe_sr"],
+                gs=result["guided"]["safe_sr"],
                 bc=result["baseline"]["cr"],
                 gc=result["guided"]["cr"],
+                bn=result["baseline"]["ncr"],
+                gn=result["guided"]["ncr"],
                 fs=result["failure_to_success"],
                 sf=result["success_to_failure"],
                 p=result["exact_mcnemar_p"],
@@ -270,7 +274,7 @@ def write_report(path, seed, calibration, tests, final_conclusion):
             "",
             final_conclusion,
             "",
-            "Even a two-geometry pass establishes only that the implementation and predicted-clean gradient work in idealized point geometry. It supports, but does not prove, the hypothesis that D2 failed because an EEF-point cost mismatched swept gripper/object geometry; it cannot establish complex geometry as the unique cause.",
+            "The failed two-geometry gate does not validate the current guidance even in idealized point geometry. Post-hoc large-scale diagnostics are reported separately and do not change this preregistered conclusion.",
             "",
         ]
     )

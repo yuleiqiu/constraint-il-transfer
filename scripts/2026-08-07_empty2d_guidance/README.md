@@ -1,5 +1,10 @@
 # Empty2D Guidance Runbook
 
+Status: closed after both seed-42 geometry gates failed. The commands below
+reproduce the retained result; do not start seeds 43/44 with the unchanged
+guidance. Canonical conclusion:
+`outputs/empty2d_guidance/conclusion.md`.
+
 All commands run from the repository root with `uv`.
 
 Generate and verify the fixed dataset:
@@ -58,7 +63,8 @@ uv run python scripts/2026-08-07_empty2d_guidance/merge_geometry_evaluations.py 
 Only if seed 42 passes or partially passes, train 43 and 44 with the same
 launcher. Their evaluations must pass seed 42's
 `eval_seed42/locked_parameters.json` via `--locked-parameters`; they do not
-recalibrate. Render typical held-out pairs after evaluation:
+recalibrate. This condition was not met. Render typical held-out pairs after
+evaluation:
 
 ```bash
 uv run python scripts/2026-08-07_empty2d_guidance/render_videos.py \

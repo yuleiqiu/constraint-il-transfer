@@ -15,7 +15,11 @@ def category(baseline, guided):
     if baseline["collision_any"] and not baseline["success"] and guided["safe_success"]:
         return "baseline_collision_to_guided_success"
     if baseline["success"] and guided["success"]:
-        return "both_success"
+        if baseline["safe_success"] and guided["safe_success"]:
+            return "both_safe_success"
+        if baseline["collision_any"] and guided["collision_any"]:
+            return "both_task_success_with_collision"
+        return "both_task_success_mixed_safety"
     if not baseline["success"] and not guided["success"]:
         return "both_failure"
     if baseline["success"] and not guided["success"]:

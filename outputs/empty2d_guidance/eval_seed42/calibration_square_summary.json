@@ -1,0 +1,892 @@
+{
+  "checkpoint": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/empty2d_guidance_sample_seed42/20260807210551/models/model_epoch_100.pth",
+  "environment": "square",
+  "completed_candidates": 20,
+  "total_candidates": 20,
+  "candidates": [
+    {
+      "rho": 0.0001,
+      "q": 0.02,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.20366152126927992,
+        "mean_reverse_step_trigger_rate": 0.19356283779279468,
+        "mean_trajectory_length": 1.750453441712601,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.0001,
+      "q": 0.04,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.23182147242923107,
+        "mean_reverse_step_trigger_rate": 0.22268120991396856,
+        "mean_trajectory_length": 1.7504353089103784,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.0001,
+      "q": 0.08,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.32874946318049764,
+        "mean_reverse_step_trigger_rate": 0.3181153620198448,
+        "mean_trajectory_length": 1.7508914525929806,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.0001,
+      "q": 0.12,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.4042461291103533,
+        "mean_reverse_step_trigger_rate": 0.3901001635282023,
+        "mean_trajectory_length": 1.7505754933925264,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.0003,
+      "q": 0.02,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.20366152126927992,
+        "mean_reverse_step_trigger_rate": 0.19318953491431937,
+        "mean_trajectory_length": 1.7507979777793803,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.0003,
+      "q": 0.04,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.23182147242923107,
+        "mean_reverse_step_trigger_rate": 0.22271677157453024,
+        "mean_trajectory_length": 1.750325315290615,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.0003,
+      "q": 0.08,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.32874946318049764,
+        "mean_reverse_step_trigger_rate": 0.31859497452738833,
+        "mean_trajectory_length": 1.7505788005723375,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.0003,
+      "q": 0.12,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.4042461291103533,
+        "mean_reverse_step_trigger_rate": 0.3901016450096838,
+        "mean_trajectory_length": 1.7507014679158732,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.001,
+      "q": 0.02,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.20366152126927992,
+        "mean_reverse_step_trigger_rate": 0.193225711417414,
+        "mean_trajectory_length": 1.750710709433844,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.001,
+      "q": 0.04,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.23182147242923107,
+        "mean_reverse_step_trigger_rate": 0.2227724288801875,
+        "mean_trajectory_length": 1.7506626363109141,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.001,
+      "q": 0.08,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.32874946318049764,
+        "mean_reverse_step_trigger_rate": 0.31792327733569115,
+        "mean_trajectory_length": 1.7506997928070525,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.001,
+      "q": 0.12,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.4042461291103533,
+        "mean_reverse_step_trigger_rate": 0.39012016352820234,
+        "mean_trajectory_length": 1.7507436932039575,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.003,
+      "q": 0.02,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.20366152126927992,
+        "mean_reverse_step_trigger_rate": 0.19393481011325836,
+        "mean_trajectory_length": 1.7504976242310974,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.003,
+      "q": 0.04,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.23182147242923107,
+        "mean_reverse_step_trigger_rate": 0.22267693640969505,
+        "mean_trajectory_length": 1.7505313441588257,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.003,
+      "q": 0.08,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.32874946318049764,
+        "mean_reverse_step_trigger_rate": 0.31691843810085196,
+        "mean_trajectory_length": 1.7509745047078868,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.003,
+      "q": 0.12,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.4042461291103533,
+        "mean_reverse_step_trigger_rate": 0.39008164500968384,
+        "mean_trajectory_length": 1.7503728734377515,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.01,
+      "q": 0.02,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.20366152126927992,
+        "mean_reverse_step_trigger_rate": 0.19330436968443432,
+        "mean_trajectory_length": 1.7506689546932708,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.01,
+      "q": 0.04,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.23182147242923107,
+        "mean_reverse_step_trigger_rate": 0.22262199135474997,
+        "mean_trajectory_length": 1.7507050452263744,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.01,
+      "q": 0.08,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.32511189704293153,
+        "mean_reverse_step_trigger_rate": 0.3158552960577098,
+        "mean_trajectory_length": 1.7509923294770313,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    },
+    {
+      "rho": 0.01,
+      "q": 0.12,
+      "baseline": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.0,
+        "mean_reverse_step_trigger_rate": 0.0,
+        "mean_trajectory_length": 1.7506227081346275,
+        "mean_clip_rate": 0.0
+      },
+      "guided": {
+        "rollouts": 20,
+        "task_sr": 1.0,
+        "safe_sr": 0.0,
+        "cr": 1.0,
+        "ncr": 0.0,
+        "outcomes": {
+          "safe_success": 0,
+          "success_with_collision": 20,
+          "collision_failure": 0,
+          "collision_free_non_completion": 0
+        },
+        "minimum_clearance": 0.0,
+        "mean_trigger_rate": 0.40501535987958404,
+        "mean_reverse_step_trigger_rate": 0.38880015861612843,
+        "mean_trajectory_length": 1.751036500076669,
+        "mean_clip_rate": 0.0
+      },
+      "failure_to_success": 0,
+      "success_to_failure": 0,
+      "net_rescues": 0,
+      "exact_mcnemar_p": 1.0
+    }
+  ],
+  "selected": {
+    "rho": 0.0001,
+    "q": 0.02
+  }
+}

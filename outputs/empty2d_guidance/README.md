@@ -1,7 +1,7 @@
 # Empty2D Guidance
 
-Status: data, implementation, and seed-42 source gates pass; Circle/Square
-paired evaluation is running, 2026-08-09.
+Status: experiment closed after both seed-42 mechanism gates failed,
+2026-08-10. See `conclusion.md`.
 
 This experiment isolates whether the paper-aligned predicted-clean
 point-trajectory gradient can produce task-level avoidance when the executed
@@ -49,14 +49,20 @@ with 100 finite reverse-step diagnostics. The full seed-42 run completed all
 W&B run `ar7j7h06` contains the training record and its local manifest maps all
 five formal checkpoints. The fixed 50-seed D0 screen selected epoch 100 with
 Task/Safe SR `1.00`, CR/NCR `0.00 / 0.00`, and zero action clipping, so all
-source gates pass. Its canonical result is `source_screen.json`. Circle and
-Square calibration plus held-out evaluation are now running as two GPU
-shards; no guidance conclusion is available yet.
+source gates pass. Its canonical result is `source_screen.json`.
 
-## Result boundary
+## Final result
 
-Even if Circle and Square both pass, the permitted conclusion is limited: the
-guidance implementation and predicted-clean gradient work in idealized point
-geometry. That supports—but cannot by itself prove—the hypothesis that D2
-failed because an EEF-point cost mismatched swept gripper/object geometry. It
-does not show that complex geometry is the only D2 limitation.
+All 20 calibration settings in both geometries retain Task SR `1.00` but have
+Safe SR `0.00` and CR `1.00`. The selected setting therefore reflects only the
+lower-parameter tie break. On 100 new paired seeds per geometry, baseline and
+guided rollouts again reach the goal with collision in every pair: zero net
+rescues, zero CR reduction, and exact McNemar `p=1.0`.
+
+Post-hoc Circle diagnostics show that much larger scales make the intervention
+visible: `rho=0.1` deflects but still collides, while `rho=1` avoids collision
+in one rollout by retreating or stalling and fails to reach the goal. This
+confirms that the gradient path can affect execution but does not establish a
+safe-success regime. Seed 42 failed rather than partially passed, so seeds 43
+and 44 were not trained. The canonical interpretation and artifact index are
+in `conclusion.md`.
