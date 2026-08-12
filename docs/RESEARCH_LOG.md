@@ -16,6 +16,26 @@
   one-distractor Task SR with the reliable clean-image delta-EEF policy; the
   tested uniform 5 cm XY expansion does not.
 
+## 2026-08-12
+
+### Strong guidance gives qualitative safe completion in Empty2D
+
+Revisited the post-hoc `rho=1, Q=0.12` Circle diagnostic beyond the formal
+H320 evaluation window. Guidance keeps the point collision-free during the
+recorded H320 segment, and continuing with a longer horizon was visually
+observed to eventually reach the goal without collision. The route is slow and
+contains substantial jitter. This is a single-seed post-hoc observation; no
+fixed extended horizon, paired test, or multi-seed replication was run.
+
+Decision: retain the preregistered H320 tables as a negative result for the
+paper-scale sweep, but revise the mechanism conclusion. Predicted-clean guided
+denoising can produce task-completing avoidance in matched 2-D point geometry
+when `rho` and execution time are sufficiently large. The 3-D D2 failure is
+therefore consistent with additional swept-gripper, pose, grasp, and temporal
+complexity, although this observation does not isolate geometry as the unique
+cause. Canonical interpretation:
+`outputs/empty2d_guidance/conclusion.md`.
+
 ## 2026-08-10
 
 ### Empty2D guidance fails both idealized point-geometry gates
@@ -27,22 +47,16 @@ Safe SR `0.00`, CR `1.00`, and NCR `0.00`. Both geometries have zero net
 rescues, zero CR reduction, and exact McNemar `p=1.0`. Guidance triggers in the
 formal sweep but does not remove any collision.
 
-Post-hoc single-seed Circle diagnostics establish a scale transition rather
-than a positive regime: `rho=0.1, Q=0.12` visibly deflects the trajectory but
-still collides; `rho=1, Q=0.12` avoids collision by retreating or stalling and
-does not reach the goal. This is consistent with the nearest-point cost
-providing an anti-progress outward normal and no persistent upper/lower bypass
-choice in the centered configuration. It confirms that the gradient path can
-change executed actions, not that the current formulation produces safe task
-completion.
+Post-hoc single-seed Circle diagnostics establish a scale transition outside
+the formal grid: `rho=0.1, Q=0.12` visibly deflects the trajectory but still
+collides; `rho=1, Q=0.12` remains collision-free but does not reach the goal
+within H320. Its later extended-horizon interpretation is recorded in the
+2026-08-12 entry above.
 
-Decision: close Empty2D as a negative mechanism result. Do not train seeds 43
-or 44 and do not continue blind scale tuning of the same cost. The result does
-not validate guidance even in matched point geometry and therefore cannot
-attribute the earlier D2 failure primarily or uniquely to swept gripper/object
-geometry. Any successor must add task-compatible directional structure and a
-persistent bypass choice before repeating the paired gate. Canonical result:
-`outputs/empty2d_guidance/conclusion.md`.
+Decision at the frozen gate: close the formal paper-scale H320 sweep and do not
+train seeds 43 or 44. This remains the historical preregistered result; the
+post-hoc longer-horizon mechanism conclusion is recorded on 2026-08-12.
+Canonical result: `outputs/empty2d_guidance/conclusion.md`.
 
 ## 2026-08-09
 

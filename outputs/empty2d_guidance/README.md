@@ -1,7 +1,8 @@
 # Empty2D Guidance
 
-Status: experiment closed after both seed-42 mechanism gates failed,
-2026-08-10. See `conclusion.md`.
+Status: the preregistered seed-42 H320 gates failed at paper-scale guidance,
+but a post-hoc strong-guidance rollout establishes a qualitative positive 2-D
+regime. See `conclusion.md`.
 
 This experiment isolates whether the paper-aligned predicted-clean
 point-trajectory gradient can produce task-level avoidance when the executed
@@ -51,7 +52,7 @@ five formal checkpoints. The fixed 50-seed D0 screen selected epoch 100 with
 Task/Safe SR `1.00`, CR/NCR `0.00 / 0.00`, and zero action clipping, so all
 source gates pass. Its canonical result is `source_screen.json`.
 
-## Final result
+## Formal result
 
 All 20 calibration settings in both geometries retain Task SR `1.00` but have
 Safe SR `0.00` and CR `1.00`. The selected setting therefore reflects only the
@@ -59,10 +60,23 @@ lower-parameter tie break. On 100 new paired seeds per geometry, baseline and
 guided rollouts again reach the goal with collision in every pair: zero net
 rescues, zero CR reduction, and exact McNemar `p=1.0`.
 
-Post-hoc Circle diagnostics show that much larger scales make the intervention
-visible: `rho=0.1` deflects but still collides, while `rho=1` avoids collision
-in one rollout by retreating or stalling and fails to reach the goal. This
-confirms that the gradient path can affect execution but does not establish a
-safe-success regime. Seed 42 failed rather than partially passed, so seeds 43
+## Post-hoc strong-guidance observation
+
+Post-hoc Circle diagnostics show a scale transition outside the formal grid.
+`rho=0.1` visibly deflects the trajectory but still collides. At
+`rho=1, Q=0.12`, guidance keeps the point collision-free through the original H320
+window. Continuing the rollout with a longer execution horizon was then
+visually observed to reach the goal without collision, although the approach
+contains substantial jitter and is much slower than the baseline path through
+the obstacle.
+
+This qualitative observation establishes that predicted-clean guidance can
+produce task-completing avoidance in matched 2-D point geometry when guidance
+and execution time are sufficiently large. It does not convert the original
+H320 sweep into a formal positive evaluation: the extended rollout is a
+single-seed post-hoc observation without a frozen extended-horizon protocol or
+paired replication. The combined conclusion is therefore that the mechanism
+works in simplified geometry but is inefficient and unstable, while the
+paper-scale parameter regime still fails the fixed task-level gate. Seeds 43
 and 44 were not trained. The canonical interpretation and artifact index are
 in `conclusion.md`.
