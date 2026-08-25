@@ -1,0 +1,13 @@
+{
+  "agent": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_can_abs_pose_sample_paper256_hires_continuous_seed42/20260806121402/models/model_epoch_50_image_v15_abs_eef_pose_osc_lan40_paper256_hires_continuous_success_0.7.pth",
+  "envs": [
+    "PickPlaceCan",
+    "PickPlaceBreadCan",
+    "PickPlaceBreadCerealCan",
+    "PickPlaceBreadCerealMilkCan"
+  ],
+  "seed": 812,
+  "n_rollouts": 50,
+  "state_bank": "/home/yulei/codes/constraint-il-transfer/outputs/lan_o3dp_hand_off_guidance/formal_seed812_n50_state_bank/initial_state_bank.pkl",
+  "state_count": 200
+}

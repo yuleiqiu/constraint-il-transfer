@@ -1,0 +1,12 @@
+{
+  "policy": "model_epoch_50_image_v15_abs_eef_pose_osc_lan40_paper256_hires_continuous_success_0.7.pth",
+  "distance_dimensions": "xy",
+  "obstacle_cost_type": "huber_hinge",
+  "safety_distance_m": 0.04,
+  "obstacle_cost_smoothing_m": 0.01,
+  "guidance_scale": 0.01,
+  "horizon": 600,
+  "calibration_d2_seed": 705,
+  "formal_seed": 812,
+  "formal_rollouts_per_environment": 50
+}

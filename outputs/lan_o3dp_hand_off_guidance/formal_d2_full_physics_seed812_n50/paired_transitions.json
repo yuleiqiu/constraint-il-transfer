@@ -1,0 +1,10 @@
+[
+  {
+    "env": "PickPlaceBreadCerealCan",
+    "guidance_scale": 0.01,
+    "safety_distance": 0.04,
+    "pairs": 50,
+    "failure_to_success": 0,
+    "success_to_failure": 1
+  }
+]

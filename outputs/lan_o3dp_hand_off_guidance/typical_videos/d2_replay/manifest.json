@@ -1,0 +1,1245 @@
+{
+  "full_eval_dir": "/home/yulei/codes/constraint-il-transfer/outputs/lan_o3dp_hand_off_guidance/formal_d2_full_physics_seed812_n50",
+  "hand_off_eval_dir": "/home/yulei/codes/constraint-il-transfer/outputs/lan_o3dp_hand_off_guidance/formal_d2_hand_off_seed812_n50",
+  "state_bank": "/home/yulei/codes/constraint-il-transfer/outputs/lan_o3dp_hand_off_guidance/formal_seed812_n50_state_bank/initial_state_bank.pkl",
+  "environment": "PickPlaceBreadCerealCan",
+  "seed": 812,
+  "camera_name": "agentview",
+  "frame_skip": 4,
+  "fps": 12,
+  "replay_note": "Same serialized state and policy seed as the formal evaluation, but CUDA rollout is not bitwise deterministic. Panel annotations report the actual rendered replay; formal/replay label drift is retained per condition below.",
+  "rendered": [
+    {
+      "episode": 0,
+      "initial_state_hash": "5f1b9622e85aa54c189cd2db111008f2c97bad6a65f1db348b251f81690fd48b",
+      "video": "/home/yulei/codes/constraint-il-transfer/outputs/lan_o3dp_hand_off_guidance/typical_videos/d2_replay/episode_000_2x2.mp4",
+      "conditions": [
+        {
+          "label": "FULL PHYSICS / BASELINE",
+          "metrics": {
+            "condition": "baseline",
+            "guidance_scale": null,
+            "safety_distance": null,
+            "success": false,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": false,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": true,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": true,
+            "safe_success": false,
+            "success_with_collision": false,
+            "collision_failure": true,
+            "ncr": false,
+            "horizon_truncated": true,
+            "collision_names": [
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger1_collision",
+              "gripper0_right_finger1_pad_collision",
+              "gripper0_right_hand_collision"
+            ],
+            "horizon": 600,
+            "chunks": 75,
+            "target_displacement_m": 0.12453337758779526,
+            "minimum_eef_obstacle_clearance_m": 0.01235281303524971,
+            "guidance_trigger_rate": 0.0,
+            "guidance_update_norm_mean": 0.0,
+            "guidance_update_norm_max": 0.0,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": null,
+            "first_collision_step": 53,
+            "first_hand_collision_step": 252,
+            "first_finger_collision_step": 53,
+            "first_target_collision_step": 287,
+            "action_clip_count": 1582,
+            "action_clip_max_abs": 1.341433048248291,
+            "hand_collision_enabled": true,
+            "hand_collision_audit": {
+              "enabled": true,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  1,
+                  1
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": null
+          },
+          "formal_metrics": {
+            "env": "PickPlaceBreadCerealCan",
+            "seed": 812,
+            "episode": 0,
+            "layout_seed": 812000,
+            "policy_seed": 812000000,
+            "initial_state_hash": "5f1b9622e85aa54c189cd2db111008f2c97bad6a65f1db348b251f81690fd48b",
+            "condition": "baseline",
+            "guidance_scale": null,
+            "safety_distance": null,
+            "success": false,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": false,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": true,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": true,
+            "safe_success": false,
+            "success_with_collision": false,
+            "collision_failure": true,
+            "ncr": false,
+            "horizon_truncated": true,
+            "collision_names": [
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger1_collision",
+              "gripper0_right_finger1_pad_collision",
+              "gripper0_right_hand_collision"
+            ],
+            "horizon": 600,
+            "chunks": 75,
+            "target_displacement_m": 0.22227710485458374,
+            "minimum_eef_obstacle_clearance_m": 0.012372910976409912,
+            "guidance_trigger_rate": 0.0,
+            "guidance_update_norm_mean": 0.0,
+            "guidance_update_norm_max": 0.0,
+            "obstacle_cloud_missing_chunks": 22,
+            "first_guidance_active_step": null,
+            "first_collision_step": 53,
+            "first_hand_collision_step": 252,
+            "first_finger_collision_step": 53,
+            "first_target_collision_step": 287,
+            "action_clip_count": 1652,
+            "action_clip_max_abs": 1.332360029220581,
+            "hand_collision_enabled": true,
+            "hand_collision_audit": {
+              "enabled": true,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  1,
+                  1
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": null
+          },
+          "formal_replay_mismatches": []
+        },
+        {
+          "label": "FULL PHYSICS / GUIDED",
+          "metrics": {
+            "condition": "guided",
+            "guidance_scale": 0.01,
+            "safety_distance": 0.04,
+            "success": false,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": false,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": true,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": true,
+            "safe_success": false,
+            "success_with_collision": false,
+            "collision_failure": true,
+            "ncr": false,
+            "horizon_truncated": true,
+            "collision_names": [
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger1_collision",
+              "gripper0_right_finger1_pad_collision",
+              "gripper0_right_hand_collision"
+            ],
+            "horizon": 600,
+            "chunks": 75,
+            "target_displacement_m": 0.06403006613254547,
+            "minimum_eef_obstacle_clearance_m": 0.012350190430879593,
+            "guidance_trigger_rate": 0.7097333333333333,
+            "guidance_update_norm_mean": 7.158772398714352e-05,
+            "guidance_update_norm_max": 0.00184440438169986,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": 48,
+            "first_collision_step": 53,
+            "first_hand_collision_step": 252,
+            "first_finger_collision_step": 53,
+            "first_target_collision_step": 304,
+            "action_clip_count": 1574,
+            "action_clip_max_abs": 1.2641761302947998,
+            "hand_collision_enabled": true,
+            "hand_collision_audit": {
+              "enabled": true,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  1,
+                  1
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": 0.01
+          },
+          "formal_metrics": {
+            "env": "PickPlaceBreadCerealCan",
+            "seed": 812,
+            "episode": 0,
+            "layout_seed": 812000,
+            "policy_seed": 812000000,
+            "initial_state_hash": "5f1b9622e85aa54c189cd2db111008f2c97bad6a65f1db348b251f81690fd48b",
+            "condition": "guided",
+            "guidance_scale": 0.01,
+            "safety_distance": 0.04,
+            "success": false,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": false,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": true,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": false,
+            "safe_success": false,
+            "success_with_collision": false,
+            "collision_failure": true,
+            "ncr": false,
+            "horizon_truncated": true,
+            "collision_names": [
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger1_collision",
+              "gripper0_right_finger1_pad_collision",
+              "gripper0_right_hand_collision"
+            ],
+            "horizon": 600,
+            "chunks": 75,
+            "target_displacement_m": 0.1328539401292801,
+            "minimum_eef_obstacle_clearance_m": 0.012365255504846573,
+            "guidance_trigger_rate": 0.4338666666666667,
+            "guidance_update_norm_mean": 8.374673699876567e-06,
+            "guidance_update_norm_max": 0.00021898346312809736,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": 48,
+            "first_collision_step": 53,
+            "first_hand_collision_step": 252,
+            "first_finger_collision_step": 53,
+            "first_target_collision_step": null,
+            "action_clip_count": 1749,
+            "action_clip_max_abs": 1.2639744281768799,
+            "hand_collision_enabled": true,
+            "hand_collision_audit": {
+              "enabled": true,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  1,
+                  1
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": 0.01
+          },
+          "formal_replay_mismatches": [
+            {
+              "field": "target_obstacle_collision_any",
+              "formal": false,
+              "replay": true
+            }
+          ]
+        },
+        {
+          "label": "HAND OFF / BASELINE",
+          "metrics": {
+            "condition": "baseline",
+            "guidance_scale": null,
+            "safety_distance": null,
+            "success": false,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": true,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": false,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": true,
+            "safe_success": false,
+            "success_with_collision": false,
+            "collision_failure": true,
+            "ncr": false,
+            "horizon_truncated": true,
+            "collision_names": [
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger1_collision",
+              "gripper0_right_finger1_pad_collision",
+              "robot0_link7_collision"
+            ],
+            "horizon": 600,
+            "chunks": 75,
+            "target_displacement_m": 0.1317937821149826,
+            "minimum_eef_obstacle_clearance_m": -0.011196143925189972,
+            "guidance_trigger_rate": 0.0,
+            "guidance_update_norm_mean": 0.0,
+            "guidance_update_norm_max": 0.0,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": null,
+            "first_collision_step": 53,
+            "first_hand_collision_step": null,
+            "first_finger_collision_step": 53,
+            "first_target_collision_step": 275,
+            "action_clip_count": 1717,
+            "action_clip_max_abs": 1.2640900611877441,
+            "hand_collision_enabled": false,
+            "hand_collision_audit": {
+              "enabled": false,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  0,
+                  0
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": null
+          },
+          "formal_metrics": {
+            "env": "PickPlaceBreadCerealCan",
+            "seed": 812,
+            "episode": 0,
+            "layout_seed": 812000,
+            "policy_seed": 812000000,
+            "initial_state_hash": "5f1b9622e85aa54c189cd2db111008f2c97bad6a65f1db348b251f81690fd48b",
+            "condition": "baseline",
+            "guidance_scale": null,
+            "safety_distance": null,
+            "success": false,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": true,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": false,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": true,
+            "safe_success": false,
+            "success_with_collision": false,
+            "collision_failure": true,
+            "ncr": false,
+            "horizon_truncated": true,
+            "collision_names": [
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger1_collision",
+              "gripper0_right_finger1_pad_collision",
+              "robot0_link7_collision"
+            ],
+            "horizon": 600,
+            "chunks": 75,
+            "target_displacement_m": 0.15055657923221588,
+            "minimum_eef_obstacle_clearance_m": -0.02355351485311985,
+            "guidance_trigger_rate": 0.0,
+            "guidance_update_norm_mean": 0.0,
+            "guidance_update_norm_max": 0.0,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": null,
+            "first_collision_step": 53,
+            "first_hand_collision_step": null,
+            "first_finger_collision_step": 53,
+            "first_target_collision_step": 276,
+            "action_clip_count": 1750,
+            "action_clip_max_abs": 1.37339186668396,
+            "hand_collision_enabled": false,
+            "hand_collision_audit": {
+              "enabled": false,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  0,
+                  0
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": null
+          },
+          "formal_replay_mismatches": []
+        },
+        {
+          "label": "HAND OFF / GUIDED",
+          "metrics": {
+            "condition": "guided",
+            "guidance_scale": 0.01,
+            "safety_distance": 0.04,
+            "success": false,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": true,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": false,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": true,
+            "safe_success": false,
+            "success_with_collision": false,
+            "collision_failure": true,
+            "ncr": false,
+            "horizon_truncated": true,
+            "collision_names": [
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger1_collision",
+              "gripper0_right_finger1_pad_collision",
+              "robot0_link7_collision"
+            ],
+            "horizon": 600,
+            "chunks": 75,
+            "target_displacement_m": 0.10588721185922623,
+            "minimum_eef_obstacle_clearance_m": -0.004806511104106903,
+            "guidance_trigger_rate": 0.6473333333333333,
+            "guidance_update_norm_mean": 0.00011168028374149372,
+            "guidance_update_norm_max": 0.003272299887612462,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": 48,
+            "first_collision_step": 53,
+            "first_hand_collision_step": null,
+            "first_finger_collision_step": 53,
+            "first_target_collision_step": 276,
+            "action_clip_count": 1555,
+            "action_clip_max_abs": 1.264078140258789,
+            "hand_collision_enabled": false,
+            "hand_collision_audit": {
+              "enabled": false,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  0,
+                  0
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": 0.01
+          },
+          "formal_metrics": {
+            "env": "PickPlaceBreadCerealCan",
+            "seed": 812,
+            "episode": 0,
+            "layout_seed": 812000,
+            "policy_seed": 812000000,
+            "initial_state_hash": "5f1b9622e85aa54c189cd2db111008f2c97bad6a65f1db348b251f81690fd48b",
+            "condition": "guided",
+            "guidance_scale": 0.01,
+            "safety_distance": 0.04,
+            "success": false,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": true,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": false,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": true,
+            "safe_success": false,
+            "success_with_collision": false,
+            "collision_failure": true,
+            "ncr": false,
+            "horizon_truncated": true,
+            "collision_names": [
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger1_collision",
+              "gripper0_right_finger1_pad_collision",
+              "robot0_link7_collision"
+            ],
+            "horizon": 600,
+            "chunks": 75,
+            "target_displacement_m": 0.26870712637901306,
+            "minimum_eef_obstacle_clearance_m": 0.008275840431451797,
+            "guidance_trigger_rate": 0.5346666666666666,
+            "guidance_update_norm_mean": 3.6437581128305217e-05,
+            "guidance_update_norm_max": 0.0005140370922163129,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": 48,
+            "first_collision_step": 53,
+            "first_hand_collision_step": null,
+            "first_finger_collision_step": 53,
+            "first_target_collision_step": 275,
+            "action_clip_count": 1826,
+            "action_clip_max_abs": 1.3025763034820557,
+            "hand_collision_enabled": false,
+            "hand_collision_audit": {
+              "enabled": false,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  0,
+                  0
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": 0.01
+          },
+          "formal_replay_mismatches": []
+        }
+      ]
+    },
+    {
+      "episode": 4,
+      "initial_state_hash": "6d8abecece99abc3f175b701f20a354195b5a52e1d2dfbf55ce1ab5d9db21565",
+      "video": "/home/yulei/codes/constraint-il-transfer/outputs/lan_o3dp_hand_off_guidance/typical_videos/d2_replay/episode_004_2x2.mp4",
+      "conditions": [
+        {
+          "label": "FULL PHYSICS / BASELINE",
+          "metrics": {
+            "condition": "baseline",
+            "guidance_scale": null,
+            "safety_distance": null,
+            "success": false,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": false,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": true,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": false,
+            "safe_success": false,
+            "success_with_collision": false,
+            "collision_failure": true,
+            "ncr": false,
+            "horizon_truncated": true,
+            "collision_names": [
+              "Bread",
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger1_collision",
+              "gripper0_right_finger2_collision",
+              "gripper0_right_hand_collision"
+            ],
+            "horizon": 600,
+            "chunks": 75,
+            "target_displacement_m": 0.0011818300699815154,
+            "minimum_eef_obstacle_clearance_m": 0.012335235252976418,
+            "guidance_trigger_rate": 0.0,
+            "guidance_update_norm_mean": 0.0,
+            "guidance_update_norm_max": 0.0,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": null,
+            "first_collision_step": 85,
+            "first_hand_collision_step": 85,
+            "first_finger_collision_step": 123,
+            "first_target_collision_step": null,
+            "action_clip_count": 1680,
+            "action_clip_max_abs": 1.377138614654541,
+            "hand_collision_enabled": true,
+            "hand_collision_audit": {
+              "enabled": true,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  1,
+                  1
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": null
+          },
+          "formal_metrics": {
+            "env": "PickPlaceBreadCerealCan",
+            "seed": 812,
+            "episode": 4,
+            "layout_seed": 812004,
+            "policy_seed": 812000004,
+            "initial_state_hash": "6d8abecece99abc3f175b701f20a354195b5a52e1d2dfbf55ce1ab5d9db21565",
+            "condition": "baseline",
+            "guidance_scale": null,
+            "safety_distance": null,
+            "success": false,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": false,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": true,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": false,
+            "safe_success": false,
+            "success_with_collision": false,
+            "collision_failure": true,
+            "ncr": false,
+            "horizon_truncated": true,
+            "collision_names": [
+              "Bread",
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger1_collision",
+              "gripper0_right_finger2_collision",
+              "gripper0_right_hand_collision"
+            ],
+            "horizon": 600,
+            "chunks": 75,
+            "target_displacement_m": 0.0011510236654430628,
+            "minimum_eef_obstacle_clearance_m": 0.012337109073996544,
+            "guidance_trigger_rate": 0.0,
+            "guidance_update_norm_mean": 0.0,
+            "guidance_update_norm_max": 0.0,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": null,
+            "first_collision_step": 85,
+            "first_hand_collision_step": 85,
+            "first_finger_collision_step": 123,
+            "first_target_collision_step": null,
+            "action_clip_count": 1681,
+            "action_clip_max_abs": 1.3841049671173096,
+            "hand_collision_enabled": true,
+            "hand_collision_audit": {
+              "enabled": true,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  1,
+                  1
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": null
+          },
+          "formal_replay_mismatches": []
+        },
+        {
+          "label": "FULL PHYSICS / GUIDED",
+          "metrics": {
+            "condition": "guided",
+            "guidance_scale": 0.01,
+            "safety_distance": 0.04,
+            "success": false,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": false,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": true,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": false,
+            "safe_success": false,
+            "success_with_collision": false,
+            "collision_failure": true,
+            "ncr": false,
+            "horizon_truncated": true,
+            "collision_names": [
+              "Bread",
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger1_collision",
+              "gripper0_right_finger2_collision",
+              "gripper0_right_hand_collision"
+            ],
+            "horizon": 600,
+            "chunks": 75,
+            "target_displacement_m": 0.0015295729972422123,
+            "minimum_eef_obstacle_clearance_m": 0.012362619861960411,
+            "guidance_trigger_rate": 0.7598666666666667,
+            "guidance_update_norm_mean": 0.00010203642978918334,
+            "guidance_update_norm_max": 0.0016364060575142503,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": 72,
+            "first_collision_step": 85,
+            "first_hand_collision_step": 85,
+            "first_finger_collision_step": 122,
+            "first_target_collision_step": null,
+            "action_clip_count": 1673,
+            "action_clip_max_abs": 1.37149977684021,
+            "hand_collision_enabled": true,
+            "hand_collision_audit": {
+              "enabled": true,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  1,
+                  1
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": 0.01
+          },
+          "formal_metrics": {
+            "env": "PickPlaceBreadCerealCan",
+            "seed": 812,
+            "episode": 4,
+            "layout_seed": 812004,
+            "policy_seed": 812000004,
+            "initial_state_hash": "6d8abecece99abc3f175b701f20a354195b5a52e1d2dfbf55ce1ab5d9db21565",
+            "condition": "guided",
+            "guidance_scale": 0.01,
+            "safety_distance": 0.04,
+            "success": false,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": false,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": true,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": false,
+            "safe_success": false,
+            "success_with_collision": false,
+            "collision_failure": true,
+            "ncr": false,
+            "horizon_truncated": true,
+            "collision_names": [
+              "Bread",
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger1_collision",
+              "gripper0_right_finger2_collision",
+              "gripper0_right_hand_collision"
+            ],
+            "horizon": 600,
+            "chunks": 75,
+            "target_displacement_m": 0.0015043740859255195,
+            "minimum_eef_obstacle_clearance_m": 0.012336401268839836,
+            "guidance_trigger_rate": 0.7481333333333333,
+            "guidance_update_norm_mean": 0.00010634199445485943,
+            "guidance_update_norm_max": 0.0020326972007751465,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": 72,
+            "first_collision_step": 85,
+            "first_hand_collision_step": 85,
+            "first_finger_collision_step": 122,
+            "first_target_collision_step": null,
+            "action_clip_count": 1675,
+            "action_clip_max_abs": 1.3713841438293457,
+            "hand_collision_enabled": true,
+            "hand_collision_audit": {
+              "enabled": true,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  1,
+                  1
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": 0.01
+          },
+          "formal_replay_mismatches": []
+        },
+        {
+          "label": "HAND OFF / BASELINE",
+          "metrics": {
+            "condition": "baseline",
+            "guidance_scale": null,
+            "safety_distance": null,
+            "success": true,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": false,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": false,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": false,
+            "safe_success": false,
+            "success_with_collision": true,
+            "collision_failure": false,
+            "ncr": false,
+            "horizon_truncated": false,
+            "collision_names": [
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger2_collision"
+            ],
+            "horizon": 298,
+            "chunks": 38,
+            "target_displacement_m": 0.6044141054153442,
+            "minimum_eef_obstacle_clearance_m": -0.03498081490397453,
+            "guidance_trigger_rate": 0.0,
+            "guidance_update_norm_mean": 0.0,
+            "guidance_update_norm_max": 0.0,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": null,
+            "first_collision_step": 93,
+            "first_hand_collision_step": null,
+            "first_finger_collision_step": 93,
+            "first_target_collision_step": null,
+            "action_clip_count": 983,
+            "action_clip_max_abs": 1.5376832485198975,
+            "hand_collision_enabled": false,
+            "hand_collision_audit": {
+              "enabled": false,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  0,
+                  0
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": null
+          },
+          "formal_metrics": {
+            "env": "PickPlaceBreadCerealCan",
+            "seed": 812,
+            "episode": 4,
+            "layout_seed": 812004,
+            "policy_seed": 812000004,
+            "initial_state_hash": "6d8abecece99abc3f175b701f20a354195b5a52e1d2dfbf55ce1ab5d9db21565",
+            "condition": "baseline",
+            "guidance_scale": null,
+            "safety_distance": null,
+            "success": true,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": false,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": false,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": false,
+            "safe_success": false,
+            "success_with_collision": true,
+            "collision_failure": false,
+            "ncr": false,
+            "horizon_truncated": false,
+            "collision_names": [
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger2_collision"
+            ],
+            "horizon": 301,
+            "chunks": 38,
+            "target_displacement_m": 0.6244447231292725,
+            "minimum_eef_obstacle_clearance_m": -0.032947052270174026,
+            "guidance_trigger_rate": 0.0,
+            "guidance_update_norm_mean": 0.0,
+            "guidance_update_norm_max": 0.0,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": null,
+            "first_collision_step": 90,
+            "first_hand_collision_step": null,
+            "first_finger_collision_step": 90,
+            "first_target_collision_step": null,
+            "action_clip_count": 976,
+            "action_clip_max_abs": 1.5653536319732666,
+            "hand_collision_enabled": false,
+            "hand_collision_audit": {
+              "enabled": false,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  0,
+                  0
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": null
+          },
+          "formal_replay_mismatches": []
+        },
+        {
+          "label": "HAND OFF / GUIDED",
+          "metrics": {
+            "condition": "guided",
+            "guidance_scale": 0.01,
+            "safety_distance": 0.04,
+            "success": true,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": false,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": false,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": false,
+            "safe_success": false,
+            "success_with_collision": true,
+            "collision_failure": false,
+            "ncr": false,
+            "horizon_truncated": false,
+            "collision_names": [
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger2_collision"
+            ],
+            "horizon": 298,
+            "chunks": 38,
+            "target_displacement_m": 0.607947051525116,
+            "minimum_eef_obstacle_clearance_m": -0.034460026770830154,
+            "guidance_trigger_rate": 0.6052631578947368,
+            "guidance_update_norm_mean": 5.0429349151176884e-05,
+            "guidance_update_norm_max": 0.0012955419952049851,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": 72,
+            "first_collision_step": 94,
+            "first_hand_collision_step": null,
+            "first_finger_collision_step": 94,
+            "first_target_collision_step": null,
+            "action_clip_count": 976,
+            "action_clip_max_abs": 1.5545587539672852,
+            "hand_collision_enabled": false,
+            "hand_collision_audit": {
+              "enabled": false,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  0,
+                  0
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": 0.01
+          },
+          "formal_metrics": {
+            "env": "PickPlaceBreadCerealCan",
+            "seed": 812,
+            "episode": 4,
+            "layout_seed": 812004,
+            "policy_seed": 812000004,
+            "initial_state_hash": "6d8abecece99abc3f175b701f20a354195b5a52e1d2dfbf55ce1ab5d9db21565",
+            "condition": "guided",
+            "guidance_scale": 0.01,
+            "safety_distance": 0.04,
+            "success": true,
+            "collision_any": true,
+            "robot_obstacle_collision_any": true,
+            "arm_obstacle_collision_any": false,
+            "gripper_obstacle_collision_any": true,
+            "hand_obstacle_collision_any": false,
+            "finger_obstacle_collision_any": true,
+            "target_obstacle_collision_any": false,
+            "safe_success": false,
+            "success_with_collision": true,
+            "collision_failure": false,
+            "ncr": false,
+            "horizon_truncated": false,
+            "collision_names": [
+              "Cereal"
+            ],
+            "collision_robot_geom_names": [
+              "gripper0_right_finger2_collision"
+            ],
+            "horizon": 298,
+            "chunks": 38,
+            "target_displacement_m": 0.6026711463928223,
+            "minimum_eef_obstacle_clearance_m": -0.03818407282233238,
+            "guidance_trigger_rate": 0.6052631578947368,
+            "guidance_update_norm_mean": 4.951156098406117e-05,
+            "guidance_update_norm_max": 0.0012973996344953775,
+            "obstacle_cloud_missing_chunks": 0,
+            "first_guidance_active_step": 72,
+            "first_collision_step": 98,
+            "first_hand_collision_step": null,
+            "first_finger_collision_step": 98,
+            "first_target_collision_step": null,
+            "action_clip_count": 972,
+            "action_clip_max_abs": 1.522191047668457,
+            "hand_collision_enabled": false,
+            "hand_collision_audit": {
+              "enabled": false,
+              "hand_masks": {
+                "gripper0_right_hand_collision": [
+                  0,
+                  0
+                ]
+              },
+              "finger_masks": {
+                "gripper0_right_finger1_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger1_pad_collision": [
+                  1,
+                  1
+                ],
+                "gripper0_right_finger2_collision": [
+                  0,
+                  1
+                ],
+                "gripper0_right_finger2_pad_collision": [
+                  1,
+                  1
+                ]
+              }
+            },
+            "obstacle_cost_type": "huber_hinge",
+            "obstacle_cost_smoothing": 0.01
+          },
+          "formal_replay_mismatches": []
+        }
+      ]
+    }
+  ]
+}

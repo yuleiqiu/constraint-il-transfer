@@ -1,0 +1,863 @@
+{
+  "d0": {
+    "guidance_with_full_physics": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "safe_success": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      }
+    },
+    "guidance_with_hand_off": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "safe_success": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      }
+    },
+    "hand_off_with_baseline": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 1,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [
+          [
+            812,
+            20
+          ]
+        ],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "safe_success": {
+        "zero_to_one": 1,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [
+          [
+            812,
+            20
+          ]
+        ],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      }
+    },
+    "hand_off_with_guided": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 1,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [
+          [
+            812,
+            20
+          ]
+        ],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "safe_success": {
+        "zero_to_one": 1,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [
+          [
+            812,
+            20
+          ]
+        ],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      }
+    }
+  },
+  "d1": {
+    "guidance_with_full_physics": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "safe_success": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 1,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [
+          [
+            812,
+            44
+          ]
+        ],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      }
+    },
+    "guidance_with_hand_off": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "safe_success": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      }
+    },
+    "hand_off_with_baseline": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 0,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [
+          [
+            812,
+            29
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      },
+      "safe_success": {
+        "zero_to_one": 0,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [
+          [
+            812,
+            29
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      }
+    },
+    "hand_off_with_guided": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 0,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [
+          [
+            812,
+            29
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      },
+      "safe_success": {
+        "zero_to_one": 0,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [
+          [
+            812,
+            29
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 0,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [
+          [
+            812,
+            44
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      }
+    }
+  },
+  "d2": {
+    "guidance_with_full_physics": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 0,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [
+          [
+            812,
+            29
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      },
+      "safe_success": {
+        "zero_to_one": 1,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [
+          [
+            812,
+            35
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            29
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 0,
+        "one_to_zero": 2,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [
+          [
+            812,
+            32
+          ],
+          [
+            812,
+            35
+          ]
+        ],
+        "exact_mcnemar_p": 0.5
+      }
+    },
+    "guidance_with_hand_off": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "safe_success": {
+        "zero_to_one": 1,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [
+          [
+            812,
+            35
+          ]
+        ],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 1,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [
+          [
+            812,
+            8
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            35
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      }
+    },
+    "hand_off_with_baseline": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 7,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [
+          [
+            812,
+            4
+          ],
+          [
+            812,
+            7
+          ],
+          [
+            812,
+            13
+          ],
+          [
+            812,
+            22
+          ],
+          [
+            812,
+            32
+          ],
+          [
+            812,
+            38
+          ],
+          [
+            812,
+            43
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            29
+          ]
+        ],
+        "exact_mcnemar_p": 0.0703125
+      },
+      "safe_success": {
+        "zero_to_one": 2,
+        "one_to_zero": 2,
+        "zero_to_one_keys": [
+          [
+            812,
+            10
+          ],
+          [
+            812,
+            13
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            29
+          ],
+          [
+            812,
+            41
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 1,
+        "one_to_zero": 4,
+        "zero_to_one_keys": [
+          [
+            812,
+            41
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            8
+          ],
+          [
+            812,
+            10
+          ],
+          [
+            812,
+            13
+          ],
+          [
+            812,
+            26
+          ]
+        ],
+        "exact_mcnemar_p": 0.375
+      }
+    },
+    "hand_off_with_guided": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 7,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [
+          [
+            812,
+            4
+          ],
+          [
+            812,
+            7
+          ],
+          [
+            812,
+            13
+          ],
+          [
+            812,
+            22
+          ],
+          [
+            812,
+            32
+          ],
+          [
+            812,
+            38
+          ],
+          [
+            812,
+            43
+          ]
+        ],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 0.015625
+      },
+      "safe_success": {
+        "zero_to_one": 2,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [
+          [
+            812,
+            10
+          ],
+          [
+            812,
+            13
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            41
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 2,
+        "one_to_zero": 3,
+        "zero_to_one_keys": [
+          [
+            812,
+            32
+          ],
+          [
+            812,
+            41
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            10
+          ],
+          [
+            812,
+            13
+          ],
+          [
+            812,
+            26
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      }
+    }
+  },
+  "d3": {
+    "guidance_with_full_physics": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 0,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "safe_success": {
+        "zero_to_one": 2,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [
+          [
+            812,
+            4
+          ],
+          [
+            812,
+            5
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            28
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 2,
+        "one_to_zero": 3,
+        "zero_to_one_keys": [
+          [
+            812,
+            28
+          ],
+          [
+            812,
+            36
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            4
+          ],
+          [
+            812,
+            5
+          ],
+          [
+            812,
+            11
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      }
+    },
+    "guidance_with_hand_off": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 1,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [
+          [
+            812,
+            40
+          ]
+        ],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 1.0
+      },
+      "safe_success": {
+        "zero_to_one": 2,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [
+          [
+            812,
+            5
+          ],
+          [
+            812,
+            42
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            28
+          ]
+        ],
+        "exact_mcnemar_p": 1.0
+      },
+      "collision": {
+        "zero_to_one": 1,
+        "one_to_zero": 3,
+        "zero_to_one_keys": [
+          [
+            812,
+            28
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            5
+          ],
+          [
+            812,
+            11
+          ],
+          [
+            812,
+            42
+          ]
+        ],
+        "exact_mcnemar_p": 0.625
+      }
+    },
+    "hand_off_with_baseline": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 3,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [
+          [
+            812,
+            17
+          ],
+          [
+            812,
+            26
+          ],
+          [
+            812,
+            44
+          ]
+        ],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 0.25
+      },
+      "safe_success": {
+        "zero_to_one": 7,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [
+          [
+            812,
+            2
+          ],
+          [
+            812,
+            10
+          ],
+          [
+            812,
+            12
+          ],
+          [
+            812,
+            34
+          ],
+          [
+            812,
+            37
+          ],
+          [
+            812,
+            38
+          ],
+          [
+            812,
+            44
+          ]
+        ],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 0.015625
+      },
+      "collision": {
+        "zero_to_one": 0,
+        "one_to_zero": 7,
+        "zero_to_one_keys": [],
+        "one_to_zero_keys": [
+          [
+            812,
+            2
+          ],
+          [
+            812,
+            10
+          ],
+          [
+            812,
+            12
+          ],
+          [
+            812,
+            34
+          ],
+          [
+            812,
+            37
+          ],
+          [
+            812,
+            38
+          ],
+          [
+            812,
+            44
+          ]
+        ],
+        "exact_mcnemar_p": 0.015625
+      }
+    },
+    "hand_off_with_guided": {
+      "pairs": 50,
+      "task": {
+        "zero_to_one": 4,
+        "one_to_zero": 0,
+        "zero_to_one_keys": [
+          [
+            812,
+            17
+          ],
+          [
+            812,
+            26
+          ],
+          [
+            812,
+            40
+          ],
+          [
+            812,
+            44
+          ]
+        ],
+        "one_to_zero_keys": [],
+        "exact_mcnemar_p": 0.125
+      },
+      "safe_success": {
+        "zero_to_one": 8,
+        "one_to_zero": 1,
+        "zero_to_one_keys": [
+          [
+            812,
+            2
+          ],
+          [
+            812,
+            10
+          ],
+          [
+            812,
+            12
+          ],
+          [
+            812,
+            34
+          ],
+          [
+            812,
+            37
+          ],
+          [
+            812,
+            38
+          ],
+          [
+            812,
+            42
+          ],
+          [
+            812,
+            44
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            4
+          ]
+        ],
+        "exact_mcnemar_p": 0.0390625
+      },
+      "collision": {
+        "zero_to_one": 1,
+        "one_to_zero": 9,
+        "zero_to_one_keys": [
+          [
+            812,
+            4
+          ]
+        ],
+        "one_to_zero_keys": [
+          [
+            812,
+            2
+          ],
+          [
+            812,
+            10
+          ],
+          [
+            812,
+            12
+          ],
+          [
+            812,
+            34
+          ],
+          [
+            812,
+            36
+          ],
+          [
+            812,
+            37
+          ],
+          [
+            812,
+            38
+          ],
+          [
+            812,
+            42
+          ],
+          [
+            812,
+            44
+          ]
+        ],
+        "exact_mcnemar_p": 0.021484375
+      }
+    }
+  }
+}

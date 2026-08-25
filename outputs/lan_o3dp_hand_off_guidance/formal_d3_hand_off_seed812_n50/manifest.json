@@ -1,0 +1,35 @@
+{
+  "agent": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_can_abs_pose_sample_paper256_hires_continuous_seed42/20260806121402/models/model_epoch_50_image_v15_abs_eef_pose_osc_lan40_paper256_hires_continuous_success_0.7.pth",
+  "envs": [
+    "PickPlaceBreadCerealMilkCan"
+  ],
+  "seeds": [
+    812
+  ],
+  "n_rollouts": 50,
+  "episodes": null,
+  "horizon": 600,
+  "baseline_only": false,
+  "guidance_scales": [
+    0.01
+  ],
+  "safety_distances": [
+    0.04
+  ],
+  "candidates": [
+    {
+      "guidance_scale": 0.01,
+      "safety_distance": 0.04
+    }
+  ],
+  "xy_only": true,
+  "hand_collision_enabled": false,
+  "obstacle_cost_type": "huber_hinge",
+  "obstacle_cost_smoothing": 0.01,
+  "obstacle_cost_smoothing_ratio": null,
+  "terminate_on_collision": false,
+  "state_bank_source": "/home/yulei/codes/constraint-il-transfer/outputs/lan_o3dp_hand_off_guidance/formal_seed812_n50_state_bank/initial_state_bank.pkl",
+  "state_bank_output": null,
+  "obstacle_protocol": "agentview 120x120 metric-depth oracle mask, visible FPS128 world points",
+  "collision_protocol": "union of arm-link, gripper-hand, gripper-finger, and target-Can contacts with obstacles; all components reported separately"
+}
