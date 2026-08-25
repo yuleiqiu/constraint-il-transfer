@@ -1,0 +1,65 @@
+{
+  "checkpoint": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_tabletop_can_abs_pose_sample_100demo_seed42/20260814201328/models/model_epoch_100_tabletop_can_pointcloud_abs_eef_100_success_0.8.pth",
+  "layouts_attempted": 5,
+  "collision_failures_kept": 3,
+  "seed": 991,
+  "horizon": 600,
+  "state_bank": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_mvee_guidance/fresh_failure_bank_seed991/fresh_initial_state_bank.pkl",
+  "rows": [
+    {
+      "episode": 0,
+      "layout_seed": 991000,
+      "state_hash": "686f00738aba8be693618d9b9cc6903aa810116ea55e140784d64cf684bfee7f",
+      "success": false,
+      "collision_any": true,
+      "collision_failure": true,
+      "safe_success": false,
+      "ncr": false,
+      "horizon": 600
+    },
+    {
+      "episode": 1,
+      "layout_seed": 991001,
+      "state_hash": "a25ef7364be99c01f024c9f62f9c3ed63b5a8b4a54e3318918e5b8f501e238dc",
+      "success": false,
+      "collision_any": false,
+      "collision_failure": false,
+      "safe_success": false,
+      "ncr": true,
+      "horizon": 600
+    },
+    {
+      "episode": 2,
+      "layout_seed": 991002,
+      "state_hash": "5cefdc432b64f6b9f7b5698a5187205609c586849fa9fe9e3ef928f7c9a51f4e",
+      "success": true,
+      "collision_any": true,
+      "collision_failure": false,
+      "safe_success": false,
+      "ncr": false,
+      "horizon": 294
+    },
+    {
+      "episode": 3,
+      "layout_seed": 991003,
+      "state_hash": "a895c21768c5a665f5104b61afa389a6e56d455a2e3b70e89048bcaaf729b01e",
+      "success": false,
+      "collision_any": true,
+      "collision_failure": true,
+      "safe_success": false,
+      "ncr": false,
+      "horizon": 600
+    },
+    {
+      "episode": 4,
+      "layout_seed": 991004,
+      "state_hash": "db6855d99c4bab66b2bf52e13a597c0999738e94e237c74416e01eaac1c903b5",
+      "success": false,
+      "collision_any": true,
+      "collision_failure": true,
+      "safe_success": false,
+      "ncr": false,
+      "horizon": 600
+    }
+  ]
+}

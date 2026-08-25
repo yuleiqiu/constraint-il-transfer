@@ -57,3 +57,55 @@ ellipsoid and the obstacle MVEE. It is a conservative differentiable
 support-plane clearance, not an exact Euclidean ellipsoid distance. Gradients
 are evaluated only on the executable predicted-clean action slice and may
 affect delta position and rotation; the gripper command remains unchanged.
+
+## Fresh collision-failure state bank
+
+The archived 2026-08-14 state bank is intentionally not used as a paired input
+here. Its saved model XML predates the task-aligned Backview, and patching that
+XML would make static obstacle placement and the current camera model less
+trustworthy. Instead, generate fresh states from the current environment and
+keep only full baseline collision failures:
+
+```bash
+MUJOCO_GL=egl uv run python \
+  scripts/2026-08-25_tabletop_mvee_guidance/collect_failure_state_bank.py \
+  --checkpoint <tabletop-lan-checkpoint> \
+  --out-dir outputs/tabletop_mvee_guidance/fresh_failure_bank_seed991 \
+  --layouts 12 --target-failures 3 --seed 991 --horizon 600
+```
+
+Canonical fresh bank:
+`outputs/tabletop_mvee_guidance/fresh_failure_bank_seed991/fresh_initial_state_bank.pkl`.
+
+## Full-rollout ellipsoid counterfactual
+
+Run one fresh failure state from the beginning of the episode with baseline and
+ellipsoid guidance sharing the same model XML, dynamic state, policy seed, and
+CUDA RNG:
+
+```bash
+MUJOCO_GL=egl uv run python \
+  scripts/2026-08-25_tabletop_mvee_guidance/ellipsoid_counterfactual_rollout.py \
+  --checkpoint <tabletop-lan-checkpoint> \
+  --state-bank outputs/tabletop_mvee_guidance/fresh_failure_bank_seed991/fresh_initial_state_bank.pkl \
+  --scene 0 --bank-seed 991 --policy-seed 991000000 \
+  --guidance-scale 45.0 --ellipsoid-margin 0.05 \
+  --out-dir <result-dir>
+```
+
+The rollout is closed-loop from the initial layout; it is not a frozen
+pre-collision chunk audit. Guidance context is rebuilt at every policy chunk
+from the current dual-view obstacle cloud and current gripper / grasped-can
+geometry. Baseline and guided runs use the same full initial state, so the
+controller state is reset between conditions.
+
+## Preliminary closed-loop result
+
+On the three fresh collision failures (seed 991, episodes 0/3/4), `scale=45`,
+`margin=1 cm` activated the ellipsoid cost near the first collision and delayed
+but did not remove Can-Milk contact. `margin=5 cm` removed physical contact in
+all three episodes and kept minimum clearance between 5.97 cm and 7.92 cm, but
+all three became collision-free non-completions. The geometry can reason about
+the obstacle volume and avoid contact; it still does not preserve task progress
+well enough to finish within H600. This is mechanism evidence on the
+Tabletop LAN-O3DP checkpoint, not a claim about the clean-image source policy.

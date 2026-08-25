@@ -319,10 +319,13 @@ def rollout_condition(
     safety_distance=None,
     frame_callback=None,
     chunk_callback=None,
+    guidance_context_factory=None,
 ):
     random.seed(policy_seed)
     np.random.seed(policy_seed)
     torch.manual_seed(policy_seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(policy_seed)
     policy.start_episode()
     observation = env.reset_to(initial_state)
     raw_env = rollout_common.raw_env_from_wrapper(env)
@@ -400,25 +403,38 @@ def rollout_condition(
         ):
             if safety_distance is None:
                 raise ValueError("guided rollouts require a safety distance")
-            context = paper_lan_guidance_context_from_rollout_policy(
-                policy,
-                current_eef_pos=current,
-                obstacle_points=obstacle_cloud,
-                guidance_scale=guidance_scale,
-                safety_distance=safety_distance,
-                xy_only=args.xy_only,
-                obstacle_cost_type=args.obstacle_cost_type,
-                obstacle_cost_smoothing=obstacle_cost_smoothing(
-                    args,
-                    safety_distance,
-                ),
-                tangent_ratio=getattr(args, "tangent_ratio", 0.0),
-                forward_direction_xy=(
-                    np.asarray(raw_env.goal_xy, dtype=np.float64) - target_start[:2]
-                    if hasattr(raw_env, "goal_xy")
-                    else None
-                ),
-            )
+            if guidance_context_factory is not None:
+                context = guidance_context_factory(
+                    policy=policy,
+                    raw_env=raw_env,
+                    current=current,
+                    obstacle_cloud=obstacle_cloud,
+                    records=records,
+                    target_start=target_start,
+                    args=args,
+                    safety_distance=safety_distance,
+                    guidance_scale=guidance_scale,
+                )
+            else:
+                context = paper_lan_guidance_context_from_rollout_policy(
+                    policy,
+                    current_eef_pos=current,
+                    obstacle_points=obstacle_cloud,
+                    guidance_scale=guidance_scale,
+                    safety_distance=safety_distance,
+                    xy_only=args.xy_only,
+                    obstacle_cost_type=args.obstacle_cost_type,
+                    obstacle_cost_smoothing=obstacle_cost_smoothing(
+                        args,
+                        safety_distance,
+                    ),
+                    tangent_ratio=getattr(args, "tangent_ratio", 0.0),
+                    forward_direction_xy=(
+                        np.asarray(raw_env.goal_xy, dtype=np.float64) - target_start[:2]
+                        if hasattr(raw_env, "goal_xy")
+                        else None
+                    ),
+                )
         if chunk_callback is not None:
             chunk_callback(
                 env,
