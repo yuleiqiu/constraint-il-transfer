@@ -109,3 +109,9 @@ all three became collision-free non-completions. The geometry can reason about
 the obstacle volume and avoid contact; it still does not preserve task progress
 well enough to finish within H600. This is mechanism evidence on the
 Tabletop LAN-O3DP checkpoint, not a claim about the clean-image source policy.
+
+The representative collision-free stall video (episode 3, `margin=5 cm`) is
+`outputs/tabletop_mvee_guidance/fresh_failure_bank_seed991/videos/
+guided_margin5_ep3.mp4`. At step 590 the gripper still holds the Can,
+`can-to-goal` is 0.47 m, and the robot remains beside the Can start; no
+transport segment is ever formed.
