@@ -21,10 +21,14 @@ def _chunk_at_step(row: dict, step: int) -> dict | None:
 
 
 def _frame(row: dict, step: int) -> np.ndarray:
+    environment_kwargs = {
+        "horizon": row.get("horizon", 320),
+        "obstacle_center": row.get("obstacle_center", (0.0, 0.0)),
+    }
     environment = (
-        EnvEmpty2DExtraSphere()
+        EnvEmpty2DExtraSphere(**environment_kwargs)
         if row["environment"] == "circle"
-        else EnvEmpty2DExtraSquare()
+        else EnvEmpty2DExtraSquare(**environment_kwargs)
     )
     trajectory = np.asarray(row["trajectory"])
     environment.trajectory = [point.copy() for point in trajectory[: step + 1]]
@@ -36,6 +40,7 @@ def _frame(row: dict, step: int) -> np.ndarray:
         predicted_chunk=predicted,
         closest_obstacle_point=closest,
         safety_distance=row["safety_distance"],
+        title=row.get("visualization_label", row.get("condition")),
         size=420,
     )
 

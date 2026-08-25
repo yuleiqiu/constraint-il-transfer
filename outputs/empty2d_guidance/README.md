@@ -1,8 +1,9 @@
 # Empty2D Guidance
 
-Status: the preregistered seed-42 H320 gates failed at paper-scale guidance,
-but a post-hoc strong-guidance rollout establishes a qualitative positive 2-D
-regime. See `conclusion.md`.
+Status: the preregistered seed-42 H320 gates failed at paper-scale guidance;
+the fixed strong-guidance H600 successor reaches 20/20 Safe/Task success on
+offset Circle layouts and 13/20 on the centered control. See
+`smooth_h600_circle/report.md` and `conclusion.md`.
 
 This experiment isolates whether the paper-aligned predicted-clean
 point-trajectory gradient can produce task-level avoidance when the executed
@@ -60,7 +61,7 @@ lower-parameter tie break. On 100 new paired seeds per geometry, baseline and
 guided rollouts again reach the goal with collision in every pair: zero net
 rescues, zero CR reduction, and exact McNemar `p=1.0`.
 
-## Post-hoc strong-guidance observation
+## Strong-guidance successor
 
 Post-hoc Circle diagnostics show a scale transition outside the formal grid.
 `rho=0.1` visibly deflects the trajectory but still collides. At
@@ -70,13 +71,12 @@ visually observed to reach the goal without collision, although the approach
 contains substantial jitter and is much slower than the baseline path through
 the obstacle.
 
-This qualitative observation establishes that predicted-clean guidance can
-produce task-completing avoidance in matched 2-D point geometry when guidance
-and execution time are sufficiently large. It does not convert the original
-H320 sweep into a formal positive evaluation: the extended rollout is a
-single-seed post-hoc observation without a frozen extended-horizon protocol or
-paired replication. The combined conclusion is therefore that the mechanism
-works in simplified geometry but is inefficient and unstable, while the
-paper-scale parameter regime still fails the fixed task-level gate. Seeds 43
-and 44 were not trained. The canonical interpretation and artifact index are
-in `conclusion.md`.
+The successor freezes twenty mirrored offset layouts and matched centered
+controls, then records first-passage outcomes at H400/H500/H600. With
+`rho=1, Q=0.12`, both hinge variants reach 20/20 Safe/Task success on offset
+layouts by H600; the centered versions reach 13/20, with seven safe stalls.
+The result verifies the qualitative observation while preserving the original
+H320 gate as a historical negative. It also shows that route symmetry, not
+gradient inactivity, is a central limitation of the radial point cost. Seeds
+43 and 44 were not trained. Canonical aggregates are in
+`smooth_h400_circle/` and `smooth_h600_circle/`.

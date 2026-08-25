@@ -1,0 +1,163 @@
+{
+  "cases": [
+    {
+      "name": "smooth_cost_largest_reversal_reduction",
+      "selection_rule": "Among centered layouts where both variants safely succeed, maximize hinge minus Huber x-direction reversals; break ties by backward distance and completion steps.",
+      "video": "/home/yulei/codes/constraint-il-transfer/outputs/empty2d_guidance/smooth_h400_circle/typical_videos/smooth_cost_largest_reversal_reduction_pair_00_lower.mp4",
+      "first": {
+        "condition": "centered_hinge",
+        "layout_id": "pair_00_lower",
+        "policy_seed": 424001,
+        "obstacle_center": [
+          0.0,
+          0.0
+        ],
+        "success": true,
+        "collision_any": false,
+        "safe_success": true,
+        "steps": 328,
+        "backward_distance": 0.25883262349770675,
+        "x_direction_reversals": 56,
+        "path_total_variation": 2.124291124425758,
+        "selected_rollout_metrics": {
+          "success": true,
+          "collision_any": false,
+          "safe_success": true,
+          "steps": 359,
+          "x_direction_reversals": 90
+        },
+        "rerun_matches_selected_metrics": false
+      },
+      "second": {
+        "condition": "centered_huber_hinge",
+        "layout_id": "pair_00_lower",
+        "policy_seed": 424001,
+        "obstacle_center": [
+          0.0,
+          0.0
+        ],
+        "success": true,
+        "collision_any": false,
+        "safe_success": true,
+        "steps": 287,
+        "backward_distance": 0.13847521240516336,
+        "x_direction_reversals": 34,
+        "path_total_variation": 1.4571631959199096,
+        "selected_rollout_metrics": {
+          "success": true,
+          "collision_any": false,
+          "safe_success": true,
+          "steps": 287,
+          "x_direction_reversals": 32
+        },
+        "rerun_matches_selected_metrics": false
+      }
+    },
+    {
+      "name": "offset_largest_huber_step_reduction",
+      "selection_rule": "Among layouts where centered and offset Huber variants safely succeed, maximize centered minus offset completion steps; break ties by x-direction reversals and backward distance.",
+      "video": "/home/yulei/codes/constraint-il-transfer/outputs/empty2d_guidance/smooth_h400_circle/typical_videos/offset_largest_huber_step_reduction_pair_00_upper.mp4",
+      "first": {
+        "condition": "centered_huber_hinge",
+        "layout_id": "pair_00_upper",
+        "policy_seed": 424000,
+        "obstacle_center": [
+          0.0,
+          0.0
+        ],
+        "success": true,
+        "collision_any": false,
+        "safe_success": true,
+        "steps": 330,
+        "backward_distance": 0.28437138371373294,
+        "x_direction_reversals": 66,
+        "path_total_variation": 2.075397721226816,
+        "selected_rollout_metrics": {
+          "success": true,
+          "collision_any": false,
+          "safe_success": true,
+          "steps": 329,
+          "x_direction_reversals": 64
+        },
+        "rerun_matches_selected_metrics": false
+      },
+      "second": {
+        "condition": "offset_huber_hinge",
+        "layout_id": "pair_00_upper",
+        "policy_seed": 424000,
+        "obstacle_center": [
+          -0.2258932910114474,
+          0.17376892568292396
+        ],
+        "success": true,
+        "collision_any": false,
+        "safe_success": true,
+        "steps": 201,
+        "backward_distance": 0.0,
+        "x_direction_reversals": 0,
+        "path_total_variation": 0.5670015547278278,
+        "selected_rollout_metrics": {
+          "success": true,
+          "collision_any": false,
+          "safe_success": true,
+          "steps": 202,
+          "x_direction_reversals": 0
+        },
+        "rerun_matches_selected_metrics": false
+      }
+    },
+    {
+      "name": "guided_failure_boundary",
+      "selection_rule": "Prefer task non-completion, then collision, longer execution, and more x-direction reversals among all guided variants that do not safely succeed; compare against the other cost on the same layout.",
+      "video": "/home/yulei/codes/constraint-il-transfer/outputs/empty2d_guidance/smooth_h400_circle/typical_videos/guided_failure_boundary_pair_06_upper.mp4",
+      "first": {
+        "condition": "centered_hinge",
+        "layout_id": "pair_06_upper",
+        "policy_seed": 424012,
+        "obstacle_center": [
+          0.0,
+          0.0
+        ],
+        "success": false,
+        "collision_any": false,
+        "safe_success": false,
+        "steps": 400,
+        "backward_distance": 1.4028697207384635,
+        "x_direction_reversals": 301,
+        "path_total_variation": 5.947505440511124,
+        "selected_rollout_metrics": {
+          "success": false,
+          "collision_any": false,
+          "safe_success": false,
+          "steps": 400,
+          "x_direction_reversals": 305
+        },
+        "rerun_matches_selected_metrics": false
+      },
+      "second": {
+        "condition": "centered_huber_hinge",
+        "layout_id": "pair_06_upper",
+        "policy_seed": 424012,
+        "obstacle_center": [
+          0.0,
+          0.0
+        ],
+        "success": false,
+        "collision_any": false,
+        "safe_success": false,
+        "steps": 400,
+        "backward_distance": 1.3327549860866608,
+        "x_direction_reversals": 277,
+        "path_total_variation": 5.674752148577256,
+        "selected_rollout_metrics": {
+          "success": false,
+          "collision_any": false,
+          "safe_success": false,
+          "steps": 400,
+          "x_direction_reversals": 281
+        },
+        "rerun_matches_selected_metrics": false
+      }
+    }
+  ]
+}

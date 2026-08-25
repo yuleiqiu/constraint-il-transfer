@@ -1,7 +1,7 @@
 # Empty2D predicted-clean guidance conclusion
 
-Status: formal seed-42 H320 gate failed; post-hoc strong-guidance positive
-behavior recorded, updated 2026-08-12.
+Status: formal seed-42 H320 gate failed; fixed strong-guidance H600 successor
+passed on offset layouts, updated 2026-08-24.
 
 ## Question and controlled setting
 
@@ -83,23 +83,41 @@ closed-loop denoising can nevertheless eventually realize a bypass at large
 not selected efficiently. This is a mechanism hypothesis supported by the
 diagnostic, not a separate preregistered causal test.
 
+## Fixed long-horizon successor
+
+The subsequent Circle experiment freezes twenty mirrored obstacle offsets and
+their matched centered controls, uses `rho=1`, `Q=0.12`, and follows each
+continuous rollout through H600 with H400/H500/H600 first-passage metrics.
+Every direct start-to-goal segment remains obstructed.
+
+At H600, both offset hinge variants reach Task/Safe SR 20/20 with zero
+collision. Their centered counterparts reach 13/20; all seven remaining
+trajectories are collision-free non-completions. The offset conditions are
+already 19/20 at H400. Huberization reduces backward distance and direction
+reversals but does not change the final success partition.
+
+This is the replicated quantitative positive regime that the original
+single-seed continuation suggested. It does not revise the preregistered H320
+paper-scale tables; it answers a different, fixed strong-guidance and
+long-horizon mechanism question. Canonical result:
+`smooth_h600_circle/report.md`.
+
 ## Decision and claim boundary
 
 The formal conclusion remains that paper-scale guidance does not pass the
-fixed H320 paired gate. The post-hoc conclusion is stronger than a numerical
-gradient check: in matched 2-D point geometry, increasing `rho` and allowing
-more execution time produces a collision-free, task-completing rollout. This
-supports using Empty2D as evidence that guided denoising itself can work, while
-its present radial cost is slow and jittery.
+fixed H320 paired gate. The H600 successor establishes that, in matched 2-D
+point geometry, stronger guidance and a longer horizon can robustly produce
+collision-free task completion when obstacle offsets break route symmetry.
+The centered 13/20 control shows that the present radial cost remains
+inefficient and unstable in a symmetric head-on configuration.
 
 The contrast with D2 manipulation supports a geometry-and-temporal-complexity
 explanation: D2 additionally requires swept gripper geometry, pose-aware
 clearance, grasp preservation, and a longer task-compatible recovery. It does
-not isolate those factors as the unique causal explanation because the
-extended 2-D result is post-hoc and unreplicated. Do not interpret the result
-as a reason for another blind paper-scale `rho` / `Q` sweep; a successor should
+not isolate those factors as the unique causal explanation. Do not interpret
+the result as a reason for another blind `rho` / `Q` sweep; a successor should
 target stability, route persistence, and whole-gripper geometry. The planned
-seed-43 and seed-44 formal replications were not run.
+seed-43 and seed-44 formal H320 replications were not run.
 
 ## Canonical artifacts
 
@@ -111,4 +129,6 @@ seed-43 and seed-44 formal replications were not run.
   repository-local MP4 artifacts in this directory; the `rho=1` video records
   the collision-free H320 portion, while eventual longer-horizon arrival is a
   subsequent visual observation;
-- training record: W&B run `empty2d_guidance/ar7j7h06`.
+- training record: W&B run `empty2d_guidance/ar7j7h06`;
+- fixed strong-guidance H400/H600 contracts, aggregates, reports, and
+  representative videos: `smooth_h400_circle/` and `smooth_h600_circle/`.

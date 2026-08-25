@@ -54,3 +54,29 @@ def test_oracle_cloud_is_uninflated_true_boundary():
     square_points = square.oracle_obstacle_points()
     assert square_points.shape == (256, 2)
     assert np.all(np.isclose(np.max(np.abs(square_points), axis=1), 0.3))
+
+
+def test_shifted_obstacle_translates_collision_clearance_and_oracle_cloud():
+    center = np.asarray([0.2, -0.15])
+    circle = EnvEmpty2DExtraSphere(obstacle_center=center, robot_radius=0.02)
+    assert circle.segment_collides(
+        np.asarray([-0.2, -0.15]), np.asarray([0.6, -0.15])
+    )
+    assert not circle.segment_collides(
+        np.asarray([-0.2, 0.3]), np.asarray([0.6, 0.3])
+    )
+    np.testing.assert_allclose(
+        np.linalg.norm(circle.oracle_obstacle_points() - center, axis=1),
+        0.3,
+        atol=1e-6,
+    )
+
+    square = EnvEmpty2DExtraSquare(obstacle_center=center, robot_radius=0.02)
+    assert square.segment_collides(
+        np.asarray([-0.2, -0.15]), np.asarray([0.6, -0.15])
+    )
+    assert not square.segment_collides(
+        np.asarray([-0.2, 0.3]), np.asarray([0.6, 0.3])
+    )
+    relative_points = square.oracle_obstacle_points() - center
+    assert np.all(np.isclose(np.max(np.abs(relative_points), axis=1), 0.3))

@@ -1,0 +1,224 @@
+{
+  "checkpoint": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/empty2d_guidance_sample_seed42/20260807210551/models/model_epoch_100.pth",
+  "environment": "circle",
+  "horizon": 400,
+  "guidance_scale": 1.0,
+  "safety_distance": 0.12,
+  "huber_smoothing": 0.03,
+  "layout_seed": 20260812,
+  "offset_x_range": [
+    -0.25,
+    0.25
+  ],
+  "offset_abs_y_range": [
+    0.08,
+    0.18
+  ],
+  "offset_pair_count": 10,
+  "offset_layouts": [
+    {
+      "layout_id": "pair_00_upper",
+      "policy_seed": 424000,
+      "obstacle_center": [
+        -0.2258932910114474,
+        0.17376892568292396
+      ]
+    },
+    {
+      "layout_id": "pair_00_lower",
+      "policy_seed": 424001,
+      "obstacle_center": [
+        -0.2258932910114474,
+        -0.17376892568292396
+      ]
+    },
+    {
+      "layout_id": "pair_01_upper",
+      "policy_seed": 424002,
+      "obstacle_center": [
+        -0.16597396122920244,
+        0.15902082627557007
+      ]
+    },
+    {
+      "layout_id": "pair_01_lower",
+      "policy_seed": 424003,
+      "obstacle_center": [
+        -0.16597396122920244,
+        -0.15902082627557007
+      ]
+    },
+    {
+      "layout_id": "pair_02_upper",
+      "policy_seed": 424004,
+      "obstacle_center": [
+        -0.04603314709268319,
+        0.08483384480151172
+      ]
+    },
+    {
+      "layout_id": "pair_02_lower",
+      "policy_seed": 424005,
+      "obstacle_center": [
+        -0.04603314709268319,
+        -0.08483384480151172
+      ]
+    },
+    {
+      "layout_id": "pair_03_upper",
+      "policy_seed": 424006,
+      "obstacle_center": [
+        0.032010900264000997,
+        0.10692049769300656
+      ]
+    },
+    {
+      "layout_id": "pair_03_lower",
+      "policy_seed": 424007,
+      "obstacle_center": [
+        0.032010900264000997,
+        -0.10692049769300656
+      ]
+    },
+    {
+      "layout_id": "pair_04_upper",
+      "policy_seed": 424008,
+      "obstacle_center": [
+        0.007757566642307812,
+        0.0884678845139362
+      ]
+    },
+    {
+      "layout_id": "pair_04_lower",
+      "policy_seed": 424009,
+      "obstacle_center": [
+        0.007757566642307812,
+        -0.0884678845139362
+      ]
+    },
+    {
+      "layout_id": "pair_05_upper",
+      "policy_seed": 424010,
+      "obstacle_center": [
+        0.21405404197193434,
+        0.14467450633098916
+      ]
+    },
+    {
+      "layout_id": "pair_05_lower",
+      "policy_seed": 424011,
+      "obstacle_center": [
+        0.21405404197193434,
+        -0.14467450633098916
+      ]
+    },
+    {
+      "layout_id": "pair_06_upper",
+      "policy_seed": 424012,
+      "obstacle_center": [
+        0.1744672861902798,
+        0.130756806703757
+      ]
+    },
+    {
+      "layout_id": "pair_06_lower",
+      "policy_seed": 424013,
+      "obstacle_center": [
+        0.1744672861902798,
+        -0.130756806703757
+      ]
+    },
+    {
+      "layout_id": "pair_07_upper",
+      "policy_seed": 424014,
+      "obstacle_center": [
+        -0.1050446797681423,
+        0.17886269732189614
+      ]
+    },
+    {
+      "layout_id": "pair_07_lower",
+      "policy_seed": 424015,
+      "obstacle_center": [
+        -0.1050446797681423,
+        -0.17886269732189614
+      ]
+    },
+    {
+      "layout_id": "pair_08_upper",
+      "policy_seed": 424016,
+      "obstacle_center": [
+        0.08694592203009527,
+        0.1744061018945004
+      ]
+    },
+    {
+      "layout_id": "pair_08_lower",
+      "policy_seed": 424017,
+      "obstacle_center": [
+        0.08694592203009527,
+        -0.1744061018945004
+      ]
+    },
+    {
+      "layout_id": "pair_09_upper",
+      "policy_seed": 424018,
+      "obstacle_center": [
+        0.19682424093305467,
+        0.09360105937159621
+      ]
+    },
+    {
+      "layout_id": "pair_09_lower",
+      "policy_seed": 424019,
+      "obstacle_center": [
+        0.19682424093305467,
+        -0.09360105937159621
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "name": "centered_baseline",
+      "center_mode": "centered",
+      "guidance_scale": 0.0,
+      "obstacle_cost_type": "hinge",
+      "obstacle_cost_smoothing": 0.0
+    },
+    {
+      "name": "centered_hinge",
+      "center_mode": "centered",
+      "guidance_scale": 1.0,
+      "obstacle_cost_type": "hinge",
+      "obstacle_cost_smoothing": 0.0
+    },
+    {
+      "name": "centered_huber_hinge",
+      "center_mode": "centered",
+      "guidance_scale": 1.0,
+      "obstacle_cost_type": "huber_hinge",
+      "obstacle_cost_smoothing": 0.03
+    },
+    {
+      "name": "offset_baseline",
+      "center_mode": "offset",
+      "guidance_scale": 0.0,
+      "obstacle_cost_type": "hinge",
+      "obstacle_cost_smoothing": 0.0
+    },
+    {
+      "name": "offset_hinge",
+      "center_mode": "offset",
+      "guidance_scale": 1.0,
+      "obstacle_cost_type": "hinge",
+      "obstacle_cost_smoothing": 0.0
+    },
+    {
+      "name": "offset_huber_hinge",
+      "center_mode": "offset",
+      "guidance_scale": 1.0,
+      "obstacle_cost_type": "huber_hinge",
+      "obstacle_cost_smoothing": 0.03
+    }
+  ]
+}
