@@ -108,6 +108,7 @@ scripts/
 │   ├── render_ellipsoid_geometry_preflight.py
 │   ├── collect_failure_state_bank.py
 │   ├── ellipsoid_counterfactual_rollout.py
+│   ├── ellipsoid_margin_sweep.py
 │   ├── render_failure_video.py
 │   └── README.md
 ├── eef_pose_osc_policy/

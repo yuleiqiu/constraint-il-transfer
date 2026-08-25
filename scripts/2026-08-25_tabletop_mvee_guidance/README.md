@@ -110,6 +110,30 @@ the obstacle volume and avoid contact; it still does not preserve task progress
 well enough to finish within H600. This is mechanism evidence on the
 Tabletop LAN-O3DP checkpoint, not a claim about the clean-image source policy.
 
+## Same-process margin comparison
+
+Across separate Python processes the unguided baseline can drift because the
+Tabletop LAN checkpoint consumes a GPU-rendered point cloud and the environment
+RNG is not fully captured by the state bank. Margin comparisons therefore run
+in one process with one shared baseline:
+
+```bash
+MUJOCO_GL=egl uv run python \
+  scripts/2026-08-25_tabletop_mvee_guidance/ellipsoid_margin_sweep.py \
+  --checkpoint <tabletop-lan-checkpoint> \
+  --state-bank outputs/tabletop_mvee_guidance/fresh_failure_bank_seed991/fresh_initial_state_bank.pkl \
+  --scene 3 --bank-seed 991 --policy-seed 991000003 \
+  --guidance-scale 45.0 --margins 0.01 0.03 0.05 \
+  --out-dir outputs/tabletop_mvee_guidance/fresh_failure_bank_seed991/inprocess_margin_sweep_ep3
+```
+
+On episode 3 the shared baseline collides at step 179. `margin=1 cm` and
+`margin=3 cm` both remain collision failures; 3 cm activates slightly earlier
+(step 160) and shifts the first contact from 179 to 185 but does not create a
+task rescue. `margin=5 cm` activates at step 24, removes contact, and becomes
+NCR. The useful transition is therefore between 3 cm and 5 cm, not a smooth
+1/3/5 progression.
+
 The representative collision-free stall video (episode 3, `margin=5 cm`) is
 `outputs/tabletop_mvee_guidance/fresh_failure_bank_seed991/videos/
 guided_margin5_ep3.mp4`. At step 590 the gripper still holds the Can,
