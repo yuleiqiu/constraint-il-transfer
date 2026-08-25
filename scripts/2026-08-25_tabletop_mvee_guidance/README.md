@@ -1,7 +1,9 @@
 # Tabletop MVEE guidance
 
 This branch-local successor begins with the geometry representation gate. It
-does not yet implement MVEE fitting or a guidance cost.
+now implements deterministic obstacle MVEE fitting, conservative gripper and
+target ellipsoids, and an opt-in differentiable predicted-clean separation
+cost. Closed-loop evaluation is not yet run.
 
 The Tabletop environment adds a fixed `backview` based on the camera selected
 in the clean `third_party/vlsa-aegis` reference repository at commit
@@ -34,3 +36,24 @@ unprojected obstacle clouds and the single deterministic FPS sample drawn after
 fusion. The source policy's existing `task_pointcloud` input remains
 single-view and unchanged; the new multi-view provider is opt-in for
 deployment-only geometry.
+
+Fit and render the full geometry representation:
+
+```bash
+MUJOCO_GL=egl uv run python \
+  scripts/2026-08-25_tabletop_mvee_guidance/render_ellipsoid_geometry_preflight.py
+```
+
+The obstacle MVEE is fitted to every valid point from both views, not only the
+512-point policy sample. The final axes are inflated by the measured numerical
+constraint violation so all supplied points remain enclosed. Gripper collision
+geoms are fitted in the EEF-site frame and therefore transform rigidly with a
+predicted delta pose. The Can collision mesh is fitted separately and its
+EEF-local MVEE is recorded, so a grasped target can be carried as a second
+actor ellipsoid.
+
+The guidance cost uses the center-line support radii of each oriented actor
+ellipsoid and the obstacle MVEE. It is a conservative differentiable
+support-plane clearance, not an exact Euclidean ellipsoid distance. Gradients
+are evaluated only on the executable predicted-clean action slice and may
+affect delta position and rotation; the gripper command remains unchanged.
