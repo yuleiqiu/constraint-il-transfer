@@ -1,0 +1,42 @@
+{
+  "agent": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_tabletop_can_abs_pose_sample_100demo_seed42/20260814201328/models/model_epoch_100_tabletop_can_pointcloud_abs_eef_100_success_0.8.pth",
+  "envs": [
+    "PickPlaceCanTabletopRaisedMilk"
+  ],
+  "seeds": [
+    819
+  ],
+  "n_rollouts": 20,
+  "episodes": [
+    1,
+    4,
+    5,
+    7,
+    8
+  ],
+  "horizon": 600,
+  "baseline_only": false,
+  "guidance_scales": [
+    45.0
+  ],
+  "safety_distances": [
+    0.08
+  ],
+  "candidates": [
+    {
+      "guidance_scale": 45.0,
+      "safety_distance": 0.08
+    }
+  ],
+  "xy_only": true,
+  "guidance_phase": "always",
+  "hand_collision_enabled": true,
+  "obstacle_cost_type": "huber_hinge",
+  "obstacle_cost_smoothing": 0.01,
+  "obstacle_cost_smoothing_ratio": null,
+  "terminate_on_collision": false,
+  "state_bank_source": "generated",
+  "state_bank_output": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_guidance/raised_milk_rho45_multilayout_seed819_ep1_4_5_7_8/initial_state_bank.pkl",
+  "obstacle_protocol": "agentview 120x120 metric-depth oracle mask, visible FPS128 world points",
+  "collision_protocol": "union of arm-link, gripper-hand, gripper-finger, and target-Can contacts with obstacles; all components reported separately"
+}

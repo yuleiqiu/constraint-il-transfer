@@ -1,0 +1,65 @@
+[
+  {
+    "episode": 0,
+    "rho": 45.0,
+    "tangent_ratio": 0.5,
+    "policy_seed": 819000000,
+    "state_hash": "a2d8c4422ef227ab88d772350985a8fc46e32cf50d49f3737dfae00eeddac993",
+    "baseline": {
+      "success": true,
+      "safe_success": false,
+      "collision_any": true,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": true,
+      "horizon": 334,
+      "minimum_eef_obstacle_clearance_m": -0.03958054631948471,
+      "guidance_trigger_rate": 0.0,
+      "guidance_update_norm_mean": 0.0,
+      "guidance_update_norm_max": 0.0,
+      "tangent_side_first": 0,
+      "tangent_side_counts": {
+        "-1": 0,
+        "+1": 0
+      },
+      "first_guidance_active_step": null,
+      "first_collision_step": 150
+    },
+    "guided": {
+      "success": true,
+      "safe_success": true,
+      "collision_any": false,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": false,
+      "horizon": 444,
+      "minimum_eef_obstacle_clearance_m": 0.05338134616613388,
+      "guidance_trigger_rate": 0.17857142857142858,
+      "guidance_update_norm_mean": 0.057835502341123564,
+      "guidance_update_norm_max": 3.2336692810058594,
+      "tangent_side_first": -1,
+      "tangent_side_counts": {
+        "-1": 1000,
+        "+1": 0
+      },
+      "first_guidance_active_step": 128,
+      "first_collision_step": null
+    },
+    "separation": {
+      "common_samples": 335,
+      "max_xy_separation_m": 0.18771245237396428,
+      "mean_xy_separation_m": 0.029467435133175117,
+      "p95_xy_separation_m": 0.13875029083825302,
+      "step_of_max_xy_separation": 166,
+      "samples_xy_ge_5mm": 201,
+      "longest_run_xy_ge_5mm": 172,
+      "first_step_xy_ge_5mm": 129,
+      "samples_xy_ge_10mm": 173,
+      "longest_run_xy_ge_10mm": 168,
+      "first_step_xy_ge_10mm": 130,
+      "samples_xy_ge_20mm": 118,
+      "longest_run_xy_ge_20mm": 91,
+      "first_step_xy_ge_20mm": 130
+    }
+  }
+]

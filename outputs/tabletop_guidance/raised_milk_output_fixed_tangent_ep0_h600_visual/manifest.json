@@ -1,0 +1,20 @@
+{
+  "checkpoint": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_tabletop_can_abs_pose_sample_100demo_seed42/20260814201328/models/model_epoch_100_tabletop_can_pointcloud_abs_eef_100_success_0.8.pth",
+  "state_bank": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_guidance/raised_milk_pair_seed819_ep0_q008_rho3/initial_state_bank.pkl",
+  "environment": "PickPlaceCanTabletopRaisedMilk",
+  "seed": 819,
+  "episodes": [
+    0
+  ],
+  "rhos": [
+    45.0
+  ],
+  "horizon": 600,
+  "xy_only": true,
+  "safety_distance_m": 0.08,
+  "cost": "huber_hinge",
+  "smoothing_m": 0.01,
+  "tangent_ratio": 0.5,
+  "hand_collision_enabled": true,
+  "guidance_phase": "always"
+}

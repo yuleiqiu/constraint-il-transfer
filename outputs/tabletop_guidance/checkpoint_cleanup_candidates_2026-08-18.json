@@ -1,0 +1,27 @@
+{
+  "status": "complete",
+  "run": "outputs/robomimic/train/lan_o3dp_tabletop_can_abs_pose_sample_100demo_seed42/20260814201328",
+  "retained": {
+    "path": "models/model_epoch_100_tabletop_can_pointcloud_abs_eef_100_success_0.8.pth",
+    "bytes": 4028678950,
+    "sha256": "e4c2993092122ecba7ae9dacc65e4b5d72caaec21f211fa2e4e92cd3de7cdcff",
+    "reason": "selected checkpoint used by the formal D0 validation and all tabletop obstacle experiments"
+  },
+  "retain_non_checkpoint_artifacts": [
+    "logs/",
+    "videos/"
+  ],
+  "candidates": [
+    {"path": "last.pth", "bytes": 4028587056},
+    {"path": "last_bak.pth", "bytes": 4028587056},
+    {"path": "models/model_epoch_50_tabletop_can_pointcloud_abs_eef_100_success_0.7.pth", "bytes": 4028678052},
+    {"path": "models/model_epoch_150.pth", "bytes": 4028638470},
+    {"path": "models/model_epoch_200.pth", "bytes": 4028638470},
+    {"path": "models/model_epoch_250.pth", "bytes": 4028638470},
+    {"path": "models/model_epoch_300.pth", "bytes": 4028638470}
+  ],
+  "candidate_bytes_total": 28200406044,
+  "deletion_performed": true,
+  "deletion_date": "2026-08-18",
+  "recoverability": "deleted checkpoints can only be recovered by rerunning the preserved training config"
+}

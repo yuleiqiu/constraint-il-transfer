@@ -1,0 +1,4545 @@
+{
+  "scene": 4,
+  "policy_seed": 910000,
+  "baseline_rollout": {
+    "condition": "baseline",
+    "guidance_scale": null,
+    "safety_distance": null,
+    "success": false,
+    "collision_any": true,
+    "robot_obstacle_collision_any": true,
+    "arm_obstacle_collision_any": false,
+    "gripper_obstacle_collision_any": true,
+    "hand_obstacle_collision_any": true,
+    "finger_obstacle_collision_any": true,
+    "target_obstacle_collision_any": true,
+    "safe_success": false,
+    "success_with_collision": false,
+    "collision_failure": true,
+    "ncr": false,
+    "horizon_truncated": true,
+    "collision_names": [
+      "Milk"
+    ],
+    "collision_robot_geom_names": [
+      "gripper0_right_gripper_base_col",
+      "gripper0_right_l_finger_g0"
+    ],
+    "horizon": 600,
+    "chunks": 75,
+    "target_displacement_m": 0.3075478971004486,
+    "minimum_eef_obstacle_clearance_m": -0.02557954378426075,
+    "guidance_trigger_rate": 0.0,
+    "guidance_update_norm_mean": 0.0,
+    "guidance_update_norm_max": 0.0,
+    "tangent_side_first": 0,
+    "tangent_side_counts": {
+      "-1": 0,
+      "+1": 0
+    },
+    "obstacle_cloud_missing_chunks": 0,
+    "first_guidance_active_step": null,
+    "first_collision_step": 182,
+    "first_hand_collision_step": 235,
+    "first_finger_collision_step": 242,
+    "first_target_collision_step": 182,
+    "action_clip_count": 1750,
+    "action_clip_max_abs": 1.2646987438201904,
+    "position_action_clip_count": 111,
+    "position_action_clip_max_abs": 0.030322790145874023,
+    "hand_collision_enabled": true,
+    "hand_collision_audit": {
+      "enabled": true,
+      "hand_masks": {
+        "gripper0_right_gripper_base_col": [
+          1,
+          1
+        ]
+      },
+      "finger_masks": {
+        "gripper0_right_l_finger_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_l_finger_g1": [
+          0,
+          1
+        ],
+        "gripper0_right_l_fingertip_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_l_fingerpad_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_r_finger_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_r_finger_g1": [
+          0,
+          1
+        ],
+        "gripper0_right_r_fingertip_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_r_fingerpad_g0": [
+          0,
+          1
+        ]
+      }
+    },
+    "obstacle_cost_type": "huber_hinge",
+    "obstacle_cost_smoothing": null,
+    "tangent_ratio": null
+  },
+  "audited_chunk_start_step": 176,
+  "first_collision_step": 182,
+  "obstacle_cloud_points": 128,
+  "guidance": {
+    "rho": 45.0,
+    "Q_m": 0.08,
+    "cost": "huber_hinge",
+    "smoothing_m": 0.01
+  },
+  "baseline_reverse": {
+    "reverse_steps": [
+      {
+        "timestep": 99,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005416450090706348,
+          "minimum_obstacle_cloud_distance_m": 0.0038554444909095764,
+          "active_waypoints": 13,
+          "cost": 0.5194014310836792
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005416450090706348,
+          "minimum_obstacle_cloud_distance_m": 0.004415287170559168,
+          "active_waypoints": 8,
+          "cost": 0.42070579528808594
+        },
+        "noisy_action_gradient_norm": 0.0019446933874860406,
+        "guidance_update_norm": 0.08751119673252106,
+        "scheduler_reverse_delta_norm": 15.081504821777344,
+        "actual_net_delta_norm": 15.081504821777344,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 98,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0051278844475746155,
+          "minimum_obstacle_cloud_distance_m": 0.0035310129169374704,
+          "active_waypoints": 13,
+          "cost": 0.5173894762992859
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0051278844475746155,
+          "minimum_obstacle_cloud_distance_m": 0.0047727045603096485,
+          "active_waypoints": 8,
+          "cost": 0.4195556044578552
+        },
+        "noisy_action_gradient_norm": 0.00211977562867105,
+        "guidance_update_norm": 0.09538990259170532,
+        "scheduler_reverse_delta_norm": 12.538249015808105,
+        "actual_net_delta_norm": 12.538249015808105,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 97,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005159011110663414,
+          "minimum_obstacle_cloud_distance_m": 0.002887749345973134,
+          "active_waypoints": 13,
+          "cost": 0.513508677482605
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005159011110663414,
+          "minimum_obstacle_cloud_distance_m": 0.004751827567815781,
+          "active_waypoints": 8,
+          "cost": 0.4186754524707794
+        },
+        "noisy_action_gradient_norm": 0.0020799555350095034,
+        "guidance_update_norm": 0.09359800070524216,
+        "scheduler_reverse_delta_norm": 9.0045747756958,
+        "actual_net_delta_norm": 9.0045747756958,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 96,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00524580292403698,
+          "minimum_obstacle_cloud_distance_m": 0.0029434259049594402,
+          "active_waypoints": 13,
+          "cost": 0.5140498280525208
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00524580292403698,
+          "minimum_obstacle_cloud_distance_m": 0.004884312395006418,
+          "active_waypoints": 8,
+          "cost": 0.4189918041229248
+        },
+        "noisy_action_gradient_norm": 0.0020267157815396786,
+        "guidance_update_norm": 0.09120221436023712,
+        "scheduler_reverse_delta_norm": 6.7196807861328125,
+        "actual_net_delta_norm": 6.7196807861328125,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 95,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0052605364471673965,
+          "minimum_obstacle_cloud_distance_m": 0.0029144114814698696,
+          "active_waypoints": 13,
+          "cost": 0.5148405432701111
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0052605364471673965,
+          "minimum_obstacle_cloud_distance_m": 0.004761756397783756,
+          "active_waypoints": 8,
+          "cost": 0.41953566670417786
+        },
+        "noisy_action_gradient_norm": 0.002021189546212554,
+        "guidance_update_norm": 0.0909535214304924,
+        "scheduler_reverse_delta_norm": 7.287182807922363,
+        "actual_net_delta_norm": 7.287182807922363,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 94,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005284199956804514,
+          "minimum_obstacle_cloud_distance_m": 0.003067525802180171,
+          "active_waypoints": 13,
+          "cost": 0.5163913369178772
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005284199956804514,
+          "minimum_obstacle_cloud_distance_m": 0.004428452346473932,
+          "active_waypoints": 8,
+          "cost": 0.419784814119339
+        },
+        "noisy_action_gradient_norm": 0.0020887788850814104,
+        "guidance_update_norm": 0.09399504959583282,
+        "scheduler_reverse_delta_norm": 6.05922794342041,
+        "actual_net_delta_norm": 6.05922794342041,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 93,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005204233340919018,
+          "minimum_obstacle_cloud_distance_m": 0.0029813400469720364,
+          "active_waypoints": 13,
+          "cost": 0.515900731086731
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005204233340919018,
+          "minimum_obstacle_cloud_distance_m": 0.0043406193144619465,
+          "active_waypoints": 8,
+          "cost": 0.4197191596031189
+        },
+        "noisy_action_gradient_norm": 0.001983111724257469,
+        "guidance_update_norm": 0.08924003690481186,
+        "scheduler_reverse_delta_norm": 5.839682102203369,
+        "actual_net_delta_norm": 5.839682102203369,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 92,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005247385241091251,
+          "minimum_obstacle_cloud_distance_m": 0.003554845927283168,
+          "active_waypoints": 13,
+          "cost": 0.5182749032974243
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005247385241091251,
+          "minimum_obstacle_cloud_distance_m": 0.004271601792424917,
+          "active_waypoints": 8,
+          "cost": 0.4197595417499542
+        },
+        "noisy_action_gradient_norm": 0.0019961774814873934,
+        "guidance_update_norm": 0.0898279920220375,
+        "scheduler_reverse_delta_norm": 5.136499881744385,
+        "actual_net_delta_norm": 5.136499881744385,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 91,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0052863359451293945,
+          "minimum_obstacle_cloud_distance_m": 0.0036808857694268227,
+          "active_waypoints": 13,
+          "cost": 0.5191096067428589
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0052863359451293945,
+          "minimum_obstacle_cloud_distance_m": 0.004412996582686901,
+          "active_waypoints": 8,
+          "cost": 0.41995424032211304
+        },
+        "noisy_action_gradient_norm": 0.0020518810488283634,
+        "guidance_update_norm": 0.09233464300632477,
+        "scheduler_reverse_delta_norm": 5.41745662689209,
+        "actual_net_delta_norm": 5.41745662689209,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 90,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00531108770519495,
+          "minimum_obstacle_cloud_distance_m": 0.0035499841906130314,
+          "active_waypoints": 13,
+          "cost": 0.51861172914505
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00531108770519495,
+          "minimum_obstacle_cloud_distance_m": 0.00433163158595562,
+          "active_waypoints": 8,
+          "cost": 0.41971293091773987
+        },
+        "noisy_action_gradient_norm": 0.002030705800279975,
+        "guidance_update_norm": 0.09138176590204239,
+        "scheduler_reverse_delta_norm": 4.662168025970459,
+        "actual_net_delta_norm": 4.662168025970459,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 89,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00533165642991662,
+          "minimum_obstacle_cloud_distance_m": 0.0036670214030891657,
+          "active_waypoints": 13,
+          "cost": 0.5184026956558228
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00533165642991662,
+          "minimum_obstacle_cloud_distance_m": 0.004333593416959047,
+          "active_waypoints": 8,
+          "cost": 0.41954776644706726
+        },
+        "noisy_action_gradient_norm": 0.002021153224632144,
+        "guidance_update_norm": 0.09095188975334167,
+        "scheduler_reverse_delta_norm": 5.001845359802246,
+        "actual_net_delta_norm": 5.001845359802246,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 88,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0052564251236617565,
+          "minimum_obstacle_cloud_distance_m": 0.003647180972620845,
+          "active_waypoints": 13,
+          "cost": 0.5179605484008789
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0052564251236617565,
+          "minimum_obstacle_cloud_distance_m": 0.0043906583450734615,
+          "active_waypoints": 8,
+          "cost": 0.4192579984664917
+        },
+        "noisy_action_gradient_norm": 0.00204356643371284,
+        "guidance_update_norm": 0.09196048974990845,
+        "scheduler_reverse_delta_norm": 4.5554633140563965,
+        "actual_net_delta_norm": 4.5554633140563965,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 87,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0052657057531178,
+          "minimum_obstacle_cloud_distance_m": 0.003521375125274062,
+          "active_waypoints": 13,
+          "cost": 0.518280029296875
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0052657057531178,
+          "minimum_obstacle_cloud_distance_m": 0.00458398787304759,
+          "active_waypoints": 8,
+          "cost": 0.4198210835456848
+        },
+        "noisy_action_gradient_norm": 0.0019405956845730543,
+        "guidance_update_norm": 0.08732680231332779,
+        "scheduler_reverse_delta_norm": 4.219714164733887,
+        "actual_net_delta_norm": 4.219714164733887,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 86,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0053536673076450825,
+          "minimum_obstacle_cloud_distance_m": 0.0038088117726147175,
+          "active_waypoints": 13,
+          "cost": 0.5201036930084229
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0053536673076450825,
+          "minimum_obstacle_cloud_distance_m": 0.004377060569822788,
+          "active_waypoints": 8,
+          "cost": 0.420734703540802
+        },
+        "noisy_action_gradient_norm": 0.0019201048417016864,
+        "guidance_update_norm": 0.0864047184586525,
+        "scheduler_reverse_delta_norm": 4.092674732208252,
+        "actual_net_delta_norm": 4.092674732208252,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 85,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00527537427842617,
+          "minimum_obstacle_cloud_distance_m": 0.00358754675835371,
+          "active_waypoints": 13,
+          "cost": 0.5198397636413574
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00527537427842617,
+          "minimum_obstacle_cloud_distance_m": 0.00471690995618701,
+          "active_waypoints": 8,
+          "cost": 0.42087316513061523
+        },
+        "noisy_action_gradient_norm": 0.0018948354991152883,
+        "guidance_update_norm": 0.08526759594678879,
+        "scheduler_reverse_delta_norm": 4.100788116455078,
+        "actual_net_delta_norm": 4.100788116455078,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 84,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005228450056165457,
+          "minimum_obstacle_cloud_distance_m": 0.003458778839558363,
+          "active_waypoints": 13,
+          "cost": 0.5192675590515137
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005228450056165457,
+          "minimum_obstacle_cloud_distance_m": 0.004793498199433088,
+          "active_waypoints": 8,
+          "cost": 0.42097732424736023
+        },
+        "noisy_action_gradient_norm": 0.0018655388848856091,
+        "guidance_update_norm": 0.0839492455124855,
+        "scheduler_reverse_delta_norm": 3.8180220127105713,
+        "actual_net_delta_norm": 3.8180220127105713,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 83,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005218952894210815,
+          "minimum_obstacle_cloud_distance_m": 0.003713507205247879,
+          "active_waypoints": 13,
+          "cost": 0.5203351378440857
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005218952894210815,
+          "minimum_obstacle_cloud_distance_m": 0.004774870350956917,
+          "active_waypoints": 8,
+          "cost": 0.4208816885948181
+        },
+        "noisy_action_gradient_norm": 0.0019062557257711887,
+        "guidance_update_norm": 0.0857815146446228,
+        "scheduler_reverse_delta_norm": 3.866445779800415,
+        "actual_net_delta_norm": 3.866445779800415,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 82,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005276469513773918,
+          "minimum_obstacle_cloud_distance_m": 0.004082218278199434,
+          "active_waypoints": 14,
+          "cost": 0.5218314528465271
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005276469513773918,
+          "minimum_obstacle_cloud_distance_m": 0.004566879943013191,
+          "active_waypoints": 8,
+          "cost": 0.4207160472869873
+        },
+        "noisy_action_gradient_norm": 0.0019724853336811066,
+        "guidance_update_norm": 0.0887618437409401,
+        "scheduler_reverse_delta_norm": 3.3870174884796143,
+        "actual_net_delta_norm": 3.3870174884796143,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 81,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005335008725523949,
+          "minimum_obstacle_cloud_distance_m": 0.004191570915281773,
+          "active_waypoints": 14,
+          "cost": 0.5221283435821533
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005335008725523949,
+          "minimum_obstacle_cloud_distance_m": 0.004375739488750696,
+          "active_waypoints": 8,
+          "cost": 0.42063525319099426
+        },
+        "noisy_action_gradient_norm": 0.002010280266404152,
+        "guidance_update_norm": 0.09046260267496109,
+        "scheduler_reverse_delta_norm": 3.3618531227111816,
+        "actual_net_delta_norm": 3.3618531227111816,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 80,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005336537025868893,
+          "minimum_obstacle_cloud_distance_m": 0.004129292443394661,
+          "active_waypoints": 14,
+          "cost": 0.5208053588867188
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005336537025868893,
+          "minimum_obstacle_cloud_distance_m": 0.0044200122356414795,
+          "active_waypoints": 8,
+          "cost": 0.4199071526527405
+        },
+        "noisy_action_gradient_norm": 0.0020761429332196712,
+        "guidance_update_norm": 0.0934264212846756,
+        "scheduler_reverse_delta_norm": 3.093010425567627,
+        "actual_net_delta_norm": 3.093010425567627,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 79,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005355939734727144,
+          "minimum_obstacle_cloud_distance_m": 0.004033998586237431,
+          "active_waypoints": 13,
+          "cost": 0.5194352269172668
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005355939734727144,
+          "minimum_obstacle_cloud_distance_m": 0.00443160580471158,
+          "active_waypoints": 8,
+          "cost": 0.41952574253082275
+        },
+        "noisy_action_gradient_norm": 0.002020427258685231,
+        "guidance_update_norm": 0.09091921895742416,
+        "scheduler_reverse_delta_norm": 2.894174098968506,
+        "actual_net_delta_norm": 2.894174098968506,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 78,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00533294165506959,
+          "minimum_obstacle_cloud_distance_m": 0.003778998274356127,
+          "active_waypoints": 13,
+          "cost": 0.5186653137207031
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00533294165506959,
+          "minimum_obstacle_cloud_distance_m": 0.004571050405502319,
+          "active_waypoints": 8,
+          "cost": 0.419691801071167
+        },
+        "noisy_action_gradient_norm": 0.0020345808006823063,
+        "guidance_update_norm": 0.0915561392903328,
+        "scheduler_reverse_delta_norm": 3.1055777072906494,
+        "actual_net_delta_norm": 3.1055777072906494,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 77,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0053060343489050865,
+          "minimum_obstacle_cloud_distance_m": 0.0036724323872476816,
+          "active_waypoints": 13,
+          "cost": 0.5179145932197571
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0053060343489050865,
+          "minimum_obstacle_cloud_distance_m": 0.004724930506199598,
+          "active_waypoints": 8,
+          "cost": 0.41947588324546814
+        },
+        "noisy_action_gradient_norm": 0.002007383620366454,
+        "guidance_update_norm": 0.0903322622179985,
+        "scheduler_reverse_delta_norm": 3.008678913116455,
+        "actual_net_delta_norm": 3.008678913116455,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 76,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005272505339235067,
+          "minimum_obstacle_cloud_distance_m": 0.003981457091867924,
+          "active_waypoints": 13,
+          "cost": 0.5188825130462646
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005272505339235067,
+          "minimum_obstacle_cloud_distance_m": 0.004616122227162123,
+          "active_waypoints": 8,
+          "cost": 0.4197482764720917
+        },
+        "noisy_action_gradient_norm": 0.002067770343273878,
+        "guidance_update_norm": 0.09304966032505035,
+        "scheduler_reverse_delta_norm": 3.4472317695617676,
+        "actual_net_delta_norm": 3.4472317695617676,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 75,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005383417941629887,
+          "minimum_obstacle_cloud_distance_m": 0.004205112345516682,
+          "active_waypoints": 13,
+          "cost": 0.5201830267906189
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005383417941629887,
+          "minimum_obstacle_cloud_distance_m": 0.004205112345516682,
+          "active_waypoints": 8,
+          "cost": 0.41970497369766235
+        },
+        "noisy_action_gradient_norm": 0.0021982342004776,
+        "guidance_update_norm": 0.09892053157091141,
+        "scheduler_reverse_delta_norm": 3.2779641151428223,
+        "actual_net_delta_norm": 3.2779641151428223,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 74,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005444609094411135,
+          "minimum_obstacle_cloud_distance_m": 0.00408730236813426,
+          "active_waypoints": 13,
+          "cost": 0.5204899311065674
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005444609094411135,
+          "minimum_obstacle_cloud_distance_m": 0.00408730236813426,
+          "active_waypoints": 8,
+          "cost": 0.41963064670562744
+        },
+        "noisy_action_gradient_norm": 0.0022223300766199827,
+        "guidance_update_norm": 0.10000485181808472,
+        "scheduler_reverse_delta_norm": 2.8931167125701904,
+        "actual_net_delta_norm": 2.8931167125701904,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 73,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005413927137851715,
+          "minimum_obstacle_cloud_distance_m": 0.00418136129155755,
+          "active_waypoints": 13,
+          "cost": 0.5195872783660889
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005413927137851715,
+          "minimum_obstacle_cloud_distance_m": 0.00418136129155755,
+          "active_waypoints": 8,
+          "cost": 0.41949066519737244
+        },
+        "noisy_action_gradient_norm": 0.002202396048232913,
+        "guidance_update_norm": 0.09910782426595688,
+        "scheduler_reverse_delta_norm": 2.9614193439483643,
+        "actual_net_delta_norm": 2.9614193439483643,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 72,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005371870938688517,
+          "minimum_obstacle_cloud_distance_m": 0.004114771727472544,
+          "active_waypoints": 13,
+          "cost": 0.5184532403945923
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005371870938688517,
+          "minimum_obstacle_cloud_distance_m": 0.004366032779216766,
+          "active_waypoints": 8,
+          "cost": 0.4191874861717224
+        },
+        "noisy_action_gradient_norm": 0.0023197741247713566,
+        "guidance_update_norm": 0.10438983142375946,
+        "scheduler_reverse_delta_norm": 2.8186066150665283,
+        "actual_net_delta_norm": 2.8186066150665283,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 71,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005341262556612492,
+          "minimum_obstacle_cloud_distance_m": 0.00394284725189209,
+          "active_waypoints": 13,
+          "cost": 0.5184476971626282
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005341262556612492,
+          "minimum_obstacle_cloud_distance_m": 0.004470898304134607,
+          "active_waypoints": 8,
+          "cost": 0.4197249710559845
+        },
+        "noisy_action_gradient_norm": 0.0023652745876461267,
+        "guidance_update_norm": 0.10643734782934189,
+        "scheduler_reverse_delta_norm": 2.7274465560913086,
+        "actual_net_delta_norm": 2.7274465560913086,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 70,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005354364402592182,
+          "minimum_obstacle_cloud_distance_m": 0.003985355142503977,
+          "active_waypoints": 13,
+          "cost": 0.5188081860542297
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005354364402592182,
+          "minimum_obstacle_cloud_distance_m": 0.004382518585771322,
+          "active_waypoints": 8,
+          "cost": 0.419879674911499
+        },
+        "noisy_action_gradient_norm": 0.002498921239748597,
+        "guidance_update_norm": 0.1124514639377594,
+        "scheduler_reverse_delta_norm": 2.851921319961548,
+        "actual_net_delta_norm": 2.851921319961548,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 69,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005346848163753748,
+          "minimum_obstacle_cloud_distance_m": 0.0037979152984917164,
+          "active_waypoints": 13,
+          "cost": 0.5178537964820862
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005346848163753748,
+          "minimum_obstacle_cloud_distance_m": 0.0045200251042842865,
+          "active_waypoints": 8,
+          "cost": 0.4197147488594055
+        },
+        "noisy_action_gradient_norm": 0.002401100704446435,
+        "guidance_update_norm": 0.10804952681064606,
+        "scheduler_reverse_delta_norm": 2.206444025039673,
+        "actual_net_delta_norm": 2.206444025039673,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 68,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005373291205614805,
+          "minimum_obstacle_cloud_distance_m": 0.003845483297482133,
+          "active_waypoints": 13,
+          "cost": 0.5174214839935303
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005373291205614805,
+          "minimum_obstacle_cloud_distance_m": 0.0044546411372721195,
+          "active_waypoints": 8,
+          "cost": 0.41934189200401306
+        },
+        "noisy_action_gradient_norm": 0.002483346965163946,
+        "guidance_update_norm": 0.11175061017274857,
+        "scheduler_reverse_delta_norm": 2.6896519660949707,
+        "actual_net_delta_norm": 2.6896519660949707,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 67,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005449459422379732,
+          "minimum_obstacle_cloud_distance_m": 0.003912079613655806,
+          "active_waypoints": 13,
+          "cost": 0.5172842741012573
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005449459422379732,
+          "minimum_obstacle_cloud_distance_m": 0.004287545569241047,
+          "active_waypoints": 8,
+          "cost": 0.41930192708969116
+        },
+        "noisy_action_gradient_norm": 0.002539008390158415,
+        "guidance_update_norm": 0.1142553761601448,
+        "scheduler_reverse_delta_norm": 2.273314952850342,
+        "actual_net_delta_norm": 2.273314952850342,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 66,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005446221679449081,
+          "minimum_obstacle_cloud_distance_m": 0.003998680040240288,
+          "active_waypoints": 13,
+          "cost": 0.5179859399795532
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005446221679449081,
+          "minimum_obstacle_cloud_distance_m": 0.004299099091440439,
+          "active_waypoints": 8,
+          "cost": 0.4193395674228668
+        },
+        "noisy_action_gradient_norm": 0.0025173299945890903,
+        "guidance_update_norm": 0.11327984929084778,
+        "scheduler_reverse_delta_norm": 2.4551243782043457,
+        "actual_net_delta_norm": 2.4551243782043457,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 65,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005415777675807476,
+          "minimum_obstacle_cloud_distance_m": 0.003965192008763552,
+          "active_waypoints": 13,
+          "cost": 0.5187621712684631
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005415777675807476,
+          "minimum_obstacle_cloud_distance_m": 0.004310405347496271,
+          "active_waypoints": 8,
+          "cost": 0.4198727607727051
+        },
+        "noisy_action_gradient_norm": 0.0027068033814430237,
+        "guidance_update_norm": 0.12180615216493607,
+        "scheduler_reverse_delta_norm": 2.4959487915039062,
+        "actual_net_delta_norm": 2.4959487915039062,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 64,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005278347991406918,
+          "minimum_obstacle_cloud_distance_m": 0.0037036878056824207,
+          "active_waypoints": 13,
+          "cost": 0.5185207724571228
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005278347991406918,
+          "minimum_obstacle_cloud_distance_m": 0.004518978297710419,
+          "active_waypoints": 8,
+          "cost": 0.42054203152656555
+        },
+        "noisy_action_gradient_norm": 0.002591565251350403,
+        "guidance_update_norm": 0.11662042886018753,
+        "scheduler_reverse_delta_norm": 2.259824752807617,
+        "actual_net_delta_norm": 2.259824752807617,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 63,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005276391748338938,
+          "minimum_obstacle_cloud_distance_m": 0.003612277563661337,
+          "active_waypoints": 13,
+          "cost": 0.5186419486999512
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005276391748338938,
+          "minimum_obstacle_cloud_distance_m": 0.004456342197954655,
+          "active_waypoints": 8,
+          "cost": 0.4209243059158325
+        },
+        "noisy_action_gradient_norm": 0.002720971591770649,
+        "guidance_update_norm": 0.12244372069835663,
+        "scheduler_reverse_delta_norm": 2.332969903945923,
+        "actual_net_delta_norm": 2.332969903945923,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 62,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005316528957337141,
+          "minimum_obstacle_cloud_distance_m": 0.0036935785319656134,
+          "active_waypoints": 13,
+          "cost": 0.5183519124984741
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005316528957337141,
+          "minimum_obstacle_cloud_distance_m": 0.004437139257788658,
+          "active_waypoints": 8,
+          "cost": 0.42055684328079224
+        },
+        "noisy_action_gradient_norm": 0.0028288811445236206,
+        "guidance_update_norm": 0.12729965150356293,
+        "scheduler_reverse_delta_norm": 2.29850697517395,
+        "actual_net_delta_norm": 2.29850697517395,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 61,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0053606485016644,
+          "minimum_obstacle_cloud_distance_m": 0.003730487311258912,
+          "active_waypoints": 13,
+          "cost": 0.5182065963745117
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0053606485016644,
+          "minimum_obstacle_cloud_distance_m": 0.004262259695678949,
+          "active_waypoints": 8,
+          "cost": 0.4202682375907898
+        },
+        "noisy_action_gradient_norm": 0.0031123037915676832,
+        "guidance_update_norm": 0.1400536745786667,
+        "scheduler_reverse_delta_norm": 2.4590957164764404,
+        "actual_net_delta_norm": 2.4590957164764404,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 60,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005372960120439529,
+          "minimum_obstacle_cloud_distance_m": 0.0035795129369944334,
+          "active_waypoints": 13,
+          "cost": 0.5168939828872681
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005372960120439529,
+          "minimum_obstacle_cloud_distance_m": 0.004201734438538551,
+          "active_waypoints": 8,
+          "cost": 0.4195137023925781
+        },
+        "noisy_action_gradient_norm": 0.0031772563233971596,
+        "guidance_update_norm": 0.1429765373468399,
+        "scheduler_reverse_delta_norm": 2.2650134563446045,
+        "actual_net_delta_norm": 2.2650134563446045,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 59,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00546278664842248,
+          "minimum_obstacle_cloud_distance_m": 0.0038772779516875744,
+          "active_waypoints": 13,
+          "cost": 0.5184464454650879
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00546278664842248,
+          "minimum_obstacle_cloud_distance_m": 0.003953907638788223,
+          "active_waypoints": 8,
+          "cost": 0.4197813868522644
+        },
+        "noisy_action_gradient_norm": 0.0031995552126318216,
+        "guidance_update_norm": 0.1439799964427948,
+        "scheduler_reverse_delta_norm": 2.1932196617126465,
+        "actual_net_delta_norm": 2.1932196617126465,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 58,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005533675197511911,
+          "minimum_obstacle_cloud_distance_m": 0.0038600664120167494,
+          "active_waypoints": 13,
+          "cost": 0.5196614265441895
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005533675197511911,
+          "minimum_obstacle_cloud_distance_m": 0.0038600664120167494,
+          "active_waypoints": 8,
+          "cost": 0.4198687672615051
+        },
+        "noisy_action_gradient_norm": 0.0031384523026645184,
+        "guidance_update_norm": 0.14123035967350006,
+        "scheduler_reverse_delta_norm": 2.0384128093719482,
+        "actual_net_delta_norm": 2.0384128093719482,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 57,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005569627974182367,
+          "minimum_obstacle_cloud_distance_m": 0.0038366185035556555,
+          "active_waypoints": 13,
+          "cost": 0.5196110010147095
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005569627974182367,
+          "minimum_obstacle_cloud_distance_m": 0.0038366185035556555,
+          "active_waypoints": 8,
+          "cost": 0.4199475646018982
+        },
+        "noisy_action_gradient_norm": 0.0029809039551764727,
+        "guidance_update_norm": 0.13414067029953003,
+        "scheduler_reverse_delta_norm": 1.9453414678573608,
+        "actual_net_delta_norm": 1.9453414678573608,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 56,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005636375397443771,
+          "minimum_obstacle_cloud_distance_m": 0.003872164059430361,
+          "active_waypoints": 13,
+          "cost": 0.5195990800857544
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005636375397443771,
+          "minimum_obstacle_cloud_distance_m": 0.003872164059430361,
+          "active_waypoints": 8,
+          "cost": 0.4196038544178009
+        },
+        "noisy_action_gradient_norm": 0.0030239892657846212,
+        "guidance_update_norm": 0.13607950508594513,
+        "scheduler_reverse_delta_norm": 1.8325741291046143,
+        "actual_net_delta_norm": 1.8325741291046143,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 55,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005824423860758543,
+          "minimum_obstacle_cloud_distance_m": 0.0035140099935233593,
+          "active_waypoints": 14,
+          "cost": 0.5206574201583862
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005824423860758543,
+          "minimum_obstacle_cloud_distance_m": 0.0035140099935233593,
+          "active_waypoints": 8,
+          "cost": 0.41977569460868835
+        },
+        "noisy_action_gradient_norm": 0.003185032866895199,
+        "guidance_update_norm": 0.14332649111747742,
+        "scheduler_reverse_delta_norm": 1.9809808731079102,
+        "actual_net_delta_norm": 1.9809808731079102,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 54,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0059542348608374596,
+          "minimum_obstacle_cloud_distance_m": 0.003339480608701706,
+          "active_waypoints": 14,
+          "cost": 0.5218822956085205
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0059542348608374596,
+          "minimum_obstacle_cloud_distance_m": 0.003339480608701706,
+          "active_waypoints": 8,
+          "cost": 0.4200555980205536
+        },
+        "noisy_action_gradient_norm": 0.0033790143206715584,
+        "guidance_update_norm": 0.15205565094947815,
+        "scheduler_reverse_delta_norm": 1.9744014739990234,
+        "actual_net_delta_norm": 1.9744014739990234,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 53,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005747547373175621,
+          "minimum_obstacle_cloud_distance_m": 0.0036745888646692038,
+          "active_waypoints": 14,
+          "cost": 0.5213479995727539
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005747547373175621,
+          "minimum_obstacle_cloud_distance_m": 0.0036745888646692038,
+          "active_waypoints": 8,
+          "cost": 0.42030030488967896
+        },
+        "noisy_action_gradient_norm": 0.0033254516310989857,
+        "guidance_update_norm": 0.14964531362056732,
+        "scheduler_reverse_delta_norm": 1.9275156259536743,
+        "actual_net_delta_norm": 1.9275156259536743,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 52,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005562568083405495,
+          "minimum_obstacle_cloud_distance_m": 0.004021274857223034,
+          "active_waypoints": 13,
+          "cost": 0.521753191947937
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005562568083405495,
+          "minimum_obstacle_cloud_distance_m": 0.004021274857223034,
+          "active_waypoints": 8,
+          "cost": 0.42116862535476685
+        },
+        "noisy_action_gradient_norm": 0.0033499677665531635,
+        "guidance_update_norm": 0.15074855089187622,
+        "scheduler_reverse_delta_norm": 1.9954336881637573,
+        "actual_net_delta_norm": 1.9954336881637573,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 51,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005466331262141466,
+          "minimum_obstacle_cloud_distance_m": 0.004052015952765942,
+          "active_waypoints": 13,
+          "cost": 0.5221003890037537
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005466331262141466,
+          "minimum_obstacle_cloud_distance_m": 0.004052015952765942,
+          "active_waypoints": 8,
+          "cost": 0.4215715527534485
+        },
+        "noisy_action_gradient_norm": 0.003477469552308321,
+        "guidance_update_norm": 0.1564861238002777,
+        "scheduler_reverse_delta_norm": 1.739136815071106,
+        "actual_net_delta_norm": 1.739136815071106,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 50,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005589325912296772,
+          "minimum_obstacle_cloud_distance_m": 0.003951020538806915,
+          "active_waypoints": 14,
+          "cost": 0.5216500163078308
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005589325912296772,
+          "minimum_obstacle_cloud_distance_m": 0.003951020538806915,
+          "active_waypoints": 8,
+          "cost": 0.4210388660430908
+        },
+        "noisy_action_gradient_norm": 0.003665866097435355,
+        "guidance_update_norm": 0.1649639755487442,
+        "scheduler_reverse_delta_norm": 1.8140807151794434,
+        "actual_net_delta_norm": 1.8140807151794434,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 49,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005663451738655567,
+          "minimum_obstacle_cloud_distance_m": 0.0037443493492901325,
+          "active_waypoints": 14,
+          "cost": 0.5215967893600464
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005663451738655567,
+          "minimum_obstacle_cloud_distance_m": 0.0037443493492901325,
+          "active_waypoints": 8,
+          "cost": 0.42058122158050537
+        },
+        "noisy_action_gradient_norm": 0.003814038820564747,
+        "guidance_update_norm": 0.17163175344467163,
+        "scheduler_reverse_delta_norm": 1.858139157295227,
+        "actual_net_delta_norm": 1.858139157295227,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 48,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005584452301263809,
+          "minimum_obstacle_cloud_distance_m": 0.003848826279863715,
+          "active_waypoints": 13,
+          "cost": 0.5205777883529663
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005584452301263809,
+          "minimum_obstacle_cloud_distance_m": 0.003848826279863715,
+          "active_waypoints": 8,
+          "cost": 0.4201752245426178
+        },
+        "noisy_action_gradient_norm": 0.0037013133987784386,
+        "guidance_update_norm": 0.166559100151062,
+        "scheduler_reverse_delta_norm": 1.7969202995300293,
+        "actual_net_delta_norm": 1.7969202995300293,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 47,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005677060689777136,
+          "minimum_obstacle_cloud_distance_m": 0.0036905540619045496,
+          "active_waypoints": 14,
+          "cost": 0.5215891599655151
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005677060689777136,
+          "minimum_obstacle_cloud_distance_m": 0.0036905540619045496,
+          "active_waypoints": 8,
+          "cost": 0.42049506306648254
+        },
+        "noisy_action_gradient_norm": 0.003907929174602032,
+        "guidance_update_norm": 0.175856813788414,
+        "scheduler_reverse_delta_norm": 2.046539068222046,
+        "actual_net_delta_norm": 2.046539068222046,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 46,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005715210922062397,
+          "minimum_obstacle_cloud_distance_m": 0.0036218026652932167,
+          "active_waypoints": 14,
+          "cost": 0.5229126214981079
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005715210922062397,
+          "minimum_obstacle_cloud_distance_m": 0.0036218026652932167,
+          "active_waypoints": 8,
+          "cost": 0.42076605558395386
+        },
+        "noisy_action_gradient_norm": 0.004197593312710524,
+        "guidance_update_norm": 0.1888916939496994,
+        "scheduler_reverse_delta_norm": 1.9516011476516724,
+        "actual_net_delta_norm": 1.9516011476516724,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 45,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005658020731061697,
+          "minimum_obstacle_cloud_distance_m": 0.0038326552603393793,
+          "active_waypoints": 13,
+          "cost": 0.5210983753204346
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005658020731061697,
+          "minimum_obstacle_cloud_distance_m": 0.0038326552603393793,
+          "active_waypoints": 8,
+          "cost": 0.42068368196487427
+        },
+        "noisy_action_gradient_norm": 0.004012239631265402,
+        "guidance_update_norm": 0.18055079877376556,
+        "scheduler_reverse_delta_norm": 1.8433465957641602,
+        "actual_net_delta_norm": 1.8433465957641602,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 44,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005655381362885237,
+          "minimum_obstacle_cloud_distance_m": 0.004025567788630724,
+          "active_waypoints": 13,
+          "cost": 0.5205469131469727
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005655381362885237,
+          "minimum_obstacle_cloud_distance_m": 0.004025567788630724,
+          "active_waypoints": 8,
+          "cost": 0.4201427698135376
+        },
+        "noisy_action_gradient_norm": 0.0041650403290987015,
+        "guidance_update_norm": 0.18742680549621582,
+        "scheduler_reverse_delta_norm": 1.8401681184768677,
+        "actual_net_delta_norm": 1.8401681184768677,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 43,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005617133341729641,
+          "minimum_obstacle_cloud_distance_m": 0.004040215164422989,
+          "active_waypoints": 13,
+          "cost": 0.5204153656959534
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005617133341729641,
+          "minimum_obstacle_cloud_distance_m": 0.004040215164422989,
+          "active_waypoints": 8,
+          "cost": 0.4201059639453888
+        },
+        "noisy_action_gradient_norm": 0.004142135847359896,
+        "guidance_update_norm": 0.18639610707759857,
+        "scheduler_reverse_delta_norm": 1.4923861026763916,
+        "actual_net_delta_norm": 1.4923861026763916,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 42,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005626729689538479,
+          "minimum_obstacle_cloud_distance_m": 0.003995930776000023,
+          "active_waypoints": 13,
+          "cost": 0.5206896662712097
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005626729689538479,
+          "minimum_obstacle_cloud_distance_m": 0.003995930776000023,
+          "active_waypoints": 8,
+          "cost": 0.42021238803863525
+        },
+        "noisy_action_gradient_norm": 0.004308589734137058,
+        "guidance_update_norm": 0.19388654828071594,
+        "scheduler_reverse_delta_norm": 1.6082379817962646,
+        "actual_net_delta_norm": 1.6082379817962646,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 41,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005546571686863899,
+          "minimum_obstacle_cloud_distance_m": 0.003971499390900135,
+          "active_waypoints": 13,
+          "cost": 0.5194324254989624
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005546571686863899,
+          "minimum_obstacle_cloud_distance_m": 0.004131087101995945,
+          "active_waypoints": 8,
+          "cost": 0.4203166961669922
+        },
+        "noisy_action_gradient_norm": 0.00415721395984292,
+        "guidance_update_norm": 0.18707463145256042,
+        "scheduler_reverse_delta_norm": 1.7395888566970825,
+        "actual_net_delta_norm": 1.7395888566970825,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 40,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005636267829686403,
+          "minimum_obstacle_cloud_distance_m": 0.0039633712731301785,
+          "active_waypoints": 13,
+          "cost": 0.5207415223121643
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005636267829686403,
+          "minimum_obstacle_cloud_distance_m": 0.0039633712731301785,
+          "active_waypoints": 8,
+          "cost": 0.42049434781074524
+        },
+        "noisy_action_gradient_norm": 0.00459700683131814,
+        "guidance_update_norm": 0.2068653106689453,
+        "scheduler_reverse_delta_norm": 1.670699954032898,
+        "actual_net_delta_norm": 1.670699954032898,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 39,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005638435948640108,
+          "minimum_obstacle_cloud_distance_m": 0.003942443523555994,
+          "active_waypoints": 13,
+          "cost": 0.5210766196250916
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005638435948640108,
+          "minimum_obstacle_cloud_distance_m": 0.003942443523555994,
+          "active_waypoints": 8,
+          "cost": 0.4203189015388489
+        },
+        "noisy_action_gradient_norm": 0.004911348689347506,
+        "guidance_update_norm": 0.2210106998682022,
+        "scheduler_reverse_delta_norm": 1.4963805675506592,
+        "actual_net_delta_norm": 1.4963805675506592,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 38,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0056570228189229965,
+          "minimum_obstacle_cloud_distance_m": 0.003877126844599843,
+          "active_waypoints": 13,
+          "cost": 0.5216737985610962
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0056570228189229965,
+          "minimum_obstacle_cloud_distance_m": 0.003877126844599843,
+          "active_waypoints": 8,
+          "cost": 0.420665442943573
+        },
+        "noisy_action_gradient_norm": 0.005242799408733845,
+        "guidance_update_norm": 0.23592597246170044,
+        "scheduler_reverse_delta_norm": 1.458132266998291,
+        "actual_net_delta_norm": 1.458132266998291,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 37,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005560224875807762,
+          "minimum_obstacle_cloud_distance_m": 0.004019966349005699,
+          "active_waypoints": 13,
+          "cost": 0.5219438672065735
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005560224875807762,
+          "minimum_obstacle_cloud_distance_m": 0.004019966349005699,
+          "active_waypoints": 8,
+          "cost": 0.4209575951099396
+        },
+        "noisy_action_gradient_norm": 0.005241358652710915,
+        "guidance_update_norm": 0.23586112260818481,
+        "scheduler_reverse_delta_norm": 1.603054165840149,
+        "actual_net_delta_norm": 1.603054165840149,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 36,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005433095619082451,
+          "minimum_obstacle_cloud_distance_m": 0.004244606476277113,
+          "active_waypoints": 13,
+          "cost": 0.5208991169929504
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005433095619082451,
+          "minimum_obstacle_cloud_distance_m": 0.004397536627948284,
+          "active_waypoints": 8,
+          "cost": 0.42072129249572754
+        },
+        "noisy_action_gradient_norm": 0.0049055214039981365,
+        "guidance_update_norm": 0.22074846923351288,
+        "scheduler_reverse_delta_norm": 1.377077579498291,
+        "actual_net_delta_norm": 1.377077579498291,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 35,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005330818705260754,
+          "minimum_obstacle_cloud_distance_m": 0.0042001730762422085,
+          "active_waypoints": 13,
+          "cost": 0.521399199962616
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005330818705260754,
+          "minimum_obstacle_cloud_distance_m": 0.00454180222004652,
+          "active_waypoints": 8,
+          "cost": 0.4212232828140259
+        },
+        "noisy_action_gradient_norm": 0.0047970423474907875,
+        "guidance_update_norm": 0.21586690843105316,
+        "scheduler_reverse_delta_norm": 1.4319913387298584,
+        "actual_net_delta_norm": 1.4319913387298584,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 34,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005228166934102774,
+          "minimum_obstacle_cloud_distance_m": 0.0038967439904809,
+          "active_waypoints": 13,
+          "cost": 0.5199782848358154
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005228166934102774,
+          "minimum_obstacle_cloud_distance_m": 0.004749727435410023,
+          "active_waypoints": 8,
+          "cost": 0.4208786189556122
+        },
+        "noisy_action_gradient_norm": 0.004862994886934757,
+        "guidance_update_norm": 0.2188347578048706,
+        "scheduler_reverse_delta_norm": 1.5034618377685547,
+        "actual_net_delta_norm": 1.5034618377685547,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 33,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005306789185851812,
+          "minimum_obstacle_cloud_distance_m": 0.004166985861957073,
+          "active_waypoints": 13,
+          "cost": 0.5205980539321899
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005306789185851812,
+          "minimum_obstacle_cloud_distance_m": 0.004537693224847317,
+          "active_waypoints": 8,
+          "cost": 0.4205995500087738
+        },
+        "noisy_action_gradient_norm": 0.005015329457819462,
+        "guidance_update_norm": 0.2256898134946823,
+        "scheduler_reverse_delta_norm": 1.4082108736038208,
+        "actual_net_delta_norm": 1.4082108736038208,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 32,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005369578953832388,
+          "minimum_obstacle_cloud_distance_m": 0.004384987056255341,
+          "active_waypoints": 14,
+          "cost": 0.5218420028686523
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005369578953832388,
+          "minimum_obstacle_cloud_distance_m": 0.004384987056255341,
+          "active_waypoints": 8,
+          "cost": 0.4207482933998108
+        },
+        "noisy_action_gradient_norm": 0.005123306065797806,
+        "guidance_update_norm": 0.23054878413677216,
+        "scheduler_reverse_delta_norm": 1.3887410163879395,
+        "actual_net_delta_norm": 1.3887410163879395,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 31,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005466006696224213,
+          "minimum_obstacle_cloud_distance_m": 0.004330430179834366,
+          "active_waypoints": 13,
+          "cost": 0.5206425786018372
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005466006696224213,
+          "minimum_obstacle_cloud_distance_m": 0.004330430179834366,
+          "active_waypoints": 8,
+          "cost": 0.4201095700263977
+        },
+        "noisy_action_gradient_norm": 0.005050805862993002,
+        "guidance_update_norm": 0.22728626430034637,
+        "scheduler_reverse_delta_norm": 1.3053385019302368,
+        "actual_net_delta_norm": 1.3053385019302368,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 30,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0056129940785467625,
+          "minimum_obstacle_cloud_distance_m": 0.004140070173889399,
+          "active_waypoints": 14,
+          "cost": 0.5204851031303406
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0056129940785467625,
+          "minimum_obstacle_cloud_distance_m": 0.004140070173889399,
+          "active_waypoints": 8,
+          "cost": 0.4196789264678955
+        },
+        "noisy_action_gradient_norm": 0.005117146763950586,
+        "guidance_update_norm": 0.2302716076374054,
+        "scheduler_reverse_delta_norm": 1.4848264455795288,
+        "actual_net_delta_norm": 1.4848264455795288,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 29,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005712175276130438,
+          "minimum_obstacle_cloud_distance_m": 0.004021317698061466,
+          "active_waypoints": 13,
+          "cost": 0.5198354721069336
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005712175276130438,
+          "minimum_obstacle_cloud_distance_m": 0.004021317698061466,
+          "active_waypoints": 8,
+          "cost": 0.41923215985298157
+        },
+        "noisy_action_gradient_norm": 0.0051961843855679035,
+        "guidance_update_norm": 0.23382829129695892,
+        "scheduler_reverse_delta_norm": 1.324533224105835,
+        "actual_net_delta_norm": 1.324533224105835,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 28,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0057200537994503975,
+          "minimum_obstacle_cloud_distance_m": 0.003964516334235668,
+          "active_waypoints": 13,
+          "cost": 0.5201756954193115
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0057200537994503975,
+          "minimum_obstacle_cloud_distance_m": 0.003964516334235668,
+          "active_waypoints": 8,
+          "cost": 0.4192362427711487
+        },
+        "noisy_action_gradient_norm": 0.005596526432782412,
+        "guidance_update_norm": 0.2518436908721924,
+        "scheduler_reverse_delta_norm": 1.3805886507034302,
+        "actual_net_delta_norm": 1.3805886507034302,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 27,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0054602245800197124,
+          "minimum_obstacle_cloud_distance_m": 0.0042783282697200775,
+          "active_waypoints": 13,
+          "cost": 0.5190576910972595
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0054602245800197124,
+          "minimum_obstacle_cloud_distance_m": 0.004329260904341936,
+          "active_waypoints": 8,
+          "cost": 0.4195680618286133
+        },
+        "noisy_action_gradient_norm": 0.005700607318431139,
+        "guidance_update_norm": 0.2565273344516754,
+        "scheduler_reverse_delta_norm": 1.3657759428024292,
+        "actual_net_delta_norm": 1.3657759428024292,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 26,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005313501227647066,
+          "minimum_obstacle_cloud_distance_m": 0.003677500644698739,
+          "active_waypoints": 13,
+          "cost": 0.5166125893592834
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005313501227647066,
+          "minimum_obstacle_cloud_distance_m": 0.004623662680387497,
+          "active_waypoints": 8,
+          "cost": 0.41949373483657837
+        },
+        "noisy_action_gradient_norm": 0.00554112670943141,
+        "guidance_update_norm": 0.2493506819009781,
+        "scheduler_reverse_delta_norm": 1.2462102174758911,
+        "actual_net_delta_norm": 1.2462102174758911,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 25,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005278517492115498,
+          "minimum_obstacle_cloud_distance_m": 0.0035947419237345457,
+          "active_waypoints": 13,
+          "cost": 0.5167216658592224
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005278517492115498,
+          "minimum_obstacle_cloud_distance_m": 0.0046647959388792515,
+          "active_waypoints": 8,
+          "cost": 0.41973841190338135
+        },
+        "noisy_action_gradient_norm": 0.005747969262301922,
+        "guidance_update_norm": 0.25865861773490906,
+        "scheduler_reverse_delta_norm": 1.2159119844436646,
+        "actual_net_delta_norm": 1.2159119844436646,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 24,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005368451122194529,
+          "minimum_obstacle_cloud_distance_m": 0.0034926263615489006,
+          "active_waypoints": 13,
+          "cost": 0.5154078006744385
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005368451122194529,
+          "minimum_obstacle_cloud_distance_m": 0.004621180240064859,
+          "active_waypoints": 8,
+          "cost": 0.41901999711990356
+        },
+        "noisy_action_gradient_norm": 0.005434594117105007,
+        "guidance_update_norm": 0.244556725025177,
+        "scheduler_reverse_delta_norm": 1.0597262382507324,
+        "actual_net_delta_norm": 1.0597262382507324,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 23,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005387353710830212,
+          "minimum_obstacle_cloud_distance_m": 0.003233399474993348,
+          "active_waypoints": 13,
+          "cost": 0.5141329765319824
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005387353710830212,
+          "minimum_obstacle_cloud_distance_m": 0.0046194326132535934,
+          "active_waypoints": 8,
+          "cost": 0.4188797175884247
+        },
+        "noisy_action_gradient_norm": 0.005327253136783838,
+        "guidance_update_norm": 0.23972637951374054,
+        "scheduler_reverse_delta_norm": 1.240494728088379,
+        "actual_net_delta_norm": 1.240494728088379,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 22,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005280458368360996,
+          "minimum_obstacle_cloud_distance_m": 0.0029871787410229445,
+          "active_waypoints": 13,
+          "cost": 0.5126162171363831
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005280458368360996,
+          "minimum_obstacle_cloud_distance_m": 0.004886654205620289,
+          "active_waypoints": 8,
+          "cost": 0.41847389936447144
+        },
+        "noisy_action_gradient_norm": 0.0053427256643772125,
+        "guidance_update_norm": 0.24042265117168427,
+        "scheduler_reverse_delta_norm": 1.3346816301345825,
+        "actual_net_delta_norm": 1.3346816301345825,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 21,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005310092121362686,
+          "minimum_obstacle_cloud_distance_m": 0.0032429511193186045,
+          "active_waypoints": 13,
+          "cost": 0.5135514736175537
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005310092121362686,
+          "minimum_obstacle_cloud_distance_m": 0.004826731979846954,
+          "active_waypoints": 8,
+          "cost": 0.41860222816467285
+        },
+        "noisy_action_gradient_norm": 0.005369741003960371,
+        "guidance_update_norm": 0.24163831770420074,
+        "scheduler_reverse_delta_norm": 1.289184331893921,
+        "actual_net_delta_norm": 1.289184331893921,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 20,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005339551717042923,
+          "minimum_obstacle_cloud_distance_m": 0.0035628667101264,
+          "active_waypoints": 13,
+          "cost": 0.5155943036079407
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005339551717042923,
+          "minimum_obstacle_cloud_distance_m": 0.004695429466664791,
+          "active_waypoints": 8,
+          "cost": 0.4192662239074707
+        },
+        "noisy_action_gradient_norm": 0.005535061936825514,
+        "guidance_update_norm": 0.24907779693603516,
+        "scheduler_reverse_delta_norm": 1.0981374979019165,
+        "actual_net_delta_norm": 1.0981374979019165,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 19,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0054615880362689495,
+          "minimum_obstacle_cloud_distance_m": 0.0037247613072395325,
+          "active_waypoints": 13,
+          "cost": 0.5161435604095459
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0054615880362689495,
+          "minimum_obstacle_cloud_distance_m": 0.0045796893537044525,
+          "active_waypoints": 8,
+          "cost": 0.41909584403038025
+        },
+        "noisy_action_gradient_norm": 0.005644852761179209,
+        "guidance_update_norm": 0.2540183663368225,
+        "scheduler_reverse_delta_norm": 1.0452582836151123,
+        "actual_net_delta_norm": 1.0452582836151123,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 18,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0054578050039708614,
+          "minimum_obstacle_cloud_distance_m": 0.0035716400016099215,
+          "active_waypoints": 13,
+          "cost": 0.515815019607544
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0054578050039708614,
+          "minimum_obstacle_cloud_distance_m": 0.004616291727870703,
+          "active_waypoints": 8,
+          "cost": 0.4192323684692383
+        },
+        "noisy_action_gradient_norm": 0.005614465102553368,
+        "guidance_update_norm": 0.2526509165763855,
+        "scheduler_reverse_delta_norm": 1.0454908609390259,
+        "actual_net_delta_norm": 1.0454908609390259,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 17,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005524159409105778,
+          "minimum_obstacle_cloud_distance_m": 0.0036155839916318655,
+          "active_waypoints": 13,
+          "cost": 0.5160976648330688
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005524159409105778,
+          "minimum_obstacle_cloud_distance_m": 0.004522785544395447,
+          "active_waypoints": 8,
+          "cost": 0.4194214940071106
+        },
+        "noisy_action_gradient_norm": 0.0057537187822163105,
+        "guidance_update_norm": 0.25891736149787903,
+        "scheduler_reverse_delta_norm": 0.9944271445274353,
+        "actual_net_delta_norm": 0.9944271445274353,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 16,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005539251491427422,
+          "minimum_obstacle_cloud_distance_m": 0.003677946049720049,
+          "active_waypoints": 13,
+          "cost": 0.5158975124359131
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005539251491427422,
+          "minimum_obstacle_cloud_distance_m": 0.00455884076654911,
+          "active_waypoints": 8,
+          "cost": 0.41928231716156006
+        },
+        "noisy_action_gradient_norm": 0.005698187276721001,
+        "guidance_update_norm": 0.2564184367656708,
+        "scheduler_reverse_delta_norm": 0.947294294834137,
+        "actual_net_delta_norm": 0.947294294834137,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 15,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005475012585520744,
+          "minimum_obstacle_cloud_distance_m": 0.0035898834466934204,
+          "active_waypoints": 13,
+          "cost": 0.5156323909759521
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005475012585520744,
+          "minimum_obstacle_cloud_distance_m": 0.004676523618400097,
+          "active_waypoints": 8,
+          "cost": 0.4192071557044983
+        },
+        "noisy_action_gradient_norm": 0.005549019668251276,
+        "guidance_update_norm": 0.24970588088035583,
+        "scheduler_reverse_delta_norm": 0.8928604125976562,
+        "actual_net_delta_norm": 0.8928604125976562,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 14,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005396018270403147,
+          "minimum_obstacle_cloud_distance_m": 0.003629660001024604,
+          "active_waypoints": 13,
+          "cost": 0.5161232352256775
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005396018270403147,
+          "minimum_obstacle_cloud_distance_m": 0.004688677377998829,
+          "active_waypoints": 8,
+          "cost": 0.419414222240448
+        },
+        "noisy_action_gradient_norm": 0.00551481731235981,
+        "guidance_update_norm": 0.2481667697429657,
+        "scheduler_reverse_delta_norm": 0.9379165172576904,
+        "actual_net_delta_norm": 0.9379165172576904,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 13,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005330399610102177,
+          "minimum_obstacle_cloud_distance_m": 0.0035812798887491226,
+          "active_waypoints": 13,
+          "cost": 0.5152158737182617
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005330399610102177,
+          "minimum_obstacle_cloud_distance_m": 0.0047314707189798355,
+          "active_waypoints": 8,
+          "cost": 0.41895920038223267
+        },
+        "noisy_action_gradient_norm": 0.005438635125756264,
+        "guidance_update_norm": 0.24473857879638672,
+        "scheduler_reverse_delta_norm": 0.8570156693458557,
+        "actual_net_delta_norm": 0.8570156693458557,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 12,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005341353826224804,
+          "minimum_obstacle_cloud_distance_m": 0.0034638545475900173,
+          "active_waypoints": 13,
+          "cost": 0.5145605206489563
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005341353826224804,
+          "minimum_obstacle_cloud_distance_m": 0.004835227038711309,
+          "active_waypoints": 8,
+          "cost": 0.41875290870666504
+        },
+        "noisy_action_gradient_norm": 0.005531228147447109,
+        "guidance_update_norm": 0.2489052712917328,
+        "scheduler_reverse_delta_norm": 0.8808672428131104,
+        "actual_net_delta_norm": 0.8808672428131104,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 11,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0053761787712574005,
+          "minimum_obstacle_cloud_distance_m": 0.0033406878355890512,
+          "active_waypoints": 13,
+          "cost": 0.514133095741272
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0053761787712574005,
+          "minimum_obstacle_cloud_distance_m": 0.004934752359986305,
+          "active_waypoints": 8,
+          "cost": 0.41867393255233765
+        },
+        "noisy_action_gradient_norm": 0.005583250895142555,
+        "guidance_update_norm": 0.25124627351760864,
+        "scheduler_reverse_delta_norm": 0.8880898952484131,
+        "actual_net_delta_norm": 0.8880898952484131,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 10,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0053495545871555805,
+          "minimum_obstacle_cloud_distance_m": 0.0031317092943936586,
+          "active_waypoints": 13,
+          "cost": 0.5139169096946716
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0053495545871555805,
+          "minimum_obstacle_cloud_distance_m": 0.005072509404271841,
+          "active_waypoints": 8,
+          "cost": 0.41893213987350464
+        },
+        "noisy_action_gradient_norm": 0.00558307021856308,
+        "guidance_update_norm": 0.2512381672859192,
+        "scheduler_reverse_delta_norm": 0.8360553979873657,
+        "actual_net_delta_norm": 0.8360553979873657,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 9,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005465834867209196,
+          "minimum_obstacle_cloud_distance_m": 0.0032598457764834166,
+          "active_waypoints": 13,
+          "cost": 0.5139556527137756
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005465834867209196,
+          "minimum_obstacle_cloud_distance_m": 0.004907142836600542,
+          "active_waypoints": 8,
+          "cost": 0.4186500012874603
+        },
+        "noisy_action_gradient_norm": 0.005737679544836283,
+        "guidance_update_norm": 0.25819557905197144,
+        "scheduler_reverse_delta_norm": 0.679520308971405,
+        "actual_net_delta_norm": 0.679520308971405,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 8,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005449728574603796,
+          "minimum_obstacle_cloud_distance_m": 0.0033546818885952234,
+          "active_waypoints": 13,
+          "cost": 0.5141218900680542
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005449728574603796,
+          "minimum_obstacle_cloud_distance_m": 0.004757671616971493,
+          "active_waypoints": 8,
+          "cost": 0.41863715648651123
+        },
+        "noisy_action_gradient_norm": 0.0057797906920313835,
+        "guidance_update_norm": 0.26009058952331543,
+        "scheduler_reverse_delta_norm": 0.681684136390686,
+        "actual_net_delta_norm": 0.681684136390686,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 7,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005342803429812193,
+          "minimum_obstacle_cloud_distance_m": 0.003113473067060113,
+          "active_waypoints": 13,
+          "cost": 0.5138280391693115
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005342803429812193,
+          "minimum_obstacle_cloud_distance_m": 0.004923665430396795,
+          "active_waypoints": 8,
+          "cost": 0.4188787043094635
+        },
+        "noisy_action_gradient_norm": 0.005838195793330669,
+        "guidance_update_norm": 0.2627187967300415,
+        "scheduler_reverse_delta_norm": 0.6996031403541565,
+        "actual_net_delta_norm": 0.6996031403541565,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 6,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00525686563923955,
+          "minimum_obstacle_cloud_distance_m": 0.0028726805467158556,
+          "active_waypoints": 13,
+          "cost": 0.5130442380905151
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00525686563923955,
+          "minimum_obstacle_cloud_distance_m": 0.005032865796238184,
+          "active_waypoints": 8,
+          "cost": 0.41901978850364685
+        },
+        "noisy_action_gradient_norm": 0.005888193845748901,
+        "guidance_update_norm": 0.2649686932563782,
+        "scheduler_reverse_delta_norm": 0.6048242449760437,
+        "actual_net_delta_norm": 0.6048242449760437,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 5,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005265999585390091,
+          "minimum_obstacle_cloud_distance_m": 0.0027926494367420673,
+          "active_waypoints": 13,
+          "cost": 0.5119555592536926
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005265999585390091,
+          "minimum_obstacle_cloud_distance_m": 0.005063740070909262,
+          "active_waypoints": 8,
+          "cost": 0.41851288080215454
+        },
+        "noisy_action_gradient_norm": 0.006113245617598295,
+        "guidance_update_norm": 0.27509605884552,
+        "scheduler_reverse_delta_norm": 0.579714298248291,
+        "actual_net_delta_norm": 0.579714298248291,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 4,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005326210055500269,
+          "minimum_obstacle_cloud_distance_m": 0.0030513876117765903,
+          "active_waypoints": 13,
+          "cost": 0.5128873586654663
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005326210055500269,
+          "minimum_obstacle_cloud_distance_m": 0.0049146381206810474,
+          "active_waypoints": 8,
+          "cost": 0.41869547963142395
+        },
+        "noisy_action_gradient_norm": 0.006264284253120422,
+        "guidance_update_norm": 0.2818927764892578,
+        "scheduler_reverse_delta_norm": 0.47677674889564514,
+        "actual_net_delta_norm": 0.47677674889564514,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 3,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00535980612039566,
+          "minimum_obstacle_cloud_distance_m": 0.0032093224581331015,
+          "active_waypoints": 13,
+          "cost": 0.5135560631752014
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00535980612039566,
+          "minimum_obstacle_cloud_distance_m": 0.004886710084974766,
+          "active_waypoints": 8,
+          "cost": 0.4189160466194153
+        },
+        "noisy_action_gradient_norm": 0.006257325876504183,
+        "guidance_update_norm": 0.2815796732902527,
+        "scheduler_reverse_delta_norm": 0.4913594722747803,
+        "actual_net_delta_norm": 0.4913594722747803,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 2,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005320623982697725,
+          "minimum_obstacle_cloud_distance_m": 0.0030636873561888933,
+          "active_waypoints": 13,
+          "cost": 0.5133861899375916
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005320623982697725,
+          "minimum_obstacle_cloud_distance_m": 0.005090523045510054,
+          "active_waypoints": 8,
+          "cost": 0.4189659357070923
+        },
+        "noisy_action_gradient_norm": 0.0061691622249782085,
+        "guidance_update_norm": 0.2776122987270355,
+        "scheduler_reverse_delta_norm": 0.46520552039146423,
+        "actual_net_delta_norm": 0.46520552039146423,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 1,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00534948892891407,
+          "minimum_obstacle_cloud_distance_m": 0.0031824475154280663,
+          "active_waypoints": 13,
+          "cost": 0.513927161693573
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00534948892891407,
+          "minimum_obstacle_cloud_distance_m": 0.005164988338947296,
+          "active_waypoints": 8,
+          "cost": 0.4190939664840698
+        },
+        "noisy_action_gradient_norm": 0.006035614293068647,
+        "guidance_update_norm": 0.2716026306152344,
+        "scheduler_reverse_delta_norm": 0.36332815885543823,
+        "actual_net_delta_norm": 0.36332815885543823,
+        "guidance_applied": false
+      },
+      {
+        "timestep": 0,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005401178263127804,
+          "minimum_obstacle_cloud_distance_m": 0.0031322429422289133,
+          "active_waypoints": 13,
+          "cost": 0.5133068561553955
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005401178263127804,
+          "minimum_obstacle_cloud_distance_m": 0.005205473396927118,
+          "active_waypoints": 8,
+          "cost": 0.418701171875
+        },
+        "noisy_action_gradient_norm": 0.00586575735360384,
+        "guidance_update_norm": 0.2639590799808502,
+        "scheduler_reverse_delta_norm": 0.2680834233760834,
+        "actual_net_delta_norm": 0.2680834233760834,
+        "guidance_applied": false
+      }
+    ],
+    "final_full_minimum_obstacle_cloud_distance_m": 0.00313180242665112,
+    "final_executable_minimum_obstacle_cloud_distance_m": 0.005205050110816956,
+    "executable_start": 1,
+    "executable_end_exclusive": 9,
+    "fixed_obstacle_point": [
+      0.006913988385349512,
+      -0.009957865811884403,
+      0.8230907917022705
+    ]
+  },
+  "guided_reverse": {
+    "reverse_steps": [
+      {
+        "timestep": 99,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005416450090706348,
+          "minimum_obstacle_cloud_distance_m": 0.0038554444909095764,
+          "active_waypoints": 13,
+          "cost": 0.5194014310836792
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005416450090706348,
+          "minimum_obstacle_cloud_distance_m": 0.004415287170559168,
+          "active_waypoints": 8,
+          "cost": 0.42070579528808594
+        },
+        "noisy_action_gradient_norm": 0.0019446974620223045,
+        "guidance_update_norm": 0.08751138299703598,
+        "scheduler_reverse_delta_norm": 15.742419242858887,
+        "actual_net_delta_norm": 15.748970031738281,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 98,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005458512343466282,
+          "minimum_obstacle_cloud_distance_m": 0.004151390865445137,
+          "active_waypoints": 13,
+          "cost": 0.5170623064041138
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005458512343466282,
+          "minimum_obstacle_cloud_distance_m": 0.004524205811321735,
+          "active_waypoints": 8,
+          "cost": 0.4188501834869385
+        },
+        "noisy_action_gradient_norm": 0.0018109597731381655,
+        "guidance_update_norm": 0.08149319887161255,
+        "scheduler_reverse_delta_norm": 12.27283000946045,
+        "actual_net_delta_norm": 12.271485328674316,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 97,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005436618346720934,
+          "minimum_obstacle_cloud_distance_m": 0.0038987817242741585,
+          "active_waypoints": 13,
+          "cost": 0.5173155069351196
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005436618346720934,
+          "minimum_obstacle_cloud_distance_m": 0.004617373459041119,
+          "active_waypoints": 8,
+          "cost": 0.4196239113807678
+        },
+        "noisy_action_gradient_norm": 0.0018312936881557107,
+        "guidance_update_norm": 0.08240821212530136,
+        "scheduler_reverse_delta_norm": 8.481220245361328,
+        "actual_net_delta_norm": 8.483826637268066,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 96,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005253953859210014,
+          "minimum_obstacle_cloud_distance_m": 0.0031589739955961704,
+          "active_waypoints": 13,
+          "cost": 0.5164110064506531
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005253953859210014,
+          "minimum_obstacle_cloud_distance_m": 0.004849747754633427,
+          "active_waypoints": 8,
+          "cost": 0.4202580451965332
+        },
+        "noisy_action_gradient_norm": 0.001994228921830654,
+        "guidance_update_norm": 0.08974029868841171,
+        "scheduler_reverse_delta_norm": 7.517271995544434,
+        "actual_net_delta_norm": 7.524237632751465,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 95,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005438723135739565,
+          "minimum_obstacle_cloud_distance_m": 0.0031870969105511904,
+          "active_waypoints": 13,
+          "cost": 0.5153331160545349
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005438723135739565,
+          "minimum_obstacle_cloud_distance_m": 0.004759235307574272,
+          "active_waypoints": 8,
+          "cost": 0.41909754276275635
+        },
+        "noisy_action_gradient_norm": 0.002028543036431074,
+        "guidance_update_norm": 0.09128443151712418,
+        "scheduler_reverse_delta_norm": 6.705463409423828,
+        "actual_net_delta_norm": 6.710832118988037,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 94,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005497900303453207,
+          "minimum_obstacle_cloud_distance_m": 0.0032952900510281324,
+          "active_waypoints": 13,
+          "cost": 0.515038013458252
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005497900303453207,
+          "minimum_obstacle_cloud_distance_m": 0.004600769840180874,
+          "active_waypoints": 8,
+          "cost": 0.4181986451148987
+        },
+        "noisy_action_gradient_norm": 0.0020475233905017376,
+        "guidance_update_norm": 0.09213854372501373,
+        "scheduler_reverse_delta_norm": 6.423171043395996,
+        "actual_net_delta_norm": 6.417236804962158,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 93,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0054542855359613895,
+          "minimum_obstacle_cloud_distance_m": 0.003451874013990164,
+          "active_waypoints": 13,
+          "cost": 0.5167732834815979
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0054542855359613895,
+          "minimum_obstacle_cloud_distance_m": 0.004571650177240372,
+          "active_waypoints": 8,
+          "cost": 0.419296532869339
+        },
+        "noisy_action_gradient_norm": 0.002024885965511203,
+        "guidance_update_norm": 0.09111987054347992,
+        "scheduler_reverse_delta_norm": 5.770256519317627,
+        "actual_net_delta_norm": 5.771160125732422,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 92,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005416311789304018,
+          "minimum_obstacle_cloud_distance_m": 0.0032857374753803015,
+          "active_waypoints": 13,
+          "cost": 0.5167675018310547
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005416311789304018,
+          "minimum_obstacle_cloud_distance_m": 0.004730556160211563,
+          "active_waypoints": 8,
+          "cost": 0.41982966661453247
+        },
+        "noisy_action_gradient_norm": 0.0020471629686653614,
+        "guidance_update_norm": 0.09212233871221542,
+        "scheduler_reverse_delta_norm": 4.865006923675537,
+        "actual_net_delta_norm": 4.865137100219727,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 91,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005446315743029118,
+          "minimum_obstacle_cloud_distance_m": 0.00346893398091197,
+          "active_waypoints": 13,
+          "cost": 0.5167003870010376
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005446315743029118,
+          "minimum_obstacle_cloud_distance_m": 0.00467598857358098,
+          "active_waypoints": 8,
+          "cost": 0.4197681248188019
+        },
+        "noisy_action_gradient_norm": 0.0020817851182073355,
+        "guidance_update_norm": 0.09368032962083817,
+        "scheduler_reverse_delta_norm": 5.319997310638428,
+        "actual_net_delta_norm": 5.319478988647461,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 90,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005435571074485779,
+          "minimum_obstacle_cloud_distance_m": 0.0033512266818434,
+          "active_waypoints": 13,
+          "cost": 0.5160513520240784
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005435571074485779,
+          "minimum_obstacle_cloud_distance_m": 0.0045637087896466255,
+          "active_waypoints": 8,
+          "cost": 0.41994383931159973
+        },
+        "noisy_action_gradient_norm": 0.002027865033596754,
+        "guidance_update_norm": 0.09125392884016037,
+        "scheduler_reverse_delta_norm": 5.122177600860596,
+        "actual_net_delta_norm": 5.124237537384033,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 89,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005420146510004997,
+          "minimum_obstacle_cloud_distance_m": 0.0031999931670725346,
+          "active_waypoints": 13,
+          "cost": 0.5146603584289551
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005420146510004997,
+          "minimum_obstacle_cloud_distance_m": 0.004485545679926872,
+          "active_waypoints": 8,
+          "cost": 0.41922667622566223
+        },
+        "noisy_action_gradient_norm": 0.0020309961400926113,
+        "guidance_update_norm": 0.0913948193192482,
+        "scheduler_reverse_delta_norm": 3.8064730167388916,
+        "actual_net_delta_norm": 3.7989816665649414,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 88,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005392719060182571,
+          "minimum_obstacle_cloud_distance_m": 0.003126458963379264,
+          "active_waypoints": 13,
+          "cost": 0.5143924355506897
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005392719060182571,
+          "minimum_obstacle_cloud_distance_m": 0.004522280767560005,
+          "active_waypoints": 8,
+          "cost": 0.41909313201904297
+        },
+        "noisy_action_gradient_norm": 0.0020026450511068106,
+        "guidance_update_norm": 0.09011902660131454,
+        "scheduler_reverse_delta_norm": 4.005417823791504,
+        "actual_net_delta_norm": 3.9995150566101074,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 87,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005396581254899502,
+          "minimum_obstacle_cloud_distance_m": 0.0032081648241728544,
+          "active_waypoints": 13,
+          "cost": 0.5151424407958984
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005396581254899502,
+          "minimum_obstacle_cloud_distance_m": 0.004489756654947996,
+          "active_waypoints": 8,
+          "cost": 0.4195220172405243
+        },
+        "noisy_action_gradient_norm": 0.0019494604784995317,
+        "guidance_update_norm": 0.08772572875022888,
+        "scheduler_reverse_delta_norm": 3.7577762603759766,
+        "actual_net_delta_norm": 3.7780041694641113,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 86,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005387456156313419,
+          "minimum_obstacle_cloud_distance_m": 0.002882560947909951,
+          "active_waypoints": 13,
+          "cost": 0.5138805508613586
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005387456156313419,
+          "minimum_obstacle_cloud_distance_m": 0.004491937812417746,
+          "active_waypoints": 8,
+          "cost": 0.4192318320274353
+        },
+        "noisy_action_gradient_norm": 0.0019614442717283964,
+        "guidance_update_norm": 0.08826498687267303,
+        "scheduler_reverse_delta_norm": 4.168663501739502,
+        "actual_net_delta_norm": 4.167799949645996,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 85,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0053079379722476006,
+          "minimum_obstacle_cloud_distance_m": 0.0027152367401868105,
+          "active_waypoints": 13,
+          "cost": 0.5141918063163757
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0053079379722476006,
+          "minimum_obstacle_cloud_distance_m": 0.004596218001097441,
+          "active_waypoints": 8,
+          "cost": 0.4195592403411865
+        },
+        "noisy_action_gradient_norm": 0.0019058490870520473,
+        "guidance_update_norm": 0.08576320111751556,
+        "scheduler_reverse_delta_norm": 3.8397281169891357,
+        "actual_net_delta_norm": 3.844050884246826,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 84,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005324175581336021,
+          "minimum_obstacle_cloud_distance_m": 0.0025831228122115135,
+          "active_waypoints": 13,
+          "cost": 0.5134772658348083
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005324175581336021,
+          "minimum_obstacle_cloud_distance_m": 0.004567477386444807,
+          "active_waypoints": 8,
+          "cost": 0.4195256233215332
+        },
+        "noisy_action_gradient_norm": 0.0019908288959413767,
+        "guidance_update_norm": 0.08958730846643448,
+        "scheduler_reverse_delta_norm": 3.1618025302886963,
+        "actual_net_delta_norm": 3.1556496620178223,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 83,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005311471875756979,
+          "minimum_obstacle_cloud_distance_m": 0.0027284047100692987,
+          "active_waypoints": 13,
+          "cost": 0.514303982257843
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005311471875756979,
+          "minimum_obstacle_cloud_distance_m": 0.0045943185687065125,
+          "active_waypoints": 8,
+          "cost": 0.41988715529441833
+        },
+        "noisy_action_gradient_norm": 0.0019840903114527464,
+        "guidance_update_norm": 0.08928406238555908,
+        "scheduler_reverse_delta_norm": 3.4135677814483643,
+        "actual_net_delta_norm": 3.4211032390594482,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 82,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005350105464458466,
+          "minimum_obstacle_cloud_distance_m": 0.0028833807446062565,
+          "active_waypoints": 13,
+          "cost": 0.5146278738975525
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005350105464458466,
+          "minimum_obstacle_cloud_distance_m": 0.004290888085961342,
+          "active_waypoints": 8,
+          "cost": 0.419698566198349
+        },
+        "noisy_action_gradient_norm": 0.001952094491571188,
+        "guidance_update_norm": 0.08784425258636475,
+        "scheduler_reverse_delta_norm": 2.9576549530029297,
+        "actual_net_delta_norm": 2.95269775390625,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 81,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005469474475830793,
+          "minimum_obstacle_cloud_distance_m": 0.0032061608508229256,
+          "active_waypoints": 13,
+          "cost": 0.514825701713562
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005469474475830793,
+          "minimum_obstacle_cloud_distance_m": 0.004132076166570187,
+          "active_waypoints": 8,
+          "cost": 0.4189700484275818
+        },
+        "noisy_action_gradient_norm": 0.0019030460389330983,
+        "guidance_update_norm": 0.08563706278800964,
+        "scheduler_reverse_delta_norm": 3.099597454071045,
+        "actual_net_delta_norm": 3.0910356044769287,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 80,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005541978403925896,
+          "minimum_obstacle_cloud_distance_m": 0.0034202926326543093,
+          "active_waypoints": 13,
+          "cost": 0.5142316222190857
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005541978403925896,
+          "minimum_obstacle_cloud_distance_m": 0.004088727291673422,
+          "active_waypoints": 8,
+          "cost": 0.41820579767227173
+        },
+        "noisy_action_gradient_norm": 0.0019261231645941734,
+        "guidance_update_norm": 0.08667553961277008,
+        "scheduler_reverse_delta_norm": 3.1930439472198486,
+        "actual_net_delta_norm": 3.1948187351226807,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 79,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005496534518897533,
+          "minimum_obstacle_cloud_distance_m": 0.003187819616869092,
+          "active_waypoints": 13,
+          "cost": 0.5125305652618408
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005496534518897533,
+          "minimum_obstacle_cloud_distance_m": 0.004401234444230795,
+          "active_waypoints": 8,
+          "cost": 0.41744863986968994
+        },
+        "noisy_action_gradient_norm": 0.0019773675594478846,
+        "guidance_update_norm": 0.08898153901100159,
+        "scheduler_reverse_delta_norm": 3.0510783195495605,
+        "actual_net_delta_norm": 3.051422119140625,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 78,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005432035308331251,
+          "minimum_obstacle_cloud_distance_m": 0.0029571736231446266,
+          "active_waypoints": 13,
+          "cost": 0.5114416480064392
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005432035308331251,
+          "minimum_obstacle_cloud_distance_m": 0.004732817877084017,
+          "active_waypoints": 8,
+          "cost": 0.417341947555542
+        },
+        "noisy_action_gradient_norm": 0.0020141396671533585,
+        "guidance_update_norm": 0.09063628315925598,
+        "scheduler_reverse_delta_norm": 2.911571979522705,
+        "actual_net_delta_norm": 2.915468215942383,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 77,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0054149688221514225,
+          "minimum_obstacle_cloud_distance_m": 0.0027750045992434025,
+          "active_waypoints": 13,
+          "cost": 0.5110001564025879
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0054149688221514225,
+          "minimum_obstacle_cloud_distance_m": 0.004784013610333204,
+          "active_waypoints": 8,
+          "cost": 0.417602002620697
+        },
+        "noisy_action_gradient_norm": 0.001942252041772008,
+        "guidance_update_norm": 0.08740133792161942,
+        "scheduler_reverse_delta_norm": 3.1637954711914062,
+        "actual_net_delta_norm": 3.166996717453003,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 76,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005409682169556618,
+          "minimum_obstacle_cloud_distance_m": 0.0028818873688578606,
+          "active_waypoints": 13,
+          "cost": 0.5117772817611694
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005409682169556618,
+          "minimum_obstacle_cloud_distance_m": 0.004819908645004034,
+          "active_waypoints": 8,
+          "cost": 0.41761189699172974
+        },
+        "noisy_action_gradient_norm": 0.0019278452964499593,
+        "guidance_update_norm": 0.08675304055213928,
+        "scheduler_reverse_delta_norm": 2.8263700008392334,
+        "actual_net_delta_norm": 2.8243844509124756,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 75,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005500969476997852,
+          "minimum_obstacle_cloud_distance_m": 0.003347798017784953,
+          "active_waypoints": 13,
+          "cost": 0.5134589076042175
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005500969476997852,
+          "minimum_obstacle_cloud_distance_m": 0.0043738712556660175,
+          "active_waypoints": 8,
+          "cost": 0.4177386164665222
+        },
+        "noisy_action_gradient_norm": 0.0019437280716374516,
+        "guidance_update_norm": 0.08746775984764099,
+        "scheduler_reverse_delta_norm": 2.899838924407959,
+        "actual_net_delta_norm": 2.9056434631347656,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 74,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005519052501767874,
+          "minimum_obstacle_cloud_distance_m": 0.0034667414147406816,
+          "active_waypoints": 13,
+          "cost": 0.5141208171844482
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005519052501767874,
+          "minimum_obstacle_cloud_distance_m": 0.0043132975697517395,
+          "active_waypoints": 8,
+          "cost": 0.4178621172904968
+        },
+        "noisy_action_gradient_norm": 0.0020323535427451134,
+        "guidance_update_norm": 0.09145591408014297,
+        "scheduler_reverse_delta_norm": 2.506967306137085,
+        "actual_net_delta_norm": 2.5099737644195557,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 73,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005511224735528231,
+          "minimum_obstacle_cloud_distance_m": 0.003389229066669941,
+          "active_waypoints": 13,
+          "cost": 0.5138130187988281
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005511224735528231,
+          "minimum_obstacle_cloud_distance_m": 0.004274430684745312,
+          "active_waypoints": 8,
+          "cost": 0.4178771376609802
+        },
+        "noisy_action_gradient_norm": 0.0020685908384621143,
+        "guidance_update_norm": 0.0930866003036499,
+        "scheduler_reverse_delta_norm": 2.702632188796997,
+        "actual_net_delta_norm": 2.708045721054077,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 72,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005385169293731451,
+          "minimum_obstacle_cloud_distance_m": 0.003067915327847004,
+          "active_waypoints": 13,
+          "cost": 0.5124701857566833
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005385169293731451,
+          "minimum_obstacle_cloud_distance_m": 0.00455200532451272,
+          "active_waypoints": 8,
+          "cost": 0.417559951543808
+        },
+        "noisy_action_gradient_norm": 0.002103096339851618,
+        "guidance_update_norm": 0.09463933855295181,
+        "scheduler_reverse_delta_norm": 2.5635955333709717,
+        "actual_net_delta_norm": 2.5689444541931152,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 71,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005307611543685198,
+          "minimum_obstacle_cloud_distance_m": 0.0029084840789437294,
+          "active_waypoints": 13,
+          "cost": 0.512045681476593
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005307611543685198,
+          "minimum_obstacle_cloud_distance_m": 0.004777171183377504,
+          "active_waypoints": 8,
+          "cost": 0.4175983667373657
+        },
+        "noisy_action_gradient_norm": 0.0021117767319083214,
+        "guidance_update_norm": 0.09502995759248734,
+        "scheduler_reverse_delta_norm": 2.818922281265259,
+        "actual_net_delta_norm": 2.8042590618133545,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 70,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005290430039167404,
+          "minimum_obstacle_cloud_distance_m": 0.0028794079553335905,
+          "active_waypoints": 13,
+          "cost": 0.5133315920829773
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005290430039167404,
+          "minimum_obstacle_cloud_distance_m": 0.004855756647884846,
+          "active_waypoints": 8,
+          "cost": 0.4186217188835144
+        },
+        "noisy_action_gradient_norm": 0.0021430766209959984,
+        "guidance_update_norm": 0.0964384526014328,
+        "scheduler_reverse_delta_norm": 2.739650011062622,
+        "actual_net_delta_norm": 2.7410342693328857,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 69,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00530479708686471,
+          "minimum_obstacle_cloud_distance_m": 0.0028147941920906305,
+          "active_waypoints": 13,
+          "cost": 0.5130691528320312
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00530479708686471,
+          "minimum_obstacle_cloud_distance_m": 0.004762868396937847,
+          "active_waypoints": 8,
+          "cost": 0.41856256127357483
+        },
+        "noisy_action_gradient_norm": 0.0022293769288808107,
+        "guidance_update_norm": 0.10032196342945099,
+        "scheduler_reverse_delta_norm": 2.507094144821167,
+        "actual_net_delta_norm": 2.4996368885040283,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 68,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00539390230551362,
+          "minimum_obstacle_cloud_distance_m": 0.0029336996376514435,
+          "active_waypoints": 13,
+          "cost": 0.5125471353530884
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00539390230551362,
+          "minimum_obstacle_cloud_distance_m": 0.004656866192817688,
+          "active_waypoints": 8,
+          "cost": 0.4179471731185913
+        },
+        "noisy_action_gradient_norm": 0.0022485917434096336,
+        "guidance_update_norm": 0.10118663311004639,
+        "scheduler_reverse_delta_norm": 2.4287772178649902,
+        "actual_net_delta_norm": 2.4395346641540527,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 67,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005415684077888727,
+          "minimum_obstacle_cloud_distance_m": 0.0029030321165919304,
+          "active_waypoints": 13,
+          "cost": 0.5116152167320251
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005415684077888727,
+          "minimum_obstacle_cloud_distance_m": 0.004654646851122379,
+          "active_waypoints": 8,
+          "cost": 0.41744792461395264
+        },
+        "noisy_action_gradient_norm": 0.002244828501716256,
+        "guidance_update_norm": 0.1010172888636589,
+        "scheduler_reverse_delta_norm": 2.6232240200042725,
+        "actual_net_delta_norm": 2.6111268997192383,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 66,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005381351336836815,
+          "minimum_obstacle_cloud_distance_m": 0.003056032583117485,
+          "active_waypoints": 13,
+          "cost": 0.5128685235977173
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005381351336836815,
+          "minimum_obstacle_cloud_distance_m": 0.004716038703918457,
+          "active_waypoints": 8,
+          "cost": 0.4181309640407562
+        },
+        "noisy_action_gradient_norm": 0.0023580503184348345,
+        "guidance_update_norm": 0.10611225664615631,
+        "scheduler_reverse_delta_norm": 2.2590596675872803,
+        "actual_net_delta_norm": 2.257768392562866,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 65,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00529827456921339,
+          "minimum_obstacle_cloud_distance_m": 0.0028789034113287926,
+          "active_waypoints": 13,
+          "cost": 0.5135090351104736
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00529827456921339,
+          "minimum_obstacle_cloud_distance_m": 0.004751303233206272,
+          "active_waypoints": 8,
+          "cost": 0.4188665747642517
+        },
+        "noisy_action_gradient_norm": 0.002332327887415886,
+        "guidance_update_norm": 0.10495474934577942,
+        "scheduler_reverse_delta_norm": 2.529374837875366,
+        "actual_net_delta_norm": 2.5271425247192383,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 64,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005182147491723299,
+          "minimum_obstacle_cloud_distance_m": 0.0027701829094439745,
+          "active_waypoints": 13,
+          "cost": 0.5139368176460266
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005182147491723299,
+          "minimum_obstacle_cloud_distance_m": 0.004972051363438368,
+          "active_waypoints": 8,
+          "cost": 0.4195990264415741
+        },
+        "noisy_action_gradient_norm": 0.0023501014802604914,
+        "guidance_update_norm": 0.1057545617222786,
+        "scheduler_reverse_delta_norm": 2.076192855834961,
+        "actual_net_delta_norm": 2.0906331539154053,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 63,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0051073371432721615,
+          "minimum_obstacle_cloud_distance_m": 0.002457869239151478,
+          "active_waypoints": 13,
+          "cost": 0.5126755237579346
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0051073371432721615,
+          "minimum_obstacle_cloud_distance_m": 0.005107336677610874,
+          "active_waypoints": 8,
+          "cost": 0.4194030463695526
+        },
+        "noisy_action_gradient_norm": 0.002378238597884774,
+        "guidance_update_norm": 0.10702073574066162,
+        "scheduler_reverse_delta_norm": 2.2024343013763428,
+        "actual_net_delta_norm": 2.1919093132019043,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 62,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005098741501569748,
+          "minimum_obstacle_cloud_distance_m": 0.0024870671331882477,
+          "active_waypoints": 13,
+          "cost": 0.5127863883972168
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005098741501569748,
+          "minimum_obstacle_cloud_distance_m": 0.005098741035908461,
+          "active_waypoints": 8,
+          "cost": 0.4195542335510254
+        },
+        "noisy_action_gradient_norm": 0.0023955516517162323,
+        "guidance_update_norm": 0.10779982060194016,
+        "scheduler_reverse_delta_norm": 2.194399118423462,
+        "actual_net_delta_norm": 2.1982057094573975,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 61,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005127656273543835,
+          "minimum_obstacle_cloud_distance_m": 0.002404468832537532,
+          "active_waypoints": 13,
+          "cost": 0.5121248364448547
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005127656273543835,
+          "minimum_obstacle_cloud_distance_m": 0.005127656273543835,
+          "active_waypoints": 8,
+          "cost": 0.4189019203186035
+        },
+        "noisy_action_gradient_norm": 0.0024033307563513517,
+        "guidance_update_norm": 0.10814988613128662,
+        "scheduler_reverse_delta_norm": 2.2464845180511475,
+        "actual_net_delta_norm": 2.2501332759857178,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 60,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005176468752324581,
+          "minimum_obstacle_cloud_distance_m": 0.0025040064938366413,
+          "active_waypoints": 13,
+          "cost": 0.5118305683135986
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005176468752324581,
+          "minimum_obstacle_cloud_distance_m": 0.005176468286663294,
+          "active_waypoints": 8,
+          "cost": 0.41843241453170776
+        },
+        "noisy_action_gradient_norm": 0.002400127472355962,
+        "guidance_update_norm": 0.10800574719905853,
+        "scheduler_reverse_delta_norm": 2.6254332065582275,
+        "actual_net_delta_norm": 2.6200273036956787,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 59,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005173401441425085,
+          "minimum_obstacle_cloud_distance_m": 0.002576506230980158,
+          "active_waypoints": 13,
+          "cost": 0.5123066902160645
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005173401441425085,
+          "minimum_obstacle_cloud_distance_m": 0.005097439978271723,
+          "active_waypoints": 8,
+          "cost": 0.41859376430511475
+        },
+        "noisy_action_gradient_norm": 0.0024173357523977757,
+        "guidance_update_norm": 0.10878010094165802,
+        "scheduler_reverse_delta_norm": 2.038067102432251,
+        "actual_net_delta_norm": 2.053614377975464,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 58,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005175059195607901,
+          "minimum_obstacle_cloud_distance_m": 0.0026321890763938427,
+          "active_waypoints": 13,
+          "cost": 0.5119348168373108
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005175059195607901,
+          "minimum_obstacle_cloud_distance_m": 0.005154335871338844,
+          "active_waypoints": 8,
+          "cost": 0.4181627333164215
+        },
+        "noisy_action_gradient_norm": 0.0024118563160300255,
+        "guidance_update_norm": 0.10853353142738342,
+        "scheduler_reverse_delta_norm": 1.8470145463943481,
+        "actual_net_delta_norm": 1.8463044166564941,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 57,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005182560067623854,
+          "minimum_obstacle_cloud_distance_m": 0.0025738710537552834,
+          "active_waypoints": 13,
+          "cost": 0.5116643309593201
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005182560067623854,
+          "minimum_obstacle_cloud_distance_m": 0.005182559601962566,
+          "active_waypoints": 8,
+          "cost": 0.4178691506385803
+        },
+        "noisy_action_gradient_norm": 0.0024364928249269724,
+        "guidance_update_norm": 0.10964218527078629,
+        "scheduler_reverse_delta_norm": 1.8397334814071655,
+        "actual_net_delta_norm": 1.853201150894165,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 56,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005172328092157841,
+          "minimum_obstacle_cloud_distance_m": 0.0022872458212077618,
+          "active_waypoints": 13,
+          "cost": 0.5102431774139404
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005172328092157841,
+          "minimum_obstacle_cloud_distance_m": 0.005172328092157841,
+          "active_waypoints": 8,
+          "cost": 0.4176377058029175
+        },
+        "noisy_action_gradient_norm": 0.0025695208460092545,
+        "guidance_update_norm": 0.1156284362077713,
+        "scheduler_reverse_delta_norm": 1.8937103748321533,
+        "actual_net_delta_norm": 1.8991776704788208,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 55,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0052292924374341965,
+          "minimum_obstacle_cloud_distance_m": 0.002209245227277279,
+          "active_waypoints": 13,
+          "cost": 0.5094413757324219
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0052292924374341965,
+          "minimum_obstacle_cloud_distance_m": 0.0052292924374341965,
+          "active_waypoints": 8,
+          "cost": 0.4169501066207886
+        },
+        "noisy_action_gradient_norm": 0.0026026531122624874,
+        "guidance_update_norm": 0.11711938679218292,
+        "scheduler_reverse_delta_norm": 2.0510990619659424,
+        "actual_net_delta_norm": 2.0645382404327393,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 54,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0052458117716014385,
+          "minimum_obstacle_cloud_distance_m": 0.0021648393012583256,
+          "active_waypoints": 13,
+          "cost": 0.509036123752594
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0052458117716014385,
+          "minimum_obstacle_cloud_distance_m": 0.0052458117716014385,
+          "active_waypoints": 8,
+          "cost": 0.4168100357055664
+        },
+        "noisy_action_gradient_norm": 0.002547687850892544,
+        "guidance_update_norm": 0.11464594304561615,
+        "scheduler_reverse_delta_norm": 1.7914385795593262,
+        "actual_net_delta_norm": 1.7937394380569458,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 53,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005154417362064123,
+          "minimum_obstacle_cloud_distance_m": 0.0019500976195558906,
+          "active_waypoints": 13,
+          "cost": 0.5087330341339111
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005154417362064123,
+          "minimum_obstacle_cloud_distance_m": 0.005154417362064123,
+          "active_waypoints": 8,
+          "cost": 0.4170798659324646
+        },
+        "noisy_action_gradient_norm": 0.0025580774527043104,
+        "guidance_update_norm": 0.11511348932981491,
+        "scheduler_reverse_delta_norm": 1.9003546237945557,
+        "actual_net_delta_norm": 1.9107609987258911,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 52,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005072845611721277,
+          "minimum_obstacle_cloud_distance_m": 0.0017372537404298782,
+          "active_waypoints": 13,
+          "cost": 0.5085409879684448
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005072845611721277,
+          "minimum_obstacle_cloud_distance_m": 0.005072845611721277,
+          "active_waypoints": 8,
+          "cost": 0.4174877405166626
+        },
+        "noisy_action_gradient_norm": 0.002543945563957095,
+        "guidance_update_norm": 0.11447755247354507,
+        "scheduler_reverse_delta_norm": 1.9041751623153687,
+        "actual_net_delta_norm": 1.8853158950805664,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 51,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00507771410048008,
+          "minimum_obstacle_cloud_distance_m": 0.0018797634402289987,
+          "active_waypoints": 13,
+          "cost": 0.5096920728683472
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00507771410048008,
+          "minimum_obstacle_cloud_distance_m": 0.00507771410048008,
+          "active_waypoints": 8,
+          "cost": 0.41781288385391235
+        },
+        "noisy_action_gradient_norm": 0.0026138254906982183,
+        "guidance_update_norm": 0.11762215197086334,
+        "scheduler_reverse_delta_norm": 2.016897201538086,
+        "actual_net_delta_norm": 2.0170209407806396,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 50,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005146793555468321,
+          "minimum_obstacle_cloud_distance_m": 0.0020792405121028423,
+          "active_waypoints": 13,
+          "cost": 0.5095865726470947
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005146793555468321,
+          "minimum_obstacle_cloud_distance_m": 0.005146793555468321,
+          "active_waypoints": 8,
+          "cost": 0.41733330488204956
+        },
+        "noisy_action_gradient_norm": 0.002718389267101884,
+        "guidance_update_norm": 0.122327521443367,
+        "scheduler_reverse_delta_norm": 1.987548828125,
+        "actual_net_delta_norm": 1.9935847520828247,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 49,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00510479137301445,
+          "minimum_obstacle_cloud_distance_m": 0.0019445705693215132,
+          "active_waypoints": 13,
+          "cost": 0.5084049105644226
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00510479137301445,
+          "minimum_obstacle_cloud_distance_m": 0.00510479137301445,
+          "active_waypoints": 8,
+          "cost": 0.4168556034564972
+        },
+        "noisy_action_gradient_norm": 0.002795843407511711,
+        "guidance_update_norm": 0.12581296265125275,
+        "scheduler_reverse_delta_norm": 1.9920387268066406,
+        "actual_net_delta_norm": 2.0107953548431396,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 48,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005033021327108145,
+          "minimum_obstacle_cloud_distance_m": 0.0016915046144276857,
+          "active_waypoints": 13,
+          "cost": 0.5067070722579956
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005033021327108145,
+          "minimum_obstacle_cloud_distance_m": 0.0050330208614468575,
+          "active_waypoints": 8,
+          "cost": 0.41626566648483276
+        },
+        "noisy_action_gradient_norm": 0.002786722732707858,
+        "guidance_update_norm": 0.1254025399684906,
+        "scheduler_reverse_delta_norm": 2.0469963550567627,
+        "actual_net_delta_norm": 2.0450985431671143,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 47,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005078558344393969,
+          "minimum_obstacle_cloud_distance_m": 0.001673688180744648,
+          "active_waypoints": 13,
+          "cost": 0.5064656734466553
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005078558344393969,
+          "minimum_obstacle_cloud_distance_m": 0.005078557878732681,
+          "active_waypoints": 8,
+          "cost": 0.4162124991416931
+        },
+        "noisy_action_gradient_norm": 0.0029109828174114227,
+        "guidance_update_norm": 0.13099423050880432,
+        "scheduler_reverse_delta_norm": 1.9228034019470215,
+        "actual_net_delta_norm": 1.91657555103302,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 46,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005150986835360527,
+          "minimum_obstacle_cloud_distance_m": 0.001631611492484808,
+          "active_waypoints": 13,
+          "cost": 0.5066845417022705
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005150986835360527,
+          "minimum_obstacle_cloud_distance_m": 0.005150986835360527,
+          "active_waypoints": 8,
+          "cost": 0.41645902395248413
+        },
+        "noisy_action_gradient_norm": 0.0029990142211318016,
+        "guidance_update_norm": 0.13495562970638275,
+        "scheduler_reverse_delta_norm": 1.9697751998901367,
+        "actual_net_delta_norm": 1.9558734893798828,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 45,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005163790192455053,
+          "minimum_obstacle_cloud_distance_m": 0.0016296741086989641,
+          "active_waypoints": 13,
+          "cost": 0.507042407989502
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005163790192455053,
+          "minimum_obstacle_cloud_distance_m": 0.005163790192455053,
+          "active_waypoints": 8,
+          "cost": 0.4168403148651123
+        },
+        "noisy_action_gradient_norm": 0.0030571287497878075,
+        "guidance_update_norm": 0.1375707983970642,
+        "scheduler_reverse_delta_norm": 1.725744605064392,
+        "actual_net_delta_norm": 1.7033127546310425,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 44,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0052327062003314495,
+          "minimum_obstacle_cloud_distance_m": 0.0018194826552644372,
+          "active_waypoints": 13,
+          "cost": 0.5076018571853638
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0052327062003314495,
+          "minimum_obstacle_cloud_distance_m": 0.005232705734670162,
+          "active_waypoints": 8,
+          "cost": 0.4167901277542114
+        },
+        "noisy_action_gradient_norm": 0.003083428367972374,
+        "guidance_update_norm": 0.13875427842140198,
+        "scheduler_reverse_delta_norm": 1.7585982084274292,
+        "actual_net_delta_norm": 1.759259819984436,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 43,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00523088313639164,
+          "minimum_obstacle_cloud_distance_m": 0.0018880357965826988,
+          "active_waypoints": 13,
+          "cost": 0.5075716376304626
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00523088313639164,
+          "minimum_obstacle_cloud_distance_m": 0.005230882670730352,
+          "active_waypoints": 8,
+          "cost": 0.4165682792663574
+        },
+        "noisy_action_gradient_norm": 0.0030655590817332268,
+        "guidance_update_norm": 0.13795015215873718,
+        "scheduler_reverse_delta_norm": 1.8300780057907104,
+        "actual_net_delta_norm": 1.8163018226623535,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 42,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005242830608040094,
+          "minimum_obstacle_cloud_distance_m": 0.001941198599524796,
+          "active_waypoints": 13,
+          "cost": 0.5079218745231628
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005242830608040094,
+          "minimum_obstacle_cloud_distance_m": 0.005242830608040094,
+          "active_waypoints": 8,
+          "cost": 0.4167138934135437
+        },
+        "noisy_action_gradient_norm": 0.0030775845516473055,
+        "guidance_update_norm": 0.13849130272865295,
+        "scheduler_reverse_delta_norm": 1.7775983810424805,
+        "actual_net_delta_norm": 1.7833677530288696,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 41,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0052740066312253475,
+          "minimum_obstacle_cloud_distance_m": 0.0019085350213572383,
+          "active_waypoints": 13,
+          "cost": 0.5074084997177124
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0052740066312253475,
+          "minimum_obstacle_cloud_distance_m": 0.0052740066312253475,
+          "active_waypoints": 8,
+          "cost": 0.4165024757385254
+        },
+        "noisy_action_gradient_norm": 0.0031736658420413733,
+        "guidance_update_norm": 0.14281496405601501,
+        "scheduler_reverse_delta_norm": 1.623511791229248,
+        "actual_net_delta_norm": 1.6331557035446167,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 40,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005254882387816906,
+          "minimum_obstacle_cloud_distance_m": 0.0017550443299114704,
+          "active_waypoints": 13,
+          "cost": 0.5064669251441956
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005254882387816906,
+          "minimum_obstacle_cloud_distance_m": 0.005254881922155619,
+          "active_waypoints": 8,
+          "cost": 0.4164058566093445
+        },
+        "noisy_action_gradient_norm": 0.0031825611367821693,
+        "guidance_update_norm": 0.14321525394916534,
+        "scheduler_reverse_delta_norm": 1.5802088975906372,
+        "actual_net_delta_norm": 1.5888856649398804,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 39,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005204050336033106,
+          "minimum_obstacle_cloud_distance_m": 0.0014858588110655546,
+          "active_waypoints": 13,
+          "cost": 0.5053825974464417
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005204050336033106,
+          "minimum_obstacle_cloud_distance_m": 0.005204050336033106,
+          "active_waypoints": 8,
+          "cost": 0.416251003742218
+        },
+        "noisy_action_gradient_norm": 0.003236861899495125,
+        "guidance_update_norm": 0.14565879106521606,
+        "scheduler_reverse_delta_norm": 1.5638006925582886,
+        "actual_net_delta_norm": 1.5250065326690674,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 38,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005149118602275848,
+          "minimum_obstacle_cloud_distance_m": 0.001370590995065868,
+          "active_waypoints": 13,
+          "cost": 0.5055525302886963
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005149118602275848,
+          "minimum_obstacle_cloud_distance_m": 0.005149118602275848,
+          "active_waypoints": 8,
+          "cost": 0.41676414012908936
+        },
+        "noisy_action_gradient_norm": 0.0034002079628407955,
+        "guidance_update_norm": 0.15300936996936798,
+        "scheduler_reverse_delta_norm": 1.6028803586959839,
+        "actual_net_delta_norm": 1.5789748430252075,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 37,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005155082792043686,
+          "minimum_obstacle_cloud_distance_m": 0.0013979070354253054,
+          "active_waypoints": 13,
+          "cost": 0.5061044096946716
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005155082792043686,
+          "minimum_obstacle_cloud_distance_m": 0.005155082792043686,
+          "active_waypoints": 8,
+          "cost": 0.41697198152542114
+        },
+        "noisy_action_gradient_norm": 0.0035547574516385794,
+        "guidance_update_norm": 0.15996409952640533,
+        "scheduler_reverse_delta_norm": 1.5145204067230225,
+        "actual_net_delta_norm": 1.5191622972488403,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 36,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005116041749715805,
+          "minimum_obstacle_cloud_distance_m": 0.001535871415399015,
+          "active_waypoints": 13,
+          "cost": 0.5063947439193726
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005116041749715805,
+          "minimum_obstacle_cloud_distance_m": 0.005116041284054518,
+          "active_waypoints": 8,
+          "cost": 0.41690176725387573
+        },
+        "noisy_action_gradient_norm": 0.003661142894998193,
+        "guidance_update_norm": 0.16475144028663635,
+        "scheduler_reverse_delta_norm": 1.6725738048553467,
+        "actual_net_delta_norm": 1.6602740287780762,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 35,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005070177372545004,
+          "minimum_obstacle_cloud_distance_m": 0.0016298143891617656,
+          "active_waypoints": 13,
+          "cost": 0.5068187117576599
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005070177372545004,
+          "minimum_obstacle_cloud_distance_m": 0.005070176906883717,
+          "active_waypoints": 8,
+          "cost": 0.4169992208480835
+        },
+        "noisy_action_gradient_norm": 0.003762699430808425,
+        "guidance_update_norm": 0.1693214774131775,
+        "scheduler_reverse_delta_norm": 1.603989839553833,
+        "actual_net_delta_norm": 1.5698217153549194,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 34,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005025030579417944,
+          "minimum_obstacle_cloud_distance_m": 0.0015504182083532214,
+          "active_waypoints": 13,
+          "cost": 0.5072978734970093
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005025030579417944,
+          "minimum_obstacle_cloud_distance_m": 0.005025030113756657,
+          "active_waypoints": 8,
+          "cost": 0.4174111485481262
+        },
+        "noisy_action_gradient_norm": 0.003882730146870017,
+        "guidance_update_norm": 0.17472286522388458,
+        "scheduler_reverse_delta_norm": 1.4480998516082764,
+        "actual_net_delta_norm": 1.4418712854385376,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 33,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0049821469001472,
+          "minimum_obstacle_cloud_distance_m": 0.0016774379182606936,
+          "active_waypoints": 13,
+          "cost": 0.5076100826263428
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0049821469001472,
+          "minimum_obstacle_cloud_distance_m": 0.004982146434485912,
+          "active_waypoints": 8,
+          "cost": 0.4173871874809265
+        },
+        "noisy_action_gradient_norm": 0.003909786231815815,
+        "guidance_update_norm": 0.1759403795003891,
+        "scheduler_reverse_delta_norm": 1.367885947227478,
+        "actual_net_delta_norm": 1.3712189197540283,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 32,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005038970150053501,
+          "minimum_obstacle_cloud_distance_m": 0.001804402912966907,
+          "active_waypoints": 13,
+          "cost": 0.50764000415802
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005038970150053501,
+          "minimum_obstacle_cloud_distance_m": 0.005038970150053501,
+          "active_waypoints": 8,
+          "cost": 0.4170796275138855
+        },
+        "noisy_action_gradient_norm": 0.0038386425003409386,
+        "guidance_update_norm": 0.1727389097213745,
+        "scheduler_reverse_delta_norm": 1.2146440744400024,
+        "actual_net_delta_norm": 1.2180256843566895,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 31,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005067045800387859,
+          "minimum_obstacle_cloud_distance_m": 0.0019018049351871014,
+          "active_waypoints": 13,
+          "cost": 0.5073207020759583
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005067045800387859,
+          "minimum_obstacle_cloud_distance_m": 0.005067045334726572,
+          "active_waypoints": 8,
+          "cost": 0.41644948720932007
+        },
+        "noisy_action_gradient_norm": 0.003843932179734111,
+        "guidance_update_norm": 0.17297695577144623,
+        "scheduler_reverse_delta_norm": 1.414755940437317,
+        "actual_net_delta_norm": 1.3992429971694946,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 30,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005133305210620165,
+          "minimum_obstacle_cloud_distance_m": 0.0018872260116040707,
+          "active_waypoints": 13,
+          "cost": 0.506973922252655
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005133305210620165,
+          "minimum_obstacle_cloud_distance_m": 0.005133305210620165,
+          "active_waypoints": 8,
+          "cost": 0.4163048267364502
+        },
+        "noisy_action_gradient_norm": 0.004019499756395817,
+        "guidance_update_norm": 0.1808774769306183,
+        "scheduler_reverse_delta_norm": 1.3011524677276611,
+        "actual_net_delta_norm": 1.304619550704956,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 29,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005179018247872591,
+          "minimum_obstacle_cloud_distance_m": 0.0019276677630841732,
+          "active_waypoints": 13,
+          "cost": 0.5063102841377258
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005179018247872591,
+          "minimum_obstacle_cloud_distance_m": 0.005179018247872591,
+          "active_waypoints": 8,
+          "cost": 0.4157302975654602
+        },
+        "noisy_action_gradient_norm": 0.004067429807037115,
+        "guidance_update_norm": 0.18303434550762177,
+        "scheduler_reverse_delta_norm": 1.2453348636627197,
+        "actual_net_delta_norm": 1.225346565246582,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 28,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005154869519174099,
+          "minimum_obstacle_cloud_distance_m": 0.0018014521338045597,
+          "active_waypoints": 13,
+          "cost": 0.5060372352600098
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005154869519174099,
+          "minimum_obstacle_cloud_distance_m": 0.005154869053512812,
+          "active_waypoints": 8,
+          "cost": 0.41571947932243347
+        },
+        "noisy_action_gradient_norm": 0.004168449901044369,
+        "guidance_update_norm": 0.18758025765419006,
+        "scheduler_reverse_delta_norm": 1.1961055994033813,
+        "actual_net_delta_norm": 1.171525239944458,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 27,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005065612494945526,
+          "minimum_obstacle_cloud_distance_m": 0.0014078893000259995,
+          "active_waypoints": 13,
+          "cost": 0.5048770904541016
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005065612494945526,
+          "minimum_obstacle_cloud_distance_m": 0.005065612029284239,
+          "active_waypoints": 8,
+          "cost": 0.4157785177230835
+        },
+        "noisy_action_gradient_norm": 0.004213504493236542,
+        "guidance_update_norm": 0.18960769474506378,
+        "scheduler_reverse_delta_norm": 1.1962231397628784,
+        "actual_net_delta_norm": 1.1674646139144897,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 26,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005008873995393515,
+          "minimum_obstacle_cloud_distance_m": 0.001136633800342679,
+          "active_waypoints": 13,
+          "cost": 0.5038848519325256
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005008873995393515,
+          "minimum_obstacle_cloud_distance_m": 0.005008873995393515,
+          "active_waypoints": 8,
+          "cost": 0.41592758893966675
+        },
+        "noisy_action_gradient_norm": 0.004329318180680275,
+        "guidance_update_norm": 0.19481931626796722,
+        "scheduler_reverse_delta_norm": 1.1965607404708862,
+        "actual_net_delta_norm": 1.164001703262329,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 25,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.004992640111595392,
+          "minimum_obstacle_cloud_distance_m": 0.0009441761649213731,
+          "active_waypoints": 13,
+          "cost": 0.503779947757721
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.004992640111595392,
+          "minimum_obstacle_cloud_distance_m": 0.004992640111595392,
+          "active_waypoints": 8,
+          "cost": 0.4164597988128662
+        },
+        "noisy_action_gradient_norm": 0.004447953309863806,
+        "guidance_update_norm": 0.20015789568424225,
+        "scheduler_reverse_delta_norm": 1.1580556631088257,
+        "actual_net_delta_norm": 1.153679370880127,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 24,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0050236256793141365,
+          "minimum_obstacle_cloud_distance_m": 0.0008396272896789014,
+          "active_waypoints": 13,
+          "cost": 0.5033680200576782
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0050236256793141365,
+          "minimum_obstacle_cloud_distance_m": 0.0050236256793141365,
+          "active_waypoints": 8,
+          "cost": 0.416351854801178
+        },
+        "noisy_action_gradient_norm": 0.0046444246545434,
+        "guidance_update_norm": 0.20899911224842072,
+        "scheduler_reverse_delta_norm": 1.2256964445114136,
+        "actual_net_delta_norm": 1.2446644306182861,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 23,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005100423935800791,
+          "minimum_obstacle_cloud_distance_m": 0.000645417021587491,
+          "active_waypoints": 13,
+          "cost": 0.5017749667167664
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005100423935800791,
+          "minimum_obstacle_cloud_distance_m": 0.005100423935800791,
+          "active_waypoints": 8,
+          "cost": 0.41582614183425903
+        },
+        "noisy_action_gradient_norm": 0.004694091156125069,
+        "guidance_update_norm": 0.21123410761356354,
+        "scheduler_reverse_delta_norm": 1.0354301929473877,
+        "actual_net_delta_norm": 1.0147757530212402,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 22,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005089432932436466,
+          "minimum_obstacle_cloud_distance_m": 0.0006462128367275,
+          "active_waypoints": 13,
+          "cost": 0.5009384751319885
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005089432932436466,
+          "minimum_obstacle_cloud_distance_m": 0.005089432466775179,
+          "active_waypoints": 8,
+          "cost": 0.41535502672195435
+        },
+        "noisy_action_gradient_norm": 0.004820778500288725,
+        "guidance_update_norm": 0.21693503856658936,
+        "scheduler_reverse_delta_norm": 1.2058157920837402,
+        "actual_net_delta_norm": 1.1659353971481323,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 21,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005075031891465187,
+          "minimum_obstacle_cloud_distance_m": 0.0008371899020858109,
+          "active_waypoints": 13,
+          "cost": 0.5019778609275818
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005075031891465187,
+          "minimum_obstacle_cloud_distance_m": 0.0050750314258039,
+          "active_waypoints": 8,
+          "cost": 0.4155651926994324
+        },
+        "noisy_action_gradient_norm": 0.004893335979431868,
+        "guidance_update_norm": 0.22020010650157928,
+        "scheduler_reverse_delta_norm": 1.0741268396377563,
+        "actual_net_delta_norm": 1.0588231086730957,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 20,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005091059021651745,
+          "minimum_obstacle_cloud_distance_m": 0.0010895620798692107,
+          "active_waypoints": 13,
+          "cost": 0.5033496022224426
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005091059021651745,
+          "minimum_obstacle_cloud_distance_m": 0.0050910585559904575,
+          "active_waypoints": 8,
+          "cost": 0.41593581438064575
+        },
+        "noisy_action_gradient_norm": 0.004897633101791143,
+        "guidance_update_norm": 0.22039349377155304,
+        "scheduler_reverse_delta_norm": 1.0917565822601318,
+        "actual_net_delta_norm": 1.1020467281341553,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 19,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005114836152642965,
+          "minimum_obstacle_cloud_distance_m": 0.0010810584062710404,
+          "active_waypoints": 13,
+          "cost": 0.503886878490448
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005114836152642965,
+          "minimum_obstacle_cloud_distance_m": 0.005114835686981678,
+          "active_waypoints": 8,
+          "cost": 0.41616809368133545
+        },
+        "noisy_action_gradient_norm": 0.004944031126797199,
+        "guidance_update_norm": 0.22248141467571259,
+        "scheduler_reverse_delta_norm": 1.1303638219833374,
+        "actual_net_delta_norm": 1.10862135887146,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 18,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005243982654064894,
+          "minimum_obstacle_cloud_distance_m": 0.0014234613627195358,
+          "active_waypoints": 13,
+          "cost": 0.5046444535255432
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005243982654064894,
+          "minimum_obstacle_cloud_distance_m": 0.005243982654064894,
+          "active_waypoints": 8,
+          "cost": 0.4158870279788971
+        },
+        "noisy_action_gradient_norm": 0.005019234027713537,
+        "guidance_update_norm": 0.22586551308631897,
+        "scheduler_reverse_delta_norm": 1.1081362962722778,
+        "actual_net_delta_norm": 1.0685256719589233,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 17,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005289056804031134,
+          "minimum_obstacle_cloud_distance_m": 0.001671437406912446,
+          "active_waypoints": 13,
+          "cost": 0.5053328275680542
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005289056804031134,
+          "minimum_obstacle_cloud_distance_m": 0.005289056338369846,
+          "active_waypoints": 8,
+          "cost": 0.41593438386917114
+        },
+        "noisy_action_gradient_norm": 0.005122998263686895,
+        "guidance_update_norm": 0.23053492605686188,
+        "scheduler_reverse_delta_norm": 1.077194094657898,
+        "actual_net_delta_norm": 1.0675878524780273,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 16,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005313883535563946,
+          "minimum_obstacle_cloud_distance_m": 0.0017906682332977653,
+          "active_waypoints": 13,
+          "cost": 0.5053740739822388
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005313883535563946,
+          "minimum_obstacle_cloud_distance_m": 0.005313883535563946,
+          "active_waypoints": 8,
+          "cost": 0.4155269265174866
+        },
+        "noisy_action_gradient_norm": 0.005197582300752401,
+        "guidance_update_norm": 0.23389120399951935,
+        "scheduler_reverse_delta_norm": 0.9444131255149841,
+        "actual_net_delta_norm": 0.9091921448707581,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 15,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00528070330619812,
+          "minimum_obstacle_cloud_distance_m": 0.0019284420413896441,
+          "active_waypoints": 13,
+          "cost": 0.5059795379638672
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00528070330619812,
+          "minimum_obstacle_cloud_distance_m": 0.005280702840536833,
+          "active_waypoints": 8,
+          "cost": 0.4156609773635864
+        },
+        "noisy_action_gradient_norm": 0.005335562396794558,
+        "guidance_update_norm": 0.24010030925273895,
+        "scheduler_reverse_delta_norm": 1.1209661960601807,
+        "actual_net_delta_norm": 1.0552568435668945,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 14,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005233147647231817,
+          "minimum_obstacle_cloud_distance_m": 0.0021143804769963026,
+          "active_waypoints": 13,
+          "cost": 0.5076476335525513
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005233147647231817,
+          "minimum_obstacle_cloud_distance_m": 0.00523314718157053,
+          "active_waypoints": 8,
+          "cost": 0.41643190383911133
+        },
+        "noisy_action_gradient_norm": 0.005527979228645563,
+        "guidance_update_norm": 0.24875907599925995,
+        "scheduler_reverse_delta_norm": 0.9636551141738892,
+        "actual_net_delta_norm": 0.9413902163505554,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 13,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005117994267493486,
+          "minimum_obstacle_cloud_distance_m": 0.002012246288359165,
+          "active_waypoints": 13,
+          "cost": 0.5075826048851013
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005117994267493486,
+          "minimum_obstacle_cloud_distance_m": 0.005117994267493486,
+          "active_waypoints": 8,
+          "cost": 0.4165059030056
+        },
+        "noisy_action_gradient_norm": 0.005485294386744499,
+        "guidance_update_norm": 0.24683824181556702,
+        "scheduler_reverse_delta_norm": 0.9717690348625183,
+        "actual_net_delta_norm": 0.9656380414962769,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 12,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005132126156240702,
+          "minimum_obstacle_cloud_distance_m": 0.0019246471347287297,
+          "active_waypoints": 13,
+          "cost": 0.5063838958740234
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005132126156240702,
+          "minimum_obstacle_cloud_distance_m": 0.005132126156240702,
+          "active_waypoints": 8,
+          "cost": 0.4159948229789734
+        },
+        "noisy_action_gradient_norm": 0.005347819067537785,
+        "guidance_update_norm": 0.24065184593200684,
+        "scheduler_reverse_delta_norm": 0.7972050309181213,
+        "actual_net_delta_norm": 0.746528148651123,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 11,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005251656286418438,
+          "minimum_obstacle_cloud_distance_m": 0.001899795257486403,
+          "active_waypoints": 13,
+          "cost": 0.5059401988983154
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005251656286418438,
+          "minimum_obstacle_cloud_distance_m": 0.005251656286418438,
+          "active_waypoints": 8,
+          "cost": 0.41574928164482117
+        },
+        "noisy_action_gradient_norm": 0.005244752857834101,
+        "guidance_update_norm": 0.23601385951042175,
+        "scheduler_reverse_delta_norm": 0.8357839584350586,
+        "actual_net_delta_norm": 0.7855967879295349,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 10,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005308574065566063,
+          "minimum_obstacle_cloud_distance_m": 0.00186930934432894,
+          "active_waypoints": 13,
+          "cost": 0.5058319568634033
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005308574065566063,
+          "minimum_obstacle_cloud_distance_m": 0.005308573599904776,
+          "active_waypoints": 8,
+          "cost": 0.41575324535369873
+        },
+        "noisy_action_gradient_norm": 0.005249670706689358,
+        "guidance_update_norm": 0.23623517155647278,
+        "scheduler_reverse_delta_norm": 0.7832456827163696,
+        "actual_net_delta_norm": 0.7485625743865967,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 9,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005324907600879669,
+          "minimum_obstacle_cloud_distance_m": 0.0017955118091776967,
+          "active_waypoints": 13,
+          "cost": 0.5056938529014587
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005324907600879669,
+          "minimum_obstacle_cloud_distance_m": 0.005324907600879669,
+          "active_waypoints": 8,
+          "cost": 0.41582733392715454
+        },
+        "noisy_action_gradient_norm": 0.0052728718146681786,
+        "guidance_update_norm": 0.23727922141551971,
+        "scheduler_reverse_delta_norm": 0.9077115058898926,
+        "actual_net_delta_norm": 0.8302415609359741,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 8,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005252484697848558,
+          "minimum_obstacle_cloud_distance_m": 0.0018571907421573997,
+          "active_waypoints": 13,
+          "cost": 0.5064678192138672
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005252484697848558,
+          "minimum_obstacle_cloud_distance_m": 0.005252484697848558,
+          "active_waypoints": 8,
+          "cost": 0.4163113236427307
+        },
+        "noisy_action_gradient_norm": 0.005376448854804039,
+        "guidance_update_norm": 0.2419402152299881,
+        "scheduler_reverse_delta_norm": 0.7350832223892212,
+        "actual_net_delta_norm": 0.6661679744720459,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 7,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005148176569491625,
+          "minimum_obstacle_cloud_distance_m": 0.0016530296998098493,
+          "active_waypoints": 13,
+          "cost": 0.5060067772865295
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005148176569491625,
+          "minimum_obstacle_cloud_distance_m": 0.0051481761038303375,
+          "active_waypoints": 8,
+          "cost": 0.4164113402366638
+        },
+        "noisy_action_gradient_norm": 0.0053323544561862946,
+        "guidance_update_norm": 0.23995596170425415,
+        "scheduler_reverse_delta_norm": 0.7477095127105713,
+        "actual_net_delta_norm": 0.6451357007026672,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 6,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005080622620880604,
+          "minimum_obstacle_cloud_distance_m": 0.0015890694921836257,
+          "active_waypoints": 13,
+          "cost": 0.5059595108032227
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005080622620880604,
+          "minimum_obstacle_cloud_distance_m": 0.0050806221552193165,
+          "active_waypoints": 8,
+          "cost": 0.4166814386844635
+        },
+        "noisy_action_gradient_norm": 0.005528459325432777,
+        "guidance_update_norm": 0.24878066778182983,
+        "scheduler_reverse_delta_norm": 0.7625779509544373,
+        "actual_net_delta_norm": 0.695698618888855,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 5,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.00511594582349062,
+          "minimum_obstacle_cloud_distance_m": 0.001572893001139164,
+          "active_waypoints": 13,
+          "cost": 0.5059338212013245
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.00511594582349062,
+          "minimum_obstacle_cloud_distance_m": 0.00511594582349062,
+          "active_waypoints": 8,
+          "cost": 0.416767418384552
+        },
+        "noisy_action_gradient_norm": 0.0055905235931277275,
+        "guidance_update_norm": 0.2515735626220703,
+        "scheduler_reverse_delta_norm": 0.6656789779663086,
+        "actual_net_delta_norm": 0.6365408897399902,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 4,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005200523417443037,
+          "minimum_obstacle_cloud_distance_m": 0.0017570479540154338,
+          "active_waypoints": 13,
+          "cost": 0.5059844851493835
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005200523417443037,
+          "minimum_obstacle_cloud_distance_m": 0.00520052295178175,
+          "active_waypoints": 8,
+          "cost": 0.4165470600128174
+        },
+        "noisy_action_gradient_norm": 0.005574065260589123,
+        "guidance_update_norm": 0.2508329153060913,
+        "scheduler_reverse_delta_norm": 0.7080590128898621,
+        "actual_net_delta_norm": 0.6139354109764099,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 3,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005257433746010065,
+          "minimum_obstacle_cloud_distance_m": 0.00199487735517323,
+          "active_waypoints": 13,
+          "cost": 0.5070067048072815
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005257433746010065,
+          "minimum_obstacle_cloud_distance_m": 0.005257433746010065,
+          "active_waypoints": 8,
+          "cost": 0.4168446660041809
+        },
+        "noisy_action_gradient_norm": 0.0056816162541508675,
+        "guidance_update_norm": 0.25567272305488586,
+        "scheduler_reverse_delta_norm": 0.64290851354599,
+        "actual_net_delta_norm": 0.5406190156936646,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 2,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005289414431899786,
+          "minimum_obstacle_cloud_distance_m": 0.0021536722779273987,
+          "active_waypoints": 13,
+          "cost": 0.507827639579773
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005289414431899786,
+          "minimum_obstacle_cloud_distance_m": 0.005289413966238499,
+          "active_waypoints": 8,
+          "cost": 0.41704240441322327
+        },
+        "noisy_action_gradient_norm": 0.005755031947046518,
+        "guidance_update_norm": 0.25897642970085144,
+        "scheduler_reverse_delta_norm": 0.6124394536018372,
+        "actual_net_delta_norm": 0.4527921974658966,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 1,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.005307099781930447,
+          "minimum_obstacle_cloud_distance_m": 0.0023949691094458103,
+          "active_waypoints": 13,
+          "cost": 0.5091204047203064
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.005307099781930447,
+          "minimum_obstacle_cloud_distance_m": 0.005307099781930447,
+          "active_waypoints": 8,
+          "cost": 0.41743990778923035
+        },
+        "noisy_action_gradient_norm": 0.00567679014056921,
+        "guidance_update_norm": 0.25545555353164673,
+        "scheduler_reverse_delta_norm": 0.5722581148147583,
+        "actual_net_delta_norm": 0.41587069630622864,
+        "guidance_applied": true
+      },
+      {
+        "timestep": 0,
+        "implemented_full_horizon": {
+          "minimum_fixed_point_distance_m": 0.0053629749454557896,
+          "minimum_obstacle_cloud_distance_m": 0.002538059139624238,
+          "active_waypoints": 13,
+          "cost": 0.5099970698356628
+        },
+        "executable_slice": {
+          "start": 1,
+          "end_exclusive": 9,
+          "minimum_fixed_point_distance_m": 0.0053629749454557896,
+          "minimum_obstacle_cloud_distance_m": 0.005362974479794502,
+          "active_waypoints": 8,
+          "cost": 0.4175964593887329
+        },
+        "noisy_action_gradient_norm": 0.005495613440871239,
+        "guidance_update_norm": 0.2473025918006897,
+        "scheduler_reverse_delta_norm": 0.6185118556022644,
+        "actual_net_delta_norm": 0.4165209233760834,
+        "guidance_applied": true
+      }
+    ],
+    "final_full_minimum_obstacle_cloud_distance_m": 0.0012634071754291654,
+    "final_executable_minimum_obstacle_cloud_distance_m": 0.007138893008232117,
+    "executable_start": 1,
+    "executable_end_exclusive": 9,
+    "fixed_obstacle_point": [
+      0.006913988385349512,
+      -0.009957865811884403,
+      0.8230907917022705
+    ]
+  },
+  "final_baseline_guided_difference": {
+    "full_raw_l2": 0.06733816862106323,
+    "executable_xy_mean_m": 0.006184811238199472,
+    "executable_xy_max_m": 0.011195811443030834
+  },
+  "diagnostic_flags": {
+    "any_full_horizon_active_waypoint": true,
+    "any_executable_active_waypoint": true,
+    "any_nonzero_gradient": true,
+    "final_executable_changed_over_1mm": true,
+    "guided_final_executable_all_outside_Q": false
+  }
+}

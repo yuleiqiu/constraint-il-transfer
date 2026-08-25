@@ -1,0 +1,10 @@
+[
+  {
+    "env": "PickPlaceCanTabletopRaisedMilk",
+    "guidance_scale": 45.0,
+    "safety_distance": 0.08,
+    "pairs": 5,
+    "failure_to_success": 1,
+    "success_to_failure": 1
+  }
+]

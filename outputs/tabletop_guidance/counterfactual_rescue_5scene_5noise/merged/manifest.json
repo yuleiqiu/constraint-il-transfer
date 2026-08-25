@@ -1,0 +1,78 @@
+{
+  "parts": [
+    "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_guidance/counterfactual_rescue_5scene_5noise/part_s1_s5",
+    "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_guidance/counterfactual_rescue_5scene_5noise/part_s4",
+    "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_guidance/counterfactual_rescue_5scene_5noise/part_s7",
+    "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_guidance/counterfactual_rescue_5scene_5noise/part_s8"
+  ],
+  "checkpoint": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_tabletop_can_abs_pose_sample_100demo_seed42/20260814201328/models/model_epoch_100_tabletop_can_pointcloud_abs_eef_100_success_0.8.pth",
+  "state_bank": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_guidance/raised_milk_rho45_multilayout_seed819_ep1_4_5_7_8/initial_state_bank.pkl",
+  "scenes": [
+    1,
+    4,
+    5,
+    7,
+    8
+  ],
+  "policy_seeds": [
+    910000,
+    910001,
+    910002,
+    910003,
+    910004
+  ],
+  "horizon": 600,
+  "guidance": {
+    "rho": 45.0,
+    "Q_m": 0.08,
+    "cost": "huber_hinge",
+    "smoothing_m": 0.01,
+    "xy_only": true,
+    "tangent_ratio": 0.0
+  },
+  "eligibility": "clean success AND obstacle-baseline collision failure",
+  "rescue": "eligible AND obstacle-guided safe task success",
+  "initial_state_match": {
+    "1": {
+      "dynamic_state_max_abs": 0.0,
+      "can_position_max_abs_m": 0.0,
+      "goal_position_max_abs_m": 0.0,
+      "eef_position_max_abs_m": 0.0,
+      "agent_pos_max_abs": 4.76837158203125e-07,
+      "task_pointcloud_max_abs": 0.5597408413887024
+    },
+    "5": {
+      "dynamic_state_max_abs": 0.0,
+      "can_position_max_abs_m": 0.0,
+      "goal_position_max_abs_m": 0.0,
+      "eef_position_max_abs_m": 0.0,
+      "agent_pos_max_abs": 1.4901161193847656e-08,
+      "task_pointcloud_max_abs": 0.5262138843536377
+    },
+    "4": {
+      "dynamic_state_max_abs": 0.0,
+      "can_position_max_abs_m": 0.0,
+      "goal_position_max_abs_m": 0.0,
+      "eef_position_max_abs_m": 0.0,
+      "agent_pos_max_abs": 2.384185791015625e-07,
+      "task_pointcloud_max_abs": 0.5513529181480408
+    },
+    "7": {
+      "dynamic_state_max_abs": 0.0,
+      "can_position_max_abs_m": 0.0,
+      "goal_position_max_abs_m": 0.0,
+      "eef_position_max_abs_m": 0.0,
+      "agent_pos_max_abs": 2.384185791015625e-07,
+      "task_pointcloud_max_abs": 0.4947276711463928
+    },
+    "8": {
+      "dynamic_state_max_abs": 0.0,
+      "can_position_max_abs_m": 0.0,
+      "goal_position_max_abs_m": 0.0,
+      "eef_position_max_abs_m": 0.0,
+      "agent_pos_max_abs": 2.384185791015625e-07,
+      "task_pointcloud_max_abs": 0.5522482395172119
+    }
+  },
+  "eef_collision_note": "The EEF is a MuJoCo site and has no contact geom. Physical contacts are classified as gripper hand/finger, arm link, or carried Can; EEF-Milk is reported only as an XY footprint-overlap proxy."
+}

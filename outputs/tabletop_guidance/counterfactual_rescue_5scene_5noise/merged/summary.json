@@ -1,0 +1,392 @@
+{
+  "pairs": 25,
+  "clean_successes": 17,
+  "obstacle_collision_failures": 15,
+  "eligible_pairs": 11,
+  "guided_safe_success_rescues": 4,
+  "rescue_rate": 0.36363636363636365,
+  "eligible_guided_task_successes": 4,
+  "eligible_guided_safe_successes": 4,
+  "eligible_guided_collision_failures": 1,
+  "eligible_guided_collision_free_non_completion": 6,
+  "eligible_collision_categories": {
+    "arm_obstacle_collision_any": {
+      "baseline": 0,
+      "guided": 0
+    },
+    "gripper_obstacle_collision_any": {
+      "baseline": 5,
+      "guided": 1
+    },
+    "hand_obstacle_collision_any": {
+      "baseline": 4,
+      "guided": 1
+    },
+    "finger_obstacle_collision_any": {
+      "baseline": 4,
+      "guided": 0
+    },
+    "target_obstacle_collision_any": {
+      "baseline": 11,
+      "guided": 1
+    }
+  },
+  "eligible_keys": [
+    {
+      "scene": 4,
+      "policy_seed": 910000
+    },
+    {
+      "scene": 4,
+      "policy_seed": 910001
+    },
+    {
+      "scene": 4,
+      "policy_seed": 910002
+    },
+    {
+      "scene": 4,
+      "policy_seed": 910003
+    },
+    {
+      "scene": 4,
+      "policy_seed": 910004
+    },
+    {
+      "scene": 7,
+      "policy_seed": 910000
+    },
+    {
+      "scene": 7,
+      "policy_seed": 910001
+    },
+    {
+      "scene": 7,
+      "policy_seed": 910002
+    },
+    {
+      "scene": 7,
+      "policy_seed": 910003
+    },
+    {
+      "scene": 8,
+      "policy_seed": 910002
+    },
+    {
+      "scene": 8,
+      "policy_seed": 910003
+    }
+  ],
+  "rescued_keys": [
+    {
+      "scene": 4,
+      "policy_seed": 910000
+    },
+    {
+      "scene": 4,
+      "policy_seed": 910001
+    },
+    {
+      "scene": 4,
+      "policy_seed": 910002
+    },
+    {
+      "scene": 4,
+      "policy_seed": 910003
+    }
+  ],
+  "rescue_rate_wilson_95": [
+    0.15166471095367573,
+    0.6461988254921511
+  ],
+  "all_branch_outcomes": {
+    "clean": {
+      "safe_success": 17,
+      "collision_free_non_completion": 8
+    },
+    "obstacle_baseline": {
+      "success_with_collision": 6,
+      "collision_failure": 15,
+      "collision_free_non_completion": 4
+    },
+    "obstacle_guided": {
+      "collision_failure": 3,
+      "collision_free_non_completion": 18,
+      "safe_success": 4
+    }
+  },
+  "eligible_guided_outcomes": {
+    "safe_success": 4,
+    "collision_free_non_completion": 6,
+    "collision_failure": 1
+  },
+  "eligible_physical_contact_episode_counts": {
+    "obstacle_baseline": {
+      "carried_can:Milk": 11,
+      "carried_can:MilkSupport": 1,
+      "gripper:Milk": 5,
+      "gripper_finger:Milk": 4,
+      "gripper_hand:Milk": 4
+    },
+    "obstacle_guided": {
+      "carried_can:Milk": 1,
+      "gripper:Milk": 1,
+      "gripper_hand:Milk": 1
+    }
+  },
+  "eligible_eef_xy_proxy_overlap": {
+    "obstacle_baseline": 10,
+    "obstacle_guided": 1
+  },
+  "per_scene": [
+    {
+      "pairs": 5,
+      "clean_successes": 5,
+      "obstacle_collision_failures": 0,
+      "eligible_pairs": 0,
+      "guided_safe_success_rescues": 0,
+      "rescue_rate": null,
+      "eligible_guided_task_successes": 0,
+      "eligible_guided_safe_successes": 0,
+      "eligible_guided_collision_failures": 0,
+      "eligible_guided_collision_free_non_completion": 0,
+      "eligible_collision_categories": {
+        "arm_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "gripper_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "hand_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "finger_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "target_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        }
+      },
+      "eligible_keys": [],
+      "rescued_keys": [],
+      "scene": 1
+    },
+    {
+      "pairs": 5,
+      "clean_successes": 5,
+      "obstacle_collision_failures": 5,
+      "eligible_pairs": 5,
+      "guided_safe_success_rescues": 4,
+      "rescue_rate": 0.8,
+      "eligible_guided_task_successes": 4,
+      "eligible_guided_safe_successes": 4,
+      "eligible_guided_collision_failures": 0,
+      "eligible_guided_collision_free_non_completion": 1,
+      "eligible_collision_categories": {
+        "arm_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "gripper_obstacle_collision_any": {
+          "baseline": 3,
+          "guided": 0
+        },
+        "hand_obstacle_collision_any": {
+          "baseline": 3,
+          "guided": 0
+        },
+        "finger_obstacle_collision_any": {
+          "baseline": 3,
+          "guided": 0
+        },
+        "target_obstacle_collision_any": {
+          "baseline": 5,
+          "guided": 0
+        }
+      },
+      "eligible_keys": [
+        {
+          "scene": 4,
+          "policy_seed": 910000
+        },
+        {
+          "scene": 4,
+          "policy_seed": 910001
+        },
+        {
+          "scene": 4,
+          "policy_seed": 910002
+        },
+        {
+          "scene": 4,
+          "policy_seed": 910003
+        },
+        {
+          "scene": 4,
+          "policy_seed": 910004
+        }
+      ],
+      "rescued_keys": [
+        {
+          "scene": 4,
+          "policy_seed": 910000
+        },
+        {
+          "scene": 4,
+          "policy_seed": 910001
+        },
+        {
+          "scene": 4,
+          "policy_seed": 910002
+        },
+        {
+          "scene": 4,
+          "policy_seed": 910003
+        }
+      ],
+      "scene": 4
+    },
+    {
+      "pairs": 5,
+      "clean_successes": 0,
+      "obstacle_collision_failures": 1,
+      "eligible_pairs": 0,
+      "guided_safe_success_rescues": 0,
+      "rescue_rate": null,
+      "eligible_guided_task_successes": 0,
+      "eligible_guided_safe_successes": 0,
+      "eligible_guided_collision_failures": 0,
+      "eligible_guided_collision_free_non_completion": 0,
+      "eligible_collision_categories": {
+        "arm_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "gripper_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "hand_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "finger_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "target_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        }
+      },
+      "eligible_keys": [],
+      "rescued_keys": [],
+      "scene": 5
+    },
+    {
+      "pairs": 5,
+      "clean_successes": 4,
+      "obstacle_collision_failures": 5,
+      "eligible_pairs": 4,
+      "guided_safe_success_rescues": 0,
+      "rescue_rate": 0.0,
+      "eligible_guided_task_successes": 0,
+      "eligible_guided_safe_successes": 0,
+      "eligible_guided_collision_failures": 0,
+      "eligible_guided_collision_free_non_completion": 4,
+      "eligible_collision_categories": {
+        "arm_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "gripper_obstacle_collision_any": {
+          "baseline": 1,
+          "guided": 0
+        },
+        "hand_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "finger_obstacle_collision_any": {
+          "baseline": 1,
+          "guided": 0
+        },
+        "target_obstacle_collision_any": {
+          "baseline": 4,
+          "guided": 0
+        }
+      },
+      "eligible_keys": [
+        {
+          "scene": 7,
+          "policy_seed": 910000
+        },
+        {
+          "scene": 7,
+          "policy_seed": 910001
+        },
+        {
+          "scene": 7,
+          "policy_seed": 910002
+        },
+        {
+          "scene": 7,
+          "policy_seed": 910003
+        }
+      ],
+      "rescued_keys": [],
+      "scene": 7
+    },
+    {
+      "pairs": 5,
+      "clean_successes": 3,
+      "obstacle_collision_failures": 4,
+      "eligible_pairs": 2,
+      "guided_safe_success_rescues": 0,
+      "rescue_rate": 0.0,
+      "eligible_guided_task_successes": 0,
+      "eligible_guided_safe_successes": 0,
+      "eligible_guided_collision_failures": 1,
+      "eligible_guided_collision_free_non_completion": 1,
+      "eligible_collision_categories": {
+        "arm_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "gripper_obstacle_collision_any": {
+          "baseline": 1,
+          "guided": 1
+        },
+        "hand_obstacle_collision_any": {
+          "baseline": 1,
+          "guided": 1
+        },
+        "finger_obstacle_collision_any": {
+          "baseline": 0,
+          "guided": 0
+        },
+        "target_obstacle_collision_any": {
+          "baseline": 2,
+          "guided": 1
+        }
+      },
+      "eligible_keys": [
+        {
+          "scene": 8,
+          "policy_seed": 910002
+        },
+        {
+          "scene": 8,
+          "policy_seed": 910003
+        }
+      ],
+      "rescued_keys": [],
+      "scene": 8
+    }
+  ]
+}

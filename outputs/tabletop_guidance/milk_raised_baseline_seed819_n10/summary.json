@@ -1,0 +1,28 @@
+[
+  {
+    "env": "PickPlaceCanTabletopMilk",
+    "condition": "baseline",
+    "guidance_scale": null,
+    "safety_distance": null,
+    "episodes": 10,
+    "task_sr": 0.3,
+    "safe_sr": 0.0,
+    "cr": 0.8,
+    "robot_obstacle_cr": 0.2,
+    "arm_obstacle_cr": 0.0,
+    "gripper_obstacle_cr": 0.2,
+    "hand_obstacle_cr": 0.2,
+    "finger_obstacle_cr": 0.1,
+    "target_obstacle_cr": 0.8,
+    "ncr": 0.2,
+    "horizon_truncation_rate": 0.7,
+    "safe_success": 0,
+    "success_with_collision": 3,
+    "collision_failure": 5,
+    "collision_free_non_completion": 2,
+    "horizon_truncated": 7,
+    "guidance_trigger_rate_mean": 0.0,
+    "guidance_update_norm_mean": 0.0,
+    "guidance_update_norm_max": 0.0
+  }
+]

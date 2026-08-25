@@ -1,0 +1,7818 @@
+{
+  "environment": "PickPlaceCanTabletopMilk",
+  "milk_support_height_m": 0.0,
+  "guidance_enabled": false,
+  "seed": 817,
+  "episode": 0,
+  "layout_seed": 817000,
+  "policy_seed": 817000000,
+  "metrics": {
+    "condition": "baseline",
+    "guidance_scale": null,
+    "safety_distance": null,
+    "success": true,
+    "collision_any": false,
+    "robot_obstacle_collision_any": false,
+    "arm_obstacle_collision_any": false,
+    "gripper_obstacle_collision_any": false,
+    "hand_obstacle_collision_any": false,
+    "finger_obstacle_collision_any": false,
+    "target_obstacle_collision_any": false,
+    "safe_success": true,
+    "success_with_collision": false,
+    "collision_failure": false,
+    "ncr": false,
+    "horizon_truncated": false,
+    "collision_names": [],
+    "collision_robot_geom_names": [],
+    "horizon": 296,
+    "chunks": 37,
+    "target_displacement_m": 0.45477020740509033,
+    "minimum_eef_obstacle_clearance_m": -0.01286349631845951,
+    "guidance_trigger_rate": 0.0,
+    "guidance_update_norm_mean": 0.0,
+    "guidance_update_norm_max": 0.0,
+    "obstacle_cloud_missing_chunks": 0,
+    "first_guidance_active_step": null,
+    "first_collision_step": null,
+    "first_hand_collision_step": null,
+    "first_finger_collision_step": null,
+    "first_target_collision_step": null,
+    "action_clip_count": 822,
+    "action_clip_max_abs": 1.1895887851715088,
+    "position_action_clip_count": 143,
+    "position_action_clip_max_abs": 0.021747469902038574,
+    "hand_collision_enabled": true,
+    "hand_collision_audit": {
+      "enabled": true,
+      "hand_masks": {
+        "gripper0_right_gripper_base_col": [
+          1,
+          1
+        ]
+      },
+      "finger_masks": {
+        "gripper0_right_l_finger_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_l_finger_g1": [
+          0,
+          1
+        ],
+        "gripper0_right_l_fingertip_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_l_fingerpad_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_r_finger_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_r_finger_g1": [
+          0,
+          1
+        ],
+        "gripper0_right_r_fingertip_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_r_fingerpad_g0": [
+          0,
+          1
+        ]
+      }
+    },
+    "obstacle_cost_type": "hinge",
+    "obstacle_cost_smoothing": null
+  },
+  "video": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_guidance/milk_direct_visual_seed817_ep0/milk_on_table_seed817_ep0.mp4",
+  "closest_footprint_overlap_frame": 63,
+  "samples": [
+    {
+      "step": 0,
+      "can_pos": [
+        -0.011283956102284685,
+        -0.22186842638922027,
+        0.8600000000000001
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8196149601698346,
+        0.8997916485353517
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22975845418892152,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.12438463719816739,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 1,
+      "can_pos": [
+        -0.01128396101496476,
+        -0.22186842594148104,
+        0.8482374097307546
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8078523580460436,
+        0.8880290699710494
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297584543868101,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13614723932195838,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 2,
+      "can_pos": [
+        -0.011291625694291573,
+        -0.22186866933811045,
+        0.8396807661646307
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7992912178100543,
+        0.8794768884734055
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22975969713304745,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1447083795579477,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 3,
+      "can_pos": [
+        -0.011297987544939268,
+        -0.22186887109940634,
+        0.8402631682532249
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998699085633775,
+        0.8800629734120092
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297607285678057,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441296888046245,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 4,
+      "can_pos": [
+        -0.011305617101320635,
+        -0.2218691219881745,
+        0.840291568118805
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998937681270093,
+        0.8800958786919995
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976197460627554,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441058292409927,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 5,
+      "can_pos": [
+        -0.01131331513628931,
+        -0.221869380235424,
+        0.8402969656453916
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998945844098418,
+        0.88010582224303
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.229763237141478,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410501295816014,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 6,
+      "can_pos": [
+        -0.011321054085016593,
+        -0.2218696447884086,
+        0.840301391078474
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998944091626732,
+        0.8801148129715821
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976451153093075,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441051882053288,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 7,
+      "can_pos": [
+        -0.011328833221200891,
+        -0.22186991566924438,
+        0.8403057945406763
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998941933221737,
+        0.8801238001924067
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976579770549588,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410540404582828,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 8,
+      "can_pos": [
+        -0.01133665272568295,
+        -0.22187019293718488,
+        0.8403102171714268
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998939780029916,
+        0.8801328250694003
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297670957514892,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410561936501043,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 9,
+      "can_pos": [
+        -0.011344512812020733,
+        -0.221870476653292,
+        0.8403146608381478
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998937650115554,
+        0.8801418895303875
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297684057613448,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410583235644658,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 10,
+      "can_pos": [
+        -0.011317269144469639,
+        -0.22187066003728065,
+        0.8403003555262628
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998962649287155,
+        0.8801109022052519
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976502302947568,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410333243928652,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 11,
+      "can_pos": [
+        -0.011324729284581381,
+        -0.22187091072096812,
+        0.8403036070721965
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998951676862623,
+        0.8801184691135658
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976624732170012,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410442968173964,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 12,
+      "can_pos": [
+        -0.011332528096362409,
+        -0.2218711911381495,
+        0.8403079559317037
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998948919906326,
+        0.8801274069021476
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976754564129911,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441047053773694,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 13,
+      "can_pos": [
+        -0.011340367361824264,
+        -0.22187147801101212,
+        0.8403123865020032
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799894679396063,
+        0.8801364448516747
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976885591330548,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410491797193903,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 14,
+      "can_pos": [
+        -0.011348247317415218,
+        -0.2218717713988606,
+        0.8403168408639725
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998944718765658,
+        0.8801455251489557
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977017823142784,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410512549143617,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 15,
+      "can_pos": [
+        -0.0113206389411158,
+        -0.2218719321673879,
+        0.8403016253963931
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998963554114789,
+        0.8801133361839988
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976672496049816,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410324195652313,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 16,
+      "can_pos": [
+        -0.011328415444610662,
+        -0.22187221558413994,
+        0.8403057116029072
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998958061274809,
+        0.8801220223468242
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976802319505746,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410379124052108,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 17,
+      "can_pos": [
+        -0.011336233971521012,
+        -0.22187250576744497,
+        0.8403101205608637
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998951476612242,
+        0.8801314630212188
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976933389341167,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410444970677783,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 18,
+      "can_pos": [
+        -0.011344093077700346,
+        -0.22187280247233876,
+        0.8403145640873672
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998944966850614,
+        0.8801409651824493
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297706566277757,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410510068294058,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 19,
+      "can_pos": [
+        -0.011317016227905539,
+        -0.2218730123268318,
+        0.8403003871640299
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998970084911986,
+        0.8801102217024929
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976732203994685,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410258887680338,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 20,
+      "can_pos": [
+        -0.011324314815898092,
+        -0.2218732668744345,
+        0.8403035238862656
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998955537218334,
+        0.8801179174971405
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976852901237657,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410404364616858,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 21,
+      "can_pos": [
+        -0.011332112696383671,
+        -0.22187356051924292,
+        0.8403078648097478
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799894836886754,
+        0.8801272805487412
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297698402999482,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410476048124798,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 22,
+      "can_pos": [
+        -0.011339951033397362,
+        -0.22187386069946222,
+        0.8403122955328184
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799894182855041,
+        0.8801367602365289
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977116361903985,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.144105414512961,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 23,
+      "can_pos": [
+        -0.01134783006387021,
+        -0.22187416747002744,
+        0.8403167504063112
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998935257912511,
+        0.8801462910966664
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977249905908845,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410607157675093,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 24,
+      "can_pos": [
+        -0.011320228896543412,
+        -0.221874346063141,
+        0.8403015811052679
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998955194684778,
+        0.8801140842822757
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976906448919499,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410407789952417,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 25,
+      "can_pos": [
+        -0.011328003591660816,
+        -0.22187464287871708,
+        0.8403056280061706
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998945215023032,
+        0.8801231405190467
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977037574672343,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410507586569876,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 26,
+      "can_pos": [
+        -0.011335821244392698,
+        -0.22187494669500046,
+        0.8403100356549186
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998938539956548,
+        0.8801325876105909
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977169982206638,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410574337234716,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 27,
+      "can_pos": [
+        -0.011343679479465766,
+        -0.2218752571109292,
+        0.840314479678604
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998931957390537,
+        0.8801420980417478
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977303601090066,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410640162894828,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 28,
+      "can_pos": [
+        -0.011316856453664191,
+        -0.2218754975901256,
+        0.8403004543564669
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998956303544156,
+        0.8801117334141855
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297697650643277,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441039670135864,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 29,
+      "can_pos": [
+        -0.011323906713475352,
+        -0.2218757534829704,
+        0.8403034544764134
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998942454319139,
+        0.880119087660129
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977094087224173,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441053519360881,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 30,
+      "can_pos": [
+        -0.01133170377354026,
+        -0.22187606108919214,
+        0.8403077864575315
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998935116920866,
+        0.8801284497265298
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297722658694283,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410608567591543,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 31,
+      "can_pos": [
+        -0.011339541295470473,
+        -0.22187637531657395,
+        0.8403122173954132
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799892849862762,
+        0.8801379376362688
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977360298354027,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410674750524,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 32,
+      "can_pos": [
+        -0.011347419515220987,
+        -0.22187669621400186,
+        0.8403166728902087
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998921853583587,
+        0.8801474771742802
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977495229788705,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410741200964328,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 33,
+      "can_pos": [
+        -0.011319817097023602,
+        -0.2218768925026773,
+        0.8403015433920435
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998942093768291,
+        0.8801153196260147
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977153519590998,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441053879911729,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 34,
+      "can_pos": [
+        -0.011327590969950946,
+        -0.22187720358942364,
+        0.8403055533804981
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998931663203714,
+        0.8801243471226708
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977286046965759,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410643104763055,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 35,
+      "can_pos": [
+        -0.011335407826196173,
+        -0.22187752178614625,
+        0.8403099596691112
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998924892280564,
+        0.8801338010740628
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977419867259558,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410710813994554,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 36,
+      "can_pos": [
+        -0.01134326526860743,
+        -0.22187784666516025,
+        0.840314404277853
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998918232817389,
+        0.880143320359446
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977554907115033,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410777408626307,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 37,
+      "can_pos": [
+        -0.01131644113786268,
+        -0.22187810524745824,
+        0.8403004415651101
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998943107703717,
+        0.880113028078164
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977229601455748,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410528659763033,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 38,
+      "can_pos": [
+        -0.011323490535011733,
+        -0.22187837580938535,
+        0.8403035379186011
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998930137352966,
+        0.8801204868988476
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977348622989271,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410658363270534,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 39,
+      "can_pos": [
+        -0.01133128671717631,
+        -0.22187869810016547,
+        0.8403077263331387
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998921279618774,
+        0.8801297138596927
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977482564525814,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410746940612462,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 40,
+      "can_pos": [
+        -0.011339123469710555,
+        -0.22187902713223961,
+        0.8403121448388967
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799891445194506,
+        0.8801391978372719
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297761773105302,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410815217349604,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 41,
+      "can_pos": [
+        -0.011347000921389442,
+        -0.2218793629208973,
+        0.8403166004801694
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998907722901093,
+        0.8801487460622874
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977754126168776,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441088250778927,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 42,
+      "can_pos": [
+        -0.011319397606767185,
+        -0.2218795779557142,
+        0.8403018149394136
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998931301676584,
+        0.8801169425704952
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977414271866325,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441064672003436,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 43,
+      "can_pos": [
+        -0.011327170519130266,
+        -0.22187990406448072,
+        0.840305743563545
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998919971663216,
+        0.8801258972779002
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977548273408266,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410760020168034,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 44,
+      "can_pos": [
+        -0.011334986419036519,
+        -0.2218802373613532,
+        0.8403099410895826
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998911025776557,
+        0.8801351511942304
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977683575636573,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410849479034626,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 45,
+      "can_pos": [
+        -0.011342843111631364,
+        -0.22188057747390547,
+        0.8403143366117365
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998903787343892,
+        0.8801446301968942
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977820113320543,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441092186336128,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 46,
+      "can_pos": [
+        -0.011316018120064194,
+        -0.22188085518524242,
+        0.8403005402929723
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998930222092268,
+        0.8801145147170639
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977496701871933,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410657515877523,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 47,
+      "can_pos": [
+        -0.011323066765799217,
+        -0.22188114126336786,
+        0.8403038697516867
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998919494573059,
+        0.8801222154597109
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977617249509008,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410764791069608,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 48,
+      "can_pos": [
+        -0.011330862108178921,
+        -0.22188147904288988,
+        0.8403080102798259
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998910068883267,
+        0.8801314034371591
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977752713003335,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410859047967528,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 49,
+      "can_pos": [
+        -0.01133869789330551,
+        -0.2218818236163623,
+        0.8403122227621482
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998901090922166,
+        0.880140690390084
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977889405005644,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441094882757854,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 50,
+      "can_pos": [
+        -0.011346574512590302,
+        -0.22188217506013094,
+        0.8403165434503048
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998892921305797,
+        0.8801501127592067
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22978027338603263,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441103052374223,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 51,
+      "can_pos": [
+        -0.011318970312271581,
+        -0.22188240991037042,
+        0.8403021241761366
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998920055902686,
+        0.8801186862188678
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.229776894466674,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410759177773336,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 52,
+      "can_pos": [
+        -0.011326742497593164,
+        -0.22188275189139908,
+        0.8403060997194091
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799890910367653,
+        0.8801276969794132
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977825009637237,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410868700034896,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 53,
+      "can_pos": [
+        -0.011334557681871742,
+        -0.22188310115267634,
+        0.8403102961413318
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998900054434928,
+        0.8801369590162691
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977961882544395,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410959192450923,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 54,
+      "can_pos": [
+        -0.01134241342470377,
+        -0.22188345727061226,
+        0.8403145225027705
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998891031648325,
+        0.8801462781261797
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22978099991872605,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14411049420316946,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 55,
+      "can_pos": [
+        -0.011316232245008422,
+        -0.221874532077875,
+        0.8402999845689546
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998962808400202,
+        0.8801101477754846
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976872621278435,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441033165279818,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 56,
+      "can_pos": [
+        -0.011323530304842743,
+        -0.221874665479244,
+        0.8403030731484759
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998948839978077,
+        0.8801176894359173
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22976981298017912,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410471337019426,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 57,
+      "can_pos": [
+        -0.01133132397903642,
+        -0.22187496626160386,
+        0.8403074098726142
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998941610521133,
+        0.8801270502113849
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977113076143582,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410543631588868,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 58,
+      "can_pos": [
+        -0.01133915808978783,
+        -0.22187527362360487,
+        0.840311838869562
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998935033658889,
+        0.8801365301134082
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977246061494022,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410609400211305,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 59,
+      "can_pos": [
+        -0.011347032876334822,
+        -0.22187558761435716,
+        0.8403162921200722
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998928427361319,
+        0.8801460613055386
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977380262465025,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410675463187006,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 60,
+      "can_pos": [
+        -0.011319445363292019,
+        -0.22187577775008038,
+        0.8403012266005292
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799894923845577,
+        0.8801139745529615
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297703814003786,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410467352242495,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 61,
+      "can_pos": [
+        -0.011327212234151146,
+        -0.22187608138235362,
+        0.8403051783734173
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998938331029136,
+        0.8801229333514315
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297716983602718,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410576426508837,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 62,
+      "can_pos": [
+        -0.011335025669391246,
+        -0.22187639256102568,
+        0.8403095798737273
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.79989315740291,
+        0.8801323763512797
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977302915018122,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410643996509198,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 63,
+      "can_pos": [
+        -0.011342879667365535,
+        -0.22187671037979745,
+        0.8403140220981713
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998924952909614,
+        0.8801418870511746
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977437209060728,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410710207704058,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 64,
+      "can_pos": [
+        -0.011317037361034137,
+        -0.22187700047106046,
+        0.840300451733358
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998945832414142,
+        0.8801127733726757
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297712786967696,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410501412658783,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 65,
+      "can_pos": [
+        -0.01132311270158705,
+        -0.2218772255310278,
+        0.8403030477487847
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799893581615969,
+        0.880118941715244
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977229641262525,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410601575203297,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 66,
+      "can_pos": [
+        -0.011330905544375307,
+        -0.22187754067126694,
+        0.8403073332624275
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998927992488661,
+        0.8801282594856551
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297736282945091,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410679811913585,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 67,
+      "can_pos": [
+        -0.011338738837075368,
+        -0.22187786248810656,
+        0.8403117606360885
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998921316816746,
+        0.8801377460165611
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297749723462016,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410746568632737,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 68,
+      "can_pos": [
+        -0.01134661280951745,
+        -0.2218781910160414,
+        0.8403162144550747
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998914633135233,
+        0.8801472860784738
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977632863593736,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410813405447864,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 69,
+      "can_pos": [
+        -0.011319035279348985,
+        -0.22187840076853343,
+        0.8403014235755154
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998937999941372,
+        0.8801154929741378
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.229772928255745,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410579737386475,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 70,
+      "can_pos": [
+        -0.011326797793642152,
+        -0.22187871864470718,
+        0.840305213668685
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998925431449901,
+        0.880124294541018
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977425874222776,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410705422301184,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 71,
+      "can_pos": [
+        -0.01133461043150051,
+        -0.22187904460809652,
+        0.8403095137810359
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799891757510061,
+        0.8801336446936376
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977560406004952,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410783985794096,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 72,
+      "can_pos": [
+        -0.01134246367607016,
+        -0.22187937731924506,
+        0.8403139513108067
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998910821428357,
+        0.8801431592534344
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977696164056144,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410851522516632,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 73,
+      "can_pos": [
+        -0.011316620385544488,
+        -0.2218796859539022,
+        0.8403004636892534
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998932427898962,
+        0.8801141383647989
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297738865871829,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410635457810583,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 74,
+      "can_pos": [
+        -0.011322695034795598,
+        -0.22187992628842473,
+        0.8403033489169878
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998925216880924,
+        0.8801206046032518
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977491933600194,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410707567990955,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 75,
+      "can_pos": [
+        -0.011330486924449597,
+        -0.22188025653272078,
+        0.8403074653361144
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998915615304872,
+        0.8801297619691536
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297762660417515,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410803583751475,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 76,
+      "can_pos": [
+        -0.011338319332404206,
+        -0.22188059354683606,
+        0.84031171355992
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998907059955176,
+        0.8801390781615956
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297776250183465,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441088913724844,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 77,
+      "can_pos": [
+        -0.011346192579075902,
+        -0.22188093740441134,
+        0.8403161475968225
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799890008990234,
+        0.8801486072899928
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977899638469168,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.144109588377768,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 78,
+      "can_pos": [
+        -0.011318614225780304,
+        -0.22188116649457557,
+        0.8403016954314918
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998926739116926,
+        0.8801171633734268
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297756151608594,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410692345630938,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 79,
+      "can_pos": [
+        -0.01132637599210524,
+        -0.22188149987334796,
+        0.8403055579018585
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998914805469544,
+        0.8801260462042712
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977696089292562,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410811682104763,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 80,
+      "can_pos": [
+        -0.011334187741732737,
+        -0.2218818414016798,
+        0.8403097454751632
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998905733942645,
+        0.8801352927902412
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977832149943248,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410902397373748,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 81,
+      "can_pos": [
+        -0.011342040025170988,
+        -0.2218821897417842,
+        0.8403139684346016
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998896743769638,
+        0.8801446018527367
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977969442221763,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441099229910382,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 82,
+      "can_pos": [
+        -0.01131619577269742,
+        -0.22188251793614613,
+        0.8403005458823372
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998918894116731,
+        0.8801156567142698
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977663872278545,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410770795632888,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 83,
+      "can_pos": [
+        -0.011322269732032545,
+        -0.22188277439928875,
+        0.8403036955135286
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998914235160434,
+        0.8801223965478554
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977768735079881,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410817385195862,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 84,
+      "can_pos": [
+        -0.01133006093262584,
+        -0.22188312061118456,
+        0.8403078274380159
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998904696265077,
+        0.8801315786496434
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297790497702061,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410912774149431,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 85,
+      "can_pos": [
+        -0.011337892578419904,
+        -0.2218834736720244,
+        0.8403120393942668
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998895685400362,
+        0.880140867851712
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297804245290124,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14411002882796575,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 86,
+      "can_pos": [
+        -0.011345764874176573,
+        -0.22188383361930072,
+        0.840316274748375
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998886634898505,
+        0.8801502076524338
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22978181169513545,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14411093387815144,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 87,
+      "can_pos": [
+        -0.011319077724463817,
+        -0.2218747242884432,
+        0.8403008803610099
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998955704709085,
+        0.8801126383878874
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297692889051264,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410402689709345,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 88,
+      "can_pos": [
+        -0.011326841213959991,
+        -0.22187501941649285,
+        0.8403048102040226
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998944657337437,
+        0.8801215673397182
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297705969839742,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441051316342583,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 89,
+      "can_pos": [
+        -0.011334651304288705,
+        -0.22187532392023954,
+        0.8403092086163808
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998937928776964,
+        0.8801310013365969
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977192071098412,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410580449030563,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 90,
+      "can_pos": [
+        -0.011342501935103012,
+        -0.2218756350236525,
+        0.840313648591722
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998931344836314,
+        0.8801405038373831
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977325654531058,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410646288437057,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 91,
+      "can_pos": [
+        -0.011318986560166647,
+        -0.22187597914331747,
+        0.8403010683731078
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998944801085163,
+        0.8801141003814715
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297705210586256,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410511725948572,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 92,
+      "can_pos": [
+        -0.011322743013587712,
+        -0.22187613699359307,
+        0.840302685540382
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998942353599487,
+        0.880117566521191
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977116887149074,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410536200805324,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 93,
+      "can_pos": [
+        -0.011330532457494819,
+        -0.22187644530227424,
+        0.8403069610921907
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799893449127066,
+        0.8801268682511756
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977249352835333,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410614824093604,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 94,
+      "can_pos": [
+        -0.011338362373583087,
+        -0.2218767602549294,
+        0.8403113859130127
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998927850698334,
+        0.8801363461835549
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297738303253897,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410681229816857,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 95,
+      "can_pos": [
+        -0.011346232947329848,
+        -0.22187708187743294,
+        0.8403158374784088
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998921205462878,
+        0.8801458779108797
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297751793164837,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441074768217142,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 96,
+      "can_pos": [
+        -0.011318679713000074,
+        -0.22187728641610224,
+        0.8403010485468454
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998944419176429,
+        0.8801141038702903
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297717769723058,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410515545035907,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 97,
+      "can_pos": [
+        -0.011326425879155446,
+        -0.2218775958768647,
+        0.8403047533272257
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799893120578788,
+        0.8801227994183787
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977309697020593,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410647678921396,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 98,
+      "can_pos": [
+        -0.011334235175817345,
+        -0.2218779148440256,
+        0.840309132979937
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998924206716864,
+        0.8801322229413228
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977443490732133,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410717669631556,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 99,
+      "can_pos": [
+        -0.01134208500996589,
+        -0.2218782404972361,
+        0.8403135727896786
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998917537865834,
+        0.8801417335963072
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297757850366897,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1441078435814186,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 100,
+      "can_pos": [
+        -0.011320750539410547,
+        -0.22187863985474143,
+        0.8403019791536008
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799892548120354,
+        0.8801178436161969
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2297733896231422,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410704924764794,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 101,
+      "can_pos": [
+        -0.011322331918556253,
+        -0.2218787764092113,
+        0.8403028689518188
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.7998930902781377,
+        0.8801190790520292
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977373184039385,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14410650708986428,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 102,
+      "can_pos": [
+        -0.011330120385440777,
+        -0.22187909947142787,
+        0.8403069449756738
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.79989209606321,
+        0.8801281897025882
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22977507097098518,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.144107501304792,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 103,
+      "can_pos": [
+        -0.011274733137937629,
+        -0.22101660015681404,
+        0.840678817478527
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.799784385740842,
+        0.880980489572255
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22891274607547588,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14421521162716,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 104,
+      "can_pos": [
+        -0.01068593260983467,
+        -0.22114324215792186,
+        0.8409103221877113
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8000749084027582,
+        0.8811532773461334
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22896190121728283,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1439246889652438,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 105,
+      "can_pos": [
+        -0.010202534464484778,
+        -0.22078047390916802,
+        0.8415237121861046
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8006840846775756,
+        0.8817711660104206
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22854044137031745,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14331551269042642,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 106,
+      "can_pos": [
+        -0.009736404510491029,
+        -0.2210329505683381,
+        0.8419565850461186
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.801105571185113,
+        0.8822155537842508
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22873240671410636,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14289402618288893,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 107,
+      "can_pos": [
+        -0.009585501892891677,
+        -0.22137371511844775,
+        0.8420216408651978
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.80116257891399,
+        0.8822888130300227
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22905182096765903,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14283701845401198,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 108,
+      "can_pos": [
+        -0.009291279456935279,
+        -0.22101522192822642,
+        0.8421969063554458
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8013671044612348,
+        0.8824348170546781
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22865983800979717,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14263249290676716,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 109,
+      "can_pos": [
+        -0.00917689291716574,
+        -0.22041767283758829,
+        0.8422879419414231
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8014939288341626,
+        0.8824900510476843
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22805277842035118,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1425056685338394,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 110,
+      "can_pos": [
+        -0.009113509839088586,
+        -0.22023909602967892,
+        0.8424252978954082
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8016553116898398,
+        0.8826033673781022
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22786779090450904,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14234428567816215,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 111,
+      "can_pos": [
+        -0.008921294427751018,
+        -0.21999536824379837,
+        0.8424037807535689
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8016623321587132,
+        0.8825533187922274
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22760245818981287,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1423372652092888,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 112,
+      "can_pos": [
+        -0.008746597663479523,
+        -0.21954575399846002,
+        0.8425860092385594
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8018942386508561,
+        0.8826858711548647
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22713498076422659,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1421053587171459,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 113,
+      "can_pos": [
+        -0.008605671248801825,
+        -0.21960259908851182,
+        0.8426480239525395
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8020095565903859,
+        0.8826945962569562
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2271744068424584,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14199004077761612,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 114,
+      "can_pos": [
+        -0.008322813487014004,
+        -0.2204065573587584,
+        0.8424402392548697
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8018574429458954,
+        0.8824310916190904
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22793879761024996,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14214215442210654,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 115,
+      "can_pos": [
+        -0.007925601035546176,
+        -0.2212130356363511,
+        0.842260153851502
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8017599459443642,
+        0.8821683455030795
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22869295447421137,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14223965142363781,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 116,
+      "can_pos": [
+        -0.007674334582143051,
+        -0.2213839891976686,
+        0.8422668352216297
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8016857456943133,
+        0.8822559231403279
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22883361292237966,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1423138516736887,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 117,
+      "can_pos": [
+        -0.007662255441093608,
+        -0.22055479446404608,
+        0.8423272004889291
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8016167927485911,
+        0.8824457607119552
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22800857883889986,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14238280461941089,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 118,
+      "can_pos": [
+        -0.007561106250246367,
+        -0.22031150913905612,
+        0.8425857965203264
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8018681474172973,
+        0.8827117103444718
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22775523165015307,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1421314499507047,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 119,
+      "can_pos": [
+        -0.007206167281274849,
+        -0.22008787399376534,
+        0.8426133148881392
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8018899990173028,
+        0.8827449782436602
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22749235120133754,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14210959835069914,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 120,
+      "can_pos": [
+        -0.006881843468399865,
+        -0.21979835896047809,
+        0.8427446438375432
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8020101542750782,
+        0.882887599097993
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22716793010252154,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14198944309292383,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 121,
+      "can_pos": [
+        -0.006707807592604664,
+        -0.22039379249189123,
+        0.8441766471880083
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8034706321988476,
+        0.8842911071929035
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2277400704898441,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14052896516915436,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 122,
+      "can_pos": [
+        -0.006713128379714751,
+        -0.22154049486664842,
+        0.8462626042698488
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8055843285314286,
+        0.8863492684212418
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2288802235904806,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1384152688365734,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 123,
+      "can_pos": [
+        -0.006951710620204472,
+        -0.22236425780806443,
+        0.8490440681611503
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8083578599427125,
+        0.8891386309381072
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22972544971225636,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1356417374252895,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 124,
+      "can_pos": [
+        -0.007381014063212142,
+        -0.22283277940209176,
+        0.8530195816519403
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8123285002316488,
+        0.8931189053350437
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.23023933428891846,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13167109713635317,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 125,
+      "can_pos": [
+        -0.007965827414634597,
+        -0.22297394876154547,
+        0.8579903474593863
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8173046264729441,
+        0.8980841258920003
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2304466121324257,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.12669497089505788,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 126,
+      "can_pos": [
+        -0.008715742805247307,
+        -0.22298518889883676,
+        0.8640865802497654
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8234302717557609,
+        0.9041506940871442
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.23054585397922805,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1205693256122411,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 127,
+      "can_pos": [
+        -0.009333935081523604,
+        -0.223189490692559,
+        0.8712284052885781
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8306337249536239,
+        0.911230534961682
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.23082305352884092,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.11336587241437812,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 128,
+      "can_pos": [
+        -0.010046077564486649,
+        -0.22336669443683974,
+        0.8794152360870293
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8388725798607954,
+        0.9193650426149248
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.23108654736842593,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.10512701750720654,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 129,
+      "can_pos": [
+        -0.010235595602881953,
+        -0.22357957350306243,
+        0.884972881731725
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8444497617987285,
+        0.9249030811351531
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.23132142676221681,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.09954983556927344,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 130,
+      "can_pos": [
+        -0.010173289713715257,
+        -0.22409648660157866,
+        0.8905398912834122
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8500343070811441,
+        0.9304524351910644
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.23182650321128168,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.09396529028685785,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 131,
+      "can_pos": [
+        -0.010472138376559033,
+        -0.22471660568322677,
+        0.8981042492385761
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8576137521720656,
+        0.9380015538936649
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2324791480218264,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.0863858451959364,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 132,
+      "can_pos": [
+        -0.010953926763194432,
+        -0.2246978174300837,
+        0.9071319894519909
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.866612727235202,
+        0.9470579343105893
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.23252152637402482,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.07738687013279999,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 133,
+      "can_pos": [
+        -0.01146832376842325,
+        -0.2248413133821433,
+        0.917151507033232
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8766154002087587,
+        0.9570941658054934
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.23273003983715757,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.06738419715924326,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 134,
+      "can_pos": [
+        -0.011771906470344538,
+        -0.224461744059288,
+        0.9274732165684743
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8869315006630485,
+        0.9674214372799573
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.23239333779599705,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.0570680967049535,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 135,
+      "can_pos": [
+        -0.011712056703140985,
+        -0.22421010766176694,
+        0.9377879342087524
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.897264848587069,
+        0.9777175455528649
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2321360242225376,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.04673474878093298,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 136,
+      "can_pos": [
+        -0.011308077957875388,
+        -0.22394669456857064,
+        0.9478085359787649
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9073154754541896,
+        0.9877082844715457
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.23182219493261458,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.03668412191381243,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 137,
+      "can_pos": [
+        -0.010461471631147152,
+        -0.22330299072469714,
+        0.9541283746310646
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9136052544297212,
+        0.9940586535814026
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2310754512839001,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.030394342938280805,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 138,
+      "can_pos": [
+        -0.009579027233309823,
+        -0.22260407209107083,
+        0.9597123891273535
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9191362074372456,
+        0.9996959852289176
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2302719936239969,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.02486338993075643,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 139,
+      "can_pos": [
+        -0.009284117782740187,
+        -0.22248981896852446,
+        0.966298538637312
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9257013271675105,
+        1.0063032311482112
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2301225185163804,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.018298270200491462,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 140,
+      "can_pos": [
+        -0.009271736135493786,
+        -0.22227187612098262,
+        0.9731978425487771
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.932585011243958,
+        1.0132181560098752
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2299046898594479,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.011414586124044002,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 141,
+      "can_pos": [
+        -0.009388256866714994,
+        -0.2221893671873122,
+        0.9795989114200143
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9389841969076267,
+        1.0196211270152236
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22983702235305922,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.005015400460375297,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 142,
+      "can_pos": [
+        -0.009354783554023506,
+        -0.2219629648961628,
+        0.9851898916642408
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9445641637423929,
+        1.0252231555582145
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22960822564224714,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.0005645663743909513,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 143,
+      "can_pos": [
+        -0.009173628153598795,
+        -0.22190087871453898,
+        0.9898450266969859
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.949218790726513,
+        1.029878858070278
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2295245108184565,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.005219193358511065,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 144,
+      "can_pos": [
+        -0.008863068109946432,
+        -0.2218157810830774,
+        0.9935690439427142
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9529308090020732,
+        1.0336149547966809
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22940248049380105,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.008931211634071179,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 145,
+      "can_pos": [
+        -0.008417642421533523,
+        -0.22127957750037194,
+        0.9952056333440246
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9545308389165973,
+        1.0352883075155497
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22881690211289682,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010531241548595305,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 146,
+      "can_pos": [
+        -0.008057106918025,
+        -0.2204300362388753,
+        0.9959952206508522
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.955284455325342,
+        1.0361140110468239
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2279307293251865,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011284857957340022,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 147,
+      "can_pos": [
+        -0.007973208661877174,
+        -0.21987372758974566,
+        0.996774432852622
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9560537876599058,
+        1.0369031344944308
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22736841641091274,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.012054190291903799,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 148,
+      "can_pos": [
+        -0.008057815366409708,
+        -0.21914221244068496,
+        0.9974100981476952
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9566848662314689,
+        1.037543374289861
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.226651965284369,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.012685268863466881,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 149,
+      "can_pos": [
+        -0.008260360338582816,
+        -0.21870695643276702,
+        0.997832610492798
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9571228310632416,
+        1.037950367344392
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2262438413503511,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.0131232336952396,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 150,
+      "can_pos": [
+        -0.008478164634420757,
+        -0.21789091992455745,
+        0.9980992683464041
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9573913298203035,
+        1.038215124240837
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22545983642170214,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.013391732452301519,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 151,
+      "can_pos": [
+        -0.008667071760191306,
+        -0.2173457042824457,
+        0.9982354728304291
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9575503935955152,
+        1.0383283665742185
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22494154690652413,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.013550796227513207,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 152,
+      "can_pos": [
+        -0.008812021711699895,
+        -0.21674893655824543,
+        0.9982351203212894
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9575632228569403,
+        1.0383147329345594
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22436698250200096,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.013563625488938302,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 153,
+      "can_pos": [
+        -0.008667477851918813,
+        -0.2158043564128854,
+        0.9981949997826421
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9575353052214837,
+        1.0382622890118187
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22341180424172466,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.013535707853481682,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 154,
+      "can_pos": [
+        -0.008496333002609487,
+        -0.2141435210105216,
+        0.998019524742581
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9573359661405614,
+        1.0381106874569868
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22174251946932605,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.013336368772559393,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 155,
+      "can_pos": [
+        -0.00835770608583641,
+        -0.21224353104859153,
+        0.9978733077596939
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9571696386377534,
+        1.037984629083317
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2198399062619959,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.013170041269751409,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 156,
+      "can_pos": [
+        -0.008144764806271396,
+        -0.20963169282595578,
+        0.9978434755225551
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9571172194220807,
+        1.037977439415317
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21722176168057683,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.013117622054078737,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 157,
+      "can_pos": [
+        -0.007938728838180363,
+        -0.20687846559665027,
+        0.9978662825594382
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9571368181843453,
+        1.0380034910113936
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21446424057772054,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.013137220816343276,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 158,
+      "can_pos": [
+        -0.00770993074566914,
+        -0.20329076761465775,
+        0.9979218829131198
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9571726684292075,
+        1.0380789008041145
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21087605337769724,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.013173071061205466,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 159,
+      "can_pos": [
+        -0.007447771050363094,
+        -0.19961757683040976,
+        0.9980203185618048
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9572776786694102,
+        1.0381707642950646
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2071990777308629,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.013278081301408173,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 160,
+      "can_pos": [
+        -0.007116997690350384,
+        -0.19537662716240906,
+        0.9981056481339863
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9573663275257158,
+        1.0382527693400159
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.20295042905071461,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.013366730157713835,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 161,
+      "can_pos": [
+        -0.006557301831538504,
+        -0.19209575590610217,
+        0.9979553500225748
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9572559057742155,
+        1.03806248273707
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.19962503914777877,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.013256308406213502,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 162,
+      "can_pos": [
+        -0.00602828991736477,
+        -0.1882436822319134,
+        0.9976587975422867
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9569345882987709,
+        1.0377907209352706
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.1957369873282846,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.012934990930768886,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 163,
+      "can_pos": [
+        -0.005637388172827234,
+        -0.1838421099757186,
+        0.9975186630492674
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9567545675188158,
+        1.0376905490344701
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.19132139948709362,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.012754970150813838,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 164,
+      "can_pos": [
+        -0.005230044351321096,
+        -0.17837522220261956,
+        0.9975110537677423
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9567062107431724,
+        1.0377237646501112
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.18584738509413587,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.012706613375170428,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 165,
+      "can_pos": [
+        -0.004805056410075944,
+        -0.17237041386563684,
+        0.9974930528221776
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9566760397580711,
+        1.037717959224453
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.1798382476602728,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.012676442390069154,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 166,
+      "can_pos": [
+        -0.004354827990035418,
+        -0.1651313948402315,
+        0.9974499144797476
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9566187473228313,
+        1.037689004616827
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.17260329688572623,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.012619149954829267,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 167,
+      "can_pos": [
+        -0.003861137672213396,
+        -0.15751856934360328,
+        0.9974696336847785
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9566559216305621,
+        1.0376912157117237
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.1649936910465536,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.012656324262560137,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 168,
+      "can_pos": [
+        -0.0032667302895297164,
+        -0.14923071112753586,
+        0.997455926015594
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.956664611926629,
+        1.0376550267632318
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.15670345814710512,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.012665014558627008,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 169,
+      "can_pos": [
+        -0.0025274061610741226,
+        -0.14322422132089602,
+        0.9971888207264797
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9564782270931257,
+        1.0373069839641769
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.15065270133657474,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.012478629725123702,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 170,
+      "can_pos": [
+        -0.0018010972680879793,
+        -0.1371785937784116,
+        0.9968123647875595
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9561067798733602,
+        1.0369254701235953
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.14456513989432587,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.01210718250535825,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 171,
+      "can_pos": [
+        -0.0012228902057892083,
+        -0.13076803348841273,
+        0.996654788038795
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9559199673098369,
+        1.0367971712096953
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.13813785899531097,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011920369941834874,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 172,
+      "can_pos": [
+        -0.0006287709713000572,
+        -0.12334051105686955,
+        0.996646961696498
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9558728638987563,
+        1.0368286833730027
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.13070331684540956,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011873266530754267,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 173,
+      "can_pos": [
+        -5.348448486175057e-05,
+        -0.11531834918659478,
+        0.9966349163122235
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9558368489806991,
+        1.0368406384538518
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.12268599895961596,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011837251612697108,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 174,
+      "can_pos": [
+        0.0005585058394566764,
+        -0.10609198207448059,
+        0.9966236466627465
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9558076836481083,
+        1.0368472724125632
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.11347759701397894,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011808086280106322,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 175,
+      "can_pos": [
+        0.001204761994291417,
+        -0.09642770267627894,
+        0.9966532367129004
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9558523750585632,
+        1.036861701734053
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.10383854243992445,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011852777690561256,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 176,
+      "can_pos": [
+        0.0019111980770880942,
+        -0.08616322997993467,
+        0.9966552689838966
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9558748049923635,
+        1.0368432493321444
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.09360783967423347,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011875207624361561,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 177,
+      "can_pos": [
+        0.002606660083483797,
+        -0.07910525993172249,
+        0.9965382448686889
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9558343241986362,
+        1.0366495127792301
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.08654175387775602,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011834726830634246,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 178,
+      "can_pos": [
+        0.003302823368109737,
+        -0.07233956937592456,
+        0.9963324632474904
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9556388777479424,
+        1.0364333624946211
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.07976691505240936,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011639280379940442,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 179,
+      "can_pos": [
+        0.00396428383477283,
+        -0.06480406274592465,
+        0.9961666882585738
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9554415632079568,
+        1.0362991751193333
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.07225029618026939,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011441965839954826,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 180,
+      "can_pos": [
+        0.004678812082224816,
+        -0.056112289856969644,
+        0.9961194524347213
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9553583975786506,
+        1.036287902557383
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.06360508955586484,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011358800210648612,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 181,
+      "can_pos": [
+        0.005362971171975368,
+        -0.046595691427249925,
+        0.9960632955273034
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9552774054349825,
+        1.0362565965341246
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.05419152161121903,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011277808066980533,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 182,
+      "can_pos": [
+        0.006035575160822423,
+        -0.03609947151942741,
+        0.9960496748494587
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9552552699140543,
+        1.0362514693005425
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.04389655331132005,
+      "footprint_overlap": true,
+      "vertical_gap_m": 0.011255672546052309,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 183,
+      "can_pos": [
+        0.006761501454112464,
+        -0.02510659529649758,
+        0.9960356291880074
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.955254334727892,
+        1.0362242406464275
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.03325648339764873,
+      "footprint_overlap": true,
+      "vertical_gap_m": 0.011254737359890021,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 184,
+      "can_pos": [
+        0.0074655889975442855,
+        -0.013670687157667446,
+        0.9959991468809107
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9552377957680414,
+        1.036167731017397
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.022599920927389956,
+      "footprint_overlap": true,
+      "vertical_gap_m": 0.011238198400039368,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 185,
+      "can_pos": [
+        0.00804520994594657,
+        -0.005480957899229817,
+        0.9959875954440234
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9552801916597337,
+        1.0361021694542325
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.015626999719884342,
+      "footprint_overlap": true,
+      "vertical_gap_m": 0.011280594291731671,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 186,
+      "can_pos": [
+        0.008682266456031547,
+        0.0022242460389405743,
+        0.9958157210413464
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9551190153784626,
+        1.0359195410348454
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.010707705013530196,
+      "footprint_overlap": true,
+      "vertical_gap_m": 0.011119418010460569,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 187,
+      "can_pos": [
+        0.009360965920961502,
+        0.010355191533701784,
+        0.995587265725308
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.954875314241852,
+        1.0357062716438015
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.010366822800108606,
+      "footprint_overlap": true,
+      "vertical_gap_m": 0.010875716873850028,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 188,
+      "can_pos": [
+        0.010119891932080368,
+        0.01951526138366854,
+        0.9954535882908221
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9547229174773351,
+        1.0355912252551127
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.016092420644061887,
+      "footprint_overlap": true,
+      "vertical_gap_m": 0.010723320109333079,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 189,
+      "can_pos": [
+        0.010858805872688795,
+        0.0292084179226876,
+        0.9953441372503685
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9545961060223798,
+        1.0354990834150606
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.024582222283065752,
+      "footprint_overlap": true,
+      "vertical_gap_m": 0.010596508654377779,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 190,
+      "can_pos": [
+        0.01159371606094152,
+        0.03961418035572024,
+        0.9953026457061542
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9545496104154546,
+        1.0354625620525737
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.03444098049327538,
+      "footprint_overlap": true,
+      "vertical_gap_m": 0.010550013047452622,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 191,
+      "can_pos": [
+        0.012380210793746084,
+        0.05025923236037287,
+        0.9953067612654393
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9545567947348461,
+        1.0354635801871896
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.04479085584381514,
+      "footprint_overlap": true,
+      "vertical_gap_m": 0.010557197366844129,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 192,
+      "can_pos": [
+        0.013149319077886926,
+        0.06136523757547411,
+        0.995284757684784
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9545406395592042,
+        1.0354357206353482
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.05572456871424763,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010541042191202221,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 193,
+      "can_pos": [
+        0.013592955758408907,
+        0.06867837997699106,
+        0.9954601576040523
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9547567630849767,
+        1.0355705527871568
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.06296742742492879,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010757165716974715,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 194,
+      "can_pos": [
+        0.014021419974822912,
+        0.07517414388242634,
+        0.9954343892756259
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9547423051228455,
+        1.0355334697112555
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.06941315800045246,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010742707754843539,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 195,
+      "can_pos": [
+        0.01457109713641221,
+        0.08207629873400507,
+        0.9952251412948496
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9545242724482645,
+        1.0353328867528526
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.07626888196083528,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010524675080262558,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 196,
+      "can_pos": [
+        0.015286483892501881,
+        0.08991547322748786,
+        0.9950679840693648
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9543510159824935,
+        1.0351916421693887
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.08406511593721051,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010351418614491514,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 197,
+      "can_pos": [
+        0.016028362442551746,
+        0.09833615700722406,
+        0.9949482853116212
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9542065450435026,
+        1.0350966110906448
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.09245470477249144,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010206947675500566,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 198,
+      "can_pos": [
+        0.016745106293445333,
+        0.10731729383446127,
+        0.9949194852365533
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.954163092287551,
+        1.0350824361598707
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.10141577104406761,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010163494919549043,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 199,
+      "can_pos": [
+        0.01752468156677217,
+        0.11660104451183648,
+        0.9949409441915429
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9541873074784688,
+        1.0351011521101903
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.11068664477907326,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010187710110466819,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 200,
+      "can_pos": [
+        0.0182417789214062,
+        0.12617033541696326,
+        0.9949526573628941
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9542113199636545,
+        1.0351006281565913
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.12025035302602727,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010211722595652506,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 201,
+      "can_pos": [
+        0.01855795550075207,
+        0.132120932108785,
+        0.9954106486674194
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9547081885588563,
+        1.0355200347360485
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.12620007157157936,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010708591190854322,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 202,
+      "can_pos": [
+        0.018816776790867195,
+        0.13693007222051504,
+        0.9956829798321662
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9549928649421148,
+        1.0357801071313484
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.1310091199097571,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010993267574112786,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 203,
+      "can_pos": [
+        0.01928205578646139,
+        0.1418091487334591,
+        0.9955922387538583
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9548935415468897,
+        1.0356978305091615
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.1358892836220204,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010893944178887671,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 204,
+      "can_pos": [
+        0.019925488258912175,
+        0.14747537011755377,
+        0.9954207539641405
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9547051620648475,
+        1.0355430032023236
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.14155942473296285,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010705564696845471,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 205,
+      "can_pos": [
+        0.020583245784502605,
+        0.1536771042140079,
+        0.9952438969546427
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9544785176255457,
+        1.0354157661836219
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.14776772595819632,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010478920257543711,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 206,
+      "can_pos": [
+        0.021147082277186393,
+        0.16012508150027452,
+        0.9951765818816162
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9543938432031707,
+        1.035365765965965
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.15422301862607402,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.01039424583516868,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 207,
+      "can_pos": [
+        0.02177932260065889,
+        0.16675506558228795,
+        0.995184285846524
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9544005313865865,
+        1.0353744837059948
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.1608629593726949,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010400934018584551,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 208,
+      "can_pos": [
+        0.022313095222950788,
+        0.17350149979487814,
+        0.9952092339044238
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9544440928102774,
+        1.0353808911206652
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.16761878690276208,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010444495442275437,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 209,
+      "can_pos": [
+        0.02260630420282131,
+        0.17746350379893155,
+        0.9956224967178139
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9549241572867434,
+        1.0357276195005412
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.17158627801769685,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010924559918741417,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 210,
+      "can_pos": [
+        0.02281833067424932,
+        0.18060327788420524,
+        0.9958510866385721
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9551639933882416,
+        1.0359450731729054
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.17473009632490355,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011164396020239664,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 211,
+      "can_pos": [
+        0.02321236450991832,
+        0.1837807567020302,
+        0.9957084340738168
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9550138052938149,
+        1.035809872068488
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.17791620898358135,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.011014207925812869,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 212,
+      "can_pos": [
+        0.023739573079647473,
+        0.18776263266001775,
+        0.995448882196962
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9547275057846132,
+        1.0355768486264059
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.18191060012130414,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010727908416611198,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 213,
+      "can_pos": [
+        0.024253099174615426,
+        0.19218424297448705,
+        0.9951979010712738
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9544250053507245,
+        1.0353772107447088
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.18634508334549157,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010425407982722512,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 214,
+      "can_pos": [
+        0.02461380773579793,
+        0.19670831122407564,
+        0.9950516669342108
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9542650762853142,
+        1.0352446215544864
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.19087798752986743,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.01026547891731222,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 215,
+      "can_pos": [
+        0.025041624309803168,
+        0.20119679081447717,
+        0.9950025691391827
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9542177896142385,
+        1.0351936994646234
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.19537773336806266,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010218192246236546,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 216,
+      "can_pos": [
+        0.025375524772022567,
+        0.20569280315808175,
+        0.9949853764770047
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9542159792760938,
+        1.0351611714508844
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.19988227301159098,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.01021638190809182,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 217,
+      "can_pos": [
+        0.02553482644001245,
+        0.2078404305938456,
+        0.9952994542683962
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9546202551039461,
+        1.0353852817609
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.20203402787182792,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010620657735944117,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 218,
+      "can_pos": [
+        0.025603856808827093,
+        0.20914933248183626,
+        0.9954628108799185
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9548062499468747,
+        1.0355261373833309
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.20334451348912258,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.0108066525788727,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 219,
+      "can_pos": [
+        0.025867832470890008,
+        0.2103226066018195,
+        0.9952910587493979
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9546313612607293,
+        1.0353574808082444
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2045261615817112,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010631763892727353,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 220,
+      "can_pos": [
+        0.02622238090046008,
+        0.21208791355136572,
+        0.995021277102173
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.954323148734602,
+        1.035125963189195
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.20630297207862022,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010323551366600014,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 221,
+      "can_pos": [
+        0.02655333599250939,
+        0.21419398312428142,
+        0.9948358405875762
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9540925054484036,
+        1.034985576056836
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.20841982483521923,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010092908080401641,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 222,
+      "can_pos": [
+        0.02673656706515543,
+        0.21632630072856057,
+        0.9947278655822143
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.953966811598469,
+        1.0348952531796909
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21055754198936372,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.00996721423046698,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 223,
+      "can_pos": [
+        0.026967352019574883,
+        0.21834479714258812,
+        0.9946858579150497
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9539194653963413,
+        1.0348585438204605
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2125834088087677,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.00991986802833933,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 224,
+      "can_pos": [
+        0.027122348890892,
+        0.2202698797826292,
+        0.9946385542986237
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9538798864954302,
+        1.0348035272529497
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21451306604720757,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.009880289127428221,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 225,
+      "can_pos": [
+        0.027160382804174786,
+        0.22110408185328542,
+        0.9947972479110442
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9540833680129852,
+        1.0349175377156352
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2153481174813501,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010083770644983225,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 226,
+      "can_pos": [
+        0.027114578012416367,
+        0.22164362024398418,
+        0.9948068724426384
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9541187991685547,
+        1.0349014369475915
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21588545998791137,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010119201800552702,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 227,
+      "can_pos": [
+        0.0272343711259649,
+        0.2221125451898011,
+        0.9946430806469365
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9539497371250807,
+        1.0347428985452762
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21635870672574417,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.009950139757078702,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 228,
+      "can_pos": [
+        0.027415954919883998,
+        0.2231308823799844,
+        0.9944678359588582
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.953745167422625,
+        1.034596880967938
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21738343936992272,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.009745570054623065,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 229,
+      "can_pos": [
+        0.027596644832891634,
+        0.2243791409423998,
+        0.994428813232007
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9536804867168691,
+        1.0345834161599918
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21863795896921612,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.009680889348867128,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 230,
+      "can_pos": [
+        0.02765993834276201,
+        0.22552003410638968,
+        0.9944313066132958
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9536802765956073,
+        1.0345885932983458
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21978048091216812,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.009680679227605293,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 231,
+      "can_pos": [
+        0.027788829247640184,
+        0.22645909248478996,
+        0.9944590995644192
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9537126210842457,
+        1.0346118274904437
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2207240187655122,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.009713023716243718,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 232,
+      "can_pos": [
+        0.027875405009534417,
+        0.22715972534207304,
+        0.9944417408062435
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9537042132112546,
+        1.0345855425459645
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22142762160712254,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.009704615843252662,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 233,
+      "can_pos": [
+        0.027945435415459373,
+        0.22686391414937093,
+        0.9946660983039134
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9539657821395247,
+        1.0347727595886467
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2211349699020859,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.009966184771522668,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 234,
+      "can_pos": [
+        0.02793770896949382,
+        0.2265850804876725,
+        0.994731605251375
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.95404164517922,
+        1.0348279502675628
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22085605648564818,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.01004204781121798,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 235,
+      "can_pos": [
+        0.028048560852841662,
+        0.22628350185155663,
+        0.9946919701869694
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9539998122747101,
+        1.034790499528609
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2205593951667241,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.010000214906708105,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 236,
+      "can_pos": [
+        0.028104846498027705,
+        0.22633653733803255,
+        0.9945706615431686
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9538650950302338,
+        1.034682561718984
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22061476756225615,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.00986549766223177,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 237,
+      "can_pos": [
+        0.028156368519935675,
+        0.226464142515351,
+        0.9945211340067778
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9538022252408666,
+        1.0346463287751038
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22074445133213857,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.009802627872864567,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 238,
+      "can_pos": [
+        0.028135046361050364,
+        0.22649728541526046,
+        0.9943426602939148
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9536276920536539,
+        1.0344639397551345
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22077665482136336,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.009628094685651956,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 239,
+      "can_pos": [
+        0.02825263042135366,
+        0.22652336081881527,
+        0.9938914551128831
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9531732634966366,
+        1.0340159697195284
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2208077454330213,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.009173666128634572,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 240,
+      "can_pos": [
+        0.02841922561506176,
+        0.2263729477128593,
+        0.9929192778858468
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9522094323069693,
+        1.0330355075614612
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2206647234120786,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.00820983493896732,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 241,
+      "can_pos": [
+        0.028372501318818293,
+        0.22544606839975012,
+        0.9923314542897801
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9516610183330191,
+        1.0324084165462708
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21973668654814402,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.007661420965017096,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 242,
+      "can_pos": [
+        0.02823516988476312,
+        0.22456980285137418,
+        0.9914164969555502
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9507695353450419,
+        1.0314701358679026
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21885526170244612,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.006769937977039953,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 243,
+      "can_pos": [
+        0.02829985952842101,
+        0.22369249566971627,
+        0.9897204037888032
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9490532057181305,
+        1.0297943869060557
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21798161534287405,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.005053608350128469,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 244,
+      "can_pos": [
+        0.028456472336517127,
+        0.22340832487517406,
+        0.9871804534708744
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9464815277732732,
+        1.027286215980328
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21770465847752193,
+      "footprint_overlap": false,
+      "vertical_gap_m": 0.0024819304052712265,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 245,
+      "can_pos": [
+        0.028708590141383637,
+        0.22348578950615788,
+        0.9838483732297714
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.943126041160662,
+        1.0239775741129482
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2177934495519368,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.0008735562073399761,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 246,
+      "can_pos": [
+        0.02891141557404968,
+        0.22343498084209545,
+        0.9793962385787321
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9386584361303687,
+        1.019541043833394
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21775208198191073,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.005341161237633285,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 247,
+      "can_pos": [
+        0.029266174480015922,
+        0.22350248205482384,
+        0.9737052692851664
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9329529711211219,
+        1.013864666532372
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21783637734755948,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.011046626246880131,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 248,
+      "can_pos": [
+        0.029600167484319186,
+        0.22345566657211657,
+        0.9667803467426982
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9260224854419872,
+        1.0069454136042093
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21780602751345104,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.01797711192601481,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 249,
+      "can_pos": [
+        0.029270127642017137,
+        0.22298944063056494,
+        0.9626001861257532
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9218817863663048,
+        1.0027258158416108
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21732412927557004,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.022117811001697185,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 250,
+      "can_pos": [
+        0.028849110399684026,
+        0.22240026612682,
+        0.9584906794231448
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9177862091117569,
+        0.9986023980409926
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21671558628457097,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.026213388256245085,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 251,
+      "can_pos": [
+        0.028799348567122462,
+        0.2217550851540914,
+        0.9519155125736739
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9111932211511676,
+        0.9920450902352971
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21606878652151074,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.032806376216834354,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 252,
+      "can_pos": [
+        0.02897100711131449,
+        0.22124741424396469,
+        0.9433943396721842
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.9026504168363603,
+        0.9835455446408841
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21556975377406656,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.041349180531641716,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 253,
+      "can_pos": [
+        0.029024144133231834,
+        0.22084250818281578,
+        0.9336645022277207
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8929103415621341,
+        0.9738259434377204
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2151678408618988,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.05108925580586787,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 254,
+      "can_pos": [
+        0.028954776313331623,
+        0.22093497542295296,
+        0.9234565650923793
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8827059103882895,
+        0.9636143707616546
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2152568966646019,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.06129368697971249,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 255,
+      "can_pos": [
+        0.02867551878160553,
+        0.2212151793694728,
+        0.9128791279291564
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.872150015590482,
+        0.953015238736995
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2155237198149602,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.07184958177751999,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 256,
+      "can_pos": [
+        0.028192576892924565,
+        0.2216290132003446,
+        0.9024054074702894
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8617102514738935,
+        0.9425073623008757
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21591541323150004,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.08228934589410852,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 257,
+      "can_pos": [
+        0.027327178323203596,
+        0.22210690944282968,
+        0.8962657682650563
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8555637126912211,
+        0.9363742318345543
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21635674257062215,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.08843588467678087,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 258,
+      "can_pos": [
+        0.026497049534291685,
+        0.22249068605188824,
+        0.8910748869322491
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8503370082085817,
+        0.9312189290929334
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21670888257261378,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.09366258915942027,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 259,
+      "can_pos": [
+        0.02615517539390438,
+        0.2228655273557656,
+        0.8840718995444897
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8433072917870156,
+        0.9242425828816121
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21707152300342625,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.10069230558098641,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 260,
+      "can_pos": [
+        0.026103699781121426,
+        0.2229359968266155,
+        0.8764846676310559
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8357227568864122,
+        0.9166526716629051
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2171401975301649,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.10827684048158981,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 261,
+      "can_pos": [
+        0.026165619423694494,
+        0.22348095481726035,
+        0.8689262945105047
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8281573550737444,
+        0.9091013479176149
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21768694790289755,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.11584224229425755,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 262,
+      "can_pos": [
+        0.026174591672841134,
+        0.22410918692788964,
+        0.8621087704318064
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.821357253430871,
+        0.9022664755816849
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21831512033629183,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.12264234393713103,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 263,
+      "can_pos": [
+        0.026176106501148304,
+        0.22503031573677415,
+        0.8561436515244091
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8154037870253302,
+        0.8962897327064216
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21923576734660805,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.12859581034267176,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 264,
+      "can_pos": [
+        0.026263261770584242,
+        0.22566985380818594,
+        0.8513599869743895
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8106372247595095,
+        0.8914889428330791
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.21987790582273725,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13336237260849249,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 265,
+      "can_pos": [
+        0.02609561392305187,
+        0.22636134585372378,
+        0.848495583857025
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8077838180070211,
+        0.8886134827711075
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22056333239861628,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13621577936098084,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 266,
+      "can_pos": [
+        0.02582307539384218,
+        0.2269992402605055,
+        0.846595765620726
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8058825436476516,
+        0.8867150430926002
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2211919668140624,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13811705372035044,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 267,
+      "can_pos": [
+        0.025641526534513643,
+        0.22767651523139698,
+        0.8450627758785411
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8043322256079473,
+        0.8851992702042809
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22186316614182655,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13966737176005473,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 268,
+      "can_pos": [
+        0.02566781126651339,
+        0.22780371201783678,
+        0.844356935929288
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8036674011211706,
+        0.8844523948190524
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22199112098107185,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14033219624683135,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 269,
+      "can_pos": [
+        0.02576093998758371,
+        0.22798748290544707,
+        0.844015808071642
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8034190037054976,
+        0.8840186776579828
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22217772915689812,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14058059366250442,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 270,
+      "can_pos": [
+        0.025895317487729535,
+        0.22818250778207425,
+        0.8438231726030764
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8033462246983256,
+        0.8837064915641979
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22237694480378528,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14065337266967637,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 271,
+      "can_pos": [
+        0.026048702478899132,
+        0.2282935135818805,
+        0.8441306002937551
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8037497352339263,
+        0.8839182276150827
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2224928845610827,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14024986213407564,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 272,
+      "can_pos": [
+        0.02622659335707949,
+        0.22831938086443168,
+        0.844326172799977
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8039366412748902,
+        0.884122894820047
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22252465848188402,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1400629560931118,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 273,
+      "can_pos": [
+        0.02642697987903756,
+        0.2283458564586308,
+        0.8439937362034279
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.803560436434858,
+        0.8838345819435409
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22255795770791903,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.140439160933144,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 274,
+      "can_pos": [
+        0.026638606589818214,
+        0.2284142136960572,
+        0.8437774159442794
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8033190936704937,
+        0.8836435269696239
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2226336897096658,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14068050369750829,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 275,
+      "can_pos": [
+        0.02678765937059437,
+        0.22850289819640532,
+        0.8439031711461206
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8034123805794968,
+        0.8838018539006338
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2227276597115271,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14058721678850516,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 276,
+      "can_pos": [
+        0.026913067323228252,
+        0.22856695810216338,
+        0.8440099590772011
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.803504544154495,
+        0.883923311754652
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22279624766281425,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14049505321350697,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 277,
+      "can_pos": [
+        0.02700497263138494,
+        0.2287139698285628,
+        0.844316446599203
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8037699194669323,
+        0.8842708796257575
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22294655191648027,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.14022967790106966,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 278,
+      "can_pos": [
+        0.02704856765235682,
+        0.22885766938187324,
+        0.8446687801794202
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8040833321933307,
+        0.8846620923618204
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22309177354505969,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13991626517467126,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 279,
+      "can_pos": [
+        0.02706410649788823,
+        0.22961134756600865,
+        0.8451675290137423
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8042010409968589,
+        0.8855422606395598
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22384550745179901,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13979855637114313,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 280,
+      "can_pos": [
+        0.027036646411027647,
+        0.23028573111619405,
+        0.8458078872406444
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8045008635953556,
+        0.8865235616656862
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22451840757345715,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13949873377264643,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 281,
+      "can_pos": [
+        0.027021832575608282,
+        0.2303652061373492,
+        0.8460725314749373
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8047368778438407,
+        0.8868168236793618
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22459728093312087,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13926271952416125,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 282,
+      "can_pos": [
+        0.026991603150262927,
+        0.23031455185941915,
+        0.8460757751426871
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8047867229474758,
+        0.8867732781806047
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22454554714772382,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1392128744205262,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 283,
+      "can_pos": [
+        0.026976471422463833,
+        0.23028096627961797,
+        0.8460732337703957
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8048140144239204,
+        0.8867407945335504
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.224511428101474,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13918558294408157,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 284,
+      "can_pos": [
+        0.02695815918783024,
+        0.22979797361202528,
+        0.8458259539770242
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8048468495495241,
+        0.886212870463982
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2240280887407418,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13915274781847786,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 285,
+      "can_pos": [
+        0.026939412997678564,
+        0.2294601895190418,
+        0.8455987882771052
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8048311097892825,
+        0.8857739162137249
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22368984417403248,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13916848757871947,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 286,
+      "can_pos": [
+        0.026932353816997597,
+        0.2292638702411725,
+        0.8454512669428476
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8048079928339582,
+        0.8855018103575354
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22349339807799118,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13919160453404378,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 287,
+      "can_pos": [
+        0.026930044057574116,
+        0.22925509008945152,
+        0.8454432678821346
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8048112109417718,
+        0.8854825628350858
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22348453909479382,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13918838642623022,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 288,
+      "can_pos": [
+        0.026930508342784546,
+        0.2290869148065459,
+        0.8453612639266196
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8048373354655026,
+        0.8852923147510888
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22331649414249025,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13916226190249936,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 289,
+      "can_pos": [
+        0.026873232403204682,
+        0.22941481112165696,
+        0.8456024207381081
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8048450480563009,
+        0.8857668627456101
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22364207727443564,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13915454931170113,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 290,
+      "can_pos": [
+        0.02685275465650196,
+        0.2299427215910335,
+        0.8458837200773136
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8047958772509083,
+        0.8863789574920713
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22416889583176924,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1392037201170937,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 291,
+      "can_pos": [
+        0.026850832002129277,
+        0.23009253493177326,
+        0.8459579349282721
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.804776715072645,
+        0.886546681849207
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22431854129526038,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13922288229535695,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 292,
+      "can_pos": [
+        0.02684594031518242,
+        0.2300892347960951,
+        0.8459595120501245
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8047780791127709,
+        0.8865484460763372
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22431506631761858,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.1392215182552311,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 293,
+      "can_pos": [
+        0.02684919690523811,
+        0.23018836704013362,
+        0.8460087407910849
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8047709053039411,
+        0.8866541877531179
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.2244142514844479,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13922869206406085,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 294,
+      "can_pos": [
+        0.026860023790532386,
+        0.23047386615071977,
+        0.8461506565948295
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8047538138561016,
+        0.8869554477726243
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22469995538926263,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13924578351190042,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 295,
+      "can_pos": [
+        0.026878174872341846,
+        0.23081634059660294,
+        0.8463189893958227
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8047367198968458,
+        0.8873096734641552
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22504286236187707,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13926287747115618,
+      "collision_ever": false,
+      "success": false
+    },
+    {
+      "step": 296,
+      "can_pos": [
+        0.026886655958150783,
+        0.2310946031809454,
+        0.8464560403317078
+      ],
+      "milk_pos": [
+        0.0187316,
+        0.00592098,
+        0.861016
+      ],
+      "can_collision_z": [
+        0.8047222199191133,
+        0.8875986532941474
+      ],
+      "milk_collision_z": [
+        0.7999996005866528,
+        0.943999597368002
+      ],
+      "xy_center_distance_m": 0.22532124958404384,
+      "footprint_overlap": false,
+      "vertical_gap_m": -0.13927737744888868,
+      "collision_ever": false,
+      "success": true
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+[
+  {
+    "episode": 4,
+    "rho": 45.0,
+    "tangent_ratio": 0.1,
+    "policy_seed": 819000004,
+    "state_hash": "4dcf4d64a289a863ba42f8072b47f60faed212bb3fc1c3b332ab0d69a94c7f35",
+    "baseline": {
+      "success": false,
+      "safe_success": false,
+      "collision_any": true,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": true,
+      "horizon": 600,
+      "minimum_eef_obstacle_clearance_m": -0.03545290604233742,
+      "guidance_trigger_rate": 0.0,
+      "guidance_update_norm_mean": 0.0,
+      "guidance_update_norm_max": 0.0,
+      "tangent_side_first": 0,
+      "tangent_side_counts": {
+        "-1": 0,
+        "+1": 0
+      },
+      "first_guidance_active_step": null,
+      "first_collision_step": 287
+    },
+    "guided": {
+      "success": false,
+      "safe_success": false,
+      "collision_any": false,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": false,
+      "horizon": 600,
+      "minimum_eef_obstacle_clearance_m": 0.011484973132610321,
+      "guidance_trigger_rate": 0.28,
+      "guidance_update_norm_mean": 0.08976516991207997,
+      "guidance_update_norm_max": 6.538328647613525,
+      "tangent_side_first": -1,
+      "tangent_side_counts": {
+        "-1": 900,
+        "+1": 0
+      },
+      "first_guidance_active_step": 264,
+      "first_collision_step": null
+    },
+    "separation": {
+      "common_samples": 601,
+      "max_xy_separation_m": 0.37629999727843755,
+      "mean_xy_separation_m": 0.15342933869108147,
+      "p95_xy_separation_m": 0.366538044396272,
+      "step_of_max_xy_separation": 426,
+      "samples_xy_ge_5mm": 332,
+      "longest_run_xy_ge_5mm": 332,
+      "first_step_xy_ge_5mm": 269,
+      "samples_xy_ge_10mm": 331,
+      "longest_run_xy_ge_10mm": 331,
+      "first_step_xy_ge_10mm": 270,
+      "samples_xy_ge_20mm": 330,
+      "longest_run_xy_ge_20mm": 330,
+      "first_step_xy_ge_20mm": 271
+    }
+  },
+  {
+    "episode": 7,
+    "rho": 45.0,
+    "tangent_ratio": 0.1,
+    "policy_seed": 819000007,
+    "state_hash": "7407cca8c56b215b9df16b457225a743127a3c3654c7e5bf43fa130ba730e4cb",
+    "baseline": {
+      "success": false,
+      "safe_success": false,
+      "collision_any": true,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": true,
+      "horizon": 600,
+      "minimum_eef_obstacle_clearance_m": -0.01800411380827427,
+      "guidance_trigger_rate": 0.0,
+      "guidance_update_norm_mean": 0.0,
+      "guidance_update_norm_max": 0.0,
+      "tangent_side_first": 0,
+      "tangent_side_counts": {
+        "-1": 0,
+        "+1": 0
+      },
+      "first_guidance_active_step": null,
+      "first_collision_step": 132
+    },
+    "guided": {
+      "success": false,
+      "safe_success": false,
+      "collision_any": false,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": false,
+      "horizon": 600,
+      "minimum_eef_obstacle_clearance_m": 0.04900504648685455,
+      "guidance_trigger_rate": 0.8016,
+      "guidance_update_norm_mean": 0.1913414422863784,
+      "guidance_update_norm_max": 1.66730535030365,
+      "tangent_side_first": -1,
+      "tangent_side_counts": {
+        "-1": 500,
+        "+1": 0
+      },
+      "first_guidance_active_step": 0,
+      "first_collision_step": null
+    },
+    "separation": {
+      "common_samples": 601,
+      "max_xy_separation_m": 0.2989746283184278,
+      "mean_xy_separation_m": 0.2067618665889241,
+      "p95_xy_separation_m": 0.2849773210823835,
+      "step_of_max_xy_separation": 201,
+      "samples_xy_ge_5mm": 542,
+      "longest_run_xy_ge_5mm": 495,
+      "first_step_xy_ge_5mm": 11,
+      "samples_xy_ge_10mm": 527,
+      "longest_run_xy_ge_10mm": 493,
+      "first_step_xy_ge_10mm": 14,
+      "samples_xy_ge_20mm": 518,
+      "longest_run_xy_ge_20mm": 490,
+      "first_step_xy_ge_20mm": 18
+    }
+  }
+]

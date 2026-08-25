@@ -1,0 +1,87 @@
+[
+  {
+    "episode": 0,
+    "noise_seed": 26000,
+    "formal_success": true,
+    "rendered_success": true,
+    "steps": 309,
+    "can_pos": [
+      -0.006484702059198036,
+      0.21775866232466018,
+      0.8453119731524498
+    ],
+    "goal_xy": [
+      -0.011283956102284685,
+      0.21813157361077973
+    ],
+    "video": "outputs/tabletop_guidance/videos/episode_00_seed_26000_success.mp4"
+  },
+  {
+    "episode": 7,
+    "noise_seed": 26007,
+    "formal_success": false,
+    "rendered_success": false,
+    "steps": 600,
+    "can_pos": [
+      0.009563562217492931,
+      0.23919090561446094,
+      0.8453122850264919
+    ],
+    "goal_xy": [
+      0.01025070469608201,
+      0.24105949022267692
+    ],
+    "video": "outputs/tabletop_guidance/videos/episode_07_seed_26007_failure.mp4"
+  },
+  {
+    "episode": 9,
+    "noise_seed": 26009,
+    "formal_success": false,
+    "rendered_success": false,
+    "steps": 600,
+    "can_pos": [
+      0.022119710959683445,
+      -0.041189208066646076,
+      0.9991736286246611
+    ],
+    "goal_xy": [
+      0.002441007124930915,
+      0.22494658340575238
+    ],
+    "video": "outputs/tabletop_guidance/videos/episode_09_seed_26009_failure.mp4"
+  },
+  {
+    "episode": 23,
+    "noise_seed": 26023,
+    "formal_success": false,
+    "rendered_success": false,
+    "steps": 600,
+    "can_pos": [
+      -0.017217947515195252,
+      -0.1999710992056249,
+      0.8403137561595045
+    ],
+    "goal_xy": [
+      -0.007471115751872828,
+      0.24705800544022738
+    ],
+    "video": "outputs/tabletop_guidance/videos/episode_23_seed_26023_failure.mp4"
+  },
+  {
+    "episode": 34,
+    "noise_seed": 26034,
+    "formal_success": true,
+    "rendered_success": false,
+    "steps": 600,
+    "can_pos": [
+      0.012761618997810156,
+      0.23938901205010846,
+      0.8453065611576446
+    ],
+    "goal_xy": [
+      0.00727189767474945,
+      0.23598769299044686
+    ],
+    "video": "outputs/tabletop_guidance/videos/episode_34_seed_26034_failure.mp4"
+  }
+]

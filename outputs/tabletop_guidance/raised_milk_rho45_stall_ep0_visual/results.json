@@ -1,0 +1,55 @@
+[
+  {
+    "episode": 0,
+    "rho": 45.0,
+    "tangent_ratio": 0.0,
+    "policy_seed": 819000000,
+    "state_hash": "a2d8c4422ef227ab88d772350985a8fc46e32cf50d49f3737dfae00eeddac993",
+    "baseline": {
+      "success": true,
+      "safe_success": false,
+      "collision_any": true,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": true,
+      "horizon": 334,
+      "minimum_eef_obstacle_clearance_m": -0.03958054631948471,
+      "guidance_trigger_rate": 0.0,
+      "guidance_update_norm_mean": 0.0,
+      "guidance_update_norm_max": 0.0,
+      "first_guidance_active_step": null,
+      "first_collision_step": 150
+    },
+    "guided": {
+      "success": false,
+      "safe_success": false,
+      "collision_any": false,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": false,
+      "horizon": 600,
+      "minimum_eef_obstacle_clearance_m": 0.07715097069740295,
+      "guidance_trigger_rate": 0.7861333333333334,
+      "guidance_update_norm_mean": 0.2190249863772304,
+      "guidance_update_norm_max": 1.690984845161438,
+      "first_guidance_active_step": 128,
+      "first_collision_step": null
+    },
+    "separation": {
+      "common_samples": 335,
+      "max_xy_separation_m": 0.4161078711014259,
+      "mean_xy_separation_m": 0.20533486120919586,
+      "p95_xy_separation_m": 0.4115547156368223,
+      "step_of_max_xy_separation": 240,
+      "samples_xy_ge_5mm": 201,
+      "longest_run_xy_ge_5mm": 201,
+      "first_step_xy_ge_5mm": 134,
+      "samples_xy_ge_10mm": 200,
+      "longest_run_xy_ge_10mm": 200,
+      "first_step_xy_ge_10mm": 135,
+      "samples_xy_ge_20mm": 199,
+      "longest_run_xy_ge_20mm": 199,
+      "first_step_xy_ge_20mm": 136
+    }
+  }
+]
