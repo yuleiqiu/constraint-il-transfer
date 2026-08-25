@@ -52,6 +52,12 @@ def parse_args():
         nargs="+",
         default=[0.01, 0.03, 0.05],
     )
+    parser.add_argument(
+        "--guidance-phases",
+        choices=("always", "target_lifted"),
+        nargs="+",
+        default=["always"],
+    )
     parser.add_argument("--image-height", type=int, default=160)
     parser.add_argument("--image-width", type=int, default=160)
     parser.add_argument("--out-dir", type=Path, required=True)
@@ -126,34 +132,37 @@ def main():
     )
 
     guided = {}
-    for margin in args.margins:
-        rollout_args.ellipsoid_margin = float(margin)
-        audit = CF.ContactPairAudit()
-        grasp = FirstGraspRecorder()
-        metrics = PAIRED_EVAL.rollout_condition(
-            policy,
-            env,
-            initial_state,
-            "guided",
-            args.policy_seed,
-            rollout_args,
-            frame_callback=combined_frame_callback(
-                audit,
-                grasp,
-            ),
-            guidance_context_factory=make_ellipsoid_factory(
-                args.image_height,
-                args.image_width,
-            ),
-            guidance_scale=args.guidance_scale,
-            safety_distance=0.08,
-        )
-        guided["{:.2f}".format(float(margin))] = {
-            **metrics,
-            "contact_audit": audit.result(),
-            "first_grasp_step": grasp.first_grasp,
-            "grasped_steps": grasp.grasped_steps,
-        }
+    for phase in args.guidance_phases:
+        rollout_args.guidance_phase = phase
+        for margin in args.margins:
+            rollout_args.ellipsoid_margin = float(margin)
+            audit = CF.ContactPairAudit()
+            grasp = FirstGraspRecorder()
+            metrics = PAIRED_EVAL.rollout_condition(
+                policy,
+                env,
+                initial_state,
+                "guided",
+                args.policy_seed,
+                rollout_args,
+                frame_callback=combined_frame_callback(
+                    audit,
+                    grasp,
+                ),
+                guidance_context_factory=make_ellipsoid_factory(
+                    args.image_height,
+                    args.image_width,
+                ),
+                guidance_scale=args.guidance_scale,
+                safety_distance=0.08,
+            )
+            key = "{0}:{1:.2f}".format(phase, float(margin))
+            guided[key] = {
+                **metrics,
+                "contact_audit": audit.result(),
+                "first_grasp_step": grasp.first_grasp,
+                "grasped_steps": grasp.grasped_steps,
+            }
 
     result = {
         "scene": args.scene,
@@ -187,11 +196,14 @@ def main():
                         "first_collision_step",
                     )
                 },
-                "guided_by_margin": {
-                    margin: {
+                "guided_by_phase_margin": {
+                    key: {
                         key: value[key]
                         for key in (
                             "success",
+                            "safe_success",
+                            "success_with_collision",
+                            "collision_any",
                             "collision_failure",
                             "ncr",
                             "first_guidance_active_step",
@@ -202,7 +214,7 @@ def main():
                             "first_grasp_step",
                         )
                     }
-                    for margin, value in guided.items()
+                    for key, value in guided.items()
                 },
             },
             indent=2,

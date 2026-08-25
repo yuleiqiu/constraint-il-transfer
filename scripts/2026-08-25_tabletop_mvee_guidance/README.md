@@ -134,6 +134,33 @@ task rescue. `margin=5 cm` activates at step 24, removes contact, and becomes
 NCR. The useful transition is therefore between 3 cm and 5 cm, not a smooth
 1/3/5 progression.
 
+## target_lifted phase comparison
+
+`target_lifted` keeps guidance disabled until the Can is raised above the table
+surface. Use the same-process sweep with both phase modes:
+
+```bash
+MUJOCO_GL=egl uv run python \
+  scripts/2026-08-25_tabletop_mvee_guidance/ellipsoid_margin_sweep.py \
+  --checkpoint <tabletop-lan-checkpoint> \
+  --state-bank outputs/tabletop_mvee_guidance/fresh_failure_bank_seed991/fresh_initial_state_bank.pkl \
+  --scene 3 --bank-seed 991 --policy-seed 991000003 \
+  --guidance-scale 45.0 --margins 0.01 0.03 0.05 \
+  --guidance-phases always target_lifted \
+  --out-dir outputs/tabletop_mvee_guidance/fresh_failure_bank_seed991/inprocess_phase_margin_sweep_ep3
+```
+
+In the shared-baseline run, `always` and `target_lifted` both turn margin=1/3 cm
+into task success with one carried-Can contact (`safe_success=False`).
+For margin=5 cm, `target_lifted` restores the early grasp (step 88 instead of
+187) but still ends as collision-free NCR. Phase gating removes the early
+approach blockage; it does not yet create a safe task success.
+
+Cross-process reproducibility remains a limitation: the same state and policy
+seed can produce different baselines across processes because the checkpoint
+consumes a GPU-rendered point cloud. All margin/phase comparisons above are
+same-process and share one baseline.
+
 The representative collision-free stall video (episode 3, `margin=5 cm`) is
 `outputs/tabletop_mvee_guidance/fresh_failure_bank_seed991/videos/
 guided_margin5_ep3.mp4`. At step 590 the gripper still holds the Can,

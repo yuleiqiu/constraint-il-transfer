@@ -1,0 +1,741 @@
+{
+  "scene": 3,
+  "bank_seed": 991,
+  "policy_seed": 991000003,
+  "guidance_scale": 45.0,
+  "baseline": {
+    "condition": "baseline",
+    "guidance_scale": null,
+    "safety_distance": null,
+    "success": true,
+    "collision_any": true,
+    "robot_obstacle_collision_any": false,
+    "arm_obstacle_collision_any": false,
+    "gripper_obstacle_collision_any": false,
+    "hand_obstacle_collision_any": false,
+    "finger_obstacle_collision_any": false,
+    "target_obstacle_collision_any": true,
+    "safe_success": false,
+    "success_with_collision": true,
+    "collision_failure": false,
+    "ncr": false,
+    "horizon_truncated": false,
+    "collision_names": [
+      "Milk"
+    ],
+    "collision_robot_geom_names": [],
+    "horizon": 424,
+    "chunks": 53,
+    "target_displacement_m": 0.39950814843177795,
+    "minimum_eef_obstacle_clearance_m": -0.01592213474214077,
+    "guidance_trigger_rate": 0.0,
+    "guidance_update_norm_mean": 0.0,
+    "guidance_update_norm_max": 0.0,
+    "tangent_side_first": 0,
+    "tangent_side_counts": {
+      "-1": 0,
+      "+1": 0
+    },
+    "obstacle_cloud_missing_chunks": 0,
+    "first_guidance_active_step": null,
+    "first_collision_step": 169,
+    "first_hand_collision_step": null,
+    "first_finger_collision_step": null,
+    "first_target_collision_step": 169,
+    "action_clip_count": 1243,
+    "action_clip_max_abs": 1.2186832427978516,
+    "position_action_clip_count": 134,
+    "position_action_clip_max_abs": 0.02822709083557129,
+    "hand_collision_enabled": true,
+    "hand_collision_audit": {
+      "enabled": true,
+      "hand_masks": {
+        "gripper0_right_gripper_base_col": [
+          1,
+          1
+        ]
+      },
+      "finger_masks": {
+        "gripper0_right_l_finger_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_l_finger_g1": [
+          0,
+          1
+        ],
+        "gripper0_right_l_fingertip_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_l_fingerpad_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_r_finger_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_r_finger_g1": [
+          0,
+          1
+        ],
+        "gripper0_right_r_fingertip_g0": [
+          0,
+          1
+        ],
+        "gripper0_right_r_fingerpad_g0": [
+          0,
+          1
+        ]
+      }
+    },
+    "obstacle_cost_type": "huber_hinge",
+    "obstacle_cost_smoothing": null,
+    "tangent_ratio": null,
+    "contact_audit": {
+      "physical_contact_pairs": [
+        {
+          "category": "carried_can",
+          "obstacle": "Milk",
+          "actor_geom": "Can_g0",
+          "obstacle_geom": "Milk_g0",
+          "first_step": 169,
+          "contact_steps": 12
+        }
+      ],
+      "physical_eef_site_contact_defined": false,
+      "eef_milk_xy_footprint_overlap_proxy": false,
+      "minimum_eef_milk_xy_clearance_proxy_m": 0.001503438103052989
+    }
+  },
+  "guided_by_margin": {
+    "always:0.01": {
+      "condition": "guided",
+      "guidance_scale": 45.0,
+      "safety_distance": 0.08,
+      "success": true,
+      "collision_any": true,
+      "robot_obstacle_collision_any": false,
+      "arm_obstacle_collision_any": false,
+      "gripper_obstacle_collision_any": false,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": true,
+      "safe_success": false,
+      "success_with_collision": true,
+      "collision_failure": false,
+      "ncr": false,
+      "horizon_truncated": false,
+      "collision_names": [
+        "Milk"
+      ],
+      "collision_robot_geom_names": [],
+      "horizon": 468,
+      "chunks": 59,
+      "target_displacement_m": 0.453315407037735,
+      "minimum_eef_obstacle_clearance_m": -0.016386007890105247,
+      "guidance_trigger_rate": 0.6494915254237288,
+      "guidance_update_norm_mean": 0.25755237683885673,
+      "guidance_update_norm_max": 2.6339869499206543,
+      "tangent_side_first": 0,
+      "tangent_side_counts": {
+        "-1": 0,
+        "+1": 0
+      },
+      "obstacle_cloud_missing_chunks": 0,
+      "first_guidance_active_step": 152,
+      "first_collision_step": 172,
+      "first_hand_collision_step": null,
+      "first_finger_collision_step": null,
+      "first_target_collision_step": 172,
+      "action_clip_count": 1445,
+      "action_clip_max_abs": 1.2151129245758057,
+      "position_action_clip_count": 369,
+      "position_action_clip_max_abs": 0.039505958557128906,
+      "hand_collision_enabled": true,
+      "hand_collision_audit": {
+        "enabled": true,
+        "hand_masks": {
+          "gripper0_right_gripper_base_col": [
+            1,
+            1
+          ]
+        },
+        "finger_masks": {
+          "gripper0_right_l_finger_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_l_finger_g1": [
+            0,
+            1
+          ],
+          "gripper0_right_l_fingertip_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_l_fingerpad_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_finger_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_finger_g1": [
+            0,
+            1
+          ],
+          "gripper0_right_r_fingertip_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_fingerpad_g0": [
+            0,
+            1
+          ]
+        }
+      },
+      "obstacle_cost_type": "huber_hinge",
+      "obstacle_cost_smoothing": 0.01,
+      "tangent_ratio": 0.0,
+      "contact_audit": {
+        "physical_contact_pairs": [
+          {
+            "category": "carried_can",
+            "obstacle": "Milk",
+            "actor_geom": "Can_g0",
+            "obstacle_geom": "Milk_g0",
+            "first_step": 172,
+            "contact_steps": 11
+          }
+        ],
+        "physical_eef_site_contact_defined": false,
+        "eef_milk_xy_footprint_overlap_proxy": false,
+        "minimum_eef_milk_xy_clearance_proxy_m": 0.0010331334847606816
+      },
+      "first_grasp_step": 88,
+      "grasped_steps": 379
+    },
+    "always:0.03": {
+      "condition": "guided",
+      "guidance_scale": 45.0,
+      "safety_distance": 0.08,
+      "success": true,
+      "collision_any": true,
+      "robot_obstacle_collision_any": false,
+      "arm_obstacle_collision_any": false,
+      "gripper_obstacle_collision_any": false,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": true,
+      "safe_success": false,
+      "success_with_collision": true,
+      "collision_failure": false,
+      "ncr": false,
+      "horizon_truncated": false,
+      "collision_names": [
+        "Milk"
+      ],
+      "collision_robot_geom_names": [],
+      "horizon": 343,
+      "chunks": 43,
+      "target_displacement_m": 0.45986631512641907,
+      "minimum_eef_obstacle_clearance_m": -0.015958325937390327,
+      "guidance_trigger_rate": 0.5116279069767442,
+      "guidance_update_norm_mean": 0.1701250456905989,
+      "guidance_update_norm_max": 5.6798601150512695,
+      "tangent_side_first": 0,
+      "tangent_side_counts": {
+        "-1": 0,
+        "+1": 0
+      },
+      "obstacle_cloud_missing_chunks": 0,
+      "first_guidance_active_step": 152,
+      "first_collision_step": 180,
+      "first_hand_collision_step": null,
+      "first_finger_collision_step": null,
+      "first_target_collision_step": 180,
+      "action_clip_count": 1023,
+      "action_clip_max_abs": 1.2038602828979492,
+      "position_action_clip_count": 215,
+      "position_action_clip_max_abs": 0.03829824924468994,
+      "hand_collision_enabled": true,
+      "hand_collision_audit": {
+        "enabled": true,
+        "hand_masks": {
+          "gripper0_right_gripper_base_col": [
+            1,
+            1
+          ]
+        },
+        "finger_masks": {
+          "gripper0_right_l_finger_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_l_finger_g1": [
+            0,
+            1
+          ],
+          "gripper0_right_l_fingertip_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_l_fingerpad_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_finger_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_finger_g1": [
+            0,
+            1
+          ],
+          "gripper0_right_r_fingertip_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_fingerpad_g0": [
+            0,
+            1
+          ]
+        }
+      },
+      "obstacle_cost_type": "huber_hinge",
+      "obstacle_cost_smoothing": 0.01,
+      "tangent_ratio": 0.0,
+      "contact_audit": {
+        "physical_contact_pairs": [
+          {
+            "category": "carried_can",
+            "obstacle": "Milk",
+            "actor_geom": "Can_g0",
+            "obstacle_geom": "Milk_g0",
+            "first_step": 180,
+            "contact_steps": 12
+          }
+        ],
+        "physical_eef_site_contact_defined": false,
+        "eef_milk_xy_footprint_overlap_proxy": false,
+        "minimum_eef_milk_xy_clearance_proxy_m": 0.0014459692384185437
+      },
+      "first_grasp_step": 88,
+      "grasped_steps": 245
+    },
+    "always:0.05": {
+      "condition": "guided",
+      "guidance_scale": 45.0,
+      "safety_distance": 0.08,
+      "success": false,
+      "collision_any": false,
+      "robot_obstacle_collision_any": false,
+      "arm_obstacle_collision_any": false,
+      "gripper_obstacle_collision_any": false,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": false,
+      "safe_success": false,
+      "success_with_collision": false,
+      "collision_failure": false,
+      "ncr": true,
+      "horizon_truncated": true,
+      "collision_names": [],
+      "collision_robot_geom_names": [],
+      "horizon": 600,
+      "chunks": 75,
+      "target_displacement_m": 0.08157528191804886,
+      "minimum_eef_obstacle_clearance_m": 0.07720170170068741,
+      "guidance_trigger_rate": 0.5929333333333333,
+      "guidance_update_norm_mean": 0.23919785544966968,
+      "guidance_update_norm_max": 9.55556869506836,
+      "tangent_side_first": 0,
+      "tangent_side_counts": {
+        "-1": 0,
+        "+1": 0
+      },
+      "obstacle_cloud_missing_chunks": 0,
+      "first_guidance_active_step": 24,
+      "first_collision_step": null,
+      "first_hand_collision_step": null,
+      "first_finger_collision_step": null,
+      "first_target_collision_step": null,
+      "action_clip_count": 1401,
+      "action_clip_max_abs": 1.2934725284576416,
+      "position_action_clip_count": 20,
+      "position_action_clip_max_abs": 0.002326369285583496,
+      "hand_collision_enabled": true,
+      "hand_collision_audit": {
+        "enabled": true,
+        "hand_masks": {
+          "gripper0_right_gripper_base_col": [
+            1,
+            1
+          ]
+        },
+        "finger_masks": {
+          "gripper0_right_l_finger_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_l_finger_g1": [
+            0,
+            1
+          ],
+          "gripper0_right_l_fingertip_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_l_fingerpad_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_finger_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_finger_g1": [
+            0,
+            1
+          ],
+          "gripper0_right_r_fingertip_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_fingerpad_g0": [
+            0,
+            1
+          ]
+        }
+      },
+      "obstacle_cost_type": "huber_hinge",
+      "obstacle_cost_smoothing": 0.01,
+      "tangent_ratio": 0.0,
+      "contact_audit": {
+        "physical_contact_pairs": [],
+        "physical_eef_site_contact_defined": false,
+        "eef_milk_xy_footprint_overlap_proxy": false,
+        "minimum_eef_milk_xy_clearance_proxy_m": 0.0945742490079303
+      },
+      "first_grasp_step": 187,
+      "grasped_steps": 2
+    },
+    "target_lifted:0.01": {
+      "condition": "guided",
+      "guidance_scale": 45.0,
+      "safety_distance": 0.08,
+      "success": true,
+      "collision_any": true,
+      "robot_obstacle_collision_any": false,
+      "arm_obstacle_collision_any": false,
+      "gripper_obstacle_collision_any": false,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": true,
+      "safe_success": false,
+      "success_with_collision": true,
+      "collision_failure": false,
+      "ncr": false,
+      "horizon_truncated": false,
+      "collision_names": [
+        "Milk"
+      ],
+      "collision_robot_geom_names": [],
+      "horizon": 375,
+      "chunks": 47,
+      "target_displacement_m": 0.4223233759403229,
+      "minimum_eef_obstacle_clearance_m": -0.016370566561818123,
+      "guidance_trigger_rate": 0.6775,
+      "guidance_update_norm_mean": 0.20783648781295672,
+      "guidance_update_norm_max": 2.0048394203186035,
+      "tangent_side_first": 0,
+      "tangent_side_counts": {
+        "-1": 0,
+        "+1": 0
+      },
+      "obstacle_cloud_missing_chunks": 0,
+      "first_guidance_active_step": 152,
+      "first_collision_step": 172,
+      "first_hand_collision_step": null,
+      "first_finger_collision_step": null,
+      "first_target_collision_step": 172,
+      "action_clip_count": 1125,
+      "action_clip_max_abs": 1.219517469406128,
+      "position_action_clip_count": 193,
+      "position_action_clip_max_abs": 0.03901505470275879,
+      "hand_collision_enabled": true,
+      "hand_collision_audit": {
+        "enabled": true,
+        "hand_masks": {
+          "gripper0_right_gripper_base_col": [
+            1,
+            1
+          ]
+        },
+        "finger_masks": {
+          "gripper0_right_l_finger_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_l_finger_g1": [
+            0,
+            1
+          ],
+          "gripper0_right_l_fingertip_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_l_fingerpad_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_finger_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_finger_g1": [
+            0,
+            1
+          ],
+          "gripper0_right_r_fingertip_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_fingerpad_g0": [
+            0,
+            1
+          ]
+        }
+      },
+      "obstacle_cost_type": "huber_hinge",
+      "obstacle_cost_smoothing": 0.01,
+      "tangent_ratio": 0.0,
+      "contact_audit": {
+        "physical_contact_pairs": [
+          {
+            "category": "carried_can",
+            "obstacle": "Milk",
+            "actor_geom": "Can_g0",
+            "obstacle_geom": "Milk_g0",
+            "first_step": 172,
+            "contact_steps": 10
+          }
+        ],
+        "physical_eef_site_contact_defined": false,
+        "eef_milk_xy_footprint_overlap_proxy": false,
+        "minimum_eef_milk_xy_clearance_proxy_m": 0.001040786212948043
+      },
+      "first_grasp_step": 88,
+      "grasped_steps": 265
+    },
+    "target_lifted:0.03": {
+      "condition": "guided",
+      "guidance_scale": 45.0,
+      "safety_distance": 0.08,
+      "success": true,
+      "collision_any": true,
+      "robot_obstacle_collision_any": false,
+      "arm_obstacle_collision_any": false,
+      "gripper_obstacle_collision_any": false,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": true,
+      "safe_success": false,
+      "success_with_collision": true,
+      "collision_failure": false,
+      "ncr": false,
+      "horizon_truncated": false,
+      "collision_names": [
+        "Milk"
+      ],
+      "collision_robot_geom_names": [],
+      "horizon": 337,
+      "chunks": 43,
+      "target_displacement_m": 0.420169860124588,
+      "minimum_eef_obstacle_clearance_m": -0.015851423144340515,
+      "guidance_trigger_rate": 0.7142857142857143,
+      "guidance_update_norm_mean": 0.19585795772040174,
+      "guidance_update_norm_max": 2.8922204971313477,
+      "tangent_side_first": 0,
+      "tangent_side_counts": {
+        "-1": 0,
+        "+1": 0
+      },
+      "obstacle_cloud_missing_chunks": 0,
+      "first_guidance_active_step": 152,
+      "first_collision_step": 180,
+      "first_hand_collision_step": null,
+      "first_finger_collision_step": null,
+      "first_target_collision_step": 180,
+      "action_clip_count": 1009,
+      "action_clip_max_abs": 1.2337799072265625,
+      "position_action_clip_count": 165,
+      "position_action_clip_max_abs": 0.037897586822509766,
+      "hand_collision_enabled": true,
+      "hand_collision_audit": {
+        "enabled": true,
+        "hand_masks": {
+          "gripper0_right_gripper_base_col": [
+            1,
+            1
+          ]
+        },
+        "finger_masks": {
+          "gripper0_right_l_finger_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_l_finger_g1": [
+            0,
+            1
+          ],
+          "gripper0_right_l_fingertip_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_l_fingerpad_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_finger_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_finger_g1": [
+            0,
+            1
+          ],
+          "gripper0_right_r_fingertip_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_fingerpad_g0": [
+            0,
+            1
+          ]
+        }
+      },
+      "obstacle_cost_type": "huber_hinge",
+      "obstacle_cost_smoothing": 0.01,
+      "tangent_ratio": 0.0,
+      "contact_audit": {
+        "physical_contact_pairs": [
+          {
+            "category": "carried_can",
+            "obstacle": "Milk",
+            "actor_geom": "Can_g0",
+            "obstacle_geom": "Milk_g0",
+            "first_step": 180,
+            "contact_steps": 11
+          }
+        ],
+        "physical_eef_site_contact_defined": false,
+        "eef_milk_xy_footprint_overlap_proxy": false,
+        "minimum_eef_milk_xy_clearance_proxy_m": 0.0015575408563407028
+      },
+      "first_grasp_step": 88,
+      "grasped_steps": 244
+    },
+    "target_lifted:0.05": {
+      "condition": "guided",
+      "guidance_scale": 45.0,
+      "safety_distance": 0.08,
+      "success": false,
+      "collision_any": false,
+      "robot_obstacle_collision_any": false,
+      "arm_obstacle_collision_any": false,
+      "gripper_obstacle_collision_any": false,
+      "hand_obstacle_collision_any": false,
+      "finger_obstacle_collision_any": false,
+      "target_obstacle_collision_any": false,
+      "safe_success": false,
+      "success_with_collision": false,
+      "collision_failure": false,
+      "ncr": true,
+      "horizon_truncated": true,
+      "collision_names": [],
+      "collision_robot_geom_names": [],
+      "horizon": 600,
+      "chunks": 75,
+      "target_displacement_m": 0.1408897340297699,
+      "minimum_eef_obstacle_clearance_m": 0.06843659281730652,
+      "guidance_trigger_rate": 0.9032258064516129,
+      "guidance_update_norm_mean": 0.16875126382035593,
+      "guidance_update_norm_max": 0.5653121471405029,
+      "tangent_side_first": 0,
+      "tangent_side_counts": {
+        "-1": 0,
+        "+1": 0
+      },
+      "obstacle_cloud_missing_chunks": 0,
+      "first_guidance_active_step": 152,
+      "first_collision_step": null,
+      "first_hand_collision_step": null,
+      "first_finger_collision_step": null,
+      "first_target_collision_step": null,
+      "action_clip_count": 1810,
+      "action_clip_max_abs": 1.18605375289917,
+      "position_action_clip_count": 509,
+      "position_action_clip_max_abs": 0.018768668174743652,
+      "hand_collision_enabled": true,
+      "hand_collision_audit": {
+        "enabled": true,
+        "hand_masks": {
+          "gripper0_right_gripper_base_col": [
+            1,
+            1
+          ]
+        },
+        "finger_masks": {
+          "gripper0_right_l_finger_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_l_finger_g1": [
+            0,
+            1
+          ],
+          "gripper0_right_l_fingertip_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_l_fingerpad_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_finger_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_finger_g1": [
+            0,
+            1
+          ],
+          "gripper0_right_r_fingertip_g0": [
+            0,
+            1
+          ],
+          "gripper0_right_r_fingerpad_g0": [
+            0,
+            1
+          ]
+        }
+      },
+      "obstacle_cost_type": "huber_hinge",
+      "obstacle_cost_smoothing": 0.01,
+      "tangent_ratio": 0.0,
+      "contact_audit": {
+        "physical_contact_pairs": [],
+        "physical_eef_site_contact_defined": false,
+        "eef_milk_xy_footprint_overlap_proxy": false,
+        "minimum_eef_milk_xy_clearance_proxy_m": 0.08587668045041091
+      },
+      "first_grasp_step": 88,
+      "grasped_steps": 513
+    }
+  },
+  "note": "All conditions run in one process with one environment, one policy instance, and one shared baseline trajectory."
+}
