@@ -1,0 +1,85 @@
+{
+  "environment": "PickPlaceCanTabletopRaisedMilk",
+  "seed": 825,
+  "reference_repository_commit": "57b1aef306f212aea3574b0a3b64aa1a3d8f5e4b",
+  "reference_path": "safelibero/libero/libero/assets/scenes/libero_tabletop_base_style.xml",
+  "reference_backview": {
+    "position": [
+      -0.4,
+      1.07,
+      1.25
+    ],
+    "quaternion_wxyz": [
+      0.0923,
+      0.0923,
+      -0.70106,
+      -0.70106
+    ],
+    "note": "Original horizontal optical axis excludes GoalTray in this task"
+  },
+  "deployed_backview": {
+    "position": [
+      -0.4,
+      1.07,
+      1.25
+    ],
+    "look_at_world_xyz": [
+      0.0,
+      0.0,
+      0.86
+    ],
+    "quaternion_wxyz": [
+      0.14471300924800642,
+      0.10350808271763542,
+      -0.5724830722136197,
+      -0.8003795061065475
+    ]
+  },
+  "image_size": [
+    256,
+    256
+  ],
+  "obstacle_geom_ids": [
+    108,
+    109,
+    110,
+    111
+  ],
+  "views": {
+    "agentview": {
+      "can_mask_pixels": 809,
+      "goal_mask_pixels": 3491,
+      "obstacle_mask_pixels": 1420,
+      "corridor_points_in_frame": 27,
+      "corridor_points_total": 27,
+      "minimum_corridor_margin_pixels": 0.2689111397168631,
+      "valid_points": 1420,
+      "occupied_5mm_voxels": 420
+    },
+    "backview": {
+      "can_mask_pixels": 170,
+      "goal_mask_pixels": 1051,
+      "obstacle_mask_pixels": 571,
+      "corridor_points_in_frame": 27,
+      "corridor_points_total": 27,
+      "minimum_corridor_margin_pixels": 60.304598518440905,
+      "valid_points": 571,
+      "occupied_5mm_voxels": 431
+    }
+  },
+  "fused": {
+    "valid_points_before_fps": 1991,
+    "sampled_points": 512,
+    "occupied_5mm_voxels_before_fps": 790,
+    "minimum_xyz": [
+      -0.009777785278856754,
+      -0.016630778089165688,
+      0.8020466566085815
+    ],
+    "maximum_xyz": [
+      0.0505007766187191,
+      0.0463688001036644,
+      0.967174768447876
+    ]
+  }
+}
