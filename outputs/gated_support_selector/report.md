@@ -129,11 +129,11 @@ route, rather than score the existing one-chunk SDP candidates.
 
 - strict source-relative preflight:
   `outputs/gated_support_selector/fixed_state_preflight_source_relative/`
-- no-substantial-retreat preflight:
-  `outputs/gated_support_selector/fixed_state_preflight/`
-- four-pair D0/D2 pilot:
-  `outputs/gated_support_selector/paired_pilot_seed600_n4/`
 - 20-pair D2 gate:
   `outputs/gated_support_selector/paired_gate_seed600_n20/`
 - implementation:
   `scripts/2026-07-29_gated_support_selector/`
+
+The superseded no-substantial-retreat preflight and four-pair pilot artifacts
+were removed during the 2026-08-18 output cleanup; their findings remain
+summarized in this report.

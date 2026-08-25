@@ -15,9 +15,12 @@ returns control when the frozen source policy becomes safely recoverable.
 Deployment-time guided denoising was the preceding research stage; its
 formulation and negative results remain important evidence.
 
-The active mechanism-isolation experiment is `empty2d_guidance`: it asks
-whether the paper-aligned predicted-clean point cost can work at all when EEF,
-robot, and obstacle geometry are reduced to an idealized 2-D point setting.
+The Empty2D mechanism-isolation experiment has now established a bounded
+positive regime. The next bounded geometry hypothesis uses the controlled
+Tabletop environment: fuse two camera point clouds, fit an obstacle MVEE, and
+evaluate gripper and carried-target ellipsoids against it. This is a geometric
+representation test, not a replacement for the longer-horizon corrective
+option and handoff hypothesis.
 
 ## 2. Current State
 
@@ -38,15 +41,32 @@ robot, and obstacle geometry are reduced to an idealized 2-D point setting.
   the rejected D2 recipes. See
   `outputs/targeted_finetuning/d1_horizon_salvage_report.md` and
   `outputs/targeted_finetuning/sdp_result_report.md`.
-- **Empty2D data and implementation gates pass; formal training is pending
-  (2026-08-07)**: the old Toy package and artifacts were deleted in favor of a
-  minimal 2-D absolute-target policy with hidden fixed goal and oracle-only
-  obstacle boundaries. The fixed 100-trajectory conditional-RBF dataset passes
-  all gates: Circle has 33 safe / 57 collision training paths with 19/14
-  upper/lower routes; Square has 20 / 70 with 11/9 routes. HDF5 verification,
-  24 mechanism/backward-compatibility tests, and a real batch-256 CUDA update,
-  reload, and online-action smoke pass. No 500-epoch source or paired guidance
-  result exists yet. See `outputs/empty2d_guidance/README.md`.
+- **Empty2D has a verified strong-guidance positive regime**: the original
+  paper-scale H320 Circle/Square gates remain negative, but the fixed
+  `rho=1`, `Q=0.12` Circle successor reaches 20/20 Task and Safe success at
+  H600 on mirrored offset obstacles. The centered control reaches 13/20; its
+  other seven trajectories are collision-free non-completions. This proves
+  predicted-clean guidance can work in matched point geometry while exposing
+  the radial cost's route-symmetry and efficiency limits. See
+  `outputs/empty2d_guidance/smooth_h600_circle/report.md`.
+- **Controlled Tabletop guidance is mechanically active but not robust**: in
+  11 clean-success / obstacle-collision-failure pairs, guidance creates 4 safe
+  task rescues and reduces physical Milk contact from 11/11 to 1/11. It also
+  produces six collision-free stalls and one remaining collision; all rescues
+  occur in one layout. Open-loop auditing confirms centimeter-scale geometric
+  repulsion but shows that a single selected obstacle point does not make the
+  full chunk safe. See
+  `outputs/tabletop_guidance/counterfactual_rescue_5scene_5noise/conclusion.md`.
+- **The next geometry test is MVEE-based and remains unverified**: add a second
+  camera, fuse the two target/obstacle point views, fit an obstacle MVEE, and
+  model both gripper and carried target as ellipsoids. Keep this implementation
+  on `exp/tabletop-mvee-guidance`; do not mix it into the archived point-cost
+  history or treat it as solving route persistence / handoff.
+- **Hand-shell removal does not explain the D2 failure**: a held-out D0--D3
+  2x2 shows modest execution gains from disabling only the Panda hand collision
+  shell, but guidance still has no significant task effect and residual finger,
+  arm, and carried-target contacts remain. See
+  `outputs/lan_o3dp_hand_off_guidance/formal_seed812_n50_summary/report.md`.
 - **Paper-aligned D2 point guidance is archived as a negative result**: on ten
   fixed D2 states, neither `Q=0.04` nor expanded `Q<=0.12` clears any of four
   gripper collisions. All contacts are gripper/Cereal rather than arm or
@@ -89,7 +109,9 @@ robot, and obstacle geometry are reduced to an idealized 2-D point setting.
 - `gated_support_selector/` — fixed-state and paired-rollout localization gate
 - `oracle_branch_value/` — cloned-simulator candidate-existence pilot
 - `persistent_correction_oracle/` — temporal source-recoverability pilot
-- `empty2d_guidance/` — active idealized point-geometry mechanism test
+- `empty2d_guidance/` — completed idealized point-geometry mechanism test
+- `lan_o3dp_hand_off_guidance/` — hand-shell physics 2x2 and rho diagnostics
+- `tabletop_guidance/` — controlled 3-D baseline and paired guidance result
 - `guided_denoising/` — completed inference-only experiment summaries
 - `task_constrained_guidance/` and `sample_refine/` — completed negative stages
 - `forward_model/` — archived OSC-action forward-model summaries
@@ -114,7 +136,9 @@ constraint-il-transfer/             ← Project root (independent git repo)
 │   ├── gated_support_selector/       ← Gated SDP selector result
 │   ├── oracle_branch_value/          ← Oracle continuation-existence result
 │   ├── persistent_correction_oracle/ ← Persistent correction handoff result
-│   ├── empty2d_guidance/              ← Active point-geometry guidance test
+│   ├── empty2d_guidance/              ← Completed point-geometry guidance test
+│   ├── lan_o3dp_hand_off_guidance/    ← Hand-shell mechanism diagnostic
+│   ├── tabletop_guidance/             ← Controlled 3-D paired guidance result
 │   └── guided_denoising/             ← Completed inference-only experiment summaries
 ├── .opencode/agents/                ← Agent definitions (paper-reader, code-explorer)
 ├── third_party/                     ← Editable source deps (managed independently, see §10)
@@ -133,26 +157,30 @@ constraint-il-transfer/             ← Project root (independent git repo)
    `docs/recoverability_corrective_option/README.md`
 5. For the persistent-correction oracle result →
    `outputs/persistent_correction_oracle/full_20/conclusion.md`
-6. For the current Empty2D mechanism test →
-   `outputs/empty2d_guidance/README.md`
-7. For the oracle branch-value result →
+6. For the Tabletop counterfactual guidance result →
+   `outputs/tabletop_guidance/counterfactual_rescue_5scene_5noise/conclusion.md`
+7. For the Empty2D strong-guidance mechanism result →
+   `outputs/empty2d_guidance/smooth_h600_circle/report.md`
+8. For the hand-shell mechanism diagnostic →
+   `outputs/lan_o3dp_hand_off_guidance/formal_seed812_n50_summary/report.md`
+9. For the oracle branch-value result →
    `outputs/oracle_branch_value/pilot_3state/result_report.md`
-8. For the completed gated selector result →
+10. For the completed gated selector result →
    `outputs/gated_support_selector/report.md`
-9. For the completed SDP and exposure-control result →
+11. For the completed SDP and exposure-control result →
    `outputs/targeted_finetuning/sdp_result_report.md`
-10. For the positive-BC predecessor →
+12. For the positive-BC predecessor →
    `outputs/targeted_finetuning/upper_bound_report.md`
-11. For why the frozen-policy stage stopped →
+13. For why the frozen-policy stage stopped →
    `docs/guided_denoising/frozen_policy_inference_limitations.md`
-12. For the waypoint-teacher upper bound →
+14. For the waypoint-teacher upper bound →
    `scripts/2026-07-27_semi_manual_waypoint_teacher/README.md`
-13. For EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
-14. For local scripts and how to run them → `scripts/AGENTS.md`
-15. For historical inference-only methods → `docs/guided_denoising/`
-16. For paper comparisons → `papers/<name>/analysis.md`
-17. For inner robomimic code → `third_party/robomimic/AGENTS.md`
-18. Before deleting local checkpoints → `docs/checkpoint_retention.md`
+15. For EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
+16. For local scripts and how to run them → `scripts/AGENTS.md`
+17. For historical inference-only methods → `docs/guided_denoising/`
+18. For paper comparisons → `papers/<name>/analysis.md`
+19. For inner robomimic code → `third_party/robomimic/AGENTS.md`
+20. Before deleting local checkpoints → `docs/checkpoint_retention.md`
 
 ## 6. Environments
 
@@ -162,6 +190,9 @@ constraint-il-transfer/             ← Project root (independent git repo)
 Empty2D mechanism environments use workspace `[-1,1]^2`, start
 `(-0.875,0)`, goal `(0.875,0)`, and either no obstacle, a radius-0.3 circle,
 or a centered 0.6-by-0.6 square.
+
+The controlled Tabletop family uses `PickPlaceCanTabletop` for obstacle-free
+training and static Milk, raised-Milk, or Cereal variants for evaluation.
 
 ## 7. Runtime Conventions
 

@@ -117,8 +117,6 @@ route, which requires a larger control-step budget.
 
 ## Canonical artifacts
 
-- development screen:
-  `outputs/targeted_finetuning/d1_salvage_seed600_n20/`
 - untouched 400-step source:
   `outputs/targeted_finetuning/d1_final_source_seeds601_602_n50/`
 - untouched 400-step SDP:
@@ -127,3 +125,6 @@ route, which requires a larger control-step budget.
   `outputs/targeted_finetuning/d1_horizon800_source_seeds601_602_n50/`
 - untouched 800-step SDP:
   `outputs/targeted_finetuning/d1_horizon800_sdp_u06000_seeds601_602_n50/`
+
+The superseded 20-rollout development-screen directory was removed during the
+2026-08-18 output cleanup; its selection result remains summarized above.

@@ -20,7 +20,9 @@ and 7 correction chunks; no correction trajectory directly completes the
 task. Safe windows can disappear and later reappear, so persistence alone is
 insufficient and the handoff condition is substantive.
 
-See `outputs/persistent_correction_oracle/pilot_3state/report.md`.
+The superseded three-state artifact directory was removed during output
+cleanup; the pilot result is summarized above and subsumed by the full result
+below.
 
 Disjoint state ranges can be run with `--state-offset` and `--state-limit`.
 Use `merge_partitions.py` to validate and merge the resulting directories in

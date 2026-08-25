@@ -81,6 +81,28 @@ scripts/
 │   ├── render_environment_overview.py
 │   ├── aggregate_seeds.py
 │   └── README.md
+├── 2026-08-12_empty2d_smooth_guidance/
+│   ├── paired_ablation.py
+│   ├── render_typical.py
+│   └── README.md
+├── 2026-08-12_lan_o3dp_hand_off_guidance/
+│   ├── create_state_bank.py
+│   ├── render_2x2.py
+│   ├── rho_trajectory_sweep.py
+│   ├── summarize_formal.py
+│   └── summarize_rho_sweep.py
+├── 2026-08-14_tabletop_guidance/
+│   ├── waypoint_teacher.py
+│   ├── evaluate_teacher.py
+│   ├── collect_demos.py
+│   ├── verify_demos.py
+│   ├── analyze_demos.py
+│   ├── evaluate_baseline.py
+│   ├── counterfactual_rescue_eval.py
+│   ├── aggregate_counterfactual_rescue.py
+│   ├── open_loop_gradient_audit.py
+│   ├── test_waypoint_teacher.py
+│   └── README.md
 ├── eef_pose_osc_policy/
 │   ├── create_abs_eef_osc_dataset.py
 │   ├── create_delta_eef_pose_osc_dataset.py
@@ -117,9 +139,12 @@ scripts/
 - **Semi-manual waypoint teacher** (in `scripts/2026-07-27_semi_manual_waypoint_teacher/`) — oracle Cartesian grasp-and-lift teacher with discrete yaw search over the 20 held-out pre-collision states. It restores every candidate from the same simulator state, selects the smallest safe yaw, replays only that route, and hands back to the frozen policy. The teacher upper bound reaches 18/20 Task success with 2/20 distractor collisions; it is a correction-data feasibility result, not a deployment method.
 - **Targeted paired corrections** (in `scripts/2026-07-28_targeted_correction/`) — fresh-layout D2 collector, append-only raw HDF5 schema, per-teacher-step frozen-policy queries, deterministic pair extraction, mixed-training preflight, and paired checkpoint screening. C1 passes with 25 successful eligible episodes and 2,849 pairs. Positive BC, a 90/10 exposure control, and paper-aligned SDP all inject strict safe-progress support but fail the closed-loop D2 gate. SDP reaches 10/20 direct and 11/20 projection-feasible states while its best D2 Task SR remains 0.25 versus source 0.35. See `outputs/targeted_finetuning/sdp_result_report.md`.
 - **Gated corrective-support selector** (in `scripts/2026-07-29_gated_support_selector/`) — source-default oracle gate with 32-sample SDP candidate filtering and least-deviation selection. A no-substantial-retreat preflight finds candidates in 11/20 strict states, but the paired D2 gate lowers Task SR from 0.25 to 0.15 with zero failure-to-success and two success-to-NCR transitions. The method is stopped; see `outputs/gated_support_selector/report.md`.
+- **Empty2D smooth-guidance successor** (in `scripts/2026-08-12_empty2d_smooth_guidance/`) — fixed strong-guidance Circle experiment with H400/H500/H600 first-passage outcomes and mirrored obstacle offsets. At H600, offset hinge and Huberized-hinge guidance both reach 20/20 Task/Safe success versus 13/20 for their centered controls. See `outputs/empty2d_guidance/smooth_h600_circle/report.md`.
+- **LAN hand-shell mechanism diagnostic** (in `scripts/2026-08-12_lan_o3dp_hand_off_guidance/`) — frozen D0--D3 full-physics / hand-off 2x2 and executed-trajectory rho sweep. Hand-shell removal modestly improves execution but does not make one-point guidance task-effective. See `outputs/lan_o3dp_hand_off_guidance/formal_seed812_n50_summary/report.md`.
+- **Tabletop point-cloud guidance environment** (in `scripts/2026-08-14_tabletop_guidance/`) — controlled 3-D mechanism environment with obstacle-free direct PickPlaceCan demonstrations and static Milk/Cereal evaluation variants. Its targeted counterfactual evaluation creates 4/11 safe rescues and removes contact in 10/11 eligible pairs, but causes six collision-free stalls; the open-loop audit isolates the single-selected-point geometry limitation. See `outputs/tabletop_guidance/counterfactual_rescue_5scene_5noise/conclusion.md`.
 - **Oracle branch value** (in `scripts/2026-07-29_oracle_branch_value/`) — cloned-simulator existence test for a ranking-only world/value model. On three strict states, 96 SDP chunks all avoid immediate contact but produce zero Can contacts and zero Task successes after full source continuation; the waypoint control solves all three. The 20-state expansion is stopped because no successful branch exists for an oracle to select. See `outputs/oracle_branch_value/pilot_3state/result_report.md`.
 - **Persistent-correction oracle** (in `scripts/2026-07-29_persistent_correction_oracle/`) — temporal source-recoverability existence test with partitioned execution and validated merging. The existing SDP-6k policy is replanned for up to 20 consecutive chunks, with an exact frozen-source continuation from every safe boundary. Full coverage is 7/20 states and 27/80 trajectories; six recoverable states succeed under all four samples, while all 52 trajectories in the thirteen uncovered states fail. Recoverability windows are non-monotonic and correction alone never finishes. See `outputs/persistent_correction_oracle/full_20/conclusion.md`.
-- **Empty2D guidance** (in `scripts/2026-08-07_empty2d_guidance/`) — completed point-geometry mechanism test. It generates and gates a fixed conditional-RBF absolute-XY dataset, trains a standard low-dimensional Diffusion Policy with required online W&B, screens five source checkpoints on D0, calibrates paper-aligned predicted-clean guidance independently on Circle/Square, runs 100 held-out paired rollouts per geometry, and renders environment and paired-rollout videos. Seed-42 epoch 100 passes the fixed source gate at 50/50 D0 success with zero clipping, but all 20 calibration settings and both held-out tests retain `Safe SR=0` and `CR=1`. Post-hoc large scales change the trajectory but trade collision for non-completion rather than producing safe success. Seeds 43/44 were not run. See `outputs/empty2d_guidance/conclusion.md`.
+- **Empty2D guidance** (in `scripts/2026-08-07_empty2d_guidance/`) — completed point-geometry mechanism test. It generates and gates a fixed conditional-RBF absolute-XY dataset, trains a standard low-dimensional Diffusion Policy with required online W&B, screens five source checkpoints on D0, calibrates paper-aligned predicted-clean guidance independently on Circle/Square, runs 100 held-out paired rollouts per geometry, and renders environment and paired-rollout videos. Seed-42 epoch 100 passes the fixed source gate at 50/50 D0 success with zero clipping; the preregistered paper-scale H320 tests retain `Safe SR=0` and `CR=1`. The strong-guidance H600 successor above establishes the later positive regime. Seeds 43/44 were not run. See `outputs/empty2d_guidance/conclusion.md`.
 - **EEF-pose OSC policy** (in `scripts/eef_pose_osc_policy/`) — dataset converters, expert replay validators, robomimic wrapper smoke tests, delta-policy pose-trajectory diagnostics, multi-env eval tooling, and eval analysis for full-pose EEF actions executed by `OSC_POSE`. Training runbook: `docs/eef_pose_osc_policy_training.md`; conclusion: `outputs/eef_pose_osc_policy/README.md`.
 - **Guided denoising** (in `scripts/guided_denoising/`) — completed inference-only experiment tooling. It captures fixed clean-image delta-EEF states, sweeps guidance scales under identical observations and diffusion seeds, visualizes DDIM updates and final trajectories, runs matched baseline / guided rollout pilots, and reports Task SR together with Safe SR / CR / NCR. Preserve it for reproduction; its local-clearance result is historical evidence for the recoverability boundary, not an active experiment. Raw HDF5 / JSONL artifacts under `outputs/guided_denoising/` are ignored; summaries and reports remain trackable.
 - `render_paired_rollout.py` replays selected recorded pairs, verifies the exact

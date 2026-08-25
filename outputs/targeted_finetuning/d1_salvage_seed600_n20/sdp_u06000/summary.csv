@@ -1,2 +1,0 @@
-env,seed,num_episodes,success_rate,mean_horizon,mean_return,non_target_collision_rate,mean_non_target_contact_count,mean_target_contact_count,min_eef_obstacle_clearance,max_target_displacement,max_non_target_displacement,action_clip_count,action_clip_max_abs_delta,raw_pos_err_mean_cm,raw_ori_err_mean_deg
-PickPlaceBreadCan,600,20,0.75,326.25,0.75,0.1,2.05,603.7,-0.028222043995981876,0.7599517107009888,0.011499575339257717,0,1.0728836059570312e-06,0.4257219004277594,0.5866855237596171

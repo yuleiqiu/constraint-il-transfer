@@ -12,29 +12,126 @@
 
 ## Current Unverified Hypotheses
 
-- [UNVERIFIED] A materially different, volume-aware geometry model may improve
-  one-distractor Task SR with the reliable clean-image delta-EEF policy; the
-  tested uniform 5 cm XY expansion does not.
+- [UNVERIFIED] A dual-view fused point cloud, obstacle MVEE, and separate
+  gripper / carried-target ellipsoids may provide the volume-aware geometry
+  missing from the single-point EEF cost. Test this representation in the
+  controlled Tabletop environment before transferring it to the reliable
+  clean-image delta-EEF policy.
+
+## 2026-08-24
+
+### Tabletop guidance rescues 4/11 collision failures but usually stalls
+
+Completed a targeted five-layout / five-noise counterfactual evaluation in the
+controlled raised-Milk Tabletop environment. Eligibility requires the clean
+source branch to succeed and the matched obstacle baseline to fail through
+collision. Eleven of 25 triads qualify. Radial predicted-clean guidance at the
+locked `rho=45`, `Q=0.08 m` setting produces four safe task-completing rescues,
+all in layout 4. On the eligible set it reduces physical Milk contact from
+11/11 to 1/11, but the remaining outcomes are six collision-free
+non-completions and one collision failure.
+
+The open-loop pre-contact audit confirms that the mechanism is active: all 100
+reverse steps have nonzero cost gradients, final executable XY targets move by
+1.31 cm on average and 2.21 cm at maximum, and clearance from the selected
+point increases. Clearance to the full visible obstacle cloud nevertheless
+does not improve. The cost repels the EEF trajectory from one selected point
+without representing the carried Can or the whole obstacle volume.
+
+Decision: retain this as a real but sharply layout-dependent task-level
+positive, not a robust avoidance solution. Do not continue scalar sweeps of
+the same one-point cost. The next bounded representation hypothesis is
+dual-view point-cloud fusion with an obstacle MVEE and gripper / carried-target
+ellipsoids; route persistence and handoff remain separate temporal needs.
+Canonical result:
+`outputs/tabletop_guidance/counterfactual_rescue_5scene_5noise/conclusion.md`.
+
+## 2026-08-13
+
+### Increasing rho creates delayed divergence, not useful 3-D avoidance
+
+Measured executed EEF trajectory separation rather than relying on contact
+labels for the D2 hand-off XY point-guidance setting. Four fixed seed-812
+states spanning persistent collision failure, residual finger contact, a
+guidance-induced contact, and a formal collision-clear positive were swept at
+`rho = 0.01 / 0.03 / 0.1 / 0.3 / 1.0`; episodes 0 and 4 additionally probed
+`rho = 3 / 10`. H600, `Q=0.04 m`, the 1 cm Huber transition, and all finger
+physics remained fixed.
+
+Centimeter-scale separation occurs at ordinary and high rho, but mostly
+hundreds of steps after guidance activates and after the first collision. Over
+the main 20 episode/rho combinations, maximum separation in the first 64
+executed steps after activation is only 2.39 mm. In episode 0, guidance starts
+at step 48 and collision occurs at step 53; even `rho=10` changes the executed
+trajectory by only 0.01 mm through collision. In episode 4, `rho=10` finally
+creates 1.19 cm separation before collision, but the finger collision and task
+outcome remain unchanged. The formal collision-clear episode 35 never reaches
+1 cm separation at any `rho<=1`, confirming a contact-boundary change rather
+than a visible bypass.
+
+Task count remains 2/4 for baseline and every main-sweep rho, while collision
+labels vary non-monotonically. Position clipping does not explain all large
+late deviations: episode 0 at `rho=0.03` reaches 8.76 cm maximum separation
+with zero position clips. The evidence instead supports small interventions
+being amplified by the frozen closed loop after contact or task failure.
+
+Decision: do not select a larger rho or run a formal matrix for the same XY
+point cost. Rho alone can force late or, at extreme scale, locally visible
+motion, but it does not generate an early, monotonic, task-preserving avoidance
+route. Canonical report:
+`outputs/lan_o3dp_hand_off_guidance/rho_trajectory_sweep_summary/report.md`.
 
 ## 2026-08-12
 
-### Strong guidance gives qualitative safe completion in Empty2D
+### Disabling the Panda hand shell helps execution but does not rescue 3-D point guidance
 
-Revisited the post-hoc `rho=1, Q=0.12` Circle diagnostic beyond the formal
-H320 evaluation window. Guidance keeps the point collision-free during the
-recorded H320 segment, and continuing with a longer horizon was visually
-observed to eventually reach the goal without collision. The route is slow and
-contains substantial jitter. This is a single-seed post-hoc observation; no
-fixed extended horizon, paired test, or multi-seed replication was run.
+Completed a held-out four-environment 2x2 using the paper-aligned point-cloud
+LAN-O3DP checkpoint: full physics versus only
+`gripper0_right_hand_collision` disabled, crossed with baseline versus XY
+Huberized-hinge guidance. The frozen setting is H600, `Q=0.04 m`,
+`epsilon=0.01 m`, and `rho=0.01`; each cell has 50 seed-812 paired states and
+the seed-705 calibration states are excluded. Finger collision meshes and pads
+remain physically active.
 
-Decision: retain the preregistered H320 tables as a negative result for the
-paper-scale sweep, but revise the mechanism conclusion. Predicted-clean guided
-denoising can produce task-completing avoidance in matched 2-D point geometry
-when `rho` and execution time are sufficiently large. The 3-D D2 failure is
-therefore consistent with additional swept-gripper, pose, grasp, and temporal
-complexity, although this observation does not isolate geometry as the unique
-cause. Canonical interpretation:
-`outputs/empty2d_guidance/conclusion.md`.
+Hand-off changes baseline Task SR from 0.50 to 0.62 in D2 and from 0.72 to
+0.78 in D3. In D2, however, Safe SR remains 0.34: disabling the hand converts
+collision failures primarily into successes that still contact through the
+fingers, arm, or carried Can. D3 baseline Safe SR improves from 0.34 to 0.48
+and CR falls from 0.58 to 0.44 under the modified physics.
+
+The 2x2 interaction does not support the guidance hypothesis. With hand
+collision disabled, guidance changes D2 Task/Safe SR only from 0.62/0.34 to
+0.62/0.36 and D3 from 0.78/0.48 to 0.80/0.50. Every paired guidance
+comparison has exact McNemar `p >= 0.5`. In full physics, hand CR is unchanged
+by guidance in both D2 and D3; after hand-off, D2 finger CR rises from 0.32 to
+0.36 and D3 finger CR stays 0.34. Guidance reduces some carried-target
+contacts, but it does not supply swept-finger geometry or a persistent bypass
+route.
+
+Decision: retain hand-off as a mechanism diagnostic and modified-physics
+upper bound, not as evidence that current 3-D XY point guidance succeeds. Do
+not expand another blind `rho` / `Q` sweep of the same cost. Canonical report:
+`outputs/lan_o3dp_hand_off_guidance/formal_seed812_n50_summary/report.md`.
+
+### Strong long-horizon guidance succeeds in offset Empty2D
+
+Promoted the post-hoc `rho=1, Q=0.12` Circle observation into a fixed paired
+20-layout experiment with one continuous rollout and first-passage outcomes at
+H400, H500, and H600. Deterministically mirrored obstacle offsets break the
+head-on symmetry while keeping every direct start-to-goal segment obstructed.
+At H600, both hinge and Huberized-hinge guidance reach Task/Safe SR 20/20 with
+zero collision. The matched centered conditions reach only 13/20, with the
+remaining seven trajectories ending as collision-free non-completions. The
+offset guided conditions already reach 19/20 at H400; Huberization mainly
+reduces reversal and backward-motion diagnostics rather than changing the H600
+outcome.
+
+Decision: retain the preregistered H320 paper-scale tables as their historical
+negative result, while treating the H600 offset result as a verified mechanism
+positive. Predicted-clean guidance can solve matched point geometry once scale,
+horizon, and route symmetry permit a bypass. Its centered failures show that a
+radial point cost still lacks stable route selection. Canonical report:
+`outputs/empty2d_guidance/smooth_h600_circle/report.md`.
 
 ## 2026-08-10
 

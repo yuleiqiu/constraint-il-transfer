@@ -68,6 +68,5 @@ behavior generator materially expands coverage.
 
 Fixed pilot contract:
 `docs/recoverability_corrective_option/minimal_validation.md`. Canonical
-result: `outputs/persistent_correction_oracle/pilot_3state/report.md`.
-Full result:
+result:
 `outputs/persistent_correction_oracle/full_20/conclusion.md`.

@@ -57,12 +57,16 @@ def parse_args():
     parser.add_argument(
         "--states-file",
         type=Path,
-        default=Path("outputs/guided_denoising/same_state/states.hdf5"),
+        default=Path(
+            "outputs/guided_denoising/same_state_vector_field_v3/states.hdf5"
+        ),
     )
     parser.add_argument(
         "--sweep-results",
         type=Path,
-        default=Path("outputs/guided_denoising/same_state/sweep_results.jsonl"),
+        default=Path(
+            "outputs/guided_denoising/same_state_vector_field_v3/sweep_results.jsonl"
+        ),
     )
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--state-ids", nargs="+")

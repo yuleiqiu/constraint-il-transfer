@@ -345,7 +345,9 @@ def parse_args():
     parser.add_argument(
         "--states",
         type=Path,
-        default=Path("outputs/guided_denoising/same_state/states.hdf5"),
+        default=Path(
+            "outputs/guided_denoising/same_state_vector_field_v3/states.hdf5"
+        ),
     )
     parser.add_argument("--envs", nargs="+", default=None)
     parser.add_argument(

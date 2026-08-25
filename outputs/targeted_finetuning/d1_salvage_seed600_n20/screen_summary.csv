@@ -1,3 +1,0 @@
-label,variant,updates,checkpoint,env,seed,n,task_sr,safe_sr,cr,ncr,safe_success,success_collision,collision_failure,ncr_count,fail_to_success,success_to_failure,collision_failure_to_ncr,clip_count
-source,source,0,outputs/robomimic/train/dp_can_delta_pose_osc/20260707222943/models/model_epoch_260_image_v15_delta_eef_pose_osc_success_0.98.pth,PickPlaceBreadCan,600,20,0.6,0.6,0.3,0.1,12,0,6,2,0,0,0,0
-sdp_u06000,sdp,6000,outputs/robomimic/train/dp_can_delta_pose_osc_targeted_sdp/20260729173254/models/model_epoch_12.pth,PickPlaceBreadCan,600,20,0.75,0.75,0.1,0.15,15,0,2,3,4,1,2,0

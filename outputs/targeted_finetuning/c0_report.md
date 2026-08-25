@@ -59,10 +59,10 @@ epoch-260 min-max coordinate system:
 
 An initial collection configuration using the diagnostic teacher's 0.04-rad
 yaw increment failed this gate: two +20-degree episodes produced nine unique
-rotation-z transitions reaching normalized 1.98. Those artifacts are retained
-under `outputs/targeted_finetuning/rejected_maxrot004/`. Reducing the fixed
-increment to 0.015 rad brought the same yaw routes within range; the largest
-positive rotation-z value is 0.837 normalized.
+rotation-z transitions reaching normalized 1.98. Those rejected artifacts
+were removed during the 2026-08-18 output cleanup. Reducing the fixed increment
+to 0.015 rad brought the same yaw routes within range; the largest positive
+rotation-z value is 0.837 normalized.
 
 ## Replay gate
 
