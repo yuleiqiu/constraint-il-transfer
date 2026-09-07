@@ -43,4 +43,3 @@ def test_polyline_resampling_bounds_every_step():
     route = MODULE.resample_polyline_max_step(points, 0.006)
     np.testing.assert_allclose(route[[0, -1]], points[[0, -1]])
     assert np.linalg.norm(np.diff(route, axis=0), axis=1).max() <= 0.006 + 1e-12
-
