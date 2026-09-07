@@ -10,13 +10,52 @@
 - When a result is superseded, retain only the correction and historical
   significance; Git history preserves the full original narrative.
 
-## Current Unverified Hypotheses
+## Current decision frontier
 
-- [UNVERIFIED] A dual-view fused point cloud, obstacle MVEE, and separate
-  gripper / carried-target ellipsoids may provide the volume-aware geometry
-  missing from the single-point EEF cost. Test this representation in the
-  controlled Tabletop environment before transferring it to the reliable
-  clean-image delta-EEF policy.
+No next experiment has been selected. Persistent corrective options remain a
+candidate supported by earlier evidence, not an instruction to resume training.
+See root AGENTS.md for current status; older decisions below are historical.
+
+## 2026-09-07
+
+### Close the wider-support record and rebuild project navigation
+
+The user confirmed the chronology: MVEE was put aside after small geometry
+and rollout probes, then the original nearest-point guidance was reused for a
+wider-demonstration-support experiment. The branch name does not describe the
+method used by the later test.
+
+The August 26--September 2 artifacts establish a successful 20/20 teacher
+gate and a 100-demo route-diverse dataset. The selected epoch-50 point-cloud
+absolute-EEF source reaches 39/50 clean successes; epoch 250 reaches 23/50.
+At H600 on fifty RaisedMilk states, target-lifted point guidance changes Task
+SR 0.58 to 0.62 and Safe SR 0.52 to 0.54, with Task transitions 9/7 and Safe
+transitions 8/7. Neither is significant. Always-on guidance drops Task SR to
+0.18. The direct-demo comparator drops from 0.34 to 0.04 under target-lifted
+guidance, trading contact for non-completion.
+
+Selected video replays reproduce full outcome labels in only 9/16 baseline
+and 13/16 guided branches. Equal state hashes and seeds therefore do not
+establish exact counterfactuals across processes. Learned route coverage was
+not directly measured: diverse demonstrations alone do not prove that the
+trained policy retained all modes. These findings do not establish useful
+guidance from wider demonstrations, nor disprove every support-based approach.
+Canonical evidence: outputs/tabletop_wide_support/conclusion.md.
+
+The user authorized documentation restructuring. Root instructions now expose
+the latest evidence and explicitly leave the next research decision open.
+Historical plans and agent recommendations must not become standing orders.
+No supervisor view has been recovered from the available records.
+
+### Retrospective MVEE closure (experiments on August 25)
+
+Dual-view obstacle fusion, MVEE fitting, and actor ellipsoid costs were
+implemented. Three fresh collision failures became collision-free stalls at
+5 cm margin; smaller margins retained contact. A same-process phase probe
+restored early grasp but did not produce safe completion. This was a bounded
+probe, subsequently put aside by the user, not a formal positive geometry
+result or the active successor. See
+scripts/2026-08-25_tabletop_mvee_guidance/README.md.
 
 ## 2026-08-24
 

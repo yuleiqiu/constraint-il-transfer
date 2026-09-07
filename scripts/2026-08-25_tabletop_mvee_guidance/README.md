@@ -3,7 +3,10 @@
 This branch-local successor begins with the geometry representation gate. It
 now implements deterministic obstacle MVEE fitting, conservative gripper and
 target ellipsoids, and an opt-in differentiable predicted-clean separation
-cost. Closed-loop evaluation is not yet run.
+cost. Small closed-loop probes below were completed on August 25; this line
+was subsequently put aside. It is not the selected next experiment.
+The later wider-support test returned to original single-point guidance:
+see outputs/tabletop_wide_support/conclusion.md from project root.
 
 The Tabletop environment adds a fixed `backview` based on the camera selected
 in the clean `third_party/vlsa-aegis` reference repository at commit

@@ -138,6 +138,13 @@ scripts/
 
 ## Categories
 
+- **Tabletop wider demonstration support** (`2026-08-26_tabletop_wide_support/`)
+  — teacher generation, 100-demo collection and verification, checkpoint
+  screening, RaisedMilk evaluation, aggregation, and paired video replay.
+  This uses original nearest-point guidance, not MVEE. Completed without a
+  reliable safe-task gain; start with its README and
+  `outputs/tabletop_wide_support/conclusion.md`. No successor is selected.
+
 - **Diagnostic / benchmark** (in `scripts/`) — standalone scripts for per-step EEF↔obstacle tracking and OSC control timing. See docstrings for usage.
 - **Clean-policy intent diagnostic** (in `scripts/2026-07-20_intent_diagnostic/`) — CPU-only offline analysis of the 600 existing unguided delta-EEF rollouts. It measures closest target progress and segment-to-footprint clearance for every pre-target chunk, selects one fixed critical chunk per episode, applies the three-way intent / obstruction partition and A/B/C Wilson decision rule, and produces deterministic CSV / JSON summaries and representative plots. Run the companion `test_analyze_intent.py` directly for the pure-Python geometry and selection tests. Canonical result: `outputs/guided_denoising/intent_diagnostic/report.md`.
 - **Sample-refine** (in `scripts/2026-07-21_sample_refine/`) — archived four-candidate sampling and masked-refinement experiment. The complete method left all 20 paired task outcomes unchanged and added 76% inference time. Reproduction requires the archive tags documented in `docs/guided_denoising/sample_refine_pilot.md`.

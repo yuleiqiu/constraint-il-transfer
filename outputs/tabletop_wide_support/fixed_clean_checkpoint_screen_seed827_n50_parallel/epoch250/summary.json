@@ -1,0 +1,20 @@
+{
+  "environment": "PickPlaceCanTabletop",
+  "state_bank": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_wide_support/fixed_clean_state_bank_seed827_n50/initial_state_bank.pkl",
+  "bank_seed": 827,
+  "episodes": 50,
+  "horizon": 600,
+  "paired_initial_states": true,
+  "paired_policy_seeds": true,
+  "checkpoints": [
+    {
+      "label": "epoch250",
+      "checkpoint": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_tabletop_can_wide_support_abs_pose_sample_100demo_seed42/20260826184200/models/model_epoch_250.pth",
+      "successes": 23,
+      "episodes": 50,
+      "success_rate": 0.46,
+      "mean_steps_success": 422.9130434782609
+    }
+  ],
+  "paired_outcomes": null
+}

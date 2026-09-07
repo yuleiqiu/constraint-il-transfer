@@ -1,0 +1,51 @@
+{
+  "pairing_audit": {
+    "episode_sets_match": true,
+    "layout_seeds_match": true,
+    "policy_seeds_match": true,
+    "initial_state_hashes_match": true,
+    "all_restore_hashes_match": true
+  },
+  "baseline": {
+    "episodes": 50,
+    "task_success": 17,
+    "task_sr": 0.34,
+    "safe_success": 5,
+    "safe_sr": 0.1,
+    "collision_any": 34,
+    "cr": 0.68,
+    "ncr_count": 11,
+    "ncr": 0.22,
+    "four_way": {
+      "safe_success": 5,
+      "success_with_collision": 12,
+      "collision_failure": 22,
+      "collision_free_non_completion": 11
+    }
+  },
+  "guided": {
+    "episodes": 50,
+    "task_success": 2,
+    "task_sr": 0.04,
+    "safe_success": 1,
+    "safe_sr": 0.02,
+    "collision_any": 4,
+    "cr": 0.08,
+    "ncr_count": 45,
+    "ncr": 0.9,
+    "four_way": {
+      "safe_success": 1,
+      "success_with_collision": 1,
+      "collision_failure": 3,
+      "collision_free_non_completion": 45
+    }
+  },
+  "task_transitions": {
+    "failure_to_success": 1,
+    "success_to_failure": 16
+  },
+  "safe_transitions": {
+    "failure_to_success": 1,
+    "success_to_failure": 5
+  }
+}

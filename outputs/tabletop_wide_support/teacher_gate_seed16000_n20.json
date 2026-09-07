@@ -1,0 +1,443 @@
+{
+  "summary": {
+    "episodes": 20,
+    "successes": 20,
+    "mean_steps": 311.2,
+    "max_steps": 329,
+    "achieved_signed_peak_min_m": -0.1355602550597091,
+    "achieved_signed_peak_max_m": 0.1527760904614531,
+    "upper_wide": 5,
+    "lower_wide": 6,
+    "near_direct": 5,
+    "gates": {
+      "all_success": true,
+      "upper_wide_3": true,
+      "lower_wide_3": true,
+      "near_direct_3": true,
+      "horizon": true
+    },
+    "passed": true
+  },
+  "episodes": [
+    {
+      "episode": 0,
+      "seed": 16000,
+      "success": true,
+      "grasped": true,
+      "steps": 318,
+      "can_start": [
+        0.017869188340483975,
+        -0.24273082224386938,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        -0.013776018189610505,
+        0.1906381498247024
+      ],
+      "max_transport_line_deviation_m": 0.004513272921545895,
+      "commanded_route_signed_peak_m": -0.004702742267592728,
+      "commanded_route_midpoint_offset_m": 0.0005722843084386871,
+      "achieved_route_signed_peak_m": -0.004513272921545895,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 1,
+      "seed": 16001,
+      "success": true,
+      "grasped": true,
+      "steps": 329,
+      "can_start": [
+        -0.015693027799344103,
+        -0.24933823690579449,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        0.006609436848869242,
+        0.234960290425646
+      ],
+      "max_transport_line_deviation_m": 0.05423537993722545,
+      "commanded_route_signed_peak_m": -0.05443838463007962,
+      "commanded_route_midpoint_offset_m": -0.05197635496145616,
+      "achieved_route_signed_peak_m": -0.05423537993722545,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 2,
+      "seed": 16002,
+      "success": true,
+      "grasped": true,
+      "steps": 308,
+      "can_start": [
+        -0.008850803954542963,
+        -0.20415445543422175,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        -0.01979208854599792,
+        0.21893691936604184
+      ],
+      "max_transport_line_deviation_m": 0.024450738443926055,
+      "commanded_route_signed_peak_m": -0.02462629542183733,
+      "commanded_route_midpoint_offset_m": -0.0199371596096983,
+      "achieved_route_signed_peak_m": -0.02445073844392606,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 3,
+      "seed": 16003,
+      "success": true,
+      "grasped": true,
+      "steps": 307,
+      "can_start": [
+        0.021011224160524547,
+        -0.21609371443654474,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        -0.016534949710900866,
+        0.19933079401562137
+      ],
+      "max_transport_line_deviation_m": 0.07539334954852943,
+      "commanded_route_signed_peak_m": 0.07535699797213644,
+      "commanded_route_midpoint_offset_m": 0.07234526849393616,
+      "achieved_route_signed_peak_m": 0.07539334954852943,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 4,
+      "seed": 16004,
+      "success": true,
+      "grasped": true,
+      "steps": 313,
+      "can_start": [
+        -0.010667844738684859,
+        -0.23482618326906507,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        -0.006560289412795066,
+        0.22576703054439373
+      ],
+      "max_transport_line_deviation_m": 0.06969361716057104,
+      "commanded_route_signed_peak_m": -0.06987487071175186,
+      "commanded_route_midpoint_offset_m": -0.06673986714633678,
+      "achieved_route_signed_peak_m": -0.06969361716057104,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 5,
+      "seed": 16005,
+      "success": true,
+      "grasped": true,
+      "steps": 298,
+      "can_start": [
+        -0.01948858146743176,
+        -0.23979318087118145,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        0.018932544855101055,
+        0.24358303499156492
+      ],
+      "max_transport_line_deviation_m": 0.1527760904614531,
+      "commanded_route_signed_peak_m": 0.15259354010165413,
+      "commanded_route_midpoint_offset_m": 0.15255595986214487,
+      "achieved_route_signed_peak_m": 0.1527760904614531,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 6,
+      "seed": 16006,
+      "success": true,
+      "grasped": true,
+      "steps": 327,
+      "can_start": [
+        -0.017180878274641168,
+        -0.2491856900534087,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        -0.0016287825803907516,
+        0.19409117219436395
+      ],
+      "max_transport_line_deviation_m": 0.11119407499630389,
+      "commanded_route_signed_peak_m": 0.11119413132214861,
+      "commanded_route_midpoint_offset_m": 0.10988831450339945,
+      "achieved_route_signed_peak_m": 0.11119407499630388,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 7,
+      "seed": 16007,
+      "success": true,
+      "grasped": true,
+      "steps": 320,
+      "can_start": [
+        -0.0033327304020499895,
+        -0.1920050583888971,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        0.008021879903080065,
+        0.2408915088332052
+      ],
+      "max_transport_line_deviation_m": 0.06692959747806078,
+      "commanded_route_signed_peak_m": -0.06705530996746237,
+      "commanded_route_midpoint_offset_m": -0.06389664356036263,
+      "achieved_route_signed_peak_m": -0.06692959747806078,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 8,
+      "seed": 16008,
+      "success": true,
+      "grasped": true,
+      "steps": 310,
+      "can_start": [
+        0.0034646845328048237,
+        -0.22698047978766273,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        0.010661246511974809,
+        0.2390698413173353
+      ],
+      "max_transport_line_deviation_m": 0.05596491987628529,
+      "commanded_route_signed_peak_m": -0.056169382891668715,
+      "commanded_route_midpoint_offset_m": -0.055676242579081214,
+      "achieved_route_signed_peak_m": -0.05596491987628529,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 9,
+      "seed": 16009,
+      "success": true,
+      "grasped": true,
+      "steps": 310,
+      "can_start": [
+        0.02078759531619962,
+        -0.24248355979056563,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        -0.025024152158857203,
+        0.21760529036049742
+      ],
+      "max_transport_line_deviation_m": 0.026267701776044303,
+      "commanded_route_signed_peak_m": -0.02645697730447602,
+      "commanded_route_midpoint_offset_m": -0.013879743518787336,
+      "achieved_route_signed_peak_m": -0.026267701776044303,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 10,
+      "seed": 16010,
+      "success": true,
+      "grasped": true,
+      "steps": 329,
+      "can_start": [
+        0.012691722641900112,
+        -0.1945665019284773,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        0.01253377782980513,
+        0.20520067168294426
+      ],
+      "max_transport_line_deviation_m": 0.11139083485700925,
+      "commanded_route_signed_peak_m": 0.11137575459614313,
+      "commanded_route_midpoint_offset_m": 0.11085216429611014,
+      "achieved_route_signed_peak_m": 0.11139083485700926,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 11,
+      "seed": 16011,
+      "success": true,
+      "grasped": true,
+      "steps": 301,
+      "can_start": [
+        -0.014539707393099907,
+        -0.19043124522657126,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        -0.0005287966735850295,
+        0.20845687175375183
+      ],
+      "max_transport_line_deviation_m": 0.027335292993301213,
+      "commanded_route_signed_peak_m": 0.027329240543002772,
+      "commanded_route_midpoint_offset_m": 0.0109150164364109,
+      "achieved_route_signed_peak_m": 0.027335292993301213,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 12,
+      "seed": 16012,
+      "success": true,
+      "grasped": true,
+      "steps": 299,
+      "can_start": [
+        0.014531339265159315,
+        -0.20755177267725855,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        0.01441320907822203,
+        0.24987752990939188
+      ],
+      "max_transport_line_deviation_m": 0.058783338633851386,
+      "commanded_route_signed_peak_m": -0.05863720833125434,
+      "commanded_route_midpoint_offset_m": -0.04859138489096852,
+      "achieved_route_signed_peak_m": -0.058783338633851386,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 13,
+      "seed": 16013,
+      "success": true,
+      "grasped": true,
+      "steps": 306,
+      "can_start": [
+        -0.02307652540201833,
+        -0.22355221724461585,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        -0.016860241748181935,
+        0.21509558976141216
+      ],
+      "max_transport_line_deviation_m": 0.1355602550597091,
+      "commanded_route_signed_peak_m": -0.13567636577723283,
+      "commanded_route_midpoint_offset_m": -0.13469646398817992,
+      "achieved_route_signed_peak_m": -0.1355602550597091,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 14,
+      "seed": 16014,
+      "success": true,
+      "grasped": true,
+      "steps": 298,
+      "can_start": [
+        -0.028261048658444157,
+        -0.19288293421716765,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        0.027960409923052446,
+        0.20103429144938045
+      ],
+      "max_transport_line_deviation_m": 0.07271575471948809,
+      "commanded_route_signed_peak_m": -0.07287912097401689,
+      "commanded_route_midpoint_offset_m": -0.06644605725915038,
+      "achieved_route_signed_peak_m": -0.07271575471948809,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 15,
+      "seed": 16015,
+      "success": true,
+      "grasped": true,
+      "steps": 311,
+      "can_start": [
+        0.028470278212707326,
+        -0.20728184607434277,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        0.02378091392994349,
+        0.21381150363576254
+      ],
+      "max_transport_line_deviation_m": 0.11664085649139813,
+      "commanded_route_signed_peak_m": -0.11656463370574499,
+      "commanded_route_midpoint_offset_m": -0.11197057892689521,
+      "achieved_route_signed_peak_m": -0.11664085649139813,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 16,
+      "seed": 16016,
+      "success": true,
+      "grasped": true,
+      "steps": 303,
+      "can_start": [
+        0.00432350299164079,
+        -0.24767435330869894,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        0.013473447244351032,
+        0.2325480397820167
+      ],
+      "max_transport_line_deviation_m": 0.03742355469319806,
+      "commanded_route_signed_peak_m": -0.03766424503130069,
+      "commanded_route_midpoint_offset_m": -0.03719054631458933,
+      "achieved_route_signed_peak_m": -0.037423554693198066,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 17,
+      "seed": 16017,
+      "success": true,
+      "grasped": true,
+      "steps": 318,
+      "can_start": [
+        -0.023851156205933793,
+        -0.2331919895220795,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        -0.021154913041180855,
+        0.22226392330143274
+      ],
+      "max_transport_line_deviation_m": 0.10434519737396271,
+      "commanded_route_signed_peak_m": -0.10451899392958935,
+      "commanded_route_midpoint_offset_m": -0.10449911534038384,
+      "achieved_route_signed_peak_m": -0.10434519737396271,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 18,
+      "seed": 16018,
+      "success": true,
+      "grasped": true,
+      "steps": 305,
+      "can_start": [
+        0.026075712391299855,
+        -0.20061407530690978,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        0.00023180752694508533,
+        0.21109919790345247
+      ],
+      "max_transport_line_deviation_m": 0.054205037307876,
+      "commanded_route_signed_peak_m": -0.05410556033213507,
+      "commanded_route_midpoint_offset_m": -0.054042434033968655,
+      "achieved_route_signed_peak_m": -0.054205037307876,
+      "route_draw_attempts": 1
+    },
+    {
+      "episode": 19,
+      "seed": 16019,
+      "success": true,
+      "grasped": true,
+      "steps": 314,
+      "can_start": [
+        -0.015498673386450957,
+        -0.2308867769383828,
+        0.8600000000000001
+      ],
+      "goal_xy": [
+        0.008757234726910652,
+        0.24913838164602087
+      ],
+      "max_transport_line_deviation_m": 0.08384639252653119,
+      "commanded_route_signed_peak_m": 0.08365210354645139,
+      "commanded_route_midpoint_offset_m": 0.08359468852226667,
+      "achieved_route_signed_peak_m": 0.08384639252653119,
+      "route_draw_attempts": 1
+    }
+  ]
+}

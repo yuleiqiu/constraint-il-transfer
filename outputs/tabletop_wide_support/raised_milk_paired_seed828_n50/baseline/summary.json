@@ -1,0 +1,18 @@
+{
+  "condition": "baseline",
+  "episodes": 50,
+  "task_success": 29,
+  "task_sr": 0.58,
+  "safe_success": 26,
+  "safe_sr": 0.52,
+  "collision_any": 10,
+  "cr": 0.2,
+  "ncr_count": 14,
+  "ncr": 0.28,
+  "four_way": {
+    "safe_success": 26,
+    "success_with_collision": 3,
+    "collision_failure": 7,
+    "collision_free_non_completion": 14
+  }
+}

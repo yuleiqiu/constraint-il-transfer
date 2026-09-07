@@ -1,5 +1,10 @@
 # Project Situation
 
+Historical synthesis: the technical discussion below reflects its dated
+research stages. For current decisions use root AGENTS.md and the newest
+docs/RESEARCH_LOG.md entries. The PointNav section describes a superseded
+prototype; it is not an active work plan.
+
 This document describes the current research problem, negative results, and
 open questions. It is the reference for paper-reading agents to evaluate
 whether a new paper addresses a gap this project has already hit.

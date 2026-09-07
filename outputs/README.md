@@ -4,10 +4,23 @@ This directory contains one top-level folder per research stage. Large model
 files live only under `robomimic/train`; the other folders are compact result
 records, fixed state banks, reports, and visualizations.
 
-## Current conclusions
+## Latest completed stages
+
+- `tabletop_wide_support/`: wider obstacle-free demonstrations with original
+  single-point guidance (not MVEE). Transport-only guidance has no significant
+  Task/Safe gain and suffers replay drift; always-on guidance harms completion.
+  Start with `conclusion.md`.
+- `tabletop_mvee_guidance/`: stopped geometry probe with small rollout tests;
+  contact removal became stalls. Contract and evidence:
+  `scripts/2026-08-25_tabletop_mvee_guidance/README.md` from project root.
+
+No next experiment is selected. The following results remain evidence for
+future decisions, not an automatic work queue.
+
+## Retained conclusions
 
 - `persistent_correction_oracle/`: canonical evidence for the active
-  temporally persistent corrective-option hypothesis. Start with
+  temporally persistent corrective-option candidate. Start with
   `full_20/conclusion.md`.
 - `targeted_finetuning/`: positive D1 result and the closed D2
   correction-training boundary. Start with `sdp_result_report.md`.
@@ -41,8 +54,11 @@ records, fixed state banks, reports, and visualizations.
   `docs/checkpoint_retention.md` before deleting anything here.
 - `robomimic/eval/`: compact checkpoint-evaluation metadata.
 
-After the 2026-08-18 cleanup, the full tree is 20.74 GB (19.3 GiB). Of that,
+Historical snapshot after the 2026-08-18 cleanup: the full tree was 20.74 GB
+(19.3 GiB). Of that,
 20.33 GB is retained model/training storage; all other result folders total
 about 404 MB. The Tabletop cleanup retained only its selected epoch-100
 checkpoint and eleven canonical or mechanism-relevant result directories.
-See `CLEANUP_2026-08-18.md` for the all-stage audit.
+See `CLEANUP_2026-08-18.md` for that historical audit. These are not current
+disk totals; subsequent wide-support training added substantial local storage.
+See `docs/checkpoint_retention.md` from project root for retention policy.

@@ -1,0 +1,74 @@
+{
+  "train": {
+    "routes": 90,
+    "upper_wide": 20,
+    "lower_wide": 18,
+    "near_direct": 30,
+    "moderate": 22,
+    "signed_peak_min_m": -0.13855236408432786,
+    "signed_peak_max_m": 0.1430272470877483,
+    "signed_peak_mean_m": 0.0015612565709273965,
+    "counterfactual_proxy": {
+      "obstacle_offset_-0.0175": {
+        "safe": 42,
+        "collision": 48,
+        "minimum_clearance_m": -0.05706979787563512,
+        "median_clearance_m": -0.0019568129176334888
+      },
+      "obstacle_offset_+0.0175": {
+        "safe": 41,
+        "collision": 49,
+        "minimum_clearance_m": -0.05980546110237549,
+        "median_clearance_m": -0.007649529189752702
+      }
+    }
+  },
+  "valid": {
+    "routes": 10,
+    "upper_wide": 2,
+    "lower_wide": 4,
+    "near_direct": 2,
+    "moderate": 2,
+    "signed_peak_min_m": -0.13563630893956544,
+    "signed_peak_max_m": 0.0861058096212254,
+    "signed_peak_mean_m": -0.029100299029907895,
+    "counterfactual_proxy": {
+      "obstacle_offset_-0.0175": {
+        "safe": 6,
+        "collision": 4,
+        "minimum_clearance_m": -0.04184261576517358,
+        "median_clearance_m": 0.009404012532044044
+      },
+      "obstacle_offset_+0.0175": {
+        "safe": 6,
+        "collision": 4,
+        "minimum_clearance_m": -0.055093784767582574,
+        "median_clearance_m": 0.01296495720329844
+      }
+    }
+  },
+  "all": {
+    "routes": 100,
+    "upper_wide": 22,
+    "lower_wide": 22,
+    "near_direct": 32,
+    "moderate": 24,
+    "signed_peak_min_m": -0.13855236408432786,
+    "signed_peak_max_m": 0.1430272470877483,
+    "signed_peak_mean_m": -0.0015048989891561315,
+    "counterfactual_proxy": {
+      "obstacle_offset_-0.0175": {
+        "safe": 48,
+        "collision": 52,
+        "minimum_clearance_m": -0.05706979787563512,
+        "median_clearance_m": -0.0014759427464831956
+      },
+      "obstacle_offset_+0.0175": {
+        "safe": 47,
+        "collision": 53,
+        "minimum_clearance_m": -0.05980546110237549,
+        "median_clearance_m": -0.003857345154793239
+      }
+    }
+  }
+}

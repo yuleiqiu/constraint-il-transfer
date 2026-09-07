@@ -3,6 +3,10 @@
 Status: method hypothesis supported; current SDP generator coverage bounded on
 all 20 strict states, 2026-07-30.
 
+Navigation update 2026-09-07: this remains a candidate method. The project has
+not selected its next experiment after the Tabletop support test. The next
+gate below is conditional on a decision to resume this direction.
+
 ## Motivation
 
 The frozen source policy contains reliable task behavior but lacks robust

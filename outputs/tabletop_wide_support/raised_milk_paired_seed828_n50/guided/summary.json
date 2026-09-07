@@ -1,0 +1,18 @@
+{
+  "condition": "guided",
+  "episodes": 50,
+  "task_success": 9,
+  "task_sr": 0.18,
+  "safe_success": 7,
+  "safe_sr": 0.14,
+  "collision_any": 9,
+  "cr": 0.18,
+  "ncr_count": 34,
+  "ncr": 0.68,
+  "four_way": {
+    "safe_success": 7,
+    "success_with_collision": 2,
+    "collision_failure": 7,
+    "collision_free_non_completion": 34
+  }
+}

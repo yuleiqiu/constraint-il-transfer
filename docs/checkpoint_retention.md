@@ -1,6 +1,7 @@
 # Checkpoint Retention
 
-Status: active retention manifest, verified 2026-08-25.
+Status: retained core verified 2026-08-25; wider-support inventory added
+2026-09-07 (path/size audit only, no new checkpoint load or hash verification).
 
 Training outputs under `outputs/robomimic/train/` are local, ignored artifacts.
 Keep only checkpoints that are required by a canonical result, comparison, or
@@ -22,6 +23,27 @@ directories.
 All paths are relative to `outputs/robomimic/train/`.
 
 ## Closure verification
+
+### Wider-support inventory, 2026-09-07
+
+Additional local run relative to outputs/robomimic/train:
+`lan_o3dp_tabletop_can_wide_support_abs_pose_sample_100demo_seed42/20260826184200/`.
+The run occupies approximately 31 GiB. Preserve these canonical checkpoints:
+
+- `models/model_epoch_50_tabletop_can_wide_support_pointcloud_abs_eef_100_success_0.8.pth`:
+  4,028,741,950 bytes, selected source for all wider-support obstacle results.
+- `models/model_epoch_250.pth`: 4,028,638,534 bytes, clean-screen comparator.
+
+Both paths and sizes were checked. Also preserve the 100-demo HDF5 at
+`third_party/robomimic/datasets/can/yq/tabletop_can_wide_support_pointcloud_abs_eef_100.hdf5`,
+the run config/logs, and both evaluation state banks.
+
+Epochs 100/150/200/300 and resumable last/backup files are candidates for a
+separate cleanup audit. No checkpoint was deleted during documentation
+maintenance. The historical seven-checkpoint table and hashes below describe
+the earlier closure, not an exhaustive current inventory.
+
+### Core closure, 2026-08-25
 
 On 2026-08-25 all seven paths were present, SHA256-streamed, and loaded with
 `torch.load(..., map_location="cpu")` as non-empty checkpoint dictionaries.

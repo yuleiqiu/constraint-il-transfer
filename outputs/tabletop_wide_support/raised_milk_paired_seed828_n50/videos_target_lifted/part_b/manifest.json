@@ -1,0 +1,1595 @@
+{
+  "checkpoint": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_tabletop_can_wide_support_abs_pose_sample_100demo_seed42/20260826184200/models/model_epoch_50_tabletop_can_wide_support_pointcloud_abs_eef_100_success_0.8.pth",
+  "state_bank": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_wide_support/raised_milk_state_bank_seed828_n50/initial_state_bank.pkl",
+  "baseline": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_wide_support/raised_milk_paired_seed828_n50/baseline/baseline.jsonl",
+  "guided": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_wide_support/raised_milk_paired_seed828_n50/guided_target_lifted/guided.jsonl",
+  "bank_seed": 828,
+  "episodes": [
+    6,
+    26,
+    37,
+    48
+  ],
+  "horizon": 600,
+  "guidance": {
+    "phase": "target_lifted",
+    "rho": 45.0,
+    "Q_m": 0.08,
+    "cost": "huber_hinge",
+    "smoothing_m": 0.01
+  },
+  "camera_name": "agentview",
+  "frame_skip": 2,
+  "fps": 10,
+  "rendered": [
+    {
+      "episode": 6,
+      "layout_seed": 828006,
+      "policy_seed": 828000006,
+      "initial_state_hash": "21756d425cc16534e762d4e6c175b7001c9856b2d9939a4b7005e9fcc358b202",
+      "video": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_wide_support/raised_milk_paired_seed828_n50/videos_target_lifted/part_b/episode_06_baseline_vs_target_lifted.mp4",
+      "baseline_expected": {
+        "episode": 6,
+        "layout_seed": 828006,
+        "policy_seed": 828000006,
+        "initial_state_hash": "21756d425cc16534e762d4e6c175b7001c9856b2d9939a4b7005e9fcc358b202",
+        "restored_state_hash": "21756d425cc16534e762d4e6c175b7001c9856b2d9939a4b7005e9fcc358b202",
+        "condition": "baseline",
+        "guidance_scale": null,
+        "safety_distance": null,
+        "success": false,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": false,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": true,
+        "horizon_truncated": true,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 600,
+        "chunks": 75,
+        "target_displacement_m": 0.40263858437538147,
+        "minimum_eef_obstacle_clearance_m": 0.02643844485282898,
+        "guidance_trigger_rate": 0.0,
+        "guidance_update_norm_mean": 0.0,
+        "guidance_update_norm_max": 0.0,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": null,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 1905,
+        "action_clip_max_abs": 1.2057476043701172,
+        "position_action_clip_count": 167,
+        "position_action_clip_max_abs": 0.021248936653137207,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": null,
+        "tangent_ratio": null
+      },
+      "baseline_replay": {
+        "condition": "baseline",
+        "guidance_scale": null,
+        "safety_distance": null,
+        "success": true,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": true,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": false,
+        "horizon_truncated": false,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 381,
+        "chunks": 48,
+        "target_displacement_m": 0.40773943066596985,
+        "minimum_eef_obstacle_clearance_m": 0.02104680985212326,
+        "guidance_trigger_rate": 0.0,
+        "guidance_update_norm_mean": 0.0,
+        "guidance_update_norm_max": 0.0,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": null,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 1254,
+        "action_clip_max_abs": 1.205747127532959,
+        "position_action_clip_count": 167,
+        "position_action_clip_max_abs": 0.02171170711517334,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": null,
+        "tangent_ratio": null
+      },
+      "baseline_replay_check": {
+        "initial_state_hash": true,
+        "success": false,
+        "collision_any": true,
+        "safe_success": false,
+        "expected_horizon": 600,
+        "actual_horizon": 381
+      },
+      "guided_expected": {
+        "episode": 6,
+        "layout_seed": 828006,
+        "policy_seed": 828000006,
+        "initial_state_hash": "21756d425cc16534e762d4e6c175b7001c9856b2d9939a4b7005e9fcc358b202",
+        "restored_state_hash": "21756d425cc16534e762d4e6c175b7001c9856b2d9939a4b7005e9fcc358b202",
+        "condition": "guided",
+        "guidance_scale": 45.0,
+        "safety_distance": 0.08,
+        "success": true,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": true,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": false,
+        "horizon_truncated": false,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 392,
+        "chunks": 49,
+        "target_displacement_m": 0.4143666923046112,
+        "minimum_eef_obstacle_clearance_m": 0.02334662526845932,
+        "guidance_trigger_rate": 0.5625,
+        "guidance_update_norm_mean": 0.18822595350589835,
+        "guidance_update_norm_max": 4.030054569244385,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": 136,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 1133,
+        "action_clip_max_abs": 1.2303736209869385,
+        "position_action_clip_count": 144,
+        "position_action_clip_max_abs": 0.022966384887695312,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": 0.01,
+        "tangent_ratio": 0.0
+      },
+      "guided_replay": {
+        "condition": "guided",
+        "guidance_scale": 45.0,
+        "safety_distance": 0.08,
+        "success": true,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": true,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": false,
+        "horizon_truncated": false,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 344,
+        "chunks": 43,
+        "target_displacement_m": 0.4148086905479431,
+        "minimum_eef_obstacle_clearance_m": 0.02641359716653824,
+        "guidance_trigger_rate": 0.34782608695652173,
+        "guidance_update_norm_mean": 0.06115257640713421,
+        "guidance_update_norm_max": 1.0039423704147339,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": 136,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 1082,
+        "action_clip_max_abs": 1.205747127532959,
+        "position_action_clip_count": 166,
+        "position_action_clip_max_abs": 0.02046644687652588,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": 0.01,
+        "tangent_ratio": 0.0
+      },
+      "guided_replay_check": {
+        "initial_state_hash": true,
+        "success": true,
+        "collision_any": true,
+        "safe_success": true,
+        "expected_horizon": 392,
+        "actual_horizon": 344
+      }
+    },
+    {
+      "episode": 26,
+      "layout_seed": 828026,
+      "policy_seed": 828000026,
+      "initial_state_hash": "d06056353396023da53de76d64bf272fcd8dbae91594817cf9572885db711e02",
+      "video": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_wide_support/raised_milk_paired_seed828_n50/videos_target_lifted/part_b/episode_26_baseline_vs_target_lifted.mp4",
+      "baseline_expected": {
+        "episode": 26,
+        "layout_seed": 828026,
+        "policy_seed": 828000026,
+        "initial_state_hash": "d06056353396023da53de76d64bf272fcd8dbae91594817cf9572885db711e02",
+        "restored_state_hash": "d06056353396023da53de76d64bf272fcd8dbae91594817cf9572885db711e02",
+        "condition": "baseline",
+        "guidance_scale": null,
+        "safety_distance": null,
+        "success": false,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": false,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": true,
+        "horizon_truncated": true,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 600,
+        "chunks": 75,
+        "target_displacement_m": 0.43256446719169617,
+        "minimum_eef_obstacle_clearance_m": 0.03467893600463867,
+        "guidance_trigger_rate": 0.0,
+        "guidance_update_norm_mean": 0.0,
+        "guidance_update_norm_max": 0.0,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": null,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 1876,
+        "action_clip_max_abs": 1.1845879554748535,
+        "position_action_clip_count": 182,
+        "position_action_clip_max_abs": 0.023877739906311035,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": null,
+        "tangent_ratio": null
+      },
+      "baseline_replay": {
+        "condition": "baseline",
+        "guidance_scale": null,
+        "safety_distance": null,
+        "success": false,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": false,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": true,
+        "horizon_truncated": true,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 600,
+        "chunks": 75,
+        "target_displacement_m": 0.4314742684364319,
+        "minimum_eef_obstacle_clearance_m": 0.03468352556228638,
+        "guidance_trigger_rate": 0.0,
+        "guidance_update_norm_mean": 0.0,
+        "guidance_update_norm_max": 0.0,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": null,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 1867,
+        "action_clip_max_abs": 1.1845800876617432,
+        "position_action_clip_count": 182,
+        "position_action_clip_max_abs": 0.02241671085357666,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": null,
+        "tangent_ratio": null
+      },
+      "baseline_replay_check": {
+        "initial_state_hash": true,
+        "success": true,
+        "collision_any": true,
+        "safe_success": true,
+        "expected_horizon": 600,
+        "actual_horizon": 600
+      },
+      "guided_expected": {
+        "episode": 26,
+        "layout_seed": 828026,
+        "policy_seed": 828000026,
+        "initial_state_hash": "d06056353396023da53de76d64bf272fcd8dbae91594817cf9572885db711e02",
+        "restored_state_hash": "d06056353396023da53de76d64bf272fcd8dbae91594817cf9572885db711e02",
+        "condition": "guided",
+        "guidance_scale": 45.0,
+        "safety_distance": 0.08,
+        "success": true,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": true,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": false,
+        "horizon_truncated": false,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 390,
+        "chunks": 49,
+        "target_displacement_m": 0.4431692659854889,
+        "minimum_eef_obstacle_clearance_m": 0.034677937626838684,
+        "guidance_trigger_rate": 0.28041666666666665,
+        "guidance_update_norm_mean": 0.043175474478392366,
+        "guidance_update_norm_max": 2.1392695903778076,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": 168,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 1182,
+        "action_clip_max_abs": 1.1845917701721191,
+        "position_action_clip_count": 170,
+        "position_action_clip_max_abs": 0.02215564250946045,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": 0.01,
+        "tangent_ratio": 0.0
+      },
+      "guided_replay": {
+        "condition": "guided",
+        "guidance_scale": 45.0,
+        "safety_distance": 0.08,
+        "success": true,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": true,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": false,
+        "horizon_truncated": false,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 391,
+        "chunks": 49,
+        "target_displacement_m": 0.4430328905582428,
+        "minimum_eef_obstacle_clearance_m": 0.03468352556228638,
+        "guidance_trigger_rate": 0.2604166666666667,
+        "guidance_update_norm_mean": 0.03561287938650139,
+        "guidance_update_norm_max": 0.6983534097671509,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": 168,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 1188,
+        "action_clip_max_abs": 1.1845800876617432,
+        "position_action_clip_count": 173,
+        "position_action_clip_max_abs": 0.02241671085357666,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": 0.01,
+        "tangent_ratio": 0.0
+      },
+      "guided_replay_check": {
+        "initial_state_hash": true,
+        "success": true,
+        "collision_any": true,
+        "safe_success": true,
+        "expected_horizon": 390,
+        "actual_horizon": 391
+      }
+    },
+    {
+      "episode": 37,
+      "layout_seed": 828037,
+      "policy_seed": 828000037,
+      "initial_state_hash": "f82f6f36010a0bc4a7f3ec71676483bfcab88efdb713e59802c2b1cb5cee397b",
+      "video": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_wide_support/raised_milk_paired_seed828_n50/videos_target_lifted/part_b/episode_37_baseline_vs_target_lifted.mp4",
+      "baseline_expected": {
+        "episode": 37,
+        "layout_seed": 828037,
+        "policy_seed": 828000037,
+        "initial_state_hash": "f82f6f36010a0bc4a7f3ec71676483bfcab88efdb713e59802c2b1cb5cee397b",
+        "restored_state_hash": "f82f6f36010a0bc4a7f3ec71676483bfcab88efdb713e59802c2b1cb5cee397b",
+        "condition": "baseline",
+        "guidance_scale": null,
+        "safety_distance": null,
+        "success": false,
+        "collision_any": true,
+        "robot_obstacle_collision_any": true,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": true,
+        "hand_obstacle_collision_any": true,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": true,
+        "safe_success": false,
+        "success_with_collision": false,
+        "collision_failure": true,
+        "ncr": false,
+        "horizon_truncated": true,
+        "collision_names": [
+          "Milk"
+        ],
+        "collision_robot_geom_names": [
+          "gripper0_right_gripper_base_col"
+        ],
+        "horizon": 600,
+        "chunks": 75,
+        "target_displacement_m": 0.3275531232357025,
+        "minimum_eef_obstacle_clearance_m": -0.04047028347849846,
+        "guidance_trigger_rate": 0.0,
+        "guidance_update_norm_mean": 0.0,
+        "guidance_update_norm_max": 0.0,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": null,
+        "first_collision_step": 167,
+        "first_hand_collision_step": 274,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": 167,
+        "action_clip_count": 1641,
+        "action_clip_max_abs": 1.2113423347473145,
+        "position_action_clip_count": 164,
+        "position_action_clip_max_abs": 0.030530333518981934,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": null,
+        "tangent_ratio": null
+      },
+      "baseline_replay": {
+        "condition": "baseline",
+        "guidance_scale": null,
+        "safety_distance": null,
+        "success": false,
+        "collision_any": true,
+        "robot_obstacle_collision_any": true,
+        "arm_obstacle_collision_any": true,
+        "gripper_obstacle_collision_any": true,
+        "hand_obstacle_collision_any": true,
+        "finger_obstacle_collision_any": true,
+        "target_obstacle_collision_any": true,
+        "safe_success": false,
+        "success_with_collision": false,
+        "collision_failure": true,
+        "ncr": false,
+        "horizon_truncated": true,
+        "collision_names": [
+          "Milk"
+        ],
+        "collision_robot_geom_names": [
+          "gripper0_right_gripper_base_col",
+          "gripper0_right_l_finger_g0",
+          "gripper0_right_l_fingertip_g0",
+          "robot0_link7_collision"
+        ],
+        "horizon": 600,
+        "chunks": 75,
+        "target_displacement_m": 0.32607054710388184,
+        "minimum_eef_obstacle_clearance_m": -0.030023574829101562,
+        "guidance_trigger_rate": 0.0,
+        "guidance_update_norm_mean": 0.0,
+        "guidance_update_norm_max": 0.0,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": null,
+        "first_collision_step": 159,
+        "first_hand_collision_step": 323,
+        "first_finger_collision_step": 286,
+        "first_target_collision_step": 159,
+        "action_clip_count": 1651,
+        "action_clip_max_abs": 1.268636703491211,
+        "position_action_clip_count": 184,
+        "position_action_clip_max_abs": 0.030530333518981934,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": null,
+        "tangent_ratio": null
+      },
+      "baseline_replay_check": {
+        "initial_state_hash": true,
+        "success": true,
+        "collision_any": true,
+        "safe_success": true,
+        "expected_horizon": 600,
+        "actual_horizon": 600
+      },
+      "guided_expected": {
+        "episode": 37,
+        "layout_seed": 828037,
+        "policy_seed": 828000037,
+        "initial_state_hash": "f82f6f36010a0bc4a7f3ec71676483bfcab88efdb713e59802c2b1cb5cee397b",
+        "restored_state_hash": "f82f6f36010a0bc4a7f3ec71676483bfcab88efdb713e59802c2b1cb5cee397b",
+        "condition": "guided",
+        "guidance_scale": 45.0,
+        "safety_distance": 0.08,
+        "success": true,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": true,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": false,
+        "horizon_truncated": false,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 344,
+        "chunks": 43,
+        "target_displacement_m": 0.45947349071502686,
+        "minimum_eef_obstacle_clearance_m": 0.007941525429487228,
+        "guidance_trigger_rate": 0.6896551724137931,
+        "guidance_update_norm_mean": 0.20395860481589775,
+        "guidance_update_norm_max": 3.135242223739624,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": 128,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 974,
+        "action_clip_max_abs": 1.1896162033081055,
+        "position_action_clip_count": 137,
+        "position_action_clip_max_abs": 0.02322256565093994,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": 0.01,
+        "tangent_ratio": 0.0
+      },
+      "guided_replay": {
+        "condition": "guided",
+        "guidance_scale": 45.0,
+        "safety_distance": 0.08,
+        "success": true,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": true,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": false,
+        "horizon_truncated": false,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 341,
+        "chunks": 43,
+        "target_displacement_m": 0.458004891872406,
+        "minimum_eef_obstacle_clearance_m": 0.024567924439907074,
+        "guidance_trigger_rate": 0.5251851851851852,
+        "guidance_update_norm_mean": 0.12040251896445019,
+        "guidance_update_norm_max": 3.1907291412353516,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": 120,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 1040,
+        "action_clip_max_abs": 1.1887826919555664,
+        "position_action_clip_count": 174,
+        "position_action_clip_max_abs": 0.021516799926757812,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": 0.01,
+        "tangent_ratio": 0.0
+      },
+      "guided_replay_check": {
+        "initial_state_hash": true,
+        "success": true,
+        "collision_any": true,
+        "safe_success": true,
+        "expected_horizon": 344,
+        "actual_horizon": 341
+      }
+    },
+    {
+      "episode": 48,
+      "layout_seed": 828048,
+      "policy_seed": 828000048,
+      "initial_state_hash": "3502c13218e06cdaf697cc9f63078ad5b4360ceb3cba08b9c26faaf01aacb851",
+      "video": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_wide_support/raised_milk_paired_seed828_n50/videos_target_lifted/part_b/episode_48_baseline_vs_target_lifted.mp4",
+      "baseline_expected": {
+        "episode": 48,
+        "layout_seed": 828048,
+        "policy_seed": 828000048,
+        "initial_state_hash": "3502c13218e06cdaf697cc9f63078ad5b4360ceb3cba08b9c26faaf01aacb851",
+        "restored_state_hash": "3502c13218e06cdaf697cc9f63078ad5b4360ceb3cba08b9c26faaf01aacb851",
+        "condition": "baseline",
+        "guidance_scale": null,
+        "safety_distance": null,
+        "success": false,
+        "collision_any": true,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": true,
+        "safe_success": false,
+        "success_with_collision": false,
+        "collision_failure": true,
+        "ncr": false,
+        "horizon_truncated": true,
+        "collision_names": [
+          "Milk"
+        ],
+        "collision_robot_geom_names": [],
+        "horizon": 600,
+        "chunks": 75,
+        "target_displacement_m": 0.4622172713279724,
+        "minimum_eef_obstacle_clearance_m": -0.009639836847782135,
+        "guidance_trigger_rate": 0.0,
+        "guidance_update_norm_mean": 0.0,
+        "guidance_update_norm_max": 0.0,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": null,
+        "first_collision_step": 236,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": 236,
+        "action_clip_count": 1866,
+        "action_clip_max_abs": 1.1915276050567627,
+        "position_action_clip_count": 202,
+        "position_action_clip_max_abs": 0.0247802734375,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": null,
+        "tangent_ratio": null
+      },
+      "baseline_replay": {
+        "condition": "baseline",
+        "guidance_scale": null,
+        "safety_distance": null,
+        "success": true,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": true,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": false,
+        "horizon_truncated": false,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 383,
+        "chunks": 48,
+        "target_displacement_m": 0.47370368242263794,
+        "minimum_eef_obstacle_clearance_m": 0.0005929619073867798,
+        "guidance_trigger_rate": 0.0,
+        "guidance_update_norm_mean": 0.0,
+        "guidance_update_norm_max": 0.0,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": null,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 1223,
+        "action_clip_max_abs": 1.191518783569336,
+        "position_action_clip_count": 197,
+        "position_action_clip_max_abs": 0.02556788921356201,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": null,
+        "tangent_ratio": null
+      },
+      "baseline_replay_check": {
+        "initial_state_hash": true,
+        "success": false,
+        "collision_any": false,
+        "safe_success": false,
+        "expected_horizon": 600,
+        "actual_horizon": 383
+      },
+      "guided_expected": {
+        "episode": 48,
+        "layout_seed": 828048,
+        "policy_seed": 828000048,
+        "initial_state_hash": "3502c13218e06cdaf697cc9f63078ad5b4360ceb3cba08b9c26faaf01aacb851",
+        "restored_state_hash": "3502c13218e06cdaf697cc9f63078ad5b4360ceb3cba08b9c26faaf01aacb851",
+        "condition": "guided",
+        "guidance_scale": 45.0,
+        "safety_distance": 0.08,
+        "success": true,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": true,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": false,
+        "horizon_truncated": false,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 310,
+        "chunks": 39,
+        "target_displacement_m": 0.4789522588253021,
+        "minimum_eef_obstacle_clearance_m": 0.019786838442087173,
+        "guidance_trigger_rate": 0.531578947368421,
+        "guidance_update_norm_mean": 0.18910590933474228,
+        "guidance_update_norm_max": 2.0445542335510254,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": 144,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 909,
+        "action_clip_max_abs": 1.191502332687378,
+        "position_action_clip_count": 132,
+        "position_action_clip_max_abs": 0.030530333518981934,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": 0.01,
+        "tangent_ratio": 0.0
+      },
+      "guided_replay": {
+        "condition": "guided",
+        "guidance_scale": 45.0,
+        "safety_distance": 0.08,
+        "success": true,
+        "collision_any": false,
+        "robot_obstacle_collision_any": false,
+        "arm_obstacle_collision_any": false,
+        "gripper_obstacle_collision_any": false,
+        "hand_obstacle_collision_any": false,
+        "finger_obstacle_collision_any": false,
+        "target_obstacle_collision_any": false,
+        "safe_success": true,
+        "success_with_collision": false,
+        "collision_failure": false,
+        "ncr": false,
+        "horizon_truncated": false,
+        "collision_names": [],
+        "collision_robot_geom_names": [],
+        "horizon": 422,
+        "chunks": 53,
+        "target_displacement_m": 0.4698658585548401,
+        "minimum_eef_obstacle_clearance_m": 0.04932590574026108,
+        "guidance_trigger_rate": 0.34615384615384615,
+        "guidance_update_norm_mean": 0.057335104431348066,
+        "guidance_update_norm_max": 0.4306783378124237,
+        "tangent_side_first": 0,
+        "tangent_side_counts": {
+          "-1": 0,
+          "+1": 0
+        },
+        "obstacle_cloud_missing_chunks": 0,
+        "first_guidance_active_step": 184,
+        "first_collision_step": null,
+        "first_hand_collision_step": null,
+        "first_finger_collision_step": null,
+        "first_target_collision_step": null,
+        "action_clip_count": 1312,
+        "action_clip_max_abs": 1.191518783569336,
+        "position_action_clip_count": 189,
+        "position_action_clip_max_abs": 0.025922417640686035,
+        "hand_collision_enabled": true,
+        "hand_collision_audit": {
+          "enabled": true,
+          "hand_masks": {
+            "gripper0_right_gripper_base_col": [
+              1,
+              1
+            ]
+          },
+          "finger_masks": {
+            "gripper0_right_l_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_l_fingerpad_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_finger_g1": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingertip_g0": [
+              0,
+              1
+            ],
+            "gripper0_right_r_fingerpad_g0": [
+              0,
+              1
+            ]
+          }
+        },
+        "obstacle_cost_type": "huber_hinge",
+        "obstacle_cost_smoothing": 0.01,
+        "tangent_ratio": 0.0
+      },
+      "guided_replay_check": {
+        "initial_state_hash": true,
+        "success": true,
+        "collision_any": true,
+        "safe_success": true,
+        "expected_horizon": 310,
+        "actual_horizon": 422
+      }
+    }
+  ]
+}

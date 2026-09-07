@@ -1,345 +1,147 @@
-# Project Context
+# Project instructions
 
-## 1. Goal
+Updated 2026-09-07 with human authorization. This is the entry point for
+project state and operating rules; detailed evidence lives in linked reports.
 
-Study single-to-multi-object transfer for a diffusion imitation policy using an
-executable delta-EEF action interface.
+## Goal and present decision
 
-The current question is how to select and localize targeted avoidance
-adaptation without disrupting the task modes of the reliable single-object
-policy. Positive-only and set-supervised full-policy fine-tuning both inject
-local safe-progress support but fail closed loop.
+Study single-to-multi-object transfer for diffusion imitation policies while
+preserving reliable task behavior under avoidance interventions.
 
-The active method hypothesis is a temporally persistent corrective option that
-returns control when the frozen source policy becomes safely recoverable.
-Deployment-time guided denoising was the preceding research stage; its
-formulation and negative results remain important evidence.
+No next experiment is currently selected. The latest completed work is the
+Tabletop wider-demonstration-support test using original point guidance.
+The user confirmed that the preceding MVEE geometry probe was put aside.
+The branch name `exp/tabletop-mvee-guidance` does not identify the method
+used by later experiments.
 
-The Empty2D mechanism-isolation experiment has now established a bounded
-positive regime. The next bounded geometry hypothesis uses the controlled
-Tabletop environment: fuse two camera point clouds, fit an obstacle MVEE, and
-evaluate gripper and carried-target ellipsoids against it. This is a geometric
-representation test, not a replacement for the longer-horizon corrective
-option and handoff hypothesis.
+Persistent corrective options remain an evidence-supported candidate direction,
+but resuming that direction has not been decided. Do not treat historical
+plans, an agent recommendation, or a branch name as a new research instruction.
+No supervisor opinion or subsequent research decision is recorded here.
 
-## 2. Current State
+## Latest evidence and boundaries
 
-- **The manipulation boundary is a persistent corrective option, not local
-  chunk selection**: persistent SDP creates non-monotonic source-recoverability
-  windows in 7/20 strict D2 states, including five that require multiple
-  correction chunks. The other 13 states have zero recoverable trajectories,
-  while the waypoint teacher solves 18/20. Learn a correction-only,
-  temporally extended object-relative route before a handoff estimator. Do not
-  train a general world/value model merely to rank the current one-chunk
-  candidates. See `outputs/persistent_correction_oracle/full_20/conclusion.md`.
-- **Correction training has a bounded positive regime and a D2 capacity
-  boundary**: fixed SDP-6k at D1/H600 changes Task SR from `0.67` to `0.78`,
-  with 12 failure-to-success and one success-to-failure transition (exact
-  paired `p=0.0034`). In D2, positive BC, lower-exposure BC, SDP, and an
-  oracle-gated selector all add local avoidance support but fail to improve
-  closed-loop Task SR. Preserve D1/H600 as the positive result; do not scale
-  the rejected D2 recipes. See
-  `outputs/targeted_finetuning/d1_horizon_salvage_report.md` and
-  `outputs/targeted_finetuning/sdp_result_report.md`.
-- **Empty2D has a verified strong-guidance positive regime**: the original
-  paper-scale H320 Circle/Square gates remain negative, but the fixed
-  `rho=1`, `Q=0.12` Circle successor reaches 20/20 Task and Safe success at
-  H600 on mirrored offset obstacles. The centered control reaches 13/20; its
-  other seven trajectories are collision-free non-completions. This proves
-  predicted-clean guidance can work in matched point geometry while exposing
-  the radial cost's route-symmetry and efficiency limits. See
-  `outputs/empty2d_guidance/smooth_h600_circle/report.md`.
-- **Controlled Tabletop guidance is mechanically active but not robust**: in
-  11 clean-success / obstacle-collision-failure pairs, guidance creates 4 safe
-  task rescues and reduces physical Milk contact from 11/11 to 1/11. It also
-  produces six collision-free stalls and one remaining collision; all rescues
-  occur in one layout. Open-loop auditing confirms centimeter-scale geometric
-  repulsion but shows that a single selected obstacle point does not make the
-  full chunk safe. See
+- **Wide support, completed:** original nearest-point guidance on a newly
+  trained Tabletop point-cloud absolute-EEF policy. At H600 on 50 RaisedMilk
+  states, baseline / target-lifted guidance Task SR is 0.58 / 0.62, Safe SR
+  0.52 / 0.54, CR 0.20 / 0.18, and NCR 0.28 / 0.28. Task transitions are
+  9 rescues / 7 regressions; the difference is not significant. Always-on
+  guidance drops Task SR to 0.18. Replay instability limits causal claims.
+  Wider dataset routes do not prove learned policy route coverage.
+  Start at `outputs/tabletop_wide_support/conclusion.md`.
+- **MVEE, stopped probe:** dual-view obstacle fusion and actor ellipsoids were
+  implemented and tested on a few states. Large margins removed contact but
+  stalled; no robust task benefit or formal matrix was established.
+  See `scripts/2026-08-25_tabletop_mvee_guidance/README.md`.
+- **Earlier Tabletop point guidance:** 4/11 eligible safe rescues, all in one
+  layout, with six collision-free non-completions. Mechanically active but
+  layout-dependent; see
   `outputs/tabletop_guidance/counterfactual_rescue_5scene_5noise/conclusion.md`.
-- **The next geometry test is MVEE-based and remains unverified**: add a second
-  camera, fuse the two target/obstacle point views, fit an obstacle MVEE, and
-  model both gripper and carried target as ellipsoids. Keep this implementation
-  on `exp/tabletop-mvee-guidance`; do not mix it into the archived point-cost
-  history or treat it as solving route persistence / handoff.
-- **Hand-shell removal does not explain the D2 failure**: a held-out D0--D3
-  2x2 shows modest execution gains from disabling only the Panda hand collision
-  shell, but guidance still has no significant task effect and residual finger,
-  arm, and carried-target contacts remain. See
-  `outputs/lan_o3dp_hand_off_guidance/formal_seed812_n50_summary/report.md`.
-- **Paper-aligned D2 point guidance is archived as a negative result**: on ten
-  fixed D2 states, neither `Q=0.04` nor expanded `Q<=0.12` clears any of four
-  gripper collisions. All contacts are gripper/Cereal rather than arm or
-  carried-target contact. This motivates, but does not prove, the Empty2D
-  geometry-mismatch test. See
-  `outputs/lan_o3dp_paper_aligned/d2_guidance_report.md`.
-- **OOD success is not OOD elimination**: LAN-O3DP / DP3 primarily reduce
-  exogenous environment or observation shift. Avoidance guidance can itself
-  create endogenous intervention-induced state OOD by moving the robot away
-  from demonstrated trajectories. No reviewed paper eliminates OOD; LPB
-  steers toward an expert manifold and ReGuide can absorb specific successful
-  recovery states through retraining. Evaluate whether control reaches a
-  frozen-source-recoverable state, not whether obstacle content was removed
-  from the policy input. See `papers/project-situation.md`.
-- **The reliable manipulation source and action interface remain fixed**: use
-  the clean-image epoch-260 `delta_eef_pose_action` policy. Task SR over
-  0/1/2/3 distractors is `0.907 / 0.707 / 0.253 / 0.200`; CR is
-  `0.000 / 0.213 / 0.647 / 0.680`. Delta-EEF chunks reconstruct executed EEF
-  motion with 0.131 cm mean position and 0.253 deg mean orientation error. See
-  `outputs/eef_pose_osc_policy/README.md`.
-- **Evaluation remains task-level**: report Task SR, Safe SR, CR, NCR, paired
-  failure-to-success / success-to-failure transitions, and the four-way
-  outcome partition. Local clearance, support, and latent-distance diagnostics
-  are mechanism evidence, not substitutes for rollout success.
+- **Empty2D positive regime:** strong guidance at H600 solves 20/20 mirrored
+  offset Circle cases safely, versus 13/20 centered cases. The original
+  paper-scale H320 gates remain negative. See
+  `outputs/empty2d_guidance/smooth_h600_circle/report.md`.
+- **Correction boundary:** SDP D1/H600 improves Task SR 0.67 to 0.78
+  (12 rescues / 1 regression); rejected D2 full-policy and one-chunk recipes
+  do not improve closed-loop success. Persistent SDP has safe handoff windows
+  in 7/20 strict states versus teacher success in 18/20. A correction-only
+  temporally extended generator is a candidate to test before a handoff model.
+  See `outputs/targeted_finetuning/sdp_result_report.md` and
+  `outputs/persistent_correction_oracle/full_20/conclusion.md`.
+- **Reliable manipulation source:** clean-image epoch-260
+  `delta_eef_pose_action`; Task SR at D0/D1/D2/D3 is
+  0.907 / 0.707 / 0.253 / 0.200, CR 0 / 0.213 / 0.647 / 0.680.
+  Tabletop point-cloud absolute-EEF and Empty2D sources are distinct.
+  See `outputs/eef_pose_osc_policy/README.md`.
 
-## 3. Subproject AGENTS
+## Evaluation and stopped recipes
 
-- `third_party/robomimic/AGENTS.md` — robomimic architecture, config system, diffusion policy pipeline, rollout scripts
-- `third_party/robosuite/` — (no separate AGENTS yet; distractor env variants in `robosuite/environments/manipulation/pick_place.py`)
+Report Task SR, Safe SR, CR, NCR, paired failure-to-success /
+success-to-failure transitions, and the four-way task/contact partition.
+Local clearance, dataset diversity, support proxies, and latent distances are
+mechanism diagnostics, not substitutes for successful rollouts.
 
-### Project scripts (scripts/)
-- `scripts/AGENTS.md` — index of local scripts (EEF-pose OSC policy tooling, intent diagnostics, guided-denoising diagnostics, eval-matrix grouping)
+Equal saved simulator hashes and policy seeds do not establish deterministic
+GPU point-cloud replay. Audit observation/randomness and outcome reproduction
+before claiming exact paired effects; sharing a process alone is insufficient.
 
-### Experiment outputs (outputs/)
-- `eef_pose_osc_policy/` — active source-policy conclusion, reconstruction
-  diagnostics, and multi-environment baseline
-- `policy_manifold_diagnostic/` — frozen-policy support diagnostic
-- `targeted_finetuning/` — correction-data gates, checkpoint screen, and
-  positive-BC / support conclusion
-- `gated_support_selector/` — fixed-state and paired-rollout localization gate
-- `oracle_branch_value/` — cloned-simulator candidate-existence pilot
-- `persistent_correction_oracle/` — temporal source-recoverability pilot
-- `empty2d_guidance/` — completed idealized point-geometry mechanism test
-- `lan_o3dp_hand_off_guidance/` — hand-shell physics 2x2 and rho diagnostics
-- `tabletop_guidance/` — controlled 3-D baseline and paired guidance result
-- `guided_denoising/` — completed inference-only experiment summaries
-- `task_constrained_guidance/` and `sample_refine/` — completed negative stages
-- `forward_model/` — archived OSC-action forward-model summaries
+Avoidance can create intervention-induced state OOD even when obstacle content
+is excluded from policy input. Do not claim OOD elimination.
+See `papers/project-situation.md` for dated paper synthesis, not current plans.
 
-## 4. File Map
+Do not automatically resume stopped MVEE probes, blind point-cost rho/Q sweeps,
+rejected D2 BC/SDP mixing, or one-chunk ranking/world-model recipes.
+A new experiment requires a stated question and task-level gate. Do not infer
+a ban on all future guidance methods from these bounded negative results.
 
-```
-constraint-il-transfer/             ← Project root (independent git repo)
-├── AGENTS.md                        ← This file. Project global state + file index
-├── metadata/                        ← Environment metadata
-├── docs/                            ← Research artifacts
-│   ├── RESEARCH_LOG.md              ← Reverse-chronological log of discussions + decisions
-│   ├── targeted_finetuning/          ← Paired-data contract and positive-BC result
-│   ├── guided_denoising/             ← Completed inference-only formulations and results
-│   └── forward_model_guidance_next_steps.md ← Archived Δgeo forward-model / ranking handoff and results
-├── papers/<name>/                   ← Paper PDFs + agent-generated analysis.md
-├── scripts/                         ← Local Python scripts (→ AGENTS.md for index)
-├── outputs/                         ← Experiment outputs
-│   ├── eef_pose_osc_policy/          ← Active source-policy conclusions and diagnostics
-│   ├── policy_manifold_diagnostic/   ← Frozen-policy support evidence
-│   ├── targeted_finetuning/          ← Correction gates, screen, and support result
-│   ├── gated_support_selector/       ← Gated SDP selector result
-│   ├── oracle_branch_value/          ← Oracle continuation-existence result
-│   ├── persistent_correction_oracle/ ← Persistent correction handoff result
-│   ├── empty2d_guidance/              ← Completed point-geometry guidance test
-│   ├── lan_o3dp_hand_off_guidance/    ← Hand-shell mechanism diagnostic
-│   ├── tabletop_guidance/             ← Controlled 3-D paired guidance result
-│   └── guided_denoising/             ← Completed inference-only experiment summaries
-├── .opencode/agents/                ← Agent definitions (paper-reader, code-explorer)
-├── third_party/                     ← Editable source deps (managed independently, see §10)
-│   ├── robomimic/                   ← robomimic fork (→ AGENTS.md)
-│   └── robosuite/                   ← robosuite fork
-└── pyproject.toml + uv.lock + .python-version   ← Python 3.10 deps
-```
+## Reading and navigation
 
-## 5. Reading Order (for new agents entering)
+Read this entry first, then only the material required by the task:
 
-1. Read this file (AGENTS.md) first
-2. For project state + recent discussions → `docs/RESEARCH_LOG.md`
-3. For the cross-paper OOD and project-gap synthesis →
-   `papers/project-situation.md`
-4. For the active corrective-option hypothesis →
-   `docs/recoverability_corrective_option/README.md`
-5. For the persistent-correction oracle result →
-   `outputs/persistent_correction_oracle/full_20/conclusion.md`
-6. For the Tabletop counterfactual guidance result →
-   `outputs/tabletop_guidance/counterfactual_rescue_5scene_5noise/conclusion.md`
-7. For the Empty2D strong-guidance mechanism result →
-   `outputs/empty2d_guidance/smooth_h600_circle/report.md`
-8. For the hand-shell mechanism diagnostic →
-   `outputs/lan_o3dp_hand_off_guidance/formal_seed812_n50_summary/report.md`
-9. For the oracle branch-value result →
-   `outputs/oracle_branch_value/pilot_3state/result_report.md`
-10. For the completed gated selector result →
-   `outputs/gated_support_selector/report.md`
-11. For the completed SDP and exposure-control result →
-   `outputs/targeted_finetuning/sdp_result_report.md`
-12. For the positive-BC predecessor →
-   `outputs/targeted_finetuning/upper_bound_report.md`
-13. For why the frozen-policy stage stopped →
-   `docs/guided_denoising/frozen_policy_inference_limitations.md`
-14. For the waypoint-teacher upper bound →
-   `scripts/2026-07-27_semi_manual_waypoint_teacher/README.md`
-15. For EEF-pose OSC training and evaluation → `docs/eef_pose_osc_policy_training.md`
-16. For local scripts and how to run them → `scripts/AGENTS.md`
-17. For historical inference-only methods → `docs/guided_denoising/`
-18. For paper comparisons → `papers/<name>/analysis.md`
-19. For inner robomimic code → `third_party/robomimic/AGENTS.md`
-20. Before deleting local checkpoints → `docs/checkpoint_retention.md`
+1. Latest experiment: `outputs/tabletop_wide_support/conclusion.md`.
+2. Research decisions and chronology: newest entries in `docs/RESEARCH_LOG.md`.
+3. Results by stage: `outputs/README.md`; follow canonical reports from there.
+4. Candidate corrective-option method:
+   `docs/recoverability_corrective_option/README.md`.
+5. Scripts: `scripts/AGENTS.md`, then the relevant experiment README.
+6. Inner robomimic work: `third_party/robomimic/AGENTS.md`.
+7. Setup: `docs/runtime_setup.md`; checkpoint changes:
+   `docs/checkpoint_retention.md`.
 
-## 6. Environments
+Historical plans retain their original context. Current status here and dated
+closure reports take precedence over old future-tense instructions.
+Paper-specific material lives in `papers/<name>/`; detailed action training
+instructions are in `docs/eef_pose_osc_policy_training.md`.
 
-4 PickPlace variants with increasing distractors:
-- PickPlaceCan (0) → PickPlaceBreadCan (1) → BreadCerealCan (2) → BreadCerealMilkCan (3)
+## Runtime and interfaces
 
-Empty2D mechanism environments use workspace `[-1,1]^2`, start
-`(-0.875,0)`, goal `(0.875,0)`, and either no obstacle, a radius-0.3 circle,
-or a centered 0.6-by-0.6 square.
+- Use uv, Python 3.10 pinned by `.python-version`, and local `.venv/`.
+  Do not use conda or system Python.
+- Local scripts: `uv run python scripts/...`.
+- Robomimic scripts:
+  `uv run python third_party/robomimic/robomimic/scripts/<script.py> ...`.
+- Headless simulation uses `MUJOCO_GL=egl`; verify device availability before
+  launching work. Temporary artifacts belong in `/tmp/`.
+- Checkpoints:
+  `outputs/robomimic/train/<experiment>/<run>/models/<checkpoint>.pth`.
+- OSC means Operational Space Controller; EEF means End-Effector Frame.
+  Executable full-pose actions contain translation (3), axis-angle (3), and
+  gripper (1), executed by `OSC_POSE`.
+- Delta-EEF targets are next-minus-current world EEF position and
+  `axis_angle(R_next_site @ R_obs_site.T)`, plus gripper.
+  Verify each experiment's absolute/delta action contract before reuse.
+- D0--D3 PickPlace variants add 0--3 distractors; Tabletop and Empty2D are
+  separate controlled mechanism environments. Their contracts live in the
+  corresponding script READMEs.
+- Guided denoising evaluates a differentiable deployment cost on predicted
+  clean action chunks. Effective support diagnostics are empirical proxies;
+  the old learned OSC-action forward model is archived.
 
-The controlled Tabletop family uses `PickPlaceCanTabletop` for obstacle-free
-training and static Milk, raised-Milk, or Cereal variants for evaluation.
+## Three independent Git repositories
 
-## 7. Runtime Conventions
-
-- All local scripts: `uv run python scripts/...`
-- Robomimic scripts: `uv run python third_party/robomimic/robomimic/scripts/<script.py> ...`
-- Temporary output: `/tmp/`
-- Model checkpoints:
-  `outputs/robomimic/train/<experiment>/<run>/models/<checkpoint>.pth`
-  (not the robomimic default `runs/trained_models/`)
-- Python 3.10, managed by uv
-
-## 8. Terminology
-
-- **OSC**: Operational Space Controller (PD controller)
-- **EEF**: End-Effector Frame (robot gripper position)
-- **Executable full-pose EEF action**: `[eef_pos_world or delta_eef_pos_world(3), eef_quat_site_xyzw delta/absolute axis_angle(3), gripper(1)]` sent to `OSC_POSE`
-- **Delta EEF pose action**: `[next_obs/robot0_eef_pos - obs/robot0_eef_pos, axis_angle(R_next_site @ R_obs_site.T), gripper]`; preferred replacement for the old OSC-action forward-model path
-- **Guided denoising**: modifying reverse diffusion at deployment time using the gradient of a deployment cost evaluated on the predicted clean action chunk
-- **Deployment cost**: a lower-is-better differentiable criterion `C(F(o, A), e*)` used to reweight or guide the pretrained policy distribution
-- **Predicted clean action**: the denoiser's estimate `A_0_hat` reconstructed from the noisy action at the current diffusion timestep
-- **Effective policy support**: the high-probability local set of action
-  trajectories the current policy can produce while preserving task progress;
-  diagnostics use an empirical Mahalanobis ellipsoid as a proxy, not strict
-  mathematical support
-- **Correction episode**: a complete successful hybrid rollout in which the
-  frozen policy runs normally, an oracle waypoint teacher intervenes in the
-  targeted obstruction phase, and the frozen policy resumes after grasp/lift
-- **Targeted fine-tuning upper bound**: full-policy adaptation from epoch260
-  with original clean replay and deliberately oversampled correction data
-- **Forward model**: Archived learned surrogate `f_hat(state, OSC action chunk) -> future EEF xyz trajectory`; result documents are retained, implementation code is removed
-
-## 9. Environment Setup
-
-This repository is a uv-managed Python project. `robomimic` and `robosuite` are
-editable source dependencies under `third_party/`.
-
-- Use uv, not conda.
-- Python 3.10, pinned by `.python-version`.
-- Virtual environment in `.venv/`.
-- Do not run scripts with system `python`.
-
-### Sync environment
-
-```bash
-uv sync --managed-python
-```
-
-### Verify editable imports
-
-```bash
-uv run python - <<'PY'
-from pathlib import Path
-import robomimic
-import robosuite
-
-root = Path.cwd().resolve()
-print("robomimic:", robomimic.__file__)
-print("robosuite:", robosuite.__file__)
-assert root / "third_party" / "robomimic" in Path(robomimic.__file__).resolve().parents
-assert root / "third_party" / "robosuite" in Path(robosuite.__file__).resolve().parents
-PY
-```
-
-### Verify PyTorch / CUDA
-
-```bash
-uv run python - <<'PY'
-import torch
-print("torch:", torch.__version__)
-print("cuda available:", torch.cuda.is_available())
-if torch.cuda.is_available():
-    print("device:", torch.cuda.get_device_name(0))
-PY
-```
-
-### Smoke test robosuite (headless)
-
-```bash
-MUJOCO_GL=egl uv run python - <<'PY'
-import numpy as np
-import robosuite as suite
-env = suite.make(
-    env_name="Lift", robots="Panda",
-    has_renderer=False, has_offscreen_renderer=True,
-    use_camera_obs=True, camera_names="agentview",
-    camera_heights=128, camera_widths=128,
-    ignore_done=True, control_freq=20,
-)
-obs = env.reset()
-for _ in range(3):
-    action = np.random.randn(*env.action_spec[0].shape)
-    obs, reward, done, info = env.step(action)
-print("smoke test ok")
-env.close()
-PY
-```
-
-## 10. Git Workflow
-
-This directory contains three **independent** git repos. The root repo
-only tracks files outside `third_party/`; the two forks are managed
-manually.
-
-| Repo | Path | Commit style |
-|------|------|--------------|
+| Repository | Path | Commit convention |
+|---|---|---|
 | root | `./` | `<scope>: <description>` |
 | robomimic | `third_party/robomimic/` | `<scope>: <description>` |
 | robosuite | `third_party/robosuite/` | `feat: ...` (Conventional Commits) |
 
-### Rules
+The forks are editable source dependencies managed independently.
+Root ignores `third_party/`; never stage fork files from root.
+Before every add or commit, run status in the target repository.
+Check root ignore rules with
+`git check-ignore -v third_party/robomimic third_party/robosuite`.
+For a required fork change, commit there first, then run `uv sync` and verify
+editable imports using `docs/runtime_setup.md`.
+Never push a fork upstream without explicit confirmation or force-push a
+shared branch. Preserve unrelated user changes.
 
-- `third_party/` is `.gitignore`d at the root. The root
-  repo **must not** attempt to `git add` files under it.
-- Before any `git add` / `git commit`, run `git status` to confirm the
-  working directory is the right repo. Each fork has its own `.git/`
-  directory; `cd` into the target path first.
-- Never push from inside a sub-fork to its upstream without explicit
-  confirmation. Upstream sync is handled manually.
-- Never force-push (`-f`) on shared branches.
-- When a change in a sub-fork is required for the root project to run,
-  commit it in the sub-fork first, then re-run `uv sync` and verify.
+## Documentation maintenance
 
-### Verification before committing
-
-```bash
-# From repo root
-git status
-git check-ignore -v third_party/robomimic third_party/robosuite
-
-# From third_party/robomimic
-(cd third_party/robomimic && git status)
-
-# From third_party/robosuite
-(cd third_party/robosuite && git status)
-```
-
-### Maintenance
-
-- Commit-style column reflects the observed convention. Update only if
-  the convention changes.
-
-## Maintenance Rules
-
-- **When to update**: when state materially changes (new model trained, root cause confirmed, EEF action-interface / forward-model status changed)
-- **When NOT to update**: exploratory runs, unconfirmed hypotheses
-- **What to update**: keep the active goal, current evidence, reading order,
-  runtime contract, and repository workflow accurate. Replace stale current
-  state rather than accumulating chronological history here; detailed history
-  belongs in `docs/RESEARCH_LOG.md`.
-- **Note**: Maintenance rights belong to humans. Agents may change this file only under explicit permission.
+Keep this entry short and replace stale state instead of appending history.
+Record detailed decisions in `docs/RESEARCH_LOG.md`, experiment evidence in
+its conclusion/report, output navigation in `outputs/README.md`, and script
+navigation in `scripts/AGENTS.md`. Update those links when a stage closes.
+Distinguish observed evidence, hypotheses, recommendations, and human decisions.
+Do not promote exploration or an unconfirmed mechanism into settled fact.
+Maintenance rights belong to humans; agents may change this file only with
+explicit permission. This restructuring was authorized on 2026-09-07.
