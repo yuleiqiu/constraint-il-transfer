@@ -1,0 +1,73 @@
+{
+  "criterion": "old strict OR released placement held0.5s",
+  "conditions": {
+    "baseline": {
+      "n": 50,
+      "success": 46,
+      "safe_success": 39,
+      "collision_any": 9,
+      "success_with_collision": 7,
+      "collision_failure": 2,
+      "ncr": 2
+    },
+    "guided": {
+      "n": 50,
+      "success": 31,
+      "safe_success": 30,
+      "collision_any": 7,
+      "success_with_collision": 1,
+      "collision_failure": 6,
+      "ncr": 13
+    }
+  },
+  "paired": {
+    "success": {
+      "rescues": [
+        14,
+        27
+      ],
+      "regressions": [
+        0,
+        1,
+        2,
+        8,
+        9,
+        10,
+        17,
+        18,
+        28,
+        32,
+        36,
+        40,
+        42,
+        44,
+        45,
+        46,
+        49
+      ]
+    },
+    "safe_success": {
+      "rescues": [
+        14,
+        25,
+        27,
+        37
+      ],
+      "regressions": [
+        0,
+        1,
+        2,
+        7,
+        10,
+        17,
+        32,
+        36,
+        40,
+        42,
+        44,
+        45,
+        46
+      ]
+    }
+  }
+}
