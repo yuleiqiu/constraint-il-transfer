@@ -1,0 +1,29 @@
+{
+  "out": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_local_planner_2026-09-11/preflight",
+  "checkpoint": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_tabletop_can_wide_support_abs_pose_sample_100demo_seed42/20260826184200/models/model_epoch_50_tabletop_can_wide_support_pointcloud_abs_eef_100_success_0.8.pth",
+  "state_bank": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_wide_support/raised_milk_state_bank_seed828_n50/initial_state_bank.pkl",
+  "episodes": [
+    0
+  ],
+  "conditions": [
+    "baseline",
+    "planner"
+  ],
+  "repeats": 2,
+  "source_hashes": {
+    "runtime.py": "cb9dd04cd911b18d9e0e3e91f6c7d2d09ac5903e9970c3584f16a32f951d876d",
+    "geometry.py": "b7a50ac622cbd7b27320133df767bb28e9bf9889a2cda59a3502e7f8476889eb",
+    "run.py": "19fea44c5c9b6cf04a890852bbe867f88135af3e7052ad009800981f9c736a36",
+    "test_geometry.py": "936a8d9c3522ea0d3ad8978888598af0094b991385580f536ed20fb3e73bbee7"
+  },
+  "checkpoint_sha256": "ec5c270c8bd0d40600ee7a11bae93010e7f46d410c5c45b55eb236282d778bec",
+  "state_bank_sha256": "cf7f67394fc2855a1a0cffc13bba7f8eeb2399f05a496d8deb7c2d05e346e23c",
+  "cuda": "0",
+  "success": "old strict OR released placement held0.5s",
+  "geometry": "oracle compiled obstacle+support and actor MVEE; no pointcloud changes",
+  "planner": {
+    "margin_m": 0.01,
+    "fit_padding_m": 0.002,
+    "max_target_increment_m": 0.006
+  }
+}

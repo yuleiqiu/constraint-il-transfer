@@ -1,0 +1,81 @@
+{
+  "videos_verified": 12,
+  "checks": [
+    {
+      "folder": "development/ep25/r0/baseline",
+      "frames": 231,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "development/ep25/r0/planner",
+      "frames": 222,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "development/ep28/r0/baseline",
+      "frames": 236,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "development/ep28/r0/planner",
+      "frames": 175,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "preflight/ep00/r0/baseline",
+      "frames": 167,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "preflight/ep00/r0/planner",
+      "frames": 167,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "preflight/ep00/r1/baseline",
+      "frames": 167,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "preflight/ep00/r1/planner",
+      "frames": 167,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "rescue_replay/ep25/r0/baseline",
+      "frames": 231,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true,
+      "cross_process_repeat_exact": true
+    },
+    {
+      "folder": "rescue_replay/ep25/r0/planner",
+      "frames": 222,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null,
+      "cross_process_repeat_exact": true
+    },
+    {
+      "folder": "rescue_replay/ep28/r0/baseline",
+      "frames": 236,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true,
+      "cross_process_repeat_exact": true
+    },
+    {
+      "folder": "rescue_replay/ep28/r0/planner",
+      "frames": 175,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null,
+      "cross_process_repeat_exact": true
+    }
+  ]
+}

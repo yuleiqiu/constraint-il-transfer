@@ -1,0 +1,11 @@
+{
+  "episodes": [
+    25,
+    28
+  ],
+  "conditions": [
+    "baseline",
+    "planner"
+  ],
+  "repeats": 1
+}

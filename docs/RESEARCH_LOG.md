@@ -17,7 +17,12 @@ committing relevant changes, and implementing an MVEE-based local planner on
 a new branch. Reuse geometry; do not resume gradient-margin sweeps. The task
 criterion is now old strict success OR released placement held for0.5s.
 On the existing50 layouts this gives source46/50 versus guidance31/50 Task SR.
-This is a task-rate comparison, not a safe-rate estimate.
+Earliest-union-stop offline audit also gives Safe39/50 versus30/50;
+task transitions2 rescues/17 regressions, safe transitions4/13.
+See `outputs/tabletop_guidance_reeval_2026-09-09/inclusive_rescore/report.md`.
+The local-planner prototype is implemented with oracle MVEE geometry and
+persistent visibility-graph bypass; engineering cases0/25/28 complete with
+Task3/3 for both, Safe1/3 source versus3/3 planner. Wider evaluation is pending.
 
 Previous: non-XY output-preservation ablation completed, reviewed2026-09-11.
 Source/guided/protected Task10/6/9 and Safe9/6/9 on10 fixed development layouts.
@@ -35,6 +40,18 @@ training, clean-policy evaluation or always-on condition is selected.
 Root AGENTS.md predates this work and remains human-maintained.
 
 ## 2026-09-11
+
+### MVEE local planner implementation passes bounded engineering gate
+
+Implemented oracle-geometry MVEE visibility-graph bypass with latched transport
+and guarded source handoff. On previously examined layouts0/25/28, source and
+planner both complete3/3, with Safe1/3 versus3/3. All three execute bypass and
+handoff; safe rescues25/28, no task regressions. Normal case0 also triggers,
+so unnecessary intervention remains a limitation. Twelve actual executions
+include six excluded repeats; all three pairs repeat full trajectories exactly,
+with25/28 verified in a separate GPU1 process. All12 videos pass decoding/frame
+checks;11 unit tests pass. No full50-layout validation or training was launched.
+Canonical report: `outputs/tabletop_local_planner_2026-09-11/conclusion.md`.
 
 ### Authorize MVEE-based local planner implementation
 

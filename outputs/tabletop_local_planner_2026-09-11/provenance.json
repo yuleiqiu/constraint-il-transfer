@@ -1,0 +1,13 @@
+{
+  "repo_revisions_before_planner_commit": {
+    ".": "9e0b64602e72fe70f0420ead6bab79b77c68373c",
+    "third_party/robomimic": "e6408e9f27602fb9f84366edfa0d14d07f402785",
+    "third_party/robosuite": "47d4190eadc6ab897a0473062b58a989fb21609f"
+  },
+  "executed_source_sha256": {
+    "runtime.py": "cb9dd04cd911b18d9e0e3e91f6c7d2d09ac5903e9970c3584f16a32f951d876d",
+    "geometry.py": "b7a50ac622cbd7b27320133df767bb28e9bf9889a2cda59a3502e7f8476889eb",
+    "run.py": "19fea44c5c9b6cf04a890852bbe867f88135af3e7052ad009800981f9c736a36"
+  },
+  "note": "Executed snapshots precede formatting only; final source AST equivalence is checked."
+}

@@ -1,0 +1,43 @@
+{
+  "episodes": [
+    0,
+    25,
+    28
+  ],
+  "primary_rollouts": 6,
+  "total_rollouts": 12,
+  "conditions": {
+    "baseline": {
+      "n": 3,
+      "success": 3,
+      "safe_success": 1,
+      "collision_any": 2,
+      "success_with_collision": 2,
+      "collision_failure": 0,
+      "ncr": 0
+    },
+    "planner": {
+      "n": 3,
+      "success": 3,
+      "safe_success": 3,
+      "collision_any": 0,
+      "success_with_collision": 0,
+      "collision_failure": 0,
+      "ncr": 0
+    }
+  },
+  "transitions": {
+    "success": {
+      "rescues": [],
+      "regressions": []
+    },
+    "safe_success": {
+      "rescues": [
+        25,
+        28
+      ],
+      "regressions": []
+    }
+  },
+  "task_gate_pass": true
+}

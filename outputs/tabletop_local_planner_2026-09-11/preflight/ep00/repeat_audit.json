@@ -1,0 +1,10 @@
+{
+  "baseline_r1": {
+    "initial_observations_equal": true,
+    "repeat_trajectory_equal": true
+  },
+  "planner_r1": {
+    "initial_observations_equal": true,
+    "repeat_trajectory_equal": true
+  }
+}

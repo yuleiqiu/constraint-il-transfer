@@ -1,5 +1,15 @@
 # Experiment outputs index
 
+Latest implementation: `tabletop_local_planner_2026-09-11/`, MVEE local planner
+using oracle compiled geometry and persistent bypass routes. Start with
+`conclusion.md` and `video_index.md`; this is bounded engineering validation,
+not a full-bank performance claim.
+
+Current inclusive scoring: `tabletop_guidance_reeval_2026-09-09/inclusive_rescore/report.md`.
+User-confirmed old strict OR released0.5s placement: source/guidance Task46/31,
+Safe39/30 out of50; task rescues2/regressions17, safe rescues4/regressions13.
+Earlier strict and residence-only reports retain their original criteria.
+
 Latest completed ablation: `tabletop_xy_preserve_2026-09-10/`, user-authorized
 guidedXY/source-nonXY composition. Source/guided/protected Task10/6/9 and
 Safe9/6/9 on10 fixed development layouts; four separate layout28 pilot runs.

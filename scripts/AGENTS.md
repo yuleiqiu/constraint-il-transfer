@@ -1,5 +1,11 @@
 # Project Scripts
 
+Local planner implementation (authorized2026-09-11):
+`2026-09-11_tabletop_local_planner/README.md`. Reuses MVEE fitting with
+root-local conservative segment checks, visibility-graph bypass and persistent
+transport control. Oracle geometry; inclusive task scoring and actual MP4s.
+This is separate from the stopped MVEE denoising-guidance probe.
+
 Completed output-preservation ablation (2026-09-11 review):
 `2026-09-10_tabletop_xy_preserve/README.md`. Exact non-XY source reference,
 unchanged point cost/height gate, layout28 pilot then fixed10-layout development
@@ -7,7 +13,9 @@ comparison; released0.5s placement stopping and per-rollout MP4s.
 
 Placement rescore (2026-09-10): `2026-09-10_tabletop_placement_rescore/README.md`.
 Offline contact reconstruction and0.5s released-residence scoring; censored
-early terminations stay unknown. No policy rerun is implied.
+early terminations stay unknown under residence-only scoring.
+`inclusive_rescore.py` applies the later user-confirmed OR criterion and resolves
+all50 pairs without simulation. No policy rerun is implied.
 
 Completed corrected full-episode evaluation (authorized 2026-09-09, reviewed 2026-09-10):
 `2026-09-09_tabletop_guidance_reeval/README.md`. Fixed 50-layout source / original
