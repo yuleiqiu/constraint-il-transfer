@@ -1,0 +1,86 @@
+[
+  {
+    "episode": 0,
+    "rectangle_success": true,
+    "rectangle_safe": true,
+    "bezier_success": true,
+    "bezier_safe": true,
+    "rectangle": {
+      "trigger": 168,
+      "handoff": 280,
+      "planned_length_m": 0.5282898003198897,
+      "actual_length_m": 0.5335120167109463,
+      "turn_p95_deg_10mm": 31.68465865237154,
+      "turn_max_deg_10mm": 75.01973515846657
+    },
+    "bezier": {
+      "trigger": 168,
+      "handoff": 256,
+      "planned_length_m": 0.4019349193579449,
+      "actual_length_m": 0.4061242880483491,
+      "turn_p95_deg_10mm": 15.29543666249129,
+      "turn_max_deg_10mm": 18.00668310270298
+    },
+    "planned_reduction_percent": 23.91772108517607,
+    "actual_reduction_percent": 23.87719951425482,
+    "bezier_arcs": 2,
+    "exact_prefix": true,
+    "repeat_trace_exact": true
+  },
+  {
+    "episode": 25,
+    "rectangle_success": true,
+    "rectangle_safe": true,
+    "bezier_success": true,
+    "bezier_safe": true,
+    "rectangle": {
+      "trigger": 272,
+      "handoff": 384,
+      "planned_length_m": 0.5144877312690941,
+      "actual_length_m": 0.5204242160020432,
+      "turn_p95_deg_10mm": 31.619882859590078,
+      "turn_max_deg_10mm": 74.39633089422921
+    },
+    "bezier": {
+      "trigger": 272,
+      "handoff": 352,
+      "planned_length_m": 0.3931225645933285,
+      "actual_length_m": 0.39330465574817897,
+      "turn_p95_deg_10mm": 18.50004234502953,
+      "turn_max_deg_10mm": 22.361572925945143
+    },
+    "planned_reduction_percent": 23.589516192425506,
+    "actual_reduction_percent": 24.426142432496878,
+    "bezier_arcs": 2,
+    "exact_prefix": true,
+    "repeat_trace_exact": true
+  },
+  {
+    "episode": 28,
+    "rectangle_success": true,
+    "rectangle_safe": true,
+    "bezier_success": true,
+    "bezier_safe": true,
+    "rectangle": {
+      "trigger": 160,
+      "handoff": 288,
+      "planned_length_m": 0.5755628322173393,
+      "actual_length_m": 0.5831471497839036,
+      "turn_p95_deg_10mm": 25.340252511510485,
+      "turn_max_deg_10mm": 62.120709072310476
+    },
+    "bezier": {
+      "trigger": 160,
+      "handoff": 256,
+      "planned_length_m": 0.4755039069934418,
+      "actual_length_m": 0.472995029173627,
+      "turn_p95_deg_10mm": 16.22327349015415,
+      "turn_max_deg_10mm": 19.694775433820205
+    },
+    "planned_reduction_percent": 17.384535557729354,
+    "actual_reduction_percent": 18.889249591821823,
+    "bezier_arcs": 2,
+    "exact_prefix": true,
+    "repeat_trace_exact": true
+  }
+]

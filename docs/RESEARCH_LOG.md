@@ -20,6 +20,8 @@ On the existing50 layouts this gives source46/50 versus guidance31/50 Task SR.
 Earliest-union-stop offline audit also gives Safe39/50 versus30/50;
 task transitions2 rescues/17 regressions, safe transitions4/13.
 See `outputs/tabletop_guidance_reeval_2026-09-09/inclusive_rescore/report.md`.
+The optional compact-Bezier refinement shortens the same three bypasses
+without outcome regressions; see the2026-09-11 entry below.
 The local-planner prototype is implemented with oracle MVEE geometry and
 persistent visibility-graph bypass; engineering cases0/25/28 complete with
 Task3/3 for both, Safe1/3 source versus3/3 planner. Wider evaluation is pending.
@@ -40,6 +42,18 @@ training, clean-policy evaluation or always-on condition is selected.
 Root AGENTS.md predates this work and remains human-maintained.
 
 ## 2026-09-11
+
+### Shorten and smooth local-planner bypasses
+
+User requested shorter, more natural routes and cubic/Bezier smoothing.
+Implemented opt-in compact_bezier: certificate-preserving vertex contraction,
+cubic corner rounding with subdivision bounds, and arc-length tracking.
+Unchanged10mm margin, geometry, trigger and handoff; rectangle remains default.
+On the same0/25/28, Task/Safe stay3/3 and CR/NCR0/3; actual bypass length drops
+23.9%/24.4%/18.9%, with gentler10mm-resampled turns. All six new executions
+(including repeats) verified;14 tests pass. No full-bank claim or expansion.
+Canonical report: `outputs/tabletop_local_planner_bezier_2026-09-11/conclusion.md`.
+
 
 ### MVEE local planner implementation passes bounded engineering gate
 

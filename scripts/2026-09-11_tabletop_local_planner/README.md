@@ -82,3 +82,40 @@ The optional `--conditions guided` branch runs the archived original point
 guidance setting under inclusive stopping. It was not part of this implementation
 gate. `source_chunks` means the sampled proposal before local planning; for the
 optional guided branch it is already guided, not a same-noise unguided reference.
+
+## Compact cubic Bezier variant (user-authorized2026-09-11)
+
+`--route-style compact_bezier` is opt-in; default rectangle reproduces the first
+prototype. Keep the MVEE fit,10mm safety margin, trigger, held transport pose,
+gripper and handoff criterion fixed. First shorten interior vertices toward
+adjacent chord midpoints while retaining5mm extra certified slack. Then replace
+corners with cubic Bezier arcs, shrinking the rounding span if necessary.
+Recursive de Casteljau subdivision bounds each arc's deviation from its chord;
+subtract that bound from the existing swept clearance before accepting the arc.
+Validate joins and every executed output chord too. Retain safe polyline on
+failure. No safety margin sweep or learning is introduced.
+
+Dense curve points use monotone observed arc-length progress, with6mm target
+spacing; cap initial target lead at12mm. This rounds internal bypass corners;
+it does not guarantee acceleration continuity at takeover or handoff.
+
+Bounded gate: same0/25/28, two executions each, original rectangle videos and
+trajectories retained as reference. Require all three safe completions and no
+path length increase; report planned/actual bypass length and turning angles.
+Do not infer wider performance from this appearance/route refinement.
+
+Completed: all three compact-Bezier cases remain safe successes, with actual
+bypass shortening19%--24%. Fourteen tests pass; six executions including repeats
+verified. Report: `outputs/tabletop_local_planner_bezier_2026-09-11/conclusion.md`.
+
+```bash
+MUJOCO_GL=egl CUDA_VISIBLE_DEVICES=0 uv run python \
+  scripts/2026-09-11_tabletop_local_planner/run.py \
+  --out outputs/<new-run-directory> --episodes 0 25 28 \
+  --conditions planner --route-style compact_bezier --repeats 2
+uv run python scripts/2026-09-11_tabletop_local_planner/analyze_smoothing.py \
+  --out outputs/tabletop_local_planner_bezier_2026-09-11
+```
+
+The smoothing analyzer expects the archived gpu0/ep00 and gpu1/ep25,ep28
+partition used for this comparison; the generic runner accepts other partitions.

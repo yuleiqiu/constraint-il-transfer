@@ -1,5 +1,10 @@
 # Experiment outputs index
 
+Latest route refinement: `tabletop_local_planner_bezier_2026-09-11/`.
+Compact cubic Bezier bypasses shorten actual travel19%--24% on0/25/28 while
+retaining3/3 safe completions and the original10mm margin. Six verified MP4s
+include repeats; start with `conclusion.md` and `video_index.md`.
+
 Latest implementation: `tabletop_local_planner_2026-09-11/`, MVEE local planner
 using oracle compiled geometry and persistent bypass routes. Start with
 `conclusion.md` and `video_index.md`; this is bounded engineering validation,

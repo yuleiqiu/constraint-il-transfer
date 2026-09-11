@@ -59,7 +59,11 @@ class Eval(R.Evaluation):
         }
         target = set(maps[1])
         assert target and grip
-        planner = LocalPlanner(self.raw, ids) if cond == "planner" else None
+        planner = (
+            LocalPlanner(self.raw, ids, self.cli.route_style)
+            if cond == "planner"
+            else None
+        )
         trace = []
         actions = []
         states = []
@@ -309,6 +313,9 @@ def main():
         default=["baseline", "planner"],
     )
     ap.add_argument("--repeats", type=int, default=1)
+    ap.add_argument(
+        "--route-style", choices=["rectangle", "compact_bezier"], default="rectangle"
+    )
     args = ap.parse_args()
     args.out = args.out.resolve()
     if args.repeats < 1 or len(set(args.episodes)) != len(args.episodes):

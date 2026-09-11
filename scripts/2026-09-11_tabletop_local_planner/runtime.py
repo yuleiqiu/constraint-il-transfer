@@ -5,6 +5,7 @@ import numpy as np
 from scipy.spatial.transform import Rotation
 from robomimic.utils.ellipsoid_guidance_utils import fit_robosuite_geom_ellipsoid
 from geometry import Ellipsoid, Geometry
+from smoothing import compact_bezier, advance_path
 
 
 def fitted(raw, ids, **kwargs):
@@ -15,7 +16,9 @@ def fitted(raw, ids, **kwargs):
 
 
 class LocalPlanner:
-    def __init__(self, raw, obstacle_ids):
+    def __init__(self, raw, obstacle_ids, route_style="rectangle"):
+        self.route_style = route_style
+        self.path_progress = 0.0
         self.raw = raw
         self.obstacle = fitted(raw, obstacle_ids)
         # Static obstacle envelope includes the support via obstacle_ids.
@@ -107,7 +110,10 @@ class LocalPlanner:
                 self.mode = "blocked"
             else:
                 self.mode = "bypass"
+                if self.route_style == "compact_bezier":
+                    route = compact_bezier(geometry, route, r)
                 self.route = route
+                self.path_progress = 0.0
                 self.index = 1
                 info["new_route"] = route
         hold = np.tile(
@@ -117,8 +123,24 @@ class LocalPlanner:
             # Explicit infeasibility outcome; do not execute a known risky chunk.
             return finish(hold, "no_feasible_route_hold")
         points = self.route["points"]
+        smooth_targets = None
+        if self.route.get("style") == "compact_bezier":
+            self.path_progress, smooth_targets, total = advance_path(
+                points, self.path_progress, p, len(source)
+            )
+            self.index = (
+                len(points)
+                if (
+                    total - self.path_progress < 0.008
+                    and np.linalg.norm(p - points[-1]) < 0.008
+                )
+                else 1
+            )
+            info["path_progress_m"] = self.path_progress
         while (
-            self.index < len(points) and np.linalg.norm(p - points[self.index]) < 0.008
+            smooth_targets is None
+            and self.index < len(points)
+            and np.linalg.norm(p - points[self.index]) < 0.008
         ):
             self.index += 1
         info.update(route_index=self.index, route_side=self.route["side"])
@@ -139,6 +161,12 @@ class LocalPlanner:
         )
         for i in range(len(output)):
             output[i, :3] = p + delta * min(1.0, 0.006 * (i + 1) / max(length, 1e-12))
+        if smooth_targets is not None:
+            output[:, :3] = smooth_targets
+            # Bound target lead even after a tracking deviation.
+            delta_first = output[0, :3] - p
+            if np.linalg.norm(delta_first) > 0.012:
+                return finish(hold, "curve_tracking_deviation_hold")
         checked = geometry.chunk_clearance(p, r, output)
         info["output_clearance_lower_m"] = checked
         if checked < 0:

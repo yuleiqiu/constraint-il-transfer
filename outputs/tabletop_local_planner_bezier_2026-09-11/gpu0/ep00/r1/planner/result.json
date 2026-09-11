@@ -1,0 +1,56 @@
+{
+  "episode": 0,
+  "condition": "planner",
+  "steps": 312,
+  "success": true,
+  "safe_success": true,
+  "collision_any": false,
+  "success_with_collision": false,
+  "collision_failure": false,
+  "ncr": false,
+  "first_collision_step": null,
+  "first_strict_success_step": 312,
+  "gate_active_chunks": 0,
+  "planner_changed_chunks": 11,
+  "planner_triggers": 1,
+  "initial_state_hash": "58296cece2d4c77f507986ecf32cc489609de7dd5c0d3dbce67b07974ce96f03",
+  "reset_audit": {
+    "goal_before": [
+      -0.0280226077082904,
+      0.24634366650729517
+    ],
+    "obstacle_before": [
+      -0.03476397583984826,
+      0.006993124590719437
+    ],
+    "physical_goal": [
+      0.0119922,
+      0.211389
+    ],
+    "physical_obstacle": [
+      0.0332571,
+      0.00688943
+    ],
+    "restored_state_hash": "58296cece2d4c77f507986ecf32cc489609de7dd5c0d3dbce67b07974ce96f03",
+    "initial_obs_hashes": {
+      "object": "5f86e9ce63894406d898c5030aefffad1b99dc66392ace6f86281d740d91ed75",
+      "robot0_joint_pos": "92aa3e3571d47554a07ecf30db123314005b3fa99f544817937793ed7652db32",
+      "robot0_joint_pos_cos": "13c01f0f1ae3c08d2dc89698aa13a39de19b0c029f92eb963a844e43556bd1d2",
+      "robot0_joint_pos_sin": "d98ec90266dcca72557c9ae207cb195d650c08d2579ea0463b646e4ac0b359c4",
+      "robot0_joint_vel": "6a39094347e944cbeb157a299098790c3cfef0edaddd8e2fc85928ab8c20d9be",
+      "robot0_eef_pos": "c5b9c63fad63163dfe7b58a036ef55cfecb59446d2e244a23a4756e99566d1bc",
+      "robot0_eef_quat": "da9b7f6025de1c1257adee8fb20fe4260e9335b8da98d77a5159316d5982d034",
+      "robot0_eef_quat_site": "6a7ad3deba1469b861b5f16259165cb23715e5d86bdc01374590ffa2da1d18bd",
+      "robot0_gripper_qpos": "35a51eae5d2c395fe368a00a961693b4b20ff938802e5854ae5cc86b9f6ead80",
+      "robot0_gripper_qvel": "4bf91a2a400a9fb6cbc48dce613624a342fda3803312f55a19b83ce012bf9472",
+      "lang_emb": "13281726c1332ea5420c8075cff1f282527ba061ec468e37c704f7760da5093c",
+      "agent_pos": "064aabea1170752f527d749ee0bcde97be60e4137a576044d05964dffc27f960",
+      "task_pointcloud": "6b7e19696e5e6e5420af5b4d70e2fdfd634e412914c8e2214cbe0e65aa9ad77b",
+      "timesteps": "0720b50c2478a89cb9be5ad081457d387bbe74f427680086151138e1531dea03",
+      "actions": "6a39094347e944cbeb157a299098790c3cfef0edaddd8e2fc85928ab8c20d9be"
+    }
+  },
+  "wall_seconds": 27.002934561111033,
+  "video_frames": 157,
+  "folder": "ep00/r1/planner"
+}

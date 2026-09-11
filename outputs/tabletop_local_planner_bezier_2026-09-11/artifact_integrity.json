@@ -1,0 +1,41 @@
+{
+  "videos_verified": 6,
+  "checks": [
+    {
+      "episode": 0,
+      "repeat": 0,
+      "frames": 157,
+      "executed_actions_match": true
+    },
+    {
+      "episode": 0,
+      "repeat": 1,
+      "frames": 157,
+      "executed_actions_match": true
+    },
+    {
+      "episode": 25,
+      "repeat": 0,
+      "frames": 215,
+      "executed_actions_match": true
+    },
+    {
+      "episode": 25,
+      "repeat": 1,
+      "frames": 215,
+      "executed_actions_match": true
+    },
+    {
+      "episode": 28,
+      "repeat": 0,
+      "frames": 162,
+      "executed_actions_match": true
+    },
+    {
+      "episode": 28,
+      "repeat": 1,
+      "frames": 162,
+      "executed_actions_match": true
+    }
+  ]
+}
