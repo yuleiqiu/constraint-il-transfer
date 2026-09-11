@@ -1,0 +1,14 @@
+{
+  "baseline": {
+    "initial_observations_equal": true,
+    "same_condition_full_repeat_equal": true
+  },
+  "guided": {
+    "initial_observations_equal": true,
+    "same_condition_full_repeat_equal": true
+  },
+  "pair": {
+    "initial_observations_equal": true,
+    "same_condition_full_repeat_equal": false
+  }
+}

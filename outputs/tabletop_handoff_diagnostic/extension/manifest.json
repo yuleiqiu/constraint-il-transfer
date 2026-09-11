@@ -1,0 +1,21 @@
+{
+  "checkpoint": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_tabletop_can_wide_support_abs_pose_sample_100demo_seed42/20260826184200/models/model_epoch_50_tabletop_can_wide_support_pointcloud_abs_eef_100_success_0.8.pth",
+  "state_bank": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_wide_support/raised_milk_state_bank_seed828_n50/initial_state_bank.pkl",
+  "episodes": [
+    27
+  ],
+  "max_states": 1,
+  "repeats": 3,
+  "conditions": [
+    "near_goal"
+  ],
+  "horizon": 600,
+  "out_dir": "outputs/tabletop_handoff_diagnostic/extension",
+  "selection": "ascending archived baseline collision failures; retain all screening outcomes",
+  "guidance": {
+    "rho": 45,
+    "Q": 0.08,
+    "smoothing": 0.01,
+    "phase": "target_lifted"
+  }
+}

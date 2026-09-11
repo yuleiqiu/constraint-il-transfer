@@ -1,0 +1,191 @@
+[
+  {
+    "episode": 8,
+    "file": "pilot/ep08_screen.json",
+    "success": true,
+    "safe_success": false,
+    "collision_any": true,
+    "ncr": false,
+    "success_with_collision": true,
+    "collision_failure": false,
+    "steps": 350,
+    "first_collision_step": 184,
+    "final_goal_distance": 0.006029920889950363
+  },
+  {
+    "episode": 17,
+    "file": "pilot/ep17_screen.json",
+    "success": false,
+    "safe_success": false,
+    "collision_any": false,
+    "ncr": true,
+    "success_with_collision": false,
+    "collision_failure": false,
+    "steps": 600,
+    "first_collision_step": null,
+    "final_goal_distance": 0.007842415298085988
+  },
+  {
+    "episode": 25,
+    "file": "pilot/ep25_screen.json",
+    "success": true,
+    "safe_success": false,
+    "collision_any": true,
+    "ncr": false,
+    "success_with_collision": true,
+    "collision_failure": false,
+    "steps": 543,
+    "first_collision_step": 304,
+    "final_goal_distance": 0.024953731962467036
+  },
+  {
+    "episode": 37,
+    "file": "pilot/ep37_screen.json",
+    "success": true,
+    "safe_success": false,
+    "collision_any": true,
+    "ncr": false,
+    "success_with_collision": true,
+    "collision_failure": false,
+    "steps": 343,
+    "first_collision_step": 166,
+    "final_goal_distance": 0.007815098041726873
+  },
+  {
+    "episode": 43,
+    "file": "pilot/ep43_screen.json",
+    "success": false,
+    "safe_success": false,
+    "collision_any": true,
+    "ncr": false,
+    "success_with_collision": false,
+    "collision_failure": true,
+    "steps": 600,
+    "first_collision_step": 188,
+    "final_goal_distance": 0.13571960388883275
+  },
+  {
+    "episode": 48,
+    "file": "replicated/ep48_screen.json",
+    "reset_metadata_audit": {
+      "goal_xy_before_sync": [
+        0.016628995441085717,
+        0.19655711175173696
+      ],
+      "goal_tray_xy": [
+        0.020429,
+        0.246128
+      ],
+      "obstacle_xy_before_sync": [
+        -0.021919810842285954,
+        -0.011780744497633262
+      ],
+      "obstacle_body_xy": [
+        -0.00237859,
+        -0.00365298
+      ]
+    },
+    "success": true,
+    "safe_success": true,
+    "collision_any": false,
+    "ncr": false,
+    "success_with_collision": false,
+    "collision_failure": false,
+    "steps": 405,
+    "first_collision_step": null,
+    "final_goal_distance": 0.00119418727906631
+  },
+  {
+    "episode": 49,
+    "file": "replicated/ep49_screen.json",
+    "reset_metadata_audit": {
+      "goal_xy_before_sync": [
+        0.010629681721976113,
+        0.21685634993644176
+      ],
+      "goal_tray_xy": [
+        0.0101746,
+        0.191177
+      ],
+      "obstacle_xy_before_sync": [
+        0.019862945855982146,
+        -0.0104423282909796
+      ],
+      "obstacle_body_xy": [
+        0.0290953,
+        -0.00195047
+      ]
+    },
+    "success": false,
+    "safe_success": false,
+    "collision_any": true,
+    "ncr": false,
+    "success_with_collision": false,
+    "collision_failure": true,
+    "steps": 600,
+    "first_collision_step": 294,
+    "final_goal_distance": 0.007701598797052663
+  },
+  {
+    "episode": 18,
+    "file": "extension/ep18_screen.json",
+    "reset_metadata_audit": {
+      "goal_xy_before_sync": [
+        -0.0004001833595214145,
+        0.2076031315039128
+      ],
+      "goal_tray_xy": [
+        -0.0218877,
+        0.199232
+      ],
+      "obstacle_xy_before_sync": [
+        -0.029366335030296738,
+        -0.018539024941523187
+      ],
+      "obstacle_body_xy": [
+        0.0104822,
+        0.00115777
+      ]
+    },
+    "success": true,
+    "safe_success": false,
+    "collision_any": true,
+    "ncr": false,
+    "success_with_collision": true,
+    "collision_failure": false,
+    "steps": 305,
+    "first_collision_step": 189,
+    "final_goal_distance": 0.05562798784929713
+  },
+  {
+    "episode": 27,
+    "file": "extension/ep27_screen.json",
+    "reset_metadata_audit": {
+      "goal_xy_before_sync": [
+        0.013595440913199107,
+        0.2096975443813231
+      ],
+      "goal_tray_xy": [
+        -0.0169529,
+        0.218923
+      ],
+      "obstacle_xy_before_sync": [
+        -0.02308745321679391,
+        0.0008538809572591062
+      ],
+      "obstacle_body_xy": [
+        0.0035929,
+        0.00429841
+      ]
+    },
+    "success": false,
+    "safe_success": false,
+    "collision_any": true,
+    "ncr": false,
+    "success_with_collision": false,
+    "collision_failure": true,
+    "steps": 600,
+    "first_collision_step": 253,
+    "final_goal_distance": 0.021584662929562272
+  }
+]

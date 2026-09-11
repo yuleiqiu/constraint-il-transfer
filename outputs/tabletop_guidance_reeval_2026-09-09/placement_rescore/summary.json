@@ -1,0 +1,52 @@
+{
+  "baseline": {
+    "n": 50,
+    "status_counts": {
+      "success": 35,
+      "censored": 11,
+      "failure": 4
+    },
+    "task_sr_bounds": [
+      0.7,
+      0.92
+    ],
+    "safe_success": 29,
+    "safe_sr_bounds": [
+      0.58,
+      0.78
+    ],
+    "observed_contact_count": 9,
+    "four_way_confirmed": {
+      "safe_success": 29,
+      "success_with_collision": 6,
+      "collision_failure": 2,
+      "ncr": 2
+    },
+    "bilateral_grasp_seen_rollouts": 50
+  },
+  "guided": {
+    "n": 50,
+    "status_counts": {
+      "failure": 19,
+      "censored": 14,
+      "success": 17
+    },
+    "task_sr_bounds": [
+      0.34,
+      0.62
+    ],
+    "safe_success": 17,
+    "safe_sr_bounds": [
+      0.34,
+      0.6
+    ],
+    "observed_contact_count": 7,
+    "four_way_confirmed": {
+      "safe_success": 17,
+      "success_with_collision": 0,
+      "collision_failure": 6,
+      "ncr": 13
+    },
+    "bilateral_grasp_seen_rollouts": 50
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "selected_states": 1,
+  "rows": 5,
+  "conditions": {
+    "baseline": {
+      "n": 1,
+      "success": 0.0,
+      "safe_success": 0.0,
+      "collision_any": 1.0,
+      "ncr": 0.0
+    },
+    "guided": {
+      "n": 1,
+      "success": 0.0,
+      "safe_success": 0.0,
+      "collision_any": 0.0,
+      "ncr": 1.0
+    },
+    "long": {
+      "n": 1,
+      "success": 1.0,
+      "safe_success": 1.0,
+      "collision_any": 0.0,
+      "ncr": 0.0
+    },
+    "short": {
+      "n": 1,
+      "success": 1.0,
+      "safe_success": 1.0,
+      "collision_any": 0.0,
+      "ncr": 0.0
+    },
+    "teacher": {
+      "n": 1,
+      "success": 1.0,
+      "safe_success": 1.0,
+      "collision_any": 0.0,
+      "ncr": 0.0
+    }
+  }
+}

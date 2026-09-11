@@ -1,0 +1,4007 @@
+{
+  "formal_rollouts": 100,
+  "videos_decoded_and_counted": 100,
+  "total_branch_bytes": 200014415,
+  "records": [
+    {
+      "folder": "shard_00_24/episodes/ep00/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "173"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 14995,
+          "sha256": "759de4c7c66bf9454f7458484d884676f657f27745576fedee932c5e21adda45"
+        },
+        "observations.npz": {
+          "bytes": 180922,
+          "sha256": "76ba1bf54f313f1fabad0f083c758290146626fb40b52c7b0a34a1bc6ed73773"
+        },
+        "reset.json": {
+          "bytes": 1745,
+          "sha256": "ef5a3fef9df3a33815ef68a285929b6ee00efaebd3ad380650b1cd1b81d7d373"
+        },
+        "result.json": {
+          "bytes": 4287,
+          "sha256": "0cff4798d07c655aeb07a179a98f288ba361ae01ff586846f334388fa42ef881"
+        },
+        "rollout.mp4": {
+          "bytes": 518078,
+          "sha256": "0e3dac8deffbfa917a883f401e8df4a637fa99c256380622a410d15f5a42abaa"
+        },
+        "trace.json": {
+          "bytes": 674465,
+          "sha256": "0b5f5a8f9aae1ad45c29b11ecb63d33ce2dd1bef68a9d91fbce914b83a989e1c"
+        },
+        "trajectory.npz": {
+          "bytes": 92246,
+          "sha256": "24cecf925c0b234f9affd4244dc845ee0479c368dbe14dc95d70c1d76bb354f2"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep00/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26151,
+          "sha256": "5f6df58a7950fdd5a207567ac01fa18e9a8b3b6e78a82d3b5183029bf72b7b55"
+        },
+        "observations.npz": {
+          "bytes": 275770,
+          "sha256": "5f3614677fb9342e5bd65c4eb0592580a9b5a6de5343986bf8880097eeea778b"
+        },
+        "reset.json": {
+          "bytes": 1745,
+          "sha256": "ef5a3fef9df3a33815ef68a285929b6ee00efaebd3ad380650b1cd1b81d7d373"
+        },
+        "result.json": {
+          "bytes": 4315,
+          "sha256": "d4a33bd84a72de7021bff60fa6ccf73d197048474ac68e254592472ac5b82d45"
+        },
+        "rollout.mp4": {
+          "bytes": 1030870,
+          "sha256": "eca47a49bb59ab30a461e2541bba0da4750ad76dbcf6efc79949962107e8cd7a"
+        },
+        "trace.json": {
+          "bytes": 1178478,
+          "sha256": "d4128cd7f7373203f233d0643a19794b8e60cb73124864b15827c46d10750413"
+        },
+        "trajectory.npz": {
+          "bytes": 161112,
+          "sha256": "e98e7211d7f04896fbd3b071645a5dcddf52d15eea13233720038548afad7b6c"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep01/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "193"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16740,
+          "sha256": "659154c029e66cc9842bf18f53f29fe21a9c3705bd1c3ce099d95bca16c5089b"
+        },
+        "observations.npz": {
+          "bytes": 201189,
+          "sha256": "b61751b1f6cba469835dfe97f47a6b1e5ca80fb80adcb98b603cc77c96c13290"
+        },
+        "reset.json": {
+          "bytes": 1746,
+          "sha256": "8b04b3e0864ab90c667a2bae3b6ce62b085b5f726736f6e5a8a788e299527704"
+        },
+        "result.json": {
+          "bytes": 4290,
+          "sha256": "090e18385925090ecfc64830bd612ec0c66392a690328135f685027fe71d2e00"
+        },
+        "rollout.mp4": {
+          "bytes": 444266,
+          "sha256": "eda2bd5a6179c9e278c064435a2bbb104d20abfa2a1159c4331dd55ee5e8c983"
+        },
+        "trace.json": {
+          "bytes": 753685,
+          "sha256": "139f09665f7a20524a457dee4cbf0e4f4918b0e355cdff543957d687d9b78e5b"
+        },
+        "trajectory.npz": {
+          "bytes": 102740,
+          "sha256": "6d058e58f497823a1a84ef28237b06dde099f8dadfacf4823bedf6285f308177"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep01/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26128,
+          "sha256": "8e47f2c4d157e347e0df83227c166dd9104cd748d9a286aee71dc87cf3913ef1"
+        },
+        "observations.npz": {
+          "bytes": 287712,
+          "sha256": "dc138dd5d2956a6dbfab43696ae6c6f85679c671874db6f60cec7d023e79629f"
+        },
+        "reset.json": {
+          "bytes": 1746,
+          "sha256": "8b04b3e0864ab90c667a2bae3b6ce62b085b5f726736f6e5a8a788e299527704"
+        },
+        "result.json": {
+          "bytes": 4478,
+          "sha256": "2f182a0e973419170875bfdf29892280a2e26f0249a9c30bb211c6e9255a7b7e"
+        },
+        "rollout.mp4": {
+          "bytes": 955666,
+          "sha256": "46a724ef663fd495bdf2981b14016cadd9e9c6c36392551afd7b725fd71c782a"
+        },
+        "trace.json": {
+          "bytes": 1179410,
+          "sha256": "24a7d355c93b6208ffba8f16af1fa95cc97c945d8cb6c97e69b5bccb317144da"
+        },
+        "trajectory.npz": {
+          "bytes": 160938,
+          "sha256": "9d49e8ca85e97a3cefb28b1b263c30a0a5469f6bcdd00021994aedb3f8aaaf7d"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep02/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "189"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16391,
+          "sha256": "b0b458d7076e2f1f1e8650bdd5ba804b0262aa14d91778c2cbdfa2714e2c44a4"
+        },
+        "observations.npz": {
+          "bytes": 201484,
+          "sha256": "86ece6f9e11eff85018483f54342b9907b12678b1ede897d813065b107319822"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "45bcfd9394a9b865b7275ed898c48cb07ee2f528167b950ee20bc51222c5a63c"
+        },
+        "result.json": {
+          "bytes": 4295,
+          "sha256": "077ffe513ba0918dda7bfdab6dbd561ca4afa617c1b499bdb3b44f49ccb3cbcc"
+        },
+        "rollout.mp4": {
+          "bytes": 476316,
+          "sha256": "b4fea0cfb02b0f6e8df5a504e9ad1d268b86948f38dc02f00bd0ca9d5b5167a6"
+        },
+        "trace.json": {
+          "bytes": 739174,
+          "sha256": "aa270f93e614ffae76abad4703dcb45f7ae166a4fc7bb17664efab665b297412"
+        },
+        "trajectory.npz": {
+          "bytes": 100664,
+          "sha256": "c9be3cb3ae96cde475d361bed343036bbceec24b7c83b2906d1f16de941c247f"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep02/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26152,
+          "sha256": "ce23e887369b8573db2840b30e514068ef36d2ed05313f418bbefc2269f3afa4"
+        },
+        "observations.npz": {
+          "bytes": 288033,
+          "sha256": "6f91931c374e22815ff1bc8992543d13673796bc59ba9a57fa7a968f1b516569"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "45bcfd9394a9b865b7275ed898c48cb07ee2f528167b950ee20bc51222c5a63c"
+        },
+        "result.json": {
+          "bytes": 4334,
+          "sha256": "cbd31b73f3be4c8f37f2f73de0991cc767f124a2a7c1198d23ee7481b1836453"
+        },
+        "rollout.mp4": {
+          "bytes": 884890,
+          "sha256": "8361a2c53160332626ad5b29f0441c6d18eaa8d9640cf3a6d80bc53a5e771091"
+        },
+        "trace.json": {
+          "bytes": 1178329,
+          "sha256": "572849ed916d53ebbe9936a4e04da22ea4400eb306202e407b60d0e49721a5ca"
+        },
+        "trajectory.npz": {
+          "bytes": 161098,
+          "sha256": "cc9b4cbc07e8d4f09e8f08d0a9f0939f51a601f93495550f7eb0e0d4a88ffce2"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep03/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "614f53374b43c92842c926bb38b1ea9cb65aa63a206edd4d7a5a7c0cff49fe02"
+        },
+        "observations.npz": {
+          "bytes": 316844,
+          "sha256": "04af736930cabbc13a42a33f770b07d5614c63d8e660aa394c3644fdfd2f27f1"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "850c0d439c393454b567da60743df7ad9167bd3608fe82c10f61907da6ee4b86"
+        },
+        "result.json": {
+          "bytes": 4297,
+          "sha256": "6d4c1105126c0d47132a08621834d73bdc9dc3339ae2741223fd932cc98c32d4"
+        },
+        "rollout.mp4": {
+          "bytes": 784345,
+          "sha256": "b20a2d87aa0006ee5aaf9ade4656244d7a6acaf477648ce317905cba49a3b95c"
+        },
+        "trace.json": {
+          "bytes": 1179626,
+          "sha256": "c87e27c6356fcf18679bf3046f259b745fadd87c3a9ca1ac2978add1308e2149"
+        },
+        "trajectory.npz": {
+          "bytes": 159570,
+          "sha256": "0c9d4b7b1c2259ab0d856931a71b258a9fe9f290ed1fd9a922124a59ecdfc890"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep03/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "192"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16715,
+          "sha256": "016c62176b340df6a75fd203fcf8bcb9111b39f53169e6357185754da3e1eac5"
+        },
+        "observations.npz": {
+          "bytes": 203236,
+          "sha256": "5d8ce184371aa876e200e19332af97fdb3cef60478c4260e28dd5366cfaf20b2"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "850c0d439c393454b567da60743df7ad9167bd3608fe82c10f61907da6ee4b86"
+        },
+        "result.json": {
+          "bytes": 4324,
+          "sha256": "867fdd0a9dd632ceee3d311a378d9c282a54ab8b1abe6c4db5496b5887ea8e0d"
+        },
+        "rollout.mp4": {
+          "bytes": 484504,
+          "sha256": "e5b73e77a92e4ec3493b4b8a2eeb3448712884746f7983a3a8beb8e5928b63a4"
+        },
+        "trace.json": {
+          "bytes": 751758,
+          "sha256": "f58cc4293fa490a451ccea950a3986a98ece6d87871f0270f2178ffbc6f32c81"
+        },
+        "trajectory.npz": {
+          "bytes": 102604,
+          "sha256": "14765aec084f0076a8df3d1048d290c002c6bfa689b0433844547f0eb8d5351a"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep04/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "160"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 13948,
+          "sha256": "8c2ac0814195a57b5500080c497c19d5c3965bcc7d4c5200b48c3d0bc34d1889"
+        },
+        "observations.npz": {
+          "bytes": 169540,
+          "sha256": "018946d8fcb4e8e6ec4f9b94ecc09870961c5a520145f829e5fa134f926dd428"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "d386d678b80994f313973f67d2ec4cd5fb38053645ce2db61b75730a52f2cb57"
+        },
+        "result.json": {
+          "bytes": 4295,
+          "sha256": "1225fd772b6e47bd9a7abd48e7e3b6b4a7bc57d7fd5227bfc3e9dc6a53918cff"
+        },
+        "rollout.mp4": {
+          "bytes": 464811,
+          "sha256": "a939777597afaf00df80c03415bf8802367b4ed309fdc480f859e4e8756ab9b3"
+        },
+        "trace.json": {
+          "bytes": 625505,
+          "sha256": "b4330299ef8fa3bc8c77354e8b22e0f1ee98f8d573a5cd9af475e1ab4c81cdf0"
+        },
+        "trajectory.npz": {
+          "bytes": 85379,
+          "sha256": "f14dcec8a4fd84db3c4b88930f75cd811ce3c0c5dac22907e5588375609e843f"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep04/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "185"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16015,
+          "sha256": "5427f50e6946bf7e7d0a228b2b614f09b123e4737a5a68fdc2e511f13ef4bf76"
+        },
+        "observations.npz": {
+          "bytes": 198131,
+          "sha256": "66115657e05d65851ad17ac0eaf8fdabb75a79c9766d4b01c3666901eea4bdb8"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "d386d678b80994f313973f67d2ec4cd5fb38053645ce2db61b75730a52f2cb57"
+        },
+        "result.json": {
+          "bytes": 4335,
+          "sha256": "7093c20e44a2eb382001c71f002e14d24f32512ee9f3e22795611f113b3c499b"
+        },
+        "rollout.mp4": {
+          "bytes": 589947,
+          "sha256": "01dc279299f8f4740516784ec2cfd26c25642f1242ba412ce546266c46ba7d4b"
+        },
+        "trace.json": {
+          "bytes": 723469,
+          "sha256": "446c037d4230f913995f7a1da71fc084efbc15d77783dcb765f853a3862f95bb"
+        },
+        "trajectory.npz": {
+          "bytes": 99110,
+          "sha256": "f74aae9fb8fe5af5161a8c2ac008b7a08735341fd4b87e8871dd77db6399775d"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep05/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "236"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 20579,
+          "sha256": "fa8955af2ac55314e02fc9f554fb72d73f24b35dad100bd3b1186363bae940ca"
+        },
+        "observations.npz": {
+          "bytes": 242089,
+          "sha256": "185faac5e9fbb593ca9dfd7bc2ee6c02a2704ebd709ec000452e5dee09a4ad83"
+        },
+        "reset.json": {
+          "bytes": 1751,
+          "sha256": "92f5700810bc7371f39cea5ddd9ad94678801d0036e0e4b95419cd119b8fde8d"
+        },
+        "result.json": {
+          "bytes": 4294,
+          "sha256": "93af3753bcb7e76295a97916109ef9873713280defdebfe2ddfe289e63f5ee26"
+        },
+        "rollout.mp4": {
+          "bytes": 602617,
+          "sha256": "70d88d7a625fba687b2c8ae4d68dd9fb10c08ae1299dac479e44a6f120622b18"
+        },
+        "trace.json": {
+          "bytes": 923806,
+          "sha256": "63f7f0bbb1dfa5d8d06e72f2b5de31b1b0ad2ff6bf25cf346a76029b425df916"
+        },
+        "trajectory.npz": {
+          "bytes": 125461,
+          "sha256": "ef3ea1e1ed7ed3848708b43cccc49bc44291c916d85f6e3749f3dedede792476"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep05/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26141,
+          "sha256": "55bf96ab637095755231b66b241a943727d8416491280bbf9ccca625f5fdd748"
+        },
+        "observations.npz": {
+          "bytes": 305466,
+          "sha256": "8c3d7eb3474c26ebd001ef39670afcd218da53ff399b1682cf77e94fcb6e2da0"
+        },
+        "reset.json": {
+          "bytes": 1751,
+          "sha256": "92f5700810bc7371f39cea5ddd9ad94678801d0036e0e4b95419cd119b8fde8d"
+        },
+        "result.json": {
+          "bytes": 4336,
+          "sha256": "14b2c5bd04aa5fd6d15af32271c6dd6436371282551a0203b254fea9a2faf5ca"
+        },
+        "rollout.mp4": {
+          "bytes": 825271,
+          "sha256": "6005037a8d4c86b913831b031f470517673656a0762f3a7a2a42a9323f6092ba"
+        },
+        "trace.json": {
+          "bytes": 1178467,
+          "sha256": "8be34743890d9af26dff464f5223123b87ea9fdfce555b82444baec0aee97e3b"
+        },
+        "trajectory.npz": {
+          "bytes": 159528,
+          "sha256": "cadfd7ca5317f1b557d5a6fcc94249b3f377695daf8f8b42f0826e126f973538"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep06/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "157"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 13599,
+          "sha256": "d0f5dda8582f3c22b7725757c291c5b60209f76c4a4b178b9fa0361ab9b9fdd2"
+        },
+        "observations.npz": {
+          "bytes": 161707,
+          "sha256": "266bfb48e2ee63f6f20f07a0ecad76898894717eb729e87025d042e514423379"
+        },
+        "reset.json": {
+          "bytes": 1747,
+          "sha256": "ff11610d87caa3aad23a64f9445b5d6cd86e59cee6c6ad233eec400a8de38188"
+        },
+        "result.json": {
+          "bytes": 4292,
+          "sha256": "f411a49f7f8bc057c65920405f82d5a2444906e6a064f4e76557de057d8f5e78"
+        },
+        "rollout.mp4": {
+          "bytes": 426192,
+          "sha256": "5f85b9d5d274b16b9f932122d64c090292a82846078ec043960a47cb75f52504"
+        },
+        "trace.json": {
+          "bytes": 614208,
+          "sha256": "40d244f9da2340801ea31f524612ecb89bc9855418ea0944fc05729cb763183d"
+        },
+        "trajectory.npz": {
+          "bytes": 83640,
+          "sha256": "ff9e925fe746aa75a706a0eca4e42941748810e8f4650dd7cb7489b764552f69"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep06/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "287"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 25086,
+          "sha256": "1cf7e2af7688a95247a54603e1435cf7bf62544980923ab024ec77a67eb83980"
+        },
+        "observations.npz": {
+          "bytes": 299437,
+          "sha256": "6f1bafc92f751615ab628064848f1f364c96022b72741f629ebd72f5221547ac"
+        },
+        "reset.json": {
+          "bytes": 1747,
+          "sha256": "ff11610d87caa3aad23a64f9445b5d6cd86e59cee6c6ad233eec400a8de38188"
+        },
+        "result.json": {
+          "bytes": 4330,
+          "sha256": "fe89b78d8883dbde0a66e6e1a04cb64e304e7a204b85a7cd06f84335fb33935b"
+        },
+        "rollout.mp4": {
+          "bytes": 956614,
+          "sha256": "c9c55ce0e27acc2eb0856222a225aeff6f7d73e17bce87760e45fa27e385185e"
+        },
+        "trace.json": {
+          "bytes": 1122280,
+          "sha256": "db46640f3a7bd0f48a9db33b5f894a697d42bd4e6c15bf74acd7af8247b13781"
+        },
+        "trajectory.npz": {
+          "bytes": 153452,
+          "sha256": "2975959c5b8f581b5fd9f271dfa29b7f825e9b17eb228027323f57f68d9da133"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep07/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "f1a2adcabae3638fefe286ff6d5787cd06f6685e4f2f32df3cb1b56a43e6745e"
+        },
+        "observations.npz": {
+          "bytes": 309848,
+          "sha256": "26fe80e5f25f8359873e22aa84cdfa3f35494e76e778a70d81fbb026785a4788"
+        },
+        "reset.json": {
+          "bytes": 1747,
+          "sha256": "37cfd703651f579bbf61b0094eafc1c0cd91beb7618f45f54200a09ad42bc104"
+        },
+        "result.json": {
+          "bytes": 4292,
+          "sha256": "3371466f71bf69e5c5c71cabb7f3f2a9dba6bdcf34634062b1ad00dbcfd6b9f9"
+        },
+        "rollout.mp4": {
+          "bytes": 830760,
+          "sha256": "534eb2559e74c2c39c48136fa2c1a1103a1b273cd8eda85a8dc445eec9bec396"
+        },
+        "trace.json": {
+          "bytes": 1179300,
+          "sha256": "a7cc3584f7dbe778c99ccaab0dd65910eedfb4e1fff5fb10eebc0c3f909572f1"
+        },
+        "trajectory.npz": {
+          "bytes": 158914,
+          "sha256": "1635d9c5c6c1a28ed571fe505af21cd96fd30c36e47c5b210a80b3fa1aaeba4a"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep07/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "135"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 11834,
+          "sha256": "a92bcbb58a0e0650a4df49be859f88e4023cf629f334fa97c522cb764708fd85"
+        },
+        "observations.npz": {
+          "bytes": 150310,
+          "sha256": "fdfab688f0694788577c0c6c40632b1080fe2317373c9f1285ffc838fe6767ab"
+        },
+        "reset.json": {
+          "bytes": 1747,
+          "sha256": "37cfd703651f579bbf61b0094eafc1c0cd91beb7618f45f54200a09ad42bc104"
+        },
+        "result.json": {
+          "bytes": 4325,
+          "sha256": "d35ee97412f2163264c3538b8effac6ba7c9710586d6c2397c535086d30b4380"
+        },
+        "rollout.mp4": {
+          "bytes": 365478,
+          "sha256": "02f164f048f4ac0e639e2a1afe27701f010c846bda245c6e1afb75768b65ee24"
+        },
+        "trace.json": {
+          "bytes": 527849,
+          "sha256": "568ed206e9ce59e5f490ef6ea9627871957aa0e6f1d65dc4c2b75cc771026c9d"
+        },
+        "trajectory.npz": {
+          "bytes": 72845,
+          "sha256": "4c4cacb1588c82ca70f4cabf1bfefa285a2ea758088e3436d09443eaafe6279d"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep08/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "176"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 15344,
+          "sha256": "b06ac2dc30c3783b6a1392fcc4dd2358fac59e54af9c90859529944246ad6f4d"
+        },
+        "observations.npz": {
+          "bytes": 189375,
+          "sha256": "3fd23cd2fa2e8b6e9fc7f052762567f7d6d53d3f6497573d2a5d09ab38e35419"
+        },
+        "reset.json": {
+          "bytes": 1747,
+          "sha256": "1a7984f1df937d00d688a0ac5307f33d66422c6e141875370fb6c0767b94b758"
+        },
+        "result.json": {
+          "bytes": 4303,
+          "sha256": "841ddcd7767713d369f1d213df52cc3d5e4b56d9d13b3ca6927bbf5a4875dd96"
+        },
+        "rollout.mp4": {
+          "bytes": 465514,
+          "sha256": "92011d4f9505c527fbe98df2550e8626668fa4fd9e68d4cc2736f742509a2298"
+        },
+        "trace.json": {
+          "bytes": 688542,
+          "sha256": "7dcae6dc1daa3475d799d687a8993739681045947a201aafc06c0a8b5ac6b303"
+        },
+        "trajectory.npz": {
+          "bytes": 93873,
+          "sha256": "b6478e70c7a47d02bc55975aaa448c851602e8a04485709e1055967823d13092"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep08/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26131,
+          "sha256": "0ca19e30d6d916b90ec1b3e344728a36effb42b95e33cd7b03a84cb3bda6eb0a"
+        },
+        "observations.npz": {
+          "bytes": 295557,
+          "sha256": "82b5c08feb8e513978fc641fd1954c0df953e36e0a365728bc2168230ca76977"
+        },
+        "reset.json": {
+          "bytes": 1747,
+          "sha256": "1a7984f1df937d00d688a0ac5307f33d66422c6e141875370fb6c0767b94b758"
+        },
+        "result.json": {
+          "bytes": 4320,
+          "sha256": "442216270a5db53fce469e5ed18bfd17d616cc94c51843ec9ab591ab993b155e"
+        },
+        "rollout.mp4": {
+          "bytes": 992209,
+          "sha256": "f55d698c993eabfc196395cb03dd804018414ccbffb05ab66fd8903a6c7ed529"
+        },
+        "trace.json": {
+          "bytes": 1179180,
+          "sha256": "4bb040eb19936f729af961555ca2385e9dbc29215bbfa0d6486d7b5c8a28892b"
+        },
+        "trajectory.npz": {
+          "bytes": 161251,
+          "sha256": "be74a27a68b5db0cced2edc796be884646a2c7ad29c6e63ad4a7bd11c970e5f6"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep09/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "176"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 15344,
+          "sha256": "b9d157271154c46e3f82f300750b94933fb344e0f41dce899e61780ba3dae899"
+        },
+        "observations.npz": {
+          "bytes": 181797,
+          "sha256": "55b703ebc0d33e1c547f363223a349d493938716d9117d410bdef67867d05db9"
+        },
+        "reset.json": {
+          "bytes": 1747,
+          "sha256": "d4aee11908bf4f774c00e433500ac0482b1a801a89743b08088b96210a3be6f8"
+        },
+        "result.json": {
+          "bytes": 4301,
+          "sha256": "dacc874cd6495941f69616e3908668e84f87fb77bbda025a9774feb846b4ae3b"
+        },
+        "rollout.mp4": {
+          "bytes": 415239,
+          "sha256": "ea5708b341d22ed5253ab3bb6d42244e27a3056b6c49389c56cdf6e04b9f967b"
+        },
+        "trace.json": {
+          "bytes": 688715,
+          "sha256": "7f09c30c20287aae27191def535f387047148aac5ae1458b66fb4a8b354694c2"
+        },
+        "trajectory.npz": {
+          "bytes": 94041,
+          "sha256": "76e4a0af72c89c7ef4755dea6aeb625f6a85921d4b32dd789d19d752315328e3"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep09/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26146,
+          "sha256": "5636454ffc6ca188f9ea58272ec160431e373586b2c3ffd7df9565237d8a6cbd"
+        },
+        "observations.npz": {
+          "bytes": 277902,
+          "sha256": "8a3cf0ef86bd3f5014d2ca42f5a6df6c368393cb095069fb3d129f8020249df7"
+        },
+        "reset.json": {
+          "bytes": 1747,
+          "sha256": "d4aee11908bf4f774c00e433500ac0482b1a801a89743b08088b96210a3be6f8"
+        },
+        "result.json": {
+          "bytes": 4316,
+          "sha256": "c3349c51ad070c3c8ec5259a42fd9e281aa4e7b46ed2ba5b915f9651b40e7042"
+        },
+        "rollout.mp4": {
+          "bytes": 803850,
+          "sha256": "6c064c02bd2fc40e232d657691fd01754e1c197b67f10f1b57f1c37be0a80aa0"
+        },
+        "trace.json": {
+          "bytes": 1178774,
+          "sha256": "b2eeb8c22bfb1f3a32d554d58c73f7a0e1af49925f8a05d3e1add0950d5a1ed3"
+        },
+        "trajectory.npz": {
+          "bytes": 159558,
+          "sha256": "6ec1ed11b24b991a5076f9ae75c827efc48fc3a4217d33fa382a897544c967d7"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep10/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "2e4a31495b2d48197c71f9670740794fa1ce243d6aafe5b8adb6c65d0b95ea1b"
+        },
+        "observations.npz": {
+          "bytes": 314389,
+          "sha256": "64123c4ec9c90926e8af5726a3068c8d4c88f293c127683098c9adfe7830b6fc"
+        },
+        "reset.json": {
+          "bytes": 1751,
+          "sha256": "045cf88c3baa3b1ddb515ad98515c34f514d72e7b3d67db6e1b523e4ad164093"
+        },
+        "result.json": {
+          "bytes": 4297,
+          "sha256": "4b08ea894cad14442ff865133bd8ad9c674dc5da205b717928c9e124eea7aff1"
+        },
+        "rollout.mp4": {
+          "bytes": 845590,
+          "sha256": "9d5824614eb89458bef4e9418272a15cce61342fe3a3c2709592a21c81559b2e"
+        },
+        "trace.json": {
+          "bytes": 1179358,
+          "sha256": "87cdf33c20bbd8ba3e459dd541ce2023db1de090d9bc8b6153b83ffbc4ebe64c"
+        },
+        "trajectory.npz": {
+          "bytes": 159481,
+          "sha256": "19b9349ab429bb9ff2a051d942a9f5f5fe3d5b700d10c2f857dbc6fc10d56a07"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep10/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26135,
+          "sha256": "9514df581b9d3784cef5995160d443cbf971d048e9f111609ec9785681b0f861"
+        },
+        "observations.npz": {
+          "bytes": 286452,
+          "sha256": "7df8b9b8e1c65ad4511e5def0fc4ab345deaa1778c5550ffae20a0886f650029"
+        },
+        "reset.json": {
+          "bytes": 1751,
+          "sha256": "045cf88c3baa3b1ddb515ad98515c34f514d72e7b3d67db6e1b523e4ad164093"
+        },
+        "result.json": {
+          "bytes": 4336,
+          "sha256": "2396c2709bc51034445890f0e7d5d8282119e2b0f5607832866eac8d945160f6"
+        },
+        "rollout.mp4": {
+          "bytes": 1056911,
+          "sha256": "69f0dfa4daae30dda668f17a81f6e2d2cbaf3f3ee657ddf30d69bebb5b2705c1"
+        },
+        "trace.json": {
+          "bytes": 1179485,
+          "sha256": "989a1a165dfcdcda101f70675182d7fad308c361e73beb981c7396ddf7dac097"
+        },
+        "trajectory.npz": {
+          "bytes": 161792,
+          "sha256": "3fc5d96a66400cde91c3d052114673ef10bcff52e9e171238c5bf95c91bea453"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep11/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "007fe63f2689bf80ebf952989e54a4c4e341035e50b259227a67515a20d5f1ca"
+        },
+        "observations.npz": {
+          "bytes": 286467,
+          "sha256": "67c019d809f297b1140dbd3c159836591f8379feeb9ad6de08209ffcae2796d6"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "4e95470f84c18d39064b306a257de64e06648a535eb4be980f876a212e5f4e47"
+        },
+        "result.json": {
+          "bytes": 4295,
+          "sha256": "f00046fb1a2094953eb8648afc88ec35e0ffa2b8dbd0d29a5162cb54149d831b"
+        },
+        "rollout.mp4": {
+          "bytes": 890608,
+          "sha256": "9fcdfa10daa4856d36f041a20a84a5f52cbf5d1cd942bedb03e02208b34542cb"
+        },
+        "trace.json": {
+          "bytes": 1177896,
+          "sha256": "179fbd982dba2dbba83e5db6be59be4e9df9a82ec02fb5b6a274516c3ee5027f"
+        },
+        "trajectory.npz": {
+          "bytes": 158787,
+          "sha256": "69363f262a19884db1dd1ad360aea7bb8695fe216090ce016df95fc418a5b1a7"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep11/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "161"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 13924,
+          "sha256": "d3b66d854ded35a1df97031ba8a4a639f65472872ab5b4b4438a41a4b7bd1ecb"
+        },
+        "observations.npz": {
+          "bytes": 172961,
+          "sha256": "72c0745ea7b24aa1afe234601749547f8134c2e240e94a8d4931ad8859b597d9"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "4e95470f84c18d39064b306a257de64e06648a535eb4be980f876a212e5f4e47"
+        },
+        "result.json": {
+          "bytes": 4323,
+          "sha256": "e594fe55009f6fabe4ebd3e40e65accf06a7c0ed3f6c7097fcdbc992d8bd01e3"
+        },
+        "rollout.mp4": {
+          "bytes": 524691,
+          "sha256": "e5e5765c9abefa6117da07effe202ffdbd6698d874d49b5b543bfebbb82fe7ba"
+        },
+        "trace.json": {
+          "bytes": 627348,
+          "sha256": "b87bbd381d932c22f5fd7d8591ad6bfcff5c5c3c96f9b0eaccfb7e7553324bd0"
+        },
+        "trajectory.npz": {
+          "bytes": 86025,
+          "sha256": "65ea9256ef81648cef2c88b8a3021806725a246bc7cfeb7f00bf87b4aa10053d"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep12/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "191"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16740,
+          "sha256": "8b0416ae3e248ec3dca5f2c1f2a79664b53de19ff6fe7789d4bb9da9f1b0be09"
+        },
+        "observations.npz": {
+          "bytes": 202539,
+          "sha256": "b845b77b23cc596de1fab282e340d9f3d68c3b6a6f9df5354ebe1d96909089fd"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "9a2abc97b3dcd250bafc060d4eece9bc96f05f74ebc031682d3a959ec338a39e"
+        },
+        "result.json": {
+          "bytes": 4293,
+          "sha256": "f0583a552b69b860fa408c61949577dd9b91f6ddd31ebcebf2dac0f89471e3f8"
+        },
+        "rollout.mp4": {
+          "bytes": 390794,
+          "sha256": "ce7d6c98e6b788ca09ab8d7b17f00cfd89da4f641e13d3b6b02e3f7459f70bb0"
+        },
+        "trace.json": {
+          "bytes": 746110,
+          "sha256": "333133e1954773937637855e2a01112a33b61ead1e92b46a7f4ee8d4f678cb5b"
+        },
+        "trajectory.npz": {
+          "bytes": 101829,
+          "sha256": "fa704455704e8fff5a1457edc5e5262bed9ec5ee0d27e3991bad602712ac4a1e"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep12/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "196"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 17063,
+          "sha256": "e8b8d9292514c5743f854fa633e2fb5ea4f84b6d063c77c4c382a46b49f7bc6a"
+        },
+        "observations.npz": {
+          "bytes": 205163,
+          "sha256": "897f36c758a3e0bda7eef897a576017361d3bb4377118b27f5c87a76bcb2f498"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "9a2abc97b3dcd250bafc060d4eece9bc96f05f74ebc031682d3a959ec338a39e"
+        },
+        "result.json": {
+          "bytes": 4337,
+          "sha256": "1303e5eb453ee8ffb702c899bfcdc10da322ff2da2734ac9265783ec919ed13c"
+        },
+        "rollout.mp4": {
+          "bytes": 411589,
+          "sha256": "c2c5ed1583c447c8be7c41a9779f0da76cd571b2fd09bd757ae11272da2a77db"
+        },
+        "trace.json": {
+          "bytes": 765721,
+          "sha256": "1edd147e7da206ee348f8d9b1f5f600133a0987c0612d82f4bc4adf52c32f64e"
+        },
+        "trajectory.npz": {
+          "bytes": 104635,
+          "sha256": "f661e3f8cbc44b83b52b69f583c6d417d78883ffd594442082bc620a7e17a8d4"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep13/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "42cf08b08f9172b59e62585f26f775373399fda259b03cfd7b161128a1a5daa4"
+        },
+        "observations.npz": {
+          "bytes": 314067,
+          "sha256": "1b3a5276505af52775efc8f9465f753c9da8899a9f4216f956528950450ed417"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "3c892289ed1856034f1dddb0680f06738d93b6df8b6b73377498b6587ebbb383"
+        },
+        "result.json": {
+          "bytes": 4295,
+          "sha256": "9f62f0c4517996782c89c70ce65d11367b3d2469376e24b910fab1cf0f9800d0"
+        },
+        "rollout.mp4": {
+          "bytes": 803501,
+          "sha256": "530df8cf9e1574ddeaae98cfdb4ac1aae18ca206af4fa1daffce16102fa89af1"
+        },
+        "trace.json": {
+          "bytes": 1180061,
+          "sha256": "6a0374e85dae14af3ec7107582f67d3f5e242470b9afa8bbc5c0ab550e6cd02a"
+        },
+        "trajectory.npz": {
+          "bytes": 159527,
+          "sha256": "8d5135a93aee3ef90b9bb975752ca83345e4d7720d9dd4d22f98f59a9c4c9562"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep13/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "204"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 17761,
+          "sha256": "26640d396232eb86a136229991965e3b1354397c1b7196bc2c9757ee0c239e55"
+        },
+        "observations.npz": {
+          "bytes": 216073,
+          "sha256": "04a707e5e61164a33219b0e40ec0e8a997ce8d97c021b39c3652b069784d9101"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "3c892289ed1856034f1dddb0680f06738d93b6df8b6b73377498b6587ebbb383"
+        },
+        "result.json": {
+          "bytes": 4339,
+          "sha256": "3f1a294401a30d1d47973c54bd2a00d3b450fa231d717bfb508633afaf593c80"
+        },
+        "rollout.mp4": {
+          "bytes": 545387,
+          "sha256": "eb815d2d17caae2f201c0d4b142b250edbaeca684f48c4e088abd60f88e74f9b"
+        },
+        "trace.json": {
+          "bytes": 798981,
+          "sha256": "cd2476813c610f2e6dd9085692a3486cac28feee7bfc8e833f21c776f0a85ef7"
+        },
+        "trajectory.npz": {
+          "bytes": 108770,
+          "sha256": "79ed8b07e709f2026b7fab2a410288b0f47fd3da2bdff6c5235d05e24499e58f"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep14/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "c818a9e184a609abf06822fa1eb4eca628b171f414ed34f70998438d7a2de0ef"
+        },
+        "observations.npz": {
+          "bytes": 312320,
+          "sha256": "ab6cb250df2c61643a2f318647eaf5ca6cece45908e3cce1c9246b7ebacf801c"
+        },
+        "reset.json": {
+          "bytes": 1748,
+          "sha256": "57326c126840f582ab5a111db51b2d7e253771c462b419ede145c6c976728b73"
+        },
+        "result.json": {
+          "bytes": 4293,
+          "sha256": "1b464b46d7cc160dc2ed4d13b859019cab9959782bc10480db323dc6120a2043"
+        },
+        "rollout.mp4": {
+          "bytes": 718683,
+          "sha256": "d9f8cea9ead4ea2e6c8c3388fb2af207b93b3a38358c8840d1dbc795eefdc5a3"
+        },
+        "trace.json": {
+          "bytes": 1179799,
+          "sha256": "87d3f2d29821fac3aadc491427c54f6266ea9438382aa2db17dd3c95d6bd4629"
+        },
+        "trajectory.npz": {
+          "bytes": 159864,
+          "sha256": "90b8960a1a0a39e39b53ce2b3c89e3e1b8a65fec9376f8a9a35a58f0d57b7646"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep14/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26137,
+          "sha256": "29a285dd90e22da03947c0472bca5cceec9289521604a11b7ca0cd20a46ed3d7"
+        },
+        "observations.npz": {
+          "bytes": 302226,
+          "sha256": "efd725c2cbfbcdba3e23c1e0aac635bd343121cc59beeefb8dac59d3a2deff88"
+        },
+        "reset.json": {
+          "bytes": 1748,
+          "sha256": "57326c126840f582ab5a111db51b2d7e253771c462b419ede145c6c976728b73"
+        },
+        "result.json": {
+          "bytes": 4333,
+          "sha256": "7efdefa483072e3b45c677c2db2185d9d87647472905598657e532a87116c742"
+        },
+        "rollout.mp4": {
+          "bytes": 745583,
+          "sha256": "b74e1e8cedf81222685b23dc020a5e7762eeb5ad106d8cda579f1c2f32e230b3"
+        },
+        "trace.json": {
+          "bytes": 1179918,
+          "sha256": "29aa31babafb02c9b8b914bdf2d928769ba8b22f4d425608d25b5262891a8185"
+        },
+        "trajectory.npz": {
+          "bytes": 160204,
+          "sha256": "98235fa4799363b6d695e7002a9a9112e02d9c305002e13c78a3d7669bce2176"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep15/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "196"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 17089,
+          "sha256": "cef63858c6d0f4f464a1fd0f911a8ee88743d804ccf9d781a27fdd96fe2bc74e"
+        },
+        "observations.npz": {
+          "bytes": 202134,
+          "sha256": "9ce8a4417eb45472e7210e50991097842f75fd84e4dacca94883190530916fa8"
+        },
+        "reset.json": {
+          "bytes": 1744,
+          "sha256": "50298ba43969dbf33c8161c1d538cf31cb961164c95cee5d39f458f147312d53"
+        },
+        "result.json": {
+          "bytes": 4290,
+          "sha256": "79791be453a365d22ca4f3a8455aed6cb99158c870cbed0f612f2de744a53b97"
+        },
+        "rollout.mp4": {
+          "bytes": 450506,
+          "sha256": "53e8adfa395e7745c6b5ae750caf5c21dec0d72be23819a88ef3c726d9f2ffdc"
+        },
+        "trace.json": {
+          "bytes": 767320,
+          "sha256": "4647d9e120b4dfc366b30f8c9931a1ab7250c3103996fb296010357af6f512ad"
+        },
+        "trajectory.npz": {
+          "bytes": 104437,
+          "sha256": "6fa737cd4f6d0fa840b3561b7147f6ea309575f5294115883d7c3189c86595d0"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep15/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "181"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 15671,
+          "sha256": "806b63dcbb41c2073c9b63ce4fcdb25be42d2548063bce2d8ec4a73e9f7b388d"
+        },
+        "observations.npz": {
+          "bytes": 182275,
+          "sha256": "c08168513abfaf281b214684a5822e5833b430fbd713392490c44a5225a78434"
+        },
+        "reset.json": {
+          "bytes": 1744,
+          "sha256": "50298ba43969dbf33c8161c1d538cf31cb961164c95cee5d39f458f147312d53"
+        },
+        "result.json": {
+          "bytes": 4313,
+          "sha256": "fe132772532bb16ca02c3885682c1892d507116f3c3432dbd6d8d4f1ced56ccb"
+        },
+        "rollout.mp4": {
+          "bytes": 406622,
+          "sha256": "51b43be091ca5c4ca0a251f4db52b6db260e08837f5a015236bfb955fa6d257e"
+        },
+        "trace.json": {
+          "bytes": 706513,
+          "sha256": "a71b097f5fe91ce1462ae296e075a63c77171304b3c60a2d1b3e4e39966e6d3c"
+        },
+        "trajectory.npz": {
+          "bytes": 96637,
+          "sha256": "f8099d8d8f30c1eb746daaeb432a2f8158b91f7f88964624e5ca87924fceb544"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep16/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "b672afad6d496d6ea2bcbd76dae22e9c77cf3141a4e3f019d401ed5c1d93419b"
+        },
+        "observations.npz": {
+          "bytes": 323069,
+          "sha256": "6fdd485c13a7415f626ba43149a4ed1f887b695391533f587e3347600b6fb75f"
+        },
+        "reset.json": {
+          "bytes": 1748,
+          "sha256": "7ec6f4729ce8bc1cd66fa3b4622920cdd6eb7ca8c6128dcc7823112c43a342de"
+        },
+        "result.json": {
+          "bytes": 4292,
+          "sha256": "5556b240cefb03fbd8de0c7a7f92cbf0329dde4fc442e11cd754a4245ca8707c"
+        },
+        "rollout.mp4": {
+          "bytes": 790566,
+          "sha256": "139fc115e1ce4dfeb08afe7ccf0d6eeb12735627078e30b63bfe35b43b1c6e41"
+        },
+        "trace.json": {
+          "bytes": 1179589,
+          "sha256": "0825c8df77ede26face64ff527259d298e0916479da0a6e4f728b9774b1d6aba"
+        },
+        "trajectory.npz": {
+          "bytes": 159466,
+          "sha256": "b5c915b63fcfcafafc6540aa4eb05eb7065bfad05831ecabc4aa19e2a1e97f2d"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep16/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "171"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 14970,
+          "sha256": "f1811c24d14765d98aec26699186327bf24e194455a2766c7bd797edb7f4a03c"
+        },
+        "observations.npz": {
+          "bytes": 180814,
+          "sha256": "7863384a19a39848f2151f31cda9f5011893bf05a22ff8f98ac84f0973f45fc3"
+        },
+        "reset.json": {
+          "bytes": 1748,
+          "sha256": "7ec6f4729ce8bc1cd66fa3b4622920cdd6eb7ca8c6128dcc7823112c43a342de"
+        },
+        "result.json": {
+          "bytes": 4322,
+          "sha256": "473a449e725774e099dfdcfe752d5489df76860fccf99194076c9b50e16cb47e"
+        },
+        "rollout.mp4": {
+          "bytes": 437661,
+          "sha256": "160e3c036207e2874078046feef8af80c69fad4f095cbf60af8547b4c7038a5a"
+        },
+        "trace.json": {
+          "bytes": 669266,
+          "sha256": "23bb70c636a9090861e4382a4239a62fd9070ac65c0aa342f6d4cfe50951c281"
+        },
+        "trajectory.npz": {
+          "bytes": 91490,
+          "sha256": "20a4da781c05919bbd26c27eed177f73237d3f4b0f7e969633cab9015a84841c"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep17/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "837ef49f39a620022cdd1c15cdc8f92a879bbc920e913f5a7b747a7d91796c6a"
+        },
+        "observations.npz": {
+          "bytes": 318003,
+          "sha256": "b18b3584e7740f69163cf938a190ebda5e391352761aa64e8c3964b0285e77b6"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "20989921c3e17654047034608a839de8c8dd164fd654f75ce4fbf90d63ea0954"
+        },
+        "result.json": {
+          "bytes": 4298,
+          "sha256": "48bd7fb4b07011a35bc82cde89dce2a0d0268f8cb3dde6b21dd90330836194f9"
+        },
+        "rollout.mp4": {
+          "bytes": 809673,
+          "sha256": "f2ecf0756d2371297c99be7b9459caaae50e9eb7d9f4cc327b3c67d3a1492d12"
+        },
+        "trace.json": {
+          "bytes": 1177860,
+          "sha256": "6be10fe456d4510dfa1cefb72345e2ae04502502f3aafee7454c809cfa247a3e"
+        },
+        "trajectory.npz": {
+          "bytes": 158991,
+          "sha256": "3f915ecc2d1b19ef381d4181970adbce53dde23cfa96e2f711cf906f278270d6"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep17/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26146,
+          "sha256": "5f8656afdc620e1428fb20d1021589430fa63f35242ffde339795109aae30e0c"
+        },
+        "observations.npz": {
+          "bytes": 287390,
+          "sha256": "529de0153fe878f589c9bb4a48ef1899b6ff451d287bd023a4406fc58e57150a"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "20989921c3e17654047034608a839de8c8dd164fd654f75ce4fbf90d63ea0954"
+        },
+        "result.json": {
+          "bytes": 4334,
+          "sha256": "1a4c2da1c1b3b52b0f517d193727d600da9edebbd2b5f592d016afd492a3c6f1"
+        },
+        "rollout.mp4": {
+          "bytes": 1017867,
+          "sha256": "c3de8e698df806ea88439101107bd0cf50ddc381368bb590dea8a9bcc3bbc57f"
+        },
+        "trace.json": {
+          "bytes": 1178423,
+          "sha256": "b1f56ee3ac614a3a03dca2ea8512861f00e433ffce736e178d95e0c1b4070e0a"
+        },
+        "trajectory.npz": {
+          "bytes": 161501,
+          "sha256": "b8aa78f5d9e0e50b2ded8ba88ac2f3d3f746b8c02807ed1b913a889dd6f08371"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep18/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "154"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 13599,
+          "sha256": "8e8801f16377555e09cc3151fdb64b4b5193712d79ada74609ed4e51efcc6c4b"
+        },
+        "observations.npz": {
+          "bytes": 159331,
+          "sha256": "69405b8e46c8856bace4b2b0c10268729fc36dd33cf99642d07844808fff82e3"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "17a7392b3e13cdfda43c107c5bb0273c42c58c1a2da41cb3eedc12a72d777042"
+        },
+        "result.json": {
+          "bytes": 4303,
+          "sha256": "17c0f96160ba15838d30e55155fa7b67e36fb145f201e4e76d9d2e631c4f1d12"
+        },
+        "rollout.mp4": {
+          "bytes": 404619,
+          "sha256": "69ef7816fdfa849e2b2adacd8e29994ca09e52dd246a862e79564edb29e9dd7a"
+        },
+        "trace.json": {
+          "bytes": 600484,
+          "sha256": "e8caf5d134627efbc0bf76be145f46a51ec343d73400eb0a14e324b8115f1580"
+        },
+        "trajectory.npz": {
+          "bytes": 81907,
+          "sha256": "dde329b0d02b3f254e5cf7f2762d773e767f32b04e52e0cee9d0924ef86c9846"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep18/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26149,
+          "sha256": "5f0ce912dba123e884d605f6104a4cc8893f8e23a0865b89a894964df0d4f934"
+        },
+        "observations.npz": {
+          "bytes": 277718,
+          "sha256": "0f918b76b9658878913f8a28efc931e0807c05d9932c88fb62dc53961f112c11"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "17a7392b3e13cdfda43c107c5bb0273c42c58c1a2da41cb3eedc12a72d777042"
+        },
+        "result.json": {
+          "bytes": 4331,
+          "sha256": "5c0f39550ffe57474bcb4119360fd8864b5144b88ca2890a38ae9acbecfaac55"
+        },
+        "rollout.mp4": {
+          "bytes": 898071,
+          "sha256": "4fb3f8a30fdebd7c84404285d2f55db109b4a771576f2ff988ca4d059049e89f"
+        },
+        "trace.json": {
+          "bytes": 1178941,
+          "sha256": "afafc1fcafa2afc4c98178df6a14201ab7f1b3b59ed7909b401982a3f4eced3d"
+        },
+        "trajectory.npz": {
+          "bytes": 161280,
+          "sha256": "6516ac4779eddd8fc88b5ec341656832458c0c49c4b4c414725ee8ccc0fc41a6"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep19/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "217"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 18834,
+          "sha256": "f625b555967a09870846cfdc0fe93278f7f0738f8f67fdf33e564abfe825e88d"
+        },
+        "observations.npz": {
+          "bytes": 227387,
+          "sha256": "a8697d694cbca41dbbc1a1f403fc8be0fea87c425c91e4b52ce9a541b6c3d71c"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "c7fafa94e83a41e043e1dc6827376a187658cb59545a1c6f2e475fa7581877a2"
+        },
+        "result.json": {
+          "bytes": 4294,
+          "sha256": "5c3e2c62cee9db57dd5430d5ffdb4a5d6140ee4f6a2e258479a7929160e5b302"
+        },
+        "rollout.mp4": {
+          "bytes": 510706,
+          "sha256": "2cf8f4472e2d7aa54d847a4b4872d9e3d995175cf3ba1c4521f9c45a018cfc0a"
+        },
+        "trace.json": {
+          "bytes": 850189,
+          "sha256": "931b3dc8986dd072e267fd3cfe9cf8f27a968b6e714a6472bc2a8a2a77a8d65a"
+        },
+        "trajectory.npz": {
+          "bytes": 115455,
+          "sha256": "971090305209b40c0aa7ff742d60828ffcb10fb17f3da1c8125a2c1d81d6e769"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep19/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "168"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 14624,
+          "sha256": "cb2a0277d04311a68f9db6424dbbd9c53914cc25fcc965f2e43f4e6714c60b8f"
+        },
+        "observations.npz": {
+          "bytes": 177443,
+          "sha256": "8583c2bb733831e0db3cb58c7fdf1b2dec1e085bff4283aafff94fe4d217cebf"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "c7fafa94e83a41e043e1dc6827376a187658cb59545a1c6f2e475fa7581877a2"
+        },
+        "result.json": {
+          "bytes": 4335,
+          "sha256": "735eab29bf8532f73574e091ae3fc55c167345756d80302d1618101e6d396150"
+        },
+        "rollout.mp4": {
+          "bytes": 386335,
+          "sha256": "396323a9c28930aa45b4731fba03fc7e25b8fb30717fac99eab8202461499c2d"
+        },
+        "trace.json": {
+          "bytes": 657799,
+          "sha256": "7954285817ee432d94f60883dcd4ced9145de35eb535566e3eb1cc9416305ab4"
+        },
+        "trajectory.npz": {
+          "bytes": 89845,
+          "sha256": "7bd7c07526eb104446ab57a9dde3b8a3bac2e9f1315f12d38266675f3e6fd49e"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep20/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "197"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 17089,
+          "sha256": "b217f75f3e777949110eb0743617fca368989899586901ef03ee4c86ac74d43a"
+        },
+        "observations.npz": {
+          "bytes": 215524,
+          "sha256": "239775b452a5a46b49699c0e823da484cdf62207559475d681edd9d65b303db7"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "1dd2f4718babee8565223dd4adb4e46d0a4069b62729bebfa2d6bcc850761136"
+        },
+        "result.json": {
+          "bytes": 4296,
+          "sha256": "d321d18807ff4ea526c0493a18cc2bf026c8e926c6ab79615e37e6549af138a2"
+        },
+        "rollout.mp4": {
+          "bytes": 574668,
+          "sha256": "0b6207d7602496dfcc3becb5ebdcc352e308f3f39a71a7d4b2f36834656a2b11"
+        },
+        "trace.json": {
+          "bytes": 770206,
+          "sha256": "53685552446fa86eee59227cea0f6527ce7b5bf8f89d064e5caa742a1a6b1034"
+        },
+        "trajectory.npz": {
+          "bytes": 104999,
+          "sha256": "231de95ca8c19dc9d506c3be8f0c8a08cc1b61b694e4711ac9b28de80c29df29"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep20/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "179"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 15665,
+          "sha256": "b7ebf2996b391e297358769e5be5efd7aaea784c0c62d31aec483642f72b5836"
+        },
+        "observations.npz": {
+          "bytes": 195565,
+          "sha256": "597b67ac09466fd0a1c382ededba2b80a1e8f5c25b4c27a4ade74db9e6b6ad25"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "1dd2f4718babee8565223dd4adb4e46d0a4069b62729bebfa2d6bcc850761136"
+        },
+        "result.json": {
+          "bytes": 4338,
+          "sha256": "c5741d6ba018c15cc12fddd2811e206cb209e9c165e25ec450faaa61aa236472"
+        },
+        "rollout.mp4": {
+          "bytes": 519453,
+          "sha256": "a652d819c24db2d29b162af2956a48e1e5d5930b318c69f8678b967aa6c26ae0"
+        },
+        "trace.json": {
+          "bytes": 701458,
+          "sha256": "b8bcfd2260db0b75e4f4c46030d5b15192d74dddb92118e1e59e2fef2b9dae3b"
+        },
+        "trajectory.npz": {
+          "bytes": 95698,
+          "sha256": "ec1f3d6160b0d1013393d5ab958e3f08c1950797dbc21cf14fbd146d7d51560c"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep21/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "04b01eeab7dccce4047084cbac024b4daf948aa346c2c920aa1abc89a40efdb0"
+        },
+        "observations.npz": {
+          "bytes": 323950,
+          "sha256": "3e61ee88f74a37b8d94f86d6c7702340da2cced1d86b0442b4e4eedc4a5fe776"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "d8836c52577cc925c77a20c3b22541492a736a615cdca3e409e88a4282ed128b"
+        },
+        "result.json": {
+          "bytes": 4295,
+          "sha256": "2c910d54e8dc5e0c79736bf205d79d9aceac772fe0c71c7e09af3b519b613e9a"
+        },
+        "rollout.mp4": {
+          "bytes": 772112,
+          "sha256": "b15a87c6faf8188398692cc76dd5a4361dd35be6c3666818bf8d9762722f18b6"
+        },
+        "trace.json": {
+          "bytes": 1180474,
+          "sha256": "b8d73a5aa46c8ebd77394eb0e8a9702887716621bbc89d6eb6bf8c4953533bb5"
+        },
+        "trajectory.npz": {
+          "bytes": 158865,
+          "sha256": "8c575cee80d40e4ea90ae70701cad96234ead5f51898428562364e5eab2c6963"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep21/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "193"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16713,
+          "sha256": "83a65541f46c180f0d034b3a4c4a63e53930efe92131562bac649bde57dad446"
+        },
+        "observations.npz": {
+          "bytes": 207036,
+          "sha256": "09a0fd5d0b339ea7a74ba9b9054289cd7daa5a20797407e66e099638b7030e28"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "d8836c52577cc925c77a20c3b22541492a736a615cdca3e409e88a4282ed128b"
+        },
+        "result.json": {
+          "bytes": 4335,
+          "sha256": "e0e0c5c2d2b20f6fb0331ab495dcd75b32cfa5854fbf4e0f88416c23865fbed6"
+        },
+        "rollout.mp4": {
+          "bytes": 493298,
+          "sha256": "50cd585f304b09ae4fa10be0d7005516f6f9eb7d94dbaadd718280fba45fe09b"
+        },
+        "trace.json": {
+          "bytes": 756085,
+          "sha256": "4195302257b66f7aad5190c04c10f7d6c846f99b4a5070b8ab03e23ccb24c517"
+        },
+        "trajectory.npz": {
+          "bytes": 103304,
+          "sha256": "7bc69ac095b017eccee8baa670ba245c7680e4180c606566ea0c356c56ca9059"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep22/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "185"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16042,
+          "sha256": "dc2a76fea054061fadd7372ee720e1eeea5de1b16712b10862437cbd2ea49e99"
+        },
+        "observations.npz": {
+          "bytes": 192848,
+          "sha256": "62cc515546f82b7861d62185f7a87ca08752b595797c2ad60fd0a959e2e94d40"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "5dab1210e70e361ba524423e5eba6c0a0b207001b1d7b655457213445565fba2"
+        },
+        "result.json": {
+          "bytes": 4294,
+          "sha256": "0ff1c2d26d2416c32abb24094a5d5a4d746e6b9f588e51004bf985cac66cbbfc"
+        },
+        "rollout.mp4": {
+          "bytes": 429221,
+          "sha256": "536e87959084994bf16788657fdfb238afd7f3ec8164eac692d0d9b3beb6e94b"
+        },
+        "trace.json": {
+          "bytes": 722255,
+          "sha256": "9fd72dfb7b33a5967a359ac0c67ace6c74c92d0fdfdec0e9ca79391ac7d1bc6f"
+        },
+        "trajectory.npz": {
+          "bytes": 98641,
+          "sha256": "adb4aaf3b708a38682de21bf9c6d3c3fc5eb19bd5e48f049a41890f3a3c391f5"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep22/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "186"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16370,
+          "sha256": "fc76ee46140b307b2908c59418cf3accb34f1b82273ec487095027063c6b687a"
+        },
+        "observations.npz": {
+          "bytes": 197677,
+          "sha256": "73721d1b801522b6230e6f5833b3722c935b24d934f33d597d90bdd24640ba40"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "5dab1210e70e361ba524423e5eba6c0a0b207001b1d7b655457213445565fba2"
+        },
+        "result.json": {
+          "bytes": 4335,
+          "sha256": "ad58ac455ac6005951459264cea015ea699d2a12c4b4751f859e336d304d9858"
+        },
+        "rollout.mp4": {
+          "bytes": 456811,
+          "sha256": "917d4a9afb3cbcf4cf812da0c7dc15184613b6f825164bcd1f1b78624dd0ca85"
+        },
+        "trace.json": {
+          "bytes": 726125,
+          "sha256": "04d8a9c8012ad6c9462137c3eb9d75c728ebdf961292f3a0c7bc1b331fdb59a3"
+        },
+        "trajectory.npz": {
+          "bytes": 99597,
+          "sha256": "48ad240f342bd03929a989e05cd28ba573273f8cd5b51dc5ebbe95c6ddfa89e8"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep23/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "184"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16042,
+          "sha256": "77c7376b19ee6d0192848e65f9e9c6cbe72ba1e4dcde7515524192d993e61549"
+        },
+        "observations.npz": {
+          "bytes": 196524,
+          "sha256": "6e435b7b853c1db5cd973af6b29db5d2b835343410f90c7e859766c8386e4bbd"
+        },
+        "reset.json": {
+          "bytes": 1746,
+          "sha256": "ee10cb721496fd4a45085614d92e08f18b17fd26673ae14e5f74b878a6302b70"
+        },
+        "result.json": {
+          "bytes": 4293,
+          "sha256": "e6540d9e03c734263d334efb52754bedd8c19f3d08a98872ec71939b0be86a21"
+        },
+        "rollout.mp4": {
+          "bytes": 455595,
+          "sha256": "2d5f71b00ee150a85158934f4fdd2d08d5e55517d80adeed2fc27276c3c87b37"
+        },
+        "trace.json": {
+          "bytes": 720008,
+          "sha256": "07255572f47cf6ffd8c869296b645d66ffdf14aeda4a39d17941a4d416f8e453"
+        },
+        "trajectory.npz": {
+          "bytes": 98192,
+          "sha256": "e41248ba9ff3590e13b0a2f86ac5b8f16cd6151bed0b2f3ead526ad26129f4f1"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep23/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "193"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16715,
+          "sha256": "1073ab4dd5a2cb98e9711f89a6f03353d2e575814474c520ee99cfd3f081fe4a"
+        },
+        "observations.npz": {
+          "bytes": 205620,
+          "sha256": "825247d0d7bb9beff0fee349b0f760c3bdadd0ea7906804b707aaae32384e60f"
+        },
+        "reset.json": {
+          "bytes": 1746,
+          "sha256": "ee10cb721496fd4a45085614d92e08f18b17fd26673ae14e5f74b878a6302b70"
+        },
+        "result.json": {
+          "bytes": 4315,
+          "sha256": "7d69a2b4ec346f011acbf7fa52d7f3178bfc6f86f4495fc098b09f6a93a6bae8"
+        },
+        "rollout.mp4": {
+          "bytes": 467598,
+          "sha256": "bc85476e6c0da9f2c009609fc92d33f9fc91d491a80427714066f42df2685b9a"
+        },
+        "trace.json": {
+          "bytes": 753404,
+          "sha256": "3b12c04131eb0b59bd9d35fd6ccf80326bdb71e1f00b579b60edc58da5205661"
+        },
+        "trajectory.npz": {
+          "bytes": 103153,
+          "sha256": "2fe11b55bb895500ff377ec69f9c269fddc207ba65467485efeacfe99e2796ec"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep24/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "fae093d44b317486105162ba2404032b370c647a006f3e0a425cc3132d405a23"
+        },
+        "observations.npz": {
+          "bytes": 289871,
+          "sha256": "36a4a7a73b3801226be6dff725f5249bcaa361377e90518b6519cc54a46cb595"
+        },
+        "reset.json": {
+          "bytes": 1751,
+          "sha256": "ca070971f6221edcb50ef2123909e73a1d555cec3010ea7bcd2f40b33b1df018"
+        },
+        "result.json": {
+          "bytes": 4298,
+          "sha256": "8ad0e41dc193c93cc224b50b5a07ed1f17efac424a729c956d25e1dd72fe0eb6"
+        },
+        "rollout.mp4": {
+          "bytes": 852974,
+          "sha256": "a312aaca933b6a5398eb52ef7425d2b8211225fc63ab38b9fe7f6b57f91e767c"
+        },
+        "trace.json": {
+          "bytes": 1177962,
+          "sha256": "599bdff14227c805dae1368445a582740ff211ba5c17e70c42afdc350277d1f4"
+        },
+        "trajectory.npz": {
+          "bytes": 158750,
+          "sha256": "a4c085baaa64b51cdcc2a636a748328418dcf4f25f7c17da1a301219e3928da6"
+        }
+      }
+    },
+    {
+      "folder": "shard_00_24/episodes/ep24/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "189"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16366,
+          "sha256": "32cad000d51e99f2c6c6a0f12cbb0467ea5c3fd924f238bb38eca582fa14328f"
+        },
+        "observations.npz": {
+          "bytes": 197276,
+          "sha256": "d9a6edcaa75911dd52fd55fcfb17f62936c3e9fa2a8a287743bd2c8a1900fcd2"
+        },
+        "reset.json": {
+          "bytes": 1751,
+          "sha256": "ca070971f6221edcb50ef2123909e73a1d555cec3010ea7bcd2f40b33b1df018"
+        },
+        "result.json": {
+          "bytes": 4325,
+          "sha256": "11374b218dc617ed10218a49424527400153c34c7c601c0df3d2848b17c42596"
+        },
+        "rollout.mp4": {
+          "bytes": 556968,
+          "sha256": "3ab7f9bd9442d6199a7ad29df19e98600997d839a9c63c3c4ffbb74cd523a85e"
+        },
+        "trace.json": {
+          "bytes": 739194,
+          "sha256": "9a6f28382073861bea6fec21e9b0864fa2a6751b8c1123d9a840e7adde8ed592"
+        },
+        "trajectory.npz": {
+          "bytes": 100786,
+          "sha256": "d548daca4083cda05bf6c2247c1d4ac1080d8db906aba772a58b9cbfca3bcbed"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep25/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "273"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 23720,
+          "sha256": "d2cc5b5ad9fb7aacd3ef6746494a26105305169cee3f63a38602bd0a63311ddf"
+        },
+        "observations.npz": {
+          "bytes": 273925,
+          "sha256": "3bd5f3b156d139f5ed1603834896bf752bafdbe30fac202e50efa6d9d36aa3d5"
+        },
+        "reset.json": {
+          "bytes": 1751,
+          "sha256": "0a0a82025dc6b71ebee5aaec768b5aa7cb189ed4dce37c93cf1a2c86e20ef202"
+        },
+        "result.json": {
+          "bytes": 4307,
+          "sha256": "5edf009e7c592883948692d1656be11bc122216520cc1dc474398fb97508875c"
+        },
+        "rollout.mp4": {
+          "bytes": 664204,
+          "sha256": "a0a26576d5aee64872d296652e4689a4846ea6d3dbc6e80a5e15fa8217d73529"
+        },
+        "trace.json": {
+          "bytes": 1068456,
+          "sha256": "88fe61cbef9d9cc916aefe451c68e092cd37d220787c7d0da646dec6ea4cfcf3"
+        },
+        "trajectory.npz": {
+          "bytes": 144855,
+          "sha256": "092ad8f5105de56894de91ecd7a30ce834e3c3a3a9d0006c926030bb92dad688"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep25/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "237"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 20548,
+          "sha256": "77b6752b959bb4fa9ce9af835f6c9c2456d16b07db5860f77d21cd0109fc952a"
+        },
+        "observations.npz": {
+          "bytes": 235598,
+          "sha256": "2da3d2a76e2ad77c2036bf26f497df3d66ec1508894c71ef3d412b5c84338515"
+        },
+        "reset.json": {
+          "bytes": 1751,
+          "sha256": "0a0a82025dc6b71ebee5aaec768b5aa7cb189ed4dce37c93cf1a2c86e20ef202"
+        },
+        "result.json": {
+          "bytes": 4334,
+          "sha256": "bf788e3a02e40bff3d7eaa751ad1379a9ed9ffbd38a081056e55513ec412f9e2"
+        },
+        "rollout.mp4": {
+          "bytes": 575385,
+          "sha256": "e2e9e0635a4b2c5967d3ddac9c63c9d521005a3db684aba57f5d018f6125f8e7"
+        },
+        "trace.json": {
+          "bytes": 927186,
+          "sha256": "cbd4c725f3670e60e2910543e78ac17f1e8e87dd169c08261d5dd5a56f45baca"
+        },
+        "trajectory.npz": {
+          "bytes": 126102,
+          "sha256": "8aafc8a5b8e8a3de831c60cbf85b15c8835dbb3b816ae82cd64a3bdfcc1044fc"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep26/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "216"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 18834,
+          "sha256": "0af8100a8ae59274f2fa8d6d9c4acccf24cbdad8ee8115f13fc3b22d2023532d"
+        },
+        "observations.npz": {
+          "bytes": 235850,
+          "sha256": "9032ead1b2bc805445b2a8fa5835c54d2473e5c5ebdc094bd0435a61b91994a5"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "6726fd909b661f4a4209a2f0498ff9c87ef048b78563a97d28fc559b97acfc29"
+        },
+        "result.json": {
+          "bytes": 4297,
+          "sha256": "759de42f4d73167f365d8bb54056ea480f0efde818e4d12bd980b0e071e85845"
+        },
+        "rollout.mp4": {
+          "bytes": 579639,
+          "sha256": "d05635aafca778360c6d05004589e9872fe7d05be4fdf3a73f00e2aa442ec1df"
+        },
+        "trace.json": {
+          "bytes": 844201,
+          "sha256": "ea8123cfb987b6da9243a136db9212c42e25da107e26b7368035b6b44adb3ca6"
+        },
+        "trajectory.npz": {
+          "bytes": 114805,
+          "sha256": "2c22894fb46bf80e87b292f37eec079c15345825ce04e0f51b0002ad4d471d57"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep26/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "212"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 18462,
+          "sha256": "58e97920e64789848bb43ac751417837c63d90bac5af39fd50568c84fccbf0d5"
+        },
+        "observations.npz": {
+          "bytes": 231495,
+          "sha256": "624801b1663ef274002e860e476852497bbe281625604ab544606866da6be032"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "6726fd909b661f4a4209a2f0498ff9c87ef048b78563a97d28fc559b97acfc29"
+        },
+        "result.json": {
+          "bytes": 4335,
+          "sha256": "9fc28a4d9eab001efa78259d26c06e0c173c243e2506a527af9cce28a4d24a2e"
+        },
+        "rollout.mp4": {
+          "bytes": 584140,
+          "sha256": "f52904ea3ac77d267419a710b00b3d61679de69173a2438a15c7846890e5d6cf"
+        },
+        "trace.json": {
+          "bytes": 830523,
+          "sha256": "ac7bf768d054f0142e1d62feee77d2dca92528ba1ed06e569e6b60f325507a81"
+        },
+        "trajectory.npz": {
+          "bytes": 113327,
+          "sha256": "e04324141ca63c68e4853228d7229b8cde08649d91176b1c388c23c6a8cfddd6"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep27/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "621c89af6289bdad5ad258905cc473f5d7b12ab50e784cb2589df79fed2d9026"
+        },
+        "observations.npz": {
+          "bytes": 289350,
+          "sha256": "0c7a864a27a39bcce26a869b754049e6b86c859233a56690c3eac1a88959118f"
+        },
+        "reset.json": {
+          "bytes": 1747,
+          "sha256": "2b5bbc8c0fd0883a353d14f7815458f38bb86cbfbe594186df9e0bbb8c643119"
+        },
+        "result.json": {
+          "bytes": 4304,
+          "sha256": "a749039c24a8821fb996942bc2ebe686801fa544d696ad53ad6e842c3f0f043d"
+        },
+        "rollout.mp4": {
+          "bytes": 669253,
+          "sha256": "d9ca0c42eaff9a6af3ae603728e65c2c0626041b5476176af37096c6353b6765"
+        },
+        "trace.json": {
+          "bytes": 1180826,
+          "sha256": "1042061c5a2e20b3606771c83b3b323455d4f2cf79ea52ef8e433003568579f7"
+        },
+        "trajectory.npz": {
+          "bytes": 160956,
+          "sha256": "225d6af9d8dfdad525d4f22adbdc8c5422fe9454928f233f4a2509d083fada73"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep27/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "229"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 19849,
+          "sha256": "373250ab1921f5c363d2189bba8befbd72c91fe35b9718529dd68652a8fdc4f8"
+        },
+        "observations.npz": {
+          "bytes": 227134,
+          "sha256": "386831a72995845b6a1a4f858c6a63d7d70e9b0f57aad8ea41c333f19abd2587"
+        },
+        "reset.json": {
+          "bytes": 1747,
+          "sha256": "2b5bbc8c0fd0883a353d14f7815458f38bb86cbfbe594186df9e0bbb8c643119"
+        },
+        "result.json": {
+          "bytes": 4323,
+          "sha256": "c8be68e5c3f750d089e1f11e0d01b240254135fdbae06dd6ff8459758a9d4f46"
+        },
+        "rollout.mp4": {
+          "bytes": 565393,
+          "sha256": "9af6e67aff4dc3f6b0763d942ba5d5c7fd64a53f2a8136c41129301de15b061c"
+        },
+        "trace.json": {
+          "bytes": 895488,
+          "sha256": "8569b2a1aed44b5745b9cce4f72858d58b5efe75d9a38adf1758a14ce92feae2"
+        },
+        "trajectory.npz": {
+          "bytes": 122724,
+          "sha256": "dfb8c4440441a99c1b6c39493a6711aafe783d78da1cb59b39be50028203d76c"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep28/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "41db9703b54876ad3628e522ab25d95f7495db10b638d6b0ac977d55c6407cc8"
+        },
+        "observations.npz": {
+          "bytes": 295863,
+          "sha256": "5cc5f7108e8a07edd15a3497d0590280fd1a4a2614248cf51a2781161250344e"
+        },
+        "reset.json": {
+          "bytes": 1748,
+          "sha256": "5c60a2bae22d8587500aa866fdb683dbdf15be0896ddb7f25afdc44c76eade65"
+        },
+        "result.json": {
+          "bytes": 4304,
+          "sha256": "99ebc95f4a119c7f2ddea74fa6311f26f649190a379efa14891ec81d71709f59"
+        },
+        "rollout.mp4": {
+          "bytes": 830957,
+          "sha256": "9fd024dfba687b77ebe930707dd525183e27d78ae73269b9239fdf890f7efd38"
+        },
+        "trace.json": {
+          "bytes": 1179292,
+          "sha256": "5bbb7ce4b6c118f8ab9511278d6c488ce085d2190894e365c2f2f820ce899402"
+        },
+        "trajectory.npz": {
+          "bytes": 160722,
+          "sha256": "d58b54e61275cab041b9f7f182a8ad1974deb1c5a3ddee6b92826cd19b285871"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep28/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26148,
+          "sha256": "f89e7ab87c19d360c7c0a79437645076bc96b7aa9a094c7b7c84c3590c502777"
+        },
+        "observations.npz": {
+          "bytes": 274551,
+          "sha256": "1458bc4104c822b82d86cd5d322b6239291850172d4a8ac8021aa43fdcf3b7fa"
+        },
+        "reset.json": {
+          "bytes": 1748,
+          "sha256": "5c60a2bae22d8587500aa866fdb683dbdf15be0896ddb7f25afdc44c76eade65"
+        },
+        "result.json": {
+          "bytes": 4380,
+          "sha256": "7745dcafbc569d4ab78d5fe50d5881992cb91838618316c3139cae509b3adde1"
+        },
+        "rollout.mp4": {
+          "bytes": 941132,
+          "sha256": "97b7d4476bde00085bf20e5386b8c1028773377ce9660e387ebc6a60e45b84e2"
+        },
+        "trace.json": {
+          "bytes": 1178943,
+          "sha256": "861000294443bf047ac3a4e4c293ef4c6bd14874889dc8be1ecbc2c1e59a8c97"
+        },
+        "trajectory.npz": {
+          "bytes": 161264,
+          "sha256": "f9b9923e137729cc9d3fa850bb0de58743f6b64ef7662489cddbbc6bcb42b60b"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep29/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "224"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 19532,
+          "sha256": "50f12ceff0a7a5125775ac3fbd4636ae39f0402abaf6f3389a7572d02eaea131"
+        },
+        "observations.npz": {
+          "bytes": 238909,
+          "sha256": "d96c798a6c32be46f4c3b9fbeb7b8cc326c933a03d586376f646e467d7d598c6"
+        },
+        "reset.json": {
+          "bytes": 1747,
+          "sha256": "66098953872745cd15d06ae5f8ab17244c2d2681167061487d8970ffd626fcae"
+        },
+        "result.json": {
+          "bytes": 4293,
+          "sha256": "d16d9f2b542e2b684b791e922360538f448b564b54f5d0e849c43a716ae9433c"
+        },
+        "rollout.mp4": {
+          "bytes": 623067,
+          "sha256": "8fc5a7fb214c0b0fb99124b0a182dcfb93ce84fde29e835ba38634a888501f2e"
+        },
+        "trace.json": {
+          "bytes": 877315,
+          "sha256": "57fa6499ab0f04fcd08b118568eb464bebe97afdac938d92ca662b8fa290483b"
+        },
+        "trajectory.npz": {
+          "bytes": 119586,
+          "sha256": "d874f7cd6374232033f84a390373123851887adbddbd334496819a0cdbda8bbf"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep29/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "213"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 18455,
+          "sha256": "0f5e3db8f449b57ed22611913aabf285a2538735ed5aeebb640f3c1772798e4b"
+        },
+        "observations.npz": {
+          "bytes": 225631,
+          "sha256": "be7778d758b9de06492a7d68fed3b1a5d7b4cc4c0d5f406f165f232fd823ffef"
+        },
+        "reset.json": {
+          "bytes": 1747,
+          "sha256": "66098953872745cd15d06ae5f8ab17244c2d2681167061487d8970ffd626fcae"
+        },
+        "result.json": {
+          "bytes": 4330,
+          "sha256": "4db362cfb4c9c5c2d49e93fc90410bc2a3f2183d25523f7ec57c131ff4858c9f"
+        },
+        "rollout.mp4": {
+          "bytes": 626625,
+          "sha256": "95307f0ad7064ee6f458da964a0d4439f7f13bffe284d99b55ec85120a5610c5"
+        },
+        "trace.json": {
+          "bytes": 832047,
+          "sha256": "2343be744c204609d38a6a5f2aff4c9b50648561a7bc6cd2a888b20613646737"
+        },
+        "trajectory.npz": {
+          "bytes": 114005,
+          "sha256": "12817aa5d6777f1e6299c38314b1498064bec68bb2787242bd516095b2d7220d"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep30/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "268"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 23371,
+          "sha256": "0d78b9d66e879e7f1451544d03c578acf690711fb0fc9c323319ae09b78d3023"
+        },
+        "observations.npz": {
+          "bytes": 281013,
+          "sha256": "0a833093d0518eaf83d880913c59d5ed6a7141bb275d19ee5e6dbc484adb152a"
+        },
+        "reset.json": {
+          "bytes": 1748,
+          "sha256": "719376364abc473e5b21db2e1dc23128251469ade028394ef7a10a138c12b498"
+        },
+        "result.json": {
+          "bytes": 4293,
+          "sha256": "7ef78d6f59fa1c9aa27bf7e78a6a7572a957ee339226501437f629f12d858af2"
+        },
+        "rollout.mp4": {
+          "bytes": 728471,
+          "sha256": "787a34c746b2e77e4683adf54b727a0189e4fd54f008586fae801daad8c1069c"
+        },
+        "trace.json": {
+          "bytes": 1050699,
+          "sha256": "c1f882c88b56f8d4e9387deb2f35571a746052cf487ee5fd98b4e559c71c76ff"
+        },
+        "trajectory.npz": {
+          "bytes": 142947,
+          "sha256": "2030c301fe0602cffcc183f2b6502f75baaf0e6f7479be5a072e2d11357a06c7"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep30/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "191"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16714,
+          "sha256": "c2d21ea93d407598b9ba07aa4d6d76d8ce39bad131610a5b7b77dacf128fab95"
+        },
+        "observations.npz": {
+          "bytes": 201023,
+          "sha256": "d585596b3acc1015397633d3037a39dd86326f31e42c04466e0264c655432795"
+        },
+        "reset.json": {
+          "bytes": 1748,
+          "sha256": "719376364abc473e5b21db2e1dc23128251469ade028394ef7a10a138c12b498"
+        },
+        "result.json": {
+          "bytes": 4330,
+          "sha256": "c3beaea1545eb4f763ff2fc9ae3bb4eaff90fa89bbcbc2b3ad3f790149b901a5"
+        },
+        "rollout.mp4": {
+          "bytes": 514149,
+          "sha256": "d9b778152ecee156fa2ae861e32c37b7315bf6b0d52abda4f68f59b889defdef"
+        },
+        "trace.json": {
+          "bytes": 745997,
+          "sha256": "516866eae967c50f3db32cbfcedffd26c36d71f0d71b7505c75da7f4b03dad4a"
+        },
+        "trajectory.npz": {
+          "bytes": 102115,
+          "sha256": "be02b89de05bf659623911da332dd62bbd6b8d9ccea491a59860658bc5df0e54"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep31/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "92b8af235eecdd4e6ceedeadfac0359c8776798ba14c13957d8520347010ddfd"
+        },
+        "observations.npz": {
+          "bytes": 318804,
+          "sha256": "f6559257fd2bd1aee9daf18979382ef99be6b4f680749e763dcbb564a95da78b"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "55bb86bdb166980b0f59b45fd9a0bb0c608e965ed2c9fa6077a299c8528f4a58"
+        },
+        "result.json": {
+          "bytes": 4295,
+          "sha256": "6848a250b3580e38adc0a132e1a1ed9dd701ee68105aa058cb0aace49051e453"
+        },
+        "rollout.mp4": {
+          "bytes": 775304,
+          "sha256": "37a0367f2be6967235f5a1e50f127466526ce9afb581632d5a57f1f690895399"
+        },
+        "trace.json": {
+          "bytes": 1178579,
+          "sha256": "aa2f359e3c836d73591c502e88edd916dcfe040a6dab4fb78919f9bbb547c369"
+        },
+        "trajectory.npz": {
+          "bytes": 159281,
+          "sha256": "e011b2351c1ade50a420e89db73ebc9b5ca37ffd5a38ffd302acd404d81b939f"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep31/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "177"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 15320,
+          "sha256": "b40ffa62b889f61715111c8054c66c6753570330c05e75f054a159aa6ff31dd2"
+        },
+        "observations.npz": {
+          "bytes": 189811,
+          "sha256": "a70a4ebd8e8415e17656bb6484ee4deab56cb0732f07f1908b078b0ed5bbc65c"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "55bb86bdb166980b0f59b45fd9a0bb0c608e965ed2c9fa6077a299c8528f4a58"
+        },
+        "result.json": {
+          "bytes": 4323,
+          "sha256": "bcd57377b2282a86595795e0c468372ab6d8886efb1131a276c3b522eab9be94"
+        },
+        "rollout.mp4": {
+          "bytes": 417067,
+          "sha256": "72931165c5fc20f3825eb3ebd33b52ee22e709dc11f96b62ca254f0bc34c1e8c"
+        },
+        "trace.json": {
+          "bytes": 690761,
+          "sha256": "147ecc89a7db3af129df9394ce2c410a9e7b45c3e267daf663e686e27987b5e8"
+        },
+        "trajectory.npz": {
+          "bytes": 94645,
+          "sha256": "b5352b6ec68bd6a637cc5bd3b4ac9cd52623e4726778106edca3ca8a6324a2a4"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep32/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "224"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 19532,
+          "sha256": "a8e9b86a17cffd9427ec16d4d485d8b9a944be8647bb59d50b9982f456aaa9e2"
+        },
+        "observations.npz": {
+          "bytes": 227314,
+          "sha256": "5b44c1912921b87b3a41ab138fc525cdc0ad1e79a662daeaffde826c587fb36b"
+        },
+        "reset.json": {
+          "bytes": 1744,
+          "sha256": "d96e3f278e00bbcdc293dbd63a482ed79a950642141b29c83a3d7862d4487d0f"
+        },
+        "result.json": {
+          "bytes": 4289,
+          "sha256": "a591b05cc43ddd1eaf7fd02f8d4c03159f6b238f39cd62a641c8a278bd9e0bd9"
+        },
+        "rollout.mp4": {
+          "bytes": 606141,
+          "sha256": "3d52a8fea389ff8dcabae8b15a81e5fc09e26799873e18a6e67c1c4a1cdce8ce"
+        },
+        "trace.json": {
+          "bytes": 875079,
+          "sha256": "fb74b0b3dd44f84aa6c7ebe482ee5bb3d3fb70cbeeec89674e909311c5a1cd89"
+        },
+        "trajectory.npz": {
+          "bytes": 119257,
+          "sha256": "d7764e7f1126624352c1913541ba9331cc74e97661cfeb5500baa057d0aea506"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep32/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26156,
+          "sha256": "1300ed353d68cdbfe656cfba96b9acb30c77cbdbdf8b2258c91b201a9b3f2771"
+        },
+        "observations.npz": {
+          "bytes": 265332,
+          "sha256": "69bb1eff31a74bc9c28e5a735e064c862b79163695640ae5c70b0ef837588eee"
+        },
+        "reset.json": {
+          "bytes": 1744,
+          "sha256": "d96e3f278e00bbcdc293dbd63a482ed79a950642141b29c83a3d7862d4487d0f"
+        },
+        "result.json": {
+          "bytes": 4407,
+          "sha256": "d02059b61706028271a3fa44f25356852c0d1fe804c7b8fc32a9120b706dc21c"
+        },
+        "rollout.mp4": {
+          "bytes": 994986,
+          "sha256": "df02dc5547a1cb1ae9b2c84991eb34ec260d94dc9de1218852b21186c103402e"
+        },
+        "trace.json": {
+          "bytes": 1178203,
+          "sha256": "b5b4f100b575fdb1caaabfb60aed62e2a62eec1f23a715936ef1f03ddcf31e73"
+        },
+        "trajectory.npz": {
+          "bytes": 159959,
+          "sha256": "0def9a7ea62193e679d4715d4c488d10c4fb34449399205ec18c2ab9e466b22f"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep33/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "162"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 14297,
+          "sha256": "39991d84598dd290ef22f9baf9219346fb37df88c5bc7483e8426b4ed73dd546"
+        },
+        "observations.npz": {
+          "bytes": 172311,
+          "sha256": "601c812c47e01e239ec147626355838a880fa1b971b8fe7ee7423cd6cdb13253"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "fd1df10643a32ff3859903f78632f5ae96cc073e2548769bc70a380334a2299b"
+        },
+        "result.json": {
+          "bytes": 4293,
+          "sha256": "fc8eb9049bcc3621fac62fbfe0e4889a183c58622a6e756cc68049a71b380162"
+        },
+        "rollout.mp4": {
+          "bytes": 461623,
+          "sha256": "6c59b408c077f5c5750daa5d016b60ce9f28c311be6ad626983d6c793b779179"
+        },
+        "trace.json": {
+          "bytes": 633870,
+          "sha256": "902804e80b32e640cd07eeecb8d06459f003a278c5b27102524ec34c02f536f2"
+        },
+        "trajectory.npz": {
+          "bytes": 86281,
+          "sha256": "7e71a73dbd524748c2c413c3d77b879b5429f5168bd09bbe0a27f1bd01f144f7"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep33/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "167"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 14620,
+          "sha256": "f72349fe6f0486628878b2d83eda09bd83d7fe8a66a92c89374093907cc1dae0"
+        },
+        "observations.npz": {
+          "bytes": 178832,
+          "sha256": "5dfb6c2d9354dfe0d8b8771ec32a099e500912eecc76a9e9d9df8598d111ba52"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "fd1df10643a32ff3859903f78632f5ae96cc073e2548769bc70a380334a2299b"
+        },
+        "result.json": {
+          "bytes": 4332,
+          "sha256": "35941b6fb53752d1bae970cdc10d4f274366213d724480de23da5d6096cd669a"
+        },
+        "rollout.mp4": {
+          "bytes": 531697,
+          "sha256": "4375abdeb96136549352c67f570175326be03ce23352289179347f3840e9b797"
+        },
+        "trace.json": {
+          "bytes": 653375,
+          "sha256": "218a0b26e35c48daf301834fc0ab157b087e6df0a4d67e36f0bfdc9cdf4d2ec4"
+        },
+        "trajectory.npz": {
+          "bytes": 89404,
+          "sha256": "0e50fe5ee864d6cbeef21cb09a4a51395dc56f30dd1def5b2d59205af78cb1ce"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep34/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "d33857fb9bc10dcfc4f6ae7bc1b240f0311ca4ad2479af357d56e48f8222f03a"
+        },
+        "observations.npz": {
+          "bytes": 301234,
+          "sha256": "d9c86681688a5931780580496438293c1f6f93e2d7b92200dd27973c95601205"
+        },
+        "reset.json": {
+          "bytes": 1751,
+          "sha256": "180649b29df5a7fb9d353c3d740c0bbf2126ff350b7bdc885a568099b9841208"
+        },
+        "result.json": {
+          "bytes": 4296,
+          "sha256": "06f1d1bac59c09b8b2e20ca00a4507bda619d6a7dc5ac46b3f37d76532ac2625"
+        },
+        "rollout.mp4": {
+          "bytes": 823758,
+          "sha256": "af9ea3baf3af6f50baa3a86190bbda2e1e40805fa5438a0e2f15738503411463"
+        },
+        "trace.json": {
+          "bytes": 1179823,
+          "sha256": "32e7f012effb60fb4ffaf3c3a0c216026bc5869c47e510423cfe8b5cb2f3543d"
+        },
+        "trajectory.npz": {
+          "bytes": 159860,
+          "sha256": "c80c87c708beef328c0a407a1979ab854efa00f9a28b7ea30b84ce6be87cedc4"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep34/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26135,
+          "sha256": "3c7921b25586fbe40c36d50f283c2effee7290583d751fb2d4edd3ab08343e6f"
+        },
+        "observations.npz": {
+          "bytes": 271365,
+          "sha256": "a03ac5e69eecf522ef5a0ef3fea4f8b8c15fb2c7f4d7f59eece43f56c09d95ff"
+        },
+        "reset.json": {
+          "bytes": 1751,
+          "sha256": "180649b29df5a7fb9d353c3d740c0bbf2126ff350b7bdc885a568099b9841208"
+        },
+        "result.json": {
+          "bytes": 4336,
+          "sha256": "a710be7265b25111634388bdb48c9228a36142afba523d1ec0ed4277252cc394"
+        },
+        "rollout.mp4": {
+          "bytes": 916779,
+          "sha256": "a6566b92ce7d66aa137d634b5bb05c97a269c8e354782511afee2623ee1f04ae"
+        },
+        "trace.json": {
+          "bytes": 1179666,
+          "sha256": "f480f8adad73e2c098144c1f977f261c87a91c0a9b746f152872e9727c824ca3"
+        },
+        "trajectory.npz": {
+          "bytes": 160597,
+          "sha256": "7fdc52abf96762ece7cec418737c6b5f490070cfb3ffe81b41e60a2270c9ce71"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep35/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "157"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 13599,
+          "sha256": "7134f342cd82ecdde8a96d95eaca6d4debea929238d98ef05cfad66cb226a366"
+        },
+        "observations.npz": {
+          "bytes": 171924,
+          "sha256": "bb658740b916765d875f8136f99174d5e44f5a93fa7d44667b4db81608fc0d29"
+        },
+        "reset.json": {
+          "bytes": 1746,
+          "sha256": "3b9e965e81120b9cb8c92cb38a7edb40e7f0317b1e022dae0ca1e6937616b2b4"
+        },
+        "result.json": {
+          "bytes": 4291,
+          "sha256": "9dcd824db4d5ddc593f6fee45eabb777dd166077f20ec3dcc79e9e6cc2c42582"
+        },
+        "rollout.mp4": {
+          "bytes": 428182,
+          "sha256": "253cf529d4c5283ae2897dd15e5a9bfbd0cc56ab8f84c4de8df2d6837d8f7066"
+        },
+        "trace.json": {
+          "bytes": 611744,
+          "sha256": "7a5a4b02f8397575eba690e011cd2461501e9c2fc9d9c55b368e1f9fcd03f6f4"
+        },
+        "trajectory.npz": {
+          "bytes": 83692,
+          "sha256": "dbaa58d1bd1282404a39b29a42c11fefffb7e8196629c27ae6fce548f2c6d1ff"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep35/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "152"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 13226,
+          "sha256": "2ec162c95cebc24b4a8f3dd0908d8546bc1474932f17e052aebefc1ad81565e4"
+        },
+        "observations.npz": {
+          "bytes": 167058,
+          "sha256": "f7b02bbb5d59357ff458ebf15274537cc76526c9eb5e38484dbc26d3e9c0b1d0"
+        },
+        "reset.json": {
+          "bytes": 1746,
+          "sha256": "3b9e965e81120b9cb8c92cb38a7edb40e7f0317b1e022dae0ca1e6937616b2b4"
+        },
+        "result.json": {
+          "bytes": 4320,
+          "sha256": "8a423f8ad7734ecbf572a7753c44eefee7d5ff5199a73776773a914e825cd300"
+        },
+        "rollout.mp4": {
+          "bytes": 444244,
+          "sha256": "532c5d5332c53465ff4da94de44631986b6362bbf8981c75193fed0773fd4e4b"
+        },
+        "trace.json": {
+          "bytes": 594093,
+          "sha256": "8184ee838ff436891e76809625f0b38b39ada0b31ff5f45fc6651e4af52b1007"
+        },
+        "trajectory.npz": {
+          "bytes": 81605,
+          "sha256": "a651ac14caa9278a7357f0bb3c8f700c564e20892ce2faca0a41bd114710e3c5"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep36/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "149"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 12901,
+          "sha256": "e9e34473203f187ac7b3c72676c9f515babdbe80e8c75a2a7c0004963398d755"
+        },
+        "observations.npz": {
+          "bytes": 161841,
+          "sha256": "d4868e0ca937ce114de6fa31fe3c938315fe2ccb6acd2b4a2592a07965a37983"
+        },
+        "reset.json": {
+          "bytes": 1748,
+          "sha256": "2a06625db05f987174c2c67bd516db673dead4bcb486707543574e3c092079ab"
+        },
+        "result.json": {
+          "bytes": 4291,
+          "sha256": "00b7ca1a744af6477e3b4991898109e8980c65e3ce23c9ae4d9850c3a00cf282"
+        },
+        "rollout.mp4": {
+          "bytes": 483492,
+          "sha256": "01dfb2e93d8063e130aee4d15be330488c90535f2d845edc5edb962fc7b74693"
+        },
+        "trace.json": {
+          "bytes": 582396,
+          "sha256": "7dbcbfb614acb5d7cb3e27eaa34f709260fef2dcdf80bd25b9d364d5434a1805"
+        },
+        "trajectory.npz": {
+          "bytes": 79827,
+          "sha256": "304c239466bcfd948d9d9bac8ba28a5dbd643f87dafbce95e407bf1d39129698"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep36/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26124,
+          "sha256": "2bbc90df8a4fb3352c01202943526462d086e96b6756d38c6fa4d5129120f9fd"
+        },
+        "observations.npz": {
+          "bytes": 283167,
+          "sha256": "bc9af70d34f081cc2fc7b19438e54ed0a9a5e384f964328ef7ccc16ccd73dcee"
+        },
+        "reset.json": {
+          "bytes": 1748,
+          "sha256": "2a06625db05f987174c2c67bd516db673dead4bcb486707543574e3c092079ab"
+        },
+        "result.json": {
+          "bytes": 4468,
+          "sha256": "f9df4fba72dc82bed75ffd00a1a5a021055c605fc5594566e9a92645b637bff0"
+        },
+        "rollout.mp4": {
+          "bytes": 1051596,
+          "sha256": "f89a7d9c536bb3791647a006a836d44a7bbe7ab8fe1e8ba3b6bbddeb369062ca"
+        },
+        "trace.json": {
+          "bytes": 1178626,
+          "sha256": "2dc74206c7c4074e4268cceb5536455aabbf56ee7d84325f99a25a91c21dc0c6"
+        },
+        "trajectory.npz": {
+          "bytes": 161755,
+          "sha256": "eeb2272f47fc0420fe0a74ca32b5a6645e4d8036e06d62a99dd59a6d5da8e2bf"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep37/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "173"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 14995,
+          "sha256": "258ad515cb4a562445c9f4712b650983d85ee2d1b22944b74623c9edb01a2116"
+        },
+        "observations.npz": {
+          "bytes": 186414,
+          "sha256": "fc5539be0b0c6b8de46f6506693ea2b1935a79f9abc04b08b58a43f15351e47b"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "e6d73aa5fc05323d3e1a09dc1a35da30873fd7e8acd62692e1a85c65e0c871cc"
+        },
+        "result.json": {
+          "bytes": 4309,
+          "sha256": "abbdfa65a1c72a0ec6bfec258be9216f1202c2256181d462ebb2a988fe6474be"
+        },
+        "rollout.mp4": {
+          "bytes": 424046,
+          "sha256": "a379012317d6c4b7dd6d46f30a3aa2e499e06dd2a254acb927e3329f4fd63c4c"
+        },
+        "trace.json": {
+          "bytes": 675261,
+          "sha256": "f531cf90cc4d998c7f50c67b314a8ef954f639f34596f2384f8185a256a99d52"
+        },
+        "trajectory.npz": {
+          "bytes": 92175,
+          "sha256": "e5f2a1cd5f1a879821a763bb2fd16a5f861f84bce7c1db5f283c7dbdd51f7da2"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep37/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "193"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16711,
+          "sha256": "0f4d96bc96daa330795fbb8935ce97f2a51abb6cd1b752803f0249b874f957a2"
+        },
+        "observations.npz": {
+          "bytes": 209440,
+          "sha256": "645613ed589687dd0a1ab9848b7790a867acc3b5508a582284bfd958a02c6416"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "e6d73aa5fc05323d3e1a09dc1a35da30873fd7e8acd62692e1a85c65e0c871cc"
+        },
+        "result.json": {
+          "bytes": 4336,
+          "sha256": "26f506385985a0cbb22e66f0f24f1631866fb5a2d53473f0f5fed9ea91eedccb"
+        },
+        "rollout.mp4": {
+          "bytes": 565121,
+          "sha256": "7f6bf09b9fbbffdf6349dc1dd096977a3c9f1553fe0de747eedf7d8e930edb97"
+        },
+        "trace.json": {
+          "bytes": 755688,
+          "sha256": "d9edebdb8ef3f1fbf1516953ee96efc0725d23ff2fed2ededd2cf8487900af09"
+        },
+        "trajectory.npz": {
+          "bytes": 103762,
+          "sha256": "c54a599cded1897e508178fc2e2ec9653d257cfbe6c6b5e46c97b2e4599e00ee"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep38/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "143"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 12552,
+          "sha256": "98c7ff5b549eaf9f8d08d42278688cbe90421d29838fff2f21ee31369f68a48b"
+        },
+        "observations.npz": {
+          "bytes": 154615,
+          "sha256": "ae5d70a76fe58a9f38efe4933b80c1e22ebb5fb488fcdd7e26a7e328d566bb14"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "e5c2ee1fe5696d51a291ad888b8d90e7407fa07b048998d52eba667dbd64e0c3"
+        },
+        "result.json": {
+          "bytes": 4293,
+          "sha256": "c7e3c00a60c7fdee8becbf542bb224e67229ce2e5c773dcd8eb3d51b324f305b"
+        },
+        "rollout.mp4": {
+          "bytes": 398441,
+          "sha256": "ec23334f46b111f619b56d212f095c833feec3a503637ce13cb767a02f70ae72"
+        },
+        "trace.json": {
+          "bytes": 558456,
+          "sha256": "35a41ca3fad177fcede193eb8d16c0a2dd688bdfd9d916b49c92137fad7b8d1f"
+        },
+        "trajectory.npz": {
+          "bytes": 76227,
+          "sha256": "52ad5af6df0ad10e26edc24cb2a82afd11cbe0c5bcabe7aa890ef3eaae03b208"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep38/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "143"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 12529,
+          "sha256": "a7a79417bcae35274d351b1e1d9b7b380c5875aa1ff5e6971a01390ff94d939a"
+        },
+        "observations.npz": {
+          "bytes": 155911,
+          "sha256": "7ed813258fb95031c84713e125a28f97756a2cbe93e967059cb6a6682285fb91"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "e5c2ee1fe5696d51a291ad888b8d90e7407fa07b048998d52eba667dbd64e0c3"
+        },
+        "result.json": {
+          "bytes": 4335,
+          "sha256": "5c411cae912d08d29c228bc86c4a745814f1d8a292a32bcfbb44322716fae18e"
+        },
+        "rollout.mp4": {
+          "bytes": 421063,
+          "sha256": "3bcf457f117f93da8796dfde0917f8f37c63002b21a0aab8f2116de909ad1d6b"
+        },
+        "trace.json": {
+          "bytes": 558479,
+          "sha256": "8457d7541b8d869bb0fa3620e3c03ead73532966c532bd70899adfe8607dbb08"
+        },
+        "trajectory.npz": {
+          "bytes": 76465,
+          "sha256": "d4462e541bc5e09c6de66ed38aefe675fd0f4ca4e1cf87212ad73c1474075fcb"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep39/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "02dabd795127907437b56017fd2a583228b07c7a2928d1e5d3e6c55ac48ab014"
+        },
+        "observations.npz": {
+          "bytes": 322668,
+          "sha256": "0229bfcefa2509bf2ae68e791fd1734e0cc4260ff36001a1f300ddd00519cdbb"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "a890a1370bd3b52c1072e5c31b106db3be541a22da09f484b86e355c2dda63f2"
+        },
+        "result.json": {
+          "bytes": 4296,
+          "sha256": "14843cb361b895dd708b61444639e4a0368352db9d34c03328dab82455aa7927"
+        },
+        "rollout.mp4": {
+          "bytes": 792202,
+          "sha256": "a2a7033beb82e906bca0f9859f1830bd805f9346fb6134e0b4e25594d2f7a7c6"
+        },
+        "trace.json": {
+          "bytes": 1179416,
+          "sha256": "21ed646fdbced2913d65bbb197fc7f901bd647aa6b4118bac6c44a08b9bcb390"
+        },
+        "trajectory.npz": {
+          "bytes": 159669,
+          "sha256": "9439dc6cd0a458762fb19c20fa45dda65458ad25feb61d6fd8f449b586c0e0e2"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep39/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "185"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16013,
+          "sha256": "208cb7f100e1b87b490c1ef9ca4158c89e86ab41b32e451a2f262c6529648157"
+        },
+        "observations.npz": {
+          "bytes": 199870,
+          "sha256": "bbf3d5476a30987986909686f62a543fbd72ba7c9c5fdd89920c586ba08487ca"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "a890a1370bd3b52c1072e5c31b106db3be541a22da09f484b86e355c2dda63f2"
+        },
+        "result.json": {
+          "bytes": 4334,
+          "sha256": "9e8b7ec9b4852a3ef6bf7be8635d7c2a325e2c0ef01ad7650fdf90b74a56b656"
+        },
+        "rollout.mp4": {
+          "bytes": 494710,
+          "sha256": "868b9e332941684b653c4d34b1864cbe1c2a789336589701d01207ddbb95d45b"
+        },
+        "trace.json": {
+          "bytes": 722033,
+          "sha256": "0103bfec90c995be39e06da80c661bf1a26ae9175ad0abeb321298a6b3421ef5"
+        },
+        "trajectory.npz": {
+          "bytes": 99023,
+          "sha256": "7aaae40a6d6502ca5508adf0a8ea6c876a13efde4d9c5986f78f8911925d30fd"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep40/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "b2dd72fe1d452a9a8422aa6232ed35b64ca60546f3ab75b77e9047d0147bee11"
+        },
+        "observations.npz": {
+          "bytes": 323458,
+          "sha256": "77a3515c5c60fe3a4c0c052f614267b43b20c3aace40cb506cb2a93a9137a3d3"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "bf59ab10fab3c2b305fa975a54617a9476eda9616562cc44e7a2bf227b9d9ecb"
+        },
+        "result.json": {
+          "bytes": 4298,
+          "sha256": "9880376fa1c5e56ad6031cee8294b570f68d4e738268f2bcabf423007329cde1"
+        },
+        "rollout.mp4": {
+          "bytes": 760882,
+          "sha256": "54aa0b1ceac9bbf5d9f563fee0b813bb257f333d1b622c68e04ed983edec931f"
+        },
+        "trace.json": {
+          "bytes": 1179127,
+          "sha256": "dac3c58f9524b0afa94377df35d26fafc66839346260b2fa67ea4f582b330994"
+        },
+        "trajectory.npz": {
+          "bytes": 159580,
+          "sha256": "17ea017cbea3759e9af084f28b3b7ea408f3797e72a2b3b10b2bb691a405ec1f"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep40/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26120,
+          "sha256": "81415dc3f84be50c597845c8b05036af9ddf119dff975740066a5bf96dce566e"
+        },
+        "observations.npz": {
+          "bytes": 306504,
+          "sha256": "da16b3c57eb63022e2060ac9eb6bdea8e7d77bfb9aea58bcc80292474c948c6f"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "bf59ab10fab3c2b305fa975a54617a9476eda9616562cc44e7a2bf227b9d9ecb"
+        },
+        "result.json": {
+          "bytes": 4334,
+          "sha256": "60e0d7c7eeae4ba8b273a8f6286b54373993779b1bccaa982bb05edebe800fca"
+        },
+        "rollout.mp4": {
+          "bytes": 1030340,
+          "sha256": "c5f4f83b10b4a2e39843e2bdab724176be030fb1441d5d6c35318ccf505f87f4"
+        },
+        "trace.json": {
+          "bytes": 1179631,
+          "sha256": "30d9de47dd60c549dc07d90a480435710dab95769eff3355dacfc4809d71ccd9"
+        },
+        "trajectory.npz": {
+          "bytes": 161855,
+          "sha256": "4654a46655dc318c1d1bc75f1c5190e346ace5f7a3f4a0d45f8ad36a6a832af3"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep41/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "571231b645900c093ee5f9084220b33c93703b8619f8a6cfbed09ed44221a06a"
+        },
+        "observations.npz": {
+          "bytes": 305608,
+          "sha256": "7fc8152b3632b0da8a49c5bc1c0b3bb23c823abfc0a7a6fab62f368bfee34d77"
+        },
+        "reset.json": {
+          "bytes": 1751,
+          "sha256": "9fae1bf8bfc68e830ab7dd45c2979ff9de18e296cbdbb4e75751b8e5d353cb6a"
+        },
+        "result.json": {
+          "bytes": 4298,
+          "sha256": "c0fc679ec1b3796dfedbd1b11ac147d6ba6e62ab8a91d0d62b1e4898905d9740"
+        },
+        "rollout.mp4": {
+          "bytes": 788754,
+          "sha256": "8e7be6413f98493e48aee30e6b764edd8bd739190aa8d4afa817d2c36b2b229b"
+        },
+        "trace.json": {
+          "bytes": 1181009,
+          "sha256": "3dbd64ce7119bd7a7100f67db12e2f7b4fc679d65c3968d4d06cc3e0b5ceb26f"
+        },
+        "trajectory.npz": {
+          "bytes": 159705,
+          "sha256": "8fcf7bcd6f2dc51e10eb04ecfc97f22b1aaf61d36325b179ca7c4149892b420c"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep41/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26142,
+          "sha256": "660998f503ae4c5e0d1756afcdebd71da307675915dc13a9385a43a79ed8a276"
+        },
+        "observations.npz": {
+          "bytes": 277941,
+          "sha256": "deec5e95b5e502a24a342c044e8e4026e71399fe9c9411d3f582c9a2d0449ff1"
+        },
+        "reset.json": {
+          "bytes": 1751,
+          "sha256": "9fae1bf8bfc68e830ab7dd45c2979ff9de18e296cbdbb4e75751b8e5d353cb6a"
+        },
+        "result.json": {
+          "bytes": 4332,
+          "sha256": "7e4b3c8d5b77f2faa380acfd618477b64f79853778bcb94564c79a9bc64e572a"
+        },
+        "rollout.mp4": {
+          "bytes": 765153,
+          "sha256": "c62c6f94017aad141a5eb64e4f47ce149f36cd3cf4ab92ff22e907d6812c16cc"
+        },
+        "trace.json": {
+          "bytes": 1180977,
+          "sha256": "b65679f4e456a682eb7a941ffcaba25292e88597aaf67f0367e572347a13f95a"
+        },
+        "trajectory.npz": {
+          "bytes": 159494,
+          "sha256": "151bee58b2aa9fe4227cade5d43b0ab2730d4652b22826e3109a13de83275e7c"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep42/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "20863890378fe0228c3138c391aff99b27e6ac395ac8e1b3da8ae237c733ce3a"
+        },
+        "observations.npz": {
+          "bytes": 296029,
+          "sha256": "c93a690b8790c44740bda6fcd34e4666e35d0727c12ec20aeaeae47fc1be74e0"
+        },
+        "reset.json": {
+          "bytes": 1746,
+          "sha256": "81e77873ab12c03e1d3af91ca149c2dbacedb08dc28b7c3876cfc6aea8602cea"
+        },
+        "result.json": {
+          "bytes": 4292,
+          "sha256": "dba853514a2dd98747e7a745d5df1f574ed598fa834df5335cb9288074881ee9"
+        },
+        "rollout.mp4": {
+          "bytes": 910822,
+          "sha256": "c5073c5201d282f9ced2bae57da513ceca590b6eb51a5c6a76dfccc85c2020fd"
+        },
+        "trace.json": {
+          "bytes": 1178484,
+          "sha256": "4992b77ae46f2cbf7faab4d6b5f1b5543341df894eefb03c292611ba640bad99"
+        },
+        "trajectory.npz": {
+          "bytes": 160482,
+          "sha256": "33974c5813360b0ed6bce385f3ec69033025f07cb3a8843f78f3484ec6f0030b"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep42/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26155,
+          "sha256": "cf7ee5a3f6b77d9fd43b1bf6e388e55eb853d01da6d59b5898deeec8eb4a47e6"
+        },
+        "observations.npz": {
+          "bytes": 279517,
+          "sha256": "665196c08f9a8ac4e0bc418480182cf4e123596b1b3a0215879c7aca640aad2d"
+        },
+        "reset.json": {
+          "bytes": 1746,
+          "sha256": "81e77873ab12c03e1d3af91ca149c2dbacedb08dc28b7c3876cfc6aea8602cea"
+        },
+        "result.json": {
+          "bytes": 4316,
+          "sha256": "1847d35fcd506be4b05909d18d1f005a33091d4dbf15f8fede81950ebfcfd847"
+        },
+        "rollout.mp4": {
+          "bytes": 933256,
+          "sha256": "38d1254520f0609f66e67aba7d9dc9dcb8b8f39420c3397a22349c1d9554962c"
+        },
+        "trace.json": {
+          "bytes": 1178663,
+          "sha256": "0befa1a17a79f51b3325bf7f5625f7a85218084f9dfe3528824457c8f19f1f51"
+        },
+        "trajectory.npz": {
+          "bytes": 160245,
+          "sha256": "87444c343f9ea65b215303bcee07e19e1ea16b45e85cb91fa1955b499d8ba7da"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep43/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26159,
+          "sha256": "a85f3801c014369ba07252dc1f15834d341c37c2ef9204cb148e18562c0b26f0"
+        },
+        "observations.npz": {
+          "bytes": 290420,
+          "sha256": "16ac5be25820f87def0f8c81f2c0acae51a8811f6d497a056fd5da783d22ad56"
+        },
+        "reset.json": {
+          "bytes": 1745,
+          "sha256": "24563afeaf51f88bffd7e53c8b9be230b046a1ab1d2a714acc696a0fd3062c8d"
+        },
+        "result.json": {
+          "bytes": 4440,
+          "sha256": "ac21f4292925bea486d9fdd7cb1e85ef1c956b6c3f2e4017b14cb15d53033045"
+        },
+        "rollout.mp4": {
+          "bytes": 1166689,
+          "sha256": "e1fe571bac9d4aa260769ad764ee0ce527b4634cbe8e98fd8aee49c673699c73"
+        },
+        "trace.json": {
+          "bytes": 1177611,
+          "sha256": "d74fe30871e16c0d454e76e2605fcef37712e8fe5223d651d75cb9c596ceefc3"
+        },
+        "trajectory.npz": {
+          "bytes": 159739,
+          "sha256": "2907c813814cb8f99dfef1484228c32aac4e94d917123c2974fd3797c0cb2c28"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep43/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26146,
+          "sha256": "37ace537b72d20edad12a0bae686d7d1303aba273d6cf5280851cd026a6d0da3"
+        },
+        "observations.npz": {
+          "bytes": 297851,
+          "sha256": "19e44f78346b143dbe752f1021f9c3c6c2183f8922db23874f7bf82355cd3cea"
+        },
+        "reset.json": {
+          "bytes": 1745,
+          "sha256": "24563afeaf51f88bffd7e53c8b9be230b046a1ab1d2a714acc696a0fd3062c8d"
+        },
+        "result.json": {
+          "bytes": 4330,
+          "sha256": "7b382403a842a70d8149900ed1cef9632713666870538b0b11452a4eda76d453"
+        },
+        "rollout.mp4": {
+          "bytes": 990185,
+          "sha256": "af4363057561d4b8813f9ca116615951b938b9e8d2a8d4206ff7d956c2f0f67d"
+        },
+        "trace.json": {
+          "bytes": 1178608,
+          "sha256": "dc680b517c5f702bfeb23258165210173b9925381d021f82bba96c940b81a294"
+        },
+        "trajectory.npz": {
+          "bytes": 161316,
+          "sha256": "a9c79494981c0f0e4a2825652ff43a44261a6dfe5f52eaa7d4df43c85f5d3216"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep44/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "177"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 15344,
+          "sha256": "5fe777e9edec61dd5d426cad25d52019904cf02f279eaf720925365260ce6e79"
+        },
+        "observations.npz": {
+          "bytes": 188833,
+          "sha256": "76da57cf461c2bea9376ce8dd396c546084ce1516db4f6e45b672a42f0426f68"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "4e20be6a12f4534ee5505247cfc5a7b3a1fd3cd6b5724de90a8fc10ac406b5fb"
+        },
+        "result.json": {
+          "bytes": 4295,
+          "sha256": "72953a29234932eeffeee0c4363c7f911aaad9441347929e9b7a6684726395bc"
+        },
+        "rollout.mp4": {
+          "bytes": 493867,
+          "sha256": "da64b252272ffff4ff25a4f8f277d4769af2ac161dfec7625c53b0e9911f9be4"
+        },
+        "trace.json": {
+          "bytes": 693096,
+          "sha256": "27bd2af49fd717f3a2080cf7afe92bc030655d6ef9f945e945194528036e377a"
+        },
+        "trajectory.npz": {
+          "bytes": 94451,
+          "sha256": "416fc78c045b04acddc8320f27b1cc4965a96c2eb5b6a756817c02bccede8092"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep44/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26154,
+          "sha256": "889229affc1b652f8a90808645a71de2585ffd19e10d1736d8901b40ba5f54f9"
+        },
+        "observations.npz": {
+          "bytes": 278129,
+          "sha256": "d3b71ef987c56797627ed04e7960a11f6473b058bdef3e6e504b0cd932c89918"
+        },
+        "reset.json": {
+          "bytes": 1749,
+          "sha256": "4e20be6a12f4534ee5505247cfc5a7b3a1fd3cd6b5724de90a8fc10ac406b5fb"
+        },
+        "result.json": {
+          "bytes": 4332,
+          "sha256": "3c3abe2d053f2b8224fedef58f44ec0abc9face315057f689146031ec473c931"
+        },
+        "rollout.mp4": {
+          "bytes": 917742,
+          "sha256": "e24d454dc484ea6c93c95795e661f4b3b360109d7d552c0893dde7d89f692ae3"
+        },
+        "trace.json": {
+          "bytes": 1179602,
+          "sha256": "0276ec004b7ecc71ec6ed1c98f33157957950e5746ee4daa81355158938bee42"
+        },
+        "trajectory.npz": {
+          "bytes": 161170,
+          "sha256": "6815b4b0c60db60dbdb395bbc15e815019a70545031a25d14d537168c87721c4"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep45/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "5a2fb80f9e34cb0b2b0f6ee1230147617c37c9e3bf74a83e2ee2e04e176db896"
+        },
+        "observations.npz": {
+          "bytes": 269301,
+          "sha256": "e7d0b488c21d974a717bb9e276ba2902046b0fbdabf436854d82f82a012c240f"
+        },
+        "reset.json": {
+          "bytes": 1745,
+          "sha256": "c6b37b7a81d39f73f94567a164685f2e3ab55e38fe2d94bb71969697342e4757"
+        },
+        "result.json": {
+          "bytes": 4289,
+          "sha256": "caa16c8ff79887df87cd78e36aa02b9c3d0c30e8610136cd1b58c8c638e7abd5"
+        },
+        "rollout.mp4": {
+          "bytes": 594129,
+          "sha256": "b656eadedf61eaaedf73f655b29fdecbdffa91b25f43baf52b4537f38278e9f6"
+        },
+        "trace.json": {
+          "bytes": 1179992,
+          "sha256": "b0035e9ba85562dacb02bbd03ea9ac5e8b0521b01698cb02e2aca8bc9534a3f4"
+        },
+        "trajectory.npz": {
+          "bytes": 159007,
+          "sha256": "bc189da1e47a68ccaf3b8e58222b75b83418ce945cc2df08904ef8c4faac4b0b"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep45/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26150,
+          "sha256": "04e1ae3c0da3af7cebd16f56a85d480d01cc7e874593fb7aeeb07bfbe84f1cf1"
+        },
+        "observations.npz": {
+          "bytes": 245679,
+          "sha256": "6cacb42a483382d6aac6d5670ca5ad3d326985f2592fa8d1205c0fbc5cd54126"
+        },
+        "reset.json": {
+          "bytes": 1745,
+          "sha256": "c6b37b7a81d39f73f94567a164685f2e3ab55e38fe2d94bb71969697342e4757"
+        },
+        "result.json": {
+          "bytes": 4397,
+          "sha256": "535c286027e034c3f11e9eaca581a4176e5c9aca7532c9219d2d4b28852a06c4"
+        },
+        "rollout.mp4": {
+          "bytes": 622423,
+          "sha256": "8adc6fe8ba303ac0e213db6691345777b2f676ba85eff1da5b56c890f36272ac"
+        },
+        "trace.json": {
+          "bytes": 1179727,
+          "sha256": "4229848defe3b45d6e297ba1c5feef980cf51a1691bf0b6a5cd9446f88bb35f5"
+        },
+        "trajectory.npz": {
+          "bytes": 159347,
+          "sha256": "cfe4626e57a1ca5a1a3e3f8f9eb3b8299eeb5dd1276525aebb6189a11dd5852e"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep46/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "0c62a166c000a68c0a1856e98b0a88ef1c1b7f1eab140ff05c43da3ea969e51c"
+        },
+        "observations.npz": {
+          "bytes": 312420,
+          "sha256": "0a562d78aeb647608eaa5e0d5b85c091ce49a925b374fb8b027ee2b09d29d11b"
+        },
+        "reset.json": {
+          "bytes": 1746,
+          "sha256": "699617103eaf95e7ef6ec4d5d894ba56e85c2903b0edd7b8c2e46e8db76ef808"
+        },
+        "result.json": {
+          "bytes": 4290,
+          "sha256": "cef290c50805f6bfb75eed3526f3a116aa8f0baba498780a0e3b24c8da7651af"
+        },
+        "rollout.mp4": {
+          "bytes": 879714,
+          "sha256": "8fc2ab7479c2893fdca33e0dc2938752a6c5d434342fe37429b9dd9c1322ba34"
+        },
+        "trace.json": {
+          "bytes": 1177747,
+          "sha256": "1cb3d6c73684534f7e21e86e7bad86dd1d828f15802f4ae070ed36bebb3612da"
+        },
+        "trajectory.npz": {
+          "bytes": 158837,
+          "sha256": "9c0c53f2fa59afbc866205cd9f1c97fbebd10ef8a3a64aeae52c7b56840034e8"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep46/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26139,
+          "sha256": "bc8835b5dd310a1a93d55073a632add29069fec155de73ac894fe31504d103d7"
+        },
+        "observations.npz": {
+          "bytes": 277514,
+          "sha256": "06b6f3d3f39078e3783d48527122d8868505d6cf3eb3af3bc7e56f7b66d5dac8"
+        },
+        "reset.json": {
+          "bytes": 1746,
+          "sha256": "699617103eaf95e7ef6ec4d5d894ba56e85c2903b0edd7b8c2e46e8db76ef808"
+        },
+        "result.json": {
+          "bytes": 4318,
+          "sha256": "f275b06bb419bd6579f292227e3c5de24e37f02afc2b71867042cccd8caf67d8"
+        },
+        "rollout.mp4": {
+          "bytes": 1016010,
+          "sha256": "f4309031b23adaa324e41b868bfcd7414183bd55eba0105ee4c31472ffd75aa3"
+        },
+        "trace.json": {
+          "bytes": 1178388,
+          "sha256": "0c546a544ee92b6ed6a8c800040a13db48a2a11b23e3056895d15cf674e26803"
+        },
+        "trajectory.npz": {
+          "bytes": 161098,
+          "sha256": "288fd7e29c7736b561ebcabe657df564e59db64465f7b4c1c4f9e764cf93c2b8"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep47/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "240"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 20928,
+          "sha256": "2b37cf4f8cae81a080aad762473f9e043af300f727a2a45187969ee81b03d41d"
+        },
+        "observations.npz": {
+          "bytes": 253165,
+          "sha256": "8ea28500bdda40a2b777fa11ab2e7fef0b42184330b86229d413b0b19c305b53"
+        },
+        "reset.json": {
+          "bytes": 1754,
+          "sha256": "7498ca8adc24910cabc0316a32088cabc75749a66e7bdcd0b9d59617d2fd9e26"
+        },
+        "result.json": {
+          "bytes": 4300,
+          "sha256": "62bc98abcee6f3149354f0eba05631455546e5cd8e8f46e4cbb0d2bb88d11231"
+        },
+        "rollout.mp4": {
+          "bytes": 757644,
+          "sha256": "ed55d082215ffcb29c4f634006aa0c7f5e4d6d1d55c8c25fc45f8f03c8414e07"
+        },
+        "trace.json": {
+          "bytes": 940442,
+          "sha256": "576aa420ddcd84a1d79722c43d9cb43fd42b952d15d620eef323798362d52473"
+        },
+        "trajectory.npz": {
+          "bytes": 128276,
+          "sha256": "6440f62c1f6195596e572a1c77504385ed4ca270e11164203cbbf42c93411120"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep47/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "164"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 14274,
+          "sha256": "f43efba933ed51768a81a3d8904343e08d347942cfe7c770234d501444a5c989"
+        },
+        "observations.npz": {
+          "bytes": 173985,
+          "sha256": "81be081980adace964dfa535fbe9dd9afb4f747d70fd717d8fe780be0221fd92"
+        },
+        "reset.json": {
+          "bytes": 1754,
+          "sha256": "7498ca8adc24910cabc0316a32088cabc75749a66e7bdcd0b9d59617d2fd9e26"
+        },
+        "result.json": {
+          "bytes": 4341,
+          "sha256": "4b75c0c6397044e9d568ff5bbf305d0cb2981d494ec6bb3fd9c9d95932d37643"
+        },
+        "rollout.mp4": {
+          "bytes": 522917,
+          "sha256": "5301b97a02e33fac8b5460e0ba6b1a520469d54e025f894062c9ae346627c530"
+        },
+        "trace.json": {
+          "bytes": 639962,
+          "sha256": "f823b2c8af6f97a6ef506c09db848e5c148204e63828d5eda2e13431f108c36f"
+        },
+        "trajectory.npz": {
+          "bytes": 87635,
+          "sha256": "62f68d0b9f4339e666e434d6df81226bb11a3ec6f0a697dff04670e5733072cf"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep48/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "204"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 17787,
+          "sha256": "56cd9146b3d26216fd39e209fcdfd6f430899dfe127d20809fb81ad219bc6529"
+        },
+        "observations.npz": {
+          "bytes": 219048,
+          "sha256": "a3f562d9ab5e9c402dea4ce3ee1100229a919bd2eba24a85bf66f3ab574dd657"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "43fc27e1340ed3839c9f36f24be0be0383aec559742ac51afeb849a9f0292f07"
+        },
+        "result.json": {
+          "bytes": 4296,
+          "sha256": "56df27688b959b303c6af5dd4edcd0eb17e6e22e291dcbdd3763120e68e12de2"
+        },
+        "rollout.mp4": {
+          "bytes": 454516,
+          "sha256": "68a5fd7afad977c847b773d13c3b1c8e5b1a49c9153f00d5e9b5eb94cd02185d"
+        },
+        "trace.json": {
+          "bytes": 796131,
+          "sha256": "93688be558a43ed723b8eeb05b31c89683ef9474d6643b3e74efbc1ba49e591d"
+        },
+        "trajectory.npz": {
+          "bytes": 108551,
+          "sha256": "c5a62cd04bc6149011189c36413fc8de8d723191c3008afdb13bb965f7a7afb6"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep48/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "193"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 16713,
+          "sha256": "bb3c927bcfe15b7a7b7f182ed13c62165bea22227680f221f83a8e60eace6843"
+        },
+        "observations.npz": {
+          "bytes": 201915,
+          "sha256": "1e482146dbebba7d1e72ba83f38d0b8d50a4950a3f9c918b7ff2c1afe2734eb0"
+        },
+        "reset.json": {
+          "bytes": 1750,
+          "sha256": "43fc27e1340ed3839c9f36f24be0be0383aec559742ac51afeb849a9f0292f07"
+        },
+        "result.json": {
+          "bytes": 4336,
+          "sha256": "a42c5f3528f277bb46e10b196097bd681c1f303386c233e2b254548c25da9d28"
+        },
+        "rollout.mp4": {
+          "bytes": 412863,
+          "sha256": "0d6aac95e09072cccbf4858d02c1bde9464db1ac2f4de3d4810ad618604dffdb"
+        },
+        "trace.json": {
+          "bytes": 754955,
+          "sha256": "6c0a8bcfdc33fab76792a84ddf04088c4fed35828b11b14cfd5845b684ec7323"
+        },
+        "trajectory.npz": {
+          "bytes": 103114,
+          "sha256": "3a9c3d368df5b0d0c6c8130d041a79e93101902e02bd91acc65284db6ac77962"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep49/baseline",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26163,
+          "sha256": "c239483c121bb978b1717e6fe01173964aef3b215e377d062bbb1afd34b13354"
+        },
+        "observations.npz": {
+          "bytes": 302410,
+          "sha256": "9fb984b496b28022fe1b0900b14dd99da1b3dd1461702ea9f9faeee06ee522c4"
+        },
+        "reset.json": {
+          "bytes": 1746,
+          "sha256": "4d84da5c9d1072d661b6aa9436c003c9b75c1141ce17a35ab5df4ae458f3bfe7"
+        },
+        "result.json": {
+          "bytes": 4303,
+          "sha256": "421329a2415442bbc23aecef287b55e636053673f1bf4d02b89da2063eaca58b"
+        },
+        "rollout.mp4": {
+          "bytes": 896275,
+          "sha256": "60042cd0c3908763427430d76333b18ffa7027d8da6a5be6f9f3aefd28d481f3"
+        },
+        "trace.json": {
+          "bytes": 1178066,
+          "sha256": "f47fc3f45cad09672307e1c5382aad34fc91fde7f401b01f3fa88fda67d8505a"
+        },
+        "trajectory.npz": {
+          "bytes": 160112,
+          "sha256": "cdade8118f5b08b1b371e7171d01ca227d2611c9fe0d0e3768495e8cff43e92d"
+        }
+      }
+    },
+    {
+      "folder": "shard_25_49/episodes/ep49/guided",
+      "video": {
+        "codec_name": "h264",
+        "width": 384,
+        "height": 432,
+        "r_frame_rate": "10/1",
+        "nb_read_frames": "301"
+      },
+      "files": {
+        "chunks.json": {
+          "bytes": 26148,
+          "sha256": "5b3882c2b27d6e3878baa38e64576af45db14efc9e7d1e0c09edb9f32ab0ef9e"
+        },
+        "observations.npz": {
+          "bytes": 273482,
+          "sha256": "e1b9b69c86be7e7e28f327b02b4ba84570154e8522148e0069a4aec05f8c1c2d"
+        },
+        "reset.json": {
+          "bytes": 1746,
+          "sha256": "4d84da5c9d1072d661b6aa9436c003c9b75c1141ce17a35ab5df4ae458f3bfe7"
+        },
+        "result.json": {
+          "bytes": 4366,
+          "sha256": "9d3f34fde5e8c7655d89480f88d2086bb0e190a629d725f2c5aba48b52131178"
+        },
+        "rollout.mp4": {
+          "bytes": 967190,
+          "sha256": "312341c885dea9c8f9a26da0b3e3ed9d4c4c212a3a8197b02b8030b1bd47899a"
+        },
+        "trace.json": {
+          "bytes": 1178351,
+          "sha256": "d62bb8c0365c9335b85c2ffb1a718c370e6766a7c35133e70d4d0f594ad5df21"
+        },
+        "trajectory.npz": {
+          "bytes": 160817,
+          "sha256": "15ce0432ec6ac80574fda3893a754907805cbd634ea57e4345f9be50093d375d"
+        }
+      }
+    }
+  ]
+}

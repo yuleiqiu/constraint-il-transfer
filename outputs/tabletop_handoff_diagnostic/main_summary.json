@@ -1,0 +1,62 @@
+{
+  "main_runs": 45,
+  "layouts": [
+    43,
+    49,
+    27
+  ],
+  "repetitions_per_layout_condition": 3,
+  "repetitions_are_independent_samples": false,
+  "conditions": {
+    "baseline": {
+      "success": 0,
+      "safe_success": 0,
+      "collision_any": 3,
+      "ncr": 0,
+      "success_with_collision": 0,
+      "collision_failure": 3,
+      "task_sr": 0.0,
+      "safe_sr": 0.0
+    },
+    "guided": {
+      "success": 1,
+      "safe_success": 1,
+      "collision_any": 1,
+      "ncr": 1,
+      "success_with_collision": 0,
+      "collision_failure": 1,
+      "task_sr": 0.3333333333333333,
+      "safe_sr": 0.3333333333333333
+    },
+    "short": {
+      "success": 2,
+      "safe_success": 1,
+      "collision_any": 2,
+      "ncr": 0,
+      "success_with_collision": 1,
+      "collision_failure": 1,
+      "task_sr": 0.6666666666666666,
+      "safe_sr": 0.3333333333333333
+    },
+    "long": {
+      "success": 2,
+      "safe_success": 2,
+      "collision_any": 0,
+      "ncr": 1,
+      "success_with_collision": 0,
+      "collision_failure": 0,
+      "task_sr": 0.6666666666666666,
+      "safe_sr": 0.6666666666666666
+    },
+    "teacher": {
+      "success": 3,
+      "safe_success": 3,
+      "collision_any": 0,
+      "ncr": 0,
+      "success_with_collision": 0,
+      "collision_failure": 0,
+      "task_sr": 1.0,
+      "safe_sr": 1.0
+    }
+  }
+}

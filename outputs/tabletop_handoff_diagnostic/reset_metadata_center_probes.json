@@ -1,0 +1,392 @@
+[
+  {
+    "episode": 8,
+    "reset_seed": 101,
+    "restored_dynamic_state_max_abs": 0.0,
+    "metadata_goal_xy": [
+      0.005476691113764705,
+      0.20765971367181568
+    ],
+    "physical_goal_xy": [
+      0.00432409,
+      0.230144
+    ],
+    "goal_error_m": 0.02251380956247137,
+    "metadata_obstacle_xy": [
+      0.03852121780916057,
+      0.001788707549485165
+    ],
+    "physical_obstacle_xy": [
+      0.0282769,
+      -0.0100714
+    ],
+    "obstacle_error_m": 0.015671891987263036,
+    "synthetic_goal_predicate_tests": [
+      {
+        "offset_xy": [
+          0.0,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.02,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          -0.02,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.0,
+          0.02
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.0,
+          -0.02
+        ],
+        "before_sync": true,
+        "after_sync": true
+      }
+    ]
+  },
+  {
+    "episode": 8,
+    "reset_seed": 202,
+    "restored_dynamic_state_max_abs": 0.0,
+    "metadata_goal_xy": [
+      0.01124950084700918,
+      0.20802555947265974
+    ],
+    "physical_goal_xy": [
+      0.00432409,
+      0.230144
+    ],
+    "goal_error_m": 0.023177289029594463,
+    "metadata_obstacle_xy": [
+      0.01937176949882395,
+      -0.010101617756424859
+    ],
+    "physical_obstacle_xy": [
+      0.0282769,
+      -0.0100714
+    ],
+    "obstacle_error_m": 0.008905181769946043,
+    "synthetic_goal_predicate_tests": [
+      {
+        "offset_xy": [
+          0.0,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.02,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          -0.02,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.0,
+          0.02
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.0,
+          -0.02
+        ],
+        "before_sync": true,
+        "after_sync": true
+      }
+    ]
+  },
+  {
+    "episode": 8,
+    "reset_seed": 303,
+    "restored_dynamic_state_max_abs": 0.0,
+    "metadata_goal_xy": [
+      -0.013564603450609513,
+      0.23894677187942195
+    ],
+    "physical_goal_xy": [
+      0.00432409,
+      0.230144
+    ],
+    "goal_error_m": 0.01993725523062344,
+    "metadata_obstacle_xy": [
+      -0.03197890835151336,
+      -0.003816684211877178
+    ],
+    "physical_obstacle_xy": [
+      0.0282769,
+      -0.0100714
+    ],
+    "obstacle_error_m": 0.060579566767058515,
+    "synthetic_goal_predicate_tests": [
+      {
+        "offset_xy": [
+          0.0,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.02,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          -0.02,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.0,
+          0.02
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.0,
+          -0.02
+        ],
+        "before_sync": true,
+        "after_sync": true
+      }
+    ]
+  },
+  {
+    "episode": 43,
+    "reset_seed": 101,
+    "restored_dynamic_state_max_abs": 0.0,
+    "metadata_goal_xy": [
+      0.005476691113764705,
+      0.20765971367181568
+    ],
+    "physical_goal_xy": [
+      0.0280801,
+      0.247943
+    ],
+    "goal_error_m": 0.04619152791017874,
+    "metadata_obstacle_xy": [
+      0.03852121780916057,
+      0.001788707549485165
+    ],
+    "physical_obstacle_xy": [
+      0.00741094,
+      0.0260997
+    ],
+    "obstacle_error_m": 0.039482575135015414,
+    "synthetic_goal_predicate_tests": [
+      {
+        "offset_xy": [
+          0.0,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.02,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          -0.02,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.0,
+          0.02
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.0,
+          -0.02
+        ],
+        "before_sync": true,
+        "after_sync": true
+      }
+    ]
+  },
+  {
+    "episode": 43,
+    "reset_seed": 202,
+    "restored_dynamic_state_max_abs": 0.0,
+    "metadata_goal_xy": [
+      0.01124950084700918,
+      0.20802555947265974
+    ],
+    "physical_goal_xy": [
+      0.0280801,
+      0.247943
+    ],
+    "goal_error_m": 0.04332056239365322,
+    "metadata_obstacle_xy": [
+      0.01937176949882395,
+      -0.010101617756424859
+    ],
+    "physical_obstacle_xy": [
+      0.00741094,
+      0.0260997
+    ],
+    "obstacle_error_m": 0.03812606522579506,
+    "synthetic_goal_predicate_tests": [
+      {
+        "offset_xy": [
+          0.0,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.02,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          -0.02,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.0,
+          0.02
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.0,
+          -0.02
+        ],
+        "before_sync": true,
+        "after_sync": true
+      }
+    ]
+  },
+  {
+    "episode": 43,
+    "reset_seed": 303,
+    "restored_dynamic_state_max_abs": 0.0,
+    "metadata_goal_xy": [
+      -0.013564603450609513,
+      0.23894677187942195
+    ],
+    "physical_goal_xy": [
+      0.0280801,
+      0.247943
+    ],
+    "goal_error_m": 0.04260532180240735,
+    "metadata_obstacle_xy": [
+      -0.03197890835151336,
+      -0.003816684211877178
+    ],
+    "physical_obstacle_xy": [
+      0.00741094,
+      0.0260997
+    ],
+    "obstacle_error_m": 0.049462614139043175,
+    "synthetic_goal_predicate_tests": [
+      {
+        "offset_xy": [
+          0.0,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.02,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          -0.02,
+          0.0
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.0,
+          0.02
+        ],
+        "before_sync": true,
+        "after_sync": true
+      },
+      {
+        "offset_xy": [
+          0.0,
+          -0.02
+        ],
+        "before_sync": true,
+        "after_sync": true
+      }
+    ]
+  }
+]

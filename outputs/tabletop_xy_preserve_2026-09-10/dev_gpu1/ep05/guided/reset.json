@@ -1,0 +1,36 @@
+{
+  "goal_before": [
+    -0.0050899012840170295,
+    0.21696789083437218
+  ],
+  "obstacle_before": [
+    -0.015597599897238574,
+    -0.005682119670791581
+  ],
+  "physical_goal": [
+    0.0116609,
+    0.211978
+  ],
+  "physical_obstacle": [
+    -0.0165178,
+    -0.0128671
+  ],
+  "restored_state_hash": "f65d34977872b9092a839363aa35decb65580e1f059abc35e35b60842654a1ce",
+  "initial_obs_hashes": {
+    "object": "3ce1102c19ccd34021bf4f9a9b80d1a754811403184df2ecfb0f9eba4d9132f6",
+    "robot0_joint_pos": "4a09a99a64553f432785c1ec44e19214d5e044b9e7242a9901aa9a6c1a4c9ed8",
+    "robot0_joint_pos_cos": "fcd46cbafe3aa7a88e2334f24f1b3c203b0d89ee89f10a9e62c06e2214ab621e",
+    "robot0_joint_pos_sin": "1e3f9d6c3cddfcb46447c26bb9779f0bbf5b3436b6a41e646e300006b18e1cef",
+    "robot0_joint_vel": "6a39094347e944cbeb157a299098790c3cfef0edaddd8e2fc85928ab8c20d9be",
+    "robot0_eef_pos": "9cd979e79deaf61158aaa7bdb608a4da6fa4704c5b6a6e2fe31312f635b6565d",
+    "robot0_eef_quat": "16c4a7171a3291a98ccae2c2ee0ae51617701c0359d0ff637e85d494046fedab",
+    "robot0_eef_quat_site": "a838241f9cd2385bb2db4e4553d34c4452b9d003c3b40a6bea63c9498b4bd7a0",
+    "robot0_gripper_qpos": "35a51eae5d2c395fe368a00a961693b4b20ff938802e5854ae5cc86b9f6ead80",
+    "robot0_gripper_qvel": "4bf91a2a400a9fb6cbc48dce613624a342fda3803312f55a19b83ce012bf9472",
+    "lang_emb": "13281726c1332ea5420c8075cff1f282527ba061ec468e37c704f7760da5093c",
+    "agent_pos": "4f349803386a5697095ac4d13d2f5bbb300ea0434910737a447f4525c9059975",
+    "task_pointcloud": "299c130858ee26100fc645bd7bcd4de27e876c819696ed1fbec3ed20c670b597",
+    "timesteps": "0720b50c2478a89cb9be5ad081457d387bbe74f427680086151138e1531dea03",
+    "actions": "6a39094347e944cbeb157a299098790c3cfef0edaddd8e2fc85928ab8c20d9be"
+  }
+}

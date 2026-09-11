@@ -1,0 +1,21 @@
+{
+  "repositories": {
+    "root": "05a2ed6eae57fb58b44c4038ac41e1809e3bb383",
+    "robomimic": "e6408e9f27602fb9f84366edfa0d14d07f402785",
+    "robosuite": "47d4190eadc6ab897a0473062b58a989fb21609f"
+  },
+  "checkpoint": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_tabletop_can_wide_support_abs_pose_sample_100demo_seed42/20260826184200/models/model_epoch_50_tabletop_can_wide_support_pointcloud_abs_eef_100_success_0.8.pth",
+  "checkpoint_sha256": "ec5c270c8bd0d40600ee7a11bae93010e7f46d410c5c45b55eb236282d778bec",
+  "state_bank_sha256": "cf7f67394fc2855a1a0cffc13bba7f8eeb2399f05a496d8deb7c2d05e346e23c",
+  "scripts_sha256": {
+    "scripts/2026-09-07_tabletop_handoff/audit_reset_metadata.py": "a67970cb49f57baf1286967e08090df8e1067304988be2e21a61df4face20bbe",
+    "scripts/2026-09-07_tabletop_handoff/analyze.py": "24b58112fc976918a2a0f2c375ea9a3c840e3ff1462065bfda9f6cf7df3ae332",
+    "scripts/2026-09-07_tabletop_handoff/diagnose.py": "3c1bf9c81e10953cb7b1b50200e8b564f86ac4093f5e5580ffc9cf16a576ca84"
+  },
+  "final_scripts_sha256": {
+    "scripts/2026-09-07_tabletop_handoff/audit_reset_metadata.py": "a67970cb49f57baf1286967e08090df8e1067304988be2e21a61df4face20bbe",
+    "scripts/2026-09-07_tabletop_handoff/analyze.py": "67063c786d065db9e38430eaa7bdd3b7f7ac9e094ef3ad89ea87fca3098a2a4f",
+    "scripts/2026-09-07_tabletop_handoff/diagnose.py": "bc209d8659eeb6a08cdc7314ee8982a2cacde0f0c9aebcd9bd2bdee9d11c0768"
+  },
+  "note": "Initial script hashes were captured during the main run; resume guards and reporting were subsequently extended. Final hashes describe the delivered scripts."
+}

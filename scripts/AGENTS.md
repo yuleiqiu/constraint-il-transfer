@@ -1,5 +1,25 @@
 # Project Scripts
 
+Completed output-preservation ablation (2026-09-11 review):
+`2026-09-10_tabletop_xy_preserve/README.md`. Exact non-XY source reference,
+unchanged point cost/height gate, layout28 pilot then fixed10-layout development
+comparison; released0.5s placement stopping and per-rollout MP4s.
+
+Placement rescore (2026-09-10): `2026-09-10_tabletop_placement_rescore/README.md`.
+Offline contact reconstruction and0.5s released-residence scoring; censored
+early terminations stay unknown. No policy rerun is implied.
+
+Completed corrected full-episode evaluation (authorized 2026-09-09, reviewed 2026-09-10):
+`2026-09-09_tabletop_guidance_reeval/README.md`. Fixed 50-layout source / original
+target-lifted guidance comparison, two GPUs partitioned by layout, in-run videos
+for all 100 formal branches, separate repeated preflight and scorer audit data.
+
+Completed bounded diagnostic (user-authorized 2026-09-07, reviewed 2026-09-08):
+`2026-09-07_tabletop_handoff/README.md`. Compares source, original point guidance,
+short / long oracle-route help and complete teacher without training. Includes
+a reset-metadata scoring audit; do not reuse old Tabletop success labels without
+reading `outputs/tabletop_handoff_diagnostic/conclusion.md` from project root.
+
 > Local scripts under `scripts/`. All invoked with `uv run python <path>`.
 > See root `AGENTS.md` §3 for a high-level index and §10 for git workflow.
 

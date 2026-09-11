@@ -1,0 +1,15 @@
+*.npz
+*.mp4
+*.log
+*.tmp
+
+# Per-step diagnostics and operational markers remain local.
+*.npz
+*.log
+*.tmp
+**/trace.json
+**/chunks.json
+**/*_contacts.json
+**/step*_diagnostics.json
+**/initial_forced_on_attempt/
+START_MAIN

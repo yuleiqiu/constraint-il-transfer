@@ -1,0 +1,11 @@
+{
+  "success": false,
+  "safe_success": false,
+  "collision_any": true,
+  "ncr": false,
+  "success_with_collision": false,
+  "collision_failure": true,
+  "steps": 600,
+  "first_collision_step": 188,
+  "final_goal_distance": 0.13571960388883275
+}

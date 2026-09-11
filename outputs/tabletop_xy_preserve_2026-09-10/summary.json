@@ -1,0 +1,73 @@
+{
+  "status": "complete",
+  "formal_completed": 30,
+  "complete_layouts": 10,
+  "conditions": {
+    "baseline": {
+      "n": 10,
+      "success": 10,
+      "safe_success": 9,
+      "collision_any": 1,
+      "ncr": 0,
+      "four_way": {
+        "safe_success": 9,
+        "success_with_collision": 1,
+        "collision_failure": 0,
+        "ncr": 0
+      }
+    },
+    "guided": {
+      "n": 10,
+      "success": 6,
+      "safe_success": 6,
+      "collision_any": 1,
+      "ncr": 3,
+      "four_way": {
+        "safe_success": 6,
+        "success_with_collision": 0,
+        "collision_failure": 1,
+        "ncr": 3
+      }
+    },
+    "protected": {
+      "n": 10,
+      "success": 9,
+      "safe_success": 9,
+      "collision_any": 1,
+      "ncr": 0,
+      "four_way": {
+        "safe_success": 9,
+        "success_with_collision": 0,
+        "collision_failure": 1,
+        "ncr": 0
+      }
+    }
+  },
+  "paired": {
+    "protected_vs_baseline": {
+      "success": {
+        "rescues": 0,
+        "regressions": 1,
+        "net": -1
+      },
+      "safe_success": {
+        "rescues": 0,
+        "regressions": 0,
+        "net": 0
+      }
+    },
+    "protected_vs_guided": {
+      "success": {
+        "rescues": 4,
+        "regressions": 1,
+        "net": 3
+      },
+      "safe_success": {
+        "rescues": 4,
+        "regressions": 1,
+        "net": 3
+      }
+    }
+  },
+  "expansion_gate_pass": false
+}

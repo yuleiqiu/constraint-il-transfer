@@ -1,0 +1,10 @@
+{
+  "utc": "2026-09-09T19:57:49.659511+00:00",
+  "formal_completed": 100,
+  "formal_total": 100,
+  "status": "complete",
+  "shards": {
+    "shard_25_49": 50,
+    "shard_00_24": 50
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "sampling_unit": "selected layout; repeated identical seeds audit replay, not independent trials",
+  "conditions": {
+    "baseline": {
+      "runs": 1,
+      "layouts": 1,
+      "success": 0.0,
+      "safe_success": 0.0,
+      "collision_any": 1.0,
+      "ncr": 0.0,
+      "four_way_counts": {
+        "safe_success": 0,
+        "success_with_collision": 0,
+        "collision_failure": 1,
+        "ncr": 0
+      }
+    },
+    "guided": {
+      "runs": 1,
+      "layouts": 1,
+      "success": 0.0,
+      "safe_success": 0.0,
+      "collision_any": 0.0,
+      "ncr": 1.0,
+      "four_way_counts": {
+        "safe_success": 0,
+        "success_with_collision": 0,
+        "collision_failure": 0,
+        "ncr": 1
+      }
+    },
+    "short": {
+      "runs": 1,
+      "layouts": 1,
+      "success": 1.0,
+      "safe_success": 1.0,
+      "collision_any": 0.0,
+      "ncr": 0.0,
+      "four_way_counts": {
+        "safe_success": 1,
+        "success_with_collision": 0,
+        "collision_failure": 0,
+        "ncr": 0
+      }
+    },
+    "long": {
+      "runs": 1,
+      "layouts": 1,
+      "success": 1.0,
+      "safe_success": 1.0,
+      "collision_any": 0.0,
+      "ncr": 0.0,
+      "four_way_counts": {
+        "safe_success": 1,
+        "success_with_collision": 0,
+        "collision_failure": 0,
+        "ncr": 0
+      }
+    },
+    "teacher": {
+      "runs": 1,
+      "layouts": 1,
+      "success": 1.0,
+      "safe_success": 1.0,
+      "collision_any": 0.0,
+      "ncr": 0.0,
+      "four_way_counts": {
+        "safe_success": 1,
+        "success_with_collision": 0,
+        "collision_failure": 0,
+        "ncr": 0
+      }
+    }
+  },
+  "pairing": {
+    "baseline": {
+      "success": {
+        "failure_to_success": 0,
+        "success_to_failure": 0
+      },
+      "safe_success": {
+        "failure_to_success": 0,
+        "success_to_failure": 0
+      }
+    },
+    "guided": {
+      "success": {
+        "failure_to_success": 0,
+        "success_to_failure": 0
+      },
+      "safe_success": {
+        "failure_to_success": 0,
+        "success_to_failure": 0
+      }
+    },
+    "short": {
+      "success": {
+        "failure_to_success": 1,
+        "success_to_failure": 0
+      },
+      "safe_success": {
+        "failure_to_success": 1,
+        "success_to_failure": 0
+      }
+    },
+    "long": {
+      "success": {
+        "failure_to_success": 1,
+        "success_to_failure": 0
+      },
+      "safe_success": {
+        "failure_to_success": 1,
+        "success_to_failure": 0
+      }
+    },
+    "teacher": {
+      "success": {
+        "failure_to_success": 1,
+        "success_to_failure": 0
+      },
+      "safe_success": {
+        "failure_to_success": 1,
+        "success_to_failure": 0
+      }
+    }
+  },
+  "repeat_audit": {
+    "43:baseline": {
+      "runs": 1,
+      "outcomes": [
+        [
+          false,
+          true
+        ]
+      ],
+      "boundary_state_max_abs": 0.0,
+      "boundary_policy_obs_max_abs": {
+        "agent_pos": 0.0,
+        "task_pointcloud": 0.0
+      },
+      "first_chunk_repeat_max_abs": 0.0
+    },
+    "43:guided": {
+      "runs": 1,
+      "outcomes": [
+        [
+          false,
+          false
+        ]
+      ],
+      "boundary_state_max_abs": 0.0,
+      "boundary_policy_obs_max_abs": {
+        "agent_pos": 0.0,
+        "task_pointcloud": 0.0
+      },
+      "first_chunk_repeat_max_abs": 0.0
+    },
+    "43:short": {
+      "runs": 1,
+      "outcomes": [
+        [
+          true,
+          false
+        ]
+      ],
+      "boundary_state_max_abs": 0.0,
+      "boundary_policy_obs_max_abs": {
+        "agent_pos": 0.0,
+        "task_pointcloud": 0.0
+      },
+      "first_chunk_repeat_max_abs": 0.0
+    },
+    "43:long": {
+      "runs": 1,
+      "outcomes": [
+        [
+          true,
+          false
+        ]
+      ],
+      "boundary_state_max_abs": 0.0,
+      "boundary_policy_obs_max_abs": {
+        "agent_pos": 0.0,
+        "task_pointcloud": 0.0
+      },
+      "first_chunk_repeat_max_abs": 0.0
+    },
+    "43:teacher": {
+      "runs": 1,
+      "outcomes": [
+        [
+          true,
+          false
+        ]
+      ],
+      "boundary_state_max_abs": 0.0,
+      "boundary_policy_obs_max_abs": {
+        "agent_pos": 0.0,
+        "task_pointcloud": 0.0
+      },
+      "first_chunk_repeat_max_abs": null
+    }
+  }
+}

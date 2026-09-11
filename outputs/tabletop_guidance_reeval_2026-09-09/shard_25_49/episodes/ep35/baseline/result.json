@@ -1,0 +1,133 @@
+{
+  "condition": "baseline",
+  "guidance_scale": null,
+  "safety_distance": null,
+  "success": true,
+  "collision_any": false,
+  "robot_obstacle_collision_any": false,
+  "arm_obstacle_collision_any": false,
+  "gripper_obstacle_collision_any": false,
+  "hand_obstacle_collision_any": false,
+  "finger_obstacle_collision_any": false,
+  "target_obstacle_collision_any": false,
+  "safe_success": true,
+  "success_with_collision": false,
+  "collision_failure": false,
+  "ncr": false,
+  "horizon_truncated": false,
+  "collision_names": [],
+  "collision_robot_geom_names": [],
+  "horizon": 311,
+  "chunks": 39,
+  "target_displacement_m": 0.4350387156009674,
+  "minimum_eef_obstacle_clearance_m": 0.03147992491722107,
+  "guidance_trigger_rate": 0.0,
+  "guidance_update_norm_mean": 0.0,
+  "guidance_update_norm_max": 0.0,
+  "tangent_side_first": 0,
+  "tangent_side_counts": {
+    "-1": 0,
+    "+1": 0
+  },
+  "obstacle_cloud_missing_chunks": 0,
+  "first_guidance_active_step": null,
+  "first_collision_step": null,
+  "first_hand_collision_step": null,
+  "first_finger_collision_step": null,
+  "first_target_collision_step": null,
+  "action_clip_count": 1003,
+  "action_clip_max_abs": 1.1605215072631836,
+  "position_action_clip_count": 194,
+  "position_action_clip_max_abs": 0.023952007293701172,
+  "hand_collision_enabled": true,
+  "hand_collision_audit": {
+    "enabled": true,
+    "hand_masks": {
+      "gripper0_right_gripper_base_col": [
+        1,
+        1
+      ]
+    },
+    "finger_masks": {
+      "gripper0_right_l_finger_g0": [
+        0,
+        1
+      ],
+      "gripper0_right_l_finger_g1": [
+        0,
+        1
+      ],
+      "gripper0_right_l_fingertip_g0": [
+        0,
+        1
+      ],
+      "gripper0_right_l_fingerpad_g0": [
+        0,
+        1
+      ],
+      "gripper0_right_r_finger_g0": [
+        0,
+        1
+      ],
+      "gripper0_right_r_finger_g1": [
+        0,
+        1
+      ],
+      "gripper0_right_r_fingertip_g0": [
+        0,
+        1
+      ],
+      "gripper0_right_r_fingerpad_g0": [
+        0,
+        1
+      ]
+    }
+  },
+  "obstacle_cost_type": "huber_hinge",
+  "obstacle_cost_smoothing": null,
+  "tangent_ratio": null,
+  "episode": 35,
+  "policy_seed": 828000035,
+  "initial_state_hash": "a9da2599e988aad76716ffcc715af695d921ed0d102f9a247ea49fe6209d7e78",
+  "layout_seed": 828035,
+  "termination": "success",
+  "wall_seconds": 39.99920955579728,
+  "video_frames": 157,
+  "folder": "shard_25_49/episodes/ep35/baseline",
+  "reset_audit": {
+    "goal_before": [
+      0.0051462255622182415,
+      0.203474782152083
+    ],
+    "obstacle_before": [
+      -0.006270447356348138,
+      -0.006890624014970854
+    ],
+    "physical_goal": [
+      0.018602,
+      0.227999
+    ],
+    "physical_obstacle": [
+      -0.0136174,
+      0.0169269
+    ],
+    "restored_state_hash": "a9da2599e988aad76716ffcc715af695d921ed0d102f9a247ea49fe6209d7e78",
+    "initial_obs_hashes": {
+      "object": "694e9ed8c1f1701494d5e15ea2f37f07d807b81b509def465c2dd95b1f9b8b31",
+      "robot0_joint_pos": "f8147d1d30e1d7585f6494dedb4907440445929623537a154fc23771b809e0e0",
+      "robot0_joint_pos_cos": "5ffc7403ede75b44e46bdb09a70175da576e7316e92e57e2b3f87c46d8b42ef4",
+      "robot0_joint_pos_sin": "373d8e65dad1634a840ccbb389a4a49c0339bebad5be6a2275f0d27868aa3c87",
+      "robot0_joint_vel": "6a39094347e944cbeb157a299098790c3cfef0edaddd8e2fc85928ab8c20d9be",
+      "robot0_eef_pos": "db2ea7be191115e720b1b172b0d6dbad60b64158eeba30e9eeac23923ecd4f67",
+      "robot0_eef_quat": "d8a626ff3833750ccea99d7c22f2029f3d4115bb70ef38268aed58e18445a8d1",
+      "robot0_eef_quat_site": "99c22f32232223b573ee3ce9fd6c9f4a47645caad24ae2cb0ba5eb43ff49e415",
+      "robot0_gripper_qpos": "35a51eae5d2c395fe368a00a961693b4b20ff938802e5854ae5cc86b9f6ead80",
+      "robot0_gripper_qvel": "4bf91a2a400a9fb6cbc48dce613624a342fda3803312f55a19b83ce012bf9472",
+      "lang_emb": "13281726c1332ea5420c8075cff1f282527ba061ec468e37c704f7760da5093c",
+      "agent_pos": "796ea50d8d9de07fa57e0e0cd3506b365d751c4ea8b04ebf1fe0de3a37d3d618",
+      "task_pointcloud": "d85e9a6f88b5240cc816b745e5258a4df217009183b613bff0dcca4450dfb017",
+      "timesteps": "0720b50c2478a89cb9be5ad081457d387bbe74f427680086151138e1531dea03",
+      "actions": "6a39094347e944cbeb157a299098790c3cfef0edaddd8e2fc85928ab8c20d9be"
+    }
+  }
+}

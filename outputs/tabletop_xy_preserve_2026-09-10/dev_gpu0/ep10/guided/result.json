@@ -1,0 +1,55 @@
+{
+  "episode": 10,
+  "condition": "guided",
+  "steps": 600,
+  "success": false,
+  "safe_success": false,
+  "collision_any": false,
+  "success_with_collision": false,
+  "collision_failure": false,
+  "ncr": true,
+  "first_collision_step": null,
+  "first_strict_success_step": null,
+  "gate_active_chunks": 28,
+  "protected_non_xy_max_error": null,
+  "initial_state_hash": "24be7a3538a800733b6865fcd4f8d152488372895c726c797161cbced4435fac",
+  "reset_audit": {
+    "goal_before": [
+      -0.005439223927118663,
+      0.19062215818149844
+    ],
+    "obstacle_before": [
+      -0.024293318135137073,
+      -0.006387378823648247
+    ],
+    "physical_goal": [
+      -0.0277061,
+      0.214325
+    ],
+    "physical_obstacle": [
+      0.00136335,
+      0.00641476
+    ],
+    "restored_state_hash": "24be7a3538a800733b6865fcd4f8d152488372895c726c797161cbced4435fac",
+    "initial_obs_hashes": {
+      "object": "f44ea8cdb156816ee0131f3e23a6bf837ae738d3b57755d08989f370164e14f0",
+      "robot0_joint_pos": "babd87c003acc3ef972faf836ea224dc6fdcdc4de7b14916c26777ed130d4f65",
+      "robot0_joint_pos_cos": "dd8b6392252f7c1655e340c621979d0567d5f7a4204dec456b38f69f42dd36cc",
+      "robot0_joint_pos_sin": "a1a30f163fea03d91b933110f4879cb934144cd9f2932750afefa86e08224144",
+      "robot0_joint_vel": "6a39094347e944cbeb157a299098790c3cfef0edaddd8e2fc85928ab8c20d9be",
+      "robot0_eef_pos": "60d7cfdd9fe4d34071e2556234c43cd8526d9eb8cfd6296ad86b636bf9afbec7",
+      "robot0_eef_quat": "6a9d54469a8f82a1e3240f3b23c92c28db1c9a017618644b0f806a50a7384005",
+      "robot0_eef_quat_site": "5a295a16a6b396e46d3d477b00f90ee1a2245223533c3ba4a1f17a960f4a7046",
+      "robot0_gripper_qpos": "35a51eae5d2c395fe368a00a961693b4b20ff938802e5854ae5cc86b9f6ead80",
+      "robot0_gripper_qvel": "4bf91a2a400a9fb6cbc48dce613624a342fda3803312f55a19b83ce012bf9472",
+      "lang_emb": "13281726c1332ea5420c8075cff1f282527ba061ec468e37c704f7760da5093c",
+      "agent_pos": "94876bc954270d75407ee50d57b63a95ba1a728effdb142832c6f0f0b7dd1211",
+      "task_pointcloud": "271723cf15d1c56f86b0dddf5284b30a199b929fba7f8484b202381a5f6a816f",
+      "timesteps": "0720b50c2478a89cb9be5ad081457d387bbe74f427680086151138e1531dea03",
+      "actions": "6a39094347e944cbeb157a299098790c3cfef0edaddd8e2fc85928ab8c20d9be"
+    }
+  },
+  "wall_seconds": 102.45347330719233,
+  "video_frames": 301,
+  "folder": "ep10/guided"
+}

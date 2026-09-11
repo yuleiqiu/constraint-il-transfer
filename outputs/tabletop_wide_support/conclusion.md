@@ -1,5 +1,17 @@
 # Tabletop wider-demonstration support conclusion
 
+2026-09-07 audit addendum: a subsequent controlled Tabletop handoff diagnostic
+confirmed that XML/state restoration can leave Python-side `goal_xy` and
+`obstacle_xy` inconsistent with restored static bodies. `_can_in_goal` reads
+`goal_xy`; synthetic boundary probes confirm changed goal-membership labels.
+This evaluation and its checkpoint-screen script use the affected reset path.
+The counts below remain archived outputs of the original scorer, not corrected
+physical-tray success rates. Their Task/Safe/NCR interpretation now requires a
+scoring audit in addition to the replay qualification below. No corrected
+50-state evaluation has been run, and this defect does not establish that
+guidance is effective or account for all replay drift. Evidence:
+`../tabletop_handoff_diagnostic/README.md`, section "Confirmed reset-metadata issue".
+
 Status: bounded support test complete; no reliable task-level improvement,
 recorded 2026-09-07 from the 2026-08-26--2026-09-02 artifacts.
 

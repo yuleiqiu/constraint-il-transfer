@@ -1,10 +1,31 @@
 # Experiment outputs index
 
+Latest completed ablation: `tabletop_xy_preserve_2026-09-10/`, user-authorized
+guidedXY/source-nonXY composition. Source/guided/protected Task10/6/9 and
+Safe9/6/9 on10 fixed development layouts; four separate layout28 pilot runs.
+Expansion gate failed. Start with `conclusion.md`; videos have Markdown links.
+
 This directory contains one top-level folder per research stage. Large model
 files live only under `robomimic/train`; the other folders are compact result
 records, fixed state banks, reports, and visualizations.
 
+## Latest corrected evaluation
+
+- `tabletop_guidance_reeval_2026-09-09/`: user-authorized corrected source /
+  target-lifted comparison, all 100 branches complete, reviewed 2026-09-10.
+  Task SR 56%/56%, Safe SR46%/54%; 11 safe improvements / 7 regressions,
+  no statistically established aggregate benefit. Start with `conclusion.md`.
+  Every actual formal execution has its own video and stepwise audit artifacts.
+  `video_index.md`, `report.md` and `summary.json` provide review navigation.
+  No clean-source rerun.
+
 ## Latest completed stages
+
+- `tabletop_handoff_diagnostic/`: three-layout oracle-route / handoff diagnostic,
+  45 main branches complete. Guidance safely solves 27, short help solves 43,
+  long help solves 43/49 but fails the required retreat on 27. Start with
+  `conclusion.md`. Also confirms a Tabletop reset-metadata scoring defect; read
+  this before interpreting archived wide-support success labels.
 
 - `tabletop_wide_support/`: wider obstacle-free demonstrations with original
   single-point guidance (not MVEE). Transport-only guidance has no significant
@@ -14,8 +35,9 @@ records, fixed state banks, reports, and visualizations.
   contact removal became stalls. Contract and evidence:
   `scripts/2026-08-25_tabletop_mvee_guidance/README.md` from project root.
 
-No next experiment is selected. The following results remain evidence for
-future decisions, not an automatic work queue.
+The bounded Tabletop diagnostic is complete; no new training is selected.
+The following results remain evidence for future decisions, not an automatic
+work queue.
 
 ## Retained conclusions
 

@@ -1,0 +1,704 @@
+{
+  "date": "2026-09-09",
+  "mode": "offline artifact and source inspection; no simulation or policy inference",
+  "conditions": [
+    {
+      "path": "raised_milk_paired_seed828_n50/baseline/baseline.jsonl",
+      "rows": 50,
+      "episodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "stored_fields": [
+        "action_clip_count",
+        "action_clip_max_abs",
+        "arm_obstacle_collision_any",
+        "chunks",
+        "collision_any",
+        "collision_failure",
+        "collision_names",
+        "collision_robot_geom_names",
+        "condition",
+        "episode",
+        "finger_obstacle_collision_any",
+        "first_collision_step",
+        "first_finger_collision_step",
+        "first_guidance_active_step",
+        "first_hand_collision_step",
+        "first_target_collision_step",
+        "gripper_obstacle_collision_any",
+        "guidance_scale",
+        "guidance_trigger_rate",
+        "guidance_update_norm_max",
+        "guidance_update_norm_mean",
+        "hand_collision_audit",
+        "hand_collision_enabled",
+        "hand_obstacle_collision_any",
+        "horizon",
+        "horizon_truncated",
+        "initial_state_hash",
+        "layout_seed",
+        "minimum_eef_obstacle_clearance_m",
+        "ncr",
+        "obstacle_cloud_missing_chunks",
+        "obstacle_cost_smoothing",
+        "obstacle_cost_type",
+        "policy_seed",
+        "position_action_clip_count",
+        "position_action_clip_max_abs",
+        "restored_state_hash",
+        "robot_obstacle_collision_any",
+        "safe_success",
+        "safety_distance",
+        "success",
+        "success_with_collision",
+        "tangent_ratio",
+        "tangent_side_counts",
+        "tangent_side_first",
+        "target_displacement_m",
+        "target_obstacle_collision_any"
+      ],
+      "old_success_count": 29,
+      "old_success_before_h600": 29,
+      "h600_count": 21
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/guided_target_lifted/guided.jsonl",
+      "rows": 50,
+      "episodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "stored_fields": [
+        "action_clip_count",
+        "action_clip_max_abs",
+        "arm_obstacle_collision_any",
+        "chunks",
+        "collision_any",
+        "collision_failure",
+        "collision_names",
+        "collision_robot_geom_names",
+        "condition",
+        "episode",
+        "finger_obstacle_collision_any",
+        "first_collision_step",
+        "first_finger_collision_step",
+        "first_guidance_active_step",
+        "first_hand_collision_step",
+        "first_target_collision_step",
+        "gripper_obstacle_collision_any",
+        "guidance_scale",
+        "guidance_trigger_rate",
+        "guidance_update_norm_max",
+        "guidance_update_norm_mean",
+        "hand_collision_audit",
+        "hand_collision_enabled",
+        "hand_obstacle_collision_any",
+        "horizon",
+        "horizon_truncated",
+        "initial_state_hash",
+        "layout_seed",
+        "minimum_eef_obstacle_clearance_m",
+        "ncr",
+        "obstacle_cloud_missing_chunks",
+        "obstacle_cost_smoothing",
+        "obstacle_cost_type",
+        "policy_seed",
+        "position_action_clip_count",
+        "position_action_clip_max_abs",
+        "restored_state_hash",
+        "robot_obstacle_collision_any",
+        "safe_success",
+        "safety_distance",
+        "success",
+        "success_with_collision",
+        "tangent_ratio",
+        "tangent_side_counts",
+        "tangent_side_first",
+        "target_displacement_m",
+        "target_obstacle_collision_any"
+      ],
+      "old_success_count": 31,
+      "old_success_before_h600": 30,
+      "h600_count": 20
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/guided/guided.jsonl",
+      "rows": 50,
+      "episodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "stored_fields": [
+        "action_clip_count",
+        "action_clip_max_abs",
+        "arm_obstacle_collision_any",
+        "chunks",
+        "collision_any",
+        "collision_failure",
+        "collision_names",
+        "collision_robot_geom_names",
+        "condition",
+        "episode",
+        "finger_obstacle_collision_any",
+        "first_collision_step",
+        "first_finger_collision_step",
+        "first_guidance_active_step",
+        "first_hand_collision_step",
+        "first_target_collision_step",
+        "gripper_obstacle_collision_any",
+        "guidance_scale",
+        "guidance_trigger_rate",
+        "guidance_update_norm_max",
+        "guidance_update_norm_mean",
+        "hand_collision_audit",
+        "hand_collision_enabled",
+        "hand_obstacle_collision_any",
+        "horizon",
+        "horizon_truncated",
+        "initial_state_hash",
+        "layout_seed",
+        "minimum_eef_obstacle_clearance_m",
+        "ncr",
+        "obstacle_cloud_missing_chunks",
+        "obstacle_cost_smoothing",
+        "obstacle_cost_type",
+        "policy_seed",
+        "position_action_clip_count",
+        "position_action_clip_max_abs",
+        "restored_state_hash",
+        "robot_obstacle_collision_any",
+        "safe_success",
+        "safety_distance",
+        "success",
+        "success_with_collision",
+        "tangent_ratio",
+        "tangent_side_counts",
+        "tangent_side_first",
+        "target_displacement_m",
+        "target_obstacle_collision_any"
+      ],
+      "old_success_count": 9,
+      "old_success_before_h600": 9,
+      "h600_count": 41
+    },
+    {
+      "path": "fixed_clean_checkpoint_screen_seed827_n50_parallel/epoch50/epoch50.jsonl",
+      "rows": 50,
+      "episodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "stored_fields": [
+        "action_max_abs",
+        "checkpoint",
+        "episode",
+        "initial_state_hash",
+        "layout_seed",
+        "policy_seed",
+        "restored_state_hash",
+        "steps",
+        "success"
+      ],
+      "old_success_count": 39,
+      "old_success_before_h600": 39,
+      "h600_count": 11
+    },
+    {
+      "path": "fixed_clean_checkpoint_screen_seed827_n50_parallel/epoch250/epoch250.jsonl",
+      "rows": 50,
+      "episodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "stored_fields": [
+        "action_max_abs",
+        "checkpoint",
+        "episode",
+        "initial_state_hash",
+        "layout_seed",
+        "policy_seed",
+        "restored_state_hash",
+        "steps",
+        "success"
+      ],
+      "old_success_count": 23,
+      "old_success_before_h600": 23,
+      "h600_count": 27
+    }
+  ],
+  "video_replays": {
+    "pairs": 16,
+    "episodes": [
+      3,
+      6,
+      8,
+      17,
+      18,
+      24,
+      25,
+      26,
+      27,
+      28,
+      31,
+      37,
+      39,
+      43,
+      48,
+      49
+    ],
+    "baseline_outcome_matches": 9,
+    "guided_outcome_matches": 13
+  },
+  "archived_files": [
+    {
+      "path": "conclusion.md",
+      "bytes": 12805
+    },
+    {
+      "path": "fixed_clean_checkpoint_screen_seed827_n50_parallel/epoch250/epoch250.jsonl",
+      "bytes": 17047
+    },
+    {
+      "path": "fixed_clean_checkpoint_screen_seed827_n50_parallel/epoch250/summary.json",
+      "bytes": 717
+    },
+    {
+      "path": "fixed_clean_checkpoint_screen_seed827_n50_parallel/epoch50/epoch50.jsonl",
+      "bytes": 16973
+    },
+    {
+      "path": "fixed_clean_checkpoint_screen_seed827_n50_parallel/epoch50/summary.json",
+      "bytes": 777
+    },
+    {
+      "path": "fixed_clean_checkpoint_screen_seed827_n50_parallel/paired_summary.json",
+      "bytes": 14788
+    },
+    {
+      "path": "fixed_clean_state_bank_seed827_n50/initial_state_bank.pkl",
+      "bytes": 2278877
+    },
+    {
+      "path": "fixed_clean_state_bank_seed827_n50/manifest.json",
+      "bytes": 498
+    },
+    {
+      "path": "raised_milk_direct_demo_policy_seed828_n50/baseline/baseline.jsonl",
+      "bytes": 101085
+    },
+    {
+      "path": "raised_milk_direct_demo_policy_seed828_n50/baseline/manifest.json",
+      "bytes": 532
+    },
+    {
+      "path": "raised_milk_direct_demo_policy_seed828_n50/baseline/summary.json",
+      "bytes": 346
+    },
+    {
+      "path": "raised_milk_direct_demo_policy_seed828_n50/guided_target_lifted/guided.jsonl",
+      "bytes": 53062
+    },
+    {
+      "path": "raised_milk_direct_demo_policy_seed828_n50/guided_target_lifted_ep25_49/guided.jsonl",
+      "bytes": 26400
+    },
+    {
+      "path": "raised_milk_direct_demo_policy_seed828_n50/guided_target_lifted_ep38_49/guided.jsonl",
+      "bytes": 24619
+    },
+    {
+      "path": "raised_milk_direct_demo_policy_seed828_n50/guided_target_lifted_ep38_49/manifest.json",
+      "bytes": 716
+    },
+    {
+      "path": "raised_milk_direct_demo_policy_seed828_n50/guided_target_lifted_ep38_49/summary.json",
+      "bytes": 384
+    },
+    {
+      "path": "raised_milk_direct_demo_policy_seed828_n50/paired_summary_target_lifted.json",
+      "bytes": 1101
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/baseline/baseline.jsonl",
+      "bytes": 100550
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/baseline/manifest.json",
+      "bytes": 557
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/baseline/summary.json",
+      "bytes": 346
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/guided/guided.jsonl",
+      "bytes": 102146
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/guided/manifest.json",
+      "bytes": 688
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/guided/summary.json",
+      "bytes": 341
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/guided_target_lifted/guided.jsonl",
+      "bytes": 102316
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/guided_target_lifted/manifest.json",
+      "bytes": 718
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/guided_target_lifted/summary.json",
+      "bytes": 344
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/paired_summary.json",
+      "bytes": 1103
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/paired_summary_target_lifted.json",
+      "bytes": 1104
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/baseline_collision_cases_08_49/episode_08_baseline_vs_target_lifted.mp4",
+      "bytes": 3224008
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/baseline_collision_cases_08_49/episode_17_baseline_vs_target_lifted.mp4",
+      "bytes": 2606548
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/baseline_collision_cases_08_49/episode_18_baseline_vs_target_lifted.mp4",
+      "bytes": 1637881
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/baseline_collision_cases_08_49/episode_25_baseline_vs_target_lifted.mp4",
+      "bytes": 1611124
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/baseline_collision_cases_08_49/episode_27_baseline_vs_target_lifted.mp4",
+      "bytes": 1917180
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/baseline_collision_cases_08_49/episode_28_baseline_vs_target_lifted.mp4",
+      "bytes": 2242318
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/baseline_collision_cases_08_49/episode_43_baseline_vs_target_lifted.mp4",
+      "bytes": 2611943
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/baseline_collision_cases_08_49/episode_49_baseline_vs_target_lifted.mp4",
+      "bytes": 2177703
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/baseline_collision_cases_08_49/manifest.json",
+      "bytes": 100700
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/part_a/episode_03_baseline_vs_target_lifted.mp4",
+      "bytes": 1205188
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/part_a/episode_24_baseline_vs_target_lifted.mp4",
+      "bytes": 1691242
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/part_a/episode_31_baseline_vs_target_lifted.mp4",
+      "bytes": 1740365
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/part_a/episode_39_baseline_vs_target_lifted.mp4",
+      "bytes": 1489995
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/part_a/manifest.json",
+      "bytes": 50322
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/part_b/episode_06_baseline_vs_target_lifted.mp4",
+      "bytes": 1185048
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/part_b/episode_26_baseline_vs_target_lifted.mp4",
+      "bytes": 1610017
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/part_b/episode_37_baseline_vs_target_lifted.mp4",
+      "bytes": 2731817
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/part_b/episode_48_baseline_vs_target_lifted.mp4",
+      "bytes": 1037653
+    },
+    {
+      "path": "raised_milk_paired_seed828_n50/videos_target_lifted/part_b/manifest.json",
+      "bytes": 50588
+    },
+    {
+      "path": "raised_milk_state_bank_seed828_n50/initial_state_bank.pkl",
+      "bytes": 2348611
+    },
+    {
+      "path": "raised_milk_state_bank_seed828_n50/manifest.json",
+      "bytes": 508
+    },
+    {
+      "path": "tcp_transport_coverage.json",
+      "bytes": 2056
+    },
+    {
+      "path": "tcp_transport_coverage.png",
+      "bytes": 819487
+    },
+    {
+      "path": "teacher_gate_seed16000_n20.json",
+      "bytes": 12505
+    }
+  ],
+  "checkpoint_exists": true
+}

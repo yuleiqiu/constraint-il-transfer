@@ -1,0 +1,29 @@
+{
+  "reset_metadata_audit": {
+    "goal_xy_before_sync": [
+      0.010629681721976113,
+      0.21685634993644176
+    ],
+    "goal_tray_xy": [
+      0.0101746,
+      0.191177
+    ],
+    "obstacle_xy_before_sync": [
+      0.019862945855982146,
+      -0.0104423282909796
+    ],
+    "obstacle_body_xy": [
+      0.0290953,
+      -0.00195047
+    ]
+  },
+  "success": false,
+  "safe_success": false,
+  "collision_any": true,
+  "ncr": false,
+  "success_with_collision": false,
+  "collision_failure": true,
+  "steps": 600,
+  "first_collision_step": 294,
+  "final_goal_distance": 0.007701598797052663
+}

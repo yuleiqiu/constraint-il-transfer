@@ -1,0 +1,152 @@
+[
+  {
+    "episode": 3,
+    "condition": "guided",
+    "recorded_steps": 382,
+    "eligible_seconds_at_end": 0.19999999999988916
+  },
+  {
+    "episode": 6,
+    "condition": "baseline",
+    "recorded_steps": 312,
+    "eligible_seconds_at_end": 0.2500000000000835
+  },
+  {
+    "episode": 7,
+    "condition": "guided",
+    "recorded_steps": 268,
+    "eligible_seconds_at_end": 0.1000000000000334
+  },
+  {
+    "episode": 11,
+    "condition": "guided",
+    "recorded_steps": 319,
+    "eligible_seconds_at_end": 0.2000000000000668
+  },
+  {
+    "episode": 12,
+    "condition": "baseline",
+    "recorded_steps": 379,
+    "eligible_seconds_at_end": 0.09999999999994458
+  },
+  {
+    "episode": 13,
+    "condition": "guided",
+    "recorded_steps": 406,
+    "eligible_seconds_at_end": 0.24999999999986144
+  },
+  {
+    "episode": 15,
+    "condition": "baseline",
+    "recorded_steps": 390,
+    "eligible_seconds_at_end": 0.4499999999997506
+  },
+  {
+    "episode": 15,
+    "condition": "guided",
+    "recorded_steps": 359,
+    "eligible_seconds_at_end": 0.04999999999997229
+  },
+  {
+    "episode": 16,
+    "condition": "guided",
+    "recorded_steps": 340,
+    "eligible_seconds_at_end": 0.04999999999997229
+  },
+  {
+    "episode": 18,
+    "condition": "baseline",
+    "recorded_steps": 305,
+    "eligible_seconds_at_end": 0.0
+  },
+  {
+    "episode": 19,
+    "condition": "guided",
+    "recorded_steps": 334,
+    "eligible_seconds_at_end": 0.24999999999986144
+  },
+  {
+    "episode": 20,
+    "condition": "guided",
+    "recorded_steps": 356,
+    "eligible_seconds_at_end": 0.09999999999994458
+  },
+  {
+    "episode": 22,
+    "condition": "baseline",
+    "recorded_steps": 367,
+    "eligible_seconds_at_end": 0.0
+  },
+  {
+    "episode": 23,
+    "condition": "baseline",
+    "recorded_steps": 366,
+    "eligible_seconds_at_end": 0.24999999999986144
+  },
+  {
+    "episode": 25,
+    "condition": "guided",
+    "recorded_steps": 471,
+    "eligible_seconds_at_end": 0.0
+  },
+  {
+    "episode": 30,
+    "condition": "guided",
+    "recorded_steps": 379,
+    "eligible_seconds_at_end": 0.14999999999991687
+  },
+  {
+    "episode": 33,
+    "condition": "baseline",
+    "recorded_steps": 322,
+    "eligible_seconds_at_end": 0.04999999999997229
+  },
+  {
+    "episode": 33,
+    "condition": "guided",
+    "recorded_steps": 332,
+    "eligible_seconds_at_end": 0.14999999999991687
+  },
+  {
+    "episode": 35,
+    "condition": "guided",
+    "recorded_steps": 302,
+    "eligible_seconds_at_end": 0.2500000000000835
+  },
+  {
+    "episode": 38,
+    "condition": "baseline",
+    "recorded_steps": 284,
+    "eligible_seconds_at_end": 0.0
+  },
+  {
+    "episode": 38,
+    "condition": "guided",
+    "recorded_steps": 284,
+    "eligible_seconds_at_end": 0.0
+  },
+  {
+    "episode": 44,
+    "condition": "baseline",
+    "recorded_steps": 352,
+    "eligible_seconds_at_end": 0.4499999999997506
+  },
+  {
+    "episode": 47,
+    "condition": "baseline",
+    "recorded_steps": 478,
+    "eligible_seconds_at_end": 0.09999999999994458
+  },
+  {
+    "episode": 47,
+    "condition": "guided",
+    "recorded_steps": 325,
+    "eligible_seconds_at_end": 0.34999999999989306
+  },
+  {
+    "episode": 48,
+    "condition": "baseline",
+    "recorded_steps": 405,
+    "eligible_seconds_at_end": 0.3999999999997783
+  }
+]

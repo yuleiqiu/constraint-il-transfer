@@ -12,11 +12,188 @@
 
 ## Current decision frontier
 
-No next experiment has been selected. Persistent corrective options remain a
-candidate supported by earlier evidence, not an instruction to resume training.
-See root AGENTS.md for current status; older decisions below are historical.
+Latest decision (2026-09-11): user authorized archiving completed experiments,
+committing relevant changes, and implementing an MVEE-based local planner on
+a new branch. Reuse geometry; do not resume gradient-margin sweeps. The task
+criterion is now old strict success OR released placement held for0.5s.
+On the existing50 layouts this gives source46/50 versus guidance31/50 Task SR.
+This is a task-rate comparison, not a safe-rate estimate.
+
+Previous: non-XY output-preservation ablation completed, reviewed2026-09-11.
+Source/guided/protected Task10/6/9 and Safe9/6/9 on10 fixed development layouts.
+Relative to original guidance:4 rescues /1 regression; versus source: no safe
+gain and one task regression. Expansion gate failed; no expansion of that ablation selected.
+See `outputs/tabletop_xy_preserve_2026-09-10/conclusion.md`.
+
+The user authorized corrected full-episode Tabletop source / target-lifted
+guidance evaluation on all 50 saved RaisedMilk layouts (100 formal branches),
+with an actual execution video for every branch, on two GPUs (2026-09-09).
+Both preflight replication gates passed; all 100 formal branches completed.
+Review on 2026-09-10: Task SR 56%/56%, Safe SR 46%/54%; 11 safe improvements
+versus 7 regressions, with no statistically established aggregate benefit. No new method,
+training, clean-policy evaluation or always-on condition is selected.
+Root AGENTS.md predates this work and remains human-maintained.
+
+## 2026-09-11
+
+### Authorize MVEE-based local planner implementation
+
+Human decision: archive and commit existing work; implement a local planner
+using reusable MVEE actor/obstacle geometry. Explicit route generation,
+persistent bypass direction and source handoff are proposed, not validated.
+The user confirmed the inclusive success definition: old strict success OR
+released placement with0.5s residence; source46/50 versus guidance31/50 under
+this definition. Original strict and residence-only reports remain historical.
+Root AGENTS.md is unchanged. No training or publication is implied.
+
+
+### Close non-XY output preservation ablation
+
+All30 development branches and4 separate layout28 pilot branches complete.
+Exact output preservation and pilot repeat checks pass. Protected rescues
+0/10/40/45 relative to guidance but regresses25; source already safely solves
+the same nine layouts as protected. Layout28 remains a collision failure under
+both conditions. The predeclared expansion gate fails because protected Task
+is9/10 versus source10/10. No further validation or training launched.
+Canonical report: `outputs/tabletop_xy_preserve_2026-09-10/conclusion.md`.
+
+## 2026-09-10
+
+### Authorize non-XY output preservation ablation
+
+The user authorized testing final guidedXY with same-observation/noise source
+Z/axis-angle/gripper output. Keep original point geometry and instantaneous
+height gate fixed. Pilot28 repeats guided/protected twice for exactness and
+mechanics, then fixed systematic layouts0,5,10,15,20,25,30,35,40,45 compare source,
+guided and protected under the new released0.5s placement definition. No old
+strict-success termination. Pilot excluded from30 development rows. Every actual
+execution is recorded; no HTML. Expansion gate and artifact contract are in
+`scripts/2026-09-10_tabletop_xy_preserve/README.md`.
+Closed2026-09-11: pilot exactness gates passed, but both treatments fail layout28;
+all30 development branches completed and the expansion gate failed. No broader
+validation or new training authorized here.
+
+### Exact layout28 denoising comparison
+
+User-requested same-observation/noise source versus guidance audit matches33
+original RNG hashes and reproduces five original eight-action chunks exactly.
+Guidance is active through232 but OFF from240 onward after Can falls below
+the0.88m height gate. At232, guidance changes final Z targets by up to9.23cm,
+turning source rising targets into descending ones despite an XY-only cost.
+At240/248/256 source and forced-on guidance both output backward targets.
+Later anomalous cloud points were not used by active guidance in this rollout.
+No closed-loop ablation or new method was executed or selected. Report:
+`outputs/tabletop_guidance_reeval_2026-09-09/ep28_denoising_audit/report.md`.
+
+### Try released placement instead of required retreat
+
+The user agreed to in-region placement, actual release and0.5s residence,
+without a required retreat distance. Offline contact reconstruction on all100
+saved trajectories uses a disclosed conservative no-gripper-contact release
+criterion. Source35 confirmed successes /4 failures /11 censored; guidance17 /
+19 /14. Task bounds70--92% versus34--62% establish a negative fixed-bank task
+ordering even before resolving censored continuations; safe bounds58--78% versus
+34--60% overlap. Bounds are not confidence intervals. No new rollout was run.
+Canonical operational definition and limitations:
+`outputs/tabletop_guidance_reeval_2026-09-09/placement_rescore/report.md`.
+
+### Close the corrected 100-branch guidance evaluation
+
+All 50 original layouts have a complete source/guided pair, with actual execution
+videos and stepwise audit artifacts. Task is 28/50 in both conditions (10 rescues,
+10 regressions). Safe completion is 23/50 versus 27/50 (11 improvements,
+7 regressions; exact McNemar p=0.481). CR is 9/50 versus 7/50, NCR18/50 versus
+16/50. The positive observed safe difference does not establish reliable benefit
+or prove no effect. Initial observation/state pair checks and the two-layout
+full repeated-preflight checks pass. No new experiment or method is selected.
+Canonical result: `outputs/tabletop_guidance_reeval_2026-09-09/conclusion.md`.
+Individual MP4s are linked by `video_index.md` for VS Code; no HTML is retained.
+
+## 2026-09-09
+
+### Audit and authorize the corrected main comparison
+
+Offline inspection found aggregate-only old rollout records, initial-state-only
+banks and independently re-executed videos. Of the primary 100 old branches,
+59 stop on old success before H600; this is not a count of false successes.
+Corrected success rates cannot be reconstructed offline. Audit:
+`outputs/tabletop_wide_support/rescore_audit_2026-09-09/report.md`.
+
+The user authorized 100 source / target-lifted branches on the full original
+50-layout bank, with separate execution videos and managed output artifacts.
+The user views MP4s in VS Code on a headless environment and explicitly requested
+no HTML. Navigation is a Markdown index linking individual MP4s.
+The additional 50 clean-policy rows are explicitly deferred. GPU0 handles
+layouts0--24 and GPU1 layouts25--49; each pair stays within one process.
+Layouts0/25 each run two repeated pairs as a preflight, excluded from the formal
+100. Main execution waits for both exact reproduction checks. The scorer is
+synchronized to restored physical goal coordinates; predicate inputs, actions,
+states and observation provenance are persisted for later audit.
+
+Script contract: `scripts/2026-09-09_tabletop_guidance_reeval/README.md`.
+Outputs: `outputs/tabletop_guidance_reeval_2026-09-09/`.
+No new corrective method or general conclusion is selected from the three-layout
+teacher comparison. The present question is the aggregate task/safety benefit of
+the fixed original guidance setting on the original bank.
+
+## 2026-09-08
+
+### Close the three-layout oracle-route / handoff matrix
+
+All 45 main branches completed: layouts 43, 49, 27; source, original point
+guidance, eight-action teacher prefix, longer teacher bypass and complete
+teacher; three identical-seed repetitions each. All branch-start states and
+observation histories match their captured prefixes exactly. Within each
+layout/condition, full recorded traces and first source chunks reproduce.
+
+Source fails with contact in all three selected layouts. Guidance safely solves
+27 but fails on 43/49. Short help safely solves 43; on 49 it completes with
+contact, and on 27 it fails with contact. Long help safely solves 43/49 but
+fails collision-free on 27. All complete teachers succeed safely. Layout 27's
+long-help non-completion is specifically insufficient retreat after placement
+and release, not failure to reach the tray. The predeclared conditional
+near-goal handoff probe is reported separately in the conclusion.
+
+The first seven archived collision-failure candidates yield only 43/49 under
+the synchronized scorer. A predeclared extension to other archived contact
+cases excludes 18 (success with contact) and selects 27; stop at three layouts
+without evaluating 28. Selection depends on fresh source failure, not guided
+or teacher outcomes. Repeated seeds are not independent statistical samples.
+
+Interpretation: original guidance has a reproducible positive case; oracle
+correction duration/extent matters in some cases but longer help is not always
+better. No learned framework, universal necessity boundary, or corrected old
+50-state rates have been established. The reset-metadata scoring defect remains
+confirmed and historical Tabletop success labels require audit. No new training
+or successor method is selected. Canonical report:
+outputs/tabletop_handoff_diagnostic/conclusion.md.
 
 ## 2026-09-07
+
+### User authorizes a bounded Tabletop handoff diagnostic; reset scoring issue found
+
+Question: from a verified grasped/lifted, pre-contact state, can the frozen
+wide-support source finish after eight teacher actions or after a longer safe
+bypass? Five conditions compare source, original point guidance, short help,
+long help and complete teacher, retaining H600 and full collision physics.
+Validate one layout before up to three layouts with repeated-seed replay audits;
+do not train a new model. This is a user-authorized diagnostic, not selection of
+a persistent-correction research method.
+
+The first-layout pilot (episode 43, step 112) completes: source collides and
+fails; original point guidance avoids contact but times out; short/long help
+and teacher each complete safely. Branch state and observation-history restore
+differences are zero. These are one-run selected-state observations, not a
+stable method result. Repetition and further-layout screening are in progress.
+
+Independent reset probes confirm that restored static tray / obstacle bodies
+can disagree with Python-side goal_xy / obstacle_xy despite equal dynamic
+state. Goal-coordinate errors are 19.9--46.2 mm across six probes; 16/54
+synthetic goal-membership labels change after synchronization. The new diagnostic
+synchronizes these attributes. Archived wide-support Task/Safe/NCR metrics and
+checkpoint-screen scores require an audit; no corrected rates have been measured.
+This does not establish that metadata explains every replay difference.
+Canonical record: outputs/tabletop_handoff_diagnostic/README.md.
 
 ### Close the wider-support record and rebuild project navigation
 
