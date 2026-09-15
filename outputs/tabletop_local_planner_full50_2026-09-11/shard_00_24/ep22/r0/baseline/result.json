@@ -1,0 +1,56 @@
+{
+  "episode": 22,
+  "condition": "baseline",
+  "steps": 367,
+  "success": true,
+  "safe_success": true,
+  "collision_any": false,
+  "success_with_collision": false,
+  "collision_failure": false,
+  "ncr": false,
+  "first_collision_step": null,
+  "first_strict_success_step": 367,
+  "gate_active_chunks": 0,
+  "planner_changed_chunks": 0,
+  "planner_triggers": 0,
+  "initial_state_hash": "b1cb5ba5b6503ad1d31b11739a74ebed517204441375de2df04a998687ae489e",
+  "reset_audit": {
+    "goal_before": [
+      0.026470727421783843,
+      0.22608826280535477
+    ],
+    "obstacle_before": [
+      -0.015366900414293755,
+      0.011354717352970313
+    ],
+    "physical_goal": [
+      -0.0139711,
+      0.20967
+    ],
+    "physical_obstacle": [
+      -0.0259521,
+      -0.00792746
+    ],
+    "restored_state_hash": "b1cb5ba5b6503ad1d31b11739a74ebed517204441375de2df04a998687ae489e",
+    "initial_obs_hashes": {
+      "object": "f5f4c0b1157002ec6da0e21c128aefd8af74a5705742e521a8ec37da1e24561b",
+      "robot0_joint_pos": "c724cfe185b0b9bc14a535e6c49d51bc9fc649037e4d54129ac4b15d66155deb",
+      "robot0_joint_pos_cos": "7228081f269f5ca608a027fcb76b184cd312602ecd677c7a6660766adf2a6ec7",
+      "robot0_joint_pos_sin": "dff87e037f3d98e3a32db0d312426a61301b5aafce53c6ce2561f1a49ed11b99",
+      "robot0_joint_vel": "6a39094347e944cbeb157a299098790c3cfef0edaddd8e2fc85928ab8c20d9be",
+      "robot0_eef_pos": "1b68c728036284ced07e1f5f46ba8b960e2071c75ebf5fd9d0b0f4b938a7b82e",
+      "robot0_eef_quat": "76141b39b61efbee7c17c50edb2f58e5da6788d5140951669872fd67a34f7c7d",
+      "robot0_eef_quat_site": "4bd7597cf765df860e90e2c0d181bbf873b3d8ca11a1ca904e6ddc05e978bcea",
+      "robot0_gripper_qpos": "35a51eae5d2c395fe368a00a961693b4b20ff938802e5854ae5cc86b9f6ead80",
+      "robot0_gripper_qvel": "4bf91a2a400a9fb6cbc48dce613624a342fda3803312f55a19b83ce012bf9472",
+      "lang_emb": "13281726c1332ea5420c8075cff1f282527ba061ec468e37c704f7760da5093c",
+      "agent_pos": "3bd09a5605a5befd00b72fe522b0bd83426983b77ad9595d9bbbdb9ff0347a29",
+      "task_pointcloud": "b28dc9a06e0c316f53621948e3c6ad796c62c509fa67c53697a72278a5df0313",
+      "timesteps": "0720b50c2478a89cb9be5ad081457d387bbe74f427680086151138e1531dea03",
+      "actions": "6a39094347e944cbeb157a299098790c3cfef0edaddd8e2fc85928ab8c20d9be"
+    }
+  },
+  "wall_seconds": 30.55166750960052,
+  "video_frames": 185,
+  "folder": "ep22/r0/baseline"
+}

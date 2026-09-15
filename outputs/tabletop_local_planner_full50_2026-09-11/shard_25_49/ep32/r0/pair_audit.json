@@ -1,0 +1,6 @@
+{
+  "planner": {
+    "initial_observations_equal": true,
+    "repeat_trajectory_equal": false
+  }
+}

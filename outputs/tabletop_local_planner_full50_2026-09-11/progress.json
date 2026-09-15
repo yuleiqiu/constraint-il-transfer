@@ -1,0 +1,31 @@
+{
+  "completed_rollouts": 100,
+  "expected_rollouts": 100,
+  "completed_pairs": 50,
+  "expected_pairs": 50,
+  "elapsed_seconds": 1772.1701595289633,
+  "workers": {
+    "shard_00_24": {
+      "pid": 3445465,
+      "exit_code": 0
+    },
+    "shard_25_49": {
+      "pid": 3445466,
+      "exit_code": 0
+    }
+  },
+  "paired_only_counts": {
+    "baseline": {
+      "success": 46,
+      "safe_success": 39,
+      "collision_any": 9,
+      "ncr": 2
+    },
+    "planner": {
+      "success": 49,
+      "safe_success": 49,
+      "collision_any": 0,
+      "ncr": 1
+    }
+  }
+}

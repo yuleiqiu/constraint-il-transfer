@@ -1,6 +1,6 @@
 # Project instructions
 
-Updated 2026-09-07 with human authorization. This is the entry point for
+Updated 2026-09-15 with human authorization. This is the entry point for
 project state and operating rules; detailed evidence lives in linked reports.
 
 ## Goal and present decision
@@ -9,10 +9,10 @@ Study single-to-multi-object transfer for diffusion imitation policies while
 preserving reliable task behavior under avoidance interventions.
 
 No next experiment is currently selected. The latest completed work is the
-Tabletop wider-demonstration-support test using original point guidance.
-The user confirmed that the preceding MVEE geometry probe was put aside.
-The branch name `exp/tabletop-mvee-guidance` does not identify the method
-used by later experiments.
+full50 paired comparison of the compact-Bezier MVEE local planner against its
+frozen Tabletop source policy. This is a successful controlled prototype using
+oracle geometry and known goal position, evaluated on the existing development
+bank; it is not held-out or vision-based validation.
 
 Persistent corrective options remain an evidence-supported candidate direction,
 but resuming that direction has not been decided. Do not treat historical
@@ -21,7 +21,15 @@ No supervisor opinion or subsequent research decision is recorded here.
 
 ## Latest evidence and boundaries
 
-- **Wide support, completed:** original nearest-point guidance on a newly
+- **Local planner full50, completed:** at H600 on the original50-layout bank,
+  baseline / planner Task SR is 46/50 / 49/50, Safe SR 39/50 / 49/50,
+  CR 9/50 / 0/50, and NCR 2/50 / 1/50. Paired transitions are 3 task and
+  10 safe rescues with zero regressions. All100 executions and videos passed
+  artifact checks. The planner uses simulator geometry, grasp/lift state and
+  known goal XY; no full-bank repeat, held-out task, perception or real-robot
+  claim is established. Start at
+  `outputs/tabletop_local_planner_full50_2026-09-11/conclusion.md`.
+- **Wide support, previous completed stage:** original nearest-point guidance on a newly
   trained Tabletop point-cloud absolute-EEF policy. At H600 on 50 RaisedMilk
   states, baseline / target-lifted guidance Task SR is 0.58 / 0.62, Safe SR
   0.52 / 0.54, CR 0.20 / 0.18, and NCR 0.28 / 0.28. Task transitions are
@@ -78,7 +86,8 @@ a ban on all future guidance methods from these bounded negative results.
 
 Read this entry first, then only the material required by the task:
 
-1. Latest experiment: `outputs/tabletop_wide_support/conclusion.md`.
+1. Latest experiment:
+   `outputs/tabletop_local_planner_full50_2026-09-11/conclusion.md`.
 2. Research decisions and chronology: newest entries in `docs/RESEARCH_LOG.md`.
 3. Results by stage: `outputs/README.md`; follow canonical reports from there.
 4. Candidate corrective-option method:

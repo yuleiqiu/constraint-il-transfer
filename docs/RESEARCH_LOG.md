@@ -12,6 +12,15 @@
 
 ## Current decision frontier
 
+Completed full50 comparison, reviewed2026-09-14: all100 executions and video/
+action/prefix checks pass. Baseline/planner Task46/49, Safe39/49, CR9/0,
+NCR2/1 out of50. Task rescues3/regressions0; safe rescues10/regressions0.
+Only planner failure is27 (no contact, H600, after a completed bypass/handoff).
+Oracle geometry and known goal remain method assumptions; this is the existing
+development bank, not independent held-out validation. No next experiment selected.
+Canonical report: `outputs/tabletop_local_planner_full50_2026-09-11/conclusion.md`.
+
+
 Latest decision (2026-09-11): user authorized archiving completed experiments,
 committing relevant changes, and implementing an MVEE-based local planner on
 a new branch. Reuse geometry; do not resume gradient-margin sweeps. The task
@@ -41,7 +50,32 @@ versus 7 regressions, with no statistically established aggregate benefit. No ne
 training, clean-policy evaluation or always-on condition is selected.
 Root AGENTS.md predates this work and remains human-maintained.
 
+## 2026-09-14
+
+### Review completed full50 local-planner comparison
+
+Both workers exited0;100/100 rollouts and100 videos verified in approximately
+29.7 minutes on September11. Baseline/planner Task46/49, Safe39/49, CR9/0,
+NCR2/1. Task rescues14/34/43, zero task regressions; safe rescues8/9/14/18/25/
+28/34/37/43/49, zero safe regressions. Layout27 remains a no-contact H600
+failure after bypass and source handoff; no cause of the final failure is
+established by this aggregate review. Source27 also failed, with contact.
+Fixed parameters and inclusive criterion throughout; no tuning or broad
+repeated-outcome claim. Oracle geometry/known goal and previously examined bank
+limit generalization. No follow-up experiment selected.
+
 ## 2026-09-11
+
+### Launch complete50-layout local-planner comparison
+
+Human decision: first test whether the current engineering method works across
+the complete existing bank; do not frame this as a general takeover theory or
+paper contribution. Exactly100 rollouts, source versus compact-Bezier planner,
+fixed current checkpoint/parameters and inclusive success. Two GPU workers
+split by layout, with all videos and traces saved. Supervisor runs final
+integrity checks and paired Task/Safe/CR/NCR aggregation automatically.
+Run directory: `outputs/tabletop_local_planner_full50_2026-09-11/`.
+
 
 ### Shorten and smooth local-planner bypasses
 

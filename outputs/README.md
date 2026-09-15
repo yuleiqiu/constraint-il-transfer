@@ -1,5 +1,11 @@
 # Experiment outputs index
 
+Completed full-bank comparison (reviewed2026-09-14): `tabletop_local_planner_full50_2026-09-11/`.
+All100 rollouts and videos verified. Baseline/planner Task46/49, Safe39/49,
+CR9/0 out of50; no task or safe regressions. Fixed parameters, inclusive scoring.
+Start with `conclusion.md` and `video_index.md`; oracle-geometry development
+evidence, not independent held-out validation.
+
 Latest route refinement: `tabletop_local_planner_bezier_2026-09-11/`.
 Compact cubic Bezier bypasses shorten actual travel19%--24% on0/25/28 while
 retaining3/3 safe completions and the original10mm margin. Six verified MP4s

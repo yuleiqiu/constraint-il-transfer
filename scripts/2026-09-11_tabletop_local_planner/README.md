@@ -119,3 +119,12 @@ uv run python scripts/2026-09-11_tabletop_local_planner/analyze_smoothing.py \
 
 The smoothing analyzer expects the archived gpu0/ep00 and gpu1/ep25,ep28
 partition used for this comparison; the generic runner accepts other partitions.
+
+## Full50 comparison (authorized2026-09-11)
+
+`full_bank.py --out <new-output-root>` supervises the unchanged compact-Bezier
+runner on two GPUs, layouts0--24 and25--49, one baseline/planner pair per layout.
+It writes progress and video links while running, then invokes `analyze.py` for
+all100 video/action checks, archived baseline-prefix checks and paired metrics.
+No parameter adjustment or early performance stopping. `complete.json` means
+the full matrix and final checks passed; failure markers require review.

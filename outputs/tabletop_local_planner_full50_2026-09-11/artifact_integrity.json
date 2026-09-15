@@ -1,0 +1,605 @@
+{
+  "videos_verified": 100,
+  "checks": [
+    {
+      "folder": "shard_00_24/ep00/r0/baseline",
+      "frames": 167,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep00/r0/planner",
+      "frames": 157,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep01/r0/baseline",
+      "frames": 185,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep01/r0/planner",
+      "frames": 180,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep02/r0/baseline",
+      "frames": 167,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep02/r0/planner",
+      "frames": 159,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep03/r0/baseline",
+      "frames": 190,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep03/r0/planner",
+      "frames": 190,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep04/r0/baseline",
+      "frames": 154,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep04/r0/planner",
+      "frames": 139,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep05/r0/baseline",
+      "frames": 203,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep05/r0/planner",
+      "frames": 200,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep06/r0/baseline",
+      "frames": 157,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep06/r0/planner",
+      "frames": 151,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep07/r0/baseline",
+      "frames": 163,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep07/r0/planner",
+      "frames": 151,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep08/r0/baseline",
+      "frames": 170,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep08/r0/planner",
+      "frames": 168,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep09/r0/baseline",
+      "frames": 173,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep09/r0/planner",
+      "frames": 163,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep10/r0/baseline",
+      "frames": 170,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep10/r0/planner",
+      "frames": 155,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep11/r0/baseline",
+      "frames": 152,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep11/r0/planner",
+      "frames": 135,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep12/r0/baseline",
+      "frames": 191,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep12/r0/planner",
+      "frames": 191,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep13/r0/baseline",
+      "frames": 203,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep13/r0/planner",
+      "frames": 203,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep14/r0/baseline",
+      "frames": 301,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep14/r0/planner",
+      "frames": 295,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep15/r0/baseline",
+      "frames": 196,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep15/r0/planner",
+      "frames": 187,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep16/r0/baseline",
+      "frames": 175,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep16/r0/planner",
+      "frames": 165,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep17/r0/baseline",
+      "frames": 166,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep17/r0/planner",
+      "frames": 163,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep18/r0/baseline",
+      "frames": 154,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep18/r0/planner",
+      "frames": 155,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep19/r0/baseline",
+      "frames": 175,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep19/r0/planner",
+      "frames": 171,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep20/r0/baseline",
+      "frames": 196,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep20/r0/planner",
+      "frames": 196,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep21/r0/baseline",
+      "frames": 177,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep21/r0/planner",
+      "frames": 155,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep22/r0/baseline",
+      "frames": 185,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep22/r0/planner",
+      "frames": 192,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep23/r0/baseline",
+      "frames": 184,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep23/r0/planner",
+      "frames": 183,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_00_24/ep24/r0/baseline",
+      "frames": 179,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_00_24/ep24/r0/planner",
+      "frames": 179,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep25/r0/baseline",
+      "frames": 231,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep25/r0/planner",
+      "frames": 215,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep26/r0/baseline",
+      "frames": 167,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep26/r0/planner",
+      "frames": 164,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep27/r0/baseline",
+      "frames": 301,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep27/r0/planner",
+      "frames": 301,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep28/r0/baseline",
+      "frames": 236,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep28/r0/planner",
+      "frames": 162,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep29/r0/baseline",
+      "frames": 170,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep29/r0/planner",
+      "frames": 156,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep30/r0/baseline",
+      "frames": 195,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep30/r0/planner",
+      "frames": 195,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep31/r0/baseline",
+      "frames": 163,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep31/r0/planner",
+      "frames": 158,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep32/r0/baseline",
+      "frames": 221,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep32/r0/planner",
+      "frames": 203,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep33/r0/baseline",
+      "frames": 162,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep33/r0/planner",
+      "frames": 146,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep34/r0/baseline",
+      "frames": 301,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep34/r0/planner",
+      "frames": 190,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep35/r0/baseline",
+      "frames": 155,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep35/r0/planner",
+      "frames": 143,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep36/r0/baseline",
+      "frames": 149,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep36/r0/planner",
+      "frames": 143,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep37/r0/baseline",
+      "frames": 171,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep37/r0/planner",
+      "frames": 155,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep38/r0/baseline",
+      "frames": 143,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep38/r0/planner",
+      "frames": 142,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep39/r0/baseline",
+      "frames": 175,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep39/r0/planner",
+      "frames": 165,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep40/r0/baseline",
+      "frames": 184,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep40/r0/planner",
+      "frames": 171,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep41/r0/baseline",
+      "frames": 179,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep41/r0/planner",
+      "frames": 171,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep42/r0/baseline",
+      "frames": 295,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep42/r0/planner",
+      "frames": 287,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep43/r0/baseline",
+      "frames": 301,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep43/r0/planner",
+      "frames": 241,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep44/r0/baseline",
+      "frames": 177,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep44/r0/planner",
+      "frames": 171,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep45/r0/baseline",
+      "frames": 287,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep45/r0/planner",
+      "frames": 291,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep46/r0/baseline",
+      "frames": 156,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep46/r0/planner",
+      "frames": 147,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep47/r0/baseline",
+      "frames": 240,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep47/r0/planner",
+      "frames": 240,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep48/r0/baseline",
+      "frames": 204,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep48/r0/planner",
+      "frames": 187,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    },
+    {
+      "folder": "shard_25_49/ep49/r0/baseline",
+      "frames": 244,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": true
+    },
+    {
+      "folder": "shard_25_49/ep49/r0/planner",
+      "frames": 210,
+      "saved_actions_match": true,
+      "archived_baseline_prefix_exact": null
+    }
+  ]
+}

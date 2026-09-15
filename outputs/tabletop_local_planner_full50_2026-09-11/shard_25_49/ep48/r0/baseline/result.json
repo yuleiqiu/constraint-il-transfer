@@ -1,0 +1,56 @@
+{
+  "episode": 48,
+  "condition": "baseline",
+  "steps": 405,
+  "success": true,
+  "safe_success": true,
+  "collision_any": false,
+  "success_with_collision": false,
+  "collision_failure": false,
+  "ncr": false,
+  "first_collision_step": null,
+  "first_strict_success_step": 405,
+  "gate_active_chunks": 0,
+  "planner_changed_chunks": 0,
+  "planner_triggers": 0,
+  "initial_state_hash": "3502c13218e06cdaf697cc9f63078ad5b4360ceb3cba08b9c26faaf01aacb851",
+  "reset_audit": {
+    "goal_before": [
+      0.016628995441085717,
+      0.19655711175173696
+    ],
+    "obstacle_before": [
+      -0.021919810842285954,
+      -0.011780744497633262
+    ],
+    "physical_goal": [
+      0.020429,
+      0.246128
+    ],
+    "physical_obstacle": [
+      -0.00237859,
+      -0.00365298
+    ],
+    "restored_state_hash": "3502c13218e06cdaf697cc9f63078ad5b4360ceb3cba08b9c26faaf01aacb851",
+    "initial_obs_hashes": {
+      "object": "4eda32f781db412413cc28da330704bb2ba243b6e14ec47c7dd3e948bb3e3f6c",
+      "robot0_joint_pos": "fa938e85daa71269ebc4a9f3fb6c2c37a1d2ca8c26dc2ea4161536047e08465b",
+      "robot0_joint_pos_cos": "8261ae989f709c71346d102b7d5998aca4cb473f6702850f0c885e737c244a1f",
+      "robot0_joint_pos_sin": "a1fa80dd845cabc05bf7bbf95d6b346004352d8509d77e7708355a52d5e174c3",
+      "robot0_joint_vel": "6a39094347e944cbeb157a299098790c3cfef0edaddd8e2fc85928ab8c20d9be",
+      "robot0_eef_pos": "f9017f59d1c5db610365c704ed57b26c00e9e31bd5ba2278f8222ae4062ca728",
+      "robot0_eef_quat": "3dcecf0c29f5082c83823680d6239bda91ebc6ec93b0f58aac1f106e146f1af6",
+      "robot0_eef_quat_site": "552db29ba2a84d6fa2a17d1214e4188b55f09de615f0604fdab2f4034b339d9e",
+      "robot0_gripper_qpos": "35a51eae5d2c395fe368a00a961693b4b20ff938802e5854ae5cc86b9f6ead80",
+      "robot0_gripper_qvel": "4bf91a2a400a9fb6cbc48dce613624a342fda3803312f55a19b83ce012bf9472",
+      "lang_emb": "13281726c1332ea5420c8075cff1f282527ba061ec468e37c704f7760da5093c",
+      "agent_pos": "d57ef8a64c3d03afb942f3c7a99cb8983958e7d5eb456bbad0ccbbd429ce7b81",
+      "task_pointcloud": "69ae34158be553e5506d00c33957859a7a4f20525f71560b9e3b84b1357c7315",
+      "timesteps": "0720b50c2478a89cb9be5ad081457d387bbe74f427680086151138e1531dea03",
+      "actions": "6a39094347e944cbeb157a299098790c3cfef0edaddd8e2fc85928ab8c20d9be"
+    }
+  },
+  "wall_seconds": 32.852711585350335,
+  "video_frames": 204,
+  "folder": "ep48/r0/baseline"
+}
