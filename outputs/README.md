@@ -1,5 +1,15 @@
 # Experiment outputs index
 
+Completed RGB-D perception pilot (2026-09-16):
+`tabletop_rgbd_perception_2026-09-15/`. On the fixed10 clean and RaisedMilk
+layouts, frozen epoch-50 oracle/perceived Task is10/10 versus0/10 in both;
+RaisedMilk Safe is9/10 versus0/10. One clean target track fails; RaisedMilk
+task masks stay valid but obstacle reconstruction is poor (mean IoU0.021 and
+4768/6010 obstacle-invalid frames). Gate failed, so no full50 expansion,
+training, or planner integration ran. All40 executions/videos and paired
+initial-state/RGB-D/RNG audits passed. Start with `conclusion.md`, then
+`report.md` and `video_index.md`.
+
 Completed full-bank comparison (reviewed2026-09-14): `tabletop_local_planner_full50_2026-09-11/`.
 All100 rollouts and videos verified. Baseline/planner Task46/49, Safe39/49,
 CR9/0 out of50; no task or safe regressions. Fixed parameters, inclusive scoring.

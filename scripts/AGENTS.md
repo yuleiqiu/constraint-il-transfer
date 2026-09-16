@@ -1,5 +1,14 @@
 # Project Scripts
 
+Completed RGB-D perception pilot (2026-09-16):
+`2026-09-15_tabletop_rgbd_perception/README.md`. Replaces runtime geom masks
+with fixed GroundingDINO + SAM initialization and Cutie tracking while keeping
+the frozen epoch-50 absolute-EEF policy. The 10-layout clean and RaisedMilk
+pilot fails decisively (oracle/perceived Task 10/10 versus 0/10 in both), so no
+full50 expansion, training, or planner integration was launched. Oracle masks
+remain evaluation-only. Start with
+`outputs/tabletop_rgbd_perception_2026-09-15/conclusion.md`.
+
 Local planner implementation (authorized2026-09-11):
 `2026-09-11_tabletop_local_planner/README.md`. Reuses MVEE fitting with
 root-local conservative segment checks, visibility-graph bypass and persistent
@@ -165,6 +174,15 @@ scripts/
 ```
 
 ## Categories
+
+- **Tabletop RGB-D perception comparison**
+  (`2026-09-15_tabletop_rgbd_perception/`) — pinned GroundingDINO Swin-T OGC,
+  SAM ViT-B and Cutie provider, deterministic RGB-D unprojection/FPS, isolated
+  oracle audit, prompt calibration, offline weight manifest, GPU smoke and
+  paired H600 pilot. The frozen source succeeds 10/10 in both environments;
+  perceived input succeeds 0/10 in both. RaisedMilk obstacle mean IoU is 0.021.
+  Gate failed; do not run expansion automatically. Canonical conclusion:
+  `outputs/tabletop_rgbd_perception_2026-09-15/conclusion.md`.
 
 - **Tabletop wider demonstration support** (`2026-08-26_tabletop_wide_support/`)
   — teacher generation, 100-demo collection and verification, checkpoint

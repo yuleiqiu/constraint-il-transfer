@@ -1,0 +1,271 @@
+{
+  "clean": {
+    "conditions": {
+      "oracle_mask_source": {
+        "episodes": 10,
+        "task_success": 10,
+        "task_sr": 1.0,
+        "safe_success": 10,
+        "safe_sr": 1.0,
+        "collision_any": 0,
+        "cr": 0.0,
+        "ncr": 0,
+        "ncr_rate": 0.0,
+        "partition": {
+          "safe_success": 10,
+          "success_with_collision": 0,
+          "collision_failure": 0,
+          "ncr": 0
+        },
+        "perception_failures": 0,
+        "action_finite_all": true,
+        "absolute_eef_contract_all": true,
+        "action_contract_violation_count": 0,
+        "environment_action_spec_exceedance_count": 12132
+      },
+      "perceived_mask_source": {
+        "episodes": 10,
+        "task_success": 0,
+        "task_sr": 0.0,
+        "safe_success": 0,
+        "safe_sr": 0.0,
+        "collision_any": 0,
+        "cr": 0.0,
+        "ncr": 10,
+        "ncr_rate": 1.0,
+        "partition": {
+          "safe_success": 0,
+          "success_with_collision": 0,
+          "collision_failure": 0,
+          "ncr": 10
+        },
+        "perception_failures": 1,
+        "action_finite_all": true,
+        "absolute_eef_contract_all": true,
+        "action_contract_violation_count": 0,
+        "environment_action_spec_exceedance_count": 14127
+      }
+    },
+    "paired": {
+      "pairs": 10,
+      "task_rescues": 0,
+      "task_regressions": 10,
+      "safe_rescues": 0,
+      "safe_regressions": 10
+    },
+    "perception": {
+      "frames": 5769,
+      "roles": {
+        "goal": {
+          "centroid_error_m": 0.0007908418108304154,
+          "chamfer_m": 0.0005233644624866929,
+          "extents_error_m": 0.2784943918723144,
+          "mask_iou": 0.9838742410062756,
+          "mask_precision": 0.9871026354033778,
+          "mask_recall": 0.9967095772696409,
+          "nn_10mm_precision": 0.9952502595980186,
+          "nn_10mm_recall": 0.9989708364492746,
+          "nn_5mm_precision": 0.9931214787986513,
+          "nn_5mm_recall": 0.9989708364492746,
+          "oracle_points": 3101.43335066736,
+          "predicted_points": 3132.550875368348
+        },
+        "obstacle": {
+          "mask_iou": 1.0,
+          "mask_precision": 0.0,
+          "mask_recall": 0.0,
+          "nn_10mm_precision": 0.0,
+          "nn_10mm_recall": 0.0,
+          "nn_5mm_precision": 0.0,
+          "nn_5mm_recall": 0.0,
+          "oracle_points": 0.0,
+          "predicted_points": 0.0
+        },
+        "target": {
+          "centroid_error_m": 0.010254632898776865,
+          "chamfer_m": 0.0048642001292342986,
+          "extents_error_m": 0.12363435914598282,
+          "mask_iou": 0.8260359198758025,
+          "mask_precision": 0.8311420179096253,
+          "mask_recall": 0.9920173870866705,
+          "nn_10mm_precision": 0.9162189952427259,
+          "nn_10mm_recall": 0.9985403020771483,
+          "nn_5mm_precision": 0.8841221438413088,
+          "nn_5mm_recall": 0.9967705554962111,
+          "oracle_points": 727.8554342173687,
+          "predicted_points": 867.7046281851274
+        }
+      },
+      "identity_swap_frames": 0,
+      "identity_swap_frames_by_role": {
+        "goal": 0,
+        "obstacle": 0,
+        "target": 0
+      },
+      "support_detected_frames": 0,
+      "tracking_failures": 1,
+      "task_failure_reasons": {
+        "invalid_mask_or_depth:target": 1
+      },
+      "obstacle_failure_frames": 0,
+      "obstacle_failure_reasons": {},
+      "latency_s": {
+        "mean": 0.04881755774800354,
+        "p50": 0.03330216743052006,
+        "p95": 0.03742456529289484,
+        "max": 9.425605206750333
+      }
+    }
+  },
+  "raised_milk": {
+    "conditions": {
+      "oracle_mask_source": {
+        "episodes": 10,
+        "task_success": 10,
+        "task_sr": 1.0,
+        "safe_success": 9,
+        "safe_sr": 0.9,
+        "collision_any": 1,
+        "cr": 0.1,
+        "ncr": 0,
+        "ncr_rate": 0.0,
+        "partition": {
+          "safe_success": 9,
+          "success_with_collision": 1,
+          "collision_failure": 0,
+          "ncr": 0
+        },
+        "perception_failures": 0,
+        "action_finite_all": true,
+        "absolute_eef_contract_all": true,
+        "action_contract_violation_count": 0,
+        "environment_action_spec_exceedance_count": 12385
+      },
+      "perceived_mask_source": {
+        "episodes": 10,
+        "task_success": 0,
+        "task_sr": 0.0,
+        "safe_success": 0,
+        "safe_sr": 0.0,
+        "collision_any": 0,
+        "cr": 0.0,
+        "ncr": 10,
+        "ncr_rate": 1.0,
+        "partition": {
+          "safe_success": 0,
+          "success_with_collision": 0,
+          "collision_failure": 0,
+          "ncr": 10
+        },
+        "perception_failures": 0,
+        "action_finite_all": true,
+        "absolute_eef_contract_all": true,
+        "action_contract_violation_count": 0,
+        "environment_action_spec_exceedance_count": 14874
+      }
+    },
+    "paired": {
+      "pairs": 10,
+      "task_rescues": 0,
+      "task_regressions": 10,
+      "safe_rescues": 0,
+      "safe_regressions": 9
+    },
+    "perception": {
+      "frames": 6010,
+      "roles": {
+        "goal": {
+          "centroid_error_m": 0.0008683308251272082,
+          "chamfer_m": 0.0005092247949005711,
+          "extents_error_m": 0.27561034766518233,
+          "mask_iou": 0.9738600832939165,
+          "mask_precision": 0.9770008818972102,
+          "mask_recall": 0.9967451852452909,
+          "nn_10mm_precision": 0.9950050950555486,
+          "nn_10mm_recall": 0.9989858977420835,
+          "nn_5mm_precision": 0.9928920084631941,
+          "nn_5mm_recall": 0.9989858977420835,
+          "oracle_points": 3126.061064891847,
+          "predicted_points": 3188.614143094842
+        },
+        "milk": {
+          "centroid_error_m": 0.1818066401224745,
+          "chamfer_m": 0.24483659283175516,
+          "extents_error_m": 1.0974872509147644,
+          "mask_iou": 0.07224780527733662,
+          "mask_precision": 0.07339900317453045,
+          "mask_recall": 0.09787530549717094,
+          "nn_10mm_precision": 0.08131399338115997,
+          "nn_10mm_recall": 0.09996947385382446,
+          "nn_5mm_precision": 0.07632122391389122,
+          "nn_5mm_recall": 0.09996947385382446,
+          "oracle_points": 1030.907986688852,
+          "predicted_points": 996.4425956738769
+        },
+        "obstacle": {
+          "centroid_error_m": 0.3737078557370506,
+          "chamfer_m": 0.521131533814396,
+          "extents_error_m": 2.3202343893130486,
+          "mask_iou": 0.020537220535690598,
+          "mask_precision": 0.02062420449394172,
+          "mask_recall": 0.0982860272356006,
+          "nn_10mm_precision": 0.021416895590585558,
+          "nn_10mm_recall": 0.10017020120693405,
+          "nn_5mm_precision": 0.020950499587200747,
+          "nn_5mm_recall": 0.10016591733672844,
+          "oracle_points": 1375.4271214642263,
+          "predicted_points": 7497.034941763727
+        },
+        "support": {
+          "centroid_error_m": 0.4027842111564604,
+          "chamfer_m": 0.6798776931448783,
+          "extents_error_m": 2.4410629691643906,
+          "mask_iou": 7.820957438714309e-06,
+          "mask_precision": 8.134382627679712e-06,
+          "mask_recall": 0.000206987199135849,
+          "nn_10mm_precision": 0.00018065386979501349,
+          "nn_10mm_recall": 0.0002594462582488257,
+          "nn_5mm_precision": 4.239893658765335e-05,
+          "nn_5mm_recall": 0.00024716642230533306,
+          "oracle_points": 344.51913477537437,
+          "predicted_points": 6500.59234608985
+        },
+        "target": {
+          "centroid_error_m": 0.011026326761324928,
+          "chamfer_m": 0.006120710618152172,
+          "extents_error_m": 0.1336782434115054,
+          "mask_iou": 0.8488556050542813,
+          "mask_precision": 0.8569442726965525,
+          "mask_recall": 0.9887889601102788,
+          "nn_10mm_precision": 0.9374175545528239,
+          "nn_10mm_recall": 0.9971282433701768,
+          "nn_5mm_precision": 0.9083469031809146,
+          "nn_5mm_recall": 0.9944245478666839,
+          "oracle_points": 696.6627287853578,
+          "predicted_points": 800.5113144758735
+        }
+      },
+      "identity_swap_frames": 1602,
+      "identity_swap_frames_by_role": {
+        "goal": 0,
+        "milk": 1,
+        "obstacle": 0,
+        "support": 1601,
+        "target": 0
+      },
+      "support_detected_frames": 6010,
+      "tracking_failures": 0,
+      "task_failure_reasons": {},
+      "obstacle_failure_frames": 4768,
+      "obstacle_failure_reasons": {
+        "invalid_mask_or_depth:milk": 4768
+      },
+      "latency_s": {
+        "mean": 0.06434613491924551,
+        "p50": 0.034143764059990644,
+        "p95": 0.03840531958267093,
+        "max": 18.940230912528932
+      }
+    }
+  }
+}

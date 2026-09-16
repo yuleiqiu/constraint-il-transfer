@@ -1,0 +1,266 @@
+{
+  "format_version": 1,
+  "calibration_environment": "PickPlaceCanTabletopRaisedMilk",
+  "calibration_bank_seed": 828,
+  "calibration_episodes": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45
+  ],
+  "selection_rule": "maximum mean oracle-mask recall; mean precision tie-break; candidate order final tie-break",
+  "box_threshold": 0.35,
+  "text_threshold": 0.25,
+  "prompts": {
+    "target": "red soda can",
+    "goal": "green container",
+    "milk": "gray milk carton",
+    "support": "black base"
+  },
+  "selection_details": {
+    "target": {
+      "selected": "red soda can",
+      "candidates": [
+        {
+          "prompt": "red soda can",
+          "candidate_index": 0,
+          "mean_recall": 0.9883322573711197,
+          "mean_precision": 0.992861583499973,
+          "mean_iou": 0.9813712109872895,
+          "detected_scenes": 10
+        },
+        {
+          "prompt": "soda can",
+          "candidate_index": 1,
+          "mean_recall": 0.9880998673551236,
+          "mean_precision": 0.9929769087284391,
+          "mean_iou": 0.9812549413170512,
+          "detected_scenes": 10
+        },
+        {
+          "prompt": "can",
+          "candidate_index": 2,
+          "mean_recall": 0.5925005280040763,
+          "mean_precision": 0.5956306459502575,
+          "mean_iou": 0.5882498027019891,
+          "detected_scenes": 10
+        }
+      ]
+    },
+    "goal": {
+      "selected": "green container",
+      "candidates": [
+        {
+          "prompt": "green tray",
+          "candidate_index": 0,
+          "mean_recall": 0.9967920618191288,
+          "mean_precision": 0.9980804999607769,
+          "mean_iou": 0.9948776951877656,
+          "detected_scenes": 10
+        },
+        {
+          "prompt": "tray",
+          "candidate_index": 1,
+          "mean_recall": 0.996630197136656,
+          "mean_precision": 0.9983926005419038,
+          "mean_iou": 0.9950275197767786,
+          "detected_scenes": 10
+        },
+        {
+          "prompt": "green container",
+          "candidate_index": 2,
+          "mean_recall": 0.9968577943790518,
+          "mean_precision": 0.9979883399703617,
+          "mean_iou": 0.9948511829565015,
+          "detected_scenes": 10
+        }
+      ]
+    },
+    "milk": {
+      "selected": "gray milk carton",
+      "candidates": [
+        {
+          "prompt": "gray milk carton",
+          "candidate_index": 0,
+          "mean_recall": 0.09821073558648111,
+          "mean_precision": 0.07490523123578469,
+          "mean_iou": 0.07389678384442783,
+          "detected_scenes": 10
+        },
+        {
+          "prompt": "milk carton",
+          "candidate_index": 1,
+          "mean_recall": 0.0,
+          "mean_precision": 0.0,
+          "mean_iou": 0.0,
+          "detected_scenes": 10
+        },
+        {
+          "prompt": "gray box",
+          "candidate_index": 2,
+          "mean_recall": 0.056646350340345375,
+          "mean_precision": 0.0012983149409261298,
+          "mean_iou": 0.0012739926329433046,
+          "detected_scenes": 10
+        }
+      ]
+    },
+    "support": {
+      "selected": "black base",
+      "candidates": [
+        {
+          "prompt": "black base",
+          "candidate_index": 0,
+          "mean_recall": 0.0,
+          "mean_precision": 0.0,
+          "mean_iou": 0.0,
+          "detected_scenes": 10
+        },
+        {
+          "prompt": "pedestal",
+          "candidate_index": 1,
+          "mean_recall": 0.0,
+          "mean_precision": 0.0,
+          "mean_iou": 0.0,
+          "detected_scenes": 10
+        },
+        {
+          "prompt": "stand",
+          "candidate_index": 2,
+          "mean_recall": 0.0,
+          "mean_precision": 0.0,
+          "mean_iou": 0.0,
+          "detected_scenes": 10
+        }
+      ]
+    }
+  },
+  "weights_manifest_sha256": "ab0e244e87e81f83ecf18fc9d0827ee26cb419658f1dc55ab59115deebdfcf74",
+  "weights_manifest": {
+    "format_version": 1,
+    "formal_runtime_network_policy": "offline; every file must match this manifest",
+    "lan_o3dp_repository": "https://github.com/qqianfeng/lan-o3dp",
+    "lan_o3dp_revision": "b89c2898d8548f7dfde63c44eeb733a59f0c5222",
+    "root_git_head": "1854373b813bb18e1bb84a920ac69f67a7481976",
+    "package_versions": {
+      "groundingdino": "0.1.0",
+      "segment-anything": "1.0",
+      "cutie": "1.0.0",
+      "torch": "2.5.1+cu121",
+      "torchvision": "0.20.1+cu121"
+    },
+    "files": [
+      {
+        "component": "GroundingDINO Swin-T OGC",
+        "repository": "https://github.com/IDEA-Research/GroundingDINO",
+        "revision": "856dde20aee659246248e20734ef9ba5214f5e44",
+        "relative_path": "groundingdino_swint_ogc.pth",
+        "url": "https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth",
+        "path": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_rgbd_perception_2026-09-15/weights/groundingdino_swint_ogc.pth",
+        "size_bytes": 693997677,
+        "sha256": "3b3ca2563c77c69f651d7bd133e97139c186df06231157a64c507099c52bc799"
+      },
+      {
+        "component": "Segment Anything ViT-B",
+        "repository": "https://github.com/facebookresearch/segment-anything",
+        "revision": "dca509fe793f601edb92606367a655c15ac00fdf",
+        "relative_path": "sam_vit_b_01ec64.pth",
+        "url": "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth",
+        "path": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_rgbd_perception_2026-09-15/weights/sam_vit_b_01ec64.pth",
+        "size_bytes": 375042383,
+        "sha256": "ec2df62732614e57411cdcf32a23ffdf28910380d03139ee0f4fcbe91eb8c912"
+      },
+      {
+        "component": "Cutie default base mega",
+        "repository": "https://github.com/hkchengrex/Cutie",
+        "revision": "ec5cdd4cf16f75c73ad785a2f96fb97dbad4125a",
+        "release": "v1.0",
+        "relative_path": "cutie-base-mega.pth",
+        "url": "https://github.com/hkchengrex/Cutie/releases/download/v1.0/cutie-base-mega.pth",
+        "path": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_rgbd_perception_2026-09-15/weights/cutie-base-mega.pth",
+        "size_bytes": 140443788,
+        "sha256": "9c05402ee36d3a356fb72715d263ba7e1ea06ad3bada48c1306491792da43023"
+      },
+      {
+        "component": "Cutie pixel encoder ResNet-50 initialization",
+        "repository": "https://github.com/pytorch/vision",
+        "revision": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+        "relative_path": "resnet50-19c8e357.pth",
+        "url": "https://download.pytorch.org/models/resnet50-19c8e357.pth",
+        "path": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_rgbd_perception_2026-09-15/weights/resnet50-19c8e357.pth",
+        "size_bytes": 102502400,
+        "sha256": "19c8e3572231adff6824a2da93fd67b5986919a2e65f8b6007eab4edee220097"
+      },
+      {
+        "component": "Cutie mask encoder ResNet-18 initialization",
+        "repository": "https://github.com/pytorch/vision",
+        "revision": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+        "relative_path": "resnet18-5c106cde.pth",
+        "url": "https://download.pytorch.org/models/resnet18-5c106cde.pth",
+        "path": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_rgbd_perception_2026-09-15/weights/resnet18-5c106cde.pth",
+        "size_bytes": 46827520,
+        "sha256": "5c106cde386e87d4033832f2996f5493238eda96ccf559d1d62760c4de0613f8"
+      },
+      {
+        "component": "BERT base uncased construction snapshot",
+        "repository": "https://huggingface.co/google-bert/bert-base-uncased",
+        "revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+        "relative_path": "bert-base-uncased/config.json",
+        "url": "https://huggingface.co/google-bert/bert-base-uncased/resolve/86b5e0934494bd15c9632b12f734a8a67f723594/config.json",
+        "path": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_rgbd_perception_2026-09-15/weights/bert-base-uncased/config.json",
+        "size_bytes": 570,
+        "sha256": "7160e1553ad2ca51d8c1cb066be533db31826e12d173824c1bb0cb1a4f187d20"
+      },
+      {
+        "component": "BERT base uncased construction snapshot",
+        "repository": "https://huggingface.co/google-bert/bert-base-uncased",
+        "revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+        "relative_path": "bert-base-uncased/model.safetensors",
+        "url": "https://huggingface.co/google-bert/bert-base-uncased/resolve/86b5e0934494bd15c9632b12f734a8a67f723594/model.safetensors",
+        "path": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_rgbd_perception_2026-09-15/weights/bert-base-uncased/model.safetensors",
+        "size_bytes": 440449768,
+        "sha256": "68d45e234eb4a928074dfd868cead0219ab85354cc53d20e772753c6bb9169d3"
+      },
+      {
+        "component": "BERT base uncased construction snapshot",
+        "repository": "https://huggingface.co/google-bert/bert-base-uncased",
+        "revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+        "relative_path": "bert-base-uncased/tokenizer.json",
+        "url": "https://huggingface.co/google-bert/bert-base-uncased/resolve/86b5e0934494bd15c9632b12f734a8a67f723594/tokenizer.json",
+        "path": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_rgbd_perception_2026-09-15/weights/bert-base-uncased/tokenizer.json",
+        "size_bytes": 466062,
+        "sha256": "ce64fce797c24f68df90b40a3f74f579b336a493db14bd583fd520ea0d8c9a98"
+      },
+      {
+        "component": "BERT base uncased construction snapshot",
+        "repository": "https://huggingface.co/google-bert/bert-base-uncased",
+        "revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+        "relative_path": "bert-base-uncased/tokenizer_config.json",
+        "url": "https://huggingface.co/google-bert/bert-base-uncased/resolve/86b5e0934494bd15c9632b12f734a8a67f723594/tokenizer_config.json",
+        "path": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_rgbd_perception_2026-09-15/weights/bert-base-uncased/tokenizer_config.json",
+        "size_bytes": 48,
+        "sha256": "a025160ef0431f1a392f6f050c1310f4c5d9fb6f275932dbccba73c4d214bf10"
+      },
+      {
+        "component": "BERT base uncased construction snapshot",
+        "repository": "https://huggingface.co/google-bert/bert-base-uncased",
+        "revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+        "relative_path": "bert-base-uncased/vocab.txt",
+        "url": "https://huggingface.co/google-bert/bert-base-uncased/resolve/86b5e0934494bd15c9632b12f734a8a67f723594/vocab.txt",
+        "path": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_rgbd_perception_2026-09-15/weights/bert-base-uncased/vocab.txt",
+        "size_bytes": 231508,
+        "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+      }
+    ]
+  },
+  "checkpoint": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_tabletop_can_wide_support_abs_pose_sample_100demo_seed42/20260826184200/models/model_epoch_50_tabletop_can_wide_support_pointcloud_abs_eef_100_success_0.8.pth",
+  "checkpoint_sha256": "ec5c270c8bd0d40600ee7a11bae93010e7f46d410c5c45b55eb236282d778bec",
+  "state_bank": "/home/yulei/codes/constraint-il-transfer/outputs/tabletop_wide_support/raised_milk_state_bank_seed828_n50/initial_state_bank.pkl",
+  "state_bank_sha256": "cf7f67394fc2855a1a0cffc13bba7f8eeb2399f05a496d8deb7c2d05e346e23c"
+}

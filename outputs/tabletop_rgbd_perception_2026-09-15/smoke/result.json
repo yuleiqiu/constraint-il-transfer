@@ -1,0 +1,215 @@
+{
+  "passed": true,
+  "episode": 0,
+  "initial_state_hash": "58296cece2d4c77f507986ecf32cc489609de7dd5c0d3dbce67b07974ce96f03",
+  "dino_sam_initial_valid": true,
+  "cutie_tracking_frames": 2,
+  "identical_initial_output": true,
+  "identical_tracking_output": true,
+  "policy_chunk_shape": [
+    8,
+    7
+  ],
+  "policy_actions_finite": true,
+  "gpu": "NVIDIA RTX 6000 Ada Generation",
+  "gpu_memory_bytes": {
+    "initial_allocated": 0,
+    "models_allocated": 6580113408,
+    "peak_allocated": 9113294848,
+    "device_total": 51001688064,
+    "peak_fraction": 0.1786861414579864
+  },
+  "initial_perception": {
+    "frame_index": 0,
+    "phase": "initialization",
+    "failure_reason": null,
+    "obstacle_valid": true,
+    "obstacle_failure_reason": null,
+    "mask_pixels": {
+      "target": 877,
+      "goal": 3333,
+      "milk": 4028,
+      "support": 0,
+      "obstacle": 4028
+    },
+    "valid_depth_points": {
+      "target": 877,
+      "goal": 3333,
+      "milk": 4028,
+      "support": 0,
+      "obstacle": 4028
+    },
+    "rgb_sha256": "92a146cfb4712c2750d38cd5c0e0f6a5918ea6b63ea7c8b4a8c47cef9045f777",
+    "depth_sha256": "a5984809cb823c3d76e82ef2769267c98f2d28a1ae19bd8ea403cf97c4b9fdf7",
+    "prompts": {
+      "target": "red soda can",
+      "goal": "green container",
+      "milk": "gray milk carton",
+      "support": "black base"
+    },
+    "detections": {
+      "target": {
+        "box_xyxy": [
+          15.837469100952148,
+          111.63402557373047,
+          48.333038330078125,
+          153.8229522705078
+        ],
+        "score": 0.43022191524505615,
+        "phrase": "red soda"
+      },
+      "goal": {
+        "box_xyxy": [
+          179.9958038330078,
+          117.83273315429688,
+          256.03131103515625,
+          173.66238403320312
+        ],
+        "score": 0.8620346784591675,
+        "phrase": "green container"
+      },
+      "milk": {
+        "box_xyxy": [
+          73.5313720703125,
+          -0.0188751220703125,
+          182.37588500976562,
+          53.50330352783203
+        ],
+        "score": 0.4487801790237427,
+        "phrase": "gray milk carton"
+      },
+      "support": {
+        "box_xyxy": [
+          74.06265258789062,
+          -0.07406044006347656,
+          182.48251342773438,
+          53.57740783691406
+        ],
+        "score": 0.4301263391971588,
+        "phrase": "black base"
+      }
+    },
+    "detector_latency_s": {
+      "target": 1.1514697959646583,
+      "goal": 1.1365551054477692,
+      "milk": 1.1242074286565185,
+      "support": 1.0961352149024606
+    },
+    "segmenter_latency_s": 0.33259717002511024,
+    "tracker_latency_s": 0.14456970989704132,
+    "support_detected": true,
+    "milk_detected": true,
+    "total_latency_s": 5.009475197643042
+  },
+  "initial_oracle_audit": {
+    "mask_metrics": {
+      "target": {
+        "intersection": 870,
+        "predicted_pixels": 877,
+        "oracle_pixels": 879,
+        "iou": 0.981941309255079,
+        "precision": 0.992018244013683,
+        "recall": 0.9897610921501706
+      },
+      "goal": {
+        "intersection": 3327,
+        "predicted_pixels": 3333,
+        "oracle_pixels": 3330,
+        "iou": 0.9973021582733813,
+        "precision": 0.9981998199819982,
+        "recall": 0.9990990990990991
+      },
+      "milk": {
+        "intersection": 0,
+        "predicted_pixels": 4028,
+        "oracle_pixels": 1090,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "support": {
+        "intersection": 0,
+        "predicted_pixels": 0,
+        "oracle_pixels": 372,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "obstacle": {
+        "intersection": 0,
+        "predicted_pixels": 4028,
+        "oracle_pixels": 1462,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      }
+    },
+    "pointcloud_metrics": {
+      "target": {
+        "predicted_points": 877,
+        "oracle_points": 879,
+        "nn_5mm_precision": 1.0,
+        "nn_5mm_recall": 0.9920364050056882,
+        "nn_10mm_precision": 1.0,
+        "nn_10mm_recall": 0.9943117178612059,
+        "chamfer_m": 0.0001943406573039439,
+        "centroid_error_m": 0.0006326646544039249,
+        "extents_error_m": 0.0
+      },
+      "goal": {
+        "predicted_points": 3333,
+        "oracle_points": 3330,
+        "nn_5mm_precision": 1.0,
+        "nn_5mm_recall": 1.0,
+        "nn_10mm_precision": 1.0,
+        "nn_10mm_recall": 1.0,
+        "chamfer_m": 8.780363484338342e-06,
+        "centroid_error_m": 0.00016333608073182404,
+        "extents_error_m": 0.0021051415242254734
+      },
+      "milk": {
+        "predicted_points": 4028,
+        "oracle_points": 1090,
+        "nn_5mm_precision": 0.0,
+        "nn_5mm_recall": 0.0,
+        "nn_10mm_precision": 0.0,
+        "nn_10mm_recall": 0.0,
+        "chamfer_m": 0.5327054991693487,
+        "centroid_error_m": 0.48363542556762695,
+        "extents_error_m": 2.0499343872070312
+      },
+      "support": {
+        "predicted_points": 0,
+        "oracle_points": 372,
+        "nn_5mm_precision": 0.0,
+        "nn_5mm_recall": 0.0,
+        "nn_10mm_precision": 0.0,
+        "nn_10mm_recall": 0.0,
+        "chamfer_m": null,
+        "centroid_error_m": null,
+        "extents_error_m": null
+      },
+      "obstacle": {
+        "predicted_points": 4028,
+        "oracle_points": 1462,
+        "nn_5mm_precision": 0.0,
+        "nn_5mm_recall": 0.0,
+        "nn_10mm_precision": 0.0,
+        "nn_10mm_recall": 0.0,
+        "chamfer_m": 0.548547335268929,
+        "centroid_error_m": 0.48429426550865173,
+        "extents_error_m": 2.0365586280822754
+      }
+    },
+    "identity_swap": {
+      "target": false,
+      "goal": false,
+      "milk": false,
+      "support": false,
+      "obstacle": false
+    },
+    "identity_swap_any": false,
+    "support_oracle_visible": true,
+    "support_detected": true
+  }
+}

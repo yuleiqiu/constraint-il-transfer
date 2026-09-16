@@ -1,6 +1,9 @@
 # Large binary outputs
 outputs/**/*.mp4
 outputs/**/*.pth
+outputs/tabletop_rgbd_perception_2026-09-15/weights/**
+!outputs/tabletop_rgbd_perception_2026-09-15/weights/manifest.json
+outputs/tabletop_rgbd_perception_2026-09-15/rollouts/
 outputs/robomimic/train/
 outputs/eef_pose_osc_policy/eval/
 outputs/robomimic/eval/**/episodes.hdf5

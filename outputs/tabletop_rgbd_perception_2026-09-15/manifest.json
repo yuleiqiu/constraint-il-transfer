@@ -1,0 +1,62 @@
+{
+  "format_version": 1,
+  "scope": "pilot",
+  "gate_passed": false,
+  "decision": "stop this stage; do not launch expansion, training, or planner work",
+  "formal_rollouts": 40,
+  "formal_pairs": 20,
+  "execution_videos": 40,
+  "artifact_bytes_excluding_this_manifest": 2002433186,
+  "checkpoint": "/home/yulei/codes/constraint-il-transfer/outputs/robomimic/train/lan_o3dp_tabletop_can_wide_support_abs_pose_sample_100demo_seed42/20260826184200/models/model_epoch_50_tabletop_can_wide_support_pointcloud_abs_eef_100_success_0.8.pth",
+  "checkpoint_sha256": "ec5c270c8bd0d40600ee7a11bae93010e7f46d410c5c45b55eb236282d778bec",
+  "locked_config_sha256": "c4a9ecf397af42b0712e19dd92e354cb89db96f6eec194d70c05177cbd791332",
+  "weights_manifest_sha256": "ab0e244e87e81f83ecf18fc9d0827ee26cb419658f1dc55ab59115deebdfcf74",
+  "smoke_result_sha256": "06964d1693c5e6a53683889292b478289dba4932a56d5ea2d63a89e2d5e4a73b",
+  "analysis_source_sha256": "b1cb70cb19623c2aa8f4aa71d2919d8cd8833cf007536c0474bd79aa5526e36b",
+  "stage_manifests": {
+    "clean": {
+      "path": "rollouts/clean/pilot/manifest.json",
+      "sha256": "87679bade0176f0d9ef6e10cf1b0de95314606456e6597675ff0644e5cf0958a",
+      "source_hashes": {
+        "perception.py": "afd7e26e2636d88b25f8aa23d9227b9d3a87a40128cbe3b8f54515482c4f411a",
+        "oracle_audit.py": "8db1b1a2b0540dfaaa11dd0da04a004e039e1807aa52783675f0d828fe113ac1",
+        "analyze.py": "dd5a83a6640322c51175c9b9c3d2caba93721d2f6b5580ead75c576532dc2007",
+        "models.py": "47d5d09bda7bc764fad1f61295d511ebdfffdaa592754220e517b65fe4e3ac8c",
+        "experiment_common.py": "1e4b68b9be4134250242167a71a3a46c66e334591b294642ebfa8a019e24ac58",
+        "weights.py": "8e8a8e9ff6f7125cc49de34c34aa1a784b1baf5128e0df0f5f7a0ff02b2f9819",
+        "run.py": "2943a9e97ab342c4e5d7b4c9f0398089e799e6a3b6f7fe1e1bbac3bea007af66",
+        "runtime_io.py": "315e848c724393fc82734feeb0335404072d42e13ed65b99710668012d944758",
+        "smoke_test.py": "eb893e915e2cfe1aeef4a3cfced7e8c411886b7e9507f14494eebc3d94461675",
+        "calibrate_prompts.py": "c23c65941749e601d8b04fbb4aa15e2a08891d5ef74fb5fa7d50909597ba0b67"
+      },
+      "git_heads": {
+        "root": "1854373b813bb18e1bb84a920ac69f67a7481976",
+        "robomimic": "e6408e9f27602fb9f84366edfa0d14d07f402785",
+        "robosuite": "47d4190eadc6ab897a0473062b58a989fb21609f"
+      }
+    },
+    "raised_milk": {
+      "path": "rollouts/raised_milk/pilot/manifest.json",
+      "sha256": "5c92a9998818b5b67e01d3cb0bfe1ace06d4b5da9d5082ef3480fcfb96d3c60b",
+      "source_hashes": {
+        "perception.py": "afd7e26e2636d88b25f8aa23d9227b9d3a87a40128cbe3b8f54515482c4f411a",
+        "oracle_audit.py": "8db1b1a2b0540dfaaa11dd0da04a004e039e1807aa52783675f0d828fe113ac1",
+        "analyze.py": "dd5a83a6640322c51175c9b9c3d2caba93721d2f6b5580ead75c576532dc2007",
+        "models.py": "47d5d09bda7bc764fad1f61295d511ebdfffdaa592754220e517b65fe4e3ac8c",
+        "experiment_common.py": "1e4b68b9be4134250242167a71a3a46c66e334591b294642ebfa8a019e24ac58",
+        "weights.py": "8e8a8e9ff6f7125cc49de34c34aa1a784b1baf5128e0df0f5f7a0ff02b2f9819",
+        "run.py": "2943a9e97ab342c4e5d7b4c9f0398089e799e6a3b6f7fe1e1bbac3bea007af66",
+        "runtime_io.py": "315e848c724393fc82734feeb0335404072d42e13ed65b99710668012d944758",
+        "smoke_test.py": "eb893e915e2cfe1aeef4a3cfced7e8c411886b7e9507f14494eebc3d94461675",
+        "calibrate_prompts.py": "c23c65941749e601d8b04fbb4aa15e2a08891d5ef74fb5fa7d50909597ba0b67"
+      },
+      "git_heads": {
+        "root": "1854373b813bb18e1bb84a920ac69f67a7481976",
+        "robomimic": "e6408e9f27602fb9f84366edfa0d14d07f402785",
+        "robosuite": "47d4190eadc6ab897a0473062b58a989fb21609f"
+      }
+    }
+  },
+  "runtime_network_policy": "offline; verified local weight manifest only",
+  "development_bank_only": true
+}

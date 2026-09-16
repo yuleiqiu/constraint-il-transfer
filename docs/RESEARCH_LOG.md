@@ -12,6 +12,17 @@
 
 ## Current decision frontier
 
+Completed RGB-D perception pilot, reviewed2026-09-16: the fixed frozen
+wide-support epoch-50 policy succeeds10/10 with oracle task masks and0/10 with
+GroundingDINO+SAM+Cutie task clouds in both clean and RaisedMilk. All20 paired
+initial state/RGB-D/calibration/policy-RNG audits pass; all actions satisfy the
+absolute-EEF contract. One clean target track fails, while RaisedMilk has no
+task-mask failure. RaisedMilk obstacle reconstruction remains unusable for a
+planner (mean mask IoU0.021;4768/6010 invalid frames). The pilot gate fails;
+no full50 expansion, training or planner integration is selected by this
+stage. Canonical report:
+`outputs/tabletop_rgbd_perception_2026-09-15/conclusion.md`.
+
 Completed full50 comparison, reviewed2026-09-14: all100 executions and video/
 action/prefix checks pass. Baseline/planner Task46/49, Safe39/49, CR9/0,
 NCR2/1 out of50. Task rescues3/regressions0; safe rescues10/regressions0.
@@ -49,6 +60,40 @@ Review on 2026-09-10: Task SR 56%/56%, Safe SR 46%/54%; 11 safe improvements
 versus 7 regressions, with no statistically established aggregate benefit. No new method,
 training, clean-policy evaluation or always-on condition is selected.
 Root AGENTS.md predates this work and remains human-maintained.
+
+## 2026-09-16
+
+### Stop RGB-D perception comparison at the pilot gate
+
+Implemented an oracle-free policy observation path using pinned GroundingDINO
+Swin-T OGC and SAM ViT-B once per episode, followed by Cutie tracking without
+detector retry. Runtime inputs are agentview RGB, metric depth, fixed camera
+calibration and locked role prompts. The inner geom point-cloud provider is
+disabled for perceived rollouts; simulator masks/contact/object state are
+confined to evaluation. An offline manifest fixes all model and backbone
+files, revisions, sizes and SHA256 hashes.
+
+The fixed10 clean and RaisedMilk pilot completed40/40 executions with actual
+videos and20/20 paired state/RGB-D/calibration/policy-RNG audits. Oracle versus
+perceived Task is10/10 versus0/10 in both environments. Clean Safe/CR/NCR is
+10/10,0/10,0/10 versus0/10,0/10,10/10; RaisedMilk is9/10,1/10,0/10 versus
+0/10,0/10,10/10. There are zero task rescues and ten regressions per
+environment. One clean target track becomes invalid; RaisedMilk target/goal
+tracking stays task-valid, so the outcome is not explained by task-mask early
+termination. The zero perceived collision rate is not a safety gain because
+no task completes.
+
+Mean target/goal mask IoU is0.826/0.984 clean and0.849/0.974 RaisedMilk, yet
+the frozen policy fails every perceived rollout. This establishes sensitivity
+to the measured point-cloud shift but does not isolate point sampling,
+temporally structured mask errors or policy sensitivity as the dominant
+cause. RaisedMilk obstacle mean IoU is0.021, with4768/6010 obstacle-invalid
+frames and effectively zero support IoU, so the obstacle cloud is not ready
+for planner integration. Pilot gate failed; per protocol no expansion,
+fine-tuning or planner run was launched. This is development-bank simulator
+evidence, not held-out perception or real-robot validation.
+
+Canonical report: `outputs/tabletop_rgbd_perception_2026-09-15/conclusion.md`.
 
 ## 2026-09-14
 

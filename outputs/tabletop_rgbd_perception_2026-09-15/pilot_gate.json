@@ -1,0 +1,20 @@
+{
+  "passed": false,
+  "checks": {
+    "clean": {
+      "ten_pairs_complete": true,
+      "no_perception_failure": false,
+      "at_most_one_task_regression": false,
+      "task_success_within_one": false,
+      "actions_finite_and_in_contract": true
+    },
+    "raised_milk": {
+      "ten_pairs_complete": true,
+      "no_perception_failure": true,
+      "at_most_one_task_regression": false,
+      "task_success_within_one": false,
+      "actions_finite_and_in_contract": true
+    }
+  },
+  "decision": "stop this stage; do not launch expansion, training, or planner work"
+}
