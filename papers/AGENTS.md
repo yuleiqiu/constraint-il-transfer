@@ -23,20 +23,32 @@ Do not keep parser-specific intermediate artifacts (`*_model.json`,
    ```bash
    curl -sL -o papers/<short-name>/paper.pdf "https://arxiv.org/pdf/<id>"
    ```
-4. **Extract with MinerU** (remote API on server_4090)
+4. **Extract with MinerU on server_4090** (verified 2026-11-17). MinerU 4.1.7
+   runs only on the server: `mineru-kit api-server` (tier `advanced`, tmux
+   session `mineru-api`) listens on `127.0.0.1:8001` and is not reachable from
+   this machine, so copy the PDF over and run the client there. Use `-f zip`;
+   the default markdown format inlines figures as base64.
    ```bash
-   cd ~/apps/mineru
-   uv run mineru -p <absolute-path-to-pdf> -o ./output --api-url http://10.42.1.254:8000
+   N=<short-name>; R=/tmp/mineru_$N
+   ssh server_4090 "mkdir -p $R/in" && scp papers/$N/paper.pdf server_4090:$R/in/
+   ssh server_4090 "cd ~/apps/mineru && source env.sh && \
+     ~/.local/bin/uv run --locked mineru-kit parse $R/in/paper.pdf -o $R/out \
+       -f zip --remote-url http://127.0.0.1:8001 --tier advanced"
+   scp server_4090:$R/out/paper.zip /tmp/mineru_$N.zip
+   unzip -q /tmp/mineru_$N.zip -d /tmp/mineru_$N
    ```
-5. **Move results**
+   If parsing fails, check `tmux ls` and `~/apps/mineru/state/api.log` on the
+   server; restart with `~/apps/mineru/start-mineru-api.sh`.
+5. **Keep only text and figures** — the zip holds `markdown.md`, `images/`,
+   `middle_json.json` and `structured_content.json`. Keep `markdown.md` as
+   `paper.md` plus only the images it references (display equations are
+   already LaTeX, so the `*_equation_*.jpg` crops are unused):
    ```bash
-   cp ~/apps/mineru/output/paper/hybrid_auto/paper.md  papers/<short-name>/paper.md
-   cp ~/apps/mineru/output/paper/hybrid_auto/images/*  papers/<short-name>/images/
+   cp /tmp/mineru_$N/markdown.md papers/$N/paper.md
+   grep -o '](images/[^)]*)' papers/$N/paper.md | sed 's/](//;s/)//' \
+     | xargs -I{} cp /tmp/mineru_$N/{} papers/$N/{}
    ```
-6. **Clean up** — remove the MinerU output for this run:
-   ```bash
-   rm -rf ~/apps/mineru/output/paper
-   ```
+6. **Clean up** — `ssh server_4090 "rm -rf $R"; rm -rf /tmp/mineru_$N /tmp/mineru_$N.zip`
 7. **Update index** — add a row to the table in `papers/README.md`.
 
 ## Naming Convention
